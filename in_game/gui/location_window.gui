@@ -2492,9 +2492,9 @@ lateralview = {
 							}
 						}
 					}
-					expand = {}				
+
+					expand = {}
 				}
-				
 				button = {
 					name = "zoom_to"
 					size = { 25 25 }

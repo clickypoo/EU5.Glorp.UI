@@ -231,13 +231,18 @@ types OrganizationPanel
 							# block "organization_laws_tab_visible" {
 								visible = "[InternationalOrganizationsView.HasLaws]"
 							# }
-							block "organization_laws_tab_text" {
-								blockoverride "tab_text"{
+							blockoverride "tab_text" {
+								block "organization_laws_tab_text" {
 									text = "game_concept_laws"
 								}
-								tooltipwidget = {
-									using = SubTabIOLawsTooltip
-								}
+							}
+							# block "organization_laws_tooltip" {
+							# 	tooltipwidget = {
+							# 		using = SubTabIOLawsTooltip
+							# 	}
+							# }
+							tooltipwidget = {
+								using = SubTabIOLawsTooltip
 							}
 							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'laws' )]"
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'laws' )]"
@@ -248,10 +253,12 @@ types OrganizationPanel
 							block "organization_resolutions_tab_visible" {
 								visible = "[InternationalOrganizationsView.HasResolutions]"
 							}
-							block "organization_resolutions_tab_text" {
-								blockoverride "tab_text"{
+							blockoverride "tab_text" {
+								block "organization_resolutions_tab_text"{
 									text = "RESOLUTIONS"
 								}
+							}
+							block "organization_resolutions_tooltip"{
 								tooltipwidget = {
 									using = SubTabIOResolutionsTooltip
 								}
@@ -339,13 +346,18 @@ types OrganizationPanel
 							# block "organization_parliament_tab_visible" {
 								visible = "[InternationalOrganizationsView.GetInternationalOrganization.HasParliament]"
 							# }
-							block "organization_parliament_tab_text" {
-								blockoverride "tab_text"{
+							blockoverride "tab_text" {
+								block "organization_parliament_tab_text" {
 									text = "game_concept_parliament"
 								}
-								tooltipwidget = {
-									using = SubTabIOParliamentTooltip
-								}
+							}
+							# block "organization_parliament_tooltip" {
+							# 	tooltipwidget = {
+							# 		using = SubTabIOParliamentTooltip
+							# 	}
+							# }
+							tooltipwidget = {
+								using = SubTabIOParliamentTooltip
 							}
 							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'parliament' )]"
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'parliament' )]"
