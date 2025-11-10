@@ -1,13 +1,12 @@
 ﻿{
 	"name":	"Glorp UI",
 	"id":	"glorp.ui",
-	"version":	"0.1",
-	"supported_game_version":	"1.0.2",
-	"short_description":	"UI Improvements and Fixes",
+	"version":	"im straight glorping it",
+	"supported_game_version":	"1.0.3",
+	"short_description":	"and by it, lets just say.. my bingus",
 	"tags":	["Fixes", "Overhaul", "User Interface"],
 	"relationships":	[],
-	"picture": "thumbnail.png",
+	"thumbnail": "thumbnail.png",
 	"game_id" : "eu5",
-	"game_custom_data":	{
-}
+	"game_custom_data":	{}
 }
