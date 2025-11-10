@@ -1,0 +1,68 @@
+window = {
+    name = "glorpUI_window"
+    parentanchor = center
+    size = { 500 400 }
+    using = bg_window_default_alt
+
+    widget = {
+		size = { 100% 100% }
+		allow_outside = yes
+
+        widget = {
+            parentanchor = right
+            size = { 40 40 }
+            position = { -5 8 }
+            ui_direction_button_holder_right = {}
+            button_close_alt = {
+                blockoverride "close_onclick" {
+                    onclick = "[ExecuteConsoleCommand('gui.ClearWidgets glorpUI_window')]"
+                    onclick = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
+                }
+                blockoverride "close_inputaction" {
+                    input_action = "[ExecuteConsoleCommand('gui.ClearWidgets glorpUI_window')]"
+                    input_action = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
+                    use_global_input_instance = yes
+                }
+            }
+        }
+
+        vbox = {
+            using = window_margin_alt
+            window_header_alt = {
+                blockoverride "header_text" {
+                    raw_text = "Glorp UI Customization"
+                }
+            }
+            vbox = {
+                using = layoutpolicy_expanding
+                using = bg_main_inner_notabs_alt
+
+                hbox = {
+                    spacing = 10
+                    text_single = {
+                        raw_text = "Use Portraits"
+                    }
+                    checkbox_square_alt = {
+                        onclick = "[GetVariableSystem.Toggle( 'use_portrait' )]"
+                        checked = "[GetVariableSystem.Exists( 'use_portrait' )]"
+                        tooltip_enabled = no
+                    }
+                }
+
+                # Close button
+                button_regular_diamond = {
+                    name = "close_button"
+                    tooltip_enabled = no
+                    using = button_resize_to_fit_text
+
+                    block "goto_title" {
+                        text = "Close"
+                    }
+
+                    onclick = "[ExecuteConsoleCommand('gui.ClearWidgets glorpUI_window')]"
+                    onclick = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
+                }
+            }
+        }
+    }
+}
