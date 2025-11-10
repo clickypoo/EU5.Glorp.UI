@@ -881,39 +881,16 @@ Types LeftPanelTypes
 			}
 		}
 
-		# flag and decorations
+        # flag and decorations - vanilla ui
 		widget = {
-			position = { 5 10 }
+			position = { 5 -55 }
+			size = { 60 100 }
 			allow_outside = yes
-
-			icon = {
-				position = { -4 -47 }
-				parentanchor = right
-				widgetanchor = left
-				using = panel_decor_size
-				mirror = horizontal
-				texture = "[GetGraphicalCultureTexture('panel_bar_corner_shadow')]"
-				# texture = "gfx/interface/graphical_cultures/european_gfx/panel_bar_corner_shadow.dds"
-				texture_density = 2
-
-				using = color_black_texture
-			}
-			icon = {
-				position = { -4 -47 }
-				parentanchor = right
-				widgetanchor = left
-				using = panel_decor_size
-				mirror = horizontal
-				texture = "[GetGraphicalCultureTexture('panel_bar_corner')]"
-				# texture = "gfx/interface/graphical_cultures/european_gfx/fancy_flag_cloth.dds"
-				texture_density = 2
-
-				using = non_clickable_color_gold_texture
-			}
+            visible = "[GetVariableSystem.Exists( 'use_portrait' )]"
 
 			flag_3d_animated = {
 				visible = "[And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')))]"
-				size = { 180 120 }
+				size = { 114 76 }
 				parentanchor = center
 				position = { 78 0 }
 				datacontext = "[InGameTopbar.GetPlayer]"
@@ -929,19 +906,202 @@ Types LeftPanelTypes
 					on_action = "[OpenLateralView('government')]"
 				}
 			}
-			
+		}
+
+		# portrait and all associated surroundings
+		widget = {
+            visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), GetVariableSystem.Exists(  'use_portrait'  ))]"
+			parentanchor = left
+			widgetanchor = vcenter|left
+			size = { 78 78 }
+			allow_outside = yes
+
+			background = {
+				texture = "gfx/interface/component_tiles/hud_corners/circle_background.dds"
+				texture_density = 2
+
+				modify_texture = {
+					using = color_dark_blue_texture
+				}
+			}
+
+			character_frame_medium = {
+				parentanchor = center
+				position = { 0 7 }
+				blockoverride "character_frame_size" {
+					size = { 80 98 }
+				}
+				blockoverride "portrait_position" {position = { 0 0 }}
+				blockoverride "portrait_size" { size = { 85% 90% } }
+
+				datacontext = "[InGameTopbar.GetPlayer.GetGovernment.GetRulerOrRegent]"
+				blockoverride "character_frame_texture" {
+					texture = "gfx/interface/component_decoration/character_frames/character_non_stretchable_frame_2.dds"
+				}
+				blockoverride "character_portrait_visible" {
+					visible = no
+				}
+
+				blockoverride "character_portrait_ani_visible" {
+					visible = yes
+				}
+				blockoverride "character_portrait_ani_size" {
+					size = { 65 98 }
+				}
+				blockoverride "character_ribbon" {
+					character_ribbon_3 = {
+						visible = "[Character.IsRuler]"
+						blockoverride "stretchable" {}
+					}
+				}
+
+				widget = {
+					parentanchor = bottom|left
+					visible = "[GetPlayer.GetGovernment.HasActiveRegent]"
+					size = { 26 28}
+					allow_outside = yes
+					datacontext = "[GetPlayer.GetGovernment]"
+
+					header_button_left = {
+						size = { 26 26 }
+						blockoverride "button_icon_stretch_sprite" {}
+						blockoverride "header_button_frame_inner" { visible = no }
+						blockoverride "header_button_icon_size" { size = { 24 24 } }
+						blockoverride "icon_replace" {}
+						blockoverride "header_button_text_layout" {}
+						tooltip_enabled = no
+					}
+
+					piechart = {
+						size = { 26 26 }
+						parentanchor = hcenter
+						using = piechart_angles
+
+						icon = {
+							texture = "gfx/interface/pie_charts/pie_chart_white.dds"
+							size = { 100% 100% }
+							parentanchor = center
+							color = { 0.35 0.35 0.35 1 }
+						}
+
+						pieslice_no_highlight = {
+							texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
+							value = "[GetPlayer.GetGovernment.GetRegencyProgress]"
+							color = { 1 1 1 1 }
+						}
+
+						pieslice_no_highlight = {
+							texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+							value = "[Subtract_float('(float)100.0', GetPlayer.GetGovernment.GetRegencyProgress)]"
+							color = { 1 1 1 0 }
+						}
+					}
+
+					button = {
+						parentanchor = top|hcenter
+						enabled = "[Player.CanExtendRegency]"
+						position = { 0 3 }
+						size = { 18 18 }
+						texture = "gfx/interface/icons/character_roles/regent.dds"
+
+						texture_density = 2
+						mirror = horizontal
+
+						visible = "[GetPlayer.GetGovernment.HasActiveRegent]"
+						tooltipwidget = {
+							using = CurrentRegencyTooltip
+						}
+
+						action_tooltip = {
+							click_type = left
+							click_mode = confirm
+							conditions = "[MakeItFailIfLoc(Not(Player.CanExtendRegency), Player.GetExtendRegencyInfo)]"
+							title = "[Select_CString(Player.CanExtendRegency, Player.GetExtendRegencyInfo, Localize('CANNOT_EXTEND_REGENCY'))]"
+							on_action = "[ExtendRegency(Player.Self)]"
+							enabled = "[Player.CanExtendRegency]"
+						}
+					}
+				}
+			}
+
 			datacontext = "[Player]"
 
+			country_rank_banner = {
+				position = {80 60}
+			}
+		}
+
+        # flag and decorations - glorp ui
+        widget = {
+            position = { 5 10 }
+            allow_outside = yes
+            visible = "[Not(GetVariableSystem.Exists( 'use_portrait' ))]"
+
+            icon = {
+                position = { -4 -47 }
+                parentanchor = right
+                widgetanchor = left
+                using = panel_decor_size
+                mirror = horizontal
+                texture = "[GetGraphicalCultureTexture('panel_bar_corner_shadow')]"
+                # texture = "gfx/interface/graphical_cultures/european_gfx/panel_bar_corner_shadow.dds"
+                texture_density = 2
+
+                using = color_black_texture
+            }
+            icon = {
+                position = { -4 -47 }
+                parentanchor = right
+                widgetanchor = left
+                using = panel_decor_size
+                mirror = horizontal
+                texture = "[GetGraphicalCultureTexture('panel_bar_corner')]"
+                # texture = "gfx/interface/graphical_cultures/european_gfx/fancy_flag_cloth.dds"
+                texture_density = 2
+
+                using = non_clickable_color_gold_texture
+            }
+
+            flag_3d_animated = {
+                visible = "[And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')))]"
+                size = { 180 120 }
+                parentanchor = center
+                position = { 78 0 }
+                datacontext = "[InGameTopbar.GetPlayer]"
+
+                blockoverride "click_properties" {
+                    on_input_action_shortcut = "[PanToCountry(Country.Self)]"
+                    input_action = "go_to_capital"
+                    use_global_input_instance = yes
+                }
+
+                blockoverride "click_action" {
+                    title = "TAB_TOOLTIP_GOVERNMENT_LEFT_CLICK"
+                    on_action = "[OpenLateralView('government')]"
+                }
+            }
+        }
+
+        # portrait and all associated surroundings - glorp ui
+        widget = {
+            visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), Not(GetVariableSystem.Exists( 'use_portrait' )))]"
+            parentanchor = left
+            widgetanchor = vcenter|left
+            size = { 78 78 }
+            allow_outside = yes
+
+            datacontext = "[Player]"
+
+            #glorp ui rank banner
             button = {
                 size = {28 34}
-                position = {536 -8}
+                position = {540 40}
                 onclick = "[OpenLateralViewWithParams('diplomacy', 'tabcontent = relations')]"
             }
             country_rank_banner = {
-                position = {536 -8}
+                position = {540 40}
             }
-
-		}
+        }
 	}
 
 	type stat_player_button = button {

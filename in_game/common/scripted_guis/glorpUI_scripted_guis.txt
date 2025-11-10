@@ -1,0 +1,39 @@
+﻿reset_sgui = {
+    effect = {
+        glorpUI_init_reset = yes
+    }
+}
+
+beginner_sgui = {
+    effect = {
+        set_variable = { name = difficulty value = 0 }
+        glorpUI_init_reset = yes
+    }
+}
+
+glorpUI_initalize = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = glorpUI_tag_initalized } }
+        }
+        set_variable = glorpUI_tag_initalized
+
+        # initialize
+
+        # Default difficulty
+        set_variable = { name = difficulty value = 0 }
+        glorpUI_init_reset = yes
+    }
+}
+
+glorpUI_beginner_unclickable = {
+    is_shown = {
+        var:difficulty = { compare_value = 0 }
+    }
+}
+
+glorpUI_beginner_clickable = {
+    is_shown = {
+        NOT = { var:difficulty = { compare_value = 0 } }
+    }
+}
