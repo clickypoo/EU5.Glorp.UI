@@ -17,7 +17,7 @@ types SocietyView
 
 			# raw_text = "#prefix_name [Character.GetCharacterPrefixWithNoTooltip]#! #character_name [Character.GetFirstNameWithNoTooltip]#! #regnal_name [Character.GetCharacterRegnalNumWithNoTooltip]#! #nickname [Character.GetAdultNicknameWithNoTooltip]#! #lastname [Character.GetLastNameWithNoTooltip]#!#suffix_name , [Character.GetAge]#!"
 			block "character_name_text" {
-				text = "[Character.GetNameToFit('(int32)-1', '(bool)yes')|U], [Character.GetAgeInYears|T]#!"
+				text = "[Character.GetNameToFit('(int32)-1', '(bool)yes')|U]"
 			}
 			block "name_highlight" {
 				sort_by_left_fade_highlight = {

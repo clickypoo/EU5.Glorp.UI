@@ -1,6 +1,6 @@
 # this must be in sync with ingame_topbar.gui
 @topbar_height = 40
-@right_panel_width = 300
+@right_panel_width = 400
 @panel_x = 0
 @panel_bar_height = 90
 @lateralview_margin_bottom = 0
@@ -1157,7 +1157,7 @@ window = {
 
 									blockoverride "scrollbar_setup" {
 										# position = "[Select_CVector2f(Outliner.IsExpanded, '(CVector2f)304,0', '(CVector2f)95,0')]"
-										position = { @[outliner_width + 15] 0 }
+										position = { 415 0 }
 										size = { 8 100% }
 									}
 

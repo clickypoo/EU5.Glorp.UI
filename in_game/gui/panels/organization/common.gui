@@ -60,36 +60,6 @@ types OrganizationPanel
 							using = InternationalOrganization_tooltip
 						}
 					}
-					
-					button = {
-						name = "zoom_to"
-						size = { 25 25 }
-						position = { 515 7 }
-						
-						texture = "gfx/interface/buttons/flats/goto_button_alt.dds"
-						texture_density = 2
-
-						background = {
-							using = bg_button_light_round_texture
-							modify_texture = {
-								using = color_dark_blue_texture
-							}
-						}
-
-						using = ui_direction_button_overlay
-
-						action_tooltip = {
-							click_type = left
-							click_mode = single
-							title = "GO_TO_LOCATION"
-							on_action = "[PanToLocation(InternationalOrganizationsView.GetInternationalOrganization.GetLeaderCountry.GetCapital.GetLocation)]"
-						}
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" { text = "GO_TO" }
-							}
-						}
-					}
 				}
 			}
 
@@ -231,13 +201,18 @@ types OrganizationPanel
 							# block "organization_laws_tab_visible" {
 								visible = "[InternationalOrganizationsView.HasLaws]"
 							# }
-							block "organization_laws_tab_text" {
-								blockoverride "tab_text"{
+							blockoverride "tab_text" {
+								block "organization_laws_tab_text" {
 									text = "game_concept_laws"
 								}
-								tooltipwidget = {
-									using = SubTabIOLawsTooltip
-								}
+							}
+							# block "organization_laws_tooltip" {
+							# 	tooltipwidget = {
+							# 		using = SubTabIOLawsTooltip
+							# 	}
+							# }
+							tooltipwidget = {
+								using = SubTabIOLawsTooltip
 							}
 							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'laws' )]"
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'laws' )]"
@@ -248,10 +223,12 @@ types OrganizationPanel
 							block "organization_resolutions_tab_visible" {
 								visible = "[InternationalOrganizationsView.HasResolutions]"
 							}
-							block "organization_resolutions_tab_text" {
-								blockoverride "tab_text"{
+							blockoverride "tab_text" {
+								block "organization_resolutions_tab_text"{
 									text = "RESOLUTIONS"
 								}
+							}
+							block "organization_resolutions_tooltip"{
 								tooltipwidget = {
 									using = SubTabIOResolutionsTooltip
 								}
@@ -339,13 +316,18 @@ types OrganizationPanel
 							# block "organization_parliament_tab_visible" {
 								visible = "[InternationalOrganizationsView.GetInternationalOrganization.HasParliament]"
 							# }
-							block "organization_parliament_tab_text" {
-								blockoverride "tab_text"{
+							blockoverride "tab_text" {
+								block "organization_parliament_tab_text" {
 									text = "game_concept_parliament"
 								}
-								tooltipwidget = {
-									using = SubTabIOParliamentTooltip
-								}
+							}
+							# block "organization_parliament_tooltip" {
+							# 	tooltipwidget = {
+							# 		using = SubTabIOParliamentTooltip
+							# 	}
+							# }
+							tooltipwidget = {
+								using = SubTabIOParliamentTooltip
 							}
 							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'parliament' )]"
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'parliament' )]"

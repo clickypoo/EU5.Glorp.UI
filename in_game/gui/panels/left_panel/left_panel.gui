@@ -232,35 +232,6 @@ Types LeftPanelTypes
 							}
 						}
 
-                        datacontext = "[Player]"
-                        widget = {
-                            size = { 27 30 }
-                            visible = "[Character.HasDynasty]"
-                            datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
-                            dynasty_shield_mid = {
-                                blockoverride "dynasty_click" {
-                                    action_tooltip = {
-                                        click_type = left
-                                        click_mode = single
-
-                                        title = "CHARACTER_CLICK_TOOLTIP_LEFT_CLICK"
-                                        on_action = "[ShowCharacter(Character.Self)]"
-                                    }
-                                    action_tooltip = {
-                                        click_type = right
-                                        click_mode = single
-
-                                        title = "DYNASTY_TT_OPEN"
-                                        on_action = "[ShowDynasty(Dynasty.Self)]"
-                                    }
-                                }
-                                parentanchor = center
-                                datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
-                                visible = "[Character.HasDynasty]"
-                                datacontext = "[Character.GetDynasty]"
-                            }
-                        }
-
 						text_multi = {
 							visible = "[IsPlayerValid]"
 							name = "country_name"
@@ -353,13 +324,6 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('government_group'))]"
 							size = { 100% 100% }
 							name = government_tab_button
-							background = {
-								texture = "gfx/interface/buttons/panel_tabs_government.dds"
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
 						}
 						onclick = "[ToggleLateralGroup('government_group')]"
 						# onrightclick = "[OnToggleOutlinerCategory('Government')]"
@@ -410,13 +374,6 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('economy_group'))]"
 							size = { 100% 100% }
 							name = economy_tab_button
-							background = {
-								texture = "gfx/interface/buttons/panel_tabs_economy.dds"
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
 						}
 						onclick = "[ToggleLateralGroup('economy_group')]"
 						# onrightclick = "[OnToggleOutlinerCategory('Economy')]"
@@ -463,20 +420,6 @@ Types LeftPanelTypes
 					}
 
 					button_panel_tab_alt = { ### production tab
-					
-						widget = {
-							visible = "[Not(IsLateralGroupOpened('production_group'))]"
-							size = { 100% 100% }
-							name = production_tab_button
-							background = {
-								texture = "gfx/interface/buttons/panel_tabs_production.dds"
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
-						}
-					
 						onclick = "[ToggleLateralGroup('production_group')]"
 						onclick = "[SetNonForeignUIFocusMarket]"
 						# onrightclick = "[OnToggleOutlinerCategory('Production')]"
@@ -527,13 +470,6 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('society_group'))]"
 							size = { 100% 100% }
 							name = society_tab_button
-							background = {
-								texture = "gfx/interface/buttons/panel_tabs_society.dds"
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
 						}
 						onclick = "[ToggleLateralGroup('society_group')]"
 						# onrightclick = "[OnToggleOutlinerCategory('Society')]"
@@ -584,13 +520,6 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('diplomacy_group'))]"
 							size = { 100% 100% }
 							name = diplomacy_tab_button
-							background = {
-								texture = "gfx/interface/buttons/panel_tabs_diplomacy.dds"
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
 						}
 						onclick = "[ToggleLateralGroup('diplomacy_group')]"
 						# onrightclick = "[OnToggleOutlinerCategory('Diplomacy')]"
@@ -640,13 +569,6 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('military_group'))]"
 							size = { 100% 100% }
 							name = military_tab_button
-							background = {
-								texture = "gfx/interface/buttons/panel_tabs_military.dds"
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
 						}
 						onclick = "[ToggleLateralGroup('military_group')]"
 						# onrightclick = "[OnToggleOutlinerCategory('Military')]"
@@ -697,13 +619,6 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('geography_group'))]"
 							size = { 100% 100% }
 							name = geopolitics_tab_button
-							background = {
-								texture = "gfx/interface/buttons/panel_tabs_geopolitics.dds"
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
 						}
 						onclick = "[ToggleLateralGroup('geography_group')]"
 						# onrightclick = "[OnToggleOutlinerCategory('Geopolitics')]"
@@ -750,18 +665,6 @@ Types LeftPanelTypes
 					}
 
 					button_panel_tab_alt = { ### advances tab
-						widget = {
-							visible = "[Not(IsLateralGroupOpened('advances_group'))]"
-							size = { 100% 100% }
-							name = advances_tab_button
-							background = {
-								texture = "gfx/interface/buttons/panel_tabs_advances.dds"
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
-						}
 						onclick = "[ToggleLateralGroup('advances_group')]"
 						down = "[IsLateralGroupOpened('advances_group')]"
 
@@ -881,39 +784,14 @@ Types LeftPanelTypes
 			}
 		}
 
-		# flag and decorations
 		widget = {
-			position = { 5 10 }
+			position = { 5 -55 }
+			size = { 60 100 }
 			allow_outside = yes
-
-			icon = {
-				position = { -4 -47 }
-				parentanchor = right
-				widgetanchor = left
-				using = panel_decor_size
-				mirror = horizontal
-				texture = "[GetGraphicalCultureTexture('panel_bar_corner_shadow')]"
-				# texture = "gfx/interface/graphical_cultures/european_gfx/panel_bar_corner_shadow.dds"
-				texture_density = 2
-
-				using = color_black_texture
-			}
-			icon = {
-				position = { -4 -47 }
-				parentanchor = right
-				widgetanchor = left
-				using = panel_decor_size
-				mirror = horizontal
-				texture = "[GetGraphicalCultureTexture('panel_bar_corner')]"
-				# texture = "gfx/interface/graphical_cultures/european_gfx/fancy_flag_cloth.dds"
-				texture_density = 2
-
-				using = non_clickable_color_gold_texture
-			}
 
 			flag_3d_animated = {
 				visible = "[And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')))]"
-				size = { 180 120 }
+				size = { 114 76 }
 				parentanchor = center
 				position = { 78 0 }
 				datacontext = "[InGameTopbar.GetPlayer]"
@@ -929,18 +807,129 @@ Types LeftPanelTypes
 					on_action = "[OpenLateralView('government')]"
 				}
 			}
-			
+		}
+
+		# portrait and all associated surroundings
+		widget = {
+			visible = "[And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')))]"
+			parentanchor = left
+			widgetanchor = vcenter|left
+			size = { 78 78 }
+			allow_outside = yes
+
+			background = {
+				texture = "gfx/interface/component_tiles/hud_corners/circle_background.dds"
+				texture_density = 2
+
+				modify_texture = {
+					using = color_dark_blue_texture
+				}
+			}
+
+			character_frame_medium = {
+				parentanchor = center
+				position = { 0 7 }
+				blockoverride "character_frame_size" {
+					size = { 80 98 }
+				}
+				blockoverride "portrait_position" {position = { 0 0 }}
+				blockoverride "portrait_size" { size = { 85% 90% } }
+
+				datacontext = "[InGameTopbar.GetPlayer.GetGovernment.GetRulerOrRegent]"
+				blockoverride "character_frame_texture" {
+					texture = "gfx/interface/component_decoration/character_frames/character_non_stretchable_frame_2.dds"
+				}
+				blockoverride "character_portrait_visible" {
+					visible = no
+				}
+
+				blockoverride "character_portrait_ani_visible" {
+					visible = yes
+				}
+				blockoverride "character_portrait_ani_size" {
+					size = { 65 98 }
+				}
+				blockoverride "character_ribbon" {
+					character_ribbon_3 = {
+						visible = "[Character.IsRuler]"
+						blockoverride "stretchable" {}
+					}
+				}
+
+				widget = {
+					parentanchor = bottom|left
+					visible = "[GetPlayer.GetGovernment.HasActiveRegent]"
+					size = { 26 28}
+					allow_outside = yes
+					datacontext = "[GetPlayer.GetGovernment]"
+
+					header_button_left = {
+						size = { 26 26 }
+						blockoverride "button_icon_stretch_sprite" {}
+						blockoverride "header_button_frame_inner" { visible = no }
+						blockoverride "header_button_icon_size" { size = { 24 24 } }
+						blockoverride "icon_replace" {}
+						blockoverride "header_button_text_layout" {}
+						tooltip_enabled = no
+					}
+
+					piechart = {
+						size = { 26 26 }
+						parentanchor = hcenter
+						using = piechart_angles
+
+						icon = {
+							texture = "gfx/interface/pie_charts/pie_chart_white.dds"
+							size = { 100% 100% }
+							parentanchor = center
+							color = { 0.35 0.35 0.35 1 }
+						}
+
+						pieslice_no_highlight = {
+							texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
+							value = "[GetPlayer.GetGovernment.GetRegencyProgress]"
+							color = { 1 1 1 1 }
+						}
+
+						pieslice_no_highlight = {
+							texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+							value = "[Subtract_float('(float)100.0', GetPlayer.GetGovernment.GetRegencyProgress)]"
+							color = { 1 1 1 0 }
+						}
+					}
+
+					button = {
+						parentanchor = top|hcenter
+						enabled = "[Player.CanExtendRegency]"
+						position = { 0 3 }
+						size = { 18 18 }
+						texture = "gfx/interface/icons/character_roles/regent.dds"
+
+						texture_density = 2
+						mirror = horizontal
+
+						visible = "[GetPlayer.GetGovernment.HasActiveRegent]"
+						tooltipwidget = {
+							using = CurrentRegencyTooltip
+						}
+
+						action_tooltip = {
+							click_type = left
+							click_mode = confirm
+							conditions = "[MakeItFailIfLoc(Not(Player.CanExtendRegency), Player.GetExtendRegencyInfo)]"
+							title = "[Select_CString(Player.CanExtendRegency, Player.GetExtendRegencyInfo, Localize('CANNOT_EXTEND_REGENCY'))]"
+							on_action = "[ExtendRegency(Player.Self)]"
+							enabled = "[Player.CanExtendRegency]"
+						}
+					}
+				}
+			}
+
 			datacontext = "[Player]"
 
-            button = {
-                size = {28 34}
-                position = {536 -8}
-                onclick = "[OpenLateralViewWithParams('diplomacy', 'tabcontent = relations')]"
-            }
-            country_rank_banner = {
-                position = {536 -8}
-            }
-
+			country_rank_banner = {
+				position = {80 60}
+			}
 		}
 	}
 

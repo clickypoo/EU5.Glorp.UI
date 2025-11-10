@@ -287,7 +287,7 @@ window = {
 
 	datacontext = "[OutlinerSettings.GetOutliner]"
 
-	position = { -335 1035 }
+	position = { -335 135 }
 	alpha = 0
 
 	movable = no

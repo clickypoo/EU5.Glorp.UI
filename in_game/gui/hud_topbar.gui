@@ -263,10 +263,11 @@ Types HUD_TopbarTypes
 										using = text_single_positive_zero_negative
 
 										blockoverride "text_setup" {
-											maximumsize = { -1 18 }
+											maximumsize = { 35 12 }
 											autoresize = yes
 											align = left|nobaseline
-											using = Font_Size_Small
+											fontsize = 12
+											fontsize_min = 10
 											# text = "[EstatesItem.GetEstate.GetRelativePower|0%]@power!"
 											text = "[EstatesItem.GetEstate.GetMonthlySatisfactionChange|+=%2]"
 										}
@@ -285,9 +286,9 @@ Types HUD_TopbarTypes
 
 										blockoverride "text_zero" {
 											raw_text = "0.00%"
-											fontsize = 14
+											fontsize = 12
 										}
-										
+
 										expand = {}
 									}
 								}

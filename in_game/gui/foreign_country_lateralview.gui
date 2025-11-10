@@ -1002,35 +1002,6 @@ lateralview = {
 						using = CountryTooltip
 					}
 				}
-				button = {
-					name = "zoom_to"
-					size = { 25 25 }
-					position = { 515 7 }
-					
-					texture = "gfx/interface/buttons/flats/goto_button_alt.dds"
-					texture_density = 2
-
-					background = {
-						using = bg_button_light_round_texture
-						modify_texture = {
-							using = color_dark_blue_texture
-						}
-					}
-
-					using = ui_direction_button_overlay
-
-					action_tooltip = {
-						click_type = left
-						click_mode = single
-						title = "GO_TO_LOCATION"
-						on_action = "[PanToLocation(ForeignCountryView.GetCountry.GetCapital.GetLocation)]"
-					}
-					tooltipwidget = {
-						LeftClickButtonTooltip = {
-							blockoverride "onclick_text" { text = "GO_TO" }
-						}
-					}
-				}
 			}
 		}
 	}
@@ -1533,15 +1504,11 @@ lateralview = {
 						}
 
 						expand = {}
-                        vbox = {
-                            layoutpolicy_horizontal = expanding
-                            text_single = {
-                                autoresize = yes
-                                align = right|nobaseline
-                                text = "[Country.GetArmyLevyPower|2W] [levies_icon] [Country.GetArmySize|0L] [regulars_icon]"
-                            }
-                        }
-
+						text_single = {
+							autoresize = yes
+							align = right
+							text = "[Multiply_CFixedPoint(Country.GetMilitaryStrength, '(CFixedPoint)1000')|L0]"
+						}
 
 						widget = {
 

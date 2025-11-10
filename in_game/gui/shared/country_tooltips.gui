@@ -423,7 +423,7 @@ template CountryTooltip {
 						text_single = {
 							autoresize = yes
 							align = right
-							text = "[Country.GetArmyLevyPower|2W] [levies_icon] ([Country.GetArmySize|0L] [regulars_icon])"
+							text = "[Multiply_CFixedPoint(Country.GetMilitaryStrength, '(CFixedPoint)1000')|L0]"
 						}
 
 						icon = {
@@ -995,10 +995,10 @@ template Army_size_tooltip {
 		}
 
 		blockoverride "tooltip_content" {
-			TooltipListBase = {
-				#blockoverride "block_title" {
-				#	text = "ARMY_SIZE_TT_TEXT"
-				#}
+			TooltipListBase = { 
+				blockoverride "block_title" {
+					text = "ARMY_SIZE_TT_TABLE_TITLE"
+				}
 				TooltipListRowContent = {
 					TooltipManualTableField = {
 						blockoverride "field_content" {
@@ -1033,7 +1033,7 @@ template Army_size_tooltip {
 							}
 							expand = {}
 							text_single = {
-								raw_text = "[Country.GetArmyLevyPower|0L] [levies_icon]"
+								raw_text = "[Country.GetArmyLevyPowerValue|0L] [levies_icon]"
 								tooltipwidget = {
 									using = Country_levies_tooltip
 								}
