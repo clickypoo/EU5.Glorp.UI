@@ -466,7 +466,7 @@ template CountryTooltip {
 						text_single = {
 							autoresize = yes
 							align = right
-							text = "[Country.GetNavyStrength|0L]"
+							text = "[Country.GetNavyLevyPowerValue|0L] [navy_levies_icon] ([Country.GetNavySizeValue|0L] @naval_regular!)"
 						}
 
 						icon = {

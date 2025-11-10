@@ -7682,7 +7682,7 @@ template category_big_template {
 			}
 
 			icon = {
-				size = { 20 20 }
+				size = { 30 30 }
 				block "category_icon_texture" { visible = no }
 				glow = {
 					name = "drop_shadow"

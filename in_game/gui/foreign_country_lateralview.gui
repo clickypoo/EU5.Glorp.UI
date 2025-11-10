@@ -1538,7 +1538,12 @@ lateralview = {
                             text_single = {
                                 autoresize = yes
                                 align = right|nobaseline
-                                text = "[Country.GetArmyLevyPower|2W] [levies_icon] [Country.GetArmySize|0L] [regulars_icon]"
+                                text = "[Country.GetArmyLevyPower|2W] [levies_icon]"
+                            }
+                            text_single = {
+                                autoresize = yes
+                                align = right|nobaseline
+                                text = "[Country.GetArmySize|0L] [regulars_icon]"
                             }
                         }
 
@@ -1610,11 +1615,19 @@ lateralview = {
 
 
 						expand = {}
-						text_single = {
-							autoresize = yes
-							align = right
-							text = "[Country.GetNavyStrength|0L]"
-						}
+                        vbox = {
+                            layoutpolicy_horizontal = expanding
+                            text_single = {
+                                autoresize = yes
+                                align = right|nobaseline
+                                text = "[Country.GetNavyLevyPowerValue|0L] [navy_levies_icon] "
+                            }
+                            text_single = {
+                                autoresize = yes
+                                align = right|nobaseline
+                                text = "[Country.GetNavySizeValue|0L] @naval_regular!"
+                            }
+                        }
 
 						widget = {
 							size = { 34 34 }
