@@ -1543,7 +1543,7 @@ lateralview = {
                             text_single = {
                                 autoresize = yes
                                 align = right|nobaseline
-                                text = "[Country.GetArmySize|0L] [regulars_icon]"
+                                text = "[Country.GetRegularArmySize|0L] [regulars_icon]"
                             }
                         }
 
@@ -1620,7 +1620,7 @@ lateralview = {
                             text_single = {
                                 autoresize = yes
                                 align = right|nobaseline
-                                text = "[Country.GetNavyLevyPowerValue|0L] [navy_levies_icon] "
+                                text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] "
                             }
                             text_single = {
                                 autoresize = yes
