@@ -886,7 +886,7 @@ Types LeftPanelTypes
 			position = { 5 -55 }
 			size = { 60 100 }
 			allow_outside = yes
-            visible = "[GetVariableSystem.Exists( 'glorp' )]"
+            visible = "[GetVariableSystem.Exists( 'use_portrait' )]"
 
 			flag_3d_animated = {
 				visible = "[And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')))]"
@@ -910,7 +910,7 @@ Types LeftPanelTypes
 
 		# portrait and all associated surroundings
 		widget = {
-			visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), [GetVariableSystem.Exists( 'glorp' )])]"
+            visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), GetVariableSystem.Exists(  'use_portrait'  ))]"
 			parentanchor = left
 			widgetanchor = vcenter|left
 			size = { 78 78 }
@@ -1030,81 +1030,79 @@ Types LeftPanelTypes
 				position = {80 60}
 			}
 		}
+
+        # flag and decorations - glorp ui
+        widget = {
+            position = { 5 10 }
+            allow_outside = yes
+            visible = "[Not(GetVariableSystem.Exists( 'use_portrait' ))]"
+
+            icon = {
+                position = { -4 -47 }
+                parentanchor = right
+                widgetanchor = left
+                using = panel_decor_size
+                mirror = horizontal
+                texture = "[GetGraphicalCultureTexture('panel_bar_corner_shadow')]"
+                # texture = "gfx/interface/graphical_cultures/european_gfx/panel_bar_corner_shadow.dds"
+                texture_density = 2
+
+                using = color_black_texture
+            }
+            icon = {
+                position = { -4 -47 }
+                parentanchor = right
+                widgetanchor = left
+                using = panel_decor_size
+                mirror = horizontal
+                texture = "[GetGraphicalCultureTexture('panel_bar_corner')]"
+                # texture = "gfx/interface/graphical_cultures/european_gfx/fancy_flag_cloth.dds"
+                texture_density = 2
+
+                using = non_clickable_color_gold_texture
+            }
+
+            flag_3d_animated = {
+                visible = "[And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')))]"
+                size = { 180 120 }
+                parentanchor = center
+                position = { 78 0 }
+                datacontext = "[InGameTopbar.GetPlayer]"
+
+                blockoverride "click_properties" {
+                    on_input_action_shortcut = "[PanToCountry(Country.Self)]"
+                    input_action = "go_to_capital"
+                    use_global_input_instance = yes
+                }
+
+                blockoverride "click_action" {
+                    title = "TAB_TOOLTIP_GOVERNMENT_LEFT_CLICK"
+                    on_action = "[OpenLateralView('government')]"
+                }
+            }
+        }
+
+        # portrait and all associated surroundings - glorp ui
+        widget = {
+            visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), Not(GetVariableSystem.Exists( 'use_portrait' )))]"
+            parentanchor = left
+            widgetanchor = vcenter|left
+            size = { 78 78 }
+            allow_outside = yes
+
+            datacontext = "[Player]"
+
+            #glorp ui rank banner
+            button = {
+                size = {28 34}
+                position = {540 40}
+                onclick = "[OpenLateralViewWithParams('diplomacy', 'tabcontent = relations')]"
+            }
+            country_rank_banner = {
+                position = {540 40}
+            }
+        }
 	}
-
-    # flag and decorations - glorp ui
-    widget = {
-        position = { 5 10 }
-        allow_outside = yes
-        visible = "[Not(GetVariableSystem.Exists( 'glorp' ))]"
-
-        icon = {
-            position = { -4 -47 }
-            parentanchor = right
-            widgetanchor = left
-            using = panel_decor_size
-            mirror = horizontal
-            texture = "[GetGraphicalCultureTexture('panel_bar_corner_shadow')]"
-            # texture = "gfx/interface/graphical_cultures/european_gfx/panel_bar_corner_shadow.dds"
-            texture_density = 2
-
-            using = color_black_texture
-        }
-        icon = {
-            position = { -4 -47 }
-            parentanchor = right
-            widgetanchor = left
-            using = panel_decor_size
-            mirror = horizontal
-            texture = "[GetGraphicalCultureTexture('panel_bar_corner')]"
-            # texture = "gfx/interface/graphical_cultures/european_gfx/fancy_flag_cloth.dds"
-            texture_density = 2
-
-            using = non_clickable_color_gold_texture
-        }
-
-        flag_3d_animated = {
-            visible = "[And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')))]"
-            size = { 180 120 }
-            parentanchor = center
-            position = { 78 0 }
-            datacontext = "[InGameTopbar.GetPlayer]"
-
-            blockoverride "click_properties" {
-                on_input_action_shortcut = "[PanToCountry(Country.Self)]"
-                input_action = "go_to_capital"
-                use_global_input_instance = yes
-            }
-
-            blockoverride "click_action" {
-                title = "TAB_TOOLTIP_GOVERNMENT_LEFT_CLICK"
-                on_action = "[OpenLateralView('government')]"
-            }
-        }
-    }
-
-    # portrait and all associated surroundings - glorp ui
-    widget = {
-        visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), Not([GetVariableSystem.Exists( 'glorp' )]))]"
-        parentanchor = left
-        widgetanchor = vcenter|left
-        size = { 78 78 }
-        allow_outside = yes
-
-        datacontext = "[Player]"
-
-        #glorp ui rank banner
-        button = {
-            visible = "[Not(GetVariableSystem.Exists( 'glorp' ))]"
-            size = {28 34}
-            position = {536 -8}
-            onclick = "[OpenLateralViewWithParams('diplomacy', 'tabcontent = relations')]"
-        }
-        country_rank_banner = {
-            visible = "[Not(GetVariableSystem.Exists( 'glorp' ))]"
-            position = {536 -8}
-        }
-    }
 
 	type stat_player_button = button {
 		texture = "gfx/interface/colors/color_frames.dds"
