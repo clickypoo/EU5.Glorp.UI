@@ -1026,6 +1026,11 @@ Types LeftPanelTypes
 
 			datacontext = "[Player]"
 
+            button = {
+                size = {28 34}
+                position = {80 60}
+                onclick = "[OpenLateralViewWithParams('diplomacy', 'tabcontent = relations')]"
+            }
 			country_rank_banner = {
 				position = {80 60}
 			}
@@ -1092,7 +1097,6 @@ Types LeftPanelTypes
 
             datacontext = "[Player]"
 
-            #glorp ui rank banner
             button = {
                 size = {28 34}
                 position = {540 40}
