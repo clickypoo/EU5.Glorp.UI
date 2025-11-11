@@ -40,7 +40,7 @@ window = {
                 hbox = {
                     spacing = 10
                     text_single = {
-                        raw_text = "Use Portraits"
+                        raw_text = "Use Vanilla Flag with Portrait"
                     }
                     checkbox_square_alt = {
                         onclick = "[GetVariableSystem.Toggle( 'use_portrait' )]"
