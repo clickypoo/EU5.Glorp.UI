@@ -45,22 +45,6 @@ types RightPanelTypes
 					using = non_clickable_color_gold_texture
 				}
 
-                # glorp UI
-                button = {
-                    parentanchor = left
-                    widgetanchor = right
-
-                    position = { 50 10 }
-                    size = { 40 40 }
-
-                    onclick = "[GetScriptedGui('glorpUI_initalize').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                    onclick = "[ExecuteConsoleCommand( Select_CString( GetVariableSystem.Exists('glorpUI_window_open'), 'gui.ClearWidgets glorpUI_window', 'gui.createwidget gui/glorpUI_window.gui glorpUI_window' ) )]"
-                    onclick = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
-
-                    texture = "gfx/interface/logos/glorpUI_logo.dds"
-                    using = bg_age_event_frame
-                }
-
 				flowcontainer = {
 					parentanchor = center
 					spacing = 5
@@ -497,6 +481,9 @@ types RightPanelTypes
 					button_panel_tab_alt = { ## MENU
 						onclick = "[OnPauseMenu]"
 						enabled = "[CanShowPauseMenu]"
+                        onrightclick = "[GetScriptedGui('glorpUI_initalize').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                        onrightclick = "[ExecuteConsoleCommand( Select_CString( GetVariableSystem.Exists('glorpUI_window_open'), 'gui.ClearWidgets glorpUI_window', 'gui.createwidget gui/glorpUI_window.gui glorpUI_window' ) )]"
+                        onrightclick = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
 
 						tooltipwidget = {
 							SimpleConceptTooltipType = {
@@ -510,11 +497,14 @@ types RightPanelTypes
 								}
 								blockoverride "tooltip_extra_content" {
 									TooltipFunctionalBlock = {
-										using = tooltip_left_click_template
+										using = tooltip_left_right_click_template
 
 										blockoverride "action_left_text" {
 											text = "OPEN_MENU"
 										}
+                                        blockoverride "action_right_text" {
+                                            text = "Open Glorp UI Settings"
+                                        }
 									}
 								}
 							}
