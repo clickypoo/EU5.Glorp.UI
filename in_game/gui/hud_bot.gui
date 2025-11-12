@@ -312,7 +312,7 @@ template mapmode_color {
 	modify_texture = {
 		visible = "[EqualTo_string(MapMode.GetMapModeCategory, 'Economy')]"
 		using = color_mid_yellow_texture
-
+		
 		block "mapmode_color_modify_texture_setup" {
 			blend_mode = normal
 			alpha = 0.8
@@ -322,7 +322,7 @@ template mapmode_color {
 	modify_texture = {
 		visible = "[EqualTo_string(MapMode.GetMapModeCategory, 'Diplomacy')]"
 		using = color_turquoise_texture
-
+		
 		block "mapmode_color_modify_texture_setup" {
 			blend_mode = normal
 			alpha = 0.8
@@ -332,7 +332,7 @@ template mapmode_color {
 	modify_texture = {
 		visible = "[EqualTo_string(MapMode.GetMapModeCategory, 'Population')]"
 		using = color_mid_light_green_texture
-
+		
 		block "mapmode_color_modify_texture_setup" {
 			blend_mode = normal
 			alpha = 0.8
@@ -342,7 +342,7 @@ template mapmode_color {
 	modify_texture = {
 		visible = "[EqualTo_string(MapMode.GetMapModeCategory, 'Demography')]"
 		using = color_dark_green_texture
-
+		
 		block "mapmode_color_modify_texture_setup" {
 			blend_mode = normal
 			alpha = 0.8
@@ -352,7 +352,7 @@ template mapmode_color {
 	modify_texture = {
 		visible = "[EqualTo_string(MapMode.GetMapModeCategory, 'Military')]"
 		using = color_mid_red_texture
-
+		
 		block "mapmode_color_modify_texture_setup" {
 			blend_mode = normal
 			alpha = 0.8
@@ -362,7 +362,7 @@ template mapmode_color {
 	modify_texture = {
 		visible = "[EqualTo_string(MapMode.GetMapModeCategory, 'Geopolitics')]"
 		using = color_nobles_texture
-
+		
 		block "mapmode_color_modify_texture_setup" {
 			blend_mode = normal
 			alpha = 0.8
@@ -372,7 +372,7 @@ template mapmode_color {
 	modify_texture = {
 		visible = "[EqualTo_string(MapMode.GetMapModeCategory, 'Geography')]"
 		using = color_default_brown_texture
-
+		
 		block "mapmode_color_modify_texture_setup" {
 			blend_mode = normal
 			alpha = 0.8
@@ -382,7 +382,7 @@ template mapmode_color {
 	modify_texture = {
 		visible = "[EqualTo_string(MapMode.GetMapModeCategory, 'Hidden')]"
 		using = color_progress_blue_texture
-
+		
 		block "mapmode_color_modify_texture_setup" {
 			blend_mode = normal
 			alpha = 0.8
@@ -1096,7 +1096,7 @@ types BottomTypes
 	type mapmodes_button_color_ledger = widget {
 		size = { 41 32 }
 		position = { 140 0 }
-
+		
 		block "button_ledger_position_visible" {
 			parentanchor = hcenter|top
 			widgetanchor = hcenter|bottom
@@ -1133,7 +1133,7 @@ types BottomTypes
 				texture = "gfx/interface/component_tiles/bottom_menu_ribbon_border.dds"
 				texture_density = 2
 				using = overlay_color_new_gold
-
+	
 				modify_texture = {
 					blend_mode = multiply
 				}
@@ -1288,18 +1288,18 @@ types BottomTypes
 						scissor = yes
 					}
 				}
-
+	
 				scrollbar_vertical = {
 					using = Scrollbar_Vertical
 				}
-
+	
 				scrollwidget = {
 					fixedgridbox = {
 						addrow = 33
 						setitemsizefromcell = yes
 						addcolumn = 100%
 						datamodel = "[SearchBar.GetAutocompleteEntries]"
-
+	
 						item = {
 							mapmodes_color_ledger_item = {
 								datacontext = "[GetMapColorLedgerByName(AutocompleteEntry.GetName)]"
@@ -1320,25 +1320,25 @@ types BottomTypes
 						scissor = yes
 					}
 				}
-
+	
 				scrollbar_vertical = {
 					using = Scrollbar_Vertical
 				}
-
+	
 				scrollwidget = {
 					fixedgridbox = {
 						addrow = 33
 						setitemsizefromcell = yes
 						addcolumn = 100%
 						datamodel = "[GetMapColorLedger]"
-
+	
 						item = {
 							mapmodes_color_ledger_item = {}
 						}
 					}
 				}
 			}
-
+	
 			searchbar = {
 				layoutpolicy_horizontal = expanding
 				size = { -1 54 }
@@ -1434,7 +1434,7 @@ types BottomTypes
 		    hbox = {
 			    using = layoutpolicy_expanding
 			    parentanchor = hcenter
-			    overlappingitembox = {
+				overlappingitembox = {
 				autoresize = yes
 
 					spacing = 5
@@ -1447,502 +1447,585 @@ types BottomTypes
 			}
 		}
 
-	widget = {
-		parentanchor = top
-		layoutpolicy_horizontal = expanding
-		size = { 100% 40% }
-		allow_outside = yes
+		widget = {
+		    parentanchor = top
+			layoutpolicy_horizontal = expanding
+			size = { 100% 40% }
+			allow_outside = yes
+
+			hbox = {
+				allow_outside = yes
+				using = bg_mapmenu_tab
+
+				icon = { using = left_decoration_icon }
+
+				hbox = {
+					using = layoutpolicy_expanding
+				    margin = { 10 0 }
+					spacing = 4
+					allow_outside = yes
+
+					mapmode_category_block = {
+						blockoverride "menu_anchor" {
+							parentanchor = left|top
+							widgetanchor = left|bottom
+						}
+
+						blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab','government')]" }
+						blockoverride "button" {
+						    parentanchor = center
+							icon = {
+								size = { 20 20 }
+								parentanchor = center
+								texture = "gfx/interface/icons/flat_icons/tabicons/government.dds"
+							}
+
+							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'government')]"
+							tooltipwidget = {
+								LeftClickButtonTooltip = {
+									blockoverride "onclick_text" {
+										text = "OPEN_GOVERNMENT_MAP_MODES"
+									}
+								}
+							}
+						}
+
+						blockoverride "datamodel_item" {
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('government', '(int32)0')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('government', '(int32)1')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('government', '(int32)2')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('government', '(int32)3')]"}
+						}
+						blockoverride "base_color" {
+							using = color_government_texture
+							blend_mode = overlay
+						}
+					}
+
+					mapmode_category_block = {
+						blockoverride "menu_anchor" {
+							parentanchor = left|top
+							widgetanchor = left|bottom
+						}
+
+						blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab','economy')]" }
+						blockoverride "button" {
+						    parentanchor = center
+							icon = {
+								size = { 20 20 }
+								parentanchor = center
+								texture = "gfx/interface/icons/flat_icons/tabicons/economy.dds"
+							}
+
+							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'economy')]"
+
+							tooltipwidget = {
+								LeftClickButtonTooltip = {
+									blockoverride "onclick_text" {
+										text = "OPEN_ECONOMY_MAP_MODES"
+									}
+								}
+							}
+						}
+
+						blockoverride "datamodel_item" {
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('economy', '(int32)0')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('economy', '(int32)1')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('economy', '(int32)2')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('economy', '(int32)3')]"}
+						}
+						blockoverride "base_color" { using = color_economy_texture
+						blend_mode = overlay }
+					}
+
+					mapmode_category_block = {
+						blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'population')]" }
+						blockoverride "button" {
+						    parentanchor = center
+							icon = {
+								size = { 20 20 }
+								parentanchor = center
+								texture = "gfx/interface/icons/flat_icons/tabicons/demography.dds"
+							}
+
+							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'population')]"
+							tooltipwidget = {
+								LeftClickButtonTooltip = {
+									blockoverride "onclick_text" {
+										text = "OPEN_POPULATION_MAP_MODES"
+									}
+								}
+							}
+						}
+
+						blockoverride "datamodel_item" {
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('population', '(int32)0')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('population', '(int32)1')]"}
+						}
+						blockoverride "base_color" {
+							using = color_society_texture
+							blend_mode = overlay
+						}
+					}
+
+					mapmode_category_block = {
+						blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'demography')]" }
+						blockoverride "button" {
+    						parentanchor = center
+							icon = {
+								size = { 20 20 }
+								parentanchor = center
+								texture = "gfx/interface/icons/flat_icons/tabicons/demography_2.dds"
+							}
+
+							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'demography')]"
+							tooltipwidget = {
+								LeftClickButtonTooltip = {
+									blockoverride "onclick_text" {
+										text = "OPEN_DEMOGRAPHY_MAP_MODES"
+									}
+								}
+							}
+						}
+
+						blockoverride "datamodel_item" {
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('demography', '(int32)0')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('demography', '(int32)1')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('demography', '(int32)2')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('demography', '(int32)3')]"}
+						}
+						blockoverride "base_color" {
+							using = color_dark_green_texture
+							blend_mode = overlay
+						}
+					}
+
+					mapmode_category_block = {
+						size = { 28 28 }
+						layoutpolicy_horizontal = fixed
+						datacontext = "[GetMapModeSearchBar]"
+
+						blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'search')]" }
+						blockoverride "button" {
+    						parentanchor = center
+							icon = {
+								size = { 20 20 }
+								parentanchor = center
+								texture = "gfx/interface/icons/flat_icons/search_icon.dds"
+								using = color_bone
+							}
+
+							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'search')]"
+							tooltipwidget = {
+								LeftClickButtonTooltip = {
+									blockoverride "onclick_text" {
+										text = "OPEN_SEARCH_MAP_MODES"
+									}
+								}
+							}
+						}
+
+						blockoverride "datamodel" { datamodel = "[GetMapModesFromCategory('diplomacy')]" }
+						blockoverride "datamodel_item" {
+							spacing = 2
+
+							mapmode_category_group = {
+								datamodel = "[SearchBar.GetAutocompleteEntries]"
+								bottomtotop = yes
+
+								blockoverride "button_mapmode_category_setup" {
+									datacontext = "[GetMapMode(AutocompleteEntry.GetTooltip)]"
+
+									background = {
+										visible = "[EqualTo_int32('(int32)0', PdxGuiWidget.GetIndexInDataModel) ]"
+										using = color_white_texture
+										alpha = 0.3
+
+										margin = { 10 2 }
+									}
+								}
+
+								blockoverride "button_mapmode_actions_left" {
+									on_action = "[MapModeSelectorVars.ClearIf('tab', MapModeSelectorVars.HasValue('tab', 'search'))]"
+								}
+							}
+
+							searchbar = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 54 }
+								minimumsize = { 300 -1 }
+								blockoverride "searchbar_editbox_setup" {
+									onreturnpressed = "[MapModeSelectorVars.ClearIf('tab', MapModeSelectorVars.HasValue('tab', 'search'))]"
+								}
+								blockoverride "autocomplete_dropdown" { widget = { name = "autocomplete" } }
+							}
+						}
+
+						blockoverride "mapmode_category_menu_onshow" {
+							on_finish = "[SearchBar.ForceFocus(PdxGuiWidget.FindChild('searchbar_editbox'))]"
+						}
+
+						blockoverride "base_color" {
+							using = color_dark_turquoise_texture
+							blend_mode = overlay
+						}
+					}
+
+                    mapmode_category_block = {
+                        size = { 28 28 }
+                        layoutpolicy_horizontal = fixed
+
+                        blockoverride "button" {
+                            parentanchor = center
+                            down = "[MapModeSelectorVars.IsVisible]"
+                            icon = {
+                                size = { 17 17 }
+                                parentanchor = center
+                                texture = "gfx/interface/icons/pin.dds"
+                                using = button_panel_tab_icon_effect
+
+                                blockoverride "icon_effect_visible" {visible = "[MapModeSelectorVars.IsVisible]"}
+                                glow = {
+                                    blockoverride "icon_effect_visible" {}
+                                    glow_radius = 0
+                                }
+                            }
+
+                            onclick = "[MapModeSelectorVars.SetIsVisible]"
+                            tooltipwidget = {
+                                LeftClickButtonTooltip = {
+                                    blockoverride "onclick_text" {
+                                        text = "[MapModeSelectorVars.GetPinTooltip]"
+                                    }
+                                }
+                            }
+                        }
+                        blockoverride "base_color" {
+                            using = color_dark_turquoise_texture
+                            blend_mode = overlay
+                        }
+                    }
+
+    				mapmode_category_block = {
+
+						blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'diplomacy')]" }
+						blockoverride "button" {
+						    parentanchor = center
+							icon = {
+								size = { 20 20 }
+								parentanchor = center
+								texture = "gfx/interface/icons/flat_icons/tabicons/diplomacy.dds"
+							}
+
+							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'diplomacy')]"
+							tooltipwidget = {
+								LeftClickButtonTooltip = {
+									blockoverride "onclick_text" {
+										text = "OPEN_DIPLOMACY_MAP_MODES"
+									}
+								}
+							}
+						}
+
+						blockoverride "datamodel_item" {
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('diplomacy', '(int32)0')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('diplomacy', '(int32)1')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('diplomacy', '(int32)2')]"}
+						}
+						blockoverride "base_color" {
+							using = color_diplomacy_texture
+							blend_mode = overlay
+						}
+					}
+
+					mapmode_category_block = {
+						blockoverride "menu_anchor" {
+							parentanchor = right|top
+							widgetanchor = right|bottom
+						}
+
+						blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'military')]" }
+						blockoverride "button" {
+    						parentanchor = center
+							icon = {
+								size = { 20 20 }
+								parentanchor = center
+								texture = "gfx/interface/icons/flat_icons/tabicons/military.dds"
+							}
+
+							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'military')]"
+							tooltipwidget = {
+								LeftClickButtonTooltip = {
+									blockoverride "onclick_text" {
+										text = "OPEN_MILITARY_MAP_MODES"
+									}
+								}
+							}
+						}
+
+						blockoverride "datamodel_item" {
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('military', '(int32)0')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('military', '(int32)1')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('military', '(int32)2')]"}
+						}
+						blockoverride "base_color" {
+							using = color_military_texture
+							blend_mode = overlay
+						}
+					}
+
+					mapmode_category_block = {
+						blockoverride "menu_anchor" {
+							parentanchor = right|top
+							widgetanchor = right|bottom
+						}
+
+						blockoverride "menu" {
+							visible = "[MapModeSelectorVars.HasValue('tab', 'geopolitics')]"
+						}
+
+						blockoverride "button" {
+    						parentanchor = center
+							icon = {
+								size = { 20 20 }
+								parentanchor = center
+								texture = "gfx/interface/icons/flat_icons/tabicons/geography_flat_icon.dds"
+							}
+
+							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'geopolitics')]"
+							tooltipwidget = {
+								LeftClickButtonTooltip = {
+									blockoverride "onclick_text" {
+										text = "OPEN_GEOPOLITICS_MAP_MODES"
+									}
+								}
+							}
+						}
+
+						blockoverride "datamodel_item" {
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geopolitics', '(int32)0')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geopolitics', '(int32)1')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geopolitics', '(int32)2')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geopolitics', '(int32)3')]"}
+						}
+						blockoverride "base_color" {
+							using = color_geopolitics_texture
+							blend_mode = overlay
+						}
+					}
+
+					mapmode_category_block = {
+						blockoverride "menu_anchor" {
+							parentanchor = right|top
+							widgetanchor = right|bottom
+						}
+
+						blockoverride "menu" {
+							visible = "[MapModeSelectorVars.HasValue('tab', 'geography')]"
+						}
+
+						blockoverride "button" {
+    						parentanchor = center
+							icon = {
+								size = { 20 20 }
+								parentanchor = center
+								texture = "gfx/interface/icons/flat_icons/tabicons/world_flat_icon.dds"
+							}
+
+							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'geography')]"
+							tooltipwidget = {
+								LeftClickButtonTooltip = {
+									blockoverride "onclick_text" {
+										text = "OPEN_GEOGRAPHY_MAP_MODES"
+									}
+								}
+							}
+						}
+
+						blockoverride "datamodel_item" {
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geography', '(int32)0')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geography', '(int32)1')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geography', '(int32)2')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geography', '(int32)3')]"}
+						}
+						blockoverride "base_color" {
+							using = color_default_brown_texture
+							blend_mode = overlay
+						}
+					}
+
+					mapmode_category_block = {
+						visible = [IsBuildDebug]
+						blockoverride "menu_anchor" {
+							parentanchor = right|top
+							widgetanchor = right|bottom
+						}
+
+						blockoverride "menu" {
+							visible = "[And(IsBuildDebug, MapModeSelectorVars.HasValue('tab', 'debug'))]"
+						}
+
+						blockoverride "button" {
+    						parentanchor = center
+							icon = {
+								size = { 20 20 }
+								parentanchor = center
+								texture = "gfx/interface/icons/flat_icons/tabicons/mapmodes.dds"
+							}
+
+							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'debug')]"
+							tooltipwidget = {
+								LeftClickButtonTooltip = {
+									blockoverride "onclick_text" {
+										text = "OPEN_DEBUG_MAP_MODES"
+									}
+								}
+							}
+						}
+
+						blockoverride "datamodel_item" {
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)0')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)1')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)2')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)3')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)4')]"}
+						}
+						blockoverride "base_color" {
+							using = color_brown_leather_texture
+							blend_mode = overlay
+						}
+					}
+				}
+
+				icon = { using = right_decoration_icon }
+			}
+		}
+	}
+
+	type mapmodes_collapsed_window = widget {
+		onmousehierarchyenter = "[MapModeSelectorVars.Set('hover', 'yes')]"
+		onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]"
+		alwaystransparent = no
+
+		visible_at_creation = no
+		visible = "[Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
+		parentanchor = hcenter|bottom
 
 		hbox = {
-			allow_outside = yes
+			set_parent_size_to_minimum = yes
+
 			using = bg_mapmenu_tab
 
 			icon = { using = left_decoration_icon }
 
-			hbox = {
-				using = layoutpolicy_expanding
-				margin = { 10 0 }
-				spacing = 4
-				allow_outside = yes
+			widget = {
+				size = { 60 40 }
 
-				mapmode_category_block = {
-					blockoverride "menu_anchor" {
-						parentanchor = left|top
-						widgetanchor = left|bottom
+				button = {
+					parentanchor = center
+					block "button_texture" {
+						texture = "gfx/interface/buttons/round_button_texture_alt.dds"
+						texture_density = 2
 					}
+					size = { 34 34 }
+					texture_density = 2
 
-					blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab','government')]" }
-					blockoverride "button" {
-						parentanchor = center
-						icon = {
-							size = { 20 20 }
-							parentanchor = center
-							texture = "gfx/interface/icons/flat_icons/tabicons/government.dds"
-						}
-
-						onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'government')]"
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" {
-									text = "OPEN_GOVERNMENT_MAP_MODES"
-								}
-							}
-						}
-					}
-
-					blockoverride "datamodel_item" {
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('government', '(int32)0')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('government', '(int32)1')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('government', '(int32)2')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('government', '(int32)3')]"}
-					}
-					blockoverride "base_color" {
-						using = color_government_texture
+					modify_texture = {
+						using = color_new_gold_texture
 						blend_mode = overlay
-					}
-				}
-
-				mapmode_category_block = {
-					blockoverride "menu_anchor" {
-						parentanchor = left|top
-						widgetanchor = left|bottom
+						alpha = 1
 					}
 
-					blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab','economy')]" }
-					blockoverride "button" {
-						parentanchor = center
-						icon = {
-							size = { 20 20 }
-							parentanchor = center
-							texture = "gfx/interface/icons/flat_icons/tabicons/economy.dds"
-						}
-
-						onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'economy')]"
-
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" {
-									text = "OPEN_ECONOMY_MAP_MODES"
-								}
-							}
-						}
-					}
-
-					blockoverride "datamodel_item" {
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('economy', '(int32)0')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('economy', '(int32)1')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('economy', '(int32)2')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('economy', '(int32)3')]"}
-					}
-					blockoverride "base_color" { using = color_economy_texture
-						blend_mode = overlay }
-				}
-
-				mapmode_category_block = {
-					blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'population')]" }
-					blockoverride "button" {
-						parentanchor = center
-						icon = {
-							size = { 20 20 }
-							parentanchor = center
-							texture = "gfx/interface/icons/flat_icons/tabicons/demography.dds"
-						}
-
-						onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'population')]"
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" {
-									text = "OPEN_POPULATION_MAP_MODES"
-								}
-							}
-						}
-					}
-
-					blockoverride "datamodel_item" {
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('population', '(int32)0')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('population', '(int32)1')]"}
-					}
-					blockoverride "base_color" {
-						using = color_society_texture
+					modify_texture = {
+						using = overlay_stone_texture
 						blend_mode = overlay
+						alpha = 1
 					}
-				}
 
-				mapmode_category_block = {
-					blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'demography')]" }
-					blockoverride "button" {
+					block "navigational_bg" {
+						background = {
+							texture = "gfx/interface/buttons/bg_button_light.dds"
+							texture_density = 2
+							modify_texture = {
+								using = color_intense_brown_texture
+								blend_mode = add
+							}
+							modify_texture = {
+								using = color_super_dark_brown_texture
+								blend_mode = multiply
+								alpha = 0.6
+							}
+						}
+					}
+
+					icon = {
+						size = { 75% 75% }
 						parentanchor = center
-						icon = {
-							size = { 20 20 }
-							parentanchor = center
-							texture = "gfx/interface/icons/flat_icons/tabicons/demography_2.dds"
-						}
-
-						onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'demography')]"
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" {
-									text = "OPEN_DEMOGRAPHY_MAP_MODES"
-								}
-							}
-						}
+						texture = "gfx/interface/icons/flat_icons/tabicons/mapmodes.dds"
 					}
 
-					blockoverride "datamodel_item" {
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('demography', '(int32)0')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('demography', '(int32)1')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('demography', '(int32)2')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('demography', '(int32)3')]"}
-					}
-					blockoverride "base_color" {
-						using = color_dark_green_texture
-						blend_mode = overlay
-					}
-				}
+					onmousehierarchyenter = "[MapModeSelectorVars.Set('hover', 'yes')]"
+					onclick = "[MapModeSelectorVars.Clear('tab')]"
+					tooltip_enabled = no
 
-				mapmode_category_block = {
-					size = { 28 28 }
-					layoutpolicy_horizontal = fixed
-					datacontext = "[GetMapModeSearchBar]"
-
-					blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'search')]" }
-					blockoverride "button" {
-						parentanchor = center
-						icon = {
-							size = { 20 20 }
-							parentanchor = center
-							texture = "gfx/interface/icons/flat_icons/search_icon.dds"
-							using = color_bone
-						}
-
-						onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'search')]"
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" {
-									text = "OPEN_SEARCH_MAP_MODES"
-								}
-							}
-						}
-					}
-
-					blockoverride "datamodel" { datamodel = "[GetMapModesFromCategory('diplomacy')]" }
-					blockoverride "datamodel_item" {
-						spacing = 2
-
-						mapmode_category_group = {
-							datamodel = "[SearchBar.GetAutocompleteEntries]"
-							bottomtotop = yes
-
-							blockoverride "button_mapmode_category_setup" {
-								datacontext = "[GetMapMode(AutocompleteEntry.GetTooltip)]"
-
-								background = {
-									visible = "[EqualTo_int32('(int32)0', PdxGuiWidget.GetIndexInDataModel) ]"
-									using = color_white_texture
-									alpha = 0.3
-
-									margin = { 10 2 }
-								}
-							}
-
-							blockoverride "button_mapmode_actions_left" {
-								on_action = "[MapModeSelectorVars.ClearIf('tab', MapModeSelectorVars.HasValue('tab', 'search'))]"
-							}
-						}
-
-						searchbar = {
-							layoutpolicy_horizontal = expanding
-							size = { -1 54 }
-							minimumsize = { 300 -1 }
-							blockoverride "searchbar_editbox_setup" {
-								onreturnpressed = "[MapModeSelectorVars.ClearIf('tab', MapModeSelectorVars.HasValue('tab', 'search'))]"
-							}
-							blockoverride "autocomplete_dropdown" { widget = { name = "autocomplete" } }
-						}
-					}
-
-					blockoverride "mapmode_category_menu_onshow" {
-						on_finish = "[SearchBar.ForceFocus(PdxGuiWidget.FindChild('searchbar_editbox'))]"
-					}
-
-					blockoverride "base_color" {
-						using = color_dark_turquoise_texture
-						blend_mode = overlay
-					}
-				}
-
-				mapmode_category_block = {
-					size = { 28 28 }
-					layoutpolicy_horizontal = fixed
-
-					blockoverride "button" {
-						parentanchor = center
-						down = "[MapModeSelectorVars.IsVisible]"
-						icon = {
-							size = { 17 17 }
-							parentanchor = center
-							texture = "gfx/interface/icons/pin.dds"
-							using = button_panel_tab_icon_effect
-
-							blockoverride "icon_effect_visible" {visible = "[MapModeSelectorVars.IsVisible]"}
-							glow = {
-								blockoverride "icon_effect_visible" {}
-								glow_radius = 0
-							}
-						}
-
-						onclick = "[MapModeSelectorVars.SetIsVisible]"
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" {
-									text = "[MapModeSelectorVars.GetPinTooltip]"
-								}
-							}
-						}
-					}
-					blockoverride "base_color" {
-						using = color_dark_turquoise_texture
-						blend_mode = overlay
-					}
-				}
-
-				mapmode_category_block = {
-
-					blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'diplomacy')]" }
-					blockoverride "button" {
-						parentanchor = center
-						icon = {
-							size = { 20 20 }
-							parentanchor = center
-							texture = "gfx/interface/icons/flat_icons/tabicons/diplomacy.dds"
-						}
-
-						onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'diplomacy')]"
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" {
-									text = "OPEN_DIPLOMACY_MAP_MODES"
-								}
-							}
-						}
-					}
-
-					blockoverride "datamodel_item" {
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('diplomacy', '(int32)0')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('diplomacy', '(int32)1')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('diplomacy', '(int32)2')]"}
-					}
-					blockoverride "base_color" {
-						using = color_diplomacy_texture
-						blend_mode = overlay
-					}
-				}
-
-				mapmode_category_block = {
-					blockoverride "menu_anchor" {
-						parentanchor = right|top
-						widgetanchor = right|bottom
-					}
-
-					blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'military')]" }
-					blockoverride "button" {
-						parentanchor = center
-						icon = {
-							size = { 20 20 }
-							parentanchor = center
-							texture = "gfx/interface/icons/flat_icons/tabicons/military.dds"
-						}
-
-						onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'military')]"
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" {
-									text = "OPEN_MILITARY_MAP_MODES"
-								}
-							}
-						}
-					}
-
-					blockoverride "datamodel_item" {
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('military', '(int32)0')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('military', '(int32)1')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('military', '(int32)2')]"}
-					}
-					blockoverride "base_color" {
-						using = color_military_texture
-						blend_mode = overlay
-					}
-				}
-
-				mapmode_category_block = {
-					blockoverride "menu_anchor" {
-						parentanchor = right|top
-						widgetanchor = right|bottom
-					}
-
-					blockoverride "menu" {
-						visible = "[MapModeSelectorVars.HasValue('tab', 'geopolitics')]"
-					}
-
-					blockoverride "button" {
-						parentanchor = center
-						icon = {
-							size = { 20 20 }
-							parentanchor = center
-							texture = "gfx/interface/icons/flat_icons/tabicons/geography_flat_icon.dds"
-						}
-
-						onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'geopolitics')]"
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" {
-									text = "OPEN_GEOPOLITICS_MAP_MODES"
-								}
-							}
-						}
-					}
-
-					blockoverride "datamodel_item" {
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geopolitics', '(int32)0')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geopolitics', '(int32)1')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geopolitics', '(int32)2')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geopolitics', '(int32)3')]"}
-					}
-					blockoverride "base_color" {
-						using = color_geopolitics_texture
-						blend_mode = overlay
-					}
-				}
-
-				mapmode_category_block = {
-					blockoverride "menu_anchor" {
-						parentanchor = right|top
-						widgetanchor = right|bottom
-					}
-
-					blockoverride "menu" {
-						visible = "[MapModeSelectorVars.HasValue('tab', 'geography')]"
-					}
-
-					blockoverride "button" {
-						parentanchor = center
-						icon = {
-							size = { 20 20 }
-							parentanchor = center
-							texture = "gfx/interface/icons/flat_icons/tabicons/world_flat_icon.dds"
-						}
-
-						onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'geography')]"
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" {
-									text = "OPEN_GEOGRAPHY_MAP_MODES"
-								}
-							}
-						}
-					}
-
-					blockoverride "datamodel_item" {
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geography', '(int32)0')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geography', '(int32)1')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geography', '(int32)2')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geography', '(int32)3')]"}
-					}
-					blockoverride "base_color" {
-						using = color_default_brown_texture
-						blend_mode = overlay
-					}
-				}
-
-				mapmode_category_block = {
-					visible = [IsBuildDebug]
-					blockoverride "menu_anchor" {
-						parentanchor = right|top
-						widgetanchor = right|bottom
-					}
-
-					blockoverride "menu" {
-						visible = "[And(IsBuildDebug, MapModeSelectorVars.HasValue('tab', 'debug'))]"
-					}
-
-					blockoverride "button" {
-						parentanchor = center
-						icon = {
-							size = { 20 20 }
-							parentanchor = center
-							texture = "gfx/interface/icons/flat_icons/tabicons/mapmodes.dds"
-						}
-
-						onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'debug')]"
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" {
-									text = "OPEN_DEBUG_MAP_MODES"
-								}
-							}
-						}
-					}
-
-					blockoverride "datamodel_item" {
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)0')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)1')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)2')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)3')]"}
-						mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)4')]"}
-					}
-					blockoverride "base_color" {
-						using = color_brown_leather_texture
-						blend_mode = overlay
-					}
+					use_global_input_instance = yes
+					on_input_action_shortcut = "[MapModeSelectorVars.Toggle('action')]"
+					on_input_action_shortcut = "[MapModeSelectorVars.SetOrToggle('tab', 'search')]"
+					input_action = "mapmode_menu"
 				}
 			}
 
 			icon = { using = right_decoration_icon }
 		}
 	}
-}
 
-	type mapmodes_collapsed_window = widget {
-	onmousehierarchyenter = "[MapModeSelectorVars.Set('hover', 'yes')]"
-	onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]"
-	alwaystransparent = no
+	type mapmodes_pinned_window = widget {
+		alwaystransparent = no
+		size = { @mapselector_width @mapselector_height }
 
-	visible_at_creation = no
-	visible = "[Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
-	parentanchor = hcenter|bottom
+		visible_at_creation = no
+		visible = "[MapModeSelectorVars.IsVisible]"
+		parentanchor = bottom|hcenter
 
-	hbox = {
-		set_parent_size_to_minimum = yes
+		state = {
+			name = _show
+			duration = 0.3
+			bezier = { 0.0 1.0 0.0 1.0 }
+			size = { @mapselector_width @mapselector_height }
+		}
 
-		using = bg_mapmenu_tab
-
-		icon = { using = left_decoration_icon }
+		state = {
+			name = _hide
+			duration = 0.25
+			bezier = { 1.0 0.0 1.0 0.0 }
+			size = { @mapselector_width 1 }
+		}
 
 		widget = {
-			size = { 60 40 }
+			parentanchor = bottom
+			size = { 100% 60% }
+			using = bg_mapmode_menu
+			ui_direction_button = {
+				size = { 20 20 }
+				down = "[MapModeSelectorVars.IsVisible]"
+				tooltipwidget = { BasicFunctionalTooltip = {}}
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+					title = "[MapModeSelectorVars.GetPinTooltip]"
+					on_action = "[MapModeSelectorVars.SetIsVisible]"
+				}
 
-			button = {
-				parentanchor = center
-				block "button_texture" {
+				icon = {
+					size = {100% 100%}
+					parentanchor = center
 					texture = "gfx/interface/buttons/round_button_texture_alt.dds"
-					texture_density = 2
-				}
-				size = { 34 34 }
-				texture_density = 2
 
-				modify_texture = {
-					using = color_new_gold_texture
-					blend_mode = overlay
-					alpha = 1
-				}
-
-				modify_texture = {
-					using = overlay_stone_texture
-					blend_mode = overlay
-					alpha = 1
-				}
-
-				block "navigational_bg" {
+					modify_texture = {
+						using = color_new_gold_texture
+						blend_mode = overlay
+						alpha = 1
+					}
 					background = {
 						texture = "gfx/interface/buttons/bg_button_light.dds"
 						texture_density = 2
@@ -1957,252 +2040,169 @@ types BottomTypes
 						}
 					}
 				}
-
 				icon = {
-					size = { 75% 75% }
+					size = { 17 17 }
 					parentanchor = center
-					texture = "gfx/interface/icons/flat_icons/tabicons/mapmodes.dds"
-				}
+					texture = "gfx/interface/icons/pin.dds"
+					using = button_panel_tab_icon_effect
 
+					blockoverride "icon_effect_visible" {visible = "[MapModeSelectorVars.IsVisible]"}
+					glow = {
+						blockoverride "icon_effect_visible" {}
+						glow_radius = 0
+					}
+				}
+			}
+
+			widget = {
+				alwaystransparent = no
 				onmousehierarchyenter = "[MapModeSelectorVars.Set('hover', 'yes')]"
-				onclick = "[MapModeSelectorVars.Clear('tab')]"
-				tooltip_enabled = no
+				onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]"
 
-				use_global_input_instance = yes
-				on_input_action_shortcut = "[MapModeSelectorVars.Toggle('action')]"
-				on_input_action_shortcut = "[MapModeSelectorVars.SetOrToggle('tab', 'search')]"
-				input_action = "mapmode_menu"
-			}
-		}
+				size = { @mapselector_width 50 }
 
-		icon = { using = right_decoration_icon }
-	}
-}
+				overlappingitembox = {
+					minimumsize = { @[mapselector_width - 50] 40 }
+					maximumsize = { @[mapselector_width - 50] 40 }
+					parentanchor = center
 
-	type mapmodes_pinned_window = widget {
-	alwaystransparent = no
-	size = { @mapselector_width @mapselector_height }
+					spacing = 5
+					ignoreinvisible = yes
 
-	visible_at_creation = no
-	visible = "[MapModeSelectorVars.IsVisible]"
-	parentanchor = bottom|hcenter
-
-	state = {
-		name = _show
-		duration = 0.3
-		bezier = { 0.0 1.0 0.0 1.0 }
-		size = { @mapselector_width @mapselector_height }
-	}
-
-	state = {
-		name = _hide
-		duration = 0.25
-		bezier = { 1.0 0.0 1.0 0.0 }
-		size = { @mapselector_width 1 }
-	}
-
-	widget = {
-		parentanchor = bottom
-		size = { 100% 60% }
-		using = bg_mapmode_menu
-		ui_direction_button = {
-			size = { 20 20 }
-			down = "[MapModeSelectorVars.IsVisible]"
-			tooltipwidget = { BasicFunctionalTooltip = {}}
-			action_tooltip = {
-				click_type = left
-				click_mode = single
-				title = "[MapModeSelectorVars.GetPinTooltip]"
-				on_action = "[MapModeSelectorVars.SetIsVisible]"
-			}
-
-			icon = {
-				size = {100% 100%}
-				parentanchor = center
-				texture = "gfx/interface/buttons/round_button_texture_alt.dds"
-
-				modify_texture = {
-					using = color_new_gold_texture
-					blend_mode = overlay
-					alpha = 1
-				}
-				background = {
-					texture = "gfx/interface/buttons/bg_button_light.dds"
-					texture_density = 2
-					modify_texture = {
-						using = color_intense_brown_texture
-						blend_mode = add
-					}
-					modify_texture = {
-						using = color_super_dark_brown_texture
-						blend_mode = multiply
-						alpha = 0.6
-					}
+					datacontext = "[Pin('map_modes')]"
+					datamodel = "[GetPinnedMapModes(PinCollection.Self)]"
+					item = { button_mapmode = {} }
 				}
 			}
-			icon = {
-				size = { 17 17 }
-				parentanchor = center
-				texture = "gfx/interface/icons/pin.dds"
-				using = button_panel_tab_icon_effect
 
-				blockoverride "icon_effect_visible" {visible = "[MapModeSelectorVars.IsVisible]"}
-				glow = {
-					blockoverride "icon_effect_visible" {}
-					glow_radius = 0
-				}
-			}
+			# ui_direction_button = {
+			# 	size = { 20 20 }
+			# 	parentanchor = right
+
+			# 	icon = {
+			# 		size = {100% 100%}
+			# 		parentanchor = center
+			# 		texture = "gfx/interface/buttons/round_button_texture_alt.dds"
+
+			# 		modify_texture = {
+			# 			using = color_new_gold_texture
+			# 			blend_mode = overlay
+			# 			alpha = 1
+			# 		}
+			# 		background = {
+			# 			texture = "gfx/interface/buttons/bg_button_light.dds"
+			# 			texture_density = 2
+			# 			modify_texture = {
+			# 				using = color_intense_brown_texture
+			# 				blend_mode = add
+			# 			}
+			# 			modify_texture = {
+			# 				using = color_super_dark_brown_texture
+			# 				blend_mode = multiply
+			# 				alpha = 0.6
+			# 			}
+			# 		}
+			# 	}
+
+			# 	icon = {
+			# 		size = { 75% 75% }
+			# 		parentanchor = center
+			# 		texture = "gfx/interface/icons/flat_icons/tabicons/mapmodes.dds"
+			# 	}
+			# }
 		}
 
-		widget = {
-			alwaystransparent = no
-			onmousehierarchyenter = "[MapModeSelectorVars.Set('hover', 'yes')]"
-			onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]"
+		# hbox = {
+		# 	using = bg_mapmenu_tab
+		# 	icon = { using = left_decoration_icon }
 
-			size = { @mapselector_width 50 }
-
-			overlappingitembox = {
-				minimumsize = { @[mapselector_width - 50] 40 }
-				maximumsize = { @[mapselector_width - 50] 40 }
-				parentanchor = center
-
-				spacing = 5
-				ignoreinvisible = yes
-
-				datacontext = "[Pin('map_modes')]"
-				datamodel = "[GetPinnedMapModes(PinCollection.Self)]"
-				item = { button_mapmode = {} }
-			}
-		}
-
-		# ui_direction_button = {
-		# 	size = { 20 20 }
-		# 	parentanchor = right
-
-		# 	icon = {
-		# 		size = {100% 100%}
-		# 		parentanchor = center
-		# 		texture = "gfx/interface/buttons/round_button_texture_alt.dds"
-
-		# 		modify_texture = {
-		# 			using = color_new_gold_texture
-		# 			blend_mode = overlay
-		# 			alpha = 1
+		# 	ui_direction_button = {
+		# 		size = { 20 20 }
+		# 		down = "[MapModeSelectorVars.IsVisible]"
+		# 		tooltipwidget = { BasicFunctionalTooltip = {}}
+		# 		action_tooltip = {
+		# 			click_type = left
+		# 			click_mode = single
+		# 			title = "[MapModeSelectorVars.GetPinTooltip]"
+		# 			on_action = "[MapModeSelectorVars.SetIsVisible]"
 		# 		}
-		# 		background = {
-		# 			texture = "gfx/interface/buttons/bg_button_light.dds"
-		# 			texture_density = 2
+		# 		texture = "gfx/interface/buttons/flats/outliner_flat_icon.dds"
+
+		# 		icon = {
+		# 			size = {100% 100%}
+		# 			parentanchor = center
+		# 			texture = "gfx/interface/buttons/round_button_texture_alt.dds"
+
 		# 			modify_texture = {
-		# 				using = color_intense_brown_texture
-		# 				blend_mode = add
+		# 				using = color_new_gold_texture
+		# 				blend_mode = overlay
+		# 				alpha = 1
 		# 			}
-		# 			modify_texture = {
-		# 				using = color_super_dark_brown_texture
-		# 				blend_mode = multiply
-		# 				alpha = 0.6
+		# 			background = {
+		# 				texture = "gfx/interface/buttons/bg_button_light.dds"
+		# 				texture_density = 2
+		# 				modify_texture = {
+		# 					using = color_intense_brown_texture
+		# 					blend_mode = add
+		# 				}
+		# 				modify_texture = {
+		# 					using = color_super_dark_brown_texture
+		# 					blend_mode = multiply
+		# 					alpha = 0.6
+		# 				}
+		# 			}
+		# 		}
+		# 		icon = {
+		# 			size = { 17 17 }
+		# 			parentanchor = center
+		# 			texture = "gfx/interface/icons/pin.dds"
+		# 			using = button_panel_tab_icon_effect
+
+		# 			blockoverride "icon_effect_visible" {visible = "[MapModeSelectorVars.IsVisible]"}
+		# 			glow = {
+		# 				blockoverride "icon_effect_visible" {}
+		# 				glow_radius = 0
 		# 			}
 		# 		}
 		# 	}
 
-		# 	icon = {
-		# 		size = { 75% 75% }
-		# 		parentanchor = center
+		# 	widget = {
+		# 		layoutpolicy_horizontal = expanding
+		# 		size = { @pinnedmapselector_width @pinnedmapselector_height }
+		# 		allow_outside = yes
+
+		# 		overlappingitembox = {
+		# 			minimumsize = { 460 30 }
+		# 			maximumsize = { 460 30 }
+		# 			parentanchor = center
+
+		# 			spacing = 5
+		# 			ignoreinvisible = yes
+
+		# 			datacontext = "[Pin('map_modes')]"
+		# 			datamodel = "[GetPinnedMapModes(PinCollection.Self)]"
+		# 			item = { button_pinned_mapmode = {} }
+		# 		}
+		# 	}
+
+		# 	ui_direction_button = {
+		# 		onmousehierarchyenter = "[MapModeSelectorVars.Set('hover', 'yes')]"
+		# 		onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]"
+		# 		size = { 20 20 }
+
 		# 		texture = "gfx/interface/icons/flat_icons/tabicons/mapmodes.dds"
+		# 		using = bg_circle
+
+		# 		icon = {
+		# 			size = { 75% 75% }
+		# 			parentanchor = center
+		# 			texture = "gfx/interface/icons/flat_icons/tabicons/mapmodes.dds"
+		# 		}
 		# 	}
+
+		# 	icon = { using = right_decoration_icon }
 		# }
 	}
-
-	# hbox = {
-	# 	using = bg_mapmenu_tab
-	# 	icon = { using = left_decoration_icon }
-
-	# 	ui_direction_button = {
-	# 		size = { 20 20 }
-	# 		down = "[MapModeSelectorVars.IsVisible]"
-	# 		tooltipwidget = { BasicFunctionalTooltip = {}}
-	# 		action_tooltip = {
-	# 			click_type = left
-	# 			click_mode = single
-	# 			title = "[MapModeSelectorVars.GetPinTooltip]"
-	# 			on_action = "[MapModeSelectorVars.SetIsVisible]"
-	# 		}
-	# 		texture = "gfx/interface/buttons/flats/outliner_flat_icon.dds"
-
-	# 		icon = {
-	# 			size = {100% 100%}
-	# 			parentanchor = center
-	# 			texture = "gfx/interface/buttons/round_button_texture_alt.dds"
-
-	# 			modify_texture = {
-	# 				using = color_new_gold_texture
-	# 				blend_mode = overlay
-	# 				alpha = 1
-	# 			}
-	# 			background = {
-	# 				texture = "gfx/interface/buttons/bg_button_light.dds"
-	# 				texture_density = 2
-	# 				modify_texture = {
-	# 					using = color_intense_brown_texture
-	# 					blend_mode = add
-	# 				}
-	# 				modify_texture = {
-	# 					using = color_super_dark_brown_texture
-	# 					blend_mode = multiply
-	# 					alpha = 0.6
-	# 				}
-	# 			}
-	# 		}
-	# 		icon = {
-	# 			size = { 17 17 }
-	# 			parentanchor = center
-	# 			texture = "gfx/interface/icons/pin.dds"
-	# 			using = button_panel_tab_icon_effect
-
-	# 			blockoverride "icon_effect_visible" {visible = "[MapModeSelectorVars.IsVisible]"}
-	# 			glow = {
-	# 				blockoverride "icon_effect_visible" {}
-	# 				glow_radius = 0
-	# 			}
-	# 		}
-	# 	}
-
-	# 	widget = {
-	# 		layoutpolicy_horizontal = expanding
-	# 		size = { @pinnedmapselector_width @pinnedmapselector_height }
-	# 		allow_outside = yes
-
-	# 		overlappingitembox = {
-	# 			minimumsize = { 460 30 }
-	# 			maximumsize = { 460 30 }
-	# 			parentanchor = center
-
-	# 			spacing = 5
-	# 			ignoreinvisible = yes
-
-	# 			datacontext = "[Pin('map_modes')]"
-	# 			datamodel = "[GetPinnedMapModes(PinCollection.Self)]"
-	# 			item = { button_pinned_mapmode = {} }
-	# 		}
-	# 	}
-
-	# 	ui_direction_button = {
-	# 		onmousehierarchyenter = "[MapModeSelectorVars.Set('hover', 'yes')]"
-	# 		onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]"
-	# 		size = { 20 20 }
-
-	# 		texture = "gfx/interface/icons/flat_icons/tabicons/mapmodes.dds"
-	# 		using = bg_circle
-
-	# 		icon = {
-	# 			size = { 75% 75% }
-	# 			parentanchor = center
-	# 			texture = "gfx/interface/icons/flat_icons/tabicons/mapmodes.dds"
-	# 		}
-	# 	}
-
-	# 	icon = { using = right_decoration_icon }
-	# }
-}
 }
 
 # bottomview = {
@@ -2251,7 +2251,7 @@ types BottomTypes
 
 # 				control_groups = {
 # 					visible = "[Not(TutorialHasVar('intro_hide_ui_7'))]"
-
+					
 # 					widget = {
 # 						widgetid = intro_has_added_control_group
 # 						datacontext = "[InGameTopbar.AccessControlGroups.AccessGroup('(int32)0')]"
