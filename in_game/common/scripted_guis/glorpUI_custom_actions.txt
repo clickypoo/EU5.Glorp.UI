@@ -1,0 +1,48 @@
+# How to set a variable:
+#SetPortraitOrFlag = {
+#    effect = {
+#        set_variable = {
+#            name = flagOrPortrait
+#            value = 1
+#        }
+#    }
+#}
+
+SetUseVanillaPortrait = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = useVanillaPortrait } }
+            set_variable = { name = useVanillaPortrait value = 1 }
+        }
+        else = {
+            #set_variable = { name = useVanillaPortrait value = 1 }
+            remove_variable = useVanillaPortrait
+        }
+    }
+}
+
+SetUseDefaultIconsLeftPanel = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = useDefaultIconsLeftPanel } }
+            set_variable = { name = useDefaultIconsLeftPanel value = 1 }
+        }
+        else = {
+            #set_variable = { name = useDefaultIconsLeftPanel value = 1 }
+            remove_variable = useDefaultIconsLeftPanel
+        }
+    }
+}
+
+SetUseDefaultIconsRightPanel = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = useDefaultIconsRightPanel } }
+            set_variable = { name = useDefaultIconsRightPanel value = 1 }
+        }
+        else = {
+            #set_variable = { name = useDefaultIconsRightPanel value = 1 }
+            remove_variable = useDefaultIconsRightPanel
+        }
+    }
+}

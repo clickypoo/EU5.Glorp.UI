@@ -43,24 +43,66 @@ window = {
                         raw_text = "Use Vanilla Flag with Portrait"
                     }
                     checkbox_square_alt = {
-                        onclick = "[GetVariableSystem.Toggle( 'use_portrait' )]"
-                        checked = "[GetVariableSystem.Exists( 'use_portrait' )]"
+                        #onclick = "[GetVariableSystem.Toggle( 'use_portrait' )]"
+                        onclick = "[GetScriptedGui('SetUseVanillaPortrait').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                        #checked = "[GetVariableSystem.Exists( 'use_portrait' )]"
+                        checked = "[Player.MakeScope.GetVariable('useVanillaPortrait').IsSet]"
                         tooltip_enabled = no
                     }
                 }
 
-                # Close button
-                button_regular_diamond = {
-                    name = "close_button"
-                    tooltip_enabled = no
-                    using = button_resize_to_fit_text
-
-                    block "goto_title" {
-                        text = "Close"
+                hbox = {
+                    spacing = 10
+                    text_single = {
+                        raw_text = "Use Default Icon Backgrounds on the Left Panel"
                     }
+                    checkbox_square_alt = {
+                        onclick = "[GetScriptedGui('SetUseDefaultIconsLeftPanel').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                        checked = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
+                        tooltip_enabled = no
+                    }
+                }
 
-                    onclick = "[ExecuteConsoleCommand('gui.ClearWidgets glorpUI_window')]"
-                    onclick = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
+
+                #hbox = {
+                #    spacing = 10
+                #    text_single = {
+                #        raw_text = "Use Default Icons on the Right Panel"
+                #    }
+                #    checkbox_square_alt = {
+                #        onclick = "[GetScriptedGui('SetUseDefaultIconsRightPanel').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                #        checked = "[Player.MakeScope.GetVariable('useDefaultIconsRightPanel').IsSet]"
+                #        tooltip_enabled = no
+                #    }
+                #}
+
+                # How to set a variable (see 'onclick')
+                #hbox = {
+                #    button_regular = {
+                #        blockoverride "primary_visible" {}
+                #        size = { 140 35 }
+                #        name = "Set Variable to 1"
+                #        onclick = "[GetScriptedGui('SetPortraitOrFlag').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                #        raw_text = "Set Variable to 1"
+                #        button_ignore = none
+                #    }
+                #}
+
+                hbox = {
+                    # Close button
+                    button_regular_diamond = {
+                        name = "close_button"
+                        tooltip_enabled = no
+                        using = button_resize_to_fit_text
+                        visible = yes
+
+                        block "goto_title" {
+                            text = "Close"
+                        }
+
+                        onclick = "[ExecuteConsoleCommand('gui.ClearWidgets glorpUI_window')]"
+                        onclick = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
+                    }
                 }
             }
         }
