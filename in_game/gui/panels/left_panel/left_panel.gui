@@ -354,7 +354,10 @@ Types LeftPanelTypes
 							size = { 100% 100% }
 							name = government_tab_button
 							background = {
-								texture = "gfx/interface/buttons/panel_tabs_government.dds"
+                                block "colourTexture" {
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    texture = "gfx/interface/buttons/panel_tabs_government.dds"
+                                }
 								texture_density = 2
 								spriteType = stretched
 								spriteBorder = { 0 0 }
@@ -411,7 +414,10 @@ Types LeftPanelTypes
 							size = { 100% 100% }
 							name = economy_tab_button
 							background = {
-								texture = "gfx/interface/buttons/panel_tabs_economy.dds"
+                                block "colourTexture" {
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    texture = "gfx/interface/buttons/panel_tabs_economy.dds"
+                                }
 								texture_density = 2
 								spriteType = stretched
 								spriteBorder = { 0 0 }
@@ -469,7 +475,10 @@ Types LeftPanelTypes
 							size = { 100% 100% }
 							name = production_tab_button
 							background = {
-								texture = "gfx/interface/buttons/panel_tabs_production.dds"
+                                block "colourTexture" {
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    texture = "gfx/interface/buttons/panel_tabs_production.dds"
+                                }
 								texture_density = 2
 								spriteType = stretched
 								spriteBorder = { 0 0 }
@@ -528,7 +537,10 @@ Types LeftPanelTypes
 							size = { 100% 100% }
 							name = society_tab_button
 							background = {
-								texture = "gfx/interface/buttons/panel_tabs_society.dds"
+                                block "colourTexture" {
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    texture = "gfx/interface/buttons/panel_tabs_society.dds"
+                                }
 								texture_density = 2
 								spriteType = stretched
 								spriteBorder = { 0 0 }
@@ -585,7 +597,10 @@ Types LeftPanelTypes
 							size = { 100% 100% }
 							name = diplomacy_tab_button
 							background = {
-								texture = "gfx/interface/buttons/panel_tabs_diplomacy.dds"
+                                block "colourTexture" {
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    texture = "gfx/interface/buttons/panel_tabs_diplomacy.dds"
+                                }
 								texture_density = 2
 								spriteType = stretched
 								spriteBorder = { 0 0 }
@@ -641,7 +656,10 @@ Types LeftPanelTypes
 							size = { 100% 100% }
 							name = military_tab_button
 							background = {
-								texture = "gfx/interface/buttons/panel_tabs_military.dds"
+                                block "colourTexture" {
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    texture = "gfx/interface/buttons/panel_tabs_military.dds"
+                                }
 								texture_density = 2
 								spriteType = stretched
 								spriteBorder = { 0 0 }
@@ -698,7 +716,10 @@ Types LeftPanelTypes
 							size = { 100% 100% }
 							name = geopolitics_tab_button
 							background = {
-								texture = "gfx/interface/buttons/panel_tabs_geopolitics.dds"
+                                block "colourTexture" {
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    texture = "gfx/interface/buttons/panel_tabs_geopolitics.dds"
+                                }
 								texture_density = 2
 								spriteType = stretched
 								spriteBorder = { 0 0 }
@@ -755,7 +776,10 @@ Types LeftPanelTypes
 							size = { 100% 100% }
 							name = advances_tab_button
 							background = {
-								texture = "gfx/interface/buttons/panel_tabs_advances.dds"
+                                block "colourTexture" {
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    texture = "gfx/interface/buttons/panel_tabs_advances.dds"
+                                }
 								texture_density = 2
 								spriteType = stretched
 								spriteBorder = { 0 0 }
@@ -886,7 +910,8 @@ Types LeftPanelTypes
 			position = { 5 -55 }
 			size = { 60 100 }
 			allow_outside = yes
-            visible = "[GetVariableSystem.Exists( 'use_portrait' )]"
+            #visible = "[GetVariableSystem.Exists( 'use_portrait' )]"
+            visible = "[Player.MakeScope.GetVariable('useVanillaPortrait').IsSet]"
 
 			flag_3d_animated = {
 				visible = "[And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')))]"
@@ -910,7 +935,8 @@ Types LeftPanelTypes
 
 		# portrait and all associated surroundings
 		widget = {
-            visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), GetVariableSystem.Exists(  'use_portrait'  ))]"
+            #visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), GetVariableSystem.Exists(  'use_portrait'  ))]"
+            visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), Player.MakeScope.GetVariable('useVanillaPortrait').IsSet)]"
 			parentanchor = left
 			widgetanchor = vcenter|left
 			size = { 78 78 }
@@ -1040,7 +1066,8 @@ Types LeftPanelTypes
         widget = {
             position = { 5 10 }
             allow_outside = yes
-            visible = "[Not(GetVariableSystem.Exists( 'use_portrait' ))]"
+            #visible = "[Not(GetVariableSystem.Exists( 'use_portrait' ))]"
+            visible = "[Not(Player.MakeScope.GetVariable('useVanillaPortrait').IsSet)]"
 
             icon = {
                 position = { -4 -47 }
@@ -1089,7 +1116,9 @@ Types LeftPanelTypes
 
         # portrait and all associated surroundings - glorp ui
         widget = {
-            visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), Not(GetVariableSystem.Exists( 'use_portrait' )))]"
+            #visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), Not(GetVariableSystem.Exists( 'use_portrait' )))]"
+            visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), Not(Player.MakeScope.GetVariable('useVanillaPortrait').IsSet))]"
+
             parentanchor = left
             widgetanchor = vcenter|left
             size = { 78 78 }
