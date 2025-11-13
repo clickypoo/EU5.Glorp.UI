@@ -416,7 +416,6 @@ template frontend_menu_middle_template {
         onclick = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
 
         onclick = "[PauseMenu.Resume]"
-        input_action = "close_window"
 
         tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "PAUSE_MENU_SETTINGS_TOOLTIP" } } }
     }
