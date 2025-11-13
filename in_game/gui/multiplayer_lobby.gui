@@ -2637,7 +2637,6 @@ types MultiplayerLobby
 																using = layoutpolicy_expanding
 																autoresize = no
 																align = center|nobaseline
-																raw_text = "alksjd oad boasjdbn oawui flskjeh laskjefh aowlijef hlaskjef oiu gfalskjef hasiuef"
 																text = "[Country.GetCountryDescriptionCategoryName]"
 
 																tooltipwidget = {
