@@ -963,8 +963,14 @@ lateralview = {
 	blockoverride "panel_header" {
 		window_header_alt = {
 			using = bg_main_inner_alt
-			blockoverride "window_header_alt_color_texture"{
-				using = color_default_brown_texture
+			blockoverride "window_header_alt_color_texture" {
+				using = color_greyish_texture
+                modify_texture = {
+                    using = color_white_texture
+                    blend_mode = overlay
+                    color = "[ForeignCountryView.GetCountry.GetMapColor]"
+                    opacity = 0.5
+                }
 			}
 			
 			blockoverride "header_text_object" {
@@ -995,6 +1001,20 @@ lateralview = {
 						text = "[ForeignCountryView.GetCountry.GetLongNameWithNoTooltip]"
 					}
 
+                    button_pin = {
+                        size = { 23 23 }
+                        visible = "[IsPlayerValid]"
+                        onclick = "[ToggleCountryFav(Country.Self)]"
+                        checked = "[IsCountryFaved(Country.Self)]"
+                        tooltipwidget = {
+                            LeftClickButtonTooltip = {
+                                blockoverride "onclick_text" {
+                                    text = "[SelectLocalization(IsCountryFaved(Country.Self), 'UNPIN_ACTION', 'PIN_ACTION')]"
+                                }
+                            }
+                        }
+                    }
+
 					expand = {}
 
 					datacontext = "[ForeignCountryView.GetCountry]"
@@ -1006,7 +1026,7 @@ lateralview = {
 					name = "zoom_to"
 					size = { 25 25 }
 					position = { 515 7 }
-					
+
 					texture = "gfx/interface/buttons/flats/goto_button_alt.dds"
 					texture_density = 2
 
