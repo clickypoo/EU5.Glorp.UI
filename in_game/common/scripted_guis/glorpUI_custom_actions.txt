@@ -46,3 +46,15 @@ SetUseDefaultIconsRightPanel = {
         }
     }
 }
+
+SetUseVanillaEstatesText = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = useVanillaEstatesText } }
+            set_variable = { name = useVanillaEstatesText value = 1 }
+        }
+        else = {
+            remove_variable = useVanillaEstatesText
+        }
+    }
+}

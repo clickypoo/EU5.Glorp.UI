@@ -1435,7 +1435,7 @@ types BottomTypes
 			    using = layoutpolicy_expanding
 			    parentanchor = hcenter
 				overlappingitembox = {
-				autoresize = yes
+				    autoresize = yes
 
 					spacing = 5
 					ignoreinvisible = yes

@@ -11,7 +11,7 @@ window = {
         widget = {
             parentanchor = right
             size = { 40 40 }
-            position = { -5 8 }
+            position = { -5 1 }
             ui_direction_button_holder_right = {}
             button_close_alt = {
                 blockoverride "close_onclick" {
@@ -27,42 +27,115 @@ window = {
         }
 
         vbox = {
-            using = window_margin_alt
             window_header_alt = {
                 blockoverride "header_text" {
                     raw_text = "Glorp UI Customization"
                 }
+                blockoverride "window_header_alt_color_texture" {
+                    using = color_advances_texture
+                }
             }
             vbox = {
                 using = layoutpolicy_expanding
-                using = bg_main_inner_notabs_alt
+                margin_left = 6
+                margin_right = 6
+                margin_bottom = 6
 
-                hbox = {
-                    spacing = 10
-                    text_single = {
-                        raw_text = "Use Vanilla Flag with Portrait"
-                    }
-                    checkbox_square_alt = {
-                        #onclick = "[GetVariableSystem.Toggle( 'use_portrait' )]"
-                        onclick = "[GetScriptedGui('SetUseVanillaPortrait').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                        #checked = "[GetVariableSystem.Exists( 'use_portrait' )]"
-                        checked = "[Player.MakeScope.GetVariable('useVanillaPortrait').IsSet]"
-                        tooltip_enabled = no
+                header_secondary_tabs = {
+                    blockoverride "content" {
+                        button_secondary_tab_alt = {
+                            using = layoutpolicy_expanding
+                            text = "Vanilla Toggles"
+                            down = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'left_panel' ))]"
+                            tooltip_enabled = no
+                            onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'left_panel' )]"
+                        }
+                        #
+                        button_secondary_tab_alt = {
+                            using = layoutpolicy_expanding
+                            text = "Top Bar (TODO)"
+                            down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'top_bar' )]"
+                            default_format = "#medium"
+                            tooltip_enabled = no
+                            onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'top_bar' )]"
+                        }
+
+                        button_secondary_tab_alt = {
+                            using = layoutpolicy_expanding
+                            default_format = "#medium"
+                            text = "Bottom Bar (TODO)"
+                            down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'bottom_bar' )]"
+                            tooltip_enabled = no
+                            onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'bottom_bar' )]"
+                        }
                     }
                 }
 
-                hbox = {
-                    spacing = 10
-                    text_single = {
-                        raw_text = "Use Default Icon Backgrounds on the Left Panel"
-                    }
-                    checkbox_square_alt = {
-                        onclick = "[GetScriptedGui('SetUseDefaultIconsLeftPanel').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                        checked = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
-                        tooltip_enabled = no
+                vbox = {
+                    using = layoutpolicy_expanding
+                    using = bg_secondary_inner_alt
+
+                    vbox = {
+                        visible = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'left_panel' ))]"
+
+                        # Left Panel - Vanilla Flag & Portrait
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Use Vanilla Flag with Portrait"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetUseVanillaPortrait').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Player.MakeScope.GetVariable('useVanillaPortrait').IsSet]"
+                                tooltip_enabled = no
+                            }
+                        }
+
+                        # Left Panel - Vanilla Icon Backgrounds
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Use Vanilla Icon Backgrounds on the Left Panel"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetUseDefaultIconsLeftPanel').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
+                                tooltip_enabled = no
+                            }
+                        }
+
+                        # Top Bar - Vanilla Estates Text
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Use Vanilla Estates Text"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetUseVanillaEstatesText').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Player.MakeScope.GetVariable('useVanillaEstatesText').IsSet]"
+                                tooltip_enabled = no
+                            }
+                        }
+
+                        # Close button
+                        # hbox = {
+                        #     parentanchor = bottom|nobaseline
+                        #     button_regular_diamond = {
+                        #         name = "close_button"
+                        #         tooltip_enabled = no
+                        #         using = button_resize_to_fit_text
+                        #         visible = yes
+                        #
+                        #         block "goto_title" {
+                        #             text = "Close"
+                        #         }
+                        #
+                        #         onclick = "[ExecuteConsoleCommand('gui.ClearWidgets glorpUI_window')]"
+                        #         onclick = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
+                        #     }
+                        # }
                     }
                 }
-
 
                 #hbox = {
                 #    spacing = 10
@@ -88,22 +161,7 @@ window = {
                 #    }
                 #}
 
-                hbox = {
-                    # Close button
-                    button_regular_diamond = {
-                        name = "close_button"
-                        tooltip_enabled = no
-                        using = button_resize_to_fit_text
-                        visible = yes
 
-                        block "goto_title" {
-                            text = "Close"
-                        }
-
-                        onclick = "[ExecuteConsoleCommand('gui.ClearWidgets glorpUI_window')]"
-                        onclick = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
-                    }
-                }
             }
         }
     }

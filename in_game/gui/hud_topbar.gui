@@ -181,20 +181,23 @@ Types HUD_TopbarTypes
 				using = left_topbar_section_size
 				layoutpolicy_vertical = expanding
 				using = top_bar_bg
+                maximumsize = { 550 80 }
 
 				hbox = {
 					margin_left = 150
-
+                    size = { 400 80 }
 					visible = "[Country.Exists]"
 					datamodel = "[DataModelFirst(InGameTopbar.GetEstates, '(int32)7')]"
 					item = {
 						stat_player = {
 							layoutpolicy_horizontal = expanding
+                            maximumsize = { 100 80 }
+                            parentanchor = left
 							visible = "[Not(ObjectsEqual(Country.GetGovernment.GetEstateFromKey('crown_estate').GetType, EstatesItem.GetEstate.GetType))]"
 							datacontext = "[EstatesItem.GetEstate]"
 
 							blockoverride "stat_button" {
-								alpha = 0.4
+								alpha = 0.5
 								upframe = 4
 								uphoverframe = 4
 								uppressedframe = 4
@@ -243,59 +246,131 @@ Types HUD_TopbarTypes
 
 							vbox = {
 								using = layoutpolicy_expanding
-								margin = { 4 0 }
+								margin = { 0 0 }
 								margin_bottom = 2
 								spacing = -2
 
 								expand = {}
 
 								hbox = {
-									layoutpolicy_horizontal = expanding								
+									layoutpolicy_horizontal = expanding
+                                    spacing = -4
 
 									# ESTATE ICON
 									icon = {
-										size = { 24 24 }
+										size = { 28 28 }
 										texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
 									}
 
-									hbox = {
-										using = layoutpolicy_expanding
-										using = text_single_positive_zero_negative
+                                    # Vanilla Estates Text
+                                    hbox = {
+                                        using = layoutpolicy_expanding
+                                        using = text_single_positive_zero_negative
+                                        visible = "[Player.MakeScope.GetVariable('useVanillaEstatesText').IsSet]"
 
-										blockoverride "text_setup" {
-											maximumsize = { 35 12 }
-											autoresize = yes
-											align = left|nobaseline
-											fontsize = 12
-											fontsize_min = 10
-											# text = "[EstatesItem.GetEstate.GetRelativePower|0%]@power!"
-											text = "[EstatesItem.GetEstate.GetMonthlySatisfactionChange|+=%2]"
-										}
+                                        blockoverride "text_setup" {
+                                            # maximumsize = { 35 12 }
+                                            size = { 100% 100% }
+                                            autoresize = yes
+                                            align = left|nobaseline
+                                            fontsize = 14
+                                            fontsize_min = 10
+                                            # text = "[EstatesItem.GetEstate.GetRelativePower|0%]@power!"
+                                            text = "[EstatesItem.GetEstate.GetMonthlySatisfactionChange|+=%2]"
+                                        }
 
-										blockoverride "visible_positive" {
-											visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
-										}
+                                        blockoverride "visible_positive" {
+                                            visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+                                        }
 
-										blockoverride "visible_negative" {
-											visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
-										}
+                                        blockoverride "visible_negative" {
+                                            visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+                                        }
 
-										blockoverride "visible_zero" {
-											visible = "[EqualTo_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
-										}
+                                        blockoverride "visible_zero" {
+                                            visible = "[EqualTo_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+                                        }
 
-										blockoverride "text_zero" {
-											raw_text = "0.00%"
-											fontsize = 12
-										}
+                                        blockoverride "text_zero" {
+                                            raw_text = "0.00%"
+                                            fontsize = 14
+                                        }
+                                    }
 
-										expand = {}
-									}
+                                    # Glorp Estates Text - EstateSatisfaction + EstateSatisfactionChange
+                                    hbox = {
+                                        using = layoutpolicy_expanding
+                                        vbox = {
+                                            spacing = -4
+                                            margin_top = 5
+                                            visible = "[Not(Player.MakeScope.GetVariable('useVanillaEstatesText').IsSet)]"
+                                            # GetSatisfaction
+                                            hbox = {
+                                                using = layoutpolicy_expanding
+                                                using = text_single_positive_zero_negative
+
+                                                blockoverride "text_setup" {
+                                                    # maximumsize = { 35 24 }
+                                                    size = { 100% 100% }
+                                                    autoresize = yes
+                                                    align = left|nobaseline
+                                                    fontsize = 14
+                                                    fontsize_min = 10
+                                                    text = " [Multiply_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)100')|2V]"
+                                                }
+
+                                                # TODO: Not working right now, dunno why
+                                                blockoverride "visible_positive" {
+                                                    visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)0.5')]"
+                                                }
+                                                blockoverride "visible_negative" {
+                                                    visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)0.5')]"
+                                                }
+                                                blockoverride "visible_zero" {
+                                                    visible = "[EqualTo_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)0.5')]"
+                                                }
+                                            }
+                                            # GetMonthlySatisfactionChange
+                                            hbox = {
+                                                using = layoutpolicy_expanding
+                                                using = text_single_positive_zero_negative
+
+                                                blockoverride "text_setup" {
+                                                    # maximumsize = { 35 14 }
+                                                    size = { 90% 90% }
+                                                    autoresize = yes
+                                                    align = left|nobaseline
+                                                    fontsize = 14
+                                                    fontsize_min = 10
+                                                    text = "[EstatesItem.GetEstate.GetMonthlySatisfactionChange|+=%2]"
+                                                }
+
+                                                blockoverride "visible_positive" {
+                                                    visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+                                                }
+
+                                                blockoverride "visible_negative" {
+                                                    visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+                                                }
+
+                                                blockoverride "visible_zero" {
+                                                    visible = "[EqualTo_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+                                                }
+
+                                                blockoverride "text_zero" {
+                                                    raw_text = " -"
+                                                    fontsize = 14
+                                                }
+                                            }
+                                        }
+                                        expand = {}
+                                    }
 								}
 
 								hbox = {
 									layoutpolicy_horizontal = expanding
 									margin = { 2 0 }
+                                    visible = "[Player.MakeScope.GetVariable('useVanillaEstatesText').IsSet]"
 
 									progressbar = {
 										visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)0.5')]"
