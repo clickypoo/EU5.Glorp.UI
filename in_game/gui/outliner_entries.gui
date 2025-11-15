@@ -2056,7 +2056,7 @@ OutlinerEntryBase = {
 				spacing = 5
 
 				icon = {
-					size = { 20 20 }
+					size = { 24 24 }
 					texture = "[GetGoodsIcon(Goods.Self)]"
 				}
 
@@ -2079,7 +2079,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					text = "[Goods.GetNameWithNoTooltip]"
-					default_format = "#L"
+                    fontsize = 14
 				}
 
 				hbox = {
@@ -2309,6 +2309,7 @@ OutlinerEntryBase = {
 					alwaystransparent = yes
 					align = left
 					text = "[Siege.GetNameWithNoTooltip|G]"
+                    fontsize = 15
 				}
 
 				OutlinerTextBase = {
@@ -2317,6 +2318,7 @@ OutlinerEntryBase = {
 					alwaystransparent = yes
 					align = left
 					text = "[Siege.GetNameWithNoTooltip|R]"
+                    fontsize = 15
 				}
 
 				icon = {
@@ -3177,22 +3179,23 @@ OutlinerEntryBase = {
 
 				OutlinerTextBase = {
 					align = left
-					maximumsize = { 160 20 }
-					minimumsize = { 70 20 }
+					maximumsize = { 160 24 }
+					minimumsize = { 70 24 }
 					raw_text = "[Unit.GetVisualStrength]@army_strength!"
+                    fontsize = 14
 				}
 				widget = {
-					size = { 18 18 }
+					size = { 20 20 }
 					icon = {
-						size = { 18 18 }
+						size = { 20 20 }
 						texture = "[Unit.GetStatusTexture]"
 					}
 				}
 
 				widget = {
-					size = { 18 18 }
+					size = { 20 20 }
 					icon = {
-						size = { 18 18 }
+						size = { 20 20 }
 						texture = "gfx/interface/icons/unit_view/atrittion_icon.dds"
 						visible = "[GreaterThan_CFixedPoint(Unit.GetAttrition, '(CFixedPoint)0')]"
 						glow = {
@@ -3205,10 +3208,10 @@ OutlinerEntryBase = {
 				}
 
 				widget = {
-					size = { 18 18 }
+					size = { 20 20 }
 					icon = {
 						visible = "[Unit.IsAutomated]"
-						size = { 18 18 }
+						size = { 20 20 }
 						texture = "[GetMilitaryObjectiveIcon(Unit.GetObjectiveGroup.GetObjective.GetType)]"
 						texture_density = 2
 					}
@@ -3219,6 +3222,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = right
 					text = "[Unit.GetNameWithNoTooltip]"
+                    fontsize = 14
 				}
 				portrait_standard_head_button = {
 					datacontext = "[Unit.GetCommander]"
@@ -5779,7 +5783,7 @@ OutlinerEntryBase = {
 				spacing = 5
 
 				icon = {
-					size = { 18 18 }
+					size = { 22 22 }
 					texture = "[GetConceptTexture('market')]"
 					glow = {
 						name = "drop_shadow"
@@ -5794,7 +5798,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					text = "[Market.GetShortNameWithNoTooltip]"
-					default_format = "#L"
+					fontsize = 14
 				}
 				widget = {
 					size = { 100 15 }
@@ -5908,6 +5912,7 @@ OutlinerEntryBase = {
 								visible = "[Merchant.GetCountry.IsPlayer]"
 								autoresize = yes
 								raw_text = "[Merchant.GetTotalTradeProfit|+=2]@gold!"
+                                fontsize = 14
 							}
 						}
 					}
@@ -6006,7 +6011,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 				icon = {
-					size = { 20 20 }
+					size = { 22 22 }
 					texture = "[GetConstructionIcon(Construction.Self)]"
 					texture_density = 2
 				}
@@ -6014,7 +6019,7 @@ OutlinerEntryBase = {
 					layoutpolicy_horizontal = expanding
 					autoresize = no
 					align = left
-					fontsize = 13
+					fontsize = 14
 					using = OnlyVisibleWhenOneInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip]"
 				}
@@ -6022,7 +6027,7 @@ OutlinerEntryBase = {
 					layoutpolicy_horizontal = expanding
 					autoresize = no
 					align = left
-					fontsize = 13
+					fontsize = 14
 					using = OnlyVisibleWhenMultipleInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip] #L (+[Subtract_int32(Construction.CountAllInLocation, '(int32)1')]) #!"
 				}
@@ -6031,11 +6036,13 @@ OutlinerEntryBase = {
 					visible = "[Not(Construction.IsStalled)]"
 					autoresize = yes
 					text = "CONSTRUCTION_DURATION_DAYS"
+                    fontsize = 14
 				}
 				OutlinerTextBase = {
 					visible = "[Construction.IsStalled]"
 					autoresize = yes
 					text = "CONSTRUCTION_INFO_STALLED"
+                    fontsize = 14
 				}
 			}
 		}
@@ -6181,7 +6188,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 				icon = {
-					size = { 20 20 }
+					size = { 30 30 }
 					texture = "[GetEstateIcon(Construction.GetEstateType)]"
 					texture_density = 2
 				}
@@ -6192,6 +6199,7 @@ OutlinerEntryBase = {
 					align = left
 					using = OnlyVisibleWhenOneInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip]"
+                    fontsize = 14
 				}
 				OutlinerTextBase = {
 					layoutpolicy_horizontal = expanding
@@ -6199,11 +6207,13 @@ OutlinerEntryBase = {
 					align = left
 					using = OnlyVisibleWhenMultipleInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip] #L (+[Subtract_int32(Construction.CountAllInLocation, '(int32)1')]) #!"
+                    fontsize = 14
 				}
 
 				OutlinerTextBase = {
 					autoresize = yes
 					text = "CONSTRUCTION_DURATION_DAYS"
+                    fontsize = 14
 				}
 			}
 		}
@@ -6348,7 +6358,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 				icon = {
-					size = { 20 20 }
+					size = { 30 30 }
 					texture = "[GetConstructionIcon(Construction.Self)]"
 					texture_density = 2
 				}
@@ -6356,7 +6366,7 @@ OutlinerEntryBase = {
 					layoutpolicy_horizontal = expanding
 					autoresize = no
 					align = left
-					fontsize = 13
+					fontsize = 14
 					using = OnlyVisibleWhenOneInLocation
 					text = "[Construction.GetNameWithNoTooltip]"
 				}
@@ -6364,7 +6374,7 @@ OutlinerEntryBase = {
 					layoutpolicy_horizontal = expanding
 					autoresize = no
 					align = left
-					fontsize = 13
+					fontsize = 14
 					using = OnlyVisibleWhenMultipleInLocation
 					text = "CONSTRUCTION_DURATION_DAYS_PLUS_QUEUE"
 				}
@@ -6373,11 +6383,13 @@ OutlinerEntryBase = {
 					visible = "[Not(Construction.IsStalled)]"
 					autoresize = yes
 					text = "CONSTRUCTION_DURATION_DAYS"
+                    fontsize = 14
 				}
 				OutlinerTextBase = {
 					visible = "[Construction.IsStalled]"
 					autoresize = yes
 					text = "CONSTRUCTION_INFO_STALLED"
+                    fontsize = 14
 				}
 			}
 		}
@@ -6523,7 +6535,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 				icon = {
-					size = { 20 20 }
+					size = { 30 30 }
 					texture = "[GetConstructionIcon(Construction.Self)]"
 					texture_density = 2
 				}
@@ -6531,7 +6543,7 @@ OutlinerEntryBase = {
 					layoutpolicy_horizontal = expanding
 					autoresize = no
 					align = left
-					fontsize = 13
+					fontsize = 14
 					using = OnlyVisibleWhenOneInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip]"
 				}
@@ -6540,7 +6552,7 @@ OutlinerEntryBase = {
 					layoutpolicy_horizontal = expanding
 					autoresize = no
 					align = left
-					fontsize = 13
+					fontsize = 14
 					using = OnlyVisibleWhenMultipleInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip] #L (+[Subtract_int32(Construction.CountAllInLocation, '(int32)1')]) #!"
 				}
@@ -6549,12 +6561,14 @@ OutlinerEntryBase = {
 					visible = "[Not(Construction.IsStalled)]"
 					autoresize = yes
 					text = "CONSTRUCTION_DURATION_DAYS"
+                    fontsize = 14
 				}
 				
 				OutlinerTextBase = {
 					visible = "[Construction.IsStalled]"
 					autoresize = yes
 					text = "CONSTRUCTION_INFO_STALLED"
+                    fontsize = 14
 				}
 			}
 		}
@@ -6701,7 +6715,7 @@ OutlinerEntryBase = {
 				spacing = 5
 
 				widget = {
-					size = { 16 16 }
+					size = { 20 20 }
 					using = bg_circle_piechart
 					blockoverride "inside_color" {
 						modify_texture = {
@@ -6730,12 +6744,13 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					text = "[Rebel.GetNameWithNoTooltip]"
-					default_format = "#L"
+                    fontsize = 14
 				}
 
 				OutlinerTextBase = {
 					autoresize = yes
 					raw_text = "[Rebel.GetProgress|-V%2] ([Rebel.GetLastMonthsProgress|-=%2])"
+                    fontsize = 14
 				}
 			}
 		}
@@ -6865,7 +6880,7 @@ template "diplomacy_expanded_big_content"
 			}
 			OutlinerTextBase = {
 				using = layoutpolicy_expanding
-				fontsize = 13
+				fontsize = 14
 				align = left
 				autoresize = no
 				text = "[OutlinerDiplomacyEntry.GetText]"
@@ -6874,6 +6889,7 @@ template "diplomacy_expanded_big_content"
 			OutlinerTextBase = {
 				align = right
 				text = "[OutlinerDiplomacyEntry.GetStatus]"
+                fontsize = 14
 			}
 		}
 	}
@@ -7259,6 +7275,7 @@ OutlinerEntryBase = {
 					align = left
 					raw_text = "@province! [ColonialCharter.GetProvinceDefinition.GetNameWithNoTooltip]" 
 					default_format = "#yellow_titles"
+                    fontsize = 14
 				}
 
 				hbox = {
@@ -7269,12 +7286,14 @@ OutlinerEntryBase = {
 						maximumsize = { 65 -1 }
 						autoresize = yes
 						raw_text = "[ColonialCharter.GetMonthlyMigration]@population!"
+                        fontsize = 14
 					}
 					OutlinerTextBase = {
 						minimumsize = { 65 -1 }
 						maximumsize = { 65 -1 }
 						autoresize = yes
 						raw_text = "[ColonialCharter.GetProgress|2]%"
+                        fontsize = 14
 					}
 				}
 				
@@ -7364,13 +7383,13 @@ OutlinerEntryBase = {
 				spacing = 5
 
 				icon = {		
-					size = { 20 20 }
+					size = { 28 28 }
 					visible = "[Exploration.GetArea.IsNaval]"					
 					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_sea.dds"
 				}
 
 				icon = {
-					size = { 20 20 }
+					size = { 28 28 }
 					visible = "[Not(Exploration.GetArea.IsNaval)]"					
 					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_land.dds"
 				}
@@ -7380,13 +7399,14 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					raw_text = "[Exploration.GetArea.GetNameWithNoTooltip] ([Exploration.GetArea.GetRegion.GetNameWithNoTooltip])"
-					default_format = "#L"
+                    fontsize = 14
 				}
 
 				OutlinerTextBase = {
 					layoutpolicy_vertical = expanding
 					autoresize = yes
 					text = "[Exploration.GetEstimatedTimeLeft]"
+                    fontsize = 14
 				}
 				portrait_standard_head_button = {
 					datacontext = "[Exploration.GetCharacter]"
@@ -7499,11 +7519,13 @@ OutlinerEntryBase = {
 					using = layoutpolicy_expanding
 					autoresize = no
 					text = "[Privateer.GetNameWithNoTooltip]"
+                    fontsize = 14
 				}
 
 				OutlinerTextBase = {
 					autoresize = yes
 					raw_text = "[Privateer.GetPowerChange|+=%]"
+                    fontsize = 14
 				}
 			}
 		}
@@ -7601,6 +7623,7 @@ OutlinerEntryBase = {
 				autoresize = no
 				align = right
 				raw_text = "-"
+                fontsize = 14
 			}
 		}
 	}
@@ -7695,7 +7718,7 @@ template category_big_template {
 			OutlinerTextBase = {
 				using = layoutpolicy_expanding
 				autoresize = no
-				fontsize = 13
+				fontsize = 15
 				align = left
 				block "category_name" {
 					text = "[OutlinerCategoryEntry.GetName|T]"
@@ -7835,7 +7858,7 @@ template category_small_template {
 			}
 
 			icon = {
-				size = { 20 20 }
+				size = { 28 28 }
 				glow = {
 					name = "drop_shadow"
 					glow_radius = 3
@@ -7953,6 +7976,7 @@ template category_icon_template {
 			autoresize = no
 			align = center
 			block "outliner_category_count" { text = "[OutlinerCategoryEntry.GetEntryCount]" }
+            fontsize = 14
 		}
 	}
 }

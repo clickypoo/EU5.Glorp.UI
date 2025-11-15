@@ -256,13 +256,14 @@ Types HUD_TopbarTypes
 
 								hbox = {
 									layoutpolicy_horizontal = expanding
-                                    spacing = -4
+                                    spacing = -5
 
 									# ESTATE ICON
 									icon = {
 										size = { 28 28 }
 										texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
 									}
+
 
                                     # Vanilla Estates Text
                                     hbox = {
@@ -304,7 +305,7 @@ Types HUD_TopbarTypes
                                         using = layoutpolicy_expanding
                                         vbox = {
                                             spacing = -4
-                                            margin_top = 5
+                                            margin_top = 2
                                             visible = "[Not(Player.MakeScope.GetVariable('useVanillaEstatesText').IsSet)]"
                                             # GetSatisfaction
                                             hbox = {
@@ -316,7 +317,7 @@ Types HUD_TopbarTypes
                                                     size = { 100% 100% }
                                                     autoresize = yes
                                                     align = left|nobaseline
-                                                    fontsize = 14
+                                                    fontsize = 16
                                                     fontsize_min = 10
                                                     text = " [Multiply_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)100')|2V]"
                                                 }
