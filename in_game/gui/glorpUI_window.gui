@@ -45,7 +45,7 @@ window = {
                     blockoverride "content" {
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
-                            text = "Vanilla Toggles"
+                            text = "Toggles"
                             down = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'left_panel' ))]"
                             tooltip_enabled = no
                             onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'left_panel' )]"
@@ -53,7 +53,7 @@ window = {
                         #
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
-                            text = "Top Bar (TODO)"
+                            text = "Top Bar"
                             down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'top_bar' )]"
                             default_format = "#medium"
                             tooltip_enabled = no
@@ -63,10 +63,19 @@ window = {
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
                             default_format = "#medium"
-                            text = "Bottom Bar (TODO)"
+                            text = "Bottom Bar"
                             down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'bottom_bar' )]"
                             tooltip_enabled = no
                             onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'bottom_bar' )]"
+                        }
+
+                        button_secondary_tab_alt = {
+                            using = layoutpolicy_expanding
+                            default_format = "#medium"
+                            text = "Other"
+                            down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'other' )]"
+                            tooltip_enabled = no
+                            onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'other' )]"
                         }
                     }
                 }
@@ -74,10 +83,9 @@ window = {
                 vbox = {
                     using = layoutpolicy_expanding
                     using = bg_secondary_inner_alt
+                    visible = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'left_panel' ))]"
 
                     vbox = {
-                        visible = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'left_panel' ))]"
-
                         # Left Panel - Vanilla Flag & Portrait
                         hbox = {
                             spacing = 10
@@ -186,7 +194,50 @@ window = {
                 #    }
                 #}
 
+                vbox = {
+                    using = layoutpolicy_expanding
+                    using = bg_secondary_inner_alt
+                    visible = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'top_bar' ))]"
 
+                    text_single = {
+                        autoresize = yes
+                        fontsize = 35
+                        align = center|nobaseline
+                        visible = yes
+                        text = "To-do"
+                    }
+
+                }
+
+                vbox = {
+                    using = layoutpolicy_expanding
+                    using = bg_secondary_inner_alt
+                    visible = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'bottom_bar' ))]"
+
+                    text_single = {
+                        autoresize = yes
+                        fontsize = 35
+                        align = center|nobaseline
+                        visible = yes
+                        text = "To-do"
+                    }
+
+                }
+
+                vbox = {
+                    using = layoutpolicy_expanding
+                    using = bg_secondary_inner_alt
+                    visible = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'other' ))]"
+
+                    vbox = {
+
+                        button_regular = {
+                            size = {95 35}
+                            text = "DebugModeButton_text"
+                            onclick = "[ExecuteConsoleCommand('debug_mode')]"
+                        }
+                    }
+                }
             }
         }
     }
