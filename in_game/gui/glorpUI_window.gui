@@ -83,9 +83,10 @@ window = {
                 vbox = {
                     using = layoutpolicy_expanding
                     using = bg_secondary_inner_alt
-                    visible = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'left_panel' ))]"
 
+                    # Toggles
                     vbox = {
+                        visible = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'left_panel' ))]"
                         # Left Panel - Vanilla Flag & Portrait
                         hbox = {
                             spacing = 10
@@ -168,72 +169,39 @@ window = {
                         #     }
                         # }
                     }
-                }
 
-                #hbox = {
-                #    spacing = 10
-                #    text_single = {
-                #        raw_text = "Use Default Icons on the Right Panel"
-                #    }
-                #    checkbox_square_alt = {
-                #        onclick = "[GetScriptedGui('SetUseDefaultIconsRightPanel').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                #        checked = "[Player.MakeScope.GetVariable('useDefaultIconsRightPanel').IsSet]"
-                #        tooltip_enabled = no
-                #    }
-                #}
-
-                # How to set a variable (see 'onclick')
-                #hbox = {
-                #    button_regular = {
-                #        blockoverride "primary_visible" {}
-                #        size = { 140 35 }
-                #        name = "Set Variable to 1"
-                #        onclick = "[GetScriptedGui('SetPortraitOrFlag').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                #        raw_text = "Set Variable to 1"
-                #        button_ignore = none
-                #    }
-                #}
-
-                vbox = {
-                    using = layoutpolicy_expanding
-                    using = bg_secondary_inner_alt
-                    visible = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'top_bar' ))]"
-
-                    text_single = {
-                        autoresize = yes
-                        fontsize = 35
-                        align = center|nobaseline
-                        visible = yes
-                        text = "To-do"
-                    }
-
-                }
-
-                vbox = {
-                    using = layoutpolicy_expanding
-                    using = bg_secondary_inner_alt
-                    visible = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'bottom_bar' ))]"
-
-                    text_single = {
-                        autoresize = yes
-                        fontsize = 35
-                        align = center|nobaseline
-                        visible = yes
-                        text = "To-do"
-                    }
-
-                }
-
-                vbox = {
-                    using = layoutpolicy_expanding
-                    using = bg_secondary_inner_alt
-                    visible = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'other' ))]"
-
+                    # Top Bar
                     vbox = {
+                        visible = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'top_bar' )]"
 
+                        text_single = {
+                            autoresize = yes
+                            fontsize = 35
+                            align = center|nobaseline
+                            visible = yes
+                            text = "To-do"
+                        }
+                    }
+
+                    # Bottom Bar
+                    vbox = {
+                        visible = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'bottom_bar' )]"
+                        text_single = {
+                            autoresize = yes
+                            fontsize = 35
+                            align = center|nobaseline
+                            visible = yes
+                            text = "To-do"
+                        }
+                    }
+
+                    # Other
+                    vbox = {
+                        visible = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'other' )]"
                         button_regular = {
-                            size = {95 35}
-                            text = "DebugModeButton_text"
+                            autoresize = true
+                            size = {150 35}
+                            raw_text = "Toggle Debug Mode"
                             onclick = "[ExecuteConsoleCommand('debug_mode')]"
                         }
                     }
