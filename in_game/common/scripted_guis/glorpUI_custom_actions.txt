@@ -21,6 +21,19 @@ SetUseVanillaPortrait = {
     }
 }
 
+SetUseDefaultIconsBGLeftPanel = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = useDefaultIconsBGLeftPanel } }
+            set_variable = { name = useDefaultIconsBGLeftPanel value = 1 }
+        }
+        else = {
+            #set_variable = { name = useDefaultIconsBGLeftPanel value = 1 }
+            remove_variable = useDefaultIconsBGLeftPanel
+        }
+    }
+}
+
 SetUseDefaultIconsLeftPanel = {
     effect = {
         if = {

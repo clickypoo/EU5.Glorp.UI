@@ -98,6 +98,18 @@ window = {
                                 raw_text = "Use Vanilla Icon Backgrounds on the Left Panel"
                             }
                             checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetUseDefaultIconsBGLeftPanel').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet]"
+                                tooltip_enabled = no
+                            }
+                        }
+                        # Left Panel - Vanilla Icons
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Use Vanilla Icons on the Left Panel"
+                            }
+                            checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetUseDefaultIconsLeftPanel').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
                                 checked = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
                                 tooltip_enabled = no

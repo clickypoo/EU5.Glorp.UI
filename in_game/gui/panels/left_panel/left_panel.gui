@@ -355,7 +355,7 @@ Types LeftPanelTypes
 							name = government_tab_button
 							background = {
                                 block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
                                     texture = "gfx/interface/buttons/panel_tabs_government.dds"
                                 }
 								texture_density = 2
@@ -397,6 +397,7 @@ Types LeftPanelTypes
 						}
 
 						icon = {
+                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/government.dds"
@@ -404,8 +405,19 @@ Types LeftPanelTypes
 
 							using = button_panel_tab_icon_effect
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
-							blockoverride "icon_effect_color"{ color = { 0.55 0.20 0.90 1.0 } }
+							blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
 						}
+                        icon = {
+                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                            size = { 26 26 }
+                            parentanchor = center
+                            texture = "gfx/interface/icons/flat_icons/tabicons/government_c.dds"
+                            texture_density = 2
+
+                            using = button_panel_tab_icon_effect
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
+                        }
 					}
 
 					button_panel_tab_alt = { ### economy tab
@@ -415,7 +427,7 @@ Types LeftPanelTypes
 							name = economy_tab_button
 							background = {
                                 block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
                                     texture = "gfx/interface/buttons/panel_tabs_economy.dds"
                                 }
 								texture_density = 2
@@ -457,6 +469,7 @@ Types LeftPanelTypes
 						}
 
 						icon = {
+                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/economy.dds"
@@ -466,6 +479,17 @@ Types LeftPanelTypes
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('economy_group')]" }
 							blockoverride "icon_effect_color"{ color = { 0.80 0.65 0.10 1.0 } }
 						}
+                        icon = {
+                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                            size = { 26 26 }
+                            parentanchor = center
+                            texture = "gfx/interface/icons/flat_icons/tabicons/economy_c.dds"
+                            texture_density = 2
+
+                            using = button_panel_tab_icon_effect
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
+                        }
 					}
 
 					button_panel_tab_alt = { ### production tab
@@ -476,7 +500,7 @@ Types LeftPanelTypes
 							name = production_tab_button
 							background = {
                                 block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
                                     texture = "gfx/interface/buttons/panel_tabs_production.dds"
                                 }
 								texture_density = 2
@@ -520,6 +544,7 @@ Types LeftPanelTypes
 						}
 
 						icon = {
+                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/production.dds"
@@ -529,6 +554,17 @@ Types LeftPanelTypes
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('production_group')]" }
 							blockoverride "icon_effect_color"{ color = { 0.85 0.40 0.10 1.0 } }
 						}
+                        icon = {
+                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                            size = { 26 26 }
+                            parentanchor = center
+                            texture = "gfx/interface/icons/flat_icons/tabicons/production_c.dds"
+                            texture_density = 2
+
+                            using = button_panel_tab_icon_effect
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
+                        }
 					}
 
 					button_panel_tab_alt = { ### Society tab
@@ -538,7 +574,7 @@ Types LeftPanelTypes
 							name = society_tab_button
 							background = {
                                 block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
                                     texture = "gfx/interface/buttons/panel_tabs_society.dds"
                                 }
 								texture_density = 2
@@ -580,6 +616,7 @@ Types LeftPanelTypes
 						}
 
 						icon = {
+                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/demography.dds"
@@ -589,6 +626,17 @@ Types LeftPanelTypes
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('society_group')]" }
 							blockoverride "icon_effect_color"{ color = { 0.10 0.80 0.60 1.0 } }
 						}
+                        icon = {
+                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                            size = { 26 26 }
+                            parentanchor = center
+                            texture = "gfx/interface/icons/flat_icons/tabicons/demography_c.dds"
+                            texture_density = 2
+
+                            using = button_panel_tab_icon_effect
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
+                        }
 					}
 
 					button_panel_tab_alt = { ### Diplomacy tab
@@ -598,7 +646,7 @@ Types LeftPanelTypes
 							name = diplomacy_tab_button
 							background = {
                                 block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
                                     texture = "gfx/interface/buttons/panel_tabs_diplomacy.dds"
                                 }
 								texture_density = 2
@@ -640,6 +688,7 @@ Types LeftPanelTypes
 						}
 
 						icon = {
+                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/diplomacy.dds"
@@ -648,6 +697,17 @@ Types LeftPanelTypes
 							using = button_panel_tab_icon_effect
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('diplomacy_group')]" }
 						}
+                        icon = {
+                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                            size = { 26 26 }
+                            parentanchor = center
+                            texture = "gfx/interface/icons/flat_icons/tabicons/diplomacy_c.dds"
+                            texture_density = 2
+
+                            using = button_panel_tab_icon_effect
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
+                        }
 					}
 
 					button_panel_tab_alt = { ### military tab
@@ -657,7 +717,7 @@ Types LeftPanelTypes
 							name = military_tab_button
 							background = {
                                 block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
                                     texture = "gfx/interface/buttons/panel_tabs_military.dds"
                                 }
 								texture_density = 2
@@ -699,6 +759,7 @@ Types LeftPanelTypes
 						}
 
 						icon = {
+                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/military.dds"
@@ -708,6 +769,17 @@ Types LeftPanelTypes
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('military_group')]" }
 							blockoverride "icon_effect_color"{ color = { 0.70 0.25 0.40 1.0 } }
 						}
+                        icon = {
+                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                            size = { 26 26 }
+                            parentanchor = center
+                            texture = "gfx/interface/icons/flat_icons/tabicons/military_c.dds"
+                            texture_density = 2
+
+                            using = button_panel_tab_icon_effect
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
+                        }
 					}
 
 					button_panel_tab_alt = { ### geography tab
@@ -717,7 +789,7 @@ Types LeftPanelTypes
 							name = geopolitics_tab_button
 							background = {
                                 block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
                                     texture = "gfx/interface/buttons/panel_tabs_geopolitics.dds"
                                 }
 								texture_density = 2
@@ -759,6 +831,7 @@ Types LeftPanelTypes
 						}
 
 						icon = {
+                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/geography_flat_icon.dds"
@@ -768,6 +841,17 @@ Types LeftPanelTypes
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('geography_group')]" }
 							blockoverride "icon_effect_color"{ color = { 0.45 0.55 0.90 1.0 } }
 						}
+                        icon = {
+                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                            size = { 26 26 }
+                            parentanchor = center
+                            texture = "gfx/interface/icons/flat_icons/tabicons/geography_flat_icon_c.dds"
+                            texture_density = 2
+
+                            using = button_panel_tab_icon_effect
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
+                        }
 					}
 
 					button_panel_tab_alt = { ### advances tab
@@ -777,7 +861,7 @@ Types LeftPanelTypes
 							name = advances_tab_button
 							background = {
                                 block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
                                     texture = "gfx/interface/buttons/panel_tabs_advances.dds"
                                 }
 								texture_density = 2
@@ -818,6 +902,7 @@ Types LeftPanelTypes
 						}
 
 						icon = {
+                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/advances.dds"
@@ -827,6 +912,17 @@ Types LeftPanelTypes
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('advances_group')]" }
 							blockoverride "icon_effect_color"{ color = { 0.10 0.70 0.35 1.0 } }
 						}
+                        icon = {
+                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+                            size = { 26 26 }
+                            parentanchor = center
+                            texture = "gfx/interface/icons/flat_icons/tabicons/advances_c.dds"
+                            texture_density = 2
+
+                            using = button_panel_tab_icon_effect
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
+                        }
 					}
 				}
 			}

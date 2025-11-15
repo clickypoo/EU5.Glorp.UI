@@ -866,6 +866,66 @@ widget = {
 					position = { 0 -20 }
 				}
 			}
+
+            mapmodes_button_color_ledger = {
+                allow_outside = yes
+
+                blockoverride "button_ledger_position_visible" {
+                    parentanchor = hcenter|top
+                    widgetanchor = hcenter|bottom
+                    position = { -450 0 }
+
+                    visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), MapModeSelectorVars.IsVisible)]"
+                }
+
+                blockoverride "button_ledger_setup" {
+                    tooltipwidget = {
+                        SimpleContextualTooltipType = {
+                            blockoverride "title_icon_texture" {
+                                texture = "gfx/interface/icons/flat_icons/tabicons/map_marker_settings.dds"
+                            }
+                            lowpriotextcontext = "MAP_MARKER_SETTINGS_SIMPLE"
+                        }
+                    }
+
+                    action_tooltip = {
+                        visible = "[Not(MapModeSelectorVars.Exists('mapmarkers_settings'))]"
+                        on_action = "[MapModeSelectorVars.Toggle('mapmarkers_settings')]"
+                        title = "MAP_MARKER_SETTINGS_TOGGLE"
+                    }
+
+                    action_tooltip = {
+                        visible = "[MapModeSelectorVars.Exists('mapmarkers_settings')]"
+                        on_action = "[MapModeSelectorVars.Toggle('mapmarkers_settings')]"
+                        title = "MAP_MARKER_SETTINGS_TOGGLE"
+                    }
+                }
+
+                blockoverride "icon_texture" {
+                    size = { 25 25 }
+                    texture = "gfx/interface/icons/flat_icons/tabicons/map_marker_settings.dds"
+                }
+
+                mapmarkers_settings_window = {
+                    visible = "[MapModeSelectorVars.Exists('mapmarkers_settings')]"
+                    parentanchor = hcenter|top
+                    widgetanchor = hcenter|bottom
+                    position = { 0 -20 }
+                }
+            }
+
+            mapmodes_button_color_ledger = {
+                allow_outside = yes
+                position = { 450 0 }
+
+                visible = "[MapModeSelectorVars.IsVisible]"
+                mapmodes_color_ledger = {
+                    visible = "[And3(HasMapColorLedger, GetMapMode('terrain').IsActive, And(MapModeSelectorVars.Exists('color_ledger'), Not(Or(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action')))))]"
+                    parentanchor = left|top
+                    widgetanchor = left|bottom
+                    position = { 0 -10 }
+                }
+            }
 		}
 
 		blockoverride "panel_content" {
