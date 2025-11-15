@@ -82,7 +82,7 @@ window = {
                         hbox = {
                             spacing = 10
                             text_single = {
-                                raw_text = "Use Vanilla Flag with Portrait"
+                                raw_text = "Vanilla Flag and Portrait"
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetUseVanillaPortrait').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -91,11 +91,24 @@ window = {
                             }
                         }
 
+                        # Left Panel - Static Flag
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Use Static Flag"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetUseStaticFlag').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Player.MakeScope.GetVariable('useStaticFlag').IsSet]"
+                                tooltip_enabled = no
+                            }
+                        }
+
                         # Left Panel - Vanilla Icon Backgrounds
                         hbox = {
                             spacing = 10
                             text_single = {
-                                raw_text = "Use Vanilla Icon Backgrounds on the Left Panel"
+                                raw_text = "Vanilla Icon Backgrounds on the Left Panel"
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetUseDefaultIconsBGLeftPanel').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -107,7 +120,7 @@ window = {
                         hbox = {
                             spacing = 10
                             text_single = {
-                                raw_text = "Use Vanilla Icons on the Left Panel"
+                                raw_text = "Vanilla Icons on the Left Panel"
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetUseDefaultIconsLeftPanel').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -120,7 +133,7 @@ window = {
                         hbox = {
                             spacing = 10
                             text_single = {
-                                raw_text = "Use Vanilla Estates Text"
+                                raw_text = "Vanilla Estates Text"
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetUseVanillaEstatesText').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"

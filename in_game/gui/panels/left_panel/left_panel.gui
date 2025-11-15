@@ -1006,11 +1006,10 @@ Types LeftPanelTypes
 			position = { 5 -55 }
 			size = { 60 100 }
 			allow_outside = yes
-            #visible = "[GetVariableSystem.Exists( 'use_portrait' )]"
             visible = "[Player.MakeScope.GetVariable('useVanillaPortrait').IsSet]"
 
 			flag_3d_animated = {
-				visible = "[And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')))]"
+				visible = "[And3(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Not(Player.MakeScope.GetVariable('useStaticFlag').IsSet))]"
 				size = { 114 76 }
 				parentanchor = center
 				position = { 78 0 }
@@ -1027,11 +1026,17 @@ Types LeftPanelTypes
 					on_action = "[OpenLateralView('government')]"
 				}
 			}
+            country_flag_big = {
+                visible = "[And3(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet)]"
+                size = { 80 62 }
+                parentanchor = center
+                position = { 79 -4 }
+                datacontext = "[InGameTopbar.GetPlayer]"
+            }
 		}
 
 		# portrait and all associated surroundings
 		widget = {
-            #visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), GetVariableSystem.Exists(  'use_portrait'  ))]"
             visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), Player.MakeScope.GetVariable('useVanillaPortrait').IsSet)]"
 			parentanchor = left
 			widgetanchor = vcenter|left
@@ -1162,7 +1167,6 @@ Types LeftPanelTypes
         widget = {
             position = { 5 10 }
             allow_outside = yes
-            #visible = "[Not(GetVariableSystem.Exists( 'use_portrait' ))]"
             visible = "[Not(Player.MakeScope.GetVariable('useVanillaPortrait').IsSet)]"
 
             icon = {
@@ -1191,7 +1195,7 @@ Types LeftPanelTypes
             }
 
             flag_3d_animated = {
-                visible = "[And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')))]"
+                visible = "[And3(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Not(Player.MakeScope.GetVariable('useStaticFlag').IsSet))]"
                 size = { 180 120 }
                 parentanchor = center
                 position = { 78 0 }
@@ -1208,11 +1212,17 @@ Types LeftPanelTypes
                     on_action = "[OpenLateralView('government')]"
                 }
             }
+            country_flag_big = {
+                visible = "[And3(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet)]"
+                size = { 125 97 }
+                parentanchor = center
+                position = { 55 -2 }
+                datacontext = "[InGameTopbar.GetPlayer]"
+            }
         }
 
         # portrait and all associated surroundings - glorp ui
         widget = {
-            #visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), Not(GetVariableSystem.Exists( 'use_portrait' )))]"
             visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), Not(Player.MakeScope.GetVariable('useVanillaPortrait').IsSet))]"
 
             parentanchor = left

@@ -1,13 +1,3 @@
-# How to set a variable:
-#SetPortraitOrFlag = {
-#    effect = {
-#        set_variable = {
-#            name = flagOrPortrait
-#            value = 1
-#        }
-#    }
-#}
-
 SetUseVanillaPortrait = {
     effect = {
         if = {
@@ -15,8 +5,19 @@ SetUseVanillaPortrait = {
             set_variable = { name = useVanillaPortrait value = 1 }
         }
         else = {
-            #set_variable = { name = useVanillaPortrait value = 1 }
             remove_variable = useVanillaPortrait
+        }
+    }
+}
+
+SetUseStaticFlag = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = useStaticFlag } }
+            set_variable = { name = useStaticFlag value = 1 }
+        }
+        else = {
+            remove_variable = useStaticFlag
         }
     }
 }
@@ -28,7 +29,6 @@ SetUseDefaultIconsBGLeftPanel = {
             set_variable = { name = useDefaultIconsBGLeftPanel value = 1 }
         }
         else = {
-            #set_variable = { name = useDefaultIconsBGLeftPanel value = 1 }
             remove_variable = useDefaultIconsBGLeftPanel
         }
     }
@@ -41,7 +41,6 @@ SetUseDefaultIconsLeftPanel = {
             set_variable = { name = useDefaultIconsLeftPanel value = 1 }
         }
         else = {
-            #set_variable = { name = useDefaultIconsLeftPanel value = 1 }
             remove_variable = useDefaultIconsLeftPanel
         }
     }
@@ -54,7 +53,6 @@ SetUseDefaultIconsRightPanel = {
             set_variable = { name = useDefaultIconsRightPanel value = 1 }
         }
         else = {
-            #set_variable = { name = useDefaultIconsRightPanel value = 1 }
             remove_variable = useDefaultIconsRightPanel
         }
     }
