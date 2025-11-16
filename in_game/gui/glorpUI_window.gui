@@ -18,11 +18,6 @@ window = {
                     onclick = "[ExecuteConsoleCommand('gui.ClearWidgets glorpUI_window')]"
                     onclick = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
                 }
-                blockoverride "close_inputaction" {
-                    input_action = "[ExecuteConsoleCommand('gui.ClearWidgets glorpUI_window')]"
-                    input_action = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
-                    use_global_input_instance = yes
-                }
             }
         }
 
