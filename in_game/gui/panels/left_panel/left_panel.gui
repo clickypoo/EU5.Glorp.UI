@@ -365,6 +365,7 @@ Types LeftPanelTypes
 							}
 						}
 						onclick = "[ToggleLateralGroup('government_group')]"
+                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Government')]"
 						down = "[IsLateralGroupOpened('government_group')]"
 
@@ -437,6 +438,7 @@ Types LeftPanelTypes
 							}
 						}
 						onclick = "[ToggleLateralGroup('economy_group')]"
+                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Economy')]"
 						down = "[IsLateralGroupOpened('economy_group')]"
 
@@ -487,7 +489,7 @@ Types LeftPanelTypes
                             texture_density = 2
 
                             using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('economy_group')]" }
                             blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
                         }
 					}
@@ -511,6 +513,7 @@ Types LeftPanelTypes
 						}
 					
 						onclick = "[ToggleLateralGroup('production_group')]"
+                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
 						onclick = "[SetNonForeignUIFocusMarket]"
 						# onrightclick = "[OnToggleOutlinerCategory('Production')]"
 						down = "[IsLateralGroupOpened('production_group')]"
@@ -562,7 +565,7 @@ Types LeftPanelTypes
                             texture_density = 2
 
                             using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('production_group')]" }
                             blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
                         }
 					}
@@ -584,6 +587,7 @@ Types LeftPanelTypes
 							}
 						}
 						onclick = "[ToggleLateralGroup('society_group')]"
+                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Society')]"
 						down = "[IsLateralGroupOpened('society_group')]"
 
@@ -634,7 +638,7 @@ Types LeftPanelTypes
                             texture_density = 2
 
                             using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('society_group')]" }
                             blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
                         }
 					}
@@ -656,6 +660,7 @@ Types LeftPanelTypes
 							}
 						}
 						onclick = "[ToggleLateralGroup('diplomacy_group')]"
+                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Diplomacy')]"
 						down = "[IsLateralGroupOpened('diplomacy_group')]"
 
@@ -705,7 +710,7 @@ Types LeftPanelTypes
                             texture_density = 2
 
                             using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('diplomacy_group')]" }
                             blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
                         }
 					}
@@ -727,6 +732,7 @@ Types LeftPanelTypes
 							}
 						}
 						onclick = "[ToggleLateralGroup('military_group')]"
+                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Military')]"
 						down = "[IsLateralGroupOpened('military_group')]"
 
@@ -777,7 +783,7 @@ Types LeftPanelTypes
                             texture_density = 2
 
                             using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('military_group')]" }
                             blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
                         }
 					}
@@ -799,6 +805,7 @@ Types LeftPanelTypes
 							}
 						}
 						onclick = "[ToggleLateralGroup('geography_group')]"
+                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Geopolitics')]"
 						down = "[IsLateralGroupOpened('geography_group')]"
 
@@ -849,7 +856,7 @@ Types LeftPanelTypes
                             texture_density = 2
 
                             using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('geography_group')]" }
                             blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
                         }
 					}
@@ -871,6 +878,7 @@ Types LeftPanelTypes
 							}
 						}
 						onclick = "[ToggleLateralGroup('advances_group')]"
+                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
 						down = "[IsLateralGroupOpened('advances_group')]"
 
 						tooltipwidget = {
@@ -920,10 +928,11 @@ Types LeftPanelTypes
                             texture_density = 2
 
                             using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
+                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('advances_group')]" }
                             blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
                         }
 					}
+                    button_panel_tab_ideas = {} # Idea Variation 2
 				}
 			}
 		}
