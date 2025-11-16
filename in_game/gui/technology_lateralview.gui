@@ -624,6 +624,7 @@ types AdvancesTreeView
 										align = center|nobaseline
 										using = Font_Size_Medium
 										default_format = "#flavor_title"
+                                        fontsize = 25
 									}
 								}
 
@@ -656,41 +657,44 @@ types AdvancesTreeView
 																	margin_left = 10
 
 																	widget = {
-																		size = { 40 40 }
+																		size = { 45 45 }
 																		icon = {
 																			alwaystransparent = yes
-																			size = { 40 40 }
+																			size = { 45 45 }
 																			texture = "gfx/interface/icons/outliner/background/_defaultbg.dds"
 																			modify_texture = {
 																				blend_mode = overlay
 																				alpha = 1
 																			}
 																		}
-																		text_single = {
-																			layoutpolicy_horizontal = growing
-																			size = { 25 25 }
-																			parentanchor = center
-																			text = "[AdvanceEffectItem.GetIcon]"
-																		}
 																		icon = {
 																			alwaystransparent = yes
-																			size = { 40 40 }
+																			size = { 45 45 }
 																			texture = "gfx/interface/graphical_cultures/european_gfx/circle_frame.dds"
 																			modify_texture = {
 																				blend_mode = overlay
 																				alpha = 1
 																			}
 																		}
+                                                                        text_single = {
+                                                                            # layoutpolicy_horizontal = growing
+                                                                            size = { 30 30 }
+                                                                            parentanchor = center
+                                                                            text = "[AdvanceEffectItem.GetIcon]"
+                                                                            fontsize = 20
+                                                                        }
 																	}
 
 																	vbox = {
 																		layoutpolicy_horizontal = expanding
+                                                                        spacing = -5
 																		text_single = {
 																			layoutpolicy_horizontal = expanding
 																			margin_left = 5
 																			margin_right = 15
 																			align = left
 																			text = "[AdvanceEffectItem.GetTitleEffect]"
+                                                                            fontsize = 19
 																		}
 
 																		text_single = {
@@ -699,6 +703,7 @@ types AdvancesTreeView
 																			margin_right = 15
 																			align = left
 																			text = "[AdvanceEffectItem.GetDescEffect]"
+                                                                            fontsize = 19
 																		}
 																	}
 
@@ -988,6 +993,7 @@ types AdvancesTreeView
 										align = center|nobaseline
 										using = Font_Size_Medium
 										default_format = "#flavor_title"
+                                        fontsize = 25
 									}
 								}
 							}
@@ -1321,41 +1327,44 @@ template advances_tree_item_modifiers {
 										margin_left = 10
 
 										widget = {
-											size = { 35 35 }
+											size = { 40 40 }
 											icon = {
 												alwaystransparent = yes
-												size = { 35 35 }
+												size = { 40 40 }
 												texture = "gfx/interface/icons/outliner/background/_defaultbg.dds"
 												modify_texture = {
 													blend_mode = overlay
 													alpha = 1
 												}
 											}
-											text_single = {
-												layoutpolicy_horizontal = growing
-												size = { 25 25 }
-												parentanchor = center
-												text = "[AdvanceEffectItem.GetIcon]"
-											}
 											icon = {
 												alwaystransparent = yes
-												size = { 35 35 }
+												size = { 40 40 }
 												texture = "gfx/interface/graphical_cultures/european_gfx/circle_frame.dds"
 												modify_texture = {
 													blend_mode = overlay
 													alpha = 1
 												}
 											}
+                                            text_single = {
+                                                layoutpolicy_horizontal = growing
+                                                size = { 30 30 }
+                                                parentanchor = center
+                                                text = "[AdvanceEffectItem.GetIcon]"
+                                                fontsize = 20
+                                            }
 										}
 
 										vbox = {
 											layoutpolicy_horizontal = expanding
+                                            spacing = -5
 											text_single = {
 												layoutpolicy_horizontal = expanding
 												margin_left = 5
 												margin_right = 15
 												align = left
 												text = "[AdvanceEffectItem.GetTitleEffect]"
+                                                fontsize = 19
 											}
 
 											text_single = {
@@ -1364,6 +1373,7 @@ template advances_tree_item_modifiers {
 												margin_right = 15
 												align = left
 												text = "[AdvanceEffectItem.GetDescEffect]"
+                                                fontsize = 19
 											}
 										}
 
@@ -2040,7 +2050,7 @@ lateralview_full = {
 
 						state = {
 							name = "_zoom_changed"
-							duration = 0.2
+							duration = 0.1
 						}
 
 						zoomwidget = {
