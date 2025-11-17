@@ -916,7 +916,7 @@ Types LeftPanelTypes
 						action_tooltip = {
 							click_type = left
 							click_mode = confirm
-							conditions = "[MakeItFailIfLoc(Not(Player.CanExtendRegency), Player.GetExtendRegencyInfo)]"
+							conditions = "[MakeItFailIf(Not(Player.CanExtendRegency), Player.GetExtendRegencyInfo)]"
 							title = "[Select_CString(Player.CanExtendRegency, Player.GetExtendRegencyInfo, Localize('CANNOT_EXTEND_REGENCY'))]"
 							on_action = "[ExtendRegency(Player.Self)]"
 							enabled = "[Player.CanExtendRegency]"

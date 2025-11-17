@@ -116,10 +116,17 @@ window = {
 				size = {-1 60 }
 				layoutpolicy_horizontal = expanding
 				using = color_black_texture
-				
-				text = "[GetShortVersionInfoString]"
-				font = StandardGameFont
-				default_format = "#color_gold"
+
+				text_multi = {
+					parentanchor = center
+					size = { 95% 100% }
+					autoresize = no
+					align = center
+					text = "[GetShortVersionInfoString]"
+					font = StandardGameFont
+					default_format = "#color_gold"
+				}
+
 				onclick = "[VersionInfoOnClick]"
 				tooltip_enabled = no
 
@@ -358,25 +365,12 @@ template frontend_menu_middle_template {
 		}
 		block "small_button_size" { size = { -1 45 } }
 		using = FrontEndMiddleSectionButton
-		text = "REPORT_ISSUE"
-		visible = "[IsBuildDebug]"
-		enabled = "[Not(IsShowingDialog)]"
-		onclick = "[PauseMenu.OpenReportIssue]"
-		tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "REPORT_ISSUE_TOOLTIP" } } }
+		text = "SETTINGS_HEADER"
+		# enabled = "[Not(IsShowingDialog)]"
+		onclick = "[PauseMenu.OpenSettings]"
+		tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "PAUSE_MENU_SETTINGS_TOOLTIP" } } }
 	}
 
-	button_wax = {
-		visible= "[GameIsMultiplayer]"
-		blockoverride "button_texture" {
-			texture = "gfx/interface/buttons/button_wax_blue.dds"
-		}
-		block "small_button_size" { size = { -1 45 } }
-		using = FrontEndMiddleSectionButton
-		text = "AI_SETTINGS"
-		enabled = "[Not(IsShowingDialog)]"
-		onclick = "[PauseMenu.OpenAiSettings]"
-		tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "PAUSE_MENU_AI_SETTINGS_TOOLTIP" } } }
-	}
 
 	button_wax = {
 		blockoverride "button_texture" {
@@ -396,10 +390,24 @@ template frontend_menu_middle_template {
 		}
 		block "small_button_size" { size = { -1 45 } }
 		using = FrontEndMiddleSectionButton
-		text = "SETTINGS_HEADER"
-		# enabled = "[Not(IsShowingDialog)]"
-		onclick = "[PauseMenu.OpenSettings]"
-		tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "PAUSE_MENU_SETTINGS_TOOLTIP" } } }
+		text = "REPORT_ISSUE"
+		visible = "[IsBuildDebug]"
+		enabled = "[Not(IsShowingDialog)]"
+		onclick = "[PauseMenu.OpenReportIssue]"
+		tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "REPORT_ISSUE_TOOLTIP" } } }
+	}
+
+	button_wax = {
+		visible= "[GameIsMultiplayer]"
+		blockoverride "button_texture" {
+			texture = "gfx/interface/buttons/button_wax_blue.dds"
+		}
+		block "small_button_size" { size = { -1 45 } }
+		using = FrontEndMiddleSectionButton
+		text = "AI_SETTINGS"
+		enabled = "[Not(IsShowingDialog)]"
+		onclick = "[PauseMenu.OpenAiSettings]"
+		tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "PAUSE_MENU_AI_SETTINGS_TOOLTIP" } } }
 	}
 
 	hbox = {

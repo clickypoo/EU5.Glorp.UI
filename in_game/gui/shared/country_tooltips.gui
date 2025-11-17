@@ -287,17 +287,20 @@ template CountryTooltip {
 				}	
 			}
 
-			TooltipTextBlock = {
-				visible = "[Country.GetDiplomacy.IsSubject]"
-				textcontext = "COUNTRY_TOOLTIP_SUBJECT_TEXT"
+			TooltipRowList = {
+				visible = "[And(Country.GetDiplomacy.IsDisloyalSubject, Country.GetDiplomacy.IsSubject)]"
+				textcontext = "SubjectTypeDetail_DESC_NOT"
+				tooltipwidget = {
+					using = SubjectLoyalty_tooltip
+				}
 			}
-
-			# #antagonism
-			# TooltipScrolledTextBlock = {
-			# 	visible = "[And(Country.GetCapital.HasMapmodeSpecificTooltip, GetMapMode('antagonism').IsActive)]"
-			# 	textcontext = "[Country.GetCapital.GetMapmodeSpecificTooltip]"
-			# 	blockoverride "block_scrollarea" { maximumsize = { -1 300 }}
-			# }
+			TooltipRowList = {
+				visible = "[And(Not(Country.GetDiplomacy.IsDisloyalSubject), Country.GetDiplomacy.IsSubject)]"
+				textcontext = "SubjectTypeDetail_DESC"
+				tooltipwidget = {
+					using = SubjectLoyalty_tooltip
+				}
+			}
 
 			# ruler
 			TooltipStringPairList = {
@@ -423,7 +426,7 @@ template CountryTooltip {
 						text_single = {
 							autoresize = yes
 							align = right
-							text = "[Multiply_CFixedPoint(Country.GetMilitaryStrength, '(CFixedPoint)1000')|L0]"
+							text = "[Country.GetTotalArmyStrengthAndPotentialLevies|L0]"
 						}
 
 						icon = {
@@ -441,7 +444,7 @@ template CountryTooltip {
 							size = { 24 24 }
 							icon = {
 								size = { 100% 100% }
-								texture = "gfx/interface/icons/flat_icons/cultural_primary.dds"
+								texture = "gfx/interface/icons/culture/primary_culture.dds"
 							}
 							tooltip = "[primary_culture|e]"
 							tagtooltip_enabled = yes
@@ -466,7 +469,7 @@ template CountryTooltip {
 						text_single = {
 							autoresize = yes
 							align = right
-							text = "[Country.GetNavyStrength|0L]"
+							text = "[Country.GetTotalNavyStrengthAndPotentialLevies|0L]"
 						}
 
 						icon = {
@@ -1007,7 +1010,7 @@ template Army_size_tooltip {
 							}
 							expand = {}
 							text_single = {
-								raw_text = "[Country.GetArmySize|0L] [regulars_icon]"
+								raw_text = "[Country.GetRegularArmySize|0L] [regulars_icon]"
 								tooltipwidget = {
 									using = Country_regulars_tooltip
 								}
@@ -1033,7 +1036,7 @@ template Army_size_tooltip {
 							}
 							expand = {}
 							text_single = {
-								raw_text = "[Country.GetArmyLevyPowerValue|0L] [levies_icon]"
+								raw_text = "[Country.GetRaisedAndPotentialLevyStrength|0L] [levies_icon]"
 								tooltipwidget = {
 									using = Country_levies_tooltip
 								}
@@ -1076,7 +1079,7 @@ template Country_levies_tooltip {
 		blockoverride "concept_link" {
 			text = "[levies|e]"
 		}
-		lowpriotextcontext = "[Country.GetPotentialArmyLevyPowerTooltip]"
+		lowpriotextcontext = "[Country.GetArmyLevyPowerTooltip]"
 	}
 }
 
@@ -1136,10 +1139,7 @@ template Navy_size_tooltip {
 							}
 							expand = {}
 							text_single = {
-								raw_text = "[Country.GetNavyLevyPowerValue|0L] [navy_levies_icon]"
-								tooltipwidget = {
-									using = Country_navy_levies_tooltip
-								}
+								raw_text = "[Country.GetNavyLevyPower|V] [navy_levies_icon]"								
 							}
 						}
 					}
@@ -1162,7 +1162,7 @@ template Country_navy_levies_tooltip {
 		blockoverride "concept_link" {
 			text = "[navy_levies|e]"
 		}
-		lowpriotextcontext = "[Country.GetNavyLevyPowerTooltip]"
+		lowpriotextcontext = "[Country.GetPotentialNavyLevyPowerTooltip]"
 	}
 }
 

@@ -2604,7 +2604,7 @@ types SingleUnitWindowTypes
 											# 		visible = "[UnitActionItem.HasSingleLeftAction]"
 											# 		title = "[UnitActionItem.GetName]"
 											# 		on_action = "[UnitActionItem.SingleLeftClick]"
-											# 		conditions = "[MakeItFailIfLoc(Not(UnitActionItem.CanSingleLeftClick), UnitActionItem.GetTooltip)]"
+											# 		conditions = "[MakeItFailIf(Not(UnitActionItem.CanSingleLeftClick), UnitActionItem.GetTooltip)]"
 											# 		enabled = "[UnitActionItem.CanSingleLeftClick]"
 											# 		description = "[UnitActionItem.GetLeftClickDescription]"
 											# 	}
@@ -2616,7 +2616,7 @@ types SingleUnitWindowTypes
 											# 		click_type = left
 											# 		click_modifier = shift
 											# 		on_action = "[UnitActionItem.SingleLeftClick]"
-											# 		conditions = "[MakeItFailIfLoc(Not(UnitActionItem.CanSingleLeftClick), UnitActionItem.GetTooltip)]"
+											# 		conditions = "[MakeItFailIf(Not(UnitActionItem.CanSingleLeftClick), UnitActionItem.GetTooltip)]"
 											# 		enabled = "[UnitActionItem.CanSingleLeftClick]"
 											# 		description = "[UnitActionItem.GetLeftClickDescription]"
 											# 	}
@@ -2712,7 +2712,7 @@ types SingleUnitWindowTypes
 													visible = "[UnitActionItem.HasSingleLeftAction]"
 													title = "[UnitActionItem.GetName]"
 													on_action = "[UnitActionItem.SingleLeftClick]"
-													conditions = "[MakeItFailIfLoc(Not(UnitActionItem.CanSingleLeftClick), UnitActionItem.GetTooltip)]"
+													conditions = "[MakeItFailIf(Not(UnitActionItem.CanSingleLeftClick), UnitActionItem.GetTooltip)]"
 													enabled = "[UnitActionItem.CanSingleLeftClick]"
 													description = "[UnitActionItem.GetLeftClickDescription]"
 												}
@@ -2724,7 +2724,7 @@ types SingleUnitWindowTypes
 													click_type = left
 													click_modifier = shift
 													on_action = "[UnitActionItem.SingleLeftClick]"
-													conditions = "[MakeItFailIfLoc(Not(UnitActionItem.CanSingleLeftClick), UnitActionItem.GetTooltip)]"
+													conditions = "[MakeItFailIf(Not(UnitActionItem.CanSingleLeftClick), UnitActionItem.GetTooltip)]"
 													enabled = "[UnitActionItem.CanSingleLeftClick]"
 													description = "[UnitActionItem.GetLeftClickDescription]"
 												}
@@ -3798,6 +3798,9 @@ lateralview = {
 									
 									character_frame_medium_with_labels_and_abilities = {
 										enabled = "[Character.CanGiveUnitBonus]"
+										blockoverride "portrait_datacontext" {
+											datacontext = "[SingleUnitWindow.GetSelectedUnit.GetCommander]"
+										}
 										block "character_right_visible" {
 											visible = yes
 										}
@@ -3809,11 +3812,10 @@ lateralview = {
 										}
 										blockoverride "abilities_tooltip" {
 											tagtooltip_enabled = yes
-											tooltip = "[Character.GetAbilityTooltipAsGeneral]"
+											tooltip = "[AddTextIf(SingleUnitWindow.GetSelectedUnit.IsArmy, Character.GetAbilityTooltipAsGeneral)][AddTextIf(SingleUnitWindow.GetSelectedUnit.IsNavy, Character.GetAbilityTooltipAsAdmiral)]"
 										}
 										size = { 230 210 }
 										parentanchor = top|right
-										datacontext = "[SingleUnitWindow.GetSelectedUnit.GetCommander]"
 									}
 									header_button_left = {
 										parentanchor = center
@@ -4606,6 +4608,7 @@ lateralview = {
 																		margin = {4 0}
 																		visible = "[SingleUnitWindow.IsAddToCreatingUnitVisible]"
 																		widget = {
+																			datacontext = "[SubUnit]"
 																			size = { 24 36 }
 	
 																			header_button_left = {
