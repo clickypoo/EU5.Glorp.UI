@@ -366,6 +366,7 @@ Types LeftPanelTypes
 						}
 						onclick = "[ToggleLateralGroup('government_group')]"
                         onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
+                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Government')]"
 						down = "[IsLateralGroupOpened('government_group')]"
 
@@ -439,6 +440,7 @@ Types LeftPanelTypes
 						}
 						onclick = "[ToggleLateralGroup('economy_group')]"
                         onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
+                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Economy')]"
 						down = "[IsLateralGroupOpened('economy_group')]"
 
@@ -514,6 +516,7 @@ Types LeftPanelTypes
 					
 						onclick = "[ToggleLateralGroup('production_group')]"
                         onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
+                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						onclick = "[SetNonForeignUIFocusMarket]"
 						# onrightclick = "[OnToggleOutlinerCategory('Production')]"
 						down = "[IsLateralGroupOpened('production_group')]"
@@ -588,6 +591,7 @@ Types LeftPanelTypes
 						}
 						onclick = "[ToggleLateralGroup('society_group')]"
                         onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
+                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Society')]"
 						down = "[IsLateralGroupOpened('society_group')]"
 
@@ -661,6 +665,7 @@ Types LeftPanelTypes
 						}
 						onclick = "[ToggleLateralGroup('diplomacy_group')]"
                         onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
+                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Diplomacy')]"
 						down = "[IsLateralGroupOpened('diplomacy_group')]"
 
@@ -733,6 +738,7 @@ Types LeftPanelTypes
 						}
 						onclick = "[ToggleLateralGroup('military_group')]"
                         onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
+                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Military')]"
 						down = "[IsLateralGroupOpened('military_group')]"
 
@@ -806,6 +812,7 @@ Types LeftPanelTypes
 						}
 						onclick = "[ToggleLateralGroup('geography_group')]"
                         onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
+                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Geopolitics')]"
 						down = "[IsLateralGroupOpened('geography_group')]"
 
@@ -879,6 +886,7 @@ Types LeftPanelTypes
 						}
 						onclick = "[ToggleLateralGroup('advances_group')]"
                         onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
+                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						down = "[IsLateralGroupOpened('advances_group')]"
 
 						tooltipwidget = {
@@ -1151,7 +1159,7 @@ Types LeftPanelTypes
 						action_tooltip = {
 							click_type = left
 							click_mode = confirm
-							conditions = "[MakeItFailIf(Not(Player.CanExtendRegency), Player.GetExtendRegencyInfo)]"
+							conditions = "[MakeItFailIfLoc(Not(Player.CanExtendRegency), Player.GetExtendRegencyInfo)]"
 							title = "[Select_CString(Player.CanExtendRegency, Player.GetExtendRegencyInfo, Localize('CANNOT_EXTEND_REGENCY'))]"
 							on_action = "[ExtendRegency(Player.Self)]"
 							enabled = "[Player.CanExtendRegency]"
