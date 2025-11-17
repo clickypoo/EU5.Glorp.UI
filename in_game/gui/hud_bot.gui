@@ -993,6 +993,8 @@ types BottomTypes
 					blockoverride "icon_overlay" {}
 
 					onclick = "[MapModeSelectorVars.Toggle('color_ledger')]"
+					onclick = "[MapModeSelectorVars.Clear('color_ledger_bottom')]"
+					onclick = "[GetMapColorLedgerSearchBar.ClearTextFilter(PdxGuiWidget.AccessParent.AccessParent.FindChild('searchbar_editbox'))]"
 					tooltipwidget = {
 						SimpleContextualTooltipType = {
 							blockoverride "title_icon" {
@@ -1095,12 +1097,12 @@ types BottomTypes
 
 	type mapmodes_button_color_ledger = widget {
 		size = { 41 32 }
-		position = { 140 0 }
 		
 		block "button_ledger_position_visible" {
+			position = { 140 0 }
 			parentanchor = hcenter|top
 			widgetanchor = hcenter|bottom
-			visible = "[And4(Not(TutorialHasVar('intro_hide_ui_1')), IsDefaultMapModeSet, Not(MapModeSelectorVars.IsVisible), Not(Or(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'))))]"
+			visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible)))]"
 		}
 
 		icon = {
@@ -1158,14 +1160,17 @@ types BottomTypes
 				}
 
 				action_tooltip = {
-					visible = "[Not(MapModeSelectorVars.Exists('color_ledger'))]"
-					on_action = "[MapModeSelectorVars.Toggle('color_ledger')]"
+					visible = "[Not(MapModeSelectorVars.Exists('color_ledger_bottom'))]"
+					on_action = "[MapModeSelectorVars.Toggle('color_ledger_bottom')]"
+					on_action = "[MapModeSelectorVars.Clear('color_ledger')]"
+					on_action = "[GetMapColorLedgerSearchBar.ClearTextFilter(PdxGuiWidget.AccessParent.AccessParent.FindChild('searchbar_editbox'))]"
 					title = "OPEN_MAP_COLOR_LEDGER"
 				}
 
 				action_tooltip = {
-					visible = "[MapModeSelectorVars.Exists('color_ledger')]"
-					on_action = "[MapModeSelectorVars.Toggle('color_ledger')]"
+					visible = "[MapModeSelectorVars.Exists('color_ledger_bottom')]"
+					on_action = "[MapModeSelectorVars.Toggle('color_ledger_bottom')]"
+					on_action = "[MapModeSelectorVars.Clear('color_ledger')]"
 					title = "CLOSE_MAP_COLOR_LEDGER"
 				}
 			}
@@ -1210,6 +1215,55 @@ types BottomTypes
 					texture = "gfx/interface/icons/flat_icons/tabicons/color_ledger.dds"
 				}
 			}
+		}
+	}
+
+	type mapmodes_button_color_ledger_map_marker = mapmodes_button_color_ledger  {
+		allow_outside = yes
+
+		blockoverride "button_ledger_position_visible" {
+			parentanchor = hcenter|top
+			widgetanchor = hcenter|bottom
+			
+			block "button_ledger_map_marker_position_visible" {
+				position = { -140 0 }
+				visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
+			}
+		}
+
+		blockoverride "button_ledger_setup" {
+			tooltipwidget = {
+				SimpleContextualTooltipType = {
+					blockoverride "title_icon_texture" {
+						texture = "gfx/interface/icons/flat_icons/tabicons/map_marker_settings.dds"
+					}
+					lowpriotextcontext = "MAP_MARKER_SETTINGS_SIMPLE"
+				}
+			}
+
+			action_tooltip = {
+				visible = "[Not(MapModeSelectorVars.Exists('mapmarkers_settings'))]"
+				on_action = "[MapModeSelectorVars.Toggle('mapmarkers_settings')]"
+				title = "MAP_MARKER_SETTINGS_TOGGLE"
+			}
+
+			action_tooltip = {
+				visible = "[MapModeSelectorVars.Exists('mapmarkers_settings')]"
+				on_action = "[MapModeSelectorVars.Toggle('mapmarkers_settings')]"
+				title = "MAP_MARKER_SETTINGS_TOGGLE"
+			}
+		}
+
+		blockoverride "icon_texture" {
+			size = { 25 25 }
+			texture = "gfx/interface/icons/flat_icons/tabicons/map_marker_settings.dds"
+		}
+
+		mapmarkers_settings_window = {
+			visible = "[MapModeSelectorVars.Exists('mapmarkers_settings')]"
+			parentanchor = hcenter|top
+			widgetanchor = hcenter|bottom
+			position = { 0 -20 }
 		}
 	}
 
@@ -1358,7 +1412,7 @@ types BottomTypes
 		alwaystransparent = no
 
 		visible_at_creation = no
-		visible = "[Or(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'))]"
+		visible = "[Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible)]"
 		size = { @mapselector_width @mapselector_height }
 		allow_outside = yes
 
@@ -1933,231 +1987,6 @@ types BottomTypes
 
 			icon = { using = right_decoration_icon }
 		}
-	}
-
-	type mapmodes_pinned_window = widget {
-		alwaystransparent = no
-		size = { @mapselector_width @mapselector_height }
-
-		visible_at_creation = no
-		visible = "[MapModeSelectorVars.IsVisible]"
-		parentanchor = bottom|hcenter
-
-		state = {
-			name = _show
-			duration = 0.3
-			bezier = { 0.0 1.0 0.0 1.0 }
-			size = { @mapselector_width @mapselector_height }
-		}
-
-		state = {
-			name = _hide
-			duration = 0.25
-			bezier = { 1.0 0.0 1.0 0.0 }
-			size = { @mapselector_width 1 }
-		}
-
-		widget = {
-			parentanchor = bottom
-			size = { 100% 60% }
-			using = bg_mapmode_menu
-			ui_direction_button = {
-				size = { 20 20 }
-				down = "[MapModeSelectorVars.IsVisible]"
-				tooltipwidget = { BasicFunctionalTooltip = {}}
-				action_tooltip = {
-					click_type = left
-					click_mode = single
-					title = "[MapModeSelectorVars.GetPinTooltip]"
-					on_action = "[MapModeSelectorVars.SetIsVisible]"
-				}
-
-				icon = {
-					size = {100% 100%}
-					parentanchor = center
-					texture = "gfx/interface/buttons/round_button_texture_alt.dds"
-
-					modify_texture = {
-						using = color_new_gold_texture
-						blend_mode = overlay
-						alpha = 1
-					}
-					background = {
-						texture = "gfx/interface/buttons/bg_button_light.dds"
-						texture_density = 2
-						modify_texture = {
-							using = color_intense_brown_texture
-							blend_mode = add
-						}
-						modify_texture = {
-							using = color_super_dark_brown_texture
-							blend_mode = multiply
-							alpha = 0.6
-						}
-					}
-				}
-				icon = {
-					size = { 17 17 }
-					parentanchor = center
-					texture = "gfx/interface/icons/pin.dds"
-					using = button_panel_tab_icon_effect
-
-					blockoverride "icon_effect_visible" {visible = "[MapModeSelectorVars.IsVisible]"}
-					glow = {
-						blockoverride "icon_effect_visible" {}
-						glow_radius = 0
-					}
-				}
-			}
-
-			widget = {
-				alwaystransparent = no
-				onmousehierarchyenter = "[MapModeSelectorVars.Set('hover', 'yes')]"
-				onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]"
-
-				size = { @mapselector_width 50 }
-
-				overlappingitembox = {
-					minimumsize = { @[mapselector_width - 50] 40 }
-					maximumsize = { @[mapselector_width - 50] 40 }
-					parentanchor = center
-
-					spacing = 5
-					ignoreinvisible = yes
-
-					datacontext = "[Pin('map_modes')]"
-					datamodel = "[GetPinnedMapModes(PinCollection.Self)]"
-					item = { button_mapmode = {} }
-				}
-			}
-
-			# ui_direction_button = {
-			# 	size = { 20 20 }
-			# 	parentanchor = right
-
-			# 	icon = {
-			# 		size = {100% 100%}
-			# 		parentanchor = center
-			# 		texture = "gfx/interface/buttons/round_button_texture_alt.dds"
-
-			# 		modify_texture = {
-			# 			using = color_new_gold_texture
-			# 			blend_mode = overlay
-			# 			alpha = 1
-			# 		}
-			# 		background = {
-			# 			texture = "gfx/interface/buttons/bg_button_light.dds"
-			# 			texture_density = 2
-			# 			modify_texture = {
-			# 				using = color_intense_brown_texture
-			# 				blend_mode = add
-			# 			}
-			# 			modify_texture = {
-			# 				using = color_super_dark_brown_texture
-			# 				blend_mode = multiply
-			# 				alpha = 0.6
-			# 			}
-			# 		}
-			# 	}
-
-			# 	icon = {
-			# 		size = { 75% 75% }
-			# 		parentanchor = center
-			# 		texture = "gfx/interface/icons/flat_icons/tabicons/mapmodes.dds"
-			# 	}
-			# }
-		}
-
-		# hbox = {
-		# 	using = bg_mapmenu_tab
-		# 	icon = { using = left_decoration_icon }
-
-		# 	ui_direction_button = {
-		# 		size = { 20 20 }
-		# 		down = "[MapModeSelectorVars.IsVisible]"
-		# 		tooltipwidget = { BasicFunctionalTooltip = {}}
-		# 		action_tooltip = {
-		# 			click_type = left
-		# 			click_mode = single
-		# 			title = "[MapModeSelectorVars.GetPinTooltip]"
-		# 			on_action = "[MapModeSelectorVars.SetIsVisible]"
-		# 		}
-		# 		texture = "gfx/interface/buttons/flats/outliner_flat_icon.dds"
-
-		# 		icon = {
-		# 			size = {100% 100%}
-		# 			parentanchor = center
-		# 			texture = "gfx/interface/buttons/round_button_texture_alt.dds"
-
-		# 			modify_texture = {
-		# 				using = color_new_gold_texture
-		# 				blend_mode = overlay
-		# 				alpha = 1
-		# 			}
-		# 			background = {
-		# 				texture = "gfx/interface/buttons/bg_button_light.dds"
-		# 				texture_density = 2
-		# 				modify_texture = {
-		# 					using = color_intense_brown_texture
-		# 					blend_mode = add
-		# 				}
-		# 				modify_texture = {
-		# 					using = color_super_dark_brown_texture
-		# 					blend_mode = multiply
-		# 					alpha = 0.6
-		# 				}
-		# 			}
-		# 		}
-		# 		icon = {
-		# 			size = { 17 17 }
-		# 			parentanchor = center
-		# 			texture = "gfx/interface/icons/pin.dds"
-		# 			using = button_panel_tab_icon_effect
-
-		# 			blockoverride "icon_effect_visible" {visible = "[MapModeSelectorVars.IsVisible]"}
-		# 			glow = {
-		# 				blockoverride "icon_effect_visible" {}
-		# 				glow_radius = 0
-		# 			}
-		# 		}
-		# 	}
-
-		# 	widget = {
-		# 		layoutpolicy_horizontal = expanding
-		# 		size = { @pinnedmapselector_width @pinnedmapselector_height }
-		# 		allow_outside = yes
-
-		# 		overlappingitembox = {
-		# 			minimumsize = { 460 30 }
-		# 			maximumsize = { 460 30 }
-		# 			parentanchor = center
-
-		# 			spacing = 5
-		# 			ignoreinvisible = yes
-
-		# 			datacontext = "[Pin('map_modes')]"
-		# 			datamodel = "[GetPinnedMapModes(PinCollection.Self)]"
-		# 			item = { button_pinned_mapmode = {} }
-		# 		}
-		# 	}
-
-		# 	ui_direction_button = {
-		# 		onmousehierarchyenter = "[MapModeSelectorVars.Set('hover', 'yes')]"
-		# 		onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]"
-		# 		size = { 20 20 }
-
-		# 		texture = "gfx/interface/icons/flat_icons/tabicons/mapmodes.dds"
-		# 		using = bg_circle
-
-		# 		icon = {
-		# 			size = { 75% 75% }
-		# 			parentanchor = center
-		# 			texture = "gfx/interface/icons/flat_icons/tabicons/mapmodes.dds"
-		# 		}
-		# 	}
-
-		# 	icon = { using = right_decoration_icon }
-		# }
 	}
 }
 

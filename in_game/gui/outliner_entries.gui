@@ -1,3 +1,4 @@
+
 template button_outliner_texture {
 	texture = "gfx/interface/buttons/paper_outliner_button.dds"
 	texture_density = 2
@@ -159,16 +160,12 @@ types OutlinerEntriesTypes
 			parentanchor = right
 
 			state = {
-				name = _hide
-				bezier = { 1.0 0.0 1.0 0.0 }
-				duration = 0.25
+				using = outliner_hide_animation_template
 				position = { 400 0 }
 			}
 
 			state = {
-				name = _show
-				bezier = { 0.0 1.0 0.0 1.0 }
-				duration = 0.1
+				using = outliner_show_animation_template
 				position = { 0 0 }
 			}
 
@@ -627,16 +624,12 @@ widget = {
 		ignoreinvisible = yes
 
 		state = {
-			name = _hide
-			bezier = { 1.0 0.0 1.0 0.0 }
-			duration = 0.25
+			using = outliner_hide_animation_template
 			position = { 400 0 }
 		}
 
 		state = {
-			name = _show
-			bezier = { 0.0 1.0 0.0 1.0 }
-			duration = 0.1
+			using = outliner_show_animation_template
 			position = { 0 0 }
 		}
 
@@ -4009,14 +4002,14 @@ template cabinet_entry_action_progress {
 			text = "[Cabinet.GetNameWithNoTooltip]"
 			align = left
 			default_format = "#L"
-			maximumsize = { 190 -1 }
+			maximumsize = { 200 -1 }
 		}
 	}
 	expand = {}
 
 	block "cabinet_entry_progress_text" {
 		OutlinerTextBase = {
-			maximumsize = { 80 -1 }
+			maximumsize = { 90 -1 }
 			autoresize = yes
 			text = "[Cabinet.GetActionProgress]"
 		}
@@ -6480,6 +6473,7 @@ OutlinerEntryBase = {
 	blockoverride "button_setup" {
 		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightLocation(Construction.GetLocation)]"
 
+		datacontext = "[Construction]"
 		tooltipwidget = {
 			using = Construction_tooltip
 		}

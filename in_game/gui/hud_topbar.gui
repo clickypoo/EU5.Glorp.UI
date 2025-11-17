@@ -1304,16 +1304,17 @@ Types HUD_TopbarTypes
 									click_type = left
 									click_mode = single
 									title = "SHOW_RECRUITMENT_BUILDINGS"
-									on_action =  "[OpenLateralViewWithFilter('production', 'local_manpower')]"
+									on_action = "[OpenLateralViewWithFilter('production', 'local_manpower')]"
+									on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
 								}
 
 								action_tooltip = {
-									# visible = "[GreaterThan_CFixedPoint(Country.GetCurrencyMaxValue('manpower'), '(CFixedPoint)0')]"
 									click_modifier = shift
 									click_type = left
 									title = "ALERT_HINT"
 									using = snd_UI_alert_openAndCycle
-									on_action =  "[OpenLateralViewWithFilter('production', 'local_manpower')]"
+									on_action = "[OpenLateralViewWithFilter('production', 'local_manpower')]"
+									on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
 									on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_manpower')]"
 									on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
 								}
@@ -1454,7 +1455,8 @@ Types HUD_TopbarTypes
 									click_type = left
 									click_mode = single
 									title = "SHOW_RECRUITMENT_BUILDINGS"
-									on_action =  "[OpenLateralViewWithFilter('production', 'local_sailors')]"
+									on_action = "[OpenLateralViewWithFilter('production', 'local_sailors')]"
+									on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
 								}
 
 								action_tooltip = {
@@ -1462,7 +1464,8 @@ Types HUD_TopbarTypes
 									click_type = left
 									title = "ALERT_HINT"
 									using = snd_UI_alert_openAndCycle
-									on_action =  "[OpenLateralViewWithFilter('production', 'local_sailors')]"
+									on_action = "[OpenLateralViewWithFilter('production', 'local_sailors')]"
+									on_action = "[OpenLateralViewWithParams('production', 'display = lists')]"
 									on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_sailors')]"
 									on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
 								}
