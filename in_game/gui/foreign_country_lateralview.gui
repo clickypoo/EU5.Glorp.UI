@@ -20,14 +20,9 @@ types SubheaderTypes {
 							using = primary_culture_tooltip
 						}
 						blockoverride "subheader_unified_icon_texture" {
-							texture = "gfx/interface/icons/flat_icons/cultural_primary.dds"
+							texture = "gfx/interface/icons/culture/primary_culture.dds"
+							size = { 40 40 }
 
-							glow = {
-								name = "drop_shadow"
-								glow_radius = 3
-								color = {0.0 0.0 0.0 1.0}
-								alpha = 0.5
-							}
 						}
 						blockoverride "subheader_unified_top_text" {
 							text = "game_concept_primary_culture"
@@ -1490,7 +1485,7 @@ lateralview = {
 								}
 								blockoverride "title_text" {
 									datacontext = "[ForeignCountryView.GetCountry]"
-									text = "FOREIGN_COUNTRY_ARMY"
+									text = "ARMY_SIZE_TT_TITLE"
 								}
 
 								blockoverride "concept_link" {
@@ -1512,7 +1507,15 @@ lateralview = {
 											text = "CAW_NO_CURRENT_ARMY"
 										}
 									}
-									
+
+									TooltipStringPairList = {
+										datacontext = "[ForeignCountryView.GetCountry]"
+										blockoverride "block_title" {
+											text = "POTENTIAL_ARMY_OVERVIEW"
+										}
+										textcontext = "ARMY_BRK_POT_LEVIES"
+									}
+
 									TooltipStringPairList = {
 										blockoverride "block_title" {
 											text = "BEST_POSSIBLE_REGIMENTS"
@@ -1535,7 +1538,7 @@ lateralview = {
                             text_single = {
                                 autoresize = yes
                                 align = right|nobaseline
-                                text = "[Country.GetArmyLevyPower|2W] [levies_icon]"
+                                text = "[Country.GetRaisedAndPotentialLevyStrength|2W] [levies_icon]"
                             }
                             text_single = {
                                 autoresize = yes
@@ -1543,7 +1546,6 @@ lateralview = {
                                 text = "[Country.GetRegularArmySize|0L] [regulars_icon]"
                             }
                         }
-
 
 						widget = {
 
@@ -1597,6 +1599,14 @@ lateralview = {
 										}
 									}
 									
+									TooltipStringPairList = {
+										datacontext = "[ForeignCountryView.GetCountry]"
+										blockoverride "block_title" {
+											text = "POTENTIAL_NAVY_OVERVIEW"
+										}
+										textcontext = "NAVY_BRK_POT_LEVIES"
+									}
+
 									TooltipStringPairList = {
 										blockoverride "block_title" {
 											text = "BEST_POSSIBLE_SHIPS"
@@ -2402,20 +2412,22 @@ lateralview = {
 								name = "open_all_diplo_actions_button"
 								layoutpolicy_horizontal = expanding
 								size = {-1 35}
-								name = "create market button"
-								actor = "[Player]"
-								datacontext = "[Player]"
-								tooltip_enabled = yes
-								tooltipwidget = {
-									LeftClickButtonTooltip = {
-										blockoverride "onclick_text" {
-											text = "SELECT_ACTIONS"
-										}
-									}
+								action_tooltip = {
+									click_type = left
+									click_mode = single
+									title = "SELECT_ACTIONS"
+									on_action = "[ShowDiploMacrobuilderWithCountry(ForeignCountryView.GetCountryPointer)]"
 								}
-								onclick = "[ShowDiploMacrobuilderWithCountry(ForeignCountryView.GetCountryPointer)]"
-	
-								text = "SELECT_ACTIONS"
+								tooltipwidget = {
+									BasicFunctionalTooltip = {}
+								}
+
+								text_single = {
+									text = "SELECT_ACTIONS"
+									size = { 100% 100% }
+									align = center
+									autoresize = no
+								}
 	
 								icon = {
 									size = {25 25}
@@ -2533,6 +2545,7 @@ lateralview = {
 								blockoverride "diplo_action_side_size" {
 									size = { 40 20 }
 								}
+								blockoverride "extra_diplo_macro_margin" {}
 							}
 
 							#Show Actions
@@ -2558,6 +2571,7 @@ lateralview = {
 								blockoverride "diplomatic_actions_content_items_size"{
 									size = { 520 40 }
 								}
+								blockoverride "extra_diplo_macro_margin" {}
 							}
 						}
 					}
@@ -3893,6 +3907,7 @@ select_menu_left = {
 									click_mode = single
 									title = "COUNTRY_CLICK_TOOLTIP_LEFT_CLICK"
 									on_action = "[ShowForeignCountry(Country.Self)]"
+									on_action = "[PanToCountry(Country.Self)]"
 								}
 							}
 						}

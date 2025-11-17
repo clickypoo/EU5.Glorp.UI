@@ -667,6 +667,13 @@ types AdvancesTreeView
 																				alpha = 1
 																			}
 																		}
+																		text_single = {
+																			layoutpolicy_horizontal = growing
+                                                                            size = { 30 30 }
+                                                                            parentanchor = center
+                                                                            text = "[AdvanceEffectItem.GetIcon]"
+                                                                            fontsize = 20
+																		}
 																		icon = {
 																			alwaystransparent = yes
 																			size = { 45 45 }
@@ -676,13 +683,6 @@ types AdvancesTreeView
 																				alpha = 1
 																			}
 																		}
-                                                                        text_single = {
-                                                                            # layoutpolicy_horizontal = growing
-                                                                            size = { 30 30 }
-                                                                            parentanchor = center
-                                                                            text = "[AdvanceEffectItem.GetIcon]"
-                                                                            fontsize = 20
-                                                                        }
 																	}
 
 																	vbox = {
@@ -1337,6 +1337,13 @@ template advances_tree_item_modifiers {
 													alpha = 1
 												}
 											}
+											text_single = {
+                                                layoutpolicy_horizontal = growing
+                                                size = { 30 30 }
+                                                parentanchor = center
+                                                text = "[AdvanceEffectItem.GetIcon]"
+                                                fontsize = 20
+											}
 											icon = {
 												alwaystransparent = yes
 												size = { 40 40 }
@@ -1346,13 +1353,6 @@ template advances_tree_item_modifiers {
 													alpha = 1
 												}
 											}
-                                            text_single = {
-                                                layoutpolicy_horizontal = growing
-                                                size = { 30 30 }
-                                                parentanchor = center
-                                                text = "[AdvanceEffectItem.GetIcon]"
-                                                fontsize = 20
-                                            }
 										}
 
 										vbox = {
@@ -2040,11 +2040,11 @@ lateralview_full = {
 						layoutpolicy_vertical = expanding
 						scissor = yes
 						zoom = 1
-						zoom_step = 0.2
+						zoom_step = 0.4
 						zoom_min = 0.1
 						zoom_max = 1.5
 						pan_position = { 0 0 }
-						clamp_pan_position = yes
+						clamp_pan_position = no
 
 						draggable_by = left
 

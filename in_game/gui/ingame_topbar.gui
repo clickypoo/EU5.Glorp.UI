@@ -746,15 +746,13 @@ widget = {
 		}
 
 		blockoverride "pre_panel" {
+			allow_outside = yes
+
 			mapmodes_collapsed_window = {
 				name = "mapmodes_collapsed_window"
 				visible = "[Not(TutorialHasVar('intro_hide_ui_1'))]"
 				allow_outside = yes
 			}
-
-			# mapmodes_pinned_window = {
-			# 	allow_outside = yes
-			# }
 
 			widget = {
 				visible = "[Not(Or(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action')))]"
@@ -771,14 +769,14 @@ widget = {
 
 				state = {
 					name = show_wait
-					duration = 0.1
+					duration = 0.2
 					alpha = 0
 					next = show_final
 				}
 
 				state = {
 					name = show_final
-					duration = 0.3
+					duration = 0.2
 					bezier = { 0.0 1.0 0.0 1.0 }
 					alpha = 1
 				}						
@@ -944,7 +942,7 @@ widget = {
 
 						state = {
 							name = _show
-							duration = 0.1
+							duration = 0.3
 							bezier = { 0.0 1.0 0.0 1.0 }
 							alpha = 1
 						}

@@ -68,6 +68,7 @@ types OrganizationPanel
                     }
 				}
 			}
+
 			# content
 			vbox = {
 				using = layoutpolicy_expanding
