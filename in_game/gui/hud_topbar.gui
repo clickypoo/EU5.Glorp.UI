@@ -264,7 +264,6 @@ Types HUD_TopbarTypes
 										texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
 									}
 
-
                                     # Vanilla Estates Text
                                     hbox = {
                                         using = layoutpolicy_expanding

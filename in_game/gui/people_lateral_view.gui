@@ -17,7 +17,7 @@ types SocietyView
 
 			# raw_text = "#prefix_name [Character.GetCharacterPrefixWithNoTooltip]#! #character_name [Character.GetFirstNameWithNoTooltip]#! #regnal_name [Character.GetCharacterRegnalNumWithNoTooltip]#! #nickname [Character.GetAdultNicknameWithNoTooltip]#! #lastname [Character.GetLastNameWithNoTooltip]#!#suffix_name , [Character.GetAge]#!"
 			block "character_name_text" {
-				text = "[Character.GetNameToFit('(int32)-1', '(bool)yes')|U], [Character.GetAgeInYears|T]#!"
+				text = "[Character.GetNameToFit('(int32)-1', '(bool)yes')|U]"
 			}
 			block "name_highlight" {
 				sort_by_left_fade_highlight = {
@@ -899,7 +899,7 @@ society_view = {
 							widget = {
 								datacontext = "[CharacterItem.GetCharacter]"
 								clickable_header_card = {
-									position = { 10 0 }
+									position = { 2 0 }
 									ignore_layout = yes
 									using = character_entry
 									parentanchor = hcenter
@@ -1713,8 +1713,9 @@ template character_entry {
 						}
 
 						hbox = {
-							CharacterNameDefault = {
-								layoutpolicy_vertical = expanding
+							text_single = {
+								default_format = "#yellow_titles"
+								raw_text = "[Character.GetNameToFitWithNoTooltip('(int32)30', '(bool)yes')], [Character.GetAgeInYears]"
 							}
 							block "character_entry_name_sort_by_highlight" {
 								sort_by_highlight = {
