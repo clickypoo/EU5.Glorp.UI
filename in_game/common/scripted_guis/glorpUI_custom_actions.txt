@@ -69,3 +69,15 @@ SetUseVanillaEstatesText = {
         }
     }
 }
+
+SetUseVanillaCabinetView = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = useVanillaCabinetView } }
+            set_variable = { name = useVanillaCabinetView value = 1 }
+        }
+        else = {
+            remove_variable = useVanillaCabinetView
+        }
+    }
+}
