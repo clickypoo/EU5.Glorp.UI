@@ -2495,37 +2495,11 @@ lateralview = {
 
 					expand = {}
 				}
-				button = {
-					name = "zoom_to"
-					size = { 25 25 }
-					position = { 515 7 }
-					datacontext = "[LocationView.GetLocation]"
-					
-					size = { 19 19 }
-					texture = "gfx/interface/buttons/flats/goto_button_alt.dds"
-					texture_density = 2
-
-					background = {
-						using = bg_button_light_round_texture
-						modify_texture = {
-							using = color_dark_blue_texture
-						}
-					}
-
-					using = ui_direction_button_overlay
-
-					action_tooltip = {
-						click_type = left
-						click_mode = single
-						title = "GO_TO_LOCATION"
-						on_action = "[ShowLocation(Location.Self)]"
-					}
-					tooltipwidget = {
-						LeftClickButtonTooltip = {
-							blockoverride "onclick_text" { text = "GO_TO" }
-						}
-					}
-				}
+                zoom_to_button = {
+                    blockoverride "onclick_action" {
+                        onclick = "[PanToLocation(LocationView.GetLocation)]"
+                    }
+                }
 
 				hbox = {
 					editbox = {

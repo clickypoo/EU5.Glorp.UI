@@ -1,0 +1,33 @@
+types glorp {
+    type zoom_to_button = button {
+        name = "zoom_to"
+        parentanchor = right
+        size = { 25 25 }
+        position = { -30 7 }
+
+        using = ui_direction_button_overlay
+        texture = "gfx/interface/buttons/flats/goto_button_alt.dds"
+        texture_density = 2
+        background = {
+            using = bg_button_light_round_texture
+            modify_texture = {
+                using = color_dark_blue_texture
+            }
+        }
+
+        input_action = "confirm"
+        use_global_input_instance = yes
+        block "onclick_action" {}
+
+        action_tooltip = {
+            click_type = left
+            click_mode = single
+            title = "GO_TO_LOCATION"
+        }
+        tooltipwidget = {
+            LeftClickButtonTooltip = {
+                blockoverride "onclick_text" { text = "GO_TO" }
+            }
+        }
+    }
+}
