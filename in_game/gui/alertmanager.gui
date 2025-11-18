@@ -909,7 +909,7 @@ types AlertManager {
 																			}
 																								
 																			blockoverride "concept_link" {
-																				text = [opinion|E]
+																				text = "[opinion|E]"
 																			}
 										
 																			blockoverride "tooltip_content" {
@@ -922,6 +922,37 @@ types AlertManager {
 																		}
 																	}
 																}
+                                                                datamodel = "[Country.GetDiplomacy.GetInternationalOrganizations]"
+                                                                item = {
+                                                                    icon = {
+                                                                        visible = "[EqualTo_string(InternationalOrganization.GetTarget.GetName, GetPlayer.GetName)]"
+                                                                        texture = "gfx/interface/icons/diplomatic_status/coalition.dds"
+                                                                        size = { 30 30 }
+                                                                        tooltipwidget = {
+                                                                            ContextualTooltipType = {
+                                                                                blockoverride "title_icon" {
+                                                                                    icon = {
+                                                                                        size = { 50 50 }
+                                                                                        texture = "gfx/interface/icons/diplomatic_status/coalition.dds"
+                                                                                    }
+                                                                                }
+
+                                                                                blockoverride "title_text" {
+                                                                                    datacontext = "[Country]"
+                                                                                    text = "[InternationalOrganization.GetName]"
+                                                                                }
+
+                                                                                blockoverride "tooltip_content" {
+                                                                                    TooltipTextBlock = {
+                                                                                        blockoverride "text" {
+                                                                                            text = "COALITION_AGAINST_COUNTRY_DESC"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
 															}
 														}
 													}
