@@ -4080,6 +4080,25 @@ lateralview = {
 														using = bg_circle_piechart
 													}
 													using = bg_control_romboid
+
+                                                    button = {
+                                                        size = { 100% 100% }
+                                                        datacontext = "[GetMapMode('control')]"
+                                                        onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('control')]"
+                                                        datacontext = "[LocationView.GetLocation]"
+                                                        tooltipwidget = {
+                                                            using = location_control_tooltip
+                                                            blockoverride "location_control_widgetid" {
+                                                                widgetid = "location_control_tooltip_id"
+                                                            }
+                                                        }
+                                                        action_tooltip = {
+                                                            click_type = left
+                                                            click_mode = single
+                                                            title = "MAPMODE_SELECT"
+                                                            on_action = "[MapMode.SetMapMode]"
+                                                        }
+                                                    }
 												}
 
 												# PROXIMITY
@@ -4189,6 +4208,25 @@ lateralview = {
 															}
 														}
 													}
+
+                                                    button = {
+                                                        size = { 100% 100% }
+                                                        datacontext = "[GetMapMode('proximity')]"
+                                                        onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('proximity')]"
+                                                        datacontext = "[LocationView.GetLocation]"
+                                                        action_tooltip = {
+                                                            click_type = left
+                                                            click_mode = single
+                                                            title = "MAPMODE_SELECT"
+                                                            on_action = "[MapMode.SetMapMode]"
+                                                        }
+                                                        tooltipwidget = {
+                                                            using = LocationProximity_tooltip
+                                                            blockoverride "location_proximity_widgetid" {
+                                                                widgetid = "location_proximity_tooltip_id"
+                                                            }
+                                                        }
+                                                    }
 												}
 												
 												# TAX BASE
@@ -4268,12 +4306,30 @@ lateralview = {
 															}
 														}
 													}
+
+                                                    button = {
+                                                        size = { 100% 100% }
+                                                        datacontext = "[GetMapMode('tax_base')]"
+                                                        onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('tax_base')]"
+                                                        datacontext = "[LocationView.GetLocation]"
+                                                        action_tooltip = {
+                                                            click_type = left
+                                                            click_mode = single
+                                                            title = "MAPMODE_SELECT"
+                                                            on_action = "[MapMode.SetMapMode]"
+                                                        }
+                                                        tooltipwidget = {
+                                                            using = location_tax_base_tooltip
+                                                        }
+                                                    }
 												}
 											}
 										}
 
 										# RGO
 										header_button_left = {
+                                            datamodel = "[LocationView.GetLocation.GetRawMaterial]"
+                                            onmousehierarchyenter = "[PdxGuiWidget.SetHighlightGoods(Location.GetRawMaterial.Self)]"
 											name = "location_rgo"
 											size = { 125 40}
 											enabled = "[Or(LocationView.CanUpgradeRGO, LocationView.CanReduceRGO)]"
@@ -4451,6 +4507,14 @@ lateralview = {
 														enabled = "[And(IsCabinetActionAllowed('develop_province'), Location.GetOwner.IsPlayer)]"
 														conditions = "[GetCabinetActionTooltip('develop_province')]"
 													}
+                                                    datacontext = "[GetMapMode('development')]"
+                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('development')]"
+                                                    action_tooltip = {
+                                                        click_type = right
+                                                        click_mode = single
+                                                        title = "MAPMODE_SELECT"
+                                                        on_action = "[MapMode.SetMapMode]"
+                                                    }
 													enabled = "[And(IsCabinetActionAllowed('develop_province'), Location.GetOwner.IsPlayer)]"
 
 													tooltipwidget = {
@@ -4508,6 +4572,8 @@ lateralview = {
 											widget = {
 												size = { 80 35 }
 												sneaky_button = {
+                                                    # When we can do recovery_effort
+                                                    visible = "[And(IsCabinetActionAllowed('recovery_effort'), Location.GetOwner.IsPlayer)]"
 													size = { 100% 100% }
 													action_tooltip = {
 														click_type = left
@@ -4517,12 +4583,41 @@ lateralview = {
 														enabled = "[And(IsCabinetActionAllowed('develop_province'), Location.GetOwner.IsPlayer)]"
 														conditions = "[GetCabinetActionTooltip('recovery_effort')]"
 													}
-													enabled = "[And(IsCabinetActionAllowed('recovery_effort'), Location.GetOwner.IsPlayer)]"
+                                                    datacontext = "[GetMapMode('development')]"
+                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('development')]"
+                                                    action_tooltip = {
+                                                        click_type = right
+                                                        click_mode = single
+                                                        title = "MAPMODE_SELECT"
+                                                        on_action = "[MapMode.SetMapMode]"
+                                                    }
+
+													# enabled = "[And(IsCabinetActionAllowed('recovery_effort'), Location.GetOwner.IsPlayer)]"
 
 													tooltipwidget = {
 														using = location_prosperity_tooltip
 													}
 												}
+                                                # When we can't do recovery_effort
+                                                sneaky_button = {
+                                                    visible = "[Or(Not(IsCabinetActionAllowed('recovery_effort')), Not(Location.GetOwner.IsPlayer))]"
+                                                    size = { 100% 100% }
+                                                    datacontext = "[GetMapMode('prosperity')]"
+                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('prosperity')]"
+                                                    action_tooltip = {
+                                                        click_type = right
+                                                        click_mode = single
+                                                        title = "MAPMODE_SELECT"
+                                                        on_action = "[MapMode.SetMapMode]"
+                                                    }
+                                                    tooltipwidget = {
+                                                        using = location_prosperity_tooltip
+                                                    }
+                                                    texture = "gfx/interface/buttons/sneaky_button_black.dds"
+                                                    spriteType = corneredstretched
+                                                    spriteborder = { 25 0 }
+                                                    texture_density = 2
+                                                }
 												hbox = {
 													spacing = 7
 													margin_left = 5
@@ -4680,6 +4775,7 @@ lateralview = {
 											widget = {
 												size = { 80 35 }
 												sneaky_button = {
+                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('institution')]"
 													size = { 100% 100% }
 													action_tooltip = {
 														click_type = left
@@ -4749,6 +4845,14 @@ lateralview = {
 													}
 													enabled = "[Location.GetOwner.IsPlayer]"
 
+                                                    datacontext = "[GetMapMode('food_productivity')]"
+                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('food_productivity')]"
+                                                    action_tooltip = {
+                                                        click_type = right
+                                                        click_mode = single
+                                                        title = "MAPMODE_SELECT"
+                                                        on_action = "[MapMode.SetMapMode]"
+                                                    }
 													tooltipwidget = {
 														using = food_productivity_tooltip
 														blockoverride "shift_left_extra" {
@@ -4811,6 +4915,14 @@ lateralview = {
 													}
 													enabled = "[Location.GetOwner.IsPlayer]"
 
+                                                    datacontext = "[GetMapMode('food')]"
+                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('food')]"
+                                                    action_tooltip = {
+                                                        click_type = right
+                                                        click_mode = single
+                                                        title = "MAPMODE_SELECT"
+                                                        on_action = "[MapMode.SetMapMode]"
+                                                    }
 													tooltipwidget = {
 														using = location_food_tooltip
 														blockoverride "shift_left_extra" {
