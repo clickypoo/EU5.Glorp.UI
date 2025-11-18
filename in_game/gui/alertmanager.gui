@@ -4411,12 +4411,12 @@ types AlertManager {
 				
 														text_single = {
 															align = nobaseline
-															raw_text = "@location! [LOCATION.GetName]:"
+															raw_text = "@location! [Location.GetName]:"
 														}
 														expand = {}
 				
 														text_single = {
-															raw_text = "[LOCATION.GetPopulationChangeLabel]@population!"
+															raw_text = "[Location.GetPopulationChangeLabel]@population!"
 														}					
 													}
 												}
