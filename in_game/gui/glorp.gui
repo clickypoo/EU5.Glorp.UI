@@ -15,7 +15,7 @@ types glorp {
             }
         }
 
-        input_action = "confirm"
+        input_action = "macro_builder"
         use_global_input_instance = yes
         block "onclick_action" {}
 
