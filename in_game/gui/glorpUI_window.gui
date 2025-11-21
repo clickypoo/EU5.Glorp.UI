@@ -146,6 +146,19 @@ window = {
                             }
                         }
 
+                        # Cabinet view
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Vanilla Cabinet View"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetUseVanillaCabinetView').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet]"
+                                tooltip_enabled = no
+                            }
+                        }
+
                         # Close button
                         # hbox = {
                         #     parentanchor = bottom|nobaseline
