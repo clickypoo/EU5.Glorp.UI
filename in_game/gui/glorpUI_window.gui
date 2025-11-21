@@ -48,6 +48,15 @@ window = {
                         #
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
+                            text = "War View"
+                            down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'war_view' )]"
+                            default_format = "#medium"
+                            tooltip_enabled = no
+                            onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'war_view' )]"
+                        }
+
+                        button_secondary_tab_alt = {
+                            using = layoutpolicy_expanding
                             text = "Top Bar"
                             down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'top_bar' )]"
                             default_format = "#medium"
@@ -159,19 +168,6 @@ window = {
                             }
                         }
 
-                        # War view
-                        hbox = {
-                            spacing = 10
-                            text_single = {
-                                raw_text = "Vanilla War View"
-                            }
-                            checkbox_square_alt = {
-                                onclick = "[GetScriptedGui('SetUseVanillaWarView').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Player.MakeScope.GetVariable('useVanillaWarView').IsSet]"
-                                tooltip_enabled = no
-                            }
-                        }
-
                         # Close button
                         # hbox = {
                         #     parentanchor = bottom|nobaseline
@@ -189,6 +185,35 @@ window = {
                         #         onclick = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
                         #     }
                         # }
+                    }
+
+                    # War View
+                    vbox = {
+                        visible = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'war_view' )]"
+
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Vanilla Army Strength"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetUseVanillaArmyStrength').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Player.MakeScope.GetVariable('useVanillaArmyStrength').IsSet]"
+                                tooltip_enabled = no
+                            }
+                        }
+
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Vanilla Participant Colour"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetUseVanillaParticipantColour').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet]"
+                                tooltip_enabled = no
+                            }
+                        }
                     }
 
                     # Top Bar

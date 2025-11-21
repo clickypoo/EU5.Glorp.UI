@@ -4,6 +4,7 @@ types war_types {
 		using = layoutpolicy_expanding
 		margin = {0 0}
 		datacontext = "[WarLateralViewParticipant.GetCountry]"
+        #visible = "[Not(Country.GetDiplomacy.IsSubject)]"
 
 		using = bg_paper_card
 		
@@ -11,12 +12,38 @@ types war_types {
 
 		hbox = {
 			using = layoutpolicy_expanding
-			margin = { 0 4 }
+			margin = { 4 4 }
 			
 			hbox = {
 				using = layoutpolicy_expanding
 				spacing = 10
 				margin = {8 0}
+
+                # Glorp UI - Player Background
+                background = {
+                    visible = "[And(Country.IsLocalPlayer, Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
+                    using = color_gold_dark_texture
+                }
+                background = {
+                    visible = "[And3(Country.IsPlayer, GetPlayer.IsEnemy(Country.Self), Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
+                    using = color_red_texture
+                }
+                # Glorp UI - Enemy, not subject
+                background = {
+                    visible = "[And3(Not(Country.GetDiplomacy.IsSubject), GetPlayer.IsEnemy(Country.Self), Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
+                    using = color_dark_red_texture
+                    #modify_texture = { blend_mode = overlay alpha = 1 }
+                }
+                # Glorp UI - Friendly, not subject
+                background = {
+                    visible = "[And4(Not(Country.GetDiplomacy.IsSubject), Not(GetPlayer.IsEnemy(Country.Self)), Not(Country.IsLocalPlayer), Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
+                    using = color_mid_green_texture
+                }
+                # Glorp UI - Friendly, player
+                background = {
+                    visible = "[And4(Country.IsPlayer, Not(GetPlayer.IsEnemy(Country.Self)), Not(Country.IsLocalPlayer), Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
+                    using = color_mid_green_texture
+                }
 
 				# COUNTRY AND PEACE
 				hbox = {
@@ -120,7 +147,7 @@ types war_types {
                 # Glorp UI - Army Strength
                 #using = layoutpolicy_expanding
                 hbox = {
-                    visible = "[Not(Player.MakeScope.GetVariable('useVanillaWarView').IsSet)]"
+                    visible = "[Not(Player.MakeScope.GetVariable('useVanillaArmyStrength').IsSet)]"
                     tooltipwidget = { using = Army_size_tooltip }
                     spacing = 5
                     text_single = {
@@ -137,7 +164,7 @@ types war_types {
 
 				# Vanilla - COUNTRY ARMY STRENGTH
 				hbox = {
-                    visible = "[Player.MakeScope.GetVariable('useVanillaWarView').IsSet]"
+                    visible = "[Player.MakeScope.GetVariable('useVanillaArmyStrength').IsSet]"
 					spacing = 5
 					margin_right = 5
 					
@@ -199,7 +226,7 @@ types war_types {
 
                 # Glorp UI - Country Navy Strength
                 hbox = {
-                    visible = "[Not(Player.MakeScope.GetVariable('useVanillaWarView').IsSet)]"
+                    visible = "[Not(Player.MakeScope.GetVariable('useVanillaArmyStrength').IsSet)]"
                     tooltipwidget = { using = Navy_size_tooltip }
                     spacing = 5
                     text_single = {
@@ -216,7 +243,7 @@ types war_types {
 
 				# Vanilla - COUNTRY NAVY STRENGTH
 				hbox = {
-                    visible = "[Player.MakeScope.GetVariable('useVanillaWarView').IsSet]"
+                    visible = "[Player.MakeScope.GetVariable('useVanillaArmyStrength').IsSet]"
 					spacing = 5
 					margin_right = 10
 				

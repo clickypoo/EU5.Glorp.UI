@@ -82,14 +82,26 @@ SetUseVanillaCabinetView = {
     }
 }
 
-SetUseVanillaWarView = {
+SetUseVanillaArmyStrength = {
     effect = {
         if = {
-            limit = { NOT = { has_variable = useVanillaWarView } }
-            set_variable = { name = useVanillaWarView value = 1 }
+            limit = { NOT = { has_variable = useVanillaArmyStrength } }
+            set_variable = { name = useVanillaArmyStrength value = 1 }
         }
         else = {
-            remove_variable = useVanillaWarView
+            remove_variable = useVanillaArmyStrength
+        }
+    }
+}
+
+SetUseVanillaParticipantColour = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = useVanillaParticipantColour } }
+            set_variable = { name = useVanillaParticipantColour value = 1 }
+        }
+        else = {
+            remove_variable = useVanillaParticipantColour
         }
     }
 }
