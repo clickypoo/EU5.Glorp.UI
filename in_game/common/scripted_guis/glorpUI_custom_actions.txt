@@ -81,3 +81,15 @@ SetUseVanillaCabinetView = {
         }
     }
 }
+
+SetUseVanillaWarView = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = useVanillaWarView } }
+            set_variable = { name = useVanillaWarView value = 1 }
+        }
+        else = {
+            remove_variable = useVanillaWarView
+        }
+    }
+}

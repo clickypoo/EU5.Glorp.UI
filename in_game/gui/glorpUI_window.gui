@@ -159,6 +159,19 @@ window = {
                             }
                         }
 
+                        # War view
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Vanilla War View"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetUseVanillaWarView').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Player.MakeScope.GetVariable('useVanillaWarView').IsSet]"
+                                tooltip_enabled = no
+                            }
+                        }
+
                         # Close button
                         # hbox = {
                         #     parentanchor = bottom|nobaseline

@@ -117,8 +117,27 @@ types war_types {
 					}
 				}
 
-				# COUNTRY ARMY STRENGTH
+                # Glorp UI - Army Strength
+                #using = layoutpolicy_expanding
+                hbox = {
+                    visible = "[Not(Player.MakeScope.GetVariable('useVanillaWarView').IsSet)]"
+                    tooltipwidget = { using = Army_size_tooltip }
+                    spacing = 5
+                    text_single = {
+                        autoresize = yes
+                        align = right
+                        text = "[Country.GetRaisedAndPotentialLevyStrength] [levies_icon] ([Country.GetRegularArmySize|0L] [regulars_icon])"
+                    }
+
+                    # icon = {
+                    #     size = { 24 24 }
+                    #     texture = "gfx/interface/icons/unit_category/total_strength.dds"
+                    # }
+                }
+
+				# Vanilla - COUNTRY ARMY STRENGTH
 				hbox = {
+                    visible = "[Player.MakeScope.GetVariable('useVanillaWarView').IsSet]"
 					spacing = 5
 					margin_right = 5
 					
@@ -178,8 +197,26 @@ types war_types {
 
 				divider_flavor_01 = {size = { 12 -1 }}
 
-				# COUNTRY NAVY STRENGTH
+                # Glorp UI - Country Navy Strength
+                hbox = {
+                    visible = "[Not(Player.MakeScope.GetVariable('useVanillaWarView').IsSet)]"
+                    tooltipwidget = { using = Navy_size_tooltip }
+                    spacing = 5
+                    text_single = {
+                        autoresize = yes
+                        align = right
+                        text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] ([Country.GetNavySizeValue|0L] @naval_regular!)"
+                    }
+
+                    # icon = {
+                    #     size = { 24 24 }
+                    #     texture = "gfx/interface/icons/flat_icons/declare_war/navy.dds"
+                    # }
+                }
+
+				# Vanilla - COUNTRY NAVY STRENGTH
 				hbox = {
+                    visible = "[Player.MakeScope.GetVariable('useVanillaWarView').IsSet]"
 					spacing = 5
 					margin_right = 10
 				
