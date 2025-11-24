@@ -42,7 +42,7 @@ types war_types {
                 # Glorp UI - Friendly, player
                 background = {
                     visible = "[And4(Country.IsPlayer, Not(GetPlayer.IsEnemy(Country.Self)), Not(Country.IsLocalPlayer), Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
-                    using = color_mid_green_texture
+                    using = color_mid_blue_texture
                 }
 
 				# COUNTRY AND PEACE
