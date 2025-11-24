@@ -2930,3 +2930,17 @@ texticon = {
 		fontsize = 16
 	}
 }
+
+######################################
+# Glorp UI
+######################################
+
+texticon = {
+    icon = production_efficiency
+    iconsize = {
+        texture = "gfx/interface/icons/flat_icons/building_panel/production_efficiency.dds"
+        size = { 20 20 }
+        offset = { 0 6 }
+        fontsize = 16
+    }
+}
