@@ -833,7 +833,28 @@ template CountryDiplomacyTooltip {
 				using = CountryTooltip_DiplomacyStatBars
 			}
 
+            TooltipRowList = {
+                visible = "[And(Country.GetDiplomacy.IsDisloyalSubject, Country.GetDiplomacy.IsSubject)]"
+                textcontext = "SubjectTypeDetail_DESC_NOT"
+                tooltipwidget = {
+                    using = SubjectLoyalty_tooltip
+                }
+            }
+            TooltipRowList = {
+                visible = "[And(Not(Country.GetDiplomacy.IsDisloyalSubject), Country.GetDiplomacy.IsSubject)]"
+                textcontext = "SubjectTypeDetail_DESC"
+                tooltipwidget = {
+                    using = SubjectLoyalty_tooltip
+                }
+            }
+            TooltipScrolledStringPairList = {
+                visible = "[Not(GetSelectedCountryOrByLocation.IsLocalPlayer)]"
+                blockoverride "block_scrollarea" { maximumsize = { -1 150 } minimumsize = { -1 30 } }
+                textcontext = "[GetSelectedCountryOrByLocation.GetDiplomacy.GetDiplomaticRelationsWithCountryInfo(Country.Self)]"
+            }
+
             TooltipBlockList = {
+                visible = "[GetSelectedCountryOrByLocation.IsLocalPlayer]"
                 textcontext = "[Country.GetPlayerDiplomacyInfo]"
             }
         }
