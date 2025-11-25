@@ -260,8 +260,8 @@ template societal_values {
                                 value = "[Abs_float(Min_float(SocietalValueItem.GetPosition, '(float)0'))]"
                                 invertprogress = yes
                             }
-                            progressbar = {
-                                visible = "[SocietalValueItem.IsLeft]"
+                            progressbar = { # Max Equilibrium
+                                visible = "[LessThan_float(SocietalValueItem.GetDirection, '(float)0')]"
                                 layoutpolicy_horizontal = expanding
                                 size = { 0 4 }
                                 using = progressbar_bar_small
@@ -269,8 +269,8 @@ template societal_values {
                                 value = "[Abs_float(Multiply_float(SocietalValueItem.GetDirection, '(float)100.0'))|2]"
                                 invertprogress = yes
                             }
-                            progressbar = {
-                                visible = "[Not(SocietalValueItem.IsLeft)]"
+                            progressbar = { # Show as Empty (wrong direction)
+                                visible = "[Or(GreaterThan_float(SocietalValueItem.GetDirection, '(float)0'), EqualTo_float(SocietalValueItem.GetDirection, '(float)0') )]"
                                 layoutpolicy_horizontal = expanding
                                 size = { 0 4 }
                                 using = progressbar_bar_small
@@ -294,16 +294,16 @@ template societal_values {
                                 using = progress_bar_blue_alt
                                 value = "[Abs_float(Max_float(SocietalValueItem.GetPosition, '(float)0'))]"
                             }
-                            progressbar = {
-                                visible = "[Not(SocietalValueItem.IsLeft)]"
+                            progressbar = { # Max Equilibrium
+                                visible = "[GreaterThan_float(SocietalValueItem.GetDirection, '(float)0')]"
                                 layoutpolicy_horizontal = expanding
                                 size = { 0 4 }
                                 using = progressbar_bar_small
                                 using = progress_bar_goldish
                                 value = "[Abs_float(Multiply_float(SocietalValueItem.GetDirection, '(float)100.0'))|2]"
                             }
-                            progressbar = {
-                                visible = "[SocietalValueItem.IsLeft]"
+                            progressbar = { # Show as Empty (wrong direction)
+                                visible = "[Or(LessThan_float(SocietalValueItem.GetDirection, '(float)0'), EqualTo_float(SocietalValueItem.GetDirection, '(float)0') )]"
                                 layoutpolicy_horizontal = expanding
                                 size = { 0 4 }
                                 using = progressbar_bar_small
