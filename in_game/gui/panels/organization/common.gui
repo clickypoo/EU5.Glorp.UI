@@ -50,7 +50,7 @@ types OrganizationPanel
 								tooltipwidget = { 
 									LeftClickButtonTooltip = {
 										blockoverride "onclick_text" { 
-											text = "[SelectLocalization(IsIOFaved(InternationalOrganization.Self), 'UNPIN_ACTION', 'PIN_ACTION')]"
+											text = "[SelectLocalization(IsIOFaved(InternationalOrganization.Self), 'UNPIN_OUTLINER', 'PIN_OUTLINER')]"
 										}
 									}
 								}

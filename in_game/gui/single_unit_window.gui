@@ -1868,7 +1868,7 @@ types SingleUnitWindowTypes
 							tooltipwidget = {
 								SimpleContextualTooltipType = {
 									blockoverride "title_text" {
-										text = "TT_ARTILLERY_IMPACT_TITLE"
+										text = "game_concept_artillery_bonus"
 									}
 									blockoverride "title_icon" {
 										icon = {
@@ -1877,7 +1877,7 @@ types SingleUnitWindowTypes
 										}
 									}
 									blockoverride "concept_link" {
-										text = "[siege|E]"
+										text = "[artillery_bonus|E]"
 									}
 									lowpriotextcontext =  "[Siege.GetArtilleryImpactInfo]"
 								}
@@ -3720,7 +3720,7 @@ lateralview = {
 							tooltipwidget = {
 								SimpleContextualTooltipType = {
 									blockoverride "title_text" {
-										text = "game_concept_artillery_bonus"
+										text = "game_concept_artillery_barrage"
 									}
 									blockoverride "title_icon" {
 										icon = {
@@ -3736,7 +3736,7 @@ lateralview = {
 										}
 									}
 									blockoverride "concept_link" {
-										text = "[artillery_bonus|e]"
+										text = "[artillery_barrage|e]"
 									}
 									blockoverride "tooltip_content" {
 										TooltipScrolledStringPairList = {
