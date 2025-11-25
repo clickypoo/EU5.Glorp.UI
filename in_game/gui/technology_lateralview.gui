@@ -465,12 +465,12 @@ types AdvancesTreeView
 		# These two widgets determine the margin between graph nodes
 		widget = {
 			name = "margin_top_left" # Do not change this name
-			size = { 0 75 }
+			size = { 0 50 }
 		}
 
 		widget = {
 			name = "margin_bottom_right" # Do not change this name
-			size = { 0 75 }
+			size = { 0 50 }
 		}
 
 		# This widget tells the layout how to offset and space the lines
