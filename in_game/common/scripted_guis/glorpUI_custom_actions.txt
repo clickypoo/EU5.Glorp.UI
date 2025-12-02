@@ -93,3 +93,76 @@ SetUseVanillaParticipantColour = {
         }
     }
 }
+
+### TOP BAR ###
+SetDisableTopBarIncome = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = disableTopBarIncome } }
+            set_variable = { name = disableTopBarIncome value = 1 }
+        }
+        else = {
+            remove_variable = disableTopBarIncome
+        }
+    }
+}
+
+SetDisableTopBarStability = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = disableTopBarStability } }
+            set_variable = { name = disableTopBarStability value = 1 }
+        }
+        else = {
+            remove_variable = disableTopBarStability
+        }
+    }
+}
+
+SetDisableTopBarPopulation = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = disableTopBarPopulation } }
+            set_variable = { name = disableTopBarPopulation value = 1 }
+        }
+        else = {
+            remove_variable = disableTopBarPopulation
+        }
+    }
+}
+
+SetDisableTopBarLegitimacy = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = disableTopBarLegitimacy } }
+            set_variable = { name = disableTopBarLegitimacy value = 1 }
+        }
+        else = {
+            remove_variable = disableTopBarLegitimacy
+        }
+    }
+}
+
+SetDisableTopBarPrestige = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = disableTopBarPrestige } }
+            set_variable = { name = disableTopBarPrestige value = 1 }
+        }
+        else = {
+            remove_variable = disableTopBarPrestige
+        }
+    }
+}
+
+SetDisableTopBarDiplomats = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = disableTopBarDiplomats } }
+            set_variable = { name = disableTopBarDiplomats value = 1 }
+        }
+        else = {
+            remove_variable = disableTopBarDiplomats
+        }
+    }
+}

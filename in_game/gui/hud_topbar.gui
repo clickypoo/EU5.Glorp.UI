@@ -508,7 +508,7 @@ Types HUD_TopbarTypes
                                         maximumsize = { -1 12 }
                                         autoresize = yes
                                         align = left|nobaseline
-                                        using = Font_Size_Very_Small
+                                        using = Font_Size_Small
                                         text = "[EstatesItem.GetEstate.GetMonthlySatisfactionChange|+=%2]"
                                     }
 
@@ -687,6 +687,7 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - INCOME
 						stat_player = {
+                            visible = "[Not(Player.MakeScope.GetVariable('disableTopBarIncome').IsSet)]"
 							name = "stat_gold"
 							using = layoutpolicy_expanding
 							margin = { 5 0 }
@@ -774,7 +775,7 @@ Types HUD_TopbarTypes
 										maximumsize = { -1 12 }
 										autoresize = yes
 										align = left|nobaseline
-										using = Font_Size_Very_Small
+										using = Font_Size_Small
 										text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('gold')]"
 									}
 
@@ -803,6 +804,7 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - STABILITY
 						stat_player = {
+                            visible = "[Not(Player.MakeScope.GetVariable('disableTopBarStability').IsSet)]"
 							name = "stat_stability"
 							using = layoutpolicy_expanding
 							margin = { 5 0 }
@@ -907,7 +909,7 @@ Types HUD_TopbarTypes
 										maximumsize = { -1 12 }
 										autoresize = yes
 										align = left|nobaseline
-										using = Font_Size_Very_Small
+										using = Font_Size_Small
 										text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('stability')]"
 									}
 
@@ -936,6 +938,7 @@ Types HUD_TopbarTypes
 
 						# STAT PLAYER - POPULATION
 						stat_player = {
+                            visible = "[Not(Player.MakeScope.GetVariable('disableTopBarPopulation').IsSet)]"
 							name = "stat_population"
 							using = layoutpolicy_expanding
 							margin = { 5 0 }
@@ -990,7 +993,7 @@ Types HUD_TopbarTypes
 										maximumsize = { -1 12 }
 										autoresize = yes
 										align = left|nobaseline
-										using = Font_Size_Very_Small
+										using = Font_Size_Small
 										text = "[Country.GetLastMonthsPopulationText]"
 									}
 
@@ -1019,6 +1022,7 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - LEGITIMACY
 						stat_player = {
+                            visible = "[Not(Player.MakeScope.GetVariable('disableTopBarLegitimacy').IsSet)]"
 							name = "stat_legitimacy"
 							using = layoutpolicy_expanding
 
@@ -1094,7 +1098,7 @@ Types HUD_TopbarTypes
 												maximumsize = { -1 18 }
 												autoresize = yes
 												align = left|nobaseline
-												using = Font_Size_Very_Small
+												using = Font_Size_Small
 											}
 
 											blockoverride "visible_positive" {
@@ -1147,6 +1151,7 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - PRESTIGE
 						stat_player = {
+                            visible = "[Not(Player.MakeScope.GetVariable('disableTopBarPrestige').IsSet)]"
 							name = "stat_prestige"
 							using = layoutpolicy_expanding
 
@@ -1227,7 +1232,7 @@ Types HUD_TopbarTypes
 												maximumsize = { -1 18 }
 												autoresize = yes
 												align = left|nobaseline
-												using = Font_Size_Very_Small
+												using = Font_Size_Small
 												text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('prestige')]"
 											}
 
@@ -1279,6 +1284,7 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - DIPLO ACTIONS
 						stat_player = {
+                            visible = "[Not(Player.MakeScope.GetVariable('disableTopBarDiplomats').IsSet)]"
 							name = "stat_diplo"
 							using = layoutpolicy_expanding
 
@@ -1371,7 +1377,7 @@ Types HUD_TopbarTypes
 												maximumsize = { -1 18 }
 												autoresize = yes
 												align = left|nobaseline
-												using = Font_Size_Very_Small
+												using = Font_Size_Small
 											}
 
 											blockoverride "visible_positive" {
@@ -1426,6 +1432,7 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - WAR EXHAUSTION
 						stat_player = {
+                            visible = "[Not(Country.IsCurrencyValueEqualOrLessThanZero('war_exhaustion'))]"
 							name = "stat_exhaustion"
 							using = layoutpolicy_expanding
 							margin = { 5 0 }
@@ -1509,7 +1516,7 @@ Types HUD_TopbarTypes
 										maximumsize = { -1 12 }
 										autoresize = yes
 										align = left|nobaseline
-										using = Font_Size_Very_Small
+										using = Font_Size_Small
 										text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('war_exhaustion')]"
 									}
 
@@ -1538,6 +1545,7 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - MANPOWER
 						stat_player = {
+                            visible = "[And( Not(Country.IsCurrencyValueEqualOrLessThanZero('manpower')), Not(EqualTo_CFixedPoint( Multiply_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('manpower'), '(CFixedPoint)1000'), '(CFixedPoint)0' )) )]"
 							name = "stat_manpower"
 							using = layoutpolicy_expanding
 
@@ -1630,7 +1638,7 @@ Types HUD_TopbarTypes
 												maximumsize = { -1 18 }
 												autoresize = yes
 												align = left|nobaseline
-												using = Font_Size_Very_Small
+												using = Font_Size_Small
 											}
 
 											blockoverride "visible_positive" {
@@ -1688,7 +1696,9 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - SAILORS
 						stat_player = {
-							name = "stat_sailors"
+                            visible = "[And( Not(Country.IsCurrencyValueEqualOrLessThanZero('sailors')), Not(EqualTo_CFixedPoint( Multiply_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('sailors'), '(CFixedPoint)1000'), '(CFixedPoint)0' )) )]"
+
+                            name = "stat_sailors"
 							using = layoutpolicy_expanding
 							visible = "[GreaterThan_CFixedPoint(Player.GetTotalCoastalPopulation, '(CFixedPoint)0')]"
 
@@ -1776,7 +1786,7 @@ Types HUD_TopbarTypes
 												maximumsize = { -1 18 }
 												autoresize = yes
 												align = left|nobaseline
-												using = Font_Size_Very_Small
+												using = Font_Size_Small
 											}
 
 											blockoverride "visible_positive" {

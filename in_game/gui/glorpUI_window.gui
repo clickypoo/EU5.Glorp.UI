@@ -67,15 +67,6 @@ window = {
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
                             default_format = "#medium"
-                            text = "Bottom Bar"
-                            down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'bottom_bar' )]"
-                            tooltip_enabled = no
-                            onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'bottom_bar' )]"
-                        }
-
-                        button_secondary_tab_alt = {
-                            using = layoutpolicy_expanding
-                            default_format = "#medium"
                             text = "Other"
                             down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'other' )]"
                             tooltip_enabled = no
@@ -207,24 +198,71 @@ window = {
                     vbox = {
                         visible = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'top_bar' )]"
 
-                        text_single = {
-                            autoresize = yes
-                            fontsize = 35
-                            align = center|nobaseline
-                            visible = yes
-                            text = "To-do"
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Income"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetDisableTopBarIncome').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Not(Player.MakeScope.GetVariable('disableTopBarIncome').IsSet)]"
+                                tooltip_enabled = no
+                            }
                         }
-                    }
-
-                    # Bottom Bar
-                    vbox = {
-                        visible = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'bottom_bar' )]"
-                        text_single = {
-                            autoresize = yes
-                            fontsize = 35
-                            align = center|nobaseline
-                            visible = yes
-                            text = "To-do"
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Stability"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetDisableTopBarStability').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Not(Player.MakeScope.GetVariable('disableTopBarStability').IsSet)]"
+                                tooltip_enabled = no
+                            }
+                        }
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Population"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetDisableTopBarPopulation').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Not(Player.MakeScope.GetVariable('disableTopBarPopulation').IsSet)]"
+                                tooltip_enabled = no
+                            }
+                        }
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Legitimacy"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetDisableTopBarLegitimacy').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Not(Player.MakeScope.GetVariable('disableTopBarLegitimacy').IsSet)]"
+                                tooltip_enabled = no
+                            }
+                        }
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Prestige"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetDisableTopBarPrestige').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Not(Player.MakeScope.GetVariable('disableTopBarPrestige').IsSet)]"
+                                tooltip_enabled = no
+                            }
+                        }
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Diplomats"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetDisableTopBarDiplomats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Not(Player.MakeScope.GetVariable('disableTopBarDiplomats').IsSet)]"
+                                tooltip_enabled = no
+                            }
                         }
                     }
 
