@@ -142,19 +142,6 @@ window = {
                             }
                         }
 
-                        # Top Bar - Vanilla Estates Text
-                        hbox = {
-                            spacing = 10
-                            text_single = {
-                                raw_text = "Vanilla Estates Text"
-                            }
-                            checkbox_square_alt = {
-                                onclick = "[GetScriptedGui('SetUseVanillaEstatesText').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Player.MakeScope.GetVariable('useVanillaEstatesText').IsSet]"
-                                tooltip_enabled = no
-                            }
-                        }
-
                         # Cabinet view
                         hbox = {
                             spacing = 10

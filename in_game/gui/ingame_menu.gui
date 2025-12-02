@@ -116,15 +116,15 @@ window = {
 				size = {-1 60 }
 				layoutpolicy_horizontal = expanding
 				using = color_black_texture
-				
+
 				text_multi = {
 					parentanchor = center
 					size = { 95% 100% }
 					autoresize = no
 					align = center
-				text = "[GetShortVersionInfoString]"
-				font = StandardGameFont
-				default_format = "#color_gold"
+					text = "[GetShortVersionInfoString]"
+					font = StandardGameFont
+					default_format = "#color_gold"
 				}
 
 				onclick = "[VersionInfoOnClick]"
@@ -397,18 +397,18 @@ template frontend_menu_middle_template {
 		tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "REPORT_ISSUE_TOOLTIP" } } }
 	}
 
-    button_wax = {
+	button_wax = {
 		visible= "[GameIsMultiplayer]"
-        blockoverride "button_texture" {
+		blockoverride "button_texture" {
 			texture = "gfx/interface/buttons/button_wax_blue.dds"
-        }
-        block "small_button_size" { size = { -1 45 } }
-        using = FrontEndMiddleSectionButton
+		}
+		block "small_button_size" { size = { -1 45 } }
+		using = FrontEndMiddleSectionButton
 		text = "AI_SETTINGS"
 		enabled = "[Not(IsShowingDialog)]"
 		onclick = "[PauseMenu.OpenAiSettings]"
 		tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "PAUSE_MENU_AI_SETTINGS_TOOLTIP" } } }
-    }
+	}
 
     button_wax = {
         blockoverride "button_texture" {
