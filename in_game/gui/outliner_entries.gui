@@ -1352,6 +1352,12 @@ OutlinerEntryBase = {
 				icon = {
 					size = { 20 20 }
 					texture = "[InternationalOrganization.GetIcon]"
+					glow = {
+						name = "drop_shadow"
+						glow_radius = 3
+						color = {0.0 0.0 0.0 1.0}
+						alpha = 0.3
+					}
 				}
 
 				OutlinerTextBase = {
@@ -2209,8 +2215,9 @@ OutlinerEntryBase = {
 	blockoverride "category_big_extra_content" {
 		hbox = {
 			spacing = 1
+			
 			country_flag_very_small = {
-				datacontext = "[War.GetDefenderWarLeader]"
+				datacontext = "[War.GetAttackerWarLeader]"
 				filter_mouse = none
 				alwaystransparent = yes
 				blockoverride "tooltip" {}
@@ -2229,7 +2236,7 @@ OutlinerEntryBase = {
 			}
 
 			country_flag_very_small = {
-				datacontext = "[War.GetAttackerWarLeader]"
+				datacontext = "[War.GetDefenderWarLeader]"
 				filter_mouse = none
 				alwaystransparent = yes
 				blockoverride "tooltip" {}
@@ -4266,8 +4273,15 @@ OutlinerEntryBase = {
 				
 				blockoverride "cabinet_entry_progress_text" {
 					OutlinerTextBase = {
+						visible = "[Not(StringIsEmpty(Cabinet.GetEffectiveSkillOnlyEffect))]"
 						autoresize = yes
 						raw_text = "[Cabinet.GetActionProgress] ([Cabinet.GetEffectiveSkillOnlyEffect])"
+						maximumsize = { 80 -1 }
+					}
+					OutlinerTextBase = {
+						visible = "[StringIsEmpty(Cabinet.GetEffectiveSkillOnlyEffect)]"
+						autoresize = yes
+						raw_text = "[Cabinet.GetActionProgress]"
 						maximumsize = { 80 -1 }
 					}
 				}
@@ -6038,22 +6052,34 @@ OutlinerEntryBase = {
 		OutlinerButtonBase = {
 			size = { 95% 100% }
 
-			OutlinerTextBase = {
-				size = { 95% 100% }
-				using = outliner_entry_margin
-				using = OnlyVisibleWhenOneInLocation
-				autoresize = no
-				align = right
-				text = "CONSTRUCTION_DURATION_DAYS"
+			hbox = {
+				visible = "[Not(Construction.IsStalled)]"
+
+				OutlinerTextBase = {
+					layoutpolicy_horizontal = expanding
+					using = outliner_entry_margin
+					using = OnlyVisibleWhenOneInLocation
+					autoresize = no
+					align = right
+					text = "CONSTRUCTION_DURATION_DAYS"
+				}
+	
+				OutlinerTextBase = {
+					layoutpolicy_horizontal = expanding
+					using = outliner_entry_margin
+					using = OnlyVisibleWhenMultipleInLocation
+					autoresize = no
+					align = right
+					text = "CONSTRUCTION_DURATION_DAYS_PLUS_QUEUE"
+				}
 			}
 
 			OutlinerTextBase = {
+				visible = "[Construction.IsStalled]"
 				size = { 95% 100% }
 				using = outliner_entry_margin
-				using = OnlyVisibleWhenMultipleInLocation
 				autoresize = no
-				align = right
-				text = "CONSTRUCTION_DURATION_DAYS_PLUS_QUEUE"
+				text = "CONSTRUCTION_INFO_STALLED_SHORT"
 			}
 		}
 	}

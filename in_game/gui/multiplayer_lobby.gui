@@ -3202,32 +3202,32 @@ types MultiplayerLobby
 		}
 	}
 
-	type button_tab_selected_country = button_regular {
-		using = button_regular_texture
-		enabled = "[LobbyView.HasSelectedPlayable]"
-		down = "[And(LobbyView.HasSelectedPlayable, Not(GameLobby.Vars.HasValue('subtab', 'selected_country')))]"
-
-		icon = {
-			texture = "gfx/interface/buttons/flats/release_country.dds"
-			texture_density = 2
-			size = { 22 22 }
-			parentanchor = center
-
-			# UNTIL THERE IS A NEW TEXTURE
-			modify_texture = {
-				using = color_new_gold_texture
-				alpha = 0.5
-				blend_mode = add
-			}
-			modify_texture = {
-				using = color_new_gold_texture
-				alpha = 0.6
-			}
-
-			using = button_panel_tab_icon_effect
-			blockoverride "icon_effect_visible" { visible = no }
-		}
-	}
+	#type button_tab_selected_country = button_regular {
+	#	using = button_regular_texture
+	#	enabled = "[LobbyView.HasSelectedPlayable]"
+	#	down = "[And(LobbyView.HasSelectedPlayable, Not(GameLobby.Vars.HasValue('subtab', 'selected_country')))]"
+	#
+	#	icon = {
+	#		texture = "gfx/interface/buttons/flats/release_country.dds"
+	#		texture_density = 2
+	#		size = { 22 22 }
+	#		parentanchor = center
+	#
+	#		# UNTIL THERE IS A NEW TEXTURE
+	#		modify_texture = {
+	#			using = color_new_gold_texture
+	#			alpha = 0.5
+	#			blend_mode = add
+	#		}
+	#		modify_texture = {
+	#			using = color_new_gold_texture
+	#			alpha = 0.6
+	#		}
+	#
+	#		using = button_panel_tab_icon_effect
+	#		blockoverride "icon_effect_visible" { visible = no }
+	#	}
+	#}
 
 	type button_tab_rules = button_regular {
 		using = layoutpolicy_expanding

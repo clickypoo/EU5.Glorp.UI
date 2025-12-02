@@ -3883,7 +3883,7 @@ lateralview = {
 									}
 									piechart = {
 										visible = "[And(GovernmentView.GetPlayer.GetGovernment.GetParliament.HasOngoingParliamentDebate, 
-										GreaterThan_CFixedPoint(GovernmentView.GetPlayer.GetGovernment.GetParliament.GetParliamentIssueSupport, '(CFixedPoint)0.4999'))]"
+										GreaterThanOrEqualTo_CFixedPoint(GovernmentView.GetPlayer.GetGovernment.GetParliament.GetParliamentIssueSupport, '(CFixedPoint)0.5'))]"
 										size = { 50 50 }
 										using = piechart_angles
 										

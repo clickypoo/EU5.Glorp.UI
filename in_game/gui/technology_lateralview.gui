@@ -532,7 +532,85 @@ types AdvancesTreeView
 
 						###RESEARCHED new
 						widget = {
-							visible = "[AdvanceNode.GetItem.IsOwned]"
+							visible = "[And(AdvanceNode.GetItem.IsOwned, AdvanceNode.ShowSimplifiedVersion(TechnologyLateralView.Self))]"
+							size = { 271 270 }
+
+							datacontext = "[AdvanceNode.GetItem.GetAdvance]"
+							tooltipwidget = {
+								using = Advance_tooltip_for_tech_tree
+							}
+
+							widget = {
+								size = { 77% 77% }
+								parentanchor = center
+
+								# round bckg
+								widget = {
+									parentanchor = center
+									size = { 105% 105% }
+									position = {0 2}
+
+									background = {
+										texture = "gfx/interface/advance/backgrounds/green.dds"
+										texture_density = 2
+										modify_texture = {
+											using = color_bronze_texture
+											blend_mode = multiply
+											alpha = 0.4
+										}
+									}
+								}
+
+								icon =  {
+									parentanchor = center
+									size = { 100% 100% }
+									visible = "[Not(AdvanceNode.GetItem.GetAdvance.GetDefinition.HasSubunitUnlocks)]"
+									# gfx\interface\icons\advance
+									texture = "[GetAdvanceIcon(AdvanceNode.GetItem.GetAdvance.GetDefinition)]"
+								}
+
+								widget = {
+									size = { 112% 112% }
+									position = {10 10}
+									visible = "[And(AdvanceNode.GetItem.GetAdvance.GetDefinition.HasSubunitUnlocks, Not(AdvanceNode.GetItem.GetAdvance.GetDefinition.HasNavyUnlocks))]"
+									background = {
+										texture = "[GetSubunitTypeIllustration(AdvanceNode.GetItem.GetAdvance.GetDefinition.GetFirstSubunitUnlock, GetPlayer.GetCulture)]"
+										fittype = start
+										texture_density = 2
+										spriteborder = { 0 0 }
+										frame_grid = {2 1}
+										frame = 1
+										modify_texture = {
+											texture = "gfx/interface/component_masks/advance_unit_unlock_mask.dds"
+											texture_density = 2
+											blend_mode = alphamultiply
+										}
+									}
+								}
+
+								widget = {
+									size = { 114% 114% }
+									position = {8 -23}
+									visible = "[And(AdvanceNode.GetItem.GetAdvance.GetDefinition.HasSubunitUnlocks, AdvanceNode.GetItem.GetAdvance.GetDefinition.HasNavyUnlocks)]"
+									background = {
+										texture = "[GetSubunitTypeIllustration(AdvanceNode.GetItem.GetAdvance.GetDefinition.GetFirstSubunitUnlock, GetPlayer.GetCulture)]"
+										fittype = start
+										texture_density = 2
+										spriteborder = { 0 0 }
+										frame_grid = {3 1}
+										frame = 2
+										modify_texture = {
+											texture = "gfx/interface/component_masks/advance_unit_unlock_navy_mask.dds"
+											texture_density = 2
+											blend_mode = alphamultiply
+										}
+									}
+								}
+							}
+						}
+
+						widget = {
+							visible = "[And(AdvanceNode.GetItem.IsOwned, Not(AdvanceNode.ShowSimplifiedVersion(TechnologyLateralView.Self)))]"
 							size = { 271 270 }
 
 							# data container
@@ -886,8 +964,130 @@ types AdvancesTreeView
 						}
 
 						###not researched new
+						# button in progress small
+						piechart = {
+							visible = "[And3(Not(AdvanceNode.GetItem.IsOwned), AdvanceNode.GetItem.IsCurrentResearch, AdvanceNode.ShowSimplifiedVersion(TechnologyLateralView.Self))]"
+							size = { 270 270 }
+							
+							background = {
+								texture = "gfx/interface/buttons/bg_button.dds"
+								texture_density = 2
+								margin = {-8 -8}
+
+								modify_texture = {
+									using = color_bg_brown_texture
+									blend_mode = multiply
+								}
+							}
+							background = {
+								texture = "gfx/interface/buttons/bg_button.dds"
+								texture_density = 2
+
+								modify_texture = {
+									using = color_dark_brown_texture
+									blend_mode = multiply
+								}
+							}
+							
+							using = piechart_angles
+							
+							pieslice = {
+								texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
+								value = "[Player.GetCurrentResearch.GetProgress]"
+								color = { 1 1 1 1 }
+							}
+							
+							pieslice = {
+								texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
+								value = "[Subtract_float('(float)1.0', Player.GetCurrentResearch.GetProgress)]"
+								color = { 1 1 1 0 }
+							}
+
+							button = {
+								size = { 270 270 }
+								using = advance_button_info
+								tooltipwidget = {
+									using = current_research_tooltip
+								}
+	
+								widget = {
+									size = { 77% 77% }
+									parentanchor = center
+									allow_outside = yes
+	
+									# round bckg
+									widget = {
+										parentanchor = center
+										size = { 100% 100% }
+										datacontext = "[AdvanceNode.GetItem.GetAdvance.GetDefinition]"
+										using = background_advance
+									}
+	
+									icon = {
+										visible = "[Not(AdvanceNode.GetItem.CanAddToResearchQueue)]"
+										size = { 100% 100% }
+										texture = "gfx/interface/advance/backgrounds/unavailable.dds"
+										texture_density = 2
+									}
+	
+									widget = {
+										size = { 100% 100% }
+										parentanchor = center
+										allow_outside = yes
+										using = round_advance_icon
+									}
+								}
+							}
+						}
+
+						# button not in progress small
+						button = {
+							visible = "[And3(Not(AdvanceNode.GetItem.IsOwned), Not(AdvanceNode.GetItem.IsCurrentResearch), AdvanceNode.ShowSimplifiedVersion(TechnologyLateralView.Self))]"
+							size = { 270 270 }
+							datacontext = "[AdvanceNode.GetItem.GetAdvance]"
+							using = advance_button_info
+							tooltipwidget = {
+								using = Advance_tooltip_for_tech_tree
+							}
+
+							widget = {
+								size = { 77% 77% }
+								parentanchor = center
+								allow_outside = yes
+
+								# round bckg
+								widget = {
+									parentanchor = center
+									size = { 100% 100% }
+									datacontext = "[AdvanceNode.GetItem.GetAdvance.GetDefinition]"
+									using = background_advance
+								}
+
+								icon = {
+									visible = "[Not(AdvanceNode.GetItem.CanAddToResearchQueue)]"
+									size = { 100% 100% }
+									texture = "gfx/interface/advance/backgrounds/unavailable.dds"
+									texture_density = 2
+								}
+
+								widget = {
+									size = { 100% 100% }
+									parentanchor = center
+									allow_outside = yes
+									using = round_advance_icon
+									blockoverride "round_advance_icon_army_position" {
+										position = { 8 -10 }
+									}
+									blockoverride "round_advance_icon_navy_position" {
+										parentanchor = center
+										position = { 0 -10 }
+									}
+								}
+							}
+						}
+						
 						widget = {
-							visible = "[Not(AdvanceNode.GetItem.IsOwned)]"
+							visible = "[And(Not(AdvanceNode.GetItem.IsOwned), Not(AdvanceNode.ShowSimplifiedVersion(TechnologyLateralView.Self)))]"
 							size = { 270 270 }
 
 							# data container
@@ -2025,13 +2225,13 @@ lateralview_full = {
 					}
 
 					zoomarea = {
-						name = "graph_zoomarea"
+						name = "graph_zoomarea" # Do NOT remove or rename this - used in code
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
 						scissor = yes
 						zoom = 1
-						zoom_step = 0.6
-						zoom_min = 0.3
+						zoom_step = 0.2
+						zoom_min = 0.1
 						zoom_max = 1.5
 						pan_position = { 0 0 }
 						clamp_pan_position = yes

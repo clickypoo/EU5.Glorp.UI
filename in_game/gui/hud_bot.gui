@@ -885,6 +885,24 @@ types BottomTypes
 				on_action = "[SetDefaultMapMode]"
 			}
 
+			action_tooltip = {
+				visible = "[Not(MapModeSelectorVars.Exists('color_ledger'))]"
+				click_type = left
+				title = "OPEN_MAP_COLOR_LEDGER"
+				on_action = "[MapModeSelectorVars.Toggle('color_ledger')]"
+				on_action = "[MapModeSelectorVars.Clear('color_ledger_bottom')]"
+				on_action = "[GetMapColorLedgerSearchBar.ClearTextFilter(PdxGuiWidget.AccessParent.AccessParent.FindChild('searchbar_editbox'))]"
+			}
+
+			action_tooltip = {
+				visible = "[MapModeSelectorVars.Exists('color_ledger')]"
+				click_type = left
+				title = "CLOSE_MAP_COLOR_LEDGER"
+				on_action = "[MapModeSelectorVars.Toggle('color_ledger')]"
+				on_action = "[MapModeSelectorVars.Clear('color_ledger_bottom')]"
+				on_action = "[GetMapColorLedgerSearchBar.ClearTextFilter(PdxGuiWidget.AccessParent.AccessParent.FindChild('searchbar_editbox'))]"
+			}
+
 			tooltipwidget = {
 				SimpleContextualTooltipType = {
 					blockoverride "title_icon" {
@@ -976,51 +994,10 @@ types BottomTypes
 				size = { 24 24 }
 				texture = "gfx/interface/icons/map_subdivisons/locked.dds"
 			}
-			widget = {
-				size = { 30 30 }
-				visible = "[And(HasMapColorLedger, Not(MapModeSelectorVars.Exists('action')))]"
-
-				header_button_left = {
-					size = { 100% 100% }
-					blockoverride "button_icon_stretch_sprite" {}
-					blockoverride "header_button_frame_inner" { visible = no }
-					blockoverride "header_button_icon_size" { size = { 30 30 } }
-					blockoverride "header_button_text_layout" {}
-
-					blockoverride "icon_texture" {
-						texture = "gfx/interface/icons/flat_icons/tabicons/color_ledger.dds"
-					}
-					blockoverride "icon_overlay" {}
-
-					onclick = "[MapModeSelectorVars.Toggle('color_ledger')]"
-					onclick = "[MapModeSelectorVars.Clear('color_ledger_bottom')]"
-					onclick = "[GetMapColorLedgerSearchBar.ClearTextFilter(PdxGuiWidget.AccessParent.AccessParent.FindChild('searchbar_editbox'))]"
-					tooltipwidget = {
-						SimpleContextualTooltipType = {
-							blockoverride "title_icon" {
-								icon = {
-									using = tooltip_title_icon_size
-									texture = "gfx/interface/icons/flat_icons/tabicons/color_ledger.dds"
-								}
-							}
-
-							lowpriotextcontext = "MAP_COLOR_LEDGER_SIMPLE"
-
-						}
-					}
-
-					action_tooltip = {
-						visible = "[Not(MapModeSelectorVars.Exists('color_ledger'))]"
-						click_type = left
-						title = "OPEN_MAP_COLOR_LEDGER"
-					}
-
-					action_tooltip = {
-						visible = "[MapModeSelectorVars.Exists('color_ledger')]"
-						click_type = left
-						title = "CLOSE_MAP_COLOR_LEDGER"
-					}
-				}
+			icon = {
+				size = { 24 24 }
+				texture = "gfx/interface/icons/flat_icons/tabicons/color_ledger.dds"
+				# visible = "[And(HasMapColorLedger, Not(MapModeSelectorVars.Exists('action')))]"
 			}
 		}
 	}

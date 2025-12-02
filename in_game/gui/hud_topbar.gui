@@ -190,6 +190,8 @@ Types HUD_TopbarTypes
 					item = {
 						stat_player = {
 							layoutpolicy_horizontal = expanding
+							margin = { 5 0 }
+
 							visible = "[Not(ObjectsEqual(Country.GetGovernment.GetEstateFromKey('crown_estate').GetType, EstatesItem.GetEstate.GetType))]"
 							datacontext = "[EstatesItem.GetEstate]"
 
@@ -241,89 +243,138 @@ Types HUD_TopbarTypes
 								}
 							}
 
-							vbox = {
-								using = layoutpolicy_expanding
-								margin = { 4 0 }
-								margin_bottom = 2
-								spacing = -2
-
-								expand = {}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding								
-
-									# ESTATE ICON
-									icon = {
-										size = { 24 24 }
-										texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
-									}
-
-									hbox = {
-										using = layoutpolicy_expanding
-										using = text_single_positive_zero_negative
-
-										blockoverride "text_setup" {
-											maximumsize = { 35 12 }
-											autoresize = yes
-											align = left|nobaseline
-											fontsize = 12
-											fontsize_min = 10
-											# text = "[EstatesItem.GetEstate.GetRelativePower|0%]@power!"
-											text = "[EstatesItem.GetEstate.GetMonthlySatisfactionChange|+=%2]"
-										}
-
-										blockoverride "visible_positive" {
-											visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
-										}
-
-										blockoverride "visible_negative" {
-											visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
-										}
-
-										blockoverride "visible_zero" {
-											visible = "[EqualTo_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
-										}
-
-										blockoverride "text_zero" {
-											raw_text = "0.00%"
-											fontsize = 12
-										}
-
-										expand = {}
-									}
-								}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									margin = { 2 0 }
-
-									progressbar = {
-										visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)0.5')]"
-										using = progress_bar_green_alt
-										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-										block "progress_setup" {}
-									}
-
-									progressbar = {
-										visible = "[Not(GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)0.5'))]"
-										using = progress_bar_red_alt
-										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-										block "progress_setup" {}
-									}
-
-									blockoverride "progress_setup" {
-										layoutpolicy_horizontal = expanding
-										size = { -1 4 }
-
-										min = 0
-										max = 1
-										value = "[FixedPointToFloat(EstatesItem.GetEstate.GetSatisfaction)]"
-										direction = horizontal
-									}
-								}
-
-								expand = {}
+							icon = {
+								visible = "[Not(GreaterThan_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)5'))]" 
+								size = { 32 32 }
+								texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
 							}
+
+							icon = {
+								visible = "[EqualTo_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)6')]" 
+								size = { 28 28 }
+								texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
+							}
+
+							
+							widget = {
+								visible = "[GreaterThan_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)6')]" 
+								size = { 12 12 }
+								icon = {
+									parentanchor = center
+									size = { 20 20 }
+									texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
+								}
+							}
+	
+							vbox = {
+								margin_left = 3
+								margin_right = 6
+	
+								hbox = {
+									using = layoutpolicy_expanding
+									using = text_single_positive_negative
+	
+									blockoverride "text_setup" {
+										maximumsize = { -1 18 }
+										autoresize = yes
+										align = left|nobaseline
+										using = Font_Size_Small
+										text = "[EstatesItem.GetEstate.GetSatisfaction|0%]"
+									}
+	
+									blockoverride "visible_positive" {
+										visible = "[Not(LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('gold'), '(CFixedPoint)0'))]"
+									}
+	
+									blockoverride "visible_negative" {
+										visible = "[LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('gold'), '(CFixedPoint)0')]"
+										default_format = "#color_red;bold"
+									}
+	
+									expand = {}
+								}
+	
+								hbox = {
+									using = layoutpolicy_expanding
+									using = text_single_positive_zero_negative
+	
+									blockoverride "text_setup" {
+										maximumsize = { -1 12 }
+										autoresize = yes
+										align = left|nobaseline
+										using = Font_Size_Very_Small
+										text = "[EstatesItem.GetEstate.GetMonthlySatisfactionChange|+=%2]"
+									}
+	
+									blockoverride "visible_positive" {
+										visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+									}
+	
+									blockoverride "visible_negative" {
+										visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+									}
+	
+									blockoverride "visible_zero" {
+										visible = "[EqualTo_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+									}
+	
+									blockoverride "text_zero" {
+										raw_text = "0.00%"
+										fontsize = 12
+									}
+	
+									expand = {}
+								}
+							}
+
+							expand = {}
+
+							# vbox = {
+							# 	using = layoutpolicy_expanding
+							# 	margin = { 4 0 }
+							# 	margin_bottom = 2
+							# 	spacing = -3
+
+							# 	expand = {}
+
+							# 	hbox = {
+							# 		layoutpolicy_horizontal = expanding								
+
+							# 		# ESTATE ICON
+									
+							# 	}
+
+								
+							# 	expand = {}
+							# 	hbox = {
+							# 		layoutpolicy_horizontal = expanding
+							# 		margin = { 2 0 }
+
+							# 		progressbar = {
+							# 			visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)0.5')]"
+							# 			using = progress_bar_green_alt
+							# 			noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+							# 			block "progress_setup" {}
+							# 		}
+
+							# 		progressbar = {
+							# 			visible = "[Not(GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)0.5'))]"
+							# 			using = progress_bar_red_alt
+							# 			noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+							# 			block "progress_setup" {}
+							# 		}
+
+							# 		blockoverride "progress_setup" {
+							# 			layoutpolicy_horizontal = expanding
+							# 			size = { -1 4 }
+
+							# 			min = 0
+							# 			max = 1
+							# 			value = "[FixedPointToFloat(EstatesItem.GetEstate.GetSatisfaction)]"
+							# 			direction = horizontal
+							# 		}
+							# 	}
+							# }
 						}
 					}
 				}
@@ -2029,10 +2080,9 @@ template speed_bar {
 							}
 
 							blockoverride "tooltip_content" {
-								TooltipTextBlock = {
-									blockoverride "text" {
-										text = "[GetMultiplayerSyncInfo]"
-									}
+								TooltipScrolledStringPairList = {
+									blockoverride "block_scrollarea" { maximumsize = { -1 700 }}
+									textcontext = "[GetMultiplayerSyncInfo]"
 								}
 							}
 						}

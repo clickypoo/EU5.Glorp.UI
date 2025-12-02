@@ -800,71 +800,53 @@ types SubheaderTypes {
 											blockoverride "header_button_text_layout" {}
 											datacontext = "[WarsOverviewWar.GetWar]"
 											tooltipwidget = { using = War_tooltip }
-											onclick = "[WarsOverviewWar.OnClick]"
-
-											icon = {
-												size = { 100% 100% }
-												visible = "[War.IsCivilWar]"
-												using = bg_round_corners_texture
-
-												modify_texture = {
-													using = color_bone_texture
-													alpha = 0.3
-												}
+											action_tooltip = {
+												click_type = left
+												click_mode = single
+												title = "OPEN_WAR"
+												on_action = "[WarsOverviewWar.OnClick]"
 											}
 
 											vbox = {
-												spacing = 2
-												expand = {}
-												piechart = {
-													size = { 27 27 }
-													using = piechart_angles
+												margin_top = 4
+												margin_bottom = 10
 
-													pieslice_no_highlight = {
-														texture = "gfx/interface/pie_charts/pie_chart_alpha_80_red.dds"
-														value = "[Add_float('(float)100.0', FixedPointToFloat(WarsOverviewWar.GetWarScore))]"
-														color = { 1 1 1 1 }
+												vbox = {
+													spacing = 2
+													country_flag_very_small = {
+														datacontext = "[WarsOverviewWar.GetMainEnemy]"
+														filter_mouse = none
 														alwaystransparent = yes
+														blockoverride "tooltip" {}
+														blockoverride "contextmenu" {}
+														blockoverride "click" {}
+														blockoverride "double_click" {}
+														blockoverride "show_as_button" { visible = no }
+														blockoverride "show_as_icon" { visible = yes }
 													}
-
-													pieslice_no_highlight = {
-														texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
-														value = "[Subtract_float('(float)200.0', Add_float('(float)100.0', FixedPointToFloat(WarsOverviewWar.GetWarScore)))]"
-														color = { 1 1 1 1 }
-														alwaystransparent = yes
-													}
-
-													widget = {
-														size = {26 18}
-														parentanchor = center
-														country_flag_very_small = {
-															size = {100% 100%}
-															parentanchor = center
-															datacontext = "[WarsOverviewWar.GetMainEnemy]"
-															blockoverride "click" {
-																onclick = "[WarsOverviewWar.OnClick]"
-															}
-															tooltip_enabled = no
-															contextmenu_enabled = no
+	
+													icon = {
+														size = { 18 18 }
+														texture = "[GetConceptTexture('war')]"
+	
+														glow = {
+															name = "drop_shadow"
+															glow_radius = 3
+															color = {0.0 0.0 0.0 1.0}
+															alpha = 0.3
 														}
 													}
-
-
-													using = bg_circle_piechart
 												}
 
-												icon = {
-													size = { 23 23 }
-													texture = "[GetConceptTexture('war')]"
-
-													glow = {
-														name = "drop_shadow"
-														glow_radius = 3
-														color = {0.0 0.0 0.0 1.0}
-														alpha = 0.3
-													}
+												text_single = {
+													datacontext = "[ForeignCountryView.GetCountry]"
+													autoresize = no
+													size = { 35 20 }
+													fontsize = 14
+													align = center
+													visible = "[Not(War.IsCivilWar)]"
+													raw_text = "[War.GetWarScoreOfCountry(Country.Self)|+=0%/]"
 												}
-												expand = {}
 											}
 										}
 									}
