@@ -1249,11 +1249,6 @@ Types LeftPanelTypes
 
             datacontext = "[Player]"
 
-            button = {
-                size = {28 34}
-                position = {540 40}
-                onclick = "[OpenLateralViewWithParams('diplomacy', 'tabcontent = relations')]"
-            }
             country_rank_banner = {
                 position = {540 40}
             }

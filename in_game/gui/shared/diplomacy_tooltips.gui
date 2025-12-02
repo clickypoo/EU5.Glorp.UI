@@ -573,11 +573,9 @@ template CountryTooltip_DiplomacyStatBars {
 		visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"
 		blockoverride "items" {
 			TooltipStatBarIconTextItem = { # THEIR OPINION
-
                 blockoverride "item_icon_coa" {
                     datacontext = "[Country]"
                 }
-
 				blockoverride "item_icon" {
 					size = { 30 30 }
 					texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
@@ -660,7 +658,6 @@ template CountryTooltip_DiplomacyStatBars {
 		visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"
 		blockoverride "items" {
             maximumsize = { 428 40 }
-
 			TooltipStatBarIconTextItem = { # TRUST
 				blockoverride "item_icon" {
 					size = { 25 25 }
