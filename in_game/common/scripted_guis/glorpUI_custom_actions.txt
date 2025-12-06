@@ -166,3 +166,15 @@ SetDisableTopBarDiplomats = {
         }
     }
 }
+
+SetEnableDynamicWarStats = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = dynamicWarStats } }
+            set_variable = { name = dynamicWarStats value = 1 }
+        }
+        else = {
+            remove_variable = dynamicWarStats
+        }
+    }
+}

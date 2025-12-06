@@ -264,6 +264,22 @@ window = {
                                 tooltip_enabled = no
                             }
                         }
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                raw_text = "Dynamic War Stats"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetEnableDynamicWarStats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                checked = "[Player.MakeScope.GetVariable('dynamicWarStats').IsSet]"
+                                tooltip_enabled = no
+                            }
+                            tooltipwidget = {
+                                LeftClickButtonTooltip = {
+                                    blockoverride "onclick_text" { raw_text = "Dynamically Shows & Hides Manpower, Sailors and War Exhaustion" }
+                                }
+                            }
+                        }
                     }
 
                     # Other
