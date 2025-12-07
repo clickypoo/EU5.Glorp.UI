@@ -197,7 +197,7 @@ types CabinetCards
 				}
 
 				# Vanilla - CHARACTER ABILITIES (in card)
-				hbox = {
+				vbox = {
                     visible = "[Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet]"
 					margin_right = 5
 					vbox = {

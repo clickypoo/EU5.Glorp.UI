@@ -2235,7 +2235,7 @@ lateralview_full = {
 					}
 
 					zoomarea = {
-						name = "graph_zoomarea"
+						name = "graph_zoomarea" # Do NOT remove or rename this - used in code
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
 						scissor = yes

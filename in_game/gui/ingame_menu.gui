@@ -59,31 +59,31 @@ window = {
 		paused_indicator = {
 			parentanchor = center
 			visible_at_creation = no
-			visible = "[And4(Not(IsSaving), Not(IsWritingDumps), Not(IsRecalculatingCacheData), Not(IsDisconnecting))]"
+			visible = "[And5(Not(IsSaving), Not(IsWritingDumps), Not(IsRecalculatingCacheData), Not(IsDisconnecting), Not(IsLobbyOpen))]"
 		}
 
 		saving_indicator = {
 			parentanchor = center
 			visible_at_creation = no
-			visible = "[IsSaving]"
+			visible = "[And(IsSaving, Not(IsLobbyOpen))]"
 		}
 
 		oos_indicator = {
 			parentanchor = center
 			visible_at_creation = no
-			visible = "[IsWritingDumps]"
+			visible = "[And(IsWritingDumps, Not(IsLobbyOpen))]"
 		}
 
 		recalculate_indicator = {
 			parentanchor = center
 			visible_at_creation = no
-			visible = "[And(IsRecalculatingCacheData, GameIsMultiplayer)]"
+			visible = "[And3(IsRecalculatingCacheData, GameIsMultiplayer, Not(IsLobbyOpen))]"
 		}
 
 		disconnecting_indicator = {
 			parentanchor = center
 			visible_at_creation = no
-			visible = "[And4(IsDisconnecting, Not(IsSaving), Not(IsWritingDumps), Not(IsRecalculatingCacheData))]"
+			visible = "[And5(IsDisconnecting, Not(IsSaving), Not(IsWritingDumps), Not(IsRecalculatingCacheData), Not(IsLobbyOpen))]"
 		}
 	}
 
@@ -298,7 +298,7 @@ template frontend_menu_middle_template {
 		using = FrontEndMiddleSectionButton
 		name = "load_ingame_button"
 		text = "LOAD_GAME"
-		enabled = "[And(Not(IsShowingDialog), Not(GameIsMultiplayer))]"
+		enabled = "[And3(Not(IsShowingDialog), Not(GameIsMultiplayer), Not(GameIsIronman))]"
 		tooltipwidget = {
 			BasicFunctionalTooltip = {}
 		}
@@ -306,9 +306,9 @@ template frontend_menu_middle_template {
 			click_type = left
 			click_mode = single
 			title = "LOAD_GAME"
-			conditions = "[MakeItFailIf(GameIsMultiplayer, PauseMenu.LoadIngameTooltip)]"
+			conditions = "[PauseMenu.LoadIngameTooltip]"
 			on_action = "[PauseMenu.LoadIngame]"
-			enabled = "[And(Not(IsShowingDialog), Not(GameIsMultiplayer))]"
+			enabled = "[And3(Not(IsShowingDialog), Not(GameIsMultiplayer), Not(GameIsIronman))]"
 		} 
 	}
 
@@ -339,8 +339,8 @@ template frontend_menu_middle_template {
 			click_type = left
 			click_mode = single
 			title = "PAUSE_MENU_SWITCH_COUNTRY"
-			conditions = "[MakeItFailIf(GameIsMultiplayer, PauseMenu.GetOpenLobbyTooltip)]"
-			on_action = "[PauseMenu.LoadIngame]"
+			conditions = "[PauseMenu.GetOpenLobbyTooltip]"
+			on_action = "[PauseMenu.OpenLobby]"
 			enabled = "[And(Not(IsShowingDialog), PauseMenu.CanOpenLobby)]"
 		} 
 	}
