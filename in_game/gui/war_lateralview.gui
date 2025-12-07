@@ -11,7 +11,7 @@ types war_types {
 
 		hbox = {
 			using = layoutpolicy_expanding
-			margin = { 0 4 }
+			margin = { 4 4 }
 			
 			hbox = {
 				using = layoutpolicy_expanding

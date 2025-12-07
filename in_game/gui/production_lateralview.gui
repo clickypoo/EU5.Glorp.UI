@@ -298,7 +298,10 @@ template production_view_poptypes {
 	hbox = {
 		layoutpolicy_horizontal = expanding
 		spacing = 2
-		margin = { 2 5 }
+        margin_left = 2
+        margin_right = 2
+        margin_top = -10
+        margin_bottom = 5
 		visible = "[And3(Not(ProductionView.Vars.HasValue( 'display', 'foreign' )), Not(ProductionView.Vars.HasValue( 'display', 'estate' )), ProductionView.IsLocationFilterEnabled)]"
 		datamodel = "[GetPopTypes]"
 		datacontext = "[ProductionView.GetSelectedLocation]"
@@ -2943,43 +2946,64 @@ types Buildings {
 									}
 								}
 
-								hbox = {
-									visible = "[And(BuildingItem.HasBuildings, BuildingItem.GetBuildingType.IsProducing)]"
-									text_single = {
-										autoresize = no
-										size = {80 25}
-										align = center
-										visible = "[Or(GreaterThan_CFixedPoint(Building.GetProfit, '(CFixedPoint)0'), Not(Building.IsSubsidized))]"
-										raw_text = "[Building.GetNetProfitValuePerLevel|+=2]@tax_base!"
-										datacontext = "[BuildingCandidate.GetBuilding]"
-										tooltipwidget = {
-											using = BuildingProfit_Tooltip
-										}
-										fontsize = 16
-										sort_by_highlight = {
-											size = { 100% 110% }
-											name = "profit"
-										}
-									}
+                                vbox = {
 
-									text_single = {
-										autoresize = no
-										size = {80 25}
-										align = center
-										visible = "[And(Not(GreaterThan_CFixedPoint(Building.GetProfit, '(CFixedPoint)0')), Building.IsSubsidized)]"
-										raw_text = "#L [Building.GetNetProfitValuePerLevel|2]#!@tax_base!"
-										datacontext = "[BuildingCandidate.GetBuilding]"
-										tooltipwidget = {
-											using = BuildingProfit_Tooltip
-										}
-										fontsize = 16
-										sort_by_highlight = {
-											size = { 100% 110% }
-											name = "profit"
-										}
-									}
-								}
+                                    hbox = {
+                                        expand = {}
+                                        visible = "[And(BuildingItem.HasBuildings, BuildingItem.GetBuildingType.IsProducing)]"
+                                        text_single = {
+                                            autoresize = no
+                                            size = {80 25}
+                                            align = nobaseline|right
+                                            visible = "[Or(GreaterThan_CFixedPoint(Building.GetProfit, '(CFixedPoint)0'), Not(Building.IsSubsidized))]"
+                                            raw_text = "[Building.GetNetProfitValuePerLevel|+=2]@tax_base!"
+                                            datacontext = "[BuildingCandidate.GetBuilding]"
+                                            tooltipwidget = {
+                                                using = BuildingProfit_Tooltip
+                                            }
+                                            fontsize = 16
+                                            sort_by_highlight = {
+                                                size = { 100% 110% }
+                                                name = "profit"
+                                            }
+                                        }
 
+                                        text_single = {
+                                            autoresize = no
+                                            size = {80 25}
+                                            align = nobaseline|right
+                                            visible = "[And(Not(GreaterThan_CFixedPoint(Building.GetProfit, '(CFixedPoint)0')), Building.IsSubsidized)]"
+                                            raw_text = "#L [Building.GetNetProfitValuePerLevel|2]#!@tax_base!"
+                                            datacontext = "[BuildingCandidate.GetBuilding]"
+                                            tooltipwidget = {
+                                                using = BuildingProfit_Tooltip
+                                            }
+                                            fontsize = 16
+                                            sort_by_highlight = {
+                                                size = { 100% 110% }
+                                                name = "profit"
+                                            }
+                                        }
+                                    }
+                                    hbox = {
+                                        visible = "[Building.IsProducing]"
+                                        layoutpolicy_horizontal = expanding
+                                        datamodel = "[DataModelFirst(Building.GetProductionMethods, '(int32)1')]"
+                                        expand = {}
+                                        item = {
+                                            text_single = {
+                                                maximumsize = { 70 18 }
+                                                raw_text = "[Building.GetBuildingProductionEfficiency(ActiveProductionMethod.GetMethod)|+=2%]@efficiency!"
+                                                align = nobaseline|right
+                                                default_format = "@bold!"
+                                                fontsize = 15
+                                                tooltipwidget = {
+                                                    using = building_production_efficiency_tooltip
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
 
 								widget = {
 									size = { 30 30 }

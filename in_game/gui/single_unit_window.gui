@@ -3534,6 +3534,7 @@ lateralview = {
 			}
 
 			widget = {
+                visible = "[Not(SingleUnitWindow.Vars.HasValue( 'tab', 'formation' ))]"
 				layoutpolicy_horizontal = expanding
 				size = { -1 220 }
 
@@ -3545,6 +3546,8 @@ lateralview = {
 					primary_color = "[GetCountryUnitPrimaryColor(SingleUnitWindow.GetPlayer, SingleUnitWindow.GetSelectedUnit.GetVisualSubunit.GetDefinition)]"
 					secondary_color = "[GetCountryUnitSecondaryColor(SingleUnitWindow.GetPlayer, SingleUnitWindow.GetSelectedUnit.GetVisualSubunit.GetDefinition)]"
 					tertiary_color = "[GetCountryUnitTertiaryColor(SingleUnitWindow.GetPlayer, SingleUnitWindow.GetSelectedUnit.GetVisualSubunit.GetDefinition)]"
+                    spriteType = CorneredTiled
+                    texture_density = 2
 				}
 
 				using = bg_age_event_frame
@@ -3887,6 +3890,19 @@ lateralview = {
 
 					expand = {}
 				}
+
+                state = {
+                    name = _show
+                    duration = 0.2
+                    bezier = { 0.0 1.0 0.0 1.0 }
+                    size = { -1 220 }
+                }
+                state = {
+                    name = _hide
+                    duration = 0.2
+                    bezier = { 0.0 1.0 0.0 1.0 }
+                    size = { -1 0 }
+                }
 			}
 
 			header_secondary_tabs = {
@@ -4708,7 +4724,7 @@ lateralview = {
 								datacontext = "[SingleUnitWindow.GetSelectedUnit]"
 								hbox = {
 									using = layoutpolicy_expanding
-									layoutstretchfactor_vertical = 2
+									layoutstretchfactor_vertical = 3
 									widget = {
 										datacontext = "[SingleUnitWindow.GetSelectedUnit.GetUnitBox('left')]"
 										using = layoutpolicy_expanding
