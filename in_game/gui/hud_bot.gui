@@ -1271,9 +1271,9 @@ types BottomTypes
 		}
 	}
 
-	type mapmodes_color_ledger = window {
-		size = { 280 300 }
-		movable = no
+	type mapmodes_color_ledger = vbox {
+		#size = { 280 300 }
+		min_height = "[Min_int32('(int32)300', Add_int32('(int32)84', Multiply_int32(GetDataModelSize(GetMapColorLedger), '(int32)33')))]"
 		using = bg_paper_card
 		datacontext = "[GetMapColorLedgerSearchBar]"
 

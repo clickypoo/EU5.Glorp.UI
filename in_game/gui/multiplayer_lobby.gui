@@ -403,6 +403,7 @@ types MultiplayerLobby
 					parentanchor = center
 					size = { 100% 100% }
 					datacontext = "[EstatePrivilege.GetType]"
+					datacontext = "[GetNullUIAction]"
 					tooltipwidget = {
 						using = EstateType_tooltip
 					}
@@ -1246,35 +1247,8 @@ types MultiplayerLobby
 							}
 
 							hbox = {
-								margin = {5 0}
+								margin = {10 0}
 								spacing = 5
-
-								widget = {
-									size = { 30 30 }
-									visible = "[Not(IsDataModelEmpty(GameLobby.GetLeaderOfInternationalOrganizations))]"
-
-									hbox = {
-										spacing = 10
-										datamodel = "[GameLobby.GetLeaderOfInternationalOrganizations]"
-
-										item = {
-											InternationalOrganizationFakeButton = {
-												blockoverride "tooltip_content" {
-													tooltipwidget = {
-														BasicFunctionalTooltip = {
-															blockoverride "tooltip_content" {
-																TooltipTextBlock = {
-																	datacontext = "[InternationalOrganization]"
-																	textcontext = "LOBBYVIEW_IO_LEADER_TT"
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
 
 								text_single = {
 									maximumsize = { 375 -1 }
@@ -1623,6 +1597,34 @@ types MultiplayerLobby
 							blockoverride "rightclick"{}
 						}
 					}
+					blockoverride "country_header_extra" {
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							parentanchor = bottom
+							position = { 5 -50 }
+							maximumsize = { -1 30 }
+							righttoleft = yes
+							spacing = 4
+							datamodel = "[GameLobby.GetLeaderOfInternationalOrganizations]"
+							item = {
+								InternationalOrganizationFakeButton = {
+									blockoverride "tooltip_content" {
+										tooltipwidget = {
+											BasicFunctionalTooltip = {
+												blockoverride "tooltip_content" {
+													TooltipTextBlock = {
+														datacontext = "[InternationalOrganization]"
+														textcontext = "LOBBYVIEW_IO_LEADER_TT"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							expand = {}
+						}
+					}		
 				}
 
 				# PRIMARY CULTURE & POPULATION & PRIMARY RELIGION
@@ -2197,15 +2199,15 @@ types MultiplayerLobby
 										item = {
 											relation_type_item = {
 												blockoverride "small_relations_datamodel"{
-													datamodel = "[DataModelFirst(RelationTypeItem.GetRelations, '(int32)12')]"
+													datamodel = "[DataModelFirst(RelationTypeItem.GetRelations, '(int32)8')]"
 												}
 				
 												blockoverride "extra_small_relations_text" {
-													raw_text = "+[Subtract_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)12')]"
+													raw_text = "+[Subtract_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)8')]"
 												}
 				
 												blockoverride "extra_small_relations_visible"{
-													visible = "[GreaterThan_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)12')]"
+													visible = "[GreaterThan_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)8')]"
 												}
 											}
 										}

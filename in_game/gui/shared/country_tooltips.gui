@@ -189,10 +189,10 @@ template TaxBaseTooltip {
 						plotpoints = "[Country.GetHistoricalTaxBase]"
 					}
 					blockoverride "maxvalue" {
-						raw_text = "[Country.GetHistoricalMaxTaxBase|2]@gold!"
+						raw_text = "[Country.GetHistoricalMaxTaxBase|2]@tax_base!"
 					}
 					blockoverride "minvalue" {
-						raw_text = "[Country.GetHistoricalMinTaxBase|2]@gold!"
+						raw_text = "[Country.GetHistoricalMinTaxBase|2]@tax_base!"
 					}
 					blockoverride "startdate" {
 						text = "[Country.GetStartDataDate]"

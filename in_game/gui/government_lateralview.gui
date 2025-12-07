@@ -214,7 +214,8 @@ types CountryHeaders {
 						text_single = {
 							visible = "[ObjectsEqual(Player.GetGovernment.GetEstateFromKey('crown_estate').GetType, Estate.GetType)]"
 							align = left|nobaseline
-							maximumsize = { 55 20 }
+							minimumsize = { 100 20 }
+							maximumsize = { 100 20 }
 							autoresize = yes
 
 							raw_text = "[Estate.GetRelativePower|0%] @power!"
@@ -638,10 +639,6 @@ types CountryHeaders {
 								texture = "[GetEstateIcon(Estate.GetType)]"
 							}
 
-							blockoverride "tooltip_title_size" {
-								size = { 280 -1 }
-							}
-
 							blockoverride "tooltip_layout_policy" { }
 
 							blockoverride "tooltip_content" {
@@ -901,7 +898,7 @@ types CountryHeaders {
 				}
 	
 				text_single = {
-					maximumsize = {150 18}
+					maximumsize = {200 18}
 					align = left|nobaseline
 					block "law_type_button_text" {
 						# text = "[LawCategory.GetName]"
@@ -2876,10 +2873,6 @@ lateralview = {
 																		texture = "[GetEstateIcon(Estate.GetType)]"
 																	}
 
-																	blockoverride "tooltip_title_size" {
-																		size = { 280 -1 }
-																	}
-
 																	blockoverride "tooltip_layout_policy" {}
 
 																	blockoverride "tooltip_content" {
@@ -3815,7 +3808,7 @@ lateralview = {
 											margin = {10 0 }
 											vbox = {
 												text_single = {
-													text = "[GovernmentView.GetPlayer.GetGovernment.GetParliament.GetCurrentDebate.GetName]"
+													text = "[GovernmentView.GetPlayer.GetGovernment.GetParliament.GetCurrentDebateName]"
 													default_format = "#yellow_titles"
 													fontsize = 16
 													maximumsize = {245 -1}

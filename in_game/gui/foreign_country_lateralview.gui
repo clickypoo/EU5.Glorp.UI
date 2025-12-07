@@ -3420,7 +3420,7 @@ lateralview = {
 									#LAWS AND REFORMS
 									widget = {
 										layoutpolicy_horizontal = expanding
-										size = { -1 130 }
+										size = { -1 200 }
 
 										hbox = {
 											spacing = 7
@@ -3428,7 +3428,7 @@ lateralview = {
 											#LAWS
 											vbox = {
 												using = layoutpolicy_expanding
-												maximumsize = { -1 130 }
+												maximumsize = { -1 200 }
 												margin_bottom = 5
 
 												using = bg_paper_card
@@ -3484,12 +3484,12 @@ lateralview = {
 														dynamicgridbox = {
 															layoutpolicy_horizontal = expanding
 															flipdirection = yes
-															datamodel_wrap = 6
+															datamodel_wrap = 5
 
 															datamodel = "[ForeignCountryView.GetLaws]"
 															item = {
 																widget = {
-																	size = { 40 36 }
+																	size = { 48 48 }
 
 																	hbox = {
 																		layoutpolicy_horizontal = expanding
@@ -3501,7 +3501,7 @@ lateralview = {
 																		}
 
 																		icon = {
-																			size = { 32 32 }
+																			size = { 36 36 }
 																			# block "resource_icon" {
 																				texture = "[GetLawIcon(Law.Self)]"
 
@@ -3534,7 +3534,7 @@ lateralview = {
 											#REFORMS
 											vbox = {
 												using = layoutpolicy_expanding
-												maximumsize = { -1 130 }
+												maximumsize = { -1 200 }
 												margin_bottom = 5
 
 												using = bg_paper_card
@@ -3553,7 +3553,7 @@ lateralview = {
 														spacing = 8
 														margin_left = 10
 														icon = {
-															size = { 30 30 }
+															size = { 36 36 }
 															texture = "gfx/interface/icons/flat_icons/reforms.dds"
 															glow = {
 																name = "drop_shadow"
@@ -3591,12 +3591,12 @@ lateralview = {
 														dynamicgridbox = {
 															layoutpolicy_horizontal = expanding
 															flipdirection = yes
-															datamodel_wrap = 6
+															datamodel_wrap = 5
 
 															datamodel = "[ForeignCountryView.GetReforms]"
 															item = {
 																widget = {
-																	size = { 40 58 }
+																	size = { 50 63 }
 
 																	icon = {
 																		parentanchor = center

@@ -3161,17 +3161,31 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 
-				button_checkbox = {
+				button = {
 					size = { 20 20 }
-					checked = "[IsUnitSelected(Unit.Self)]"
-					onclick = "[ToggleSelectUnit(Unit.Self)]"
-					# alwaystransparent = yes
+
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						title = "TOGGLE_UNIT_SELECTION_TT"
+						on_action = "[ToggleSelectUnit(Unit.Self)]"
+					}
+
+					action_tooltip = {
+						click_type = right
+						click_mode = single
+						title = "TOGGLE_ALL"
+						on_action = "[SelectAllPlayerUnits(Unit.IsArmy)]"
+					}
+
 					tooltipwidget = {
-						LeftClickButtonTooltip = {
-							blockoverride "onclick_text" {
-								text = "TOGGLE_UNIT_SELECTION_TT"
-							}
+						BasicFunctionalTooltip = {
 						}
+					}
+					button_checkbox = {
+						size = { 100% 100% }
+						checked = "[IsUnitSelected(Unit.Self)]"
+						alwaystransparent = yes
 					}
 				}
 
@@ -3353,16 +3367,31 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 
-				button_checkbox = {
+				button = {
 					size = { 20 20 }
-					checked = "[IsUnitSelected(Unit.Self)]"
-					onclick = "[ToggleSelectUnit(Unit.Self)]"
+
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						title = "TOGGLE_UNIT_SELECTION_TT"
+						on_action = "[ToggleSelectUnit(Unit.Self)]"
+					}
+
+					action_tooltip = {
+						click_type = right
+						click_mode = single
+						title = "TOGGLE_ALL"
+						on_action = "[SelectAllPlayerUnits(Unit.IsArmy)]"
+					}
+
 					tooltipwidget = {
-						LeftClickButtonTooltip = {
-							blockoverride "onclick_text" {
-								text = "TOGGLE_UNIT_SELECTION_TT"
-							}
+						BasicFunctionalTooltip = {
 						}
+					}
+					button_checkbox = {
+						size = { 100% 100% }
+						checked = "[IsUnitSelected(Unit.Self)]"
+						alwaystransparent = yes
 					}
 				}
 
@@ -3766,7 +3795,7 @@ OutlinerEntryBase = {
 				alwaystransparent = yes
 				parentanchor = center
 				allow_outside = yes
-				size = { 90% 90% }
+				size = { 80% 80% }
 
 				using = piechart_angles
 
@@ -3787,7 +3816,7 @@ OutlinerEntryBase = {
 
 			icon = {
 				parentanchor = center
-				size = { 66% 66% }
+				size = { 60% 60% }
 				texture = "gfx/interface/icons/flat_icons/reforms.dds"
 			}
 		}
@@ -3894,7 +3923,7 @@ OutlinerEntryBase = {
 				alwaystransparent = yes
 				parentanchor = center
 				allow_outside = yes
-				size = { 90% 90% }
+				size = { 80% 80% }
 
 				using = piechart_angles
 
@@ -3913,7 +3942,7 @@ OutlinerEntryBase = {
 
 			icon = {
 				parentanchor = center
-				size = { 66% 66% }
+				size = { 60% 60% }
 				texture = "gfx/interface/icons/situations/_default.dds"
 				texture_density = 2
 			}
@@ -4153,7 +4182,7 @@ template cabinet_entry_icon_empty {
 		visible = "[Cabinet.IsActive]"
 		icon = {
 			parentanchor = center
-			size = { 70% 70% }
+			size = { 63% 63% }
 			texture = "[GetCabinetActionIcon(Cabinet.GetAction)]"
 			glow = {
 				name = "drop_shadow"
@@ -4176,7 +4205,7 @@ template cabinet_entry_icon {
 		# }
 		icon = {
 			parentanchor = center
-			size = { 70% 70% }
+			size = { 63% 63% }
 			block "cabinet_entry_icon_texture" {}
 			glow = {
 				name = "drop_shadow"
@@ -4607,7 +4636,7 @@ OutlinerEntryBase = {
 		blockoverride "cabinet_entry_icon_piechart"{
 			piechart = {
 				parentanchor = center
-				size = { 90% 90% }
+				size = { 80% 80% }
 				using = piechart_angles
 
 				pieslice_no_highlight = {
@@ -4664,7 +4693,7 @@ OutlinerEntryBase = {
 		blockoverride "cabinet_entry_icon_piechart"{
 			piechart = {
 				parentanchor = center
-				size = { 90% 90% }
+				size = { 80% 80% }
 				using = piechart_angles
 
 				pieslice_no_highlight = {
@@ -5161,7 +5190,9 @@ OutlinerEntryBase = {
 
 OutlinerEntryBase = {
 	name = "integrate_province_cabinet_entry"
-
+	tooltipmeta = {
+		texture = "[GetCabinetActionIcon(Cabinet.GetAction)]"
+	}
 	blockoverride "expanded_big_content" {
 		OutlinerButtonBase = {
 			size = { 95% 100% }
@@ -5195,7 +5226,7 @@ OutlinerEntryBase = {
 		blockoverride "cabinet_entry_icon_piechart"{
 			piechart = {
 				parentanchor = center
-				size = { 90% 90% }
+				size = { 80% 80% }
 				using = piechart_angles
 
 				pieslice_no_highlight = {
@@ -5297,7 +5328,48 @@ OutlinerEntryBase = {
 		using = cabinet_entry_icon
 
 		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/promote_religion.dds"  }
+
+		blockoverride "cabinet_entry_icon_piechart"{
+			widget = {
+				size = { 100% 100% }
+				alwaystransparent = yes
+				ignore_layout = yes
+				background = {
+					texture = "gfx/interface/buttons/checkbox_bg_round.dds"
+					texture_density = 2
+					using = button_outliner_effect
+				}
+
+				widget = {
+					size = {100% 100%}
+					ignore_layout = yes
+					alwaystransparent = yes
+					using = circular_wood_frame
+				}
+			}
+			piechart = {
+				parentanchor = center
+				size = { 80% 80% }
+				using = piechart_angles
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Multiply_float(FixedPointToFloat(OutlinerCabinetEntry.GetActionProgressScope.sProvince('target_province').GetReligionPercentage(OutlinerCabinetEntry.GetActionProgressScope.sReligion('target_religion'))), '(float)100.0')]"
+					color = { 0.01 0.6 0.9 1 } 
+					alwaystransparent = yes
+				}
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Subtract_float('(float)100.0', 
+					Multiply_float(FixedPointToFloat(OutlinerCabinetEntry.GetActionProgressScope.sProvince('target_province').GetReligionPercentage(OutlinerCabinetEntry.GetActionProgressScope.sReligion('target_religion'))), '(float)100.0'))]"
+					color = { 0.0 0.1 0.1 1 }
+					alwaystransparent = yes
+				}
+			}
+		}
 	}
+
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
 		tooltipwidget = {
@@ -5446,7 +5518,7 @@ OutlinerEntryBase = {
 		blockoverride "cabinet_entry_icon_piechart"{
 			piechart = {
 				parentanchor = center
-				size = { 90% 90% }
+				size = { 80% 80% }
 				using = piechart_angles
 
 				pieslice_no_highlight = {
@@ -5514,7 +5586,7 @@ OutlinerEntryBase = {
 		blockoverride "cabinet_entry_icon_piechart"{
 			piechart = {
 				parentanchor = center
-				size = { 90% 90% }
+				size = { 80% 80% }
 				using = piechart_angles
 
 				pieslice_no_highlight = {
@@ -5661,7 +5733,7 @@ OutlinerEntryBase = {
 				blockoverride "cabinet_entry_progress_text" {
 					OutlinerTextBase = {
 						autoresize = yes
-						raw_text = "[Cabinet.GetEffectiveSkillOnlyEffect]"
+						raw_text = "[Cabinet.GetActionProgress] ([Cabinet.GetEffectiveSkillOnlyEffect])"
 						maximumsize = { 80 -1 }
 					}
 				}
@@ -5688,6 +5760,28 @@ OutlinerEntryBase = {
 		}
 	}
 	blockoverride "category_color" { using = cabinet_entry_color }
+
+	blockoverride "cabinet_entry_icon_piechart"{
+		piechart = {
+			parentanchor = center
+			size = { 90% 90% }
+			using = piechart_angles
+
+			pieslice_no_highlight = {
+				texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+				value = "[FixedPointToFloat(Cabinet.GetActionNumProgress)]"
+				color = { 0.01 0.6 0.9 1 }
+				alwaystransparent = yes
+			}
+
+			pieslice_no_highlight = {
+				texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+				value = "[Subtract_float('(float)100.0', FixedPointToFloat(Cabinet.GetActionNumProgress))]"
+				color = { 0.0 0.1 0.1 1 }
+				alwaystransparent = yes
+			}
+		}
+	}
 }
 
 ## BOOST COLONIAL CHARTER #-> progress
@@ -6370,6 +6464,12 @@ OutlinerEntryBase = {
 					size = { 20 20 }
 					texture = "[GetConstructionIcon(Construction.Self)]"
 					texture_density = 2
+					glow = {
+						name = "drop_shadow"
+						glow_radius = 3
+						color = {0.0 0.0 0.0 1.0}
+						alpha = 0.3
+					}
 				}
 				OutlinerTextBase = {
 					layoutpolicy_horizontal = expanding
@@ -6826,7 +6926,7 @@ OutlinerEntryBase = {
 	
 				icon = {
 					texture_density = 2
-					size = { 20 20 }
+					size = { 17 17 }
 					parentanchor = center
 					texture = "[GetRebelsIcon(Rebel.Self)]"
 
@@ -6941,7 +7041,7 @@ template "diplomacy_icon_content"
 		piechart = {
 			visible = "[GreaterThan_CFixedPoint(OutlinerDiplomacyEntry.GetTotalNumber, '(CFixedPoint)0')]"
 			parentanchor = center
-			size = { 90% 90% }
+			size = { 80% 80% }
 			using = piechart_angles
 
 			pieslice_no_highlight = {
@@ -6959,7 +7059,7 @@ template "diplomacy_icon_content"
 			}
 		}
 		icon = {
-			size = { 75% 75% }
+			size = { 60% 60% }
 			parentanchor = center
 			texture = "[OutlinerDiplomacyEntry.GetIcon]"
 		}
@@ -7207,7 +7307,7 @@ OutlinerEntryBase = {
 			piechart = {
 				visible = "[GreaterThan_CFixedPoint(OutlinerDiplomacyEntry.GetTotalNumber, '(CFixedPoint)0')]"
 				parentanchor = center
-				size = { 90% 90% }
+				size = { 80% 80% }
 				using = piechart_angles
 
 				pieslice = {
@@ -7381,7 +7481,41 @@ OutlinerEntryBase = {
 
 			hbox = {
 				using = outliner_entry_margin
-				spacing = 5
+				spacing = 4
+
+				portrait_standard_head_button = {
+					datacontext = "[Exploration.GetCharacter]"
+					size = { 28 28 }
+
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						title = "change_explorer"
+					}
+
+					action_button = {
+						parentanchor = center
+						size = { 100% 90% }
+						actor = "[Player]"
+						enabled = yes
+						parameter = {
+							parameter_name = "target"
+							parameter_value = "[Exploration.GetArea]"
+						}
+						left_action = { action_name = "change_explorer" }
+						tooltip_enabled = no
+					}
+
+					blockoverride "character_tooltip" { 
+						tooltipwidget = {
+							BasicFunctionalTooltip = {}
+						}
+					}
+
+					blockoverride "character_contextmenu" {}
+					blockoverride "button_setup" {}
+					blockoverride "rightclick" {}
+				}
 
 				icon = {		
 					size = { 20 20 }
@@ -7408,17 +7542,6 @@ OutlinerEntryBase = {
 					autoresize = yes
 					text = "[Exploration.GetEstimatedTimeLeft]"
 				}
-				portrait_standard_head_button = {
-					datacontext = "[Exploration.GetCharacter]"
-					alwaystransparent = yes
-					size = { 28 28 }
-
-					blockoverride "character_tooltip" { tooltip_enabled = no }
-					blockoverride "character_contextmenu" {}
-					blockoverride "button_setup" {}
-					blockoverride "rightclick" {}
-					blockoverride "hover" {}
-				}
 			}
 		}
 	}
@@ -7442,7 +7565,7 @@ OutlinerEntryBase = {
 		OutlinerIconBg = {
 			piechart = {
 				parentanchor = center
-				size = { 85% 85% }
+				size = { 80% 80% }
 
 				using = piechart_angles
 				using = bg_circle_piechart
@@ -7489,11 +7612,6 @@ OutlinerEntryBase = {
 			click_mode = single
 			title = "GO_TO_AREA"
 			on_action = "[PanToLocation(Exploration.GetArea.GetCapital)]"
-		}
-		action_tooltip = {
-			click_type = right
-			click_mode = single
-			title = "AUTOMATED_SYSTEM_EXPLORATION_CLICK"
 			on_action = "[OpenLateralViewWithParams('expansion', 'low_tab = exploration')]"
 		}
 	}
