@@ -986,6 +986,35 @@ Types LeftPanelTypes
 		allow_outside = yes
 		layer = bottom
 
+        widget = {
+            allow_outside = yes
+            visible = "[Not(Player.MakeScope.GetVariable('disableLeftPanelStatsBar').IsSet)]"
+            left_panel_info_bar = {}
+            left_panel_info_toggle = {
+                blockoverride "toggle_visible" {
+                    visible = "[Not(Player.MakeScope.GetVariable('toggleLeftPanelStatsBar').IsSet)]"
+                }
+                blockoverride "toggle_pos" {
+                    position = { 20 123 }
+                }
+                blockoverride "toggle_state" {
+                    state = {
+                        name = _show
+                        duration = 0.2
+                        bezier = { 0.0 1.0 0.0 1.0 }
+                        position = { 20 123 }
+                    }
+                    state = {
+                        name = _hide
+                        duration = 0.2
+                        bezier = { 0.0 1.0 0.0 1.0 }
+                        position = { 20 213 }
+                    }
+                }
+            }
+            left_panel_info_toggle = {}
+        }
+
 		# Closed panel
 		widget = {
 			visible = "[Not(TutorialHasVar('intro_hide_ui_2'))]"

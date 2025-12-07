@@ -178,3 +178,27 @@ SetEnableDynamicWarStats = {
         }
     }
 }
+
+SetDisableLeftPanelStatsBar = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = disableLeftPanelStatsBar } }
+            set_variable = { name = disableLeftPanelStatsBar value = 1 }
+        }
+        else = {
+            remove_variable = disableLeftPanelStatsBar
+        }
+    }
+}
+
+SetToggleLeftPanelStatsBar = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = toggleLeftPanelStatsBar } }
+            set_variable = { name = toggleLeftPanelStatsBar value = 1 }
+        }
+        else = {
+            remove_variable = toggleLeftPanelStatsBar
+        }
+    }
+}

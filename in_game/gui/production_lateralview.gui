@@ -3005,31 +3005,37 @@ types Buildings {
                                     }
                                 }
 
-								widget = {
-									size = { 30 30 }
-									button_checkbox_subsidized = {
-										visible = "[And(BuildingItem.HasBuildings, BuildingItem.GetBuildingType.IsProducing)]"
-										size = { 100% 100% }
-										enabled = "[CanSubsidizeBuildings(BuildingItem.GetBuildingsFunc)]"
-										tooltipwidget ={
-											using = Building_Subsidized_Tooltip
-										}
-										checked = "[AreBuildingsSubsidized(BuildingItem.GetBuildingsFunc)]"
-										onclick = "[ToggleSubsidizeBuildings(BuildingItem.GetBuildingsFunc)]"
-									}
-								}
-
-								widget = {
-									size = { 30 30 }
-									button_checkbox_open = {
-										size = { 100% 100% }
-										visible = "[And(BuildingItem.HasBuildings, BuildingItem.ShowCloseAll)]"
-										enabled = "[CanToggleBuildings(BuildingItem.GetBuildingsFunc)]"
-										checked = "[AreBuildingsClosed(BuildingItem.GetBuildingsFunc)]"
-										tooltipwidget = { using = Building_Open_Tooltip }
-										onclick = "[ToggleBuildings(BuildingItem.GetBuildingsFunc)]"
-									}
-								}
+                                hbox = {
+                                    spacing = -5
+                                    lsq_auto_expand_widget = {} # lsq - auto expand
+                                    vbox = {
+                                        spacing = -5
+                                        widget = {
+                                            visible = "[And(BuildingItem.HasBuildings, BuildingItem.GetBuildingType.IsProducing)]"
+                                            size = { 25 25 }
+                                            button_checkbox_subsidized = {
+                                                size = { 100% 100% }
+                                                enabled = "[CanSubsidizeBuildings(BuildingItem.GetBuildingsFunc)]"
+                                                tooltipwidget ={
+                                                    using = Building_Subsidized_Tooltip
+                                                }
+                                                checked = "[AreBuildingsSubsidized(BuildingItem.GetBuildingsFunc)]"
+                                                onclick = "[ToggleSubsidizeBuildings(BuildingItem.GetBuildingsFunc)]"
+                                            }
+                                        }
+                                        widget = {
+                                            visible = "[And(BuildingItem.HasBuildings, BuildingItem.ShowCloseAll)]"
+                                            size = { 25 25 }
+                                            button_checkbox_open = {
+                                                size = { 100% 100% }
+                                                enabled = "[CanToggleBuildings(BuildingItem.GetBuildingsFunc)]"
+                                                checked = "[AreBuildingsClosed(BuildingItem.GetBuildingsFunc)]"
+                                                tooltipwidget = { using = Building_Open_Tooltip }
+                                                onclick = "[ToggleBuildings(BuildingItem.GetBuildingsFunc)]"
+                                            }
+                                        }
+                                    }
+                                }
 
 								button_square_minus = {
 									size = { 20 20 }

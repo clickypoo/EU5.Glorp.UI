@@ -1568,116 +1568,120 @@ template build_location_entry {
 							}
 						}
 					}
-					
-					widget = { #subsidize/close
-						size = { 30 44 }
-						vbox = {
-							spacing = 0
-							button_subsidized = {
-								visible = "[And(ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self), LocationToBuildItem.GetBuilding.GetType.IsProducing)]"
-								size = { 22 22 }
 
-								frame = "[Select_int32(LocationToBuildItem.GetBuilding.IsSubsidized, '(int32)2', '(int32)1')]"
-								enabled = "[CanSubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
+                    hbox = {
+                        spacing = -5
+                        widget = { #subsidize/close
+                            size = { 30 44 }
+                            vbox = {
+                                spacing = 0
+                                button_subsidized = {
+                                    visible = "[And(ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self), LocationToBuildItem.GetBuilding.GetType.IsProducing)]"
+                                    size = { 22 22 }
 
-								action_tooltip = {
-									click_type = left
-									title = "[SelectLocalization( LocationToBuildItem.GetBuilding.IsSubsidized, 'TOGGLE_SUBSIDIZE_ON', 'TOGGLE_SUBSIDIZE_OFF' )]"
-									enabled = "[CanSubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
-									description = "[GetSubsidizeBuildingInfo(LocationToBuildItem.GetBuilding.Self)]"
-									on_action = "[SubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
-								}
+                                    frame = "[Select_int32(LocationToBuildItem.GetBuilding.IsSubsidized, '(int32)2', '(int32)1')]"
+                                    enabled = "[CanSubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
 
-								action_tooltip = {
-									click_type = right
-									title = "TOGGLE_SUBSIDIZE_ALL_BUILDINGS"
-									enabled = "[CanSubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
-									on_action = "[BuildInLocationLateralView.SubsidizeAllBuildings]"
-								}
+                                    action_tooltip = {
+                                        click_type = left
+                                        title = "[SelectLocalization( LocationToBuildItem.GetBuilding.IsSubsidized, 'TOGGLE_SUBSIDIZE_ON', 'TOGGLE_SUBSIDIZE_OFF' )]"
+                                        enabled = "[CanSubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
+                                        description = "[GetSubsidizeBuildingInfo(LocationToBuildItem.GetBuilding.Self)]"
+                                        on_action = "[SubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
+                                    }
 
-								datacontext = "[LocationToBuildItem.GetBuilding]"
+                                    action_tooltip = {
+                                        click_type = right
+                                        title = "TOGGLE_SUBSIDIZE_ALL_BUILDINGS"
+                                        enabled = "[CanSubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
+                                        on_action = "[BuildInLocationLateralView.SubsidizeAllBuildings]"
+                                    }
 
-								tooltipwidget = {
-									using = Location_Building_Subsidized_Tooltip
-								}
-							}
+                                    datacontext = "[LocationToBuildItem.GetBuilding]"
 
-							button_open = {
-								size = { 22 22 }
+                                    tooltipwidget = {
+                                        using = Location_Building_Subsidized_Tooltip
+                                    }
+                                }
 
-								frame = "[Select_int32(Not(LocationToBuildItem.GetBuilding.IsOpen), '(int32)2', '(int32)1')]"
-								enabled = "[CanToggleBuilding(LocationToBuildItem.GetBuilding.Self)]"
-								visible = "[ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self)]"
-								datacontext = "[LocationToBuildItem.GetBuilding]"
+                                button_open = {
+                                    size = { 22 22 }
 
-								action_tooltip = {
-									click_type = left
-									title = "[SelectLocalization(Building.IsOpen, 'TOGGLE_CLOSE_ON', 'TOGGLE_CLOSE_OFF' )]"
-									enabled = "[CanToggleBuilding(Building.Self)]"
-									description = "[GetToggleBuildingInfo(Building.Self)]"
-									on_action = "[ToggleBuilding(Building.Self)]"
-								}
+                                    frame = "[Select_int32(Not(LocationToBuildItem.GetBuilding.IsOpen), '(int32)2', '(int32)1')]"
+                                    enabled = "[CanToggleBuilding(LocationToBuildItem.GetBuilding.Self)]"
+                                    visible = "[ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self)]"
+                                    datacontext = "[LocationToBuildItem.GetBuilding]"
 
-								action_tooltip = {
-									click_type = right
-									title = "TOGGLE_CLOSE_ALL_BUILDINGS"
-									enabled = "[CanToggleBuilding(Building.Self)]"
-									on_action = "[BuildInLocationLateralView.ToggleCloseAllBuildings]"
-								}
+                                    action_tooltip = {
+                                        click_type = left
+                                        title = "[SelectLocalization(Building.IsOpen, 'TOGGLE_CLOSE_ON', 'TOGGLE_CLOSE_OFF' )]"
+                                        enabled = "[CanToggleBuilding(Building.Self)]"
+                                        description = "[GetToggleBuildingInfo(Building.Self)]"
+                                        on_action = "[ToggleBuilding(Building.Self)]"
+                                    }
 
-								tooltipwidget = {
-									using = Location_Building_Open_Tooltip
-								}
-							}
-						}
+                                    action_tooltip = {
+                                        click_type = right
+                                        title = "TOGGLE_CLOSE_ALL_BUILDINGS"
+                                        enabled = "[CanToggleBuilding(Building.Self)]"
+                                        on_action = "[BuildInLocationLateralView.ToggleCloseAllBuildings]"
+                                    }
 
-						vbox = {
-							visible = "[LocationToBuildItem.IsForeignBuilding]"
-							spacing = 2
+                                    tooltipwidget = {
+                                        using = Location_Building_Open_Tooltip
+                                    }
+                                }
+                            }
 
-							icon = {
-								visible = "[Not(BuildInLocationLateralView.GetBuildingType.IsForeign)]"
-								datacontext = "[LocationToBuildItem.GetLocation.GetOwner]"
-								size = { 20 20 }
-								texture = "[GetSubjectTypeIcon(Country.GetDiplomacy.GetSubjectType)]"
+                            vbox = {
+                                visible = "[LocationToBuildItem.IsForeignBuilding]"
+                                spacing = 2
 
-								tooltipwidget = {
-									using = SubjectTypeDetail_tooltip
-								}
+                                icon = {
+                                    visible = "[Not(BuildInLocationLateralView.GetBuildingType.IsForeign)]"
+                                    datacontext = "[LocationToBuildItem.GetLocation.GetOwner]"
+                                    size = { 20 20 }
+                                    texture = "[GetSubjectTypeIcon(Country.GetDiplomacy.GetSubjectType)]"
 
-								alpha = 0.8
-								using = bg_circle_piechart
-								blockoverride "inside_color" {
-									modify_texture = {
-										using = color_bg_blue_texture
-										blend_mode = multiply
-									}
-								}
-								blockoverride "frame_color" {
-									modify_texture = {
-										using = color_new_gold_texture
-										blend_mode = multiply
-									}
-									modify_texture = {
-										using = color_gold_texture
-										# blend_mode = multiply
-										alpha = 0.5
-									}
-								}
+                                    tooltipwidget = {
+                                        using = SubjectTypeDetail_tooltip
+                                    }
 
-								glow = {
-									name = "drop_shadow"
-									glow_radius = 3
-									color = {0.0 0.0 0.0 1.0}
-									alpha = 0.3
-								}
-							}
+                                    alpha = 0.8
+                                    using = bg_circle_piechart
+                                    blockoverride "inside_color" {
+                                        modify_texture = {
+                                            using = color_bg_blue_texture
+                                            blend_mode = multiply
+                                        }
+                                    }
+                                    blockoverride "frame_color" {
+                                        modify_texture = {
+                                            using = color_new_gold_texture
+                                            blend_mode = multiply
+                                        }
+                                        modify_texture = {
+                                            using = color_gold_texture
+                                            # blend_mode = multiply
+                                            alpha = 0.5
+                                        }
+                                    }
 
-							country_flag_very_small = {
-								datacontext = "[LocationToBuildItem.GetLocation.GetOwner]"
-							}
-						}
-					}
+                                    glow = {
+                                        name = "drop_shadow"
+                                        glow_radius = 3
+                                        color = {0.0 0.0 0.0 1.0}
+                                        alpha = 0.3
+                                    }
+                                }
+
+                                country_flag_very_small = {
+                                    datacontext = "[LocationToBuildItem.GetLocation.GetOwner]"
+                                }
+                            }
+                        }
+                        lsq_auto_expand_widget = {}  # lsq - auto expand
+                    }
 
 					expand = {}
 
