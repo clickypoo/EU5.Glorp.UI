@@ -403,6 +403,7 @@ types MultiplayerLobby
 					parentanchor = center
 					size = { 100% 100% }
 					datacontext = "[EstatePrivilege.GetType]"
+					datacontext = "[GetNullUIAction]"
 					tooltipwidget = {
 						using = EstateType_tooltip
 					}
@@ -1246,35 +1247,8 @@ types MultiplayerLobby
 							}
 
 							hbox = {
-								margin = {5 0}
+								margin = {10 0}
 								spacing = 5
-
-								widget = {
-									size = { 30 30 }
-									visible = "[Not(IsDataModelEmpty(GameLobby.GetLeaderOfInternationalOrganizations))]"
-
-									hbox = {
-										spacing = 10
-										datamodel = "[GameLobby.GetLeaderOfInternationalOrganizations]"
-
-										item = {
-											InternationalOrganizationFakeButton = {
-												blockoverride "tooltip_content" {
-													tooltipwidget = {
-														BasicFunctionalTooltip = {
-															blockoverride "tooltip_content" {
-																TooltipTextBlock = {
-																	datacontext = "[InternationalOrganization]"
-																	textcontext = "LOBBYVIEW_IO_LEADER_TT"
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
 
 								text_single = {
 									maximumsize = { 375 -1 }
@@ -1621,6 +1595,34 @@ types MultiplayerLobby
 							blockoverride "character_contextmenu"{}
 							blockoverride "portrait_click"{}
 							blockoverride "rightclick"{}
+						}
+					}
+					blockoverride "country_header_extra" {
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							parentanchor = bottom
+							position = { 5 -50 }
+							maximumsize = { -1 30 }
+							righttoleft = yes
+							spacing = 4
+							datamodel = "[GameLobby.GetLeaderOfInternationalOrganizations]"
+							item = {
+								InternationalOrganizationFakeButton = {
+									blockoverride "tooltip_content" {
+										tooltipwidget = {
+											BasicFunctionalTooltip = {
+												blockoverride "tooltip_content" {
+													TooltipTextBlock = {
+														datacontext = "[InternationalOrganization]"
+														textcontext = "LOBBYVIEW_IO_LEADER_TT"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							expand = {}
 						}
 					}
 				}
@@ -2197,15 +2199,15 @@ types MultiplayerLobby
 										item = {
 											relation_type_item = {
 												blockoverride "small_relations_datamodel"{
-													datamodel = "[DataModelFirst(RelationTypeItem.GetRelations, '(int32)12')]"
+													datamodel = "[DataModelFirst(RelationTypeItem.GetRelations, '(int32)8')]"
 												}
 				
 												blockoverride "extra_small_relations_text" {
-													raw_text = "+[Subtract_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)12')]"
+													raw_text = "+[Subtract_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)8')]"
 												}
 				
 												blockoverride "extra_small_relations_visible"{
-													visible = "[GreaterThan_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)12')]"
+													visible = "[GreaterThan_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)8')]"
 												}
 											}
 										}
@@ -4403,20 +4405,41 @@ JominiMultiplayerLobby = {
 		allow_outside = yes
 	}
 
-	mapmodes_pinned_window = {
-		allow_outside = yes
-	}
-
 	mapmode_current_button = {
 		allow_outside = yes
 		parentanchor = hcenter|bottom
-		position = { 0 -70 }
+		position = { 0 -50 }
 		visible_at_creation = no
-		visible = "[Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.Exists))]"
+		visible = "[Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
+		state = {
+			name = _show
+			alpha = 0
+			next = show_wait
+		}
+
+		state = {
+			name = show_wait
+			duration = 0.2
+			alpha = 0
+			next = show_final
+		}
+
+		state = {
+			name = show_final
+			duration = 0.2
+			bezier = { 0.0 1.0 0.0 1.0 }
+			alpha = 1
+		}
+
+		state = {
+			name = _hide
+			alpha = 0
+		}
+
 
 		mapmodes_color_ledger = {
 			visible_at_creation = no
-			visible = "[And3(HasMapColorLedger, Not(GetMapMode('terrain').IsActive), And(MapModeSelectorVars.Exists('color_ledger'), Not(Or(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action')))))]"
+			visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger'), Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))))]"
 			parentanchor = right|bottom
 			widgetanchor = left|bottom
 			position = { 10 0 }
@@ -4424,16 +4447,37 @@ JominiMultiplayerLobby = {
 	}
 
 	mapmodes_button_color_ledger = {
+		allow_outside = yes
 		blockoverride "button_ledger_position_visible" {
+			position = { 140 0 }
 			parentanchor = hcenter|bottom
 			visible_at_creation = no
-			visible = "[And3(GetMapMode('terrain').IsActive, Not(MapModeSelectorVars.IsVisible), Not(Or(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'))))]"
+			visible = "[Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
 		}
 
 		mapmodes_color_ledger = {
 			visible_at_creation = no
-			visible = "[And3(HasMapColorLedger, GetMapMode('terrain').IsActive, And(MapModeSelectorVars.Exists('color_ledger'),
-				Not(Or(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action')))))]"
+			visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger_bottom'),
+				Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))))]"
+			parentanchor = left|top
+			widgetanchor = left|bottom
+			position = { 0 -10 }
+		}
+	}
+
+	mapmodes_button_color_ledger = {
+		allow_outside = yes
+		blockoverride "button_ledger_position_visible" {
+			position = { 340 0 }
+			parentanchor = hcenter|bottom
+			visible_at_creation = no
+			visible = "[Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible)]"
+		}
+
+		mapmodes_color_ledger = {
+			visible_at_creation = no
+			visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger_bottom'),
+				Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible)))]"
 			parentanchor = left|top
 			widgetanchor = left|bottom
 			position = { 0 -10 }
@@ -4444,25 +4488,20 @@ JominiMultiplayerLobby = {
 		blockoverride "mapmodes_window_extra" {
 			parentanchor = hcenter|bottom
 
-                widget = {
-                    visible = "[Not(MapModeSelectorVars.Exists('tab'))]"
-                    parentanchor = hcenter|top
-                    widgetanchor = hcenter|bottom
                     mapmodes_color_ledger = {
                         visible_at_creation = no
-                        visible = "[And3(HasMapColorLedger, Not(GetMapMode('terrain').IsActive), And(MapModeSelectorVars.Exists('color_ledger'),
+				visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger'),
                             Not(MapModeSelectorVars.Exists('action'))))]"
                         parentanchor = hcenter|bottom
-                        position = { 245 -105 }
+				position = { 270 -105 }
                     }
 
                     mapmode_current_button = {
                         visible_at_creation = no
-
+				visible = "[Not(MapModeSelectorVars.Exists('tab'))]"
                         parentanchor = hcenter|top
                         widgetanchor = hcenter|bottom
-                        position = { 0 -5 }
-                    }
+				position = { 0 -10 }
                 }
 		}
 	}

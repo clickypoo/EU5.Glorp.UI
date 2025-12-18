@@ -232,7 +232,7 @@ Types LeftPanelTypes
 							}
 						}
 
-                        datacontext = "[Player]"
+                        datacontext = "[Player]" # Glorp UI
                         widget = {
                             size = { 27 30 }
                             visible = "[Character.HasDynasty]"
@@ -353,7 +353,7 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('government_group'))]"
 							size = { 100% 100% }
 							name = government_tab_button
-							background = {
+							background = {  # Glorp UI
                                 block "colourTexture" {
                                     visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
                                     texture = "gfx/interface/buttons/panel_tabs_government.dds"
@@ -663,7 +663,8 @@ Types LeftPanelTypes
 								frame_grid = { 4 1 }
 							}
 						}
-						onclick = "[ToggleLateralGroup('diplomacy_group')]"
+
+                        onclick = "[ToggleLateralGroupWithSpecificView('diplomacy_group', 'diplomacy')]"
                         onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
                         onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Diplomacy')]"
@@ -671,6 +672,19 @@ Types LeftPanelTypes
 
 						tooltipwidget = {
 							using = TabDiplomacyTooltip
+						}
+
+						action_tooltip = {
+							click_type = left
+							click_mode = single
+							title = "TAB_TOOLTIP_DIPLOMACY_LEFT_CLICK"
+						}
+
+						action_tooltip = {
+							click_type = right
+							click_mode = single
+							title = "AUTOMATED_SYSTEM_DIPLOMACY_CLICK"
+							on_action =  "[ToggleLateralGroupWithSpecificView('diplomacy_group', 'diplomacy_macrobuilder')]"
 						}
 
 						input_action = "top_left_5"
@@ -971,6 +985,35 @@ Types LeftPanelTypes
 	type left_panel = widget {
 		allow_outside = yes
 		layer = bottom
+
+        widget = {
+            allow_outside = yes
+            visible = "[Not(Player.MakeScope.GetVariable('disableLeftPanelStatsBar').IsSet)]"
+            left_panel_info_bar = {}
+            left_panel_info_toggle = {
+                blockoverride "toggle_visible" {
+                    visible = "[Not(Player.MakeScope.GetVariable('toggleLeftPanelStatsBar').IsSet)]"
+                }
+                blockoverride "toggle_pos" {
+                    position = { 20 123 }
+                }
+                blockoverride "toggle_state" {
+                    state = {
+                        name = _show
+                        duration = 0.2
+                        bezier = { 0.0 1.0 0.0 1.0 }
+                        position = { 20 123 }
+                    }
+                    state = {
+                        name = _hide
+                        duration = 0.2
+                        bezier = { 0.0 1.0 0.0 1.0 }
+                        position = { 20 213 }
+                    }
+                }
+            }
+            left_panel_info_toggle = {}
+        }
 
 		# Closed panel
 		widget = {

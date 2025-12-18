@@ -569,11 +569,11 @@ widget = {
 	}
 
 	error_platypus = {
-		visible = "[And(HasErrors, Not(Or(IsLateralViewFullScreen, IsLateralViewMenuFullScreen)))]"
+		visible = "[And3(HasErrors, Not(Or(IsLateralViewFullScreen, IsLateralViewMenuFullScreen)), Not(IsLobbyOpen))]"
 		parentanchor = bottom|right
 
 		@error_platypus_y = 0
-		position = { @[-right_panel_width - panel_x * 2 - 120 ] @error_platypus_y }
+		position = { @[-right_panel_width - panel_x * 2 - 100 ] @error_platypus_y }
 
 		using = Animation_Show_Hide_UI
 		blockoverride "on_hide_ui" {
@@ -755,7 +755,7 @@ widget = {
 			}
 
 			widget = {
-				visible = "[Not(Or(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action')))]"
+				visible = "[Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
 				parentanchor = hcenter|top
 				widgetanchor = hcenter|bottom
 				position = { 0 -45 }
@@ -797,9 +797,8 @@ widget = {
                     }
                     mapmode_current_button = {
 						allow_outside = yes
-                        visible = "[Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
 						mapmodes_color_ledger = {
-							visible = "[And3(HasMapColorLedger, Not(GetMapMode('terrain').IsActive), And(MapModeSelectorVars.Exists('color_ledger'), Not(Or(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action')))))]"
+							visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger'), Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))))]"
 							parentanchor = right|bottom
 							widgetanchor = left|bottom
 							position = { 10 0 }
@@ -808,117 +807,18 @@ widget = {
 				}
 			}
 
-			mapmodes_button_color_ledger = {
-				allow_outside = yes
-				mapmodes_color_ledger = {
-					visible = "[And3(HasMapColorLedger, GetMapMode('terrain').IsActive, And(MapModeSelectorVars.Exists('color_ledger'), Not(Or(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action')))))]"
-					parentanchor = left|top
-					widgetanchor = left|bottom
-					position = { 0 -10 }
-				}
-			}
-
-			mapmodes_button_color_ledger = {
-				allow_outside = yes
-
-				blockoverride "button_ledger_position_visible" {
-					parentanchor = hcenter|top
-					widgetanchor = hcenter|bottom
+			mapmodes_button_color_ledger_map_marker = {
+				blockoverride "button_ledger_map_marker_position_visible" {
 					position = { -140 0 }
-
-					visible = "[And3(Not(TutorialHasVar('intro_hide_ui_1')), Not(MapModeSelectorVars.IsVisible), Not(Or(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'))))]"
-				}
-
-				blockoverride "button_ledger_setup" {
-					tooltipwidget = {
-						SimpleContextualTooltipType = {
-							blockoverride "title_icon_texture" {
-								texture = "gfx/interface/icons/flat_icons/tabicons/map_marker_settings.dds"
-							}
-							lowpriotextcontext = "MAP_MARKER_SETTINGS_SIMPLE"
-						}
-					}
-
-					action_tooltip = {
-						visible = "[Not(MapModeSelectorVars.Exists('mapmarkers_settings'))]"
-						on_action = "[MapModeSelectorVars.Toggle('mapmarkers_settings')]"
-						title = "MAP_MARKER_SETTINGS_TOGGLE"
-					}
-
-					action_tooltip = {
-						visible = "[MapModeSelectorVars.Exists('mapmarkers_settings')]"
-						on_action = "[MapModeSelectorVars.Toggle('mapmarkers_settings')]"
-						title = "MAP_MARKER_SETTINGS_TOGGLE"
-					}
-				}
-
-				blockoverride "icon_texture" {
-					size = { 25 25 }
-					texture = "gfx/interface/icons/flat_icons/tabicons/map_marker_settings.dds"
-				}
-
-				mapmarkers_settings_window = {
-					visible = "[MapModeSelectorVars.Exists('mapmarkers_settings')]"
-					parentanchor = hcenter|top
-					widgetanchor = hcenter|bottom
-					position = { 0 -20 }
+					visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible)))]"
 				}
 			}
 
             mapmodes_button_color_ledger = {
                 allow_outside = yes
-
-                blockoverride "button_ledger_position_visible" {
-                    parentanchor = hcenter|top
-                    widgetanchor = hcenter|bottom
-                    position = { -450 0 }
-
-                    visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), MapModeSelectorVars.IsVisible)]"
-                }
-
-                blockoverride "button_ledger_setup" {
-                    tooltipwidget = {
-                        SimpleContextualTooltipType = {
-                            blockoverride "title_icon_texture" {
-                                texture = "gfx/interface/icons/flat_icons/tabicons/map_marker_settings.dds"
-                            }
-                            lowpriotextcontext = "MAP_MARKER_SETTINGS_SIMPLE"
-                        }
-                    }
-
-                    action_tooltip = {
-                        visible = "[Not(MapModeSelectorVars.Exists('mapmarkers_settings'))]"
-                        on_action = "[MapModeSelectorVars.Toggle('mapmarkers_settings')]"
-                        title = "MAP_MARKER_SETTINGS_TOGGLE"
-                    }
-
-                    action_tooltip = {
-                        visible = "[MapModeSelectorVars.Exists('mapmarkers_settings')]"
-                        on_action = "[MapModeSelectorVars.Toggle('mapmarkers_settings')]"
-                        title = "MAP_MARKER_SETTINGS_TOGGLE"
-                    }
-                }
-
-                blockoverride "icon_texture" {
-                    size = { 25 25 }
-                    texture = "gfx/interface/icons/flat_icons/tabicons/map_marker_settings.dds"
-                }
-
-                mapmarkers_settings_window = {
-                    visible = "[MapModeSelectorVars.Exists('mapmarkers_settings')]"
-                    parentanchor = hcenter|top
-                    widgetanchor = hcenter|bottom
-                    position = { 0 -20 }
-                }
-            }
-
-            mapmodes_button_color_ledger = {
-                allow_outside = yes
-                position = { 450 0 }
-
-                visible = "[MapModeSelectorVars.IsVisible]"
                 mapmodes_color_ledger = {
-                    visible = "[And3(HasMapColorLedger, GetMapMode('terrain').IsActive, And(MapModeSelectorVars.Exists('color_ledger'), Not(Or(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action')))))]"
+                    position = { 450 0 } # Glorp UI - Move color_ledger button
+					visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger_bottom'), Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))))]"
                     parentanchor = left|top
                     widgetanchor = left|bottom
                     position = { 0 -10 }
@@ -927,6 +827,7 @@ widget = {
 		}
 
 		blockoverride "panel_content" {
+			#maximumsize = { 590 85 }
 			mapmodes_window = {
 				allow_outside = yes
 				name = "mapmodes_window"
@@ -964,7 +865,7 @@ widget = {
 							mapmode_current_button = {
 								allow_outside = yes
 								mapmodes_color_ledger = {
-									visible = "[And3(HasMapColorLedger, Not(GetMapMode('terrain').IsActive), And(MapModeSelectorVars.Exists('color_ledger'), Not(MapModeSelectorVars.Exists('action'))))]"
+									visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger'), Not(MapModeSelectorVars.Exists('action'))))]"
 									parentanchor = right|bottom
 									widgetanchor = left|bottom
 									position = { 10 0 }
@@ -972,6 +873,31 @@ widget = {
 							}
 						}
 					}
+				}
+			}
+		}
+
+		blockoverride "post_panel" {
+			mapmodes_button_color_ledger = {
+				allow_outside = yes
+				blockoverride "button_ledger_position_visible" {
+					position = { 450 0 } # Glorp UI - Move Color Legend Button
+					parentanchor = hcenter|top
+					widgetanchor = hcenter|bottom
+					visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
+				}
+				mapmodes_color_ledger = {
+					visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger_bottom'), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible)))]"
+					parentanchor = left|top
+					widgetanchor = left|bottom
+					position = { 0 -10 }
+				}
+			}
+
+			mapmodes_button_color_ledger_map_marker = {
+				blockoverride "button_ledger_map_marker_position_visible" {
+					position = { -450 0 } # Glorp UI - Move Mapmode Icons Button
+					visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
 				}
 			}
 		}
@@ -986,27 +912,27 @@ widget = {
 		using = Animation_Show_Hide_UI
 
 		paused_indicator = {
-			visible = "[And6( IsGamePaused, Not(IsSaving), Not(IsWritingDumps), Not(IsRecalculatingCacheData), Not(IsPlayerHotjoining), Not(IsDisconnecting))]"
+			visible = "[And7( IsGamePaused, Not(IsSaving), Not(IsWritingDumps), Not(IsRecalculatingCacheData), Not(IsPlayerHotjoining), Not(IsDisconnecting), Not(IsLobbyOpen))]"
 		}
 
 		saving_indicator = {
-			visible = "[IsSaving]"
+			visible = "[And(IsSaving, Not(IsLobbyOpen))]"
 		}
 
 		oos_indicator = {
-			visible = "[IsWritingDumps]"
+			visible = "[And(IsWritingDumps, Not(IsLobbyOpen))]"
 		}
 
 		recalculate_indicator = {
-			visible = "[And(IsRecalculatingCacheData, GameIsMultiplayer)]"
+			visible = "[And3(IsRecalculatingCacheData, GameIsMultiplayer, Not(IsLobbyOpen))]"
 		}
 
 		player_joining_indicator = {
-			visible = "[And5(IsPlayerHotjoining, Not(IsRecalculatingCacheData), Not(IsWritingDumps), Not(IsSaving), Not(IsDisconnecting))]"
+			visible = "[And6(IsPlayerHotjoining, Not(IsRecalculatingCacheData), Not(IsWritingDumps), Not(IsSaving), Not(IsDisconnecting), Not(IsLobbyOpen))]"
 		}
 
 		disconnecting_indicator = {
-			visible = "[And4(IsDisconnecting, Not(IsSaving), Not(IsWritingDumps), Not(IsRecalculatingCacheData))]"
+			visible = "[And5(IsDisconnecting, Not(IsSaving), Not(IsWritingDumps), Not(IsRecalculatingCacheData), Not(IsLobbyOpen))]"
 		}
 	}
 
