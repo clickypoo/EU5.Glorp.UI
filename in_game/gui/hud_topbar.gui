@@ -137,7 +137,7 @@ Types HUD_TopbarTypes
 		name = "HUD TopBar"
 
 		datacontext = "[InGameTopbar.GetPlayer]"
-		visible = "[Not(TutorialHasVar('intro_hide_ui_3'))]"
+		visible = "[And(Not(TutorialHasVar('intro_hide_ui_3')), Not(IsLobbyOpen))]"
 
 		parentanchor = top
 		alwaystransparent = no
@@ -283,11 +283,11 @@ Types HUD_TopbarTypes
 									}
 	
 									blockoverride "visible_positive" {
-										visible = "[Not(LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('gold'), '(CFixedPoint)0'))]"
+										visible = "[GreaterThanOrEqualTo_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.5')]"
 									}
 	
 									blockoverride "visible_negative" {
-										visible = "[LessThan_CFixedPoint(Country.GetFixedPointCurrencyValue('gold'), '(CFixedPoint)0')]"
+										visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.5')]"
 										default_format = "#color_red;bold"
 									}
 	
@@ -1343,6 +1343,9 @@ Types HUD_TopbarTypes
 								visible = "[And(IsLateralViewOpened('unit_overview'), Not(IsLateralViewOpenedWithParams('unit_overview', 'subtab = navy')))]"
 							}
 
+							tooltipmeta = {
+								texture = "gfx/interface/icons/resources/manpower.dds"								
+							}
 							blockoverride "stat_button" {
 								action_tooltip = {
 									click_type = right
@@ -1485,7 +1488,10 @@ Types HUD_TopbarTypes
 							name = "stat_sailors"
 							using = layoutpolicy_expanding
 							visible = "[GreaterThan_CFixedPoint(Player.GetTotalCoastalPopulation, '(CFixedPoint)0')]"
-
+							
+							tooltipmeta = {
+								texture = "gfx/interface/icons/resources/sailors.dds"								
+							}
 							blockoverride "decreasing_value_gradient_visible" {
 								visible = no
 							}

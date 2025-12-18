@@ -1226,7 +1226,7 @@ template build_location_entry {
 							}
 						}
 						card_header_button_04 = {
-							size = {180 43}
+							size = {160 43}
 							
 							hbox = {
 								layoutpolicy_horizontal = expanding
@@ -1370,46 +1370,46 @@ template build_location_entry {
 
 								expand = {}
 
-								icon_pie_left = {
-									tooltipwidget = {
-										using = location_tax_base_tooltip
-									}
-									blockoverride "PieSize" { size = { 35 35 } }
-									blockoverride "pie_datamodel" {
-										datacontext = "[Location.GetPopulationChart]"
-										datacontext = "[LocationPopulationChart.GetPopsPiechartWidget]"
-										datamodel = "[PopsPiechartWidget.GetTax]"
-									}
+								# icon_pie_left = {
+								# 	tooltipwidget = {
+								# 		using = location_tax_base_tooltip
+								# 	}
+								# 	blockoverride "PieSize" { size = { 35 35 } }
+								# 	blockoverride "pie_datamodel" {
+								# 		datacontext = "[Location.GetPopulationChart]"
+								# 		datacontext = "[LocationPopulationChart.GetPopsPiechartWidget]"
+								# 		datamodel = "[PopsPiechartWidget.GetTax]"
+								# 	}
 		
-									blockoverride "pieslice_item" {
-										pieslice_no_highlight = {
-											texture = "gfx/interface/pie_charts/piechart_alpha.dds"
-											texture_density = 2
-											tooltip_enabled = no
-											value = "[PopTaxItem.GetPercentage]"
-											color = "[PopTaxItem.GetColor]"
-											alpha = 0.99
-											alwaystransparent = yes
-										}
-									}
-									blockoverride "Icon_Size" { size = { 60% 60% } }
-									blockoverride "Icon" {
-										texture = "gfx/interface/icons/location_icons/tax_base.dds"
-										texture_density = 2
-										alwaystransparent = yes
-									}
+								# 	blockoverride "pieslice_item" {
+								# 		pieslice_no_highlight = {
+								# 			texture = "gfx/interface/pie_charts/piechart_alpha.dds"
+								# 			texture_density = 2
+								# 			tooltip_enabled = no
+								# 			value = "[PopTaxItem.GetPercentage]"
+								# 			color = "[PopTaxItem.GetColor]"
+								# 			alpha = 0.99
+								# 			alwaystransparent = yes
+								# 		}
+								# 	}
+								# 	blockoverride "Icon_Size" { size = { 60% 60% } }
+								# 	blockoverride "Icon" {
+								# 		texture = "gfx/interface/icons/location_icons/tax_base.dds"
+								# 		texture_density = 2
+								# 		alwaystransparent = yes
+								# 	}
 		
-									background = {
-										texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
-										texture_density = 2
+								# 	background = {
+								# 		texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
+								# 		texture_density = 2
 		
-										modify_texture = {
-											using = color_gold_texture
-										}
+								# 		modify_texture = {
+								# 			using = color_gold_texture
+								# 		}
 		
-										using = overlay_gold
-									}
-								}
+								# 		using = overlay_gold
+								# 	}
+								# }
 
 							}
 		
@@ -1439,202 +1439,230 @@ template build_location_entry {
 							}
 						}
 					}
-					
+
+					widget = { #subsidize/close
+						size = { 30 44 }
+						vbox = {
+							spacing = 0
+							button_subsidized = {
+								visible = "[And(ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self), LocationToBuildItem.GetBuilding.GetType.IsProducing)]"
+								size = { 22 22 }
+
+								frame = "[Select_int32(LocationToBuildItem.GetBuilding.IsSubsidized, '(int32)2', '(int32)1')]"
+								enabled = "[CanSubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
+
+								action_tooltip = {
+									click_type = left
+									title = "[SelectLocalization( LocationToBuildItem.GetBuilding.IsSubsidized, 'TOGGLE_SUBSIDIZE_ON', 'TOGGLE_SUBSIDIZE_OFF' )]"
+									enabled = "[CanSubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
+									description = "[GetSubsidizeBuildingInfo(LocationToBuildItem.GetBuilding.Self)]"
+									on_action = "[SubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
+								}
+
+								action_tooltip = {
+									click_type = right
+									title = "TOGGLE_SUBSIDIZE_ALL_BUILDINGS"
+									enabled = "[CanSubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
+									on_action = "[BuildInLocationLateralView.SubsidizeAllBuildings]"
+								}
+
+								datacontext = "[LocationToBuildItem.GetBuilding]"
+
+								tooltipwidget = {
+									using = Location_Building_Subsidized_Tooltip											
+								}
+							}
+		
+							button_open = {
+								size = { 22 22 }
+
+								frame = "[Select_int32(Not(LocationToBuildItem.GetBuilding.IsOpen), '(int32)2', '(int32)1')]"
+								enabled = "[CanToggleBuilding(LocationToBuildItem.GetBuilding.Self)]"
+								visible = "[ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self)]"
+								datacontext = "[LocationToBuildItem.GetBuilding]"
+								
+								action_tooltip = {
+									click_type = left
+									title = "[SelectLocalization(Building.IsOpen, 'TOGGLE_CLOSE_ON', 'TOGGLE_CLOSE_OFF' )]"
+									enabled = "[CanToggleBuilding(Building.Self)]"
+									description = "[GetToggleBuildingInfo(Building.Self)]"
+									on_action = "[ToggleBuilding(Building.Self)]"
+								}
+
+								action_tooltip = {
+									click_type = right
+									title = "TOGGLE_CLOSE_ALL_BUILDINGS"
+									enabled = "[CanToggleBuilding(Building.Self)]"
+									on_action = "[BuildInLocationLateralView.ToggleCloseAllBuildings]"
+								}
+								
+								tooltipwidget = {
+									using = Location_Building_Open_Tooltip											
+								}
+							}
+						}
+
+						vbox = {
+							visible = "[LocationToBuildItem.IsForeignBuilding]"
+							spacing = 2
+							
+							icon = {
+								visible = "[Not(BuildInLocationLateralView.GetBuildingType.IsForeign)]"
+								datacontext = "[LocationToBuildItem.GetLocation.GetOwner]"
+								size = { 20 20 }
+								texture = "[GetSubjectTypeIcon(Country.GetDiplomacy.GetSubjectType)]"
+
+								tooltipwidget = {
+									using = SubjectTypeDetail_tooltip
+								}
+
+								alpha = 0.8
+								using = bg_circle_piechart
+								blockoverride "inside_color" {
+									modify_texture = {
+										using = color_bg_blue_texture
+										blend_mode = multiply
+									}
+								}
+								blockoverride "frame_color" {
+									modify_texture = {
+										using = color_new_gold_texture
+										blend_mode = multiply
+									}
+									modify_texture = {
+										using = color_gold_texture
+										# blend_mode = multiply
+										alpha = 0.5
+									}
+								}
+
+								glow = {
+									name = "drop_shadow"
+									glow_radius = 3
+									color = {0.0 0.0 0.0 1.0}
+									alpha = 0.3
+								}
+							}
+							
+							country_flag_very_small = {
+								datacontext = "[LocationToBuildItem.GetLocation.GetOwner]"
+							}
+						}
+					}
+
 					expand = {}
 	
 					hbox = {
 						datacontext = "[LocationToBuildItem.GetLocation]"
+						datacontext = "[LocationToBuildItem.GetBuilding]"
 						spacing = 5
 
-						widget = {
-							size = { 80 30 }
-							
-							hbox = { #built
-								visible = "[And(LocationToBuildItem.ShowProfit, LocationToBuildItem.HasConstructedBuildingLevels)]"
-								spacing = 5
-								datacontext = "[LocationToBuildItem.GetBuildingType]"
-								datacontext = "[LocationToBuildItem.GetBuilding]"
-		
-								text_single = { #profitable
-									visible = "[GreaterThan_CFixedPoint(Building.GetProfit, '(CFixedPoint)0')]"
-									maximumsize = { 50 18 }
-									fontsize = 15
-									raw_text = "[Building.GetNetProfitValuePerLevel|+=2]@tax_base!"
-									tooltipwidget = {
-										using = BuildingProfit_Tooltip
-									}
-					
-									sort_by_highlight = {
-										size = { 105% 200% }
-										name = "profit"
-									}
-								}
-		
-								text_single = { #unprofitable and not subsidized
-									visible = "[And(LessThanOrEqualTo_CFixedPoint(Building.GetProfit, '(CFixedPoint)0'), Not(Building.IsSubsidized))]"
-									maximumsize = { 50 18 }
-									fontsize = 15
-									raw_text = "[Building.GetNetProfitValuePerLevel|+=2]@tax_base!"
-		
-									tooltipwidget = {
-										using = BuildingProfit_Tooltip
-									}
-					
-									sort_by_highlight = {
-										size = { 105% 200% }
-										name = "profit"
-									}
-								}
-		
-								text_single = { # subsidized
-									visible = "[And(LessThanOrEqualTo_CFixedPoint(Building.GetProfit, '(CFixedPoint)0'), Building.IsSubsidized)]"
-									maximumsize = { 50 18 }
-									fontsize = 15
-									raw_text = "#L [Building.GetNetProfitValuePerLevel|2]#!@tax_base!"
-									tooltipwidget = {
-										using = BuildingProfit_Tooltip
-									}
-					
-									sort_by_highlight = {
-										size = { 105% 200% }
-										name = "profit"
-									}
-								}
-							}
-		
-							hbox = { #unbuilt
-								visible = "[And(LocationToBuildItem.ShowProfit, Not(LocationToBuildItem.HasConstructedBuildingLevels))]"
-								spacing = 5
-		
-								text_single = {
-									maximumsize = { 50 18 }
-									fontsize = 15
-									raw_text = "[GetBuildingTypeProfitInLocation(BuildingType.Self, Location.Self)|+=<2]@tax_base!"
+						hbox = {
+							margin_right = 3
+							spacing = 5
+							layoutpolicy_horizontal = expanding
+							widget = {
+								size = { 60 30 }
+								hbox = { #built
+									expand = {}
+									visible = "[And(LocationToBuildItem.ShowProfit, LocationToBuildItem.HasConstructedBuildingLevels)]"
 									datacontext = "[LocationToBuildItem.GetBuildingType]"
-									tooltipwidget = {
-										using = BuildingTypeProfit_Tooltip
+			
+									text_single = { #profitable
+										visible = "[GreaterThan_CFixedPoint(Building.GetProfit, '(CFixedPoint)0')]"
+										maximumsize = { 60 18 }
+										align = nobaseline|right
+										fontsize = 14
+										raw_text = "[Building.GetNetProfitValuePerLevel|+=2]@tax_base!"
+										tooltipwidget = {
+											using = BuildingProfit_Tooltip
+										}
+						
+										sort_by_highlight = {
+											size = { 105% 200% }
+											name = "profit"
+										}
 									}
-					
-									sort_by_highlight = {
-										size = { 105% 200% }
-										name = "profit"
+			
+									text_single = { #unprofitable and not subsidized
+										visible = "[And(LessThanOrEqualTo_CFixedPoint(Building.GetProfit, '(CFixedPoint)0'), Not(Building.IsSubsidized))]"
+										maximumsize = { 60 18 }
+										fontsize = 14
+										raw_text = "[Building.GetNetProfitValuePerLevel|+=2]@tax_base!"
+			
+										tooltipwidget = {
+											using = BuildingProfit_Tooltip
+										}
+						
+										sort_by_highlight = {
+											size = { 105% 200% }
+											name = "profit"
+										}
 									}
-								}
-							}
-						}
-	
-
-						widget = {
-							size = { 58 25 }
-							hbox = {
-								spacing = 3
-								button_subsidized = {
-									visible = "[And(ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self), LocationToBuildItem.GetBuilding.GetType.IsProducing)]"
-									size = { 25 25 }
-
-									frame = "[Select_int32(LocationToBuildItem.GetBuilding.IsSubsidized, '(int32)2', '(int32)1')]"
-									enabled = "[CanSubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
-
-									action_tooltip = {
-										click_type = left
-										title = "[SelectLocalization( LocationToBuildItem.GetBuilding.IsSubsidized, 'TOGGLE_SUBSIDIZE_ON', 'TOGGLE_SUBSIDIZE_OFF' )]"
-										enabled = "[CanSubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
-										description = "[GetSubsidizeBuildingInfo(LocationToBuildItem.GetBuilding.Self)]"
-										on_action = "[SubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
-									}
-
-									action_tooltip = {
-										click_type = right
-										title = "TOGGLE_SUBSIDIZE_ALL_BUILDINGS"
-										enabled = "[CanSubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
-										on_action = "[BuildInLocationLateralView.SubsidizeAllBuildings]"
-									}
-
-									datacontext = "[LocationToBuildItem.GetBuilding]"
-
-									tooltipwidget = {
-										using = Location_Building_Subsidized_Tooltip											
+			
+									text_single = { # subsidized
+										visible = "[And(LessThanOrEqualTo_CFixedPoint(Building.GetProfit, '(CFixedPoint)0'), Building.IsSubsidized)]"
+										maximumsize = { 60 18 }
+										fontsize = 14
+										raw_text = "#L [Building.GetNetProfitValuePerLevel|2]#!@tax_base!"
+										tooltipwidget = {
+											using = BuildingProfit_Tooltip
+										}
+						
+										sort_by_highlight = {
+											size = { 105% 200% }
+											name = "profit"
+										}
 									}
 								}
 			
-								button_open = {
-									size = { 25 25 }
-
-									frame = "[Select_int32(Not(LocationToBuildItem.GetBuilding.IsOpen), '(int32)2', '(int32)1')]"
-									enabled = "[CanToggleBuilding(LocationToBuildItem.GetBuilding.Self)]"
-									visible = "[ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self)]"
-									datacontext = "[LocationToBuildItem.GetBuilding]"
-									
-									action_tooltip = {
-										click_type = left
-										title = "[SelectLocalization(Building.IsOpen, 'TOGGLE_CLOSE_ON', 'TOGGLE_CLOSE_OFF' )]"
-										enabled = "[CanToggleBuilding(Building.Self)]"
-										description = "[GetToggleBuildingInfo(Building.Self)]"
-										on_action = "[ToggleBuilding(Building.Self)]"
-									}
-
-									action_tooltip = {
-										click_type = right
-										title = "TOGGLE_CLOSE_ALL_BUILDINGS"
-										enabled = "[CanToggleBuilding(Building.Self)]"
-										on_action = "[BuildInLocationLateralView.ToggleCloseAllBuildings]"
-									}
-									
-									tooltipwidget = {
-										using = Location_Building_Open_Tooltip											
+								hbox = { #unbuilt
+									visible = "[And(LocationToBuildItem.ShowProfit, Not(LocationToBuildItem.HasConstructedBuildingLevels))]"
+									spacing = 5
+									expand = {}
+			
+									text_single = {
+										maximumsize = { 60 18 }
+										fontsize = 14
+										raw_text = "[GetBuildingTypeProfitInLocation(BuildingType.Self, Location.Self)|+=<2]@tax_base!"
+										datacontext = "[LocationToBuildItem.GetBuildingType]"
+										tooltipwidget = {
+											using = BuildingTypeProfit_Tooltip
+										}
+						
+										sort_by_highlight = {
+											size = { 105% 200% }
+											name = "profit"
+										}
 									}
 								}
 							}
-	
-							hbox = {
-								visible = "[LocationToBuildItem.IsForeignBuilding]"
-								spacing = 2
-								
-								icon = {
-									visible = "[Not(BuildInLocationLateralView.GetBuildingType.IsForeign)]"
-									datacontext = "[LocationToBuildItem.GetLocation.GetOwner]"
-									size = { 20 20 }
-									texture = "[GetSubjectTypeIcon(Country.GetDiplomacy.GetSubjectType)]"
-	
-									tooltipwidget = {
-										using = SubjectTypeDetail_tooltip
-									}
-	
-									alpha = 0.8
-									using = bg_circle_piechart
-									blockoverride "inside_color" {
-										modify_texture = {
-											using = color_bg_blue_texture
-											blend_mode = multiply
+							widget = {
+								size = { 70 30 }
+								hbox = {
+									visible = "[Building.IsProducing]"
+									layoutpolicy_horizontal = expanding
+									datamodel = "[DataModelFirst(Building.GetProductionMethods, '(int32)1')]"
+									expand = {}
+									item = {
+										text_single = {
+											maximumsize = { 70 18 }
+											raw_text = "[Building.GetBuildingProductionEfficiency(ActiveProductionMethod.GetMethod)|+=2%]@efficiency!"
+											align = nobaseline|right
+											default_format = "@bold!"
+											fontsize = 14
+											tooltipwidget = {
+												using = building_production_efficiency_tooltip
+											}
 										}
 									}
-									blockoverride "frame_color" {
-										modify_texture = {
-											using = color_new_gold_texture
-											blend_mode = multiply
-										}
-										modify_texture = {
-											using = color_gold_texture
-											# blend_mode = multiply
-											alpha = 0.5
-										}
-									}
-	
-									glow = {
-										name = "drop_shadow"
-										glow_radius = 3
-										color = {0.0 0.0 0.0 1.0}
-										alpha = 0.3
-									}
-								}
-								
-								country_flag_small = {
-									datacontext = "[LocationToBuildItem.GetLocation.GetOwner]"
 								}
 							}
 						}
 
-						widget = {
+
+
+						widget = { #builder
 							layoutpolicy_vertical = expanding
 							size = { 120 -1 }
 							alwaystransparent = no

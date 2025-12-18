@@ -583,12 +583,12 @@ lateralview_full = {
 					hbox = {
 						using = bg_paper_card
 						using = bg_cabinet_card_frame
-						margin = { 4 4 }
+						margin = { -5 1 }
 
 						# ALLY FLAG
 						country_flag_big = {
 							datacontext = "[WarLateralView.GetFriendlyLeader]"
-							size = { 187 125 }
+							size = { 232 155 }
 						}
 
 						# HEADER CENTER CONTENT
@@ -2023,7 +2023,8 @@ lateralview_full = {
 						# ENEMY FLAG
 						country_flag_big = {
 							datacontext = "[WarLateralView.GetEnemyLeader]"
-							size = { 187 125 }
+							size = { 232 155 }
+
 						}
 					}
 				}

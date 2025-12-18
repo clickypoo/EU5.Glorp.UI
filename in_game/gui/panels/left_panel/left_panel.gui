@@ -521,12 +521,26 @@ Types LeftPanelTypes
 							size = { 100% 100% }
 							name = diplomacy_tab_button
 						}
-						onclick = "[ToggleLateralGroup('diplomacy_group')]"
+						
+						onclick = "[ToggleLateralGroupWithSpecificView('diplomacy_group', 'diplomacy')]"
 						# onrightclick = "[OnToggleOutlinerCategory('Diplomacy')]"
 						down = "[IsLateralGroupOpened('diplomacy_group')]"
 
 						tooltipwidget = {
 							using = TabDiplomacyTooltip
+						}
+
+						action_tooltip = {
+							click_type = left
+							click_mode = single
+							title = "TAB_TOOLTIP_DIPLOMACY_LEFT_CLICK"
+						}
+
+						action_tooltip = {
+							click_type = right
+							click_mode = single
+							title = "AUTOMATED_SYSTEM_DIPLOMACY_CLICK"
+							on_action =  "[ToggleLateralGroupWithSpecificView('diplomacy_group', 'diplomacy_macrobuilder')]"
 						}
 
 						input_action = "top_left_5"

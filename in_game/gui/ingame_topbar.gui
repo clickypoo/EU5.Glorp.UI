@@ -569,7 +569,7 @@ widget = {
 	}
 
 	error_platypus = {
-		visible = "[And(HasErrors, Not(Or(IsLateralViewFullScreen, IsLateralViewMenuFullScreen)))]"
+		visible = "[And3(HasErrors, Not(Or(IsLateralViewFullScreen, IsLateralViewMenuFullScreen)), Not(IsLobbyOpen))]"
 		parentanchor = bottom|right
 
 		@error_platypus_y = 0
@@ -907,27 +907,27 @@ widget = {
 		using = Animation_Show_Hide_UI
 
 		paused_indicator = {
-			visible = "[And6( IsGamePaused, Not(IsSaving), Not(IsWritingDumps), Not(IsRecalculatingCacheData), Not(IsPlayerHotjoining), Not(IsDisconnecting))]"
+			visible = "[And7( IsGamePaused, Not(IsSaving), Not(IsWritingDumps), Not(IsRecalculatingCacheData), Not(IsPlayerHotjoining), Not(IsDisconnecting), Not(IsLobbyOpen))]"
 		}
 
 		saving_indicator = {
-			visible = "[IsSaving]"
+			visible = "[And(IsSaving, Not(IsLobbyOpen))]"
 		}
 
 		oos_indicator = {
-			visible = "[IsWritingDumps]"
+			visible = "[And(IsWritingDumps, Not(IsLobbyOpen))]"
 		}
 
 		recalculate_indicator = {
-			visible = "[And(IsRecalculatingCacheData, GameIsMultiplayer)]"
+			visible = "[And3(IsRecalculatingCacheData, GameIsMultiplayer, Not(IsLobbyOpen))]"
 		}
 
 		player_joining_indicator = {
-			visible = "[And5(IsPlayerHotjoining, Not(IsRecalculatingCacheData), Not(IsWritingDumps), Not(IsSaving), Not(IsDisconnecting))]"
+			visible = "[And6(IsPlayerHotjoining, Not(IsRecalculatingCacheData), Not(IsWritingDumps), Not(IsSaving), Not(IsDisconnecting), Not(IsLobbyOpen))]"
 		}
 
 		disconnecting_indicator = {
-			visible = "[And4(IsDisconnecting, Not(IsSaving), Not(IsWritingDumps), Not(IsRecalculatingCacheData))]"
+			visible = "[And5(IsDisconnecting, Not(IsSaving), Not(IsWritingDumps), Not(IsRecalculatingCacheData), Not(IsLobbyOpen))]"
 		}
 	}
 

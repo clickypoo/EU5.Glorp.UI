@@ -2876,31 +2876,34 @@ types SingleUnitWindowTypes
 					header_button_left = {
 						size = { 37 37 }
 						datacontext = "[MercenaryTypeItem.GetUIAction]"
-						using = button_action_provider
-						tooltipwidget = {
-							ContextualTooltipType = {									
-								blockoverride "title_icon" {
-									icon = {
-										using = tooltip_title_icon_size
-										texture = "gfx/interface/icons/alerts_icons/mercenary_contract_expiring.dds"
-										texture_density = 2
-									}
-								}
-								blockoverride "concept_link" {
-									text = "[mercenary|e]"
-								}
+						enabled = "[Or(UIActionProvider.IsLeftClickAndConfirmEnabled, CanDelistMercenary(MercenaryTypeItem.GetMercenary.Self))]"
 
-								blockoverride "title_text" {
-									text = "EXTEND_MERCENARY_NOCONCEPT"
-								}
-								blockoverride "tooltip_content" {
-									TooltipTextBlock = {
-										blockoverride "text" {
-											text = "[UIAction.GetDescription]"
-										}
-									}
-								}
-							}
+						action_tooltip = {
+							click_type = left
+							click_mode = confirm
+							visible = "[UIActionProvider.IsLeftClickAndConfirmVisible]"
+							enabled = "[UIActionProvider.IsLeftClickAndConfirmEnabled]"
+							title = "EXTEND_MERCENARY"
+							cost = "[UIActionProvider.GetLeftClickAndConfirmCost]"
+							description = "[UIActionProvider.GetLeftClickAndConfirmDescription]"
+							acceptance = "[UIActionProvider.GetLeftClickAndConfirmAcceptance]"
+							confirmation = "[UIActionProvider.GetConfirmation]"
+							conditions = "[UIActionProvider.GetLeftClickAndConfirmConditions]"
+							on_action = "[UIActionProvider.OnLeftClickAndConfirm]"
+						}
+
+						action_tooltip = {
+							click_type = right
+							click_mode = confirm
+							visible = "[ShowDelistMercenary(MercenaryTypeItem.GetMercenary.Self)]"
+							enabled = "[CanDelistMercenary(MercenaryTypeItem.GetMercenary.Self)]"
+							title = "DELIST_MERCENARY"
+							description = "[GetDelistMercenaryTooltip(MercenaryTypeItem.GetMercenary.Self)]"
+							on_action = "[DelistMercenary(MercenaryTypeItem.GetMercenary.Self)]"
+						}
+
+						tooltipwidget = {
+							BasicFunctionalTooltip = {}
 						}
 
 						blockoverride "header_button_full_content" {
@@ -3763,11 +3766,12 @@ lateralview = {
 				}
 
 				vbox = {
-					layoutpolicy_horizontal = expanding
+					margin_top = 3
 					spacing = 5
 
 					hbox = {
 						margin = { 0 5 }
+						margin_left = 5
 						margin_bottom = 2
 						layoutpolicy_horizontal = expanding
 
@@ -3874,6 +3878,8 @@ lateralview = {
 							expand = {}				
 						}
 					}
+
+					expand = {}
 				}
 			}
 

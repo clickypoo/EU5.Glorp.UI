@@ -43,6 +43,36 @@ texticon = {
 }
 
 texticon = {
+	icon = efficiency
+	iconsize = {
+		texture = "gfx/interface/icons/flat_icons/balance/efficiency.dds"
+		size = { 16 16 }
+		offset = { 2 2 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = income
+	iconsize = {
+		texture = "gfx/interface/icons/flat_icons/balance/other_incomes.dds"
+		size = { 18 18 }
+		offset = { 2 4 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = expense
+	iconsize = {
+		texture = "gfx/interface/icons/flat_icons/balance/other_expenses.dds"
+		size = { 18 18 }
+		offset = { 2 4 }
+		fontsize = 16
+	}
+}
+
+texticon = {
 	icon = control
 	iconsize = {
 		texture = "gfx/interface/icons/location_icons/control.dds"
@@ -644,6 +674,16 @@ texticon = {
 	icon = building_levels
 	iconsize = {
 		texture = "gfx/interface/icons/modifier_types/free_building_levels.dds"
+		size = { 18 18 }
+		offset = { 0 3 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = employees
+	iconsize = {
+		texture = "gfx/interface/icons/flat_icons/building_panel/employees.dds"
 		size = { 18 18 }
 		offset = { 0 3 }
 		fontsize = 16
