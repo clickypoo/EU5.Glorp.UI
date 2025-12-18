@@ -663,7 +663,6 @@ Types LeftPanelTypes
 								frame_grid = { 4 1 }
 							}
 						}
-
                         onclick = "[ToggleLateralGroupWithSpecificView('diplomacy_group', 'diplomacy')]"
                         onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
                         onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
