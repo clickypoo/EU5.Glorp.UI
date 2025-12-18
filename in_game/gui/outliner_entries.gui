@@ -7636,7 +7636,8 @@ OutlinerEntryBase = {
 				OutlinerTextBase = {
 					using = layoutpolicy_expanding
 					autoresize = no
-					text = "[Privateer.GetNameWithNoTooltip]"
+					align = left
+					text = "[Privateer.GetArea.GetNameWithNoTooltip]"
 				}
 
 				OutlinerTextBase = {
