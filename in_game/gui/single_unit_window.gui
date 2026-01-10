@@ -3546,8 +3546,6 @@ lateralview = {
 					primary_color = "[GetCountryUnitPrimaryColor(SingleUnitWindow.GetPlayer, SingleUnitWindow.GetSelectedUnit.GetVisualSubunit.GetDefinition)]"
 					secondary_color = "[GetCountryUnitSecondaryColor(SingleUnitWindow.GetPlayer, SingleUnitWindow.GetSelectedUnit.GetVisualSubunit.GetDefinition)]"
 					tertiary_color = "[GetCountryUnitTertiaryColor(SingleUnitWindow.GetPlayer, SingleUnitWindow.GetSelectedUnit.GetVisualSubunit.GetDefinition)]"
-                    # spriteType = CorneredTiled
-                    # texture_density = 2
 				}
 
 				using = bg_age_event_frame
