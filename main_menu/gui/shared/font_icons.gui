@@ -23,6 +23,57 @@ texticon = {
 }
 
 texticon = {
+	icon = satisfaction_happy
+	iconsize = {
+		texture = "gfx/interface/icons/flat_icons/happy.dds"
+		size = { 20 20 }
+		offset = { 0 3 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = satisfaction_sad
+	iconsize = {
+		texture = "gfx/interface/icons/flat_icons/sad.dds"
+		size = { 20 20 }
+		offset = { 0 3 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = satisfaction_neutral
+	iconsize = {
+		texture = "gfx/interface/icons/flat_icons/neutral.dds"
+		size = { 20 20 }
+		offset = { 0 3 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = button_simple
+	iconsize = {
+		texture = "gfx/interface/icons/outliner/arrow_right.dds"
+		size = { 20 20 }
+		offset = { 0 3 }
+		fontsize = 16
+	}	
+}
+
+texticon = {
+	icon = button_simple_smaller
+	iconsize = {
+		texture = "gfx/interface/icons/outliner/arrow_right.dds"
+		size = { 16 16 }
+		offset = { 0 3 }
+		fontsize = 16
+	}	
+}
+
+
+texticon = {
 	icon = political_power
 	iconsize = {
 		texture = "gfx/interface/icons/location_icons/government.dds"
@@ -41,6 +92,16 @@ texticon = {
 		fontsize = 18
 	}
 }
+
+texticon = {
+    icon = wealth
+    iconsize = {
+        texture = "gfx/interface/icons/location_icons/wealth.dds"
+        size = { 20 20 }
+        offset = { 3 3 }
+        fontsize = 18
+    }
+ }
 
 texticon = {
 	icon = efficiency
@@ -66,6 +127,16 @@ texticon = {
 	icon = expense
 	iconsize = {
 		texture = "gfx/interface/icons/flat_icons/balance/other_expenses.dds"
+		size = { 18 18 }
+		offset = { 2 4 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = gold_balance
+	iconsize = {
+		texture = "gfx/interface/icons/flat_icons/balance/budget.dds"
 		size = { 18 18 }
 		offset = { 2 4 }
 		fontsize = 16
@@ -899,6 +970,16 @@ texticon = {
 }
 
 texticon = {
+	icon = profit_trade
+	iconsize = {
+		texture = "gfx/interface/icons/resources/profit_per_trade_capacity.dds"
+		size = { 16 16 }
+		offset = { 2 2 }
+		fontsize = 16
+	}
+}
+
+texticon = {
 	icon = manpower
 	iconsize = {
 		texture = "gfx/interface/icons/resources/manpower.dds"
@@ -1187,6 +1268,18 @@ texticon = {
 	}
 }
 
+
+texticon = {
+	icon = complacency
+	iconsize = {
+		texture = "gfx/interface/icons/resources/complacency.dds"
+		size = { 26 26 }
+		offset = { 0 6 }
+		fontsize = 16
+	}
+}
+
+
 texticon = {
 	icon = supply
 	iconsize = {
@@ -1321,6 +1414,66 @@ texticon = {
 	icon = army_tradition
 	iconsize = {
 		texture = "gfx/interface/icons/military_army/army_tradition.dds"             
+		size = { 24 24 }
+		offset = { 0 6 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = supply_depot_capacity
+	iconsize = {
+		texture = "gfx/interface/icons/modifier_types/supply_depot_capacity.dds"             
+		size = { 24 24 }
+		offset = { 0 6 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = legislative_efficiency
+	iconsize = {
+		texture = "gfx/interface/icons/flat_icons/legislative_efficiency.dds"             
+		size = { 24 24 }
+		offset = { 0 6 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = tax_efficiency
+	iconsize = {
+		texture = "gfx/interface/icons/flat_icons/balance/tax_efficiency.dds"             
+		size = { 24 24 }
+		offset = { 0 6 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = disease_resistance
+	iconsize = {
+		texture = "gfx/interface/icons/modifier_types/global_disease_resistance.dds"             
+		size = { 24 24 }
+		offset = { 0 6 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = court_spending
+	iconsize = {
+		texture = "gfx/interface/icons/modifier_types/court_spending_cost.dds"             
+		size = { 24 24 }
+		offset = { 0 6 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = proximity_cost
+	iconsize = {
+		texture = "gfx/interface/icons/modifier_types/global_distance_from_capital_cost_modifier.dds"             
 		size = { 24 24 }
 		offset = { 0 6 }
 		fontsize = 16
@@ -1575,6 +1728,16 @@ texticon = {
 }
 
 texticon = {
+	icon = mercenary_contract_expiring
+	iconsize = {
+		texture = "gfx/interface/icons/alerts_icons/mercenary_contract_expiring.dds"
+		size = { 20 20 }
+		offset = { 0 6 }
+		fontsize = 16
+	}
+}
+
+texticon = {
 	icon = production_method
 	iconsize = {
 		texture = "gfx/interface/icons/production_methods/_default.dds"
@@ -1592,9 +1755,9 @@ texticon = {
 	icon = trigger_yes
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/trigger_yes.dds"
-		size = { 16 16 }
-		offset = { 0 4 }
-		fontsize = 16
+		size = { 23 23 }
+		offset = { 0 3 }
+		fontsize = 23
 	}
 }
 
@@ -1602,9 +1765,9 @@ texticon = {
 	icon = trigger_no
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/trigger_no.dds"
-		size = { 16 16 }
-		offset = { 0 4 }
-		fontsize = 16
+		size = { 23 23 }
+		offset = { 0 3 }
+		fontsize = 23
 	}
 }
 
@@ -1612,9 +1775,9 @@ texticon = {
 	icon = trigger_pass_inactive
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/trigger_yes.dds"
-		size = { 16 16 }
-		offset = { 0 4 }
-		fontsize = 16
+		size = { 23 23 }
+		offset = { 0 3 }
+		fontsize = 23
 	}
 }
 
@@ -1622,9 +1785,9 @@ texticon = {
 	icon = trigger_fail_inactive
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/trigger_no.dds"
-		size = { 16 16 }
-		offset = { 0 4 }
-		fontsize = 16
+		size = { 23 23 }
+		offset = { 0 3 }
+		fontsize = 23
 	}
 }
 
@@ -1632,9 +1795,9 @@ texticon = {
 	icon = trigger_pass
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/trigger_yes.dds"
-		size = { 16 16 }
-		offset = { 0 4 }
-		fontsize = 16
+		size = { 23 23 }
+		offset = { 0 3 }
+		fontsize = 23
 	}
 }
 
@@ -1642,9 +1805,9 @@ texticon = {
 	icon = trigger_fail
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/trigger_no.dds"
-		size = { 16 16 }
-		offset = { 0 4 }
-		fontsize = 16
+		size = { 23 23 }
+		offset = { 0 3 }
+		fontsize = 23
 	}
 }
 
@@ -1993,9 +2156,10 @@ texticon = {
 	icon = key_tab
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/tab.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2003,9 +2167,10 @@ texticon = {
 	icon = key_f1
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/f1.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2013,9 +2178,10 @@ texticon = {
 	icon = key_f2
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/f2.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2023,9 +2189,10 @@ texticon = {
 	icon = key_f3
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/f3.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2033,9 +2200,10 @@ texticon = {
 	icon = key_f4
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/f4.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2043,9 +2211,10 @@ texticon = {
 	icon = key_f5
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/f5.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2053,9 +2222,10 @@ texticon = {
 	icon = key_f6
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/f6.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2063,9 +2233,10 @@ texticon = {
 	icon = key_f7
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/f7.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2073,9 +2244,10 @@ texticon = {
 	icon = key_f8
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/f8.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2083,9 +2255,10 @@ texticon = {
 	icon = key_f9
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/f9.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2093,9 +2266,10 @@ texticon = {
 	icon = key_f10
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/f10.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2103,9 +2277,10 @@ texticon = {
 	icon = key_f11
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/f11.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2113,9 +2288,10 @@ texticon = {
 	icon = key_f12
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/f12.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2123,9 +2299,10 @@ texticon = {
 	icon = key_home
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/home.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2133,9 +2310,10 @@ texticon = {
 	icon = key_ctrl
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/ctrl.dds"
-		size = { 60 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2143,9 +2321,10 @@ texticon = {
 	icon = key_shift
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/shift.dds"
-		size = { 60 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2153,9 +2332,10 @@ texticon = {
 	icon = key_alt
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/alt.dds"
-		size = { 60 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2163,9 +2343,10 @@ texticon = {
 	icon = key_escape
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/escape.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2173,9 +2354,10 @@ texticon = {
 	icon = key_space
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/space.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2183,9 +2365,9 @@ texticon = {
 	icon = key_kp_minus
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/minus.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2193,9 +2375,9 @@ texticon = {
 	icon = key_kp_plus
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/plus.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2203,9 +2385,10 @@ texticon = {
 	icon = key_return
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/enter.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2213,9 +2396,10 @@ texticon = {
 	icon = key_backspace
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/back.dds"
-		size = { 56 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 60 22 }
+		uv = { 0.03125 0.328125 0.96875 0.671875 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2223,9 +2407,9 @@ texticon = {
 	icon = key_q
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/q.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2233,9 +2417,9 @@ texticon = {
 	icon = key_e
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/e.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2243,9 +2427,9 @@ texticon = {
 	icon = key_r
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/r.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2253,9 +2437,9 @@ texticon = {
 	icon = key_t
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/t.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2263,27 +2447,27 @@ texticon = {
 	icon = key_y
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/y.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 texticon = {
 	icon = key_v
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/v.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 texticon = {
 	icon = key_w
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/w.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2291,9 +2475,9 @@ texticon = {
 	icon = key_u
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/u.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2301,9 +2485,9 @@ texticon = {
 	icon = key_i
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/i.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2311,9 +2495,9 @@ texticon = {
 	icon = key_j
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/j.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2321,9 +2505,9 @@ texticon = {
 	icon = key_x
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/x.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2331,9 +2515,9 @@ texticon = {
 	icon = key_z
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/z.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2341,9 +2525,9 @@ texticon = {
 	icon = key_o
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/o.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2351,9 +2535,9 @@ texticon = {
 	icon = key_s
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/s.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2361,9 +2545,9 @@ texticon = {
 	icon = key_p
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/p.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2371,18 +2555,18 @@ texticon = {
 	icon = key_k
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/k.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 texticon = {
 	icon = key_l
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/l.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2390,9 +2574,9 @@ texticon = {
 	icon = key_b
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/b.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2400,36 +2584,36 @@ texticon = {
 	icon = key_a
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/a.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 texticon = {
 	icon = key_c
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/c.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 texticon = {
 	icon = key_d
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/d.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 texticon = {
 	icon = key_h
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/h.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2437,9 +2621,9 @@ texticon = {
 	icon = key_g
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/g.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2447,18 +2631,18 @@ texticon = {
 	icon = key_m
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/m.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 texticon = {
 	icon = key_n
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/n.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2466,9 +2650,9 @@ texticon = {
 	icon = key_f
 	iconsize = {
 		texture = "gfx/interface/icons/text_icons/f.dds"
-		size = { 20 20 }
-		offset = { 0 6 }
-		fontsize = 16
+		size = { 22 22 }
+		offset = { 0 3 }
+		fontsize = 22
 	}
 }
 
@@ -2966,6 +3150,16 @@ texticon = {
 	iconsize = {
 		texture = "gfx/interface/icons/cabinet_actions/mlo_restore_kingdom_lombardy.dds"
 		size = { 20 20 }
+		offset = { 0 4 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = setting_immediatly
+	iconsize = {
+		texture = "gfx/interface/settings/immediatly.dds"
+		size = { 18 18 }
 		offset = { 0 4 }
 		fontsize = 16
 	}

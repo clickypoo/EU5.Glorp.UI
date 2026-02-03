@@ -540,7 +540,7 @@ Types LeftPanelTypes
 							click_type = right
 							click_mode = single
 							title = "AUTOMATED_SYSTEM_DIPLOMACY_CLICK"
-							on_action =  "[ToggleLateralGroupWithSpecificView('diplomacy_group', 'diplomacy_macrobuilder')]"
+							on_action =  "[OpenLateralView('diplomacy_macrobuilder')]"
 						}
 
 						input_action = "top_left_5"
@@ -759,7 +759,7 @@ Types LeftPanelTypes
 			name = "intro_highlight_1"
 
 			vbox = {
-				visible = "[Or(Not(LeftView.IsShown), IsLateralViewFullScreen)]"
+				visible = "[Not(And(LeftView.IsSideAttached, Not(IsLateralViewFullScreen)))]"
 
 				allow_outside = yes
 				using = layoutpolicy_expanding
@@ -775,7 +775,7 @@ Types LeftPanelTypes
 
 		# Opened panel
 		vbox = {
-			visible = "[And(LeftView.IsShown, Not(IsLateralViewFullScreen))]"
+			visible = "[And(LeftView.IsSideAttached, Not(IsLateralViewFullScreen))]"
 
 			allow_outside = yes
 			using = layoutpolicy_expanding
@@ -818,7 +818,7 @@ Types LeftPanelTypes
 
 				blockoverride "click_action" {
 					title = "TAB_TOOLTIP_GOVERNMENT_LEFT_CLICK"
-					on_action = "[OpenLateralView('government')]"
+					on_action = "[ShowForeignCountry(Country.Self)]"
 				}
 			}
 		}
