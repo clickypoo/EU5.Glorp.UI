@@ -2055,7 +2055,7 @@ OutlinerEntryBase = {
 				spacing = 5
 
 				icon = {
-					size = { 24 24 }
+					size = { 20 20 }
 					texture = "[GetGoodsIcon(Goods.Self)]"
 				}
 
@@ -2078,7 +2078,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					text = "[Goods.GetNameWithNoTooltip]"
-                    fontsize = 14
+					default_format = "#L"
 				}
 
 				hbox = {
@@ -2215,7 +2215,7 @@ OutlinerEntryBase = {
 	blockoverride "category_big_extra_content" {
 		hbox = {
 			spacing = 1
-
+			
 			country_flag_very_small = {
 				datacontext = "[War.GetAttackerWarLeader]"
 				filter_mouse = none
@@ -2309,7 +2309,6 @@ OutlinerEntryBase = {
 					alwaystransparent = yes
 					align = left
 					text = "[Siege.GetNameWithNoTooltip|G]"
-                    fontsize = 15
 				}
 
 				OutlinerTextBase = {
@@ -2318,7 +2317,6 @@ OutlinerEntryBase = {
 					alwaystransparent = yes
 					align = left
 					text = "[Siege.GetNameWithNoTooltip|R]"
-                    fontsize = 15
 				}
 
 				icon = {
@@ -3193,23 +3191,22 @@ OutlinerEntryBase = {
 
 				OutlinerTextBase = {
 					align = left
-					maximumsize = { 160 24 }
-					minimumsize = { 70 24 }
+					maximumsize = { 160 20 }
+					minimumsize = { 70 20 }
 					raw_text = "[Unit.GetVisualStrength]@army_strength!"
-                    fontsize = 14
 				}
 				widget = {
-					size = { 20 20 }
+					size = { 18 18 }
 					icon = {
-						size = { 20 20 }
+						size = { 18 18 }
 						texture = "[Unit.GetStatusTexture]"
 					}
 				}
 
 				widget = {
-					size = { 20 20 }
+					size = { 18 18 }
 					icon = {
-						size = { 20 20 }
+						size = { 18 18 }
 						texture = "gfx/interface/icons/unit_view/atrittion_icon.dds"
 						visible = "[GreaterThan_CFixedPoint(Unit.GetAttrition, '(CFixedPoint)0')]"
 						glow = {
@@ -3222,10 +3219,10 @@ OutlinerEntryBase = {
 				}
 
 				widget = {
-					size = { 20 20 }
+					size = { 18 18 }
 					icon = {
 						visible = "[Unit.IsAutomated]"
-						size = { 20 20 }
+						size = { 18 18 }
 						texture = "[GetMilitaryObjectiveIcon(Unit.GetObjectiveGroup.GetObjective.GetType)]"
 						texture_density = 2
 					}
@@ -3236,7 +3233,6 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = right
 					text = "[Unit.GetNameWithNoTooltip]"
-                    fontsize = 14
 				}
 				portrait_standard_head_button = {
 					datacontext = "[Unit.GetCommander]"
@@ -3782,7 +3778,7 @@ OutlinerEntryBase = {
 
 				tooltipwidget = {
 					using = international_organization_resolution_voting_outliner_tooltip
-				}
+				}										
 			}
 		}
 	}
@@ -3909,7 +3905,7 @@ OutlinerEntryBase = {
 				alwaystransparent = yes
 				parentanchor = center
 				allow_outside = yes
-				size = { 90% 90% }
+				size = { 80% 80% }
 
 				using = piechart_angles
 
@@ -3930,7 +3926,7 @@ OutlinerEntryBase = {
 
 			icon = {
 				parentanchor = center
-				size = { 66% 66% }
+				size = { 60% 60% }
 				texture = "gfx/interface/icons/flat_icons/reforms.dds"
 			}
 		}
@@ -4037,7 +4033,7 @@ OutlinerEntryBase = {
 				alwaystransparent = yes
 				parentanchor = center
 				allow_outside = yes
-				size = { 90% 90% }
+				size = { 80% 80% }
 
 				using = piechart_angles
 
@@ -4056,7 +4052,7 @@ OutlinerEntryBase = {
 
 			icon = {
 				parentanchor = center
-				size = { 66% 66% }
+				size = { 60% 60% }
 				texture = "gfx/interface/icons/situations/_default.dds"
 				texture_density = 2
 			}
@@ -4296,7 +4292,7 @@ template cabinet_entry_icon_empty {
 		visible = "[Cabinet.IsActive]"
 		icon = {
 			parentanchor = center
-			size = { 70% 70% }
+			size = { 63% 63% }
 			texture = "[GetCabinetActionIcon(Cabinet.GetAction)]"
 			glow = {
 				name = "drop_shadow"
@@ -4319,7 +4315,7 @@ template cabinet_entry_icon {
 		# }
 		icon = {
 			parentanchor = center
-			size = { 70% 70% }
+			size = { 63% 63% }
 			block "cabinet_entry_icon_texture" {}
 			glow = {
 				name = "drop_shadow"
@@ -4750,7 +4746,7 @@ OutlinerEntryBase = {
 		blockoverride "cabinet_entry_icon_piechart"{
 			piechart = {
 				parentanchor = center
-				size = { 90% 90% }
+				size = { 80% 80% }
 				using = piechart_angles
 
 				pieslice_no_highlight = {
@@ -4807,7 +4803,7 @@ OutlinerEntryBase = {
 		blockoverride "cabinet_entry_icon_piechart"{
 			piechart = {
 				parentanchor = center
-				size = { 90% 90% }
+				size = { 80% 80% }
 				using = piechart_angles
 
 				pieslice_no_highlight = {
@@ -5340,7 +5336,78 @@ OutlinerEntryBase = {
 		blockoverride "cabinet_entry_icon_piechart"{
 			piechart = {
 				parentanchor = center
-				size = { 90% 90% }
+				size = { 80% 80% }
+				using = piechart_angles
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[FixedPointToFloat(Cabinet.GetActionNumProgress)]"
+					color = { 0.01 0.6 0.9 1 }
+					alwaystransparent = yes
+				}
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Subtract_float('(float)1.0', FixedPointToFloat(Cabinet.GetActionNumProgress))]"
+					color = { 0.0 0.1 0.1 1 }
+					alwaystransparent = yes
+				}
+			}
+		}
+	}
+	blockoverride "button_setup" {
+		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCabinetActionTarget(Cabinet.Self)]"
+
+		using = cabinet_entry_actions
+		tooltipwidget = {
+			using = action_progress_tooltip
+		}
+	}
+	blockoverride "category_color" { using = cabinet_entry_color }
+}
+
+## PRU DEAL WITH ROBBER BARONS
+#########################################
+
+OutlinerEntryBase = {
+	name = "pru_deal_with_robber_barons_cabinet_entry"
+	tooltipmeta = {
+		texture = "[GetCabinetActionIcon(Cabinet.GetAction)]"
+	}
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				visible = "[Cabinet.IsActive]"
+				datacontext = "[Cabinet.GetCharacter]"
+				using = outliner_entry_margin
+				spacing = 5
+
+				using = cabinet_entry_action_progress
+
+				blockoverride "cabinet_entry_progress_text" {
+					OutlinerTextBase = {
+						autoresize = yes
+						raw_text = "[Cabinet.GetActionProgress]"
+						maximumsize = { 80 -1 }
+					}
+				}
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" { using = cabinet_entry_small_action_progress }
+
+	blockoverride "icon_content" {
+		using = cabinet_entry_icon
+
+		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/cabinet_actions/turmoil_in_brandenburg.dds"  }
+
+		blockoverride "cabinet_entry_icon_piechart"{
+			piechart = {
+				parentanchor = center
+				size = { 80% 80% }
 				using = piechart_angles
 
 				pieslice_no_highlight = {
@@ -5469,13 +5536,13 @@ OutlinerEntryBase = {
 				pieslice_no_highlight = {
 					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
 					value = "[Multiply_float(FixedPointToFloat(OutlinerCabinetEntry.GetActionProgressScope.sProvince('target_province').GetReligionPercentage(OutlinerCabinetEntry.GetActionProgressScope.sReligion('target_religion'))), '(float)100.0')]"
-					color = { 0.01 0.6 0.9 1 }
+					color = { 0.01 0.6 0.9 1 } 
 					alwaystransparent = yes
 				}
 
 				pieslice_no_highlight = {
 					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-					value = "[Subtract_float('(float)100.0',
+					value = "[Subtract_float('(float)100.0', 
 					Multiply_float(FixedPointToFloat(OutlinerCabinetEntry.GetActionProgressScope.sProvince('target_province').GetReligionPercentage(OutlinerCabinetEntry.GetActionProgressScope.sReligion('target_religion'))), '(float)100.0'))]"
 					color = { 0.0 0.1 0.1 1 }
 					alwaystransparent = yes
@@ -5632,7 +5699,7 @@ OutlinerEntryBase = {
 		blockoverride "cabinet_entry_icon_piechart"{
 			piechart = {
 				parentanchor = center
-				size = { 90% 90% }
+				size = { 80% 80% }
 				using = piechart_angles
 
 				pieslice_no_highlight = {
@@ -5700,7 +5767,7 @@ OutlinerEntryBase = {
 		blockoverride "cabinet_entry_icon_piechart"{
 			piechart = {
 				parentanchor = center
-				size = { 90% 90% }
+				size = { 80% 80% }
 				using = piechart_angles
 
 				pieslice_no_highlight = {
@@ -5994,7 +6061,7 @@ OutlinerEntryBase = {
 				spacing = 5
 
 				icon = {
-					size = { 22 22 }
+					size = { 18 18 }
 					texture = "[GetConceptTexture('market')]"
 					glow = {
 						name = "drop_shadow"
@@ -6009,7 +6076,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					text = "[Market.GetShortNameWithNoTooltip]"
-					fontsize = 14
+					default_format = "#L"
 				}
 				widget = {
 					size = { 100 15 }
@@ -6117,13 +6184,12 @@ OutlinerEntryBase = {
 					hbox = {
 						expand = {}
 						visible = "[GreaterThan_CFixedPoint(Market.GetTotalMerchantCapacity(Player.Self),'(CFixedPoint)0')]"
-						datamodel = "[Market.GetMerchants]"
-						item = {
-							OutlinerTextBase = {
-								visible = "[Merchant.GetCountry.IsPlayer]"
-								autoresize = yes
-								raw_text = "[Merchant.GetTotalTradeProfit|+=2]@gold!"
-                                fontsize = 14
+						datacontext = "[Market.GetMerchant(Player.Self)]"
+						OutlinerTextBase = {
+							autoresize = yes
+							raw_text = "[Merchant.GetTotalTradeProfit|+=2]@gold!"
+							tooltipwidget = {
+								using = market_hub_trade_tooltip
 							}
 						}
 					}
@@ -6222,7 +6288,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 				icon = {
-					size = { 22 22 }
+					size = { 20 20 }
 					texture = "[GetConstructionIcon(Construction.Self)]"
 					texture_density = 2
 				}
@@ -6230,7 +6296,7 @@ OutlinerEntryBase = {
 					layoutpolicy_horizontal = expanding
 					autoresize = no
 					align = left
-					fontsize = 14
+					fontsize = 13
 					using = OnlyVisibleWhenOneInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip]"
 				}
@@ -6238,7 +6304,7 @@ OutlinerEntryBase = {
 					layoutpolicy_horizontal = expanding
 					autoresize = no
 					align = left
-					fontsize = 14
+					fontsize = 13
 					using = OnlyVisibleWhenMultipleInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip] #L (+[Subtract_int32(Construction.CountAllInLocation, '(int32)1')]) #!"
 				}
@@ -6247,13 +6313,11 @@ OutlinerEntryBase = {
 					visible = "[Not(Construction.IsStalled)]"
 					autoresize = yes
 					text = "CONSTRUCTION_DURATION_DAYS"
-                    fontsize = 14
 				}
 				OutlinerTextBase = {
 					visible = "[Construction.IsStalled]"
 					autoresize = yes
 					text = "CONSTRUCTION_INFO_STALLED"
-                    fontsize = 14
 				}
 			}
 		}
@@ -6274,7 +6338,7 @@ OutlinerEntryBase = {
 					align = right
 					text = "CONSTRUCTION_DURATION_DAYS"
 				}
-
+	
 				OutlinerTextBase = {
 					layoutpolicy_horizontal = expanding
 					using = outliner_entry_margin
@@ -6411,7 +6475,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 				icon = {
-					size = { 30 30 }
+					size = { 20 20 }
 					texture = "[GetEstateIcon(Construction.GetEstateType)]"
 					texture_density = 2
 				}
@@ -6422,7 +6486,6 @@ OutlinerEntryBase = {
 					align = left
 					using = OnlyVisibleWhenOneInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip]"
-                    fontsize = 14
 				}
 				OutlinerTextBase = {
 					layoutpolicy_horizontal = expanding
@@ -6430,13 +6493,11 @@ OutlinerEntryBase = {
 					align = left
 					using = OnlyVisibleWhenMultipleInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip] #L (+[Subtract_int32(Construction.CountAllInLocation, '(int32)1')]) #!"
-                    fontsize = 14
 				}
 
 				OutlinerTextBase = {
 					autoresize = yes
 					text = "CONSTRUCTION_DURATION_DAYS"
-                    fontsize = 14
 				}
 			}
 		}
@@ -6581,7 +6642,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 				icon = {
-					size = { 30 30 }
+					size = { 20 20 }
 					texture = "[GetConstructionIcon(Construction.Self)]"
 					texture_density = 2
 					glow = {
@@ -6595,7 +6656,7 @@ OutlinerEntryBase = {
 					layoutpolicy_horizontal = expanding
 					autoresize = no
 					align = left
-					fontsize = 14
+					fontsize = 13
 					using = OnlyVisibleWhenOneInLocation
 					text = "[Construction.GetNameWithNoTooltip]"
 				}
@@ -6603,7 +6664,7 @@ OutlinerEntryBase = {
 					layoutpolicy_horizontal = expanding
 					autoresize = no
 					align = left
-					fontsize = 14
+					fontsize = 13
 					using = OnlyVisibleWhenMultipleInLocation
 					text = "CONSTRUCTION_DURATION_DAYS_PLUS_QUEUE"
 				}
@@ -6612,13 +6673,11 @@ OutlinerEntryBase = {
 					visible = "[Not(Construction.IsStalled)]"
 					autoresize = yes
 					text = "CONSTRUCTION_DURATION_DAYS"
-                    fontsize = 14
 				}
 				OutlinerTextBase = {
 					visible = "[Construction.IsStalled]"
 					autoresize = yes
 					text = "CONSTRUCTION_INFO_STALLED"
-                    fontsize = 14
 				}
 			}
 		}
@@ -6765,7 +6824,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 				icon = {
-					size = { 30 30 }
+					size = { 20 20 }
 					texture = "[GetConstructionIcon(Construction.Self)]"
 					texture_density = 2
 				}
@@ -6773,7 +6832,7 @@ OutlinerEntryBase = {
 					layoutpolicy_horizontal = expanding
 					autoresize = no
 					align = left
-					fontsize = 14
+					fontsize = 13
 					using = OnlyVisibleWhenOneInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip]"
 				}
@@ -6782,7 +6841,7 @@ OutlinerEntryBase = {
 					layoutpolicy_horizontal = expanding
 					autoresize = no
 					align = left
-					fontsize = 14
+					fontsize = 13
 					using = OnlyVisibleWhenMultipleInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip] #L (+[Subtract_int32(Construction.CountAllInLocation, '(int32)1')]) #!"
 				}
@@ -6791,14 +6850,12 @@ OutlinerEntryBase = {
 					visible = "[Not(Construction.IsStalled)]"
 					autoresize = yes
 					text = "CONSTRUCTION_DURATION_DAYS"
-                    fontsize = 14
 				}
 				
 				OutlinerTextBase = {
 					visible = "[Construction.IsStalled]"
 					autoresize = yes
 					text = "CONSTRUCTION_INFO_STALLED"
-                    fontsize = 14
 				}
 			}
 		}
@@ -6945,7 +7002,7 @@ OutlinerEntryBase = {
 				spacing = 5
 
 				widget = {
-					size = { 20 20 }
+					size = { 16 16 }
 					using = bg_circle_piechart
 					blockoverride "inside_color" {
 						modify_texture = {
@@ -6974,7 +7031,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					text = "[Rebel.GetNameWithNoTooltip]"
-                    fontsize = 14
+					default_format = "#L"
 				}
 
 				icon = {
@@ -6991,7 +7048,6 @@ OutlinerEntryBase = {
 				OutlinerTextBase = {
 					autoresize = yes
 					raw_text = "[Rebel.GetProgress|-V%2] ([Rebel.GetLastMonthsProgress|-=%2])"
-                    fontsize = 14
 				}
 			}
 		}
@@ -7062,7 +7118,7 @@ OutlinerEntryBase = {
 	
 				icon = {
 					texture_density = 2
-					size = { 20 20 }
+					size = { 17 17 }
 					parentanchor = center
 					texture = "[GetRebelsIcon(Rebel.Self)]"
 
@@ -7121,7 +7177,7 @@ template "diplomacy_expanded_big_content"
 			}
 			OutlinerTextBase = {
 				using = layoutpolicy_expanding
-				fontsize = 14
+				fontsize = 13
 				align = left
 				autoresize = no
 				text = "[OutlinerDiplomacyEntry.GetText]"
@@ -7130,7 +7186,6 @@ template "diplomacy_expanded_big_content"
 			OutlinerTextBase = {
 				align = right
 				text = "[OutlinerDiplomacyEntry.GetStatus]"
-                fontsize = 14
 			}
 		}
 	}
@@ -7178,7 +7233,7 @@ template "diplomacy_icon_content"
 		piechart = {
 			visible = "[GreaterThan_CFixedPoint(OutlinerDiplomacyEntry.GetTotalNumber, '(CFixedPoint)0')]"
 			parentanchor = center
-			size = { 90% 90% }
+			size = { 80% 80% }
 			using = piechart_angles
 
 			pieslice_no_highlight = {
@@ -7196,7 +7251,7 @@ template "diplomacy_icon_content"
 			}
 		}
 		icon = {
-			size = { 75% 75% }
+			size = { 60% 60% }
 			parentanchor = center
 			texture = "[OutlinerDiplomacyEntry.GetIcon]"
 		}
@@ -7437,7 +7492,7 @@ OutlinerEntryBase = {
 			raw_text = "[OutlinerDiplomacyEntry.GetTotalNumber|1]%"
 		}
 	}
-
+	
 	blockoverride "icon_content" {
 		using = diplomacy_icon_content
 	}
@@ -7489,7 +7544,6 @@ OutlinerEntryBase = {
 					align = left
 					raw_text = "@province! [ColonialCharter.GetProvinceDefinition.GetNameWithNoTooltip]" 
 					default_format = "#yellow_titles"
-                    fontsize = 14
 				}
 
 				hbox = {
@@ -7500,14 +7554,12 @@ OutlinerEntryBase = {
 						maximumsize = { 65 -1 }
 						autoresize = yes
 						raw_text = "[ColonialCharter.GetMonthlyMigration]@population!"
-                        fontsize = 14
 					}
 					OutlinerTextBase = {
 						minimumsize = { 65 -1 }
 						maximumsize = { 65 -1 }
 						autoresize = yes
 						raw_text = "[ColonialCharter.GetProgress|2]%"
-                        fontsize = 14
 					}
 				}
 				
@@ -7619,7 +7671,7 @@ OutlinerEntryBase = {
 						tooltip_enabled = no
 					}
 
-					blockoverride "character_tooltip" {
+					blockoverride "character_tooltip" { 
 						tooltipwidget = {
 							BasicFunctionalTooltip = {}
 						}
@@ -7630,14 +7682,14 @@ OutlinerEntryBase = {
 					blockoverride "rightclick" {}
 				}
 
-				icon = {
-					size = { 28 28 }
+				icon = {		
+					size = { 20 20 }
 					visible = "[Exploration.GetArea.IsNaval]"					
 					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_sea.dds"
 				}
 
 				icon = {
-					size = { 28 28 }
+					size = { 20 20 }
 					visible = "[Not(Exploration.GetArea.IsNaval)]"					
 					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_land.dds"
 				}
@@ -7647,7 +7699,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					raw_text = "[Exploration.GetArea.GetNameWithNoTooltip] ([Exploration.GetArea.GetRegion.GetNameWithNoTooltip])"
-                    fontsize = 14
+					default_format = "#L"
 				}
 
 				OutlinerTextBase = {
@@ -7678,7 +7730,7 @@ OutlinerEntryBase = {
 		OutlinerIconBg = {
 			piechart = {
 				parentanchor = center
-				size = { 85% 85% }
+				size = { 80% 80% }
 
 				using = piechart_angles
 				using = bg_circle_piechart
@@ -7751,13 +7803,11 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					text = "[Privateer.GetArea.GetNameWithNoTooltip]"
-                    fontsize = 14
 				}
 
 				OutlinerTextBase = {
 					autoresize = yes
 					raw_text = "[Privateer.GetPowerChange|+=%]"
-                    fontsize = 14
 				}
 			}
 		}
@@ -7855,7 +7905,6 @@ OutlinerEntryBase = {
 				autoresize = no
 				align = right
 				raw_text = "-"
-                fontsize = 14
 			}
 		}
 	}
@@ -7937,7 +7986,7 @@ template category_big_template {
 			}
 
 			icon = {
-				size = { 30 30 }
+				size = { 20 20 }
 				block "category_icon_texture" { visible = no }
 				glow = {
 					name = "drop_shadow"
@@ -7950,7 +7999,7 @@ template category_big_template {
 			OutlinerTextBase = {
 				using = layoutpolicy_expanding
 				autoresize = no
-				fontsize = 15
+				fontsize = 13
 				align = left
 				block "category_name" {
 					text = "[OutlinerCategoryEntry.GetName|T]"
@@ -8090,7 +8139,7 @@ template category_small_template {
 			}
 
 			icon = {
-				size = { 28 28 }
+				size = { 20 20 }
 				glow = {
 					name = "drop_shadow"
 					glow_radius = 3
@@ -8208,7 +8257,6 @@ template category_icon_template {
 			autoresize = no
 			align = center
 			block "outliner_category_count" { text = "[OutlinerCategoryEntry.GetEntryCount]" }
-            fontsize = 14
 		}
 	}
 }

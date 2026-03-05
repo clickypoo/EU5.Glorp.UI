@@ -3346,7 +3346,7 @@ lateralview = {
 			parentanchor = right|vcenter
 			size = { 40 40 }
 			position = { -30 0 }
-
+			
 			button_minimize = {
 				visible = "[Not(SingleUnitWindow.IsCompactViewEnabled)]"
 				parentanchor = right|vcenter
@@ -3374,20 +3374,6 @@ lateralview = {
 
 				input_action = "toggle_window_collapse"
 			}
-
-            zoom_to_button = {
-                blockoverride "onclick_action" {
-                    onclick = "[PanToLocation(SingleUnitWindow.AccessSelectedUnit.GetLocation)]"
-                }
-                blockoverride "position_override" {
-                    position = { -30 7 }
-                }
-                tooltipwidget = {
-                    LeftClickButtonTooltip = {
-                        blockoverride "onclick_text" { text = "[SelectLocalization(SingleUnitWindow.AccessSelectedUnit.IsArmy, 'GO_TO_ARMY_LOCATION', 'GO_TO_NAVY_LOCATION')]" }
-                    }
-                }
-            }
 		}
 	}
 
@@ -3919,12 +3905,12 @@ lateralview = {
 
 							icon = {
 								size = { 30 30 }
-								texture = "gfx/interface/icons/flat_icons/balance/cost_of_army.dds"
+								texture = "gfx/interface/icons/flat_icons/balance/cost_of_army.dds"		
 							}
 							text_single = {
 								raw_text = "[SingleUnitWindow.GetMaintenanceCost|2R]@expense!"
 							}
-
+							
 							expand = {}
 						}
 						hbox = {
@@ -3939,10 +3925,10 @@ lateralview = {
 							expand = {}
 
 							visible = "[Unit.IsArmy]"
-
+							
 							icon = {
 								size = { 30 30 }
-								texture = "gfx/interface/icons/resources/manpower.dds"
+								texture = "gfx/interface/icons/resources/manpower.dds"			
 							}
 							text_single = {
 								text = "[Unit.GetMaintenanceCost|+=0]"
@@ -3968,7 +3954,7 @@ lateralview = {
 
 							icon = {
 								size = { 30 30 }
-								texture = "gfx/interface/icons/resources/sailors.dds"
+								texture = "gfx/interface/icons/resources/sailors.dds"			
 							}
 							text_single = {
 								text = "[Unit.GetMaintenanceCost|+=0]"
@@ -3986,7 +3972,7 @@ lateralview = {
 							using = bg_text_mask_container_brown
 
 							expand = {}
-
+							
 
 							piechart = {
 								size = { 30 30 }
@@ -4060,7 +4046,7 @@ lateralview = {
 								texture = "gfx/interface/icons/unit_view/artillery_barrage.dds"
 								alpha = 1
 								visible = "[SingleUnitWindow.GetSelectedUnit.IsArmy]"
-
+								
 								glow = {
 									name = "drop_shadow"
 									glow_radius = 3
@@ -4300,29 +4286,29 @@ lateralview = {
 							minimumsize = { 438 -1 }
 							margin = {5 5}
 							spacing = 5
-
+		
 							hbox = {
 								using = layoutpolicy_expanding
 								spacing = 5
-
+		
 								# REGIMENTS FLANKS COMBATS
 								scrollarea = {
 									using = layoutpolicy_expanding
 									layoutstretchfactor_horizontal = 5
 									scrollbarpolicy_horizontal = always_off
 									scrollbarpolicy_vertical = as_needed
-
+			
 									autoresizeviewport = yes
 									viewportwidget = {
 										widget = {
 											scissor = yes
 										}
 									}
-
+			
 									scrollbar_vertical = {
 										using = Scrollbar_Vertical
 									}
-
+			
 									scrollwidget = {
 										vbox = {
 											spacing = 5
@@ -4339,12 +4325,12 @@ lateralview = {
 													}
 												}
 											}
-
+											
 											# OCCUPATION/SIEGE
 											vbox = {
 												visible = "[SingleUnitWindow.GetSelectedUnit.InSiege]"
 												layoutpolicy_horizontal = expanding
-
+		
 												# SIEGE
 												widget = {
 													using = bg_card_header_01_military
@@ -4362,7 +4348,7 @@ lateralview = {
 														tooltipwidget = {
 															using = SiegePhase_tooltip
 														}
-
+														
 														hbox = {
 															margin = { 7 0 }
 															spacing = 5
@@ -4376,7 +4362,7 @@ lateralview = {
 																text = "[Siege.GetNameWithNoTooltip]"
 																size = { -1 30 }
 															}
-
+			
 															hbox = {
 																using = siege_fall_chance_info
 															}
@@ -4384,7 +4370,7 @@ lateralview = {
 													}
 												}
 											}
-
+			
 											# FLANKS
 											vbox = {
 												layoutpolicy_horizontal = expanding
@@ -4427,7 +4413,7 @@ lateralview = {
 																	size = { 100% 100% }
 																	texture = "[UnitActionItem.GetTexture]"
 																}
-
+	
 																action_tooltip = {
 																	click_type = left
 																	click_mode = confirm
@@ -4437,18 +4423,18 @@ lateralview = {
 																	enabled = "[UnitActionItem.CanHoldLeftClick]"
 																	description = "[UnitActionItem.GetLeftClickDescription]"
 																}
-
+	
 																action_tooltip = {
 																	click_type = right
 																	click_mode = confirm
-
+	
 																	visible = "[UnitActionItem.HasHoldRightAction]"
 																	title = "[UnitActionItem.GetSecondaryName]"
 																	on_action = "[UnitActionItem.HoldRightClick]"
 																	enabled = "[UnitActionItem.CanHoldRightClick]"
 																	description = "[UnitActionItem.GetRightClickDescription]"
 																}
-
+	
 																action_tooltip = {
 																	visible = "[UnitActionItem.HasSingleLeftAction]"
 																	title = "[UnitActionItem.GetName]"
@@ -4457,7 +4443,7 @@ lateralview = {
 																	enabled = "[UnitActionItem.CanSingleLeftClick]"
 																	description = "[UnitActionItem.GetLeftClickDescription]"
 																}
-
+	
 																action_tooltip = {
 																	visible = "[UnitActionItem.HasShiftLeftClick]"
 																	title = "[UnitActionItem.GetShiftLeftName]"
@@ -4469,7 +4455,7 @@ lateralview = {
 																	enabled = "[UnitActionItem.CanSingleLeftClick]"
 																	description = "[UnitActionItem.GetLeftClickDescription]"
 																}
-
+	
 																enabled = "[UnitActionItem.IsEnabled]"
 																input_action = "[UnitActionItem.GetShortcut]"
 																use_global_input_instance = yes
@@ -4477,8 +4463,8 @@ lateralview = {
 																tooltipwidget = {
 																	using = UnitAction_tooltip
 																}
-															}
-
+															} 
+															
 															header_button_left = {
 																size = { 48 48 }
 																blockoverride "header_button_icon_size" { size = { 48 48 } }
@@ -4490,7 +4476,7 @@ lateralview = {
 																	size = { 100% 100% }
 																	texture = "[GetUnitFormationPreferenceIcon(Unit.GetUnitFormationPreference)]"
 																}
-
+																
 																tooltipwidget = {
 																	BasicFunctionalTooltip = { alwaystransparent = yes }
 																}
@@ -4513,7 +4499,7 @@ lateralview = {
 																	size = { 100% 100% }
 																	texture = "gfx/interface/icons/unit_view/formation_flat.dds"
 																}
-
+																
 																tooltipwidget = {
 																	BasicFunctionalTooltip = { alwaystransparent = yes }
 																}
@@ -4524,7 +4510,7 @@ lateralview = {
 																	on_action = "[OpenLateralView('single_unit_formation')]"
 																}
 															}
-
+													
 															expand = {}
 														}
 
@@ -4551,8 +4537,8 @@ lateralview = {
 																texture = "gfx/interface/icons/military_army/combined_arms.dds"
 																game_concept = "[combined_arms|e]"
 															}
-
-
+																	
+																	
 															tooltipwidget = {
 																SimpleContextualStringPairTooltipType = {
 																	lowpriotextcontext = "[Unit.GetCombinedArmsInfo]"
@@ -4564,19 +4550,19 @@ lateralview = {
 														spacing = 5
 														layoutpolicy_horizontal = expanding
 														datacontext = "[SingleUnitWindow.GetSelectedUnit]"
-
+		
 														UnitFlankInfo = {
 															datacontext = "[SingleUnitWindow.GetSelectedUnit.GetUnitBox('left')]"
 														}
-
+		
 														UnitFlankInfo = {
 															datacontext = "[SingleUnitWindow.GetSelectedUnit.GetUnitBox('center')]"
 														}
-
+		
 														UnitFlankInfo = {
 															datacontext = "[SingleUnitWindow.GetSelectedUnit.GetUnitBox('right')]"
 														}
-
+		
 														# UnitFlankInfo = {
 														# 	datacontext = "[SingleUnitWindow.GetSelectedUnit.GetUnitBox('captured')]"
 														# }
@@ -4594,25 +4580,25 @@ lateralview = {
 															}
 														}
 													}
-												}
+												}												
 											}
-
+		
 											### REGIMENTS & NEW UNIT
 											vbox = {
 												using = layoutpolicy_expanding
-
+		
 												filtered_sorted_list = {
 													datacontext = "[SingleUnitWindow.GetSubUnitsSortSearch]"
-
+										
 													blockoverride "scroll_list_is_empty" {
 														visible = "[IsDataModelEmpty(SingleUnitWindow.GetSubUnits)]"
 													}
-
+										
 													blockoverride "scroll_list_is_empty_text" {
 														text = "SUBUNITS_SCROLL_LIST_EMPTY"
 													}
-
-													blockoverride "sort_buttons_filtered_list" {
+		
+													blockoverride "sort_buttons_filtered_list" {					
 														sort_by_key_button = {
 															name = "name"
 															using = layoutpolicy_expanding
@@ -4622,27 +4608,27 @@ lateralview = {
 															name = "manpower"
 															using = layoutpolicy_expanding
 														}
-
+								
 														sort_by_key_button = {
 															name = "experience"
 															using = layoutpolicy_expanding
 														}
-
+								
 														sort_by_key_button = {
 															name = "morale"
 															using = layoutpolicy_expanding
 														}
-
+		
 														sort_by_key_button = {
 															name = "strength"
 															using = layoutpolicy_expanding
 														}
 													}
-
+										
 													blockoverride "scroll_list_content" {
 														addcolumn = 100%
 														addrow = 55
-
+		
 														datamodel = "[SingleUnitWindow.GetSubUnits]"
 														item = {
 															widget = {
@@ -4652,7 +4638,7 @@ lateralview = {
 																}
 																parentanchor = hcenter
 																size = { 97% 50 }
-
+		
 																hbox = {
 																	margin = { 2 2 }
 																	hbox = {
@@ -4660,14 +4646,14 @@ lateralview = {
 																		layoutpolicy_vertical = expanding
 																		spacing = 7
 																		datacontext = "[SubUnit.GetDefinition]"
-
+																		
 																		# illustration
 																		widget = {
 																			layoutpolicy_vertical = expanding
 																			size = {37 -1}
-
+		
 																			using = subunit_illustration
-
+		
 																			card_header_button_04 = {
 																				visible = "[CanUpgradeSubUnit(SubUnit.Self)]"
 																				parentanchor = bottom|hcenter
@@ -4686,24 +4672,24 @@ lateralview = {
 																					enabled = "[CanUpgradeSubUnit(SubUnit.Self)]"
 																					description = "[CanUpgradeSubUnitTooltip(SubUnit.Self)]"
 																				}
-
+		
 																				enabled = "[CanUpgradeSubUnit(SubUnit.Self)]"
 																				tooltipwidget = { BasicFunctionalTooltip = {} }
 																			}
-
+																			
 																			# icon = {
 																			# 	parentanchor = center
 																			# 	ignore_layout = yes
 																			# 	size = {92% 94%}
-
+																				
 																			# 	using = bg_age_event_frame
 																			# }
 																		}
-
+		
 																		hbox = {
 																			layoutpolicy_horizontal = expanding
 																			spacing = 2
-
+		
 																			vbox = {
 																				layoutpolicy_horizontal = expanding
 																				layoutpolicy_vertical = expanding
@@ -4726,7 +4712,7 @@ lateralview = {
 																				}
 																			}
 																		}
-
+		
 																		unit_category_secondary_icon = {
 																			blockoverride "unit_category_secondary_icon_position" {}
 																			blockoverride "unit_category_secondary_icon_parentanchor" {}
@@ -4734,16 +4720,16 @@ lateralview = {
 																				size = {35 35}
 																			}
 																		}
-
+		
 																		icon = {
 																			size = {35 35}
 																			texture = "[SubUnit.GetSubunitFlankIcon]"
-
+																			
 																			datacontext = "[SubUnit.GetUnitBox]"
 																			tooltipwidget = {
 																				using = SubUnitArray_tooltip
 																			}
-
+													
 																			glow = {
 																				name = "drop_shadow"
 																				glow_radius = 3
@@ -4751,15 +4737,15 @@ lateralview = {
 																				alpha = 0.2
 																			}
 																		}
-
+																		
 																		hbox = {
 																			spacing = 1
 																			margin = {1 0}
-
+		
 																			# EXPERIENCE
 																			widget = {
 																				size = {15 35}
-
+														
 																				progressbar = {
 																					parentanchor = center
 																					size = { 5 35 }
@@ -4769,21 +4755,21 @@ lateralview = {
 																					max = 100
 																					direction = vertical
 																				}
-
+																				
 																				tooltipwidget = {
 																					using = SubUnitExperience_tooltip
-
+																					
 																				}
-
+														
 																				sort_by_highlight = {
 																					name = "experience"
 																				}
 																			}
-
+		
 																			# MORALE
 																			widget = {
 																				size = {10 35}
-
+														
 																				progressbar = {
 																					parentanchor = left
 																					size = { 5 35 }
@@ -4793,17 +4779,17 @@ lateralview = {
 																					max = 100
 																					direction = vertical
 																				}
-
+																				
 																				tooltipwidget = {
 																					using = subunit_morale_tooltip
 																				}
-
+														
 																				sort_by_highlight = {
 																					name = "morale"
 																				}
 																			}
 																		}
-
+																		
 																		# strength
 																		hbox = {
 																			margin = {0 5}
@@ -4826,16 +4812,16 @@ lateralview = {
 																					autoresize = no
 																					size = {60 15}
 																					raw_text = "[SubUnit.GetStrength]@army_strength!"
-
+		
 																					tooltipwidget = {
 																						using = Reinforce_tooltip
 																					}
-
+		
 																					sort_by_highlight = {
 																						name = "strength"
 																					}
 																				}
-
+		
 																				text_single = {
 																					visible = "[And3(SubUnit.IsRegiment, Not(SubUnit.IsLevy), Not(EqualTo_CFixedPoint(SubUnit.GetMissingStrength, '(CFixedPoint)0')))]"
 																					align = right|nobaseline
@@ -4843,32 +4829,32 @@ lateralview = {
 																					size = {60 15}
 																					raw_text = "[SubUnit.GetStrength]@army_strength!"
 																					default_format = "#R"
-
+		
 																					tooltipwidget = {
 																						using = Reinforce_tooltip
 																					}
-
+		
 																					sort_by_highlight = {
 																						name = "strength"
 																					}
 																				}
-
+		
 																				text_single = {
 																					visible = "[And(SubUnit.IsShip, Or(SubUnit.IsLevy, EqualTo_CFixedPoint(SubUnit.GetMissingStrength, '(CFixedPoint)0')))]"
 																					align = right|nobaseline
 																					autoresize = no
 																					size = {60 15}
 																					raw_text = "[SubUnit.GetStrength]@navy_strength!"
-
+		
 																					tooltipwidget = {
 																						using = Repair_tooltip
 																					}
-
+		
 																					sort_by_highlight = {
 																						name = "strength"
 																					}
 																				}
-
+																				
 																				text_single = {
 																					visible = "[And3(SubUnit.IsShip, Not(SubUnit.IsLevy), Not(EqualTo_CFixedPoint(SubUnit.GetMissingStrength, '(CFixedPoint)0')))]"
 																					align = right|nobaseline
@@ -4876,27 +4862,27 @@ lateralview = {
 																					size = {60 15}
 																					raw_text = "[SubUnit.GetStrength]@navy_strength!"
 																					default_format = "#R"
-
+		
 																					tooltipwidget = {
 																						using = Repair_tooltip
 																					}
-
+		
 																					sort_by_highlight = {
 																						name = "strength"
 																					}
 																				}
 																			}
-
+		
 																			hbox = {
 																				margin = {4 0}
 																				visible = "[SingleUnitWindow.IsAddToCreatingUnitVisible]"
 																				widget = {
 																					datacontext = "[SubUnit]"
 																					size = { 24 36 }
-
+			
 																					header_button_left = {
 																						size = { 100% 100% }
-
+		
 																						action_tooltip = {
 																							click_type = left
 																							click_mode = single
@@ -4911,7 +4897,7 @@ lateralview = {
 																							enabled = "[SingleUnitWindow.CanAddToCreatingUnit(SubUnit.Self)]"
 																							title = "TRANSFER_SUBUNIT_CATEGORY_TT"
 																							on_action = "[SingleUnitWindow.AddSubunitCategoryToNewUnit(SubUnit.Self)]"
-																						}
+																						}			
 																						action_tooltip = {
 																							click_type = left
 																							click_mode = single
@@ -4920,10 +4906,10 @@ lateralview = {
 																							title = "TRANSFER_SUBUNIT_TYPE_TT"
 																							on_action = "[SingleUnitWindow.AddSubunitTypeToNewUnit(SubUnit.Self)]"
 																						}
-
+		
 																						enabled = "[SingleUnitWindow.CanAddToCreatingUnit(SubUnit.Self)]"
 																						tooltipwidget = { BasicFunctionalTooltip = {}}
-
+			
 																						blockoverride "button_icon_stretch_sprite" {}
 																						blockoverride "header_button_frame_inner" {visible = no}
 																						blockoverride "header_button_icon_size" { size = { 24 24 } }
@@ -4937,7 +4923,7 @@ lateralview = {
 																		}
 																	}
 																}
-
+		
 																# widget = {
 																# 	size = {100% 100%}
 																# 	ignore_layout = yes
@@ -4948,7 +4934,7 @@ lateralview = {
 													}
 												}
 											}
-
+			
 											expand = {}
 										}
 									}
@@ -4994,13 +4980,13 @@ lateralview = {
 				# 						layoutpolicy_vertical = expanding
 				# 						size = { 1 -1 }
 				# 					}
-
+						
 				# 					widget = {
 				# 						datacontext = "[SingleUnitWindow.GetSelectedUnit.GetUnitBox('center')]"
 				# 						using = layoutpolicy_expanding
 				# 						using = BoxUnit
 				# 					}
-
+						
 				# 					widget = {
 				# 						using = divider_vertical_template
 				# 						layoutpolicy_vertical = expanding
@@ -5055,7 +5041,7 @@ lateralview = {
 				# 												# blockoverride "regularbackground" {
 				# 												# 	visible = no
 				# 												# }
-
+						
 				# 												# blockoverride "dragdropbackground" {
 				# 												# 	visible = yes
 				# 												# }

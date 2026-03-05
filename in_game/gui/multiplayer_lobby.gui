@@ -1625,7 +1625,7 @@ types MultiplayerLobby
 							}
 							expand = {}
 						}
-					}
+					}		
 				}
 
 				# PRIMARY CULTURE & POPULATION & PRIMARY RELIGION
@@ -3010,7 +3010,7 @@ types MultiplayerLobby
 				texture = "gfx/interface/icons/alerts_icons/form_new_country.dds"
 				texture_density = 2
 			}
-
+			
 			action_tooltip = {
 				title = "LOBBY_OPEN_SELECTED_COUNTRY_TT"
 				on_action = "[GameLobby.Vars.SetOrToggle('subtab','not_selected_country')]"
@@ -4231,13 +4231,13 @@ types MultiplayerLobby
 	type lobby_mp_ready_button = widget {
 		size = { 310 67 }
 		parentanchor = bottom|hcenter
-
+		
 		# Only if is preparation lobby, after game started we don't need the ready button
 		visible_at_creation = no
 
 		block "lobby_mp_ready_button_visible_position" {
 			position = { 0 -168 }
-			visible = "[And(And3(GameIsMultiplayer, IsPreparationLobby, Not(LobbyView.ShowHosting)),
+			visible = "[And(And3(GameIsMultiplayer, IsPreparationLobby, Not(LobbyView.ShowHosting)), 
 				Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible)))]"
 		}
 
@@ -4306,7 +4306,7 @@ types MultiplayerLobby
 			visible = "[LobbyView.IsObserver]"
 			text = "[GameLobby.GetObserveCountryButtonMPText]"
 			enabled = "[LobbyView.HasSelectedPlayable]"
-
+			
 			tooltipwidget = {BasicFunctionalTooltip = {}}
 			action_tooltip = {
 				click_type = left
@@ -4377,7 +4377,7 @@ JominiMultiplayerLobby = {
 	lobby_mp_ready_button = {
 		blockoverride "lobby_mp_ready_button_visible_position" {
 			position = { 0 -207 }
-			visible = "[And(And3(GameIsMultiplayer, IsPreparationLobby, Not(LobbyView.ShowHosting)),
+			visible = "[And(And3(GameIsMultiplayer, IsPreparationLobby, Not(LobbyView.ShowHosting)), 
 				Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
 		}
 	}
@@ -4430,8 +4430,8 @@ JominiMultiplayerLobby = {
 			duration = 0.2
 			bezier = { 0.0 1.0 0.0 1.0 }
 			alpha = 1
-		}
-
+		}						
+	
 		state = {
 			name = _hide
 			alpha = 0
@@ -5133,38 +5133,38 @@ JominiMultiplayerLobby = {
 									visible = "[And4(LobbyPlayer.IsReady, LobbyPlayer.IsDoneReplayingCommands, Not(LobbyPlayer.IsObserver), Not(LobbyPlayer.IsHotjoining))]"
 									align = nobaseline|right
 								}
-
+		
 								text_single = {
 									text = "JOMINI_MULTIPLAYER_GUI_NOT_READY"
 									visible = "[And4(Not(LobbyPlayer.IsReady), LobbyPlayer.IsDoneReplayingCommands, Not(LobbyPlayer.IsObserver), Not(LobbyPlayer.IsHotjoining))]"
 									align = nobaseline|right
 								}
-
+		
 								text_single = {
 									visible = "[And(Not(LobbyPlayer.IsHotjoining), Not(LobbyPlayer.IsDoneReplayingCommands))]"
 									text = "MULTIPLAYER_LOADING"
 									align = nobaseline|right
 								}
-
+		
 								text_single = {
 									text = "JOMINI_MULTIPLAYER_GUI_OBSERVER"
 									visible = "[LobbyPlayer.IsObserver]"
 									align = nobaseline|right
 								}
-
+		
 								text_single = {
 									visible = "[And(LobbyPlayer.IsHotjoining, IsHost)]"
 									text = "JOMINI_MULTIPLAYER_GUI_HOTJOIN_PROGRESS"
 									align = nobaseline|right
 								}
-
+		
 								text_single = {
 									visible = "[And(LobbyPlayer.IsHotjoining, Not(IsHost))]"
 									text = "MULTIPLAYER_JOINING_CLIENT"
 									align = nobaseline|right
 								}
 							}
-
+							
 							header_button_left = {
 								size = {30 30}
 								blockoverride "button_icon_stretch_sprite" {}
@@ -5180,7 +5180,7 @@ JominiMultiplayerLobby = {
 										frame = 1
 									}
 								}
-
+	
 								enabled = "[LobbyPlayer.CanRemovePlayer]"
 								visible = "[LobbyPlayer.CanRemovePlayer]"
 								tooltipwidget = {BasicFunctionalTooltip = {}}
@@ -5192,7 +5192,7 @@ JominiMultiplayerLobby = {
 									on_action = "[LobbyPlayer.RemovePlayer]"
 								}
 							}
-
+	
 							header_button_left = {
 								size = {30 30}
 								blockoverride "button_icon_stretch_sprite" {}
@@ -5215,7 +5215,7 @@ JominiMultiplayerLobby = {
 										}
 									}
 								}
-
+	
 								visible = "[And( LobbyPlayer.IsLocalPlayer, LobbyPlayer.IsReady )]"
 								tooltipwidget = {BasicFunctionalTooltip = {}}
 								action_tooltip = {

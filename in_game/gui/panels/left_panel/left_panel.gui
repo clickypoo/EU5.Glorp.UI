@@ -93,6 +93,19 @@ template text_single_positive_zero_negative {
 
 Types LeftPanelTypes
 {
+	type panel_tab_highlight = icon {
+		using = bg_panel_tabs
+		alwaystransparent = yes
+
+		size = { 100% 100% }
+		texture = "gfx/interface/buttons/panel_tabs_alt.dds"
+		spriteType = stretched
+		spriteborder = { 0 0 }
+		frame_grid = { 4 1 }
+		texture_density = 2
+		frame = 2
+	}
+
 	type left_panel_bar = widget {
 		alwaystransparent = no
 		allow_outside = yes
@@ -232,35 +245,6 @@ Types LeftPanelTypes
 							}
 						}
 
-                        datacontext = "[Player]" # Glorp UI - Dynasty Shield in Namebar
-                        widget = {
-                            size = { 27 30 }
-                            visible = "[Character.HasDynasty]"
-                            datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
-                            dynasty_shield_mid = {
-                                blockoverride "dynasty_click" {
-                                    action_tooltip = {
-                                        click_type = left
-                                        click_mode = single
-
-                                        title = "CHARACTER_CLICK_TOOLTIP_LEFT_CLICK"
-                                        on_action = "[ShowCharacter(Character.Self)]"
-                                    }
-                                    action_tooltip = {
-                                        click_type = right
-                                        click_mode = single
-
-                                        title = "DYNASTY_TT_OPEN"
-                                        on_action = "[ShowDynasty(Dynasty.Self)]"
-                                    }
-                                }
-                                parentanchor = center
-                                datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
-                                visible = "[Character.HasDynasty]"
-                                datacontext = "[Character.GetDynasty]"
-                            }
-                        }
-
 						text_multi = {
 							visible = "[IsPlayerValid]"
 							name = "country_name"
@@ -353,22 +337,11 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('government_group'))]"
 							size = { 100% 100% }
 							name = government_tab_button
-							background = {  # Glorp UI - Coloured Buttons
-                                block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
-                                    texture = "gfx/interface/buttons/panel_tabs_government.dds"
-                                }
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
 						}
 						onclick = "[ToggleLateralGroup('government_group')]"
-                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
-                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Government')]"
 						down = "[IsLateralGroupOpened('government_group')]"
+						onmousehierarchyenter = "[ResetHighlightedTab]"
 
 						tooltipwidget = {
 							using = TabGovermentTooltip
@@ -379,27 +352,11 @@ Types LeftPanelTypes
 
 						using = layoutpolicy_expanding
 
-						button = {
-							using = bg_panel_tabs
-
-							size = { 100% 100% }
-							texture = "gfx/interface/buttons/panel_tabs_alt.dds"
-							spriteType = stretched
-							spriteborder = { 0 0 }
-							frame_grid = { 4 1 }
-							texture_density = 2
-
-							gfxtype = togglepushbuttongfx
-							effectname = "NoHighlight"
-
-							upframe = 2
-
+						panel_tab_highlight = {
 							visible = "[IsLateralGroupHighlighted('government_group')]"
-							tooltip_enabled = no
 						}
 
 						icon = {
-                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/government.dds"
@@ -407,19 +364,8 @@ Types LeftPanelTypes
 
 							using = button_panel_tab_icon_effect
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
-							blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
+							blockoverride "icon_effect_color"{ color = { 0.55 0.20 0.90 1.0 } }
 						}
-                        icon = { # Glorp UI - Coloured Buttons
-                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
-                            size = { 26 26 }
-                            parentanchor = center
-                            texture = "gfx/interface/icons/flat_icons/tabicons/government_c.dds"
-                            texture_density = 2
-
-                            using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
-                            blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
-                        }
 					}
 
 					button_panel_tab_alt = { ### economy tab
@@ -427,22 +373,11 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('economy_group'))]"
 							size = { 100% 100% }
 							name = economy_tab_button
-							background = { # Glorp UI - Coloured Buttons
-                                block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
-                                    texture = "gfx/interface/buttons/panel_tabs_economy.dds"
-                                }
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
 						}
 						onclick = "[ToggleLateralGroup('economy_group')]"
-                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
-                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Economy')]"
 						down = "[IsLateralGroupOpened('economy_group')]"
+						onmousehierarchyenter = "[ResetHighlightedTab]"
 
 						tooltipwidget = {
 							using = TabEconomyTooltip
@@ -453,27 +388,11 @@ Types LeftPanelTypes
 
 						using = layoutpolicy_expanding
 
-						button = {
-							using = bg_panel_tabs
-
-							size = { 100% 100% }
-							texture = "gfx/interface/buttons/panel_tabs_alt.dds"
-							spriteType = stretched
-							spriteborder = { 0 0 }
-							frame_grid = { 4 1 }
-							texture_density = 2
-
-							gfxtype = togglepushbuttongfx
-							effectname = "NoHighlight"
-
-							upframe = 2
-
+						panel_tab_highlight = {
 							visible = "[IsLateralGroupHighlighted('economy_group')]"
-							tooltip_enabled = no
 						}
 
 						icon = {
-                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/economy.dds"
@@ -481,44 +400,16 @@ Types LeftPanelTypes
 
 							using = button_panel_tab_icon_effect
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('economy_group')]" }
-							blockoverride "icon_effect_color" { color = { 0.80 0.65 0.10 1.0 } }
+							blockoverride "icon_effect_color"{ color = { 0.80 0.65 0.10 1.0 } }
 						}
-                        icon = {
-                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
-                            size = { 26 26 }
-                            parentanchor = center
-                            texture = "gfx/interface/icons/flat_icons/tabicons/economy_c.dds"
-                            texture_density = 2
-
-                            using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('economy_group')]" }
-                            blockoverride "icon_effect_color" { color = { 0.80 0.65 0.10 1.0 } }
-                        }
 					}
 
 					button_panel_tab_alt = { ### production tab
-						widget = {
-							visible = "[Not(IsLateralGroupOpened('production_group'))]"
-							size = { 100% 100% }
-							name = production_tab_button
-							background = {
-                                block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
-                                    texture = "gfx/interface/buttons/panel_tabs_production.dds"
-                                }
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
-						}
-					
 						onclick = "[ToggleLateralGroup('production_group')]"
-                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
-                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						onclick = "[SetNonForeignUIFocusMarket]"
 						# onrightclick = "[OnToggleOutlinerCategory('Production')]"
 						down = "[IsLateralGroupOpened('production_group')]"
+						onmousehierarchyenter = "[ResetHighlightedTab]"
 
 						tooltipwidget = {
 							using = TabProductionTooltip
@@ -529,27 +420,11 @@ Types LeftPanelTypes
 
 						using = layoutpolicy_expanding
 
-						button = {
-							using = bg_panel_tabs
-
-							size = { 100% 100% }
-							texture = "gfx/interface/buttons/panel_tabs_alt.dds"
-							spriteType = stretched
-							spriteborder = { 0 0 }
-							frame_grid = { 4 1 }
-							texture_density = 2
-
-							gfxtype = togglepushbuttongfx
-							effectname = "NoHighlight"
-
-							upframe = 2
-
+						panel_tab_highlight = {
 							visible = "[IsLateralGroupHighlighted('production_group')]"
-							tooltip_enabled = no
 						}
 
 						icon = {
-                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/production.dds"
@@ -557,19 +432,8 @@ Types LeftPanelTypes
 
 							using = button_panel_tab_icon_effect
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('production_group')]" }
-							blockoverride "icon_effect_color" { color = { 0.85 0.40 0.10 1.0 } }
+							blockoverride "icon_effect_color"{ color = { 0.85 0.40 0.10 1.0 } }
 						}
-                        icon = {
-                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
-                            size = { 26 26 }
-                            parentanchor = center
-                            texture = "gfx/interface/icons/flat_icons/tabicons/production_c.dds"
-                            texture_density = 2
-
-                            using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('production_group')]" }
-                            blockoverride "icon_effect_color" { color = { 0.85 0.40 0.10 1.0 } }
-                        }
 					}
 
 					button_panel_tab_alt = { ### Society tab
@@ -577,22 +441,11 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('society_group'))]"
 							size = { 100% 100% }
 							name = society_tab_button
-							background = {
-                                block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
-                                    texture = "gfx/interface/buttons/panel_tabs_society.dds"
-                                }
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
 						}
 						onclick = "[ToggleLateralGroup('society_group')]"
-                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
-                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Society')]"
 						down = "[IsLateralGroupOpened('society_group')]"
+						onmousehierarchyenter = "[ResetHighlightedTab]"
 
 						tooltipwidget = {
 							using = TabSocietyTooltip
@@ -603,27 +456,11 @@ Types LeftPanelTypes
 
 						using = layoutpolicy_expanding
 
-						button = {
-							using = bg_panel_tabs
-
-							size = { 100% 100% }
-							texture = "gfx/interface/buttons/panel_tabs_alt.dds"
-							spriteType = stretched
-							spriteborder = { 0 0 }
-							frame_grid = { 4 1 }
-							texture_density = 2
-
-							gfxtype = togglepushbuttongfx
-							effectname = "NoHighlight"
-
-							upframe = 2
-
+						panel_tab_highlight = {
 							visible = "[IsLateralGroupHighlighted('society_group')]"
-							tooltip_enabled = no
 						}
 
 						icon = {
-                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/demography.dds"
@@ -631,19 +468,8 @@ Types LeftPanelTypes
 
 							using = button_panel_tab_icon_effect
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('society_group')]" }
-							blockoverride "icon_effect_color" { color = { 0.10 0.80 0.60 1.0 } }
+							blockoverride "icon_effect_color"{ color = { 0.10 0.80 0.60 1.0 } }
 						}
-                        icon = {
-                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
-                            size = { 26 26 }
-                            parentanchor = center
-                            texture = "gfx/interface/icons/flat_icons/tabicons/demography_c.dds"
-                            texture_density = 2
-
-                            using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('society_group')]" }
-                            blockoverride "icon_effect_color" { color = { 0.10 0.80 0.60 1.0 } }
-                        }
 					}
 
 					button_panel_tab_alt = { ### Diplomacy tab
@@ -651,23 +477,12 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('diplomacy_group'))]"
 							size = { 100% 100% }
 							name = diplomacy_tab_button
-							background = {
-                                block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
-                                    texture = "gfx/interface/buttons/panel_tabs_diplomacy.dds"
-                                }
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
 						}
-
+						
 						onclick = "[ToggleLateralGroupWithSpecificView('diplomacy_group', 'diplomacy')]"
-                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
-                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
-                        # onrightclick = "[OnToggleOutlinerCategory('Diplomacy')]"
+						# onrightclick = "[OnToggleOutlinerCategory('Diplomacy')]"
 						down = "[IsLateralGroupOpened('diplomacy_group')]"
+						onmousehierarchyenter = "[ResetHighlightedTab]"
 
 						tooltipwidget = {
 							using = TabDiplomacyTooltip
@@ -691,27 +506,11 @@ Types LeftPanelTypes
 
 						using = layoutpolicy_expanding
 
-						button = {
-							using = bg_panel_tabs
-
-							size = { 100% 100% }
-							texture = "gfx/interface/buttons/panel_tabs_alt.dds"
-							spriteType = stretched
-							spriteborder = { 0 0 }
-							frame_grid = { 4 1 }
-							texture_density = 2
-
-							gfxtype = togglepushbuttongfx
-							effectname = "NoHighlight"
-
-							upframe = 2
-
+						panel_tab_highlight = {
 							visible = "[IsLateralGroupHighlighted('diplomacy_group')]"
-							tooltip_enabled = no
 						}
 
 						icon = {
-                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/diplomacy.dds"
@@ -720,17 +519,6 @@ Types LeftPanelTypes
 							using = button_panel_tab_icon_effect
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('diplomacy_group')]" }
 						}
-                        icon = {
-                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
-                            size = { 26 26 }
-                            parentanchor = center
-                            texture = "gfx/interface/icons/flat_icons/tabicons/diplomacy_c.dds"
-                            texture_density = 2
-
-                            using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('diplomacy_group')]" }
-                            blockoverride "icon_effect_color" { color = { 0.40 0.68 0.73 1.0 } }
-                        }
 					}
 
 					button_panel_tab_alt = { ### military tab
@@ -738,22 +526,11 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('military_group'))]"
 							size = { 100% 100% }
 							name = military_tab_button
-							background = {
-                                block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
-                                    texture = "gfx/interface/buttons/panel_tabs_military.dds"
-                                }
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
 						}
 						onclick = "[ToggleLateralGroup('military_group')]"
-                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
-                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Military')]"
 						down = "[IsLateralGroupOpened('military_group')]"
+						onmousehierarchyenter = "[ResetHighlightedTab]"
 
 						tooltipwidget = {
 							using = TabMilitaryTooltip
@@ -764,27 +541,11 @@ Types LeftPanelTypes
 
 						using = layoutpolicy_expanding
 
-						button = {
-							using = bg_panel_tabs
-
-							size = { 100% 100% }
-							texture = "gfx/interface/buttons/panel_tabs_alt.dds"
-							spriteType = stretched
-							spriteborder = { 0 0 }
-							frame_grid = { 4 1 }
-							texture_density = 2
-
-							gfxtype = togglepushbuttongfx
-							effectname = "NoHighlight"
-
-							upframe = 2
-
+						panel_tab_highlight = {
 							visible = "[IsLateralGroupHighlighted('military_group')]"
-							tooltip_enabled = no
 						}
 
 						icon = {
-                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/military.dds"
@@ -792,19 +553,8 @@ Types LeftPanelTypes
 
 							using = button_panel_tab_icon_effect
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('military_group')]" }
-							blockoverride "icon_effect_color" { color = { 0.70 0.25 0.40 1.0 } }
+							blockoverride "icon_effect_color"{ color = { 0.70 0.25 0.40 1.0 } }
 						}
-                        icon = {
-                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
-                            size = { 26 26 }
-                            parentanchor = center
-                            texture = "gfx/interface/icons/flat_icons/tabicons/military_c.dds"
-                            texture_density = 2
-
-                            using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('military_group')]" }
-                            blockoverride "icon_effect_color" { color = { 0.70 0.25 0.40 1.0 } }
-                        }
 					}
 
 					button_panel_tab_alt = { ### geography tab
@@ -812,22 +562,11 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('geography_group'))]"
 							size = { 100% 100% }
 							name = geopolitics_tab_button
-							background = {
-                                block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
-                                    texture = "gfx/interface/buttons/panel_tabs_geopolitics.dds"
-                                }
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
 						}
 						onclick = "[ToggleLateralGroup('geography_group')]"
-                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
-                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						# onrightclick = "[OnToggleOutlinerCategory('Geopolitics')]"
 						down = "[IsLateralGroupOpened('geography_group')]"
+						onmousehierarchyenter = "[ResetHighlightedTab]"
 
 						tooltipwidget = {
 							using = TabGeopoliticsTooltip
@@ -838,27 +577,11 @@ Types LeftPanelTypes
 
 						using = layoutpolicy_expanding
 
-						button = {
-							using = bg_panel_tabs
-
-							size = { 100% 100% }
-							texture = "gfx/interface/buttons/panel_tabs_alt.dds"
-							spriteType = stretched
-							spriteborder = { 0 0 }
-							frame_grid = { 4 1 }
-							texture_density = 2
-
-							gfxtype = togglepushbuttongfx
-							effectname = "NoHighlight"
-
-							upframe = 2
-
+						panel_tab_highlight = {
 							visible = "[IsLateralGroupHighlighted('geography_group')]"
-							tooltip_enabled = no
 						}
 
 						icon = {
-                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/geography_flat_icon.dds"
@@ -866,41 +589,14 @@ Types LeftPanelTypes
 
 							using = button_panel_tab_icon_effect
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('geography_group')]" }
-							blockoverride "icon_effect_color" { color = { 0.45 0.55 0.90 1.0 } }
+							blockoverride "icon_effect_color"{ color = { 0.45 0.55 0.90 1.0 } }
 						}
-                        icon = {
-                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
-                            size = { 26 26 }
-                            parentanchor = center
-                            texture = "gfx/interface/icons/flat_icons/tabicons/geography_flat_icon_c.dds"
-                            texture_density = 2
-
-                            using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('geography_group')]" }
-                            blockoverride "icon_effect_color" { color = { 0.45 0.55 0.90 1.0 } }
-                        }
 					}
 
 					button_panel_tab_alt = { ### advances tab
-						widget = {
-							visible = "[Not(IsLateralGroupOpened('advances_group'))]"
-							size = { 100% 100% }
-							name = advances_tab_button
-							background = {
-                                block "colourTexture" {
-                                    visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
-                                    texture = "gfx/interface/buttons/panel_tabs_advances.dds"
-                                }
-								texture_density = 2
-								spriteType = stretched
-								spriteBorder = { 0 0 }
-								frame_grid = { 4 1 }
-							}
-						}
 						onclick = "[ToggleLateralGroup('advances_group')]"
-                        onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
-                        onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
 						down = "[IsLateralGroupOpened('advances_group')]"
+						onmousehierarchyenter = "[ResetHighlightedTab]"
 
 						tooltipwidget = {
 							using = TabAdvancesTooltip
@@ -911,27 +607,11 @@ Types LeftPanelTypes
 
 						using = layoutpolicy_expanding
 
-						button = {
-							using = bg_panel_tabs
-
-							size = { 100% 100% }
-							texture = "gfx/interface/buttons/panel_tabs_alt.dds"
-							spriteType = stretched
-							spriteborder = { 0 0 }
-							frame_grid = { 4 1 }
-							texture_density = 2
-
-							gfxtype = togglepushbuttongfx
-							effectname = "NoHighlight"
-
-							upframe = 2
-
+						panel_tab_highlight = {
 							visible = "[IsLateralGroupHighlighted('advances_group')]"
-							tooltip_enabled = no
 						}
 
 						icon = {
-                            visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/advances.dds"
@@ -939,21 +619,9 @@ Types LeftPanelTypes
 
 							using = button_panel_tab_icon_effect
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('advances_group')]" }
-							blockoverride "icon_effect_color" { color = { 0.10 0.70 0.35 1.0 } }
+							blockoverride "icon_effect_color"{ color = { 0.10 0.70 0.35 1.0 } }
 						}
-                        icon = {
-                            visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
-                            size = { 26 26 }
-                            parentanchor = center
-                            texture = "gfx/interface/icons/flat_icons/tabicons/advances_c.dds"
-                            texture_density = 2
-
-                            using = button_panel_tab_icon_effect
-                            blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('advances_group')]" }
-                            blockoverride "icon_effect_color" { color = { 0.10 0.70 0.35 1.0 } }
-                        }
 					}
-                    button_panel_tab_ideas = {} # Idea Variation 2
 				}
 			}
 		}
@@ -984,35 +652,6 @@ Types LeftPanelTypes
 	type left_panel = widget {
 		allow_outside = yes
 		layer = bottom
-
-        widget = {
-            allow_outside = yes
-            visible = "[Not(Player.MakeScope.GetVariable('disableLeftPanelStatsBar').IsSet)]"
-            left_panel_info_bar = {}
-            left_panel_info_toggle = {
-                blockoverride "toggle_visible" {
-                    visible = "[Not(Player.MakeScope.GetVariable('toggleLeftPanelStatsBar').IsSet)]"
-                }
-                blockoverride "toggle_pos" {
-                    position = { 20 123 }
-                }
-                blockoverride "toggle_state" {
-                    state = {
-                        name = _show
-                        duration = 0.2
-                        bezier = { 0.0 1.0 0.0 1.0 }
-                        position = { 20 123 }
-                    }
-                    state = {
-                        name = _hide
-                        duration = 0.2
-                        bezier = { 0.0 1.0 0.0 1.0 }
-                        position = { 20 213 }
-                    }
-                }
-            }
-            left_panel_info_toggle = {}
-        }
 
 		# Closed panel
 		widget = {
@@ -1060,15 +699,13 @@ Types LeftPanelTypes
 			}
 		}
 
-        # flag and decorations - vanilla layout
 		widget = {
 			position = { 5 -55 }
 			size = { 60 100 }
 			allow_outside = yes
-            visible = "[Player.MakeScope.GetVariable('useVanillaPortrait').IsSet]"
 
 			flag_3d_animated = {
-				visible = "[And3(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Not(Player.MakeScope.GetVariable('useStaticFlag').IsSet))]"
+				visible = "[And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')))]"
 				size = { 114 76 }
 				parentanchor = center
 				position = { 78 0 }
@@ -1085,18 +722,11 @@ Types LeftPanelTypes
 					on_action = "[ShowForeignCountry(Country.Self)]"
 				}
 			}
-            country_flag_big = { # Glorp UI - Static Flag Option
-                visible = "[And3(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet)]"
-                size = { 80 62 }
-                parentanchor = center
-                position = { 79 -4 }
-                datacontext = "[InGameTopbar.GetPlayer]"
-            }
 		}
 
 		# portrait and all associated surroundings
 		widget = {
-            visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), Player.MakeScope.GetVariable('useVanillaPortrait').IsSet)]"
+			visible = "[And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')))]"
 			parentanchor = left
 			widgetanchor = vcenter|left
 			size = { 78 78 }
@@ -1216,80 +846,6 @@ Types LeftPanelTypes
 				position = {80 60}
 			}
 		}
-
-        # flag and decorations - glorp ui layout
-        widget = {
-            position = { 5 10 }
-            allow_outside = yes
-            visible = "[Not(Player.MakeScope.GetVariable('useVanillaPortrait').IsSet)]"
-
-            icon = {
-                position = { -4 -47 }
-                parentanchor = right
-                widgetanchor = left
-                using = panel_decor_size
-                mirror = horizontal
-                texture = "[GetGraphicalCultureTexture('panel_bar_corner_shadow')]"
-                # texture = "gfx/interface/graphical_cultures/european_gfx/panel_bar_corner_shadow.dds"
-                texture_density = 2
-
-                using = color_black_texture
-            }
-            icon = {
-                position = { -4 -47 }
-                parentanchor = right
-                widgetanchor = left
-                using = panel_decor_size
-                mirror = horizontal
-                texture = "[GetGraphicalCultureTexture('panel_bar_corner')]"
-                # texture = "gfx/interface/graphical_cultures/european_gfx/fancy_flag_cloth.dds"
-                texture_density = 2
-
-                using = non_clickable_color_gold_texture
-            }
-
-            flag_3d_animated = {
-                visible = "[And3(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Not(Player.MakeScope.GetVariable('useStaticFlag').IsSet))]"
-                size = { 180 120 }
-                parentanchor = center
-                position = { 78 0 }
-                datacontext = "[InGameTopbar.GetPlayer]"
-
-                blockoverride "click_properties" {
-                    on_input_action_shortcut = "[PanToCountry(Country.Self)]"
-                    input_action = "go_to_capital"
-                    use_global_input_instance = yes
-                }
-
-                blockoverride "click_action" {
-                    title = "TAB_TOOLTIP_GOVERNMENT_LEFT_CLICK"
-                    on_action = "[OpenLateralView('government')]"
-                }
-            }
-            country_flag_big = {
-                visible = "[And3(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet)]"
-                size = { 125 97 }
-                parentanchor = center
-                position = { 55 -2 }
-                datacontext = "[InGameTopbar.GetPlayer]"
-            }
-        }
-
-        # portrait and all associated surroundings - glorp ui
-        widget = {
-            visible = "[And(And(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2'))), Not(Player.MakeScope.GetVariable('useVanillaPortrait').IsSet))]"
-
-            parentanchor = left
-            widgetanchor = vcenter|left
-            size = { 78 78 }
-            allow_outside = yes
-
-            datacontext = "[Player]"
-
-            country_rank_banner = {
-                position = {540 40}
-            }
-        }
 	}
 
 	type stat_player_button = button {

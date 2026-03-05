@@ -98,7 +98,7 @@ types buildLocationTypes
 				datacontext = "[BuildInLocationLateralView.GetItemsSortSearch]"
 				name = "build_location_filtered_list"
 
-				blockoverride "subheader_upper_divider" {
+				blockoverride "subheader_upper_divider"{
 					widget = {
 						visible = "[BuildInLocationLateralView.IsMarketFilterEnabled]"
 						layoutpolicy_horizontal = expanding
@@ -374,11 +374,11 @@ types buildLocationTypes
 										margin = { 5 0 }
 										margin_left = 10
 
-										icon = {
+										icon = { 
 											size = { 25 25 }
 											texture = "gfx/interface/icons/flat_icons/mass_construct.dds"
 										}
-
+						
 										text_single = {
 											fontsize = 13
 											layoutpolicy_horizontal = expanding
@@ -452,11 +452,11 @@ types buildLocationTypes
 										margin = { 5 0 }
 										margin_left = 10
 
-										icon = {
+										icon = { 
 											size = { 25 25 }
 											texture = "gfx/interface/icons/flat_icons/mass_upgrade.dds"
 										}
-
+						
 										text_single = {
 											fontsize = 13
 											layoutpolicy_horizontal = expanding
@@ -467,7 +467,7 @@ types buildLocationTypes
 										}
 									}
 								}
-
+								
 								action_tooltip = {
 									click_type = left
 									click_mode = single
@@ -521,8 +521,8 @@ types buildLocationTypes
 
 								enabled = no
 								datacontext = "[BuildInLocationLateralView.GetBuildRankingItems]"
-								datacontext = "[BuildInLocationLateralView.GetBuildingType]"
-
+								datacontext = "[BuildInLocationLateralView.GetBuildingType]"	
+	
 								blockoverride "icon_overlay" {}
 								blockoverride "icon_texture" {
 									visible = no
@@ -534,11 +534,11 @@ types buildLocationTypes
 										margin = { 5 0 }
 										margin_left = 10
 
-										icon = {
+										icon = { 
 											size = { 25 25 }
 											texture = "gfx/interface/icons/flat_icons/mass_construct.dds"
 										}
-
+						
 										text_single = {
 											fontsize = 13
 											layoutpolicy_horizontal = expanding
@@ -549,16 +549,16 @@ types buildLocationTypes
 										}
 									}
 								}
-
+	
 								action_tooltip = {
 									click_type = left
 									click_mode = single
-
+	
 									title = "BUILDING_ACTION"
 									enabled = no
 									description = "BUILDING_IN_LOCATION_ACTION_NO_LOCATION"
 								}
-
+	
 								tooltipwidget = {
 									BasicFunctionalTooltip = {}
 								}
@@ -570,8 +570,8 @@ types buildLocationTypes
 
 								enabled = no
 								datacontext = "[BuildInLocationLateralView.GetBuildRankingItems]"
-								datacontext = "[BuildInLocationLateralView.GetBuildingType.GetNextReplaced(Player.Self)]"
-
+								datacontext = "[BuildInLocationLateralView.GetBuildingType.GetNextReplaced(Player.Self)]"	
+	
 								blockoverride "icon_overlay" {}
 								blockoverride "icon_texture" {
 									visible = no
@@ -583,11 +583,11 @@ types buildLocationTypes
 										margin = { 5 0 }
 										margin_left = 10
 
-										icon = {
+										icon = { 
 											size = { 25 25 }
 											texture = "gfx/interface/icons/flat_icons/mass_upgrade.dds"
 										}
-
+						
 										text_single = {
 											fontsize = 13
 											layoutpolicy_horizontal = expanding
@@ -598,16 +598,16 @@ types buildLocationTypes
 										}
 									}
 								}
-
+	
 								action_tooltip = {
 									click_type = left
 									click_mode = single
-
+	
 									title = "UPGRADING_ACTION"
 									enabled = no
 									description = "UPGRADING_IN_LOCATION_ACTION_NO_LOCATION"
 								}
-
+	
 								tooltipwidget = {
 									BasicFunctionalTooltip = {}
 								}
@@ -616,7 +616,7 @@ types buildLocationTypes
 					}
 				}
 
-				blockoverride "custom_search_filter" {
+				blockoverride "custom_search_filter"{
 					hbox = {
 						layoutpolicy_horizontal = expanding
 						margin_right = 7
@@ -1292,7 +1292,7 @@ template build_location_entry {
 		}
 		card_header_button_04 = {
 			layoutpolicy_vertical = expanding
-			size = { 45 -1 }
+			size = { 50 -1 }
 
 			enabled = "[ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self)]"
 			tooltip_enabled = no
@@ -1312,7 +1312,7 @@ template build_location_entry {
 				visible = "[Not(ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self))]"
 				size = { 100% 100% }
 				icon = {
-					size = { 35 35 }
+					size = { 30 30 }
 					parentanchor = center
 					texture = "[GetBuildingIcon(BuildInLocationLateralView.GetBuildingType)]"
 				}
@@ -1336,7 +1336,7 @@ template build_location_entry {
 				parentanchor = center
 				icon = {
 					texture = "[GetBuildingIcon(BuildInLocationLateralView.GetBuildingType)]"
-					size = { 35 35 }
+					size = { 30 30 }
 					parentanchor = center
 				}
 				enabled = "[ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self)]"
@@ -1380,7 +1380,7 @@ template build_location_entry {
 				
 				hbox = {
 					layoutpolicy_horizontal = expanding
-					margin = {0 0}
+					margin = {5 0}
 
 					hbox = { #Location Card
 						background = {
@@ -1400,7 +1400,7 @@ template build_location_entry {
 							}
 						}
 						card_header_button_04 = {
-							size = {230 46}
+							size = {160 43}
 							
 							hbox = {
 								layoutpolicy_horizontal = expanding
@@ -1485,7 +1485,7 @@ template build_location_entry {
 										layoutpolicy_horizontal = expanding
 										# spacing = 10
 										margin = { 2 0 }
-										margin_right = 0
+										margin_right = 8
 										hbox = {
 											datacontext = "[LocationToBuildItem.GetBuildingType.GetPopType]"
 											
@@ -1515,7 +1515,7 @@ template build_location_entry {
 											}
 										}
 
-										# expand = {}
+										expand = {}
 
 										hbox = {
 											layoutpolicy_vertical = expanding
@@ -1542,7 +1542,7 @@ template build_location_entry {
 									}
 								}
 
-								# expand = {}
+								expand = {}
 
 								# icon_pie_left = {
 								# 	tooltipwidget = {
@@ -1554,7 +1554,7 @@ template build_location_entry {
 								# 		datacontext = "[LocationPopulationChart.GetPopsPiechartWidget]"
 								# 		datamodel = "[PopsPiechartWidget.GetTax]"
 								# 	}
-
+		
 								# 	blockoverride "pieslice_item" {
 								# 		pieslice_no_highlight = {
 								# 			texture = "gfx/interface/pie_charts/piechart_alpha.dds"
@@ -1572,148 +1572,19 @@ template build_location_entry {
 								# 		texture_density = 2
 								# 		alwaystransparent = yes
 								# 	}
-
+		
 								# 	background = {
 								# 		texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
 								# 		texture_density = 2
-
+		
 								# 		modify_texture = {
 								# 			using = color_gold_texture
 								# 		}
-
+		
 								# 		using = overlay_gold
 								# 	}
 								# }
 
-                                # Glorp UI - Building Limit, RGO, Control
-                                hbox = { # Building Limit
-                                    piechart = {
-                                        using = bg_circle
-                                        visible = "[Not(Location.HasTooManyBuildingLevel)]"
-                                        size = { 30 30 }
-                                        datacontext = "[LocationToBuildItem.GetLocation]"
-                                        tooltipwidget = {
-                                            using = LocationBuildingLevels_tooltip
-                                        }
-                                        using = piechart_angles
-
-                                        pieslice_no_highlight = {
-
-                                            texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-                                            value = "[LocationToBuildItem.GetLocation.GetBuildingLevelsPercentage]"
-                                            color = { 1 1 1 1 }
-                                        }
-
-                                        pieslice_no_highlight = {
-                                            texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
-                                            value = "[Subtract_float('(float)100.0', LocationToBuildItem.GetLocation.GetBuildingLevelsPercentage)]"
-                                            color = { 1 1 1 1 }
-                                        }
-                                        using = bg_circle_piechart
-
-                                        icon = {
-                                            size = { 59% 59% }
-                                            parentanchor = center
-                                            texture = "[GetConceptTexture('supported_building_levels')]"
-                                        }
-                                    }
-                                    piechart = {
-                                        visible = "[Location.HasTooManyBuildingLevel]"
-                                        using = bg_circle
-                                        size = { 30 30 }
-                                        datacontext = "[LocationToBuildItem.GetLocation]"
-                                        tooltipwidget = {
-                                            using = LocationBuildingLevels_tooltip
-                                        }
-                                        using = piechart_angles
-
-
-                                        pieslice_no_highlight = {
-
-                                            texture = "gfx/interface/pie_charts/pie_chart_alpha_80_red.dds"
-                                            value = 100
-                                            color = { 1 1 1 1 }
-                                        }
-                                        using = bg_circle_piechart
-
-                                        icon = {
-                                            size = { 59% 59% }
-                                            parentanchor = center
-                                            texture = "gfx/interface/icons/outliner/categories/buildings.dds"
-                                        }
-                                    }
-                                }
-                                hbox = { # RGO
-                                    piechart = {
-                                            visible = "[GreaterThan_CFixedPoint(LocationToBuildItem.GetLocation.GetMaxRGOWorkers, '(CFixedPoint)0')]"
-                                            alwaystransparent = yes
-                                            parentanchor = center
-                                            size = { 30 30 }
-                                            using = piechart_angles
-                                            using = bg_circle_piechart
-                                            pieslice_no_highlight = {
-                                                filter_mouse = none
-                                                alwaystransparent = yes
-                                                texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
-                                                value = "[Divide_CFixedPoint(LocationToBuildItem.GetLocation.GetEffectiveRGOWorkers, LocationToBuildItem.GetLocation.GetMaxRGOWorkers)]"
-                                                color = { 1 1 1 1 }
-                                            }
-
-                                            pieslice_no_highlight = {
-                                                filter_mouse = none
-                                                alwaystransparent = yes
-                                                texture = "gfx/interface/pie_charts/pie_chart_alpha_80_red.dds"
-                                                value = "[Subtract_float('(float)1.0', FixedPointToFloatPercentageCapped(Divide_CFixedPoint(LocationToBuildItem.GetLocation.GetEffectiveRGOWorkers, LocationToBuildItem.GetLocation.GetMaxRGOWorkers), '(bool)yes'))]"
-                                                color = { 1 1 1 1 }
-                                            }
-                                            icon = {
-                                                size = { 61% 61% }
-                                                parentanchor = center
-                                                texture = "[GetGoodsIcon(LocationToBuildItem.GetLocation.GetRawMaterial)]"
-                                            }
-                                            tooltipwidget = {
-                                                using = location_rgo_button_tooltip
-                                            }
-                                        }
-                                }
-                                hbox = { # Control
-                                    piechart = {
-                                        parentanchor = center|vcenter
-                                        name = "location_control"
-                                        using = bg_circle
-                                        size = { 30 30 }
-                                        datacontext = "[LocationToBuildItem.GetLocation]"
-                                        tooltipwidget = {
-                                            using = location_control_tooltip
-                                            blockoverride "location_control_widgetid" {
-                                                widgetid = "location_control_tooltip_id"
-                                            }
-                                        }
-                                        using = piechart_angles
-
-                                        pieslice_no_highlight = {
-                                            texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
-                                            value = "[FixedPointToFloat(LocationToBuildItem.GetLocation.GetControl)]"
-                                            color = { 1 1 1 1 }
-                                            alwaystransparent = yes
-                                        }
-
-                                        pieslice_no_highlight = {
-                                            texture = "gfx/interface/pie_charts/pie_chart_alpha_80_red.dds"
-                                            value = "[Subtract_float('(float)1.0', FixedPointToFloat(LocationToBuildItem.GetLocation.GetControl))]"
-                                            color = { 1 1 1 1 }
-                                            alwaystransparent = yes
-                                        }
-
-                                        icon = {
-                                            size = { 60% 60% }
-                                            parentanchor = center
-                                            texture = "gfx/interface/icons/location_icons/control.dds"
-                                        }
-
-                                        using = bg_circle_piechart
-                                    }
-                                }
 							}
 		
 							action_tooltip = {
@@ -1744,14 +1615,14 @@ template build_location_entry {
 					}
 
 					widget = { #subsidize/close
-						size = { 22 44 }
+						size = { 30 44 }
 						vbox = {
 							spacing = 0
 							button_square_checkbox = {
 								visible = "[And(ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self), LocationToBuildItem.GetBuilding.GetType.IsProducing)]"
 								size = { 20 20 }
 								enabled = "[CanSubsidizeBuilding(LocationToBuildItem.GetBuilding.Self)]"
-
+								
 								blockoverride "check_texture" {
 									texture = "gfx/interface/icons/flat_icons/building_panel/subsidized.dds"
 								}
@@ -1792,7 +1663,7 @@ template build_location_entry {
 								datacontext = "[LocationToBuildItem.GetBuilding]"
 
 								tooltipwidget = {
-									using = Location_Building_Subsidized_Tooltip
+									using = Location_Building_Subsidized_Tooltip											
 								}
 							}
 
@@ -1800,7 +1671,7 @@ template build_location_entry {
 								size = { 20 20 }
 								enabled = "[CanToggleBuilding(Building.Self)]"
 								visible = "[ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self)]"
-								datacontext = "[LocationToBuildItem.GetBuilding]"
+								datacontext = "[LocationToBuildItem.GetBuilding]"								
 								tooltipwidget = {
 									using = Location_Building_Open_Tooltip
 								}
@@ -1843,8 +1714,8 @@ template build_location_entry {
 
 						vbox = {
 							visible = "[And(LocationToBuildItem.IsForeignBuilding, LocationToBuildItem.GetLocation.GetOwner.IsValid)]"
-							spacing = 0
-
+							spacing = 2
+							
 							icon = {
 								visible = "[Not(BuildInLocationLateralView.GetBuildingType.IsForeign)]"
 								datacontext = "[LocationToBuildItem.GetLocation.GetOwner]"
@@ -1882,27 +1753,28 @@ template build_location_entry {
 									alpha = 0.3
 								}
 							}
-
+							
 							country_flag_very_small = {
 								datacontext = "[LocationToBuildItem.GetLocation.GetOwner]"
 							}
 						}
 					}
 
-
+					expand = {}
+	
 					hbox = {
 						datacontext = "[LocationToBuildItem.GetLocation]"
 						datacontext = "[LocationToBuildItem.GetBuilding]"
-						spacing = 5
 
 						hbox = {
-                            # margin_right = 5
+                            margin_right = 5
                             spacing = 6
                             layoutpolicy_horizontal = expanding
                             widget = { #profit
-                                size = { 55 39 }
+                                size = { 60 39 }
                                 hbox = { #built
 									visible = "[And(LocationToBuildItem.ShowProfit, LocationToBuildItem.HasConstructedBuildingLevels)]"
+                                    expand = {}
                                     datacontext = "[LocationToBuildItem.GetBuildingType]"
                                     vbox = {  #profitable
                                         visible = "[GreaterThan_CFixedPoint(Building.GetProfit, '(CFixedPoint)0')]"
@@ -1911,7 +1783,7 @@ template build_location_entry {
 											using = BuildingProfit_Tooltip
 										}
                                         text_single = {
-                                            size = { 55 18 }
+                                            size = { 60 18 }
                                             align = nobaseline|right
 											autoresize = no
                                             fontsize = 14
@@ -1922,7 +1794,7 @@ template build_location_entry {
                                             }
                                         }
                                         text_single = {
-                                            size = { 55 18 }
+                                            size = { 60 18 }
                                             align = nobaseline|right
 											autoresize = no
                                             fontsize = 14
@@ -1963,7 +1835,7 @@ template build_location_entry {
 
                                 hbox = { #unbuilt
                                     visible = "[And(LocationToBuildItem.ShowProfit, Not(LocationToBuildItem.HasConstructedBuildingLevels))]"
-                                    # expand = {}
+                                    expand = {}
 									vbox = {
 										datacontext = "[LocationToBuildItem.GetBuildingType]"
 										tooltipwidget = {
@@ -2011,7 +1883,7 @@ template build_location_entry {
                                 }
                             }
                             widget = { #efficiency
-                                size = { 65 36 }
+                                size = { 70 36 }
 								hbox = {
 									expand = {}
 									vbox = { #built
@@ -2021,7 +1893,7 @@ template build_location_entry {
 										datamodel = "[Building.GetProductionMethods]"
 										item = {
 											text_single = {
-												size = { 65 18 }
+												size = { 70 18 }
 												autoresize = no
 												#raw_text = "[Building.GetBuildingProductionEfficiency(ActiveProductionMethod.GetMethod)|+=2%]@efficiency!"
 												text = "BUILDING_PROD_EFFICIENCY"
@@ -2045,7 +1917,7 @@ template build_location_entry {
                                     visible = "[And(LocationToBuildItem.ShowProfit, Not(LocationToBuildItem.HasConstructedBuildingLevels))]"
                                     expand = {}
                                     text_single = {
-                                        size = { 65 18 }
+                                        size = { 70 18 }
 										autoresize = no
                                         default_format = "@bold!"
                                         fontsize = 14
@@ -2077,7 +1949,7 @@ template build_location_entry {
 						widget = { #builder
 							visible = "[Not(And(LocationToBuildItem.HasBuilding, LocationToBuildItem.GetBuilding.CanPlayerUpgrade))]"
 							layoutpolicy_vertical = expanding
-							size = { 80 -1 }
+							size = { 120 -1 }
 							alwaystransparent = no
 							filter_mouse = left|right
 							widget = {
@@ -2090,12 +1962,12 @@ template build_location_entry {
 								}
 								
 								hbox = {
-									spacing = -30
+									spacing = 5
 									using = bg_text_mask_container_brown
-									margin = {-10 5}
+									margin = {5 5}
 									
 									button_square_minus = {
-										size = { 18 18 }
+										size = { 21 21 }
 										datacontext = "[LocationToBuildItem.GetBuilding]"
 										enabled = "[Or(LocationToBuildItem.CanDestroy, LocationToBuildItem.CanDequeue)]"
 										datacontext = "[BuildInLocationLateralView.GetBuildingType]"
@@ -2185,7 +2057,7 @@ template build_location_entry {
 											default_format = "#important_number"
 											align = nobaseline
 										}
-
+	
 										text_single = {
 											parentanchor = center
 											maximumsize = {55 -1}
@@ -2201,7 +2073,7 @@ template build_location_entry {
 										enabled = "[LocationToBuildItem.CanCreateBuilding]"
 										datacontext = "[LocationToBuildItem.GetLocation]"
 										datacontext = "[LocationToBuildItem.GetBuildingType]"
-										size = { 18 18 }
+										size = { 21 21 }
 										
 										action_tooltip = {
 											click_type = left
@@ -2243,50 +2115,50 @@ template build_location_entry {
 											using = construct_building_in_location_tt
 										}
 									}
-
+	
 									button_square_plus = {
 										visible = "[Not(LocationToBuildItem.HasBuilding)]"
 										enabled = "[LocationToBuildItem.CanCreateBuilding]"
 										datacontext = "[LocationToBuildItem.GetLocation]"
 										datacontext = "[LocationToBuildItem.GetBuildingType]"
-										size = { 18 18 }
-
+										size = { 21 21 }
+										
 										action_tooltip = {
 											click_type = left
 											click_mode = single
 											click_modifier = default
-
+	
 											title = "BUILDING_IN_LOCATION_ACTION"
 											cost = "[LocationToBuildItem.GetCost]"
 											description = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
 											on_action = "[LocationToBuildItem.CreateBuildingDefault]"
 											enabled = "[LocationToBuildItem.CanCreateBuilding]"
 										}
-
+	
 										action_tooltip = {
 											click_type = left
 											click_mode = single
 											click_modifier = ctrl
-
+	
 											title = "BUILDING_IN_LOCATION_ACTION_CTRL"
 											cost = "[LocationToBuildItem.GetCost]"
 											description = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
 											on_action = "[LocationToBuildItem.CreateBuildingCtrl]"
 											enabled = "[LocationToBuildItem.CanCreateBuilding]"
 										}
-
+	
 										action_tooltip = {
 											click_type = left
 											click_mode = single
 											click_modifier = shift
-
+	
 											title = "BUILDING_IN_LOCATION_ACTION_SHIFT"
 											cost = "[LocationToBuildItem.GetCost]"
 											description = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
 											on_action = "[LocationToBuildItem.CreateBuildingShift]"
 											enabled = "[LocationToBuildItem.CanCreateBuilding]"
 										}
-
+	
 										tooltipwidget = {
 											using = construct_building_in_location_tt
 										}
@@ -2306,18 +2178,18 @@ template build_location_entry {
 							widget = {
 								parentanchor = left
 								size = { 49% 35 }
-
+								
 								sort_by_highlight = {
 									size = { 100% 100% }
 									name = "number_building"
 								}
-
+								
 								hbox = {
 									spacing = 2
 									using = bg_text_mask_container_brown
 									margin = {2 5}
 									margin_left = 5
-
+									
 									button_square_minus = {
 										size = { 21 21 }
 										datacontext = "[LocationToBuildItem.GetBuilding]"
@@ -2345,12 +2217,12 @@ template build_location_entry {
 											on_action = "[LocationToBuildItem.Dequeue]"
 											visible = "[LocationToBuildItem.CanDequeue]"
 										}
-
+	
 										tooltipwidget = {
 											using = destroy_building_in_location_tt
 										}
 									}
-
+	
 									widget = {
 										layoutpolicy_vertical = expanding
 										size = {28 -1}
@@ -2400,7 +2272,7 @@ template build_location_entry {
 											default_format = "#important_number"
 											align = nobaseline
 										}
-
+	
 										text_single = {
 											parentanchor = center
 											maximumsize = {28 -1}
@@ -2422,7 +2294,7 @@ template build_location_entry {
 									using = bg_text_mask_container_brown
 									margin = {2 5}
 									margin_right = 5
-
+	
 									widget = {
 										layoutpolicy_vertical = expanding
 										size = {22 -1}
@@ -2438,7 +2310,7 @@ template build_location_entry {
 												lowpriotextcontext =  UPGRADE_LOCATION_NUMBER
 											}
 										}
-
+	
 										text_single = {
 											parentanchor = center
 											maximumsize = {22 -1}
@@ -2447,7 +2319,7 @@ template build_location_entry {
 											align = nobaseline
 										}
 									}
-
+									
 									# UPGRADE
 									button_square_plus = {
 										visible = "[And(LocationToBuildItem.HasBuilding, LocationToBuildItem.GetBuilding.CanPlayerUpgrade)]"
@@ -2468,24 +2340,24 @@ template build_location_entry {
 											cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
 											on_action = "[UpgradeBuildingDefault(BuildingType.Self, Location.Self)]"
 										}
-
+	
 										action_tooltip = {
 											click_type = left
 											click_mode = single
 											click_modifier = ctrl
-
+	
 											title = "UPGRADE_BUILDING_ACTION_CTRL"
 											cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
 											description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
 											on_action = "[UpgradeBuildingCtrl(BuildingType.Self, Location.Self)]"
 											enabled = "[CanUpgradeToBuilding(BuildingType.Self, Location.Self)]"
 										}
-
+	
 										action_tooltip = {
 											click_type = left
 											click_mode = single
 											click_modifier = shift
-
+	
 											title = "UPGRADE_BUILDING_ACTION_SHIFT"
 											cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
 											description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
@@ -2501,8 +2373,6 @@ template build_location_entry {
 							}
 						}
 					}
-
-                    expand = {}
 				}
 			}
 		}

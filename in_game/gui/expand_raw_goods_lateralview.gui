@@ -530,7 +530,7 @@ template build_rgo_entry {
 				
 				hbox = {
 					layoutpolicy_horizontal = expanding
-					margin = {0 0}
+					margin = {5 0}
 
 					hbox = { #Location Card
 						background = {
@@ -550,7 +550,7 @@ template build_rgo_entry {
 							}
 						}
 						card_header_button_04 = {
-							size = {200 43}
+							size = {160 43}
 							
 							hbox = {
 								layoutpolicy_horizontal = expanding
@@ -770,72 +770,6 @@ template build_rgo_entry {
 								# 	}
 								# }
 
-                                hbox = {
-                                    # Glorp UI - Market Access
-                                    hbox = {
-                                        piechart = {
-                                            using = bg_circle
-                                            size = { 30 30 }
-                                            datacontext = "[Location.GetMarket]"
-                                            tooltipwidget = {
-                                                using = location_market_tooltip
-                                            }
-                                            using = piechart_angles
-                                            pieslice_no_highlight = {
-                                                texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
-                                                value = "[FixedPointToFloat(Location.GetMarketAccess)]"
-                                                color = { 1 1 1 1 }
-                                                alwaystransparent = yes
-                                            }
-                                            pieslice_no_highlight = {
-                                                texture = "gfx/interface/pie_charts/pie_chart_alpha_80_red.dds"
-                                                value = "[Subtract_float('(float)1.0', FixedPointToFloat(Location.GetMarketAccess))]"
-                                                color = { 1 1 1 1 }
-                                                alwaystransparent = yes
-                                            }
-                                            using = bg_circle_piechart
-                                            icon = {
-                                                size = { 59% 59% }
-                                                parentanchor = center
-                                                texture = "gfx/interface/icons/location_icons/market.dds"
-                                            }
-                                        }
-                                    }
-                                    # Glorp UI - Control
-                                    hbox = {
-                                        piechart = {
-                                            using = bg_circle
-                                            size = { 30 30 }
-                                            datacontext = "[Location]"
-                                            tooltipwidget = {
-                                                using = location_control_tooltip
-                                                blockoverride "location_control_widgetid" {
-                                                    widgetid = "location_control_tooltip_id"
-                                                }
-                                            }
-                                            using = piechart_angles
-                                            pieslice_no_highlight = {
-                                                texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
-                                                value = "[FixedPointToFloat(Location.GetControl)]"
-                                                color = { 1 1 1 1 }
-                                                alwaystransparent = yes
-                                            }
-                                            pieslice_no_highlight = {
-                                                texture = "gfx/interface/pie_charts/pie_chart_alpha_80_red.dds"
-                                                value = "[Subtract_float('(float)1.0', FixedPointToFloat(Location.GetControl))]"
-                                                color = { 1 1 1 1 }
-                                                alwaystransparent = yes
-                                            }
-                                            icon = {
-                                                size = { 60% 60% }
-                                                parentanchor = center
-                                                texture = "gfx/interface/icons/location_icons/control.dds"
-                                            }
-                                            using = bg_circle_piechart
-                                        }
-                                    }
-                                }
-
 							}
 
 							action_tooltip = {
@@ -864,7 +798,7 @@ template build_rgo_entry {
 					}
 
 					widget = { #subject
-						size = { 25 44 }
+						size = { 30 44 }
 						datacontext = "[RawGoodLocationItem.GetLocation]"
 						datacontext = "[RawGoodLocationItem.GetLocation.GetOwner]"
 
@@ -912,7 +846,7 @@ template build_rgo_entry {
 						}
 					}
 					
-					# expand = {}
+					expand = {}
 
 					hbox = {
 						spacing = 5
@@ -924,7 +858,7 @@ template build_rgo_entry {
 							widget = { # taxbase
 								size = { 60 36 }
 								hbox = {
-									# expand = {}
+									expand = {}
 									vbox = {
 										tooltipwidget = {
 											ContextualTooltipType = {
@@ -1025,10 +959,10 @@ template build_rgo_entry {
 
 							}
 							widget = {
-								size = { 50 30 }
+								size = { 70 30 }
 								hbox = { 
 									layoutpolicy_horizontal = expanding
-									# expand = {}
+									expand = {}
 									text_single = {
 										datacontext = "[Location.GetMarket]"
 										datacontext = "[Location.GetMarket.GetMarketEntry(Location.GetRawMaterial)]"
@@ -1049,7 +983,7 @@ template build_rgo_entry {
 
 						widget = { #builder
 							layoutpolicy_vertical = expanding
-							size = { 110 -1 }
+							size = { 120 -1 }
 							alwaystransparent = no
 							filter_mouse = left|right
 							widget = {
@@ -1063,7 +997,7 @@ template build_rgo_entry {
 								}
 								
 								hbox = {
-									spacing = -30
+									spacing = 5
 									using = bg_text_mask_container_brown
 									margin = {5 5}
 									
@@ -1182,10 +1116,7 @@ template build_rgo_entry {
 								}
 							}
 						}
-
 					}
-
-                    expand = {}
 
 					# text_single = { # tax rgo
 					# 	maximumsize = { 50 18 }

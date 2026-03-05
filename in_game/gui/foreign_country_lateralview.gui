@@ -388,7 +388,7 @@ types SubheaderTypes {
 						}
 					}
 				}
-
+				
 				#Colonial charters
 				header_paper_card_horizontal = {
 					blockoverride "header_paper_card_size"{
@@ -977,11 +977,11 @@ types SubheaderTypes {
 														blockoverride "show_as_button" { visible = no }
 														blockoverride "show_as_icon" { visible = yes }
 													}
-
+	
 													icon = {
 														size = { 18 18 }
 														texture = "[GetConceptTexture('war')]"
-
+	
 														glow = {
 															name = "drop_shadow"
 															glow_radius = 3
@@ -1110,7 +1110,7 @@ lateralview = {
 			parentanchor = right|vcenter
 			size = { 40 40 }
 			position = { -30 0 }
-
+			
 			button = {
 				parentanchor = right|vcenter
 
@@ -1129,11 +1129,6 @@ lateralview = {
 
 				tooltipwidget = { BasicFunctionalTooltip = {} }
 				using = snd_UI_backward
-
-                # Glorp UI - Shortcut
-                input_action = "macro_builder"
-                use_global_input_instance = yes
-                onclick = "[PanToLocation(ForeignCountryView.GetCountry.GetCapital)]"
 			}
 		}
 	}
@@ -1141,14 +1136,8 @@ lateralview = {
 	blockoverride "panel_header" {
 		window_header_alt = {
 			using = bg_main_inner_alt
-			blockoverride "window_header_alt_color_texture" { # Glorp UI - Dynamic Header Colouring
-				using = color_greyish_texture
-                modify_texture = {
-                    using = color_white_texture
-                    blend_mode = overlay
-                    color = "[ForeignCountryView.GetCountry.GetMapColor]"
-                    opacity = 0.5
-                }
+			blockoverride "window_header_alt_color_texture"{
+				using = color_default_brown_texture
 			}
 			
 			blockoverride "header_text_object" {
@@ -1213,44 +1202,44 @@ lateralview = {
 								ignoreinvisible = yes
 								margin = { 8 0 }
 								layoutpolicy_vertical = expanding
-
+	
 								using = bg_paper_card
 								using = bg_cabinet_card_frame
-
+	
 								# gov type
 								icon = {
 									size = { 25 25 }
 									texture = "[GetGovernmentTypeIcon(Country.GetGovernment.GetGovernmentType)]"
 									texture_density = 2
-
+	
 									datacontext = "[Country.GetGovernment.GetGovernmentType]"
 									tooltipwidget = {
 										using = GovernmentType_tooltip
-
+	
 										blockoverride "title_icon_texture" {
 											texture = "[GetGovernmentTypeIcon(Country.GetGovernment.GetGovernmentType)]"
 										}
 									}
 								}
-
+	
 								# divider_flavor_01 = {
 								# 	size = {5 -1}
 								# 	blockoverride "divider_extras" {
 								# 		margin = {4 -4}
 								# 	}
 								# }
-
+	
 								# country type
-
+	
 								icon = {
 									size = { 23 23 }
 									texture = "[GetCountryTypeIcon(Country.Self)]"
 									texture_density = 2
-
+	
 									tooltipwidget = {
 										using = CountryType_tooltip
 									}
-
+	
 									glow = {
 										name = "drop_shadow"
 										glow_radius = 3
@@ -1258,25 +1247,25 @@ lateralview = {
 										alpha = 0.5
 									}
 								}
-
+	
 								# divider_flavor_01 = {
 								# 	size = {5 -1}
 								# 	blockoverride "divider_extras" {
 								# 		margin = {4 -4}
 								# 	}
 								# }
-
+	
 								# country rank
 								icon = {
 									size = { 21 21 }
 									texture = "[GetCountryRankIcon(Country.GetRank)]"
 									texture_density = 2
-
+	
 									datacontext = "[Country.GetRank]"
 									tooltipwidget = {
 										using = CountryRank_tooltip
 									}
-
+	
 									glow = {
 										name = "drop_shadow"
 										glow_radius = 3
@@ -1286,11 +1275,11 @@ lateralview = {
 								}
 							}
 						}
-
+						
 						hbox = {
 							using = layoutpolicy_expanding
 							margin_top = 2
-
+	
 							hbox = {
 								using = layoutpolicy_expanding
 								visible = "[And(Not(IsObservingWithoutSelectedCountry), Not(ForeignCountryView.IsViewingPlayerCountry))]"
@@ -1300,7 +1289,7 @@ lateralview = {
 									datacontext = "[ForeignCountryView.GetRelativePowerTooltipGlue]"
 									datacontext = "[RelativePowerTooltipGlue.GetCountry]"
 									tooltipwidget = { using = RelativePower_tooltip_country }
-									size = { 30 30 }
+									size = { 30 30 }	
 									icon = {
 										size = { 75% 75% }
 										parentanchor = center
@@ -1324,28 +1313,28 @@ lateralview = {
 									text = "[ForeignCountryView.GetRelativePowerDescription]"
 									fontsize = 14
 									using = FontDefaultColor
-
+		
 									datacontext = "[ForeignCountryView.GetRelativePowerTooltipGlue]"
 									datacontext = "[RelativePowerTooltipGlue.GetCountry]"
 									tooltipwidget = { using = RelativePower_tooltip_country }
 								}
-
+		
 								background = {
 									using = text_mask_container_texture
 									margin = { 1 1 }
-
+		
 									modify_texture = {
 										using = color_black_texture
 									}
 								}
-
+		
 								#Relative Power STRONGER
 								background = {
 									visible = "[ForeignCountryView.IsRelativePowerOver('(CFixedPoint)0.60')]"
 									using = text_mask_container_texture
 									margin_bottom = 0
 									alpha = 0.5
-
+		
 									modify_texture = {
 										using = color_light_green_texture
 									}
@@ -1356,7 +1345,7 @@ lateralview = {
 									using = text_mask_container_texture
 									margin_bottom = 0
 									alpha = 0.5
-
+									
 									modify_texture = {
 										using = color_yellow_texture
 									}
@@ -1367,12 +1356,12 @@ lateralview = {
 									using = text_mask_container_texture
 									margin_bottom = 1
 									alpha = 0.5
-
+		
 									modify_texture = {
 										using = color_red_texture
 									}
 								}
-
+		
 								background = {
 									texture = "gfx/interface/component_tiles/war/wood_frame_thin.dds"
 									texture_density = 2
@@ -1386,7 +1375,7 @@ lateralview = {
 										blend_mode = multiply
 									}
 								}
-
+		
 								expand = {}
 							}
 	
@@ -1395,26 +1384,26 @@ lateralview = {
 								visible = "[ForeignCountryView.IsViewingPlayerCountry]"
 								margin = { 10 0 }
 								spacing = 5
-
+	
 								background = {
 									using = text_mask_container_texture
 									margin = { 1 1 }
-
+	
 									modify_texture = {
 										using = color_black_texture
 									}
 								}
-
+	
 								background = {
 									using = text_mask_container_texture
 									margin_bottom = 0
 									alpha = 0.5
-
+	
 									modify_texture = {
 										using = color_light_blue_texture
 									}
 								}
-
+	
 								background = {
 									texture = "gfx/interface/component_tiles/war/wood_frame_thin.dds"
 									texture_density = 2
@@ -1434,7 +1423,7 @@ lateralview = {
 						}
 					}	
 				}
-
+				
 				#COUNTRY CARD
 				vbox = {
 					layoutpolicy_horizontal = expanding
@@ -1707,27 +1696,27 @@ lateralview = {
 										}
 										textcontext = "[ForeignCountryView.GetCountry.GetArmyBreakdown]"
 									}
-
+									
 									TooltipTextBlock = {
 										visible = "[Not(ForeignCountryView.GetCountry.HasArmy)]"
 										blockoverride "text" {
 											text = "CAW_NO_CURRENT_ARMY"
 										}
 									}
-
-									TooltipStringPairList = {
-										datacontext = "[ForeignCountryView.GetCountry]"
+									
+									TooltipStringPairList = {		
+										datacontext = "[ForeignCountryView.GetCountry]"								
 										blockoverride "block_title" {
 											text = "POTENTIAL_ARMY_OVERVIEW"
 										}
-										textcontext = "ARMY_BRK_POT_LEVIES"
+										textcontext = "ARMY_BRK_POT_LEVIES"										
 									}
 
 									TooltipStringPairList = {
 										blockoverride "block_title" {
 											text = "BEST_POSSIBLE_REGIMENTS"
 										}
-										textcontext = "[ForeignCountryView.GetCountry.GetBestArmyUnits]"
+										textcontext = "[ForeignCountryView.GetCountry.GetBestArmyUnits]"										
 									}
 								}
 							}
@@ -1740,19 +1729,11 @@ lateralview = {
 						}
 
 						expand = {}
-                        vbox = { # Glorp UI - Real Army Size
-                            layoutpolicy_horizontal = expanding
-                            text_single = {
-                                autoresize = yes
-                                align = right|nobaseline
-                                text = "[Country.GetRaisedAndPotentialLevyStrength|2W] [levies_icon]"
-                            }
-                            text_single = {
-                                autoresize = yes
-                                align = right|nobaseline
-                                text = "[Country.GetRegularArmySize|0L] [regulars_icon]"
-                            }
-                        }
+						text_single = {
+							autoresize = yes
+							align = right
+							text = "[Country.GetTotalArmyStrengthAndPotentialLevies|L0]"
+						}
 
 						widget = {
 
@@ -1806,12 +1787,12 @@ lateralview = {
 										}
 									}
 									
-									TooltipStringPairList = {
-										datacontext = "[ForeignCountryView.GetCountry]"
+									TooltipStringPairList = {		
+										datacontext = "[ForeignCountryView.GetCountry]"								
 										blockoverride "block_title" {
 											text = "POTENTIAL_NAVY_OVERVIEW"
 										}
-										textcontext = "NAVY_BRK_POT_LEVIES"
+										textcontext = "NAVY_BRK_POT_LEVIES"										
 									}
 
 									TooltipStringPairList = {
@@ -1829,19 +1810,11 @@ lateralview = {
 
 
 						expand = {}
-                        vbox = { # Glorp UI - Real Navy Size
-                            layoutpolicy_horizontal = expanding
-                            text_single = {
-                                autoresize = yes
-                                align = right|nobaseline
-                                text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] "
-                            }
-                            text_single = {
-                                autoresize = yes
-                                align = right|nobaseline
-                                text = "[Country.GetNavySizeValue|0L] @naval_regular!"
-                            }
-                        }
+						text_single = {
+							autoresize = yes
+							align = right
+							text = "[Country.GetTotalNavyStrengthAndPotentialLevies|0L]"
+						}
 
 						widget = {
 							size = { 34 34 }
@@ -2573,7 +2546,7 @@ lateralview = {
 								}
 							}
 						}
-
+							
 
 						widget = {
 							layoutpolicy_horizontal = expanding
@@ -3037,7 +3010,7 @@ lateralview = {
 									scrollbarpolicy_horizontal = always_off
 									scrollbar_vertical = { using = Scrollbar_Vertical_Small }
 								}
-
+								
 								blockoverride "filtered_sorted_list_sorts_visible" {
 									visible = no
 								}

@@ -331,20 +331,20 @@ types LocationWindowTypes
 						datacontext = "[LocationBuildingItem.GetBuilding]"
 						using = bg_circle
 					}
-
+					
 					icon = {
 						parentanchor = bottom|left
 						texture = "gfx/interface/icons/alerts_icons/unprofitable.dds"
 						size = { 12 12 }
 						position = { 0 -2 }
 						visible = "[And3(
-							LessThan_CFixedPoint(Building.GetProfit, '(CFixedPoint)0'),
+							LessThan_CFixedPoint(Building.GetProfit, '(CFixedPoint)0'), 
 							Not(Building.IsSubsidized),
 							Not(LocationBuildingItem.IsLackingInput)
 						)]"
 						datacontext = "[LocationBuildingItem.GetBuilding]"
 						using = bg_circle
-					}
+					}		
 
 					icon = {
 						parentanchor = bottom|left
@@ -585,7 +585,7 @@ types LocationWindowTypes
 		block "location_buildings_tooltip_datamodel" {
 			datamodel = "[LocationView.GetLocationBuildings(PopType.Self)]"
 		}
-
+		
 		item = {
 			widget = {
 				size = { 65 89 }
@@ -665,15 +665,15 @@ types LocationWindowTypes
 				block "location_card_margins" {
 					margin = {5 5}
 					margin_right = 5
-				}
+				}	
 
 				# TOP CONTENT
 				hbox = {
 					using = layoutpolicy_expanding
 					# layoutstretchfactor_vertical = 5
 					margin_left = 1
-					spacing = 2
-
+					spacing = 2 
+					
 					# UPGRADE RANK
 					widget = {
 						size = { 33 33 }
@@ -741,7 +741,7 @@ types LocationWindowTypes
 								blockoverride "header_button_frame_inner" {visible = no}
 								blockoverride "header_button_icon_size" { size = { 31 31 } }
 								blockoverride "header_button_text_layout" {}
-
+								
 								blockoverride "icon_texture" {
 									texture = "[GetIntegrationLevelIcon(Location.GetIntegrationLevel)]"
 									size = {55% 55%}
@@ -1562,7 +1562,7 @@ types LocationWindowTypes
 						TooltipTextBlock = {
 							blockoverride "text" {
 								text = "AVAILABLE_ARMY_SLOT"
-							}
+							}									
 						}
 					}
 				}
@@ -1600,14 +1600,14 @@ types LocationWindowTypes
 						TooltipTextBlock = {
 							blockoverride "text" {
 								text = "AVAILABLE_NAVY_SLOT"
-							}
+							}									
 						}
 					}
 				}
 			}
 		}
 	}
-
+		
 	type location_card_right_buttons = hbox {
 		layoutpolicy_vertical = expanding
 		margin = {5 5}
@@ -2483,7 +2483,7 @@ template location_background {
 		visible = "[And4(
 			Not(Location.GetOwner.IsPlayer),
 			Not(GetPlayer.IsEnemy(Location.GetOwner.Self)),
-			Not(Location.GetOwner.IsAllied),
+			Not(Location.GetOwner.IsAllied), 
 			IsInDiplomaticRange(Location.GetOwner.Self))]"
 		using = color_bg_brown_texture
 		alpha = 0.8
@@ -2525,7 +2525,7 @@ lateralview = {
 			parentanchor = right|vcenter
 			size = { 40 40 }
 			position = { -30 0 }
-
+			
 			button = {
 				parentanchor = right|vcenter
 
@@ -2537,18 +2537,13 @@ lateralview = {
 					alpha = 0.1
 				}
 
-                action_tooltip = {
+				action_tooltip = {
 					title = "GO_TO_LOCATION"
 					on_action = "[PanToLocation(LocationView.GetLocation)]"
 				}
 
 				tooltipwidget = { BasicFunctionalTooltip = {} }
 				using = snd_UI_backward
-
-                # Glorp UI - Shortcut
-                input_action = "macro_builder"
-                use_global_input_instance = yes
-                onclick = "[PanToLocation(LocationView.GetLocation)]"
 			}
 		}
 	}
@@ -3235,7 +3230,7 @@ lateralview = {
 														}
 
 														TooltipTextBlock = {
-															visible = "[InternationalOrganization.GetOnRemovedLocation(LocationView.GetLocation)]"
+															visible = "[InternationalOrganization.GetOnRemovedLocation(LocationView.GetLocation)]"										
 															blockoverride "text" { text = "[InternationalOrganization.GetOnRemovedLocation(LocationView.GetLocation)]" }
 														}
 													}
@@ -4258,25 +4253,6 @@ lateralview = {
 														using = bg_circle_piechart
 													}
 													using = bg_control_romboid
-
-                                                    button = { # Glorp UI - Show Mapmode
-                                                        size = { 100% 100% }
-                                                        datacontext = "[GetMapMode('control')]"
-                                                        onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('control')]"
-                                                        datacontext = "[LocationView.GetLocation]"
-                                                        tooltipwidget = {
-                                                            using = location_control_tooltip
-                                                            blockoverride "location_control_widgetid" {
-                                                                widgetid = "location_control_tooltip_id"
-                                                            }
-                                                        }
-                                                        action_tooltip = {
-                                                            click_type = left
-                                                            click_mode = single
-                                                            title = "MAPMODE_SELECT"
-                                                            on_action = "[MapMode.SetMapMode]"
-                                                        }
-                                                    }
 												}
 
 												# PROXIMITY
@@ -4386,25 +4362,6 @@ lateralview = {
 															}
 														}
 													}
-
-                                                    button = { # Glorp UI - Show Mapmode
-                                                        size = { 100% 100% }
-                                                        datacontext = "[GetMapMode('proximity')]"
-                                                        onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('proximity')]"
-                                                        datacontext = "[LocationView.GetLocation]"
-                                                        action_tooltip = {
-                                                            click_type = left
-                                                            click_mode = single
-                                                            title = "MAPMODE_SELECT"
-                                                            on_action = "[MapMode.SetMapMode]"
-                                                        }
-                                                        tooltipwidget = {
-                                                            using = LocationProximity_tooltip
-                                                            blockoverride "location_proximity_widgetid" {
-                                                                widgetid = "location_proximity_tooltip_id"
-                                                            }
-                                                        }
-                                                    }
 												}
 												
 												# TAX BASE
@@ -4471,7 +4428,7 @@ lateralview = {
 															# 		datacontext = "[LocationPopulationChart.GetPopsPiechartWidget]"
 															# 		datamodel = "[PopsPiechartWidget.GetTax]"
 															# 	}
-
+	
 															# 	###Slices and Icon
 															# 	blockoverride "SliceTooltip" {}
 															# 	blockoverride "SliceValue" { value = "[PopTaxItem.GetPercentage]" }
@@ -4502,22 +4459,6 @@ lateralview = {
 															}
 														}
 													}
-
-                                                    button = { # Glorp UI - Show Mapmode
-                                                        size = { 100% 100% }
-                                                        datacontext = "[GetMapMode('tax_base')]"
-                                                        onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('tax_base')]"
-                                                        datacontext = "[LocationView.GetLocation]"
-                                                        action_tooltip = {
-                                                            click_type = left
-                                                            click_mode = single
-                                                            title = "MAPMODE_SELECT"
-                                                            on_action = "[MapMode.SetMapMode]"
-                                                        }
-                                                        tooltipwidget = {
-                                                            using = location_tax_base_tooltip
-                                                        }
-                                                    }
 												}
 											}
 										}
@@ -4702,14 +4643,6 @@ lateralview = {
 														enabled = "[And(IsCabinetActionAllowed('develop_province'), Location.GetOwner.IsPlayer)]"
 														conditions = "[GetCabinetActionTooltip('develop_province')]"
 													}
-                                                    datacontext = "[GetMapMode('development')]" # Glorp UI - Show Mapmode
-                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('development')]"
-                                                    action_tooltip = {
-                                                        click_type = right
-                                                        click_mode = single
-                                                        title = "MAPMODE_SELECT"
-                                                        on_action = "[MapMode.SetMapMode]"
-                                                    }
 													enabled = "[And(IsCabinetActionAllowed('develop_province'), Location.GetOwner.IsPlayer)]"
 
 													tooltipwidget = {
@@ -4767,8 +4700,6 @@ lateralview = {
 											widget = {
 												size = { 80 35 }
 												sneaky_button = {
-                                                    # When we can do recovery_effort # Glorp UI - Show Mapmode
-                                                    visible = "[And(IsCabinetActionAllowed('recovery_effort'), Location.GetOwner.IsPlayer)]"
 													size = { 100% 100% }
 													action_tooltip = {
 														click_type = left
@@ -4778,41 +4709,12 @@ lateralview = {
 														enabled = "[And(IsCabinetActionAllowed('develop_province'), Location.GetOwner.IsPlayer)]"
 														conditions = "[GetCabinetActionTooltip('recovery_effort')]"
 													}
-                                                    datacontext = "[GetMapMode('development')]" # Glorp UI - Show Mapmode
-                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('development')]"
-                                                    action_tooltip = {
-                                                        click_type = right
-                                                        click_mode = single
-                                                        title = "MAPMODE_SELECT"
-                                                        on_action = "[MapMode.SetMapMode]"
-                                                    }
-
-													# enabled = "[And(IsCabinetActionAllowed('recovery_effort'), Location.GetOwner.IsPlayer)]"
+													enabled = "[And(IsCabinetActionAllowed('recovery_effort'), Location.GetOwner.IsPlayer)]"
 
 													tooltipwidget = {
 														using = location_prosperity_tooltip
 													}
 												}
-                                                # Glorp UI - Show Mapmode - When we can't do recovery_effort
-                                                sneaky_button = {
-                                                    visible = "[Or(Not(IsCabinetActionAllowed('recovery_effort')), Not(Location.GetOwner.IsPlayer))]"
-                                                    size = { 100% 100% }
-                                                    datacontext = "[GetMapMode('prosperity')]"
-                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('prosperity')]"
-                                                    action_tooltip = {
-                                                        click_type = right
-                                                        click_mode = single
-                                                        title = "MAPMODE_SELECT"
-                                                        on_action = "[MapMode.SetMapMode]"
-                                                    }
-                                                    tooltipwidget = {
-                                                        using = location_prosperity_tooltip
-                                                    }
-                                                    texture = "gfx/interface/buttons/sneaky_button_black.dds"
-                                                    spriteType = corneredstretched
-                                                    spriteborder = { 25 0 }
-                                                    texture_density = 2
-                                                }
 												hbox = {
 													spacing = 7
 													margin_left = 5
@@ -4970,7 +4872,6 @@ lateralview = {
 											widget = {
 												size = { 80 35 }
 												sneaky_button = {
-                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('institution')]" # Glorp UI - Show Mapmode
 													size = { 100% 100% }
 													action_tooltip = {
 														click_type = left
@@ -5040,15 +4941,6 @@ lateralview = {
 													}
 													enabled = "[Location.GetOwner.IsPlayer]"
 
-                                                    # Glorp UI - Show Mapmode
-                                                    datacontext = "[GetMapMode('food_productivity')]"
-                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('food_productivity')]"
-                                                    action_tooltip = {
-                                                        click_type = right
-                                                        click_mode = single
-                                                        title = "MAPMODE_SELECT"
-                                                        on_action = "[MapMode.SetMapMode]"
-                                                    }
 													tooltipwidget = {
 														using = food_productivity_tooltip
 														blockoverride "shift_left_extra" {
@@ -5111,15 +5003,6 @@ lateralview = {
 													}
 													enabled = "[Location.GetOwner.IsPlayer]"
 
-                                                    # Glorp UI - Show Mapmode
-                                                    datacontext = "[GetMapMode('food')]"
-                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('food')]"
-                                                    action_tooltip = {
-                                                        click_type = right
-                                                        click_mode = single
-                                                        title = "MAPMODE_SELECT"
-                                                        on_action = "[MapMode.SetMapMode]"
-                                                    }
 													tooltipwidget = {
 														using = location_food_tooltip
 														blockoverride "shift_left_extra" {
@@ -7105,7 +6988,7 @@ lateralview = {
 												}
 
 												hbox = {
-													visible = "[And(GreaterThan_int32(LocationView.GetAvailableArmySlots, '(int32)0' ), LessThan_int32(GetDataModelSize(LocationView.GetInProgressArmyConstructions), '(int32)8'))]"
+													visible = "[And(GreaterThan_int32(LocationView.GetAvailableArmySlots, '(int32)0' ), LessThan_int32(GetDataModelSize(LocationView.GetInProgressArmyConstructions), '(int32)8'))]" 
 													datamodel = "[DataModelRepeatedItem(LocationView.GetVisibleAvailableArmySlots('(int32)5'))]"
 													item = {
 														army_slot = {}
@@ -7584,7 +7467,7 @@ lateralview = {
 												}
 
 												hbox = {
-													visible = "[And(GreaterThan_int32(LocationView.GetAvailableNavySlots, '(int32)0' ), LessThan_int32(GetDataModelSize(LocationView.GetInProgressNavyConstructions), '(int32)8'))]"
+													visible = "[And(GreaterThan_int32(LocationView.GetAvailableNavySlots, '(int32)0' ), LessThan_int32(GetDataModelSize(LocationView.GetInProgressNavyConstructions), '(int32)8'))]" 
 													datamodel = "[DataModelRepeatedItem(LocationView.GetVisibleAvailableNavySlots('(int32)5'))]"
 													item = {
 														navy_slot = {}
@@ -7771,7 +7654,7 @@ lateralview = {
 									spacing = 10
 									text_single = {
 										fontsize = 13
-										align = right|nobaseline
+										align = right|nobaseline	
 										text = "[LocationView.GetLocation.GetPopGrowth|2+=%]"
 									}
 									text_single = {
@@ -7787,7 +7670,7 @@ lateralview = {
 										tagtooltip_enabled = yes
 									}
 								}
-
+								
 							}
 				
 							expand = {}
@@ -7884,7 +7767,7 @@ lateralview = {
 									spacing = 10
 									text_single = {
 										fontsize = 13
-										align = right|nobaseline
+										align = right|nobaseline	
 										text = "[LocationView.GetLocation.GetLocalMigrationAttraction]"
 									}
 									text_single = {
