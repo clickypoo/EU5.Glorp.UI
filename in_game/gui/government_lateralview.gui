@@ -1085,6 +1085,36 @@ types CountryHeaders {
 										}
 									}
 								}
+								hbox = {
+									text_single = {
+										size = {24 24}
+										autoresize = no
+										align = center|nobaseline
+										block "law_policy_level" {
+											# visible = "[Law.HasLevels]"
+											# text = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).GetPolicyLevel]"
+										}
+										using = bg_circle_piechart
+										blockoverride "frame_color" {
+											modify_texture = {
+												using = color_new_gold_texture
+												blend_mode = multiply
+											}
+											modify_texture = {
+												using = color_new_gold_texture
+												blend_mode = add
+												alpha = 0.4
+											}
+										}
+										blockoverride "inside_color" {
+											modify_texture = {
+												using = color_dark_brown_texture
+												blend_mode = multiply
+											}
+											alpha = 0.9
+										}
+									}
+								}
 
 								# block "vote_buttons" {}
 
@@ -1206,6 +1236,37 @@ types CountryHeaders {
 										}
 									}
 
+									hbox = {
+										text_single = {
+											size = {24 24}
+											autoresize = no
+											align = center|nobaseline
+											block "law_policy_level" {
+												# visible = "[Law.HasLevels]"
+												# text = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).GetPolicyLevel]"
+											}
+											using = bg_circle_piechart
+											blockoverride "frame_color" {
+												modify_texture = {
+													using = color_new_gold_texture
+													blend_mode = multiply
+												}
+												modify_texture = {
+													using = color_new_gold_texture
+													blend_mode = add
+													alpha = 0.4
+												}
+											}
+											blockoverride "inside_color" {
+												modify_texture = {
+													using = color_dark_brown_texture
+													blend_mode = multiply
+												}
+												alpha = 0.9
+											}
+										}
+									}
+
 									# block "vote_buttons" {}
 
 									hbox = {
@@ -1291,9 +1352,18 @@ types CountryHeaders {
 												parentanchor = center
 
 												icon = {
+													visible = "[Not(ResolutionGlue.HasCountryVotedFromPointer(Player.Self))]"
 													parentanchor = center
 													size = { 70% 70% }
-													texture = "gfx/interface/icons/laws/resolutions/law_voting.dds"
+													texture = "gfx/interface/icons/international_organizations/law_voting.dds"
+													texture_density = 2
+												}
+
+												icon = {
+													visible = "[ResolutionGlue.HasCountryVotedFromPointer(Player.Self)]"
+													parentanchor = center
+													size = { 70% 70% }
+													texture = "gfx/interface/icons/international_organizations/law_voting_yes.dds"
 													texture_density = 2
 												}
 
@@ -2089,6 +2159,41 @@ lateralview = {
 								using = ruler_trait_item
 							}
 							expand = {}
+						}
+					}
+					
+					
+					piechart = {
+						size = { 38 38 }
+						minimumsize = { 36 36 }
+
+						using = piechart_angles
+						using = bg_circle_piechart_big
+
+						pieslice_no_highlight = {
+							texture = "gfx/interface/pie_charts/pie_chart_alpha_80_red.dds"
+							value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('complacency'))]"
+							color = { 1 1 1 1 }
+						}
+						
+						pieslice_no_highlight = {
+							texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
+							value = "[Subtract_float('(float)100.0', FixedPointToFloat(Country.GetFixedPointCurrencyValue('complacency')))]"
+							color = { 1 1 1 0 }
+						}
+						
+						icon = {
+							size = { 24 24 }
+							parentanchor = center
+							texture = "gfx/interface/icons/resources/complacency.dds"
+							
+						}				
+						
+						tooltipwidget = {
+							using = ComplacencyResourceTooltip
+							blockoverride "content_datacontext" {
+								datacontext = "[CountriesListViewItem.GetCountry.GetEconomy]"
+							}
 						}
 					}
 				}
@@ -3147,6 +3252,10 @@ lateralview = {
 												blockoverride "law_title" {
 													text = "[Law.GetNameWithNoTooltip]"
 												}
+												blockoverride "law_policy_level" {
+													visible = "[Law.HasLevels]"
+													text = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).GetPolicyLevel]"
+												}
 												blockoverride "law_policy" {
 													visible = "[Player.GetGovernment.HasPolicyForLaw(Law.Self)]"
 													text = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).GetNameWithNoTooltip]"
@@ -3274,7 +3383,6 @@ lateralview = {
 							
 							# HIRE ADVISOR
 							flowcontainer = {
-                                spacing = 10 # Glorp UI
 								parentanchor = center
 								header_action_button_left = {
 									size = { 40 40 }
@@ -3298,51 +3406,6 @@ lateralview = {
 										}										
 									}
 								}
-
-                                # Toggle Compact View Button - Glorp UI
-                                widget = {
-                                    size = { 40 40 }
-                                    header_button_right = {
-                                        visible = "[Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet]"
-                                        size = { 40 40 }
-                                        blockoverride "button_icon_stretch_sprite" {}
-                                        blockoverride "header_button_frame_inner" { visible = no }
-                                        blockoverride "header_button_icon_size" { size = { 40 40 } }
-                                        blockoverride "header_button_text_layout" {}
-                                        blockoverride "icon_texture" {
-                                            texture =  "gfx/interface/icons/flat_icons/menu_icon.dds"
-                                            texture_density = 2
-                                        }
-                                        onclick = "[GetScriptedGui('SetUseVanillaCabinetView').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                        tooltipwidget = {
-                                            LeftClickButtonTooltip = {
-                                                blockoverride "onclick_text" {
-                                                    raw_text = "Compact Cabinet View"
-                                                }
-                                            }
-                                        }
-                                    }
-                                    header_button_right = {
-                                        visible = "[Not(Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
-                                        size = { 40 40 }
-                                        blockoverride "button_icon_stretch_sprite" {}
-                                        blockoverride "header_button_frame_inner" { visible = no }
-                                        blockoverride "header_button_icon_size" { size = { 40 40 } }
-                                        blockoverride "header_button_text_layout" {}
-                                        blockoverride "icon_texture" {
-                                            texture =  "gfx/interface/icons/flat_icons/menu_icon_square.dds"
-                                            texture_density = 2
-                                        }
-                                        onclick = "[GetScriptedGui('SetUseVanillaCabinetView').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                        tooltipwidget = {
-                                            LeftClickButtonTooltip = {
-                                                blockoverride "onclick_text" {
-                                                    raw_text = "Expanded Cabinet View"
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
 							}
 						}
 
@@ -3363,7 +3426,7 @@ lateralview = {
 										name = "cabinet_list"
 										margin = { 4 10}
 										layoutpolicy_horizontal = expanding
-										spacing = 4
+										spacing = 10
 										datamodel = "[GovernmentView.GetCabinets]"
 										item = {
 											vbox = {
@@ -3375,38 +3438,21 @@ lateralview = {
 												
 												datacontext = "[CabinetItem.GetCabinet]"
 
-                                                # Vanilla - Cabinet card with no task
 												cabinet_card = {
-													visible = "[And3(Not(Cabinet.IsCharacterSet), Not(Cabinet.IsActive), Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
+													visible = "[And(Not(Cabinet.IsCharacterSet), Not(Cabinet.IsActive))]"
 													blockoverride "cabinet_card_size" {
 														layoutpolicy_horizontal = expanding
 														size = {-1 90}
 													}
 												}
-                                                # Vanilla - Cabinet card with task
+
 												cabinet_card = {
-													visible = "[And(Or(Cabinet.IsCharacterSet, Cabinet.IsActive), Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
+													visible = "[Or(Cabinet.IsCharacterSet, Cabinet.IsActive)]"
 													blockoverride "cabinet_card_size" {
 														layoutpolicy_horizontal = expanding
 														size = {-1 120}
 													}
 												}
-                                                # Glorp UI - Cabinet card with no task
-                                                cabinet_card = {
-                                                    visible = "[And3(Not(Cabinet.IsCharacterSet), Not(Cabinet.IsActive), Not(Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet))]"
-                                                    blockoverride "cabinet_card_size" {
-                                                        layoutpolicy_horizontal = expanding
-                                                        size = {-1 40}
-                                                    }
-                                                }
-                                                # Glorp UI - Cabinet card with task
-                                                cabinet_card = {
-                                                    visible = "[And(Or(Cabinet.IsCharacterSet, Cabinet.IsActive), Not(Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet))]"
-                                                    blockoverride "cabinet_card_size" {
-                                                        layoutpolicy_horizontal = expanding
-                                                        size = {-1 40}
-                                                    }
-                                                }
 
 												widget = {
 													layoutpolicy_horizontal = expanding
@@ -3668,29 +3714,26 @@ lateralview = {
 													}
 												}
 												vbox = {
-													hbox = {
-														margin = { 5 0 }
-														spacing = 5
-														expand = {}
-														text_single = {
-															text = "CALL_PARLIAMENT"
-															datacontext = "[GovernmentView.GetPlayer]"
-															default_format = "#yellow_titles"
-															fontsize = 16
-														}
-
-														text_single = {
-															visible = "[UseDynamicParliamentName]"
-															raw_text = "([Localize('game_concept_parliament')])"
-															fontsize = 16
-														}
-														expand = {}
-													}
-													text_single = {
-														fontsize = 11
-														text = "[GovernmentView.GetPlayer.GetGovernment.GetParliament.GetLastParliamentCalledDate|F]"
-													}
-												}
+                                                    hbox = {
+                                                        margin = { 5 0 }
+                                                        spacing = 5
+                                                        text_single = {
+                                                            text = "CALL_PARLIAMENT"
+                                                            datacontext = "[GovernmentView.GetPlayer]"
+                                                            default_format = "#yellow_titles"
+                                                            maximumsize = {140 35}
+                                                        }
+                                                        text_single = {
+                                                            visible = "[UseDynamicParliamentName]"
+                                                            raw_text = "([Localize('game_concept_parliament')])"
+                                                            maximumsize = {100 35}
+                                                        }
+                                                    }
+                                                    text_single = {
+                                                        fontsize = 11
+                                                        text = "[GovernmentView.GetPlayer.GetGovernment.GetParliament.GetLastParliamentCalledDate|F]"
+                                                    }
+                                                }
 												expand = {}
 											}
 										}

@@ -60,12 +60,6 @@ types OrganizationPanel
 							using = InternationalOrganization_tooltip
 						}
 					}
-
-                    zoom_to_button = {
-                        blockoverride "onclick_action" {
-                            onclick = "[PanToLocation(InternationalOrganizationsView.GetInternationalOrganization.GetLeaderCountry.GetCapital.GetLocation)]"
-                        }
-                    }
 				}
 			}
 

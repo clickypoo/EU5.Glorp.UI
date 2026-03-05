@@ -136,6 +136,38 @@ template ScriptedPeaceTreaty_tooltip {
 	}
 }
 
+
+template EconomicalBaseTooltip {
+	ContextualTooltipType = {
+		blockoverride "title_icon" {
+			icon = {
+				using = tooltip_title_icon_size
+				texture = "[GetConceptTexture('economical_base')]"
+			}
+		}
+
+		blockoverride "title_text" {
+			datacontext = "[Country]"
+			text = "ECONOMICALBASE_TOOLTIP_TITLE"
+		}
+
+		blockoverride "concept_link" {
+			text = [economical_base|E]
+		}
+
+		blockoverride "tooltip_content" {
+			hbox = {
+				TooltipStringPairList = {
+					textcontext =  "[Country.GetEconomicalBaseInfo]"
+				}
+			}
+		}
+	}
+}
+
+
+
+
 template TaxBaseTooltip {
 	ContextualTooltipType = {
 		blockoverride "title_icon" {
@@ -426,7 +458,7 @@ template CountryTooltip {
 						text_single = {
 							autoresize = yes
 							align = right
-							text = "[Country.GetRaisedAndPotentialLevyStrength] [levies_icon] ([Country.GetRegularArmySize|0L] [regulars_icon])"
+							text = "[Country.GetTotalArmyStrengthAndPotentialLevies|L0]"
 						}
 
 						icon = {
@@ -469,7 +501,7 @@ template CountryTooltip {
 						text_single = {
 							autoresize = yes
 							align = right
-                            text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] ([Country.GetNavySizeValue|0L] @naval_regular!)"
+							text = "[Country.GetTotalNavyStrengthAndPotentialLevies|0L]"
 						}
 
 						icon = {
@@ -998,10 +1030,10 @@ template Army_size_tooltip {
 		}
 
 		blockoverride "tooltip_content" {
-			TooltipListBase = {
-				#blockoverride "block_title" {
-				#	text = "ARMY_SIZE_TT_TABLE_TITLE"
-				#}
+			TooltipListBase = { 
+				blockoverride "block_title" {
+					text = "ARMY_SIZE_TT_TABLE_TITLE"
+				}
 				TooltipListRowContent = {
 					TooltipManualTableField = {
 						blockoverride "field_content" {
@@ -1010,7 +1042,7 @@ template Army_size_tooltip {
 							}
 							expand = {}
 							text_single = {
-								raw_text = "[Country.GetRegularArmySize|0L] [regulars_icon]"
+								raw_text = "[Country.GetRaisedRegularArmySize|0L] [regulars_icon]"
 								tooltipwidget = {
 									using = Country_regulars_tooltip
 								}
@@ -1024,7 +1056,7 @@ template Army_size_tooltip {
 							}
 							expand = {}
 							text_single = {
-                                raw_text = "[Country.GetCurrencyValue('manpower')] / [Country.GetMaxManpowerValue|2W] [manpower_icon]"
+								raw_text = "[Country.GetMaxManpowerValue|2W] [manpower_icon]"
 							}
 						}
 					}
@@ -1062,7 +1094,7 @@ template Country_regulars_tooltip {
 		blockoverride "concept_link" {
 			text = "[regulars|e]"
 		}
-		lowpriotextcontext = "[Country.GetRegularArmySizeTooltip]"
+		lowpriotextcontext = "[Country.GetRaisedRegularArmySizeTooltip]"
 	}
 }
 
@@ -1139,10 +1171,7 @@ template Navy_size_tooltip {
 							}
 							expand = {}
 							text_single = {
-								raw_text = "[Country.GetNavyLevyPowerValue|0L] [navy_levies_icon]"
-								tooltipwidget = {
-									using = Country_navy_levies_tooltip
-								}
+								raw_text = "[Country.GetNavyLevyPower|V] [navy_levies_icon]"								
 							}
 						}
 					}
@@ -1242,8 +1271,18 @@ template country_tooltip_subjects {
 										
 										expand = {}
 
-										text_single = {											
-											text = "[Country.GetDiplomacy.GetSubjectLoyalty|+=]"							
+										text_single = {	
+											visible = "[Country.GetDiplomacy.IsDisloyalSubject]"										
+											text = "[Country.GetDiplomacy.GetSubjectLoyalty|R2%/]"							
+											datacontext = "[Country]"
+											tooltipwidget = {
+												using = SubjectLoyalty_tooltip
+											}
+										}
+
+										text_single = {	
+											visible = "[Not(Country.GetDiplomacy.IsDisloyalSubject)]"										
+											text = "[Country.GetDiplomacy.GetSubjectLoyalty|G2%/]"							
 											datacontext = "[Country]"
 											tooltipwidget = {
 												using = SubjectLoyalty_tooltip
