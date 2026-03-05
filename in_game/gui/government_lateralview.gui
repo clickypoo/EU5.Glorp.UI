@@ -1236,6 +1236,37 @@ types CountryHeaders {
 										}
 									}
 
+									hbox = {
+										text_single = {
+											size = {24 24}
+											autoresize = no
+											align = center|nobaseline
+											block "law_policy_level" {
+												# visible = "[Law.HasLevels]"
+												# text = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).GetPolicyLevel]"
+											}
+											using = bg_circle_piechart
+											blockoverride "frame_color" {
+												modify_texture = {
+													using = color_new_gold_texture
+													blend_mode = multiply
+												}
+												modify_texture = {
+													using = color_new_gold_texture
+													blend_mode = add
+													alpha = 0.4
+												}
+											}
+											blockoverride "inside_color" {
+												modify_texture = {
+													using = color_dark_brown_texture
+													blend_mode = multiply
+												}
+												alpha = 0.9
+											}
+										}
+									}
+
 									# block "vote_buttons" {}
 
 									hbox = {
@@ -1354,36 +1385,6 @@ types CountryHeaders {
 													using = international_organization_resolution_voting_tooltip
 												}										
 											}
-										}
-									}
-								}
-								hbox = {
-									text_single = {
-										size = {24 24}
-										autoresize = no
-										align = center|nobaseline
-										block "law_policy_level" {
-											# visible = "[Law.HasLevels]"
-											# text = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).GetPolicyLevel]"
-										}
-										using = bg_circle_piechart
-										blockoverride "frame_color" {
-											modify_texture = {
-												using = color_new_gold_texture
-												blend_mode = multiply
-											}
-											modify_texture = {
-												using = color_new_gold_texture
-												blend_mode = add
-												alpha = 0.4
-											}
-										}
-										blockoverride "inside_color" {
-											modify_texture = {
-												using = color_dark_brown_texture
-												blend_mode = multiply
-											}
-											alpha = 0.9
 										}
 									}
 								}

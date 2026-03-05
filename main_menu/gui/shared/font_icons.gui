@@ -430,6 +430,16 @@ texticon = {
 } 
 
 texticon = {
+	icon = port
+	iconsize = {
+		texture = "gfx/interface/icons/flat_icons/geopolitics/accessible_coasts.dds"
+		size = { 18 18 }
+		offset = { 0 3 }
+		fontsize = 16
+	}
+} 
+
+texticon = {
 	icon = trade
 	iconsize = {
 		texture = "gfx/interface/icons/flat_icons/trade.dds"
@@ -3164,3 +3174,84 @@ texticon = {
 		fontsize = 16
 	}
 }
+
+texticon = {
+	icon = inland
+	iconsize = {
+		texture = "gfx/interface/icons/location_icons/inland.dds"
+		size = { 20 20 }
+		offset = { 0 4 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = gravel_road
+	iconsize = {
+		texture = "gfx/interface/icons/roads/gravel_road.dds"
+		size = { 20 20 }
+		offset = { 0 4 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = paved_road
+	iconsize = {
+		texture = "gfx/interface/icons/roads/paved_road.dds"
+		size = { 20 20 }
+		offset = { 0 4 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = modern_road
+	iconsize = {
+		texture = "gfx/interface/icons/roads/modern_road.dds"
+		size = { 20 20 }
+		offset = { 0 4 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = railroad
+	iconsize = {
+		texture = "gfx/interface/icons/roads/railroad.dds"
+		size = { 20 20 }
+		offset = { 0 4 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = river
+	iconsize = {
+		texture = "gfx/interface/icons/map_modes/rivers.dds"
+		size = { 20 20 }
+		offset = { 0 4 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = lake
+	iconsize = {
+		texture = "gfx/interface/topography/lakes.dds"
+		size = { 20 20 }
+		offset = { 0 4 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = frozen
+	iconsize = {
+		texture = "gfx/interface/icons/modifier_types/land_cost_on_frozen_water.dds"
+		size = { 20 20 }
+		offset = { 0 4 }
+		fontsize = 16
+	}
+}
+ 
