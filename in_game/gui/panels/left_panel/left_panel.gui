@@ -232,7 +232,7 @@ Types LeftPanelTypes
 							}
 						}
 
-                        datacontext = "[Player]" # Glorp UI - Dynasty Shield in Namebar
+                        datacontext = "[Player]" # Glorp UI
                         widget = {
                             size = { 27 30 }
                             visible = "[Character.HasDynasty]"
@@ -353,7 +353,7 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('government_group'))]"
 							size = { 100% 100% }
 							name = government_tab_button
-							background = {  # Glorp UI - Coloured Buttons
+							background = {  # Glorp UI
                                 block "colourTexture" {
                                     visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
                                     texture = "gfx/interface/buttons/panel_tabs_government.dds"
@@ -409,7 +409,7 @@ Types LeftPanelTypes
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('government_group')]" }
 							blockoverride "icon_effect_color" { color = { 0.55 0.20 0.90 1.0 } }
 						}
-                        icon = { # Glorp UI - Coloured Buttons
+                        icon = {
                             visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
                             size = { 26 26 }
                             parentanchor = center
@@ -427,7 +427,7 @@ Types LeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('economy_group'))]"
 							size = { 100% 100% }
 							name = economy_tab_button
-							background = { # Glorp UI - Coloured Buttons
+							background = {
                                 block "colourTexture" {
                                     visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
                                     texture = "gfx/interface/buttons/panel_tabs_economy.dds"
@@ -497,6 +497,7 @@ Types LeftPanelTypes
 					}
 
 					button_panel_tab_alt = { ### production tab
+					
 						widget = {
 							visible = "[Not(IsLateralGroupOpened('production_group'))]"
 							size = { 100% 100% }
@@ -662,11 +663,10 @@ Types LeftPanelTypes
 								frame_grid = { 4 1 }
 							}
 						}
-
-						onclick = "[ToggleLateralGroupWithSpecificView('diplomacy_group', 'diplomacy')]"
+                        onclick = "[ToggleLateralGroupWithSpecificView('diplomacy_group', 'diplomacy')]"
                         onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # Idea Variation 2
                         onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # Idea Variation 2
-                        # onrightclick = "[OnToggleOutlinerCategory('Diplomacy')]"
+						# onrightclick = "[OnToggleOutlinerCategory('Diplomacy')]"
 						down = "[IsLateralGroupOpened('diplomacy_group')]"
 
 						tooltipwidget = {
@@ -683,7 +683,7 @@ Types LeftPanelTypes
 							click_type = right
 							click_mode = single
 							title = "AUTOMATED_SYSTEM_DIPLOMACY_CLICK"
-							on_action =  "[OpenLateralView('diplomacy_macrobuilder')]"
+							on_action =  "[ToggleLateralGroupWithSpecificView('diplomacy_group', 'diplomacy_macrobuilder')]"
 						}
 
 						input_action = "top_left_5"
@@ -1021,7 +1021,7 @@ Types LeftPanelTypes
 			name = "intro_highlight_1"
 
 			vbox = {
-				visible = "[Not(And(LeftView.IsSideAttached, Not(IsLateralViewFullScreen)))]"
+				visible = "[Or(Not(LeftView.IsShown), IsLateralViewFullScreen)]"
 
 				allow_outside = yes
 				using = layoutpolicy_expanding
@@ -1037,7 +1037,7 @@ Types LeftPanelTypes
 
 		# Opened panel
 		vbox = {
-			visible = "[And(LeftView.IsSideAttached, Not(IsLateralViewFullScreen))]"
+			visible = "[And(LeftView.IsShown, Not(IsLateralViewFullScreen))]"
 
 			allow_outside = yes
 			using = layoutpolicy_expanding
@@ -1060,7 +1060,7 @@ Types LeftPanelTypes
 			}
 		}
 
-        # flag and decorations - vanilla layout
+        # flag and decorations - vanilla ui
 		widget = {
 			position = { 5 -55 }
 			size = { 60 100 }
@@ -1082,10 +1082,10 @@ Types LeftPanelTypes
 
 				blockoverride "click_action" {
 					title = "TAB_TOOLTIP_GOVERNMENT_LEFT_CLICK"
-					on_action = "[ShowForeignCountry(Country.Self)]"
+					on_action = "[OpenLateralView('government')]"
 				}
 			}
-            country_flag_big = { # Glorp UI - Static Flag Option
+            country_flag_big = {
                 visible = "[And3(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet)]"
                 size = { 80 62 }
                 parentanchor = center
@@ -1212,12 +1212,17 @@ Types LeftPanelTypes
 
 			datacontext = "[Player]"
 
+            button = {
+                size = {28 34}
+                position = {80 60}
+                onclick = "[OpenLateralViewWithParams('diplomacy', 'tabcontent = relations')]"
+            }
 			country_rank_banner = {
 				position = {80 60}
 			}
 		}
 
-        # flag and decorations - glorp ui layout
+        # flag and decorations - glorp ui
         widget = {
             position = { 5 10 }
             allow_outside = yes

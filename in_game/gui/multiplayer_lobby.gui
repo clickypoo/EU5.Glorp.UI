@@ -1100,12 +1100,11 @@ types MultiplayerLobby
 							tooltipwidget = {LeftClickButtonTooltip = {blockoverride "onclick_text"{text = "JOMINI_MULTIPLAYER_GUI_AUTO_ACCEPT"}}}
 						}
 
-						text_multi = {
+						text_single = {
 							layoutstretchfactor_horizontal = 3
 							using = layoutpolicy_expanding
 							autoresize = no
 							align = left|nobaseline
-							maximumsize = { 160 -1 }
 							text = "JOMINI_MULTIPLAYER_GUI_AUTO_ACCEPT"
 							tooltipwidget = {
 								SimpleContextualTooltipType = {
@@ -4489,21 +4488,21 @@ JominiMultiplayerLobby = {
 		blockoverride "mapmodes_window_extra" {
 			parentanchor = hcenter|bottom
 
-			mapmodes_color_ledger = {
-				visible_at_creation = no
+                    mapmodes_color_ledger = {
+                        visible_at_creation = no
 				visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger'),
-					Not(MapModeSelectorVars.Exists('action'))))]"
-				parentanchor = hcenter|bottom
+                            Not(MapModeSelectorVars.Exists('action'))))]"
+                        parentanchor = hcenter|bottom
 				position = { 270 -105 }
-			}
+                    }
 
-			mapmode_current_button = {
-				visible_at_creation = no
+                    mapmode_current_button = {
+                        visible_at_creation = no
 				visible = "[Not(MapModeSelectorVars.Exists('tab'))]"
-				parentanchor = hcenter|top
-				widgetanchor = hcenter|bottom
+                        parentanchor = hcenter|top
+                        widgetanchor = hcenter|bottom
 				position = { 0 -10 }
-			}
+                }
 		}
 	}
 

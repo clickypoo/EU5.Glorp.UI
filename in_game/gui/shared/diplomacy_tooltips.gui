@@ -20,7 +20,7 @@ template DiploAcceptanceTooltip {
 				
 				blockoverride "block_scrollarea" { maximumsize = { -1 200 }}
 				blockoverride "block_title" {
-					text = "[SelectLocalization( DiplomaticActionItem.RequiresAcceptance, 'IF_THEY_ACCEPT', 'DECLINE_OFFER_EXTRA_EFFECT' )]"
+					text = "[SelectLocalization( DiplomaticActionItem.RequireAcceptance, 'IF_THEY_ACCEPT', 'DECLINE_OFFER_EXTRA_EFFECT' )]"
 				}
 				textcontext = "[DiplomaticActionItem.GetEffect]"
 			}
@@ -35,13 +35,13 @@ template DiploAcceptanceTooltip {
 			
 			TooltipScrolledStringPairList = {
 				ontextcontextchanged = "[SetStringPairListWithTitleFromTextContext(PdxGuiWidget.AccessSelf)]"
-				visible = "[And3(DiplomaticActionItem.RequiresAcceptance, DiplomaticActionItem.HasTarget, DiplomaticActionItem.ShowExtraInfo)]"
+				visible = "[And3(DiplomaticActionItem.RequireAcceptance, DiplomaticActionItem.HasTarget, DiplomaticActionItem.ShowExtraInfo)]"
 				blockoverride "block_scrollarea" { maximumsize = { -1 200 }}
 				textcontext = "[DiplomaticActionItem.GetAcceptanceTooltip]"
 			}
 
 			TooltipTextBlock = {
-				visible = "[DiplomaticActionItem.RequiresAcceptance]"
+				visible = "[DiplomaticActionItem.RequireAcceptance]"
 				blockoverride "text" {
 					text = "GOOD_BAD_RATIO_T"
 				}
@@ -72,7 +72,7 @@ template DiploAcceptanceTooltip {
 			}
 
 			TooltipTableHeader = {
-				visible = "[DiplomaticActionItem.RequiresAcceptance]"
+				visible = "[DiplomaticActionItem.RequireAcceptance]"
 				blockoverride "tableheader_text" {
 					raw_text = "[SelectLocalization( EqualTo_int32(DiplomaticActionItem.GetAcceptanceFrame, '(int32)1'), '@trigger_no!', '@trigger_yes!' )]  [DiplomaticActionItem.WillAccept|V]"
 				}
@@ -227,7 +227,7 @@ template CountrySubject_tooltip {
 		}
 		
 		blockoverride "concept_link" {
-			text = [subject|E]
+			text = [subject_type|E]
 		}
 		blockoverride "tooltip_content" {
 			TooltipScrolledContentSection = {
@@ -830,7 +830,6 @@ template CountryDiplomacyTooltip {
 				using = CountryTooltip_DiplomacyStatBars
 			}
 
-            # Glorp UI - Subject Loyalty
             TooltipRowList = {
                 visible = "[And(Country.GetDiplomacy.IsDisloyalSubject, Country.GetDiplomacy.IsSubject)]"
                 textcontext = "SubjectTypeDetail_DESC_NOT"
@@ -845,7 +844,14 @@ template CountryDiplomacyTooltip {
                     using = SubjectLoyalty_tooltip
                 }
             }
+            TooltipScrolledStringPairList = {
+                visible = "[Not(GetSelectedCountryOrByLocation.IsLocalPlayer)]"
+                blockoverride "block_scrollarea" { maximumsize = { -1 150 } minimumsize = { -1 30 } }
+                textcontext = "[GetSelectedCountryOrByLocation.GetDiplomacy.GetDiplomaticRelationsWithCountryInfo(Country.Self)]"
+            }
+
             TooltipBlockList = {
+                visible = "[GetSelectedCountryOrByLocation.IsLocalPlayer]"
                 textcontext = "[Country.GetPlayerDiplomacyInfo]"
             }
         }
@@ -871,39 +877,6 @@ template TruceTooltip {
 				blockoverride "text" {
 					text = "[RelationDescItem.GetToolTip]"												
 				}
-			}
-		}
-	}
-}
-
-
-
-template CountryIsThreat_tooltip {
-	ContextualTooltipType = {
-		blockoverride "title_icon" {
-			icon = {
-				using = tooltip_title_icon_size
-				texture = "gfx/interface/icons/diplomatic_status/threat.dds"
-			}
-		}
-
-		blockoverride "title_text" {
-			text = "[Player.GetDiplomacy.GetThreatLevelTitle(Country.Self)]"
-		}
-
-		blockoverride "concept_link" {
-			text = [threat|E]
-		}
-
-		blockoverride "tooltip_content" {
-
-			TooltipStringPairList = {
-				textcontext = "[Player.GetDiplomacy.GetThreatLevelInfo(Country.Self)]"
-			}
-
-			TooltipStringPairList = {
-				blockoverride "block_title" { text = "THREAT_IMPACT" }
-				textcontext = "[ShowModifierEffect('threatening_rivals')]"
 			}
 		}
 	}

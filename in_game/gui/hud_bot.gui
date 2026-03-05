@@ -1076,7 +1076,7 @@ types BottomTypes
 		size = { 41 32 }
 
 		block "button_ledger_position_visible" {
-			position = { 140 0 }
+		position = { 140 0 }
 			parentanchor = hcenter|top
 			widgetanchor = hcenter|bottom
 			visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible)))]"
@@ -1220,7 +1220,6 @@ types BottomTypes
 
 			action_tooltip = {
 				visible = "[Not(MapModeSelectorVars.Exists('mapmarkers_settings'))]"
-				on_action = "[CloseAllSettings]"
 				on_action = "[MapModeSelectorVars.Toggle('mapmarkers_settings')]"
 				title = "MAP_MARKER_SETTINGS_TOGGLE"
 			}
@@ -1482,7 +1481,7 @@ types BottomTypes
 		}
 
 		widget = {
-		    parentanchor = top # Glorp UI
+		    parentanchor = top
 			layoutpolicy_horizontal = expanding
 			size = { 100% 40% }
 			allow_outside = yes
@@ -1507,7 +1506,7 @@ types BottomTypes
 
 						blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab','government')]" }
 						blockoverride "button" {
-						    parentanchor = center # Glorp UI
+						    parentanchor = center
 							icon = {
 								size = { 20 20 }
 								parentanchor = center
@@ -1544,7 +1543,7 @@ types BottomTypes
 
 						blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab','economy')]" }
 						blockoverride "button" {
-						    parentanchor = center # Glorp UI
+						    parentanchor = center
 							icon = {
 								size = { 20 20 }
 								parentanchor = center
@@ -1575,7 +1574,7 @@ types BottomTypes
 					mapmode_category_block = {
 						blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'population')]" }
 						blockoverride "button" {
-						    parentanchor = center # Glorp UI
+						    parentanchor = center
 							icon = {
 								size = { 20 20 }
 								parentanchor = center
@@ -1605,7 +1604,7 @@ types BottomTypes
 					mapmode_category_block = {
 						blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'demography')]" }
 						blockoverride "button" {
-    						parentanchor = center # Glorp UI
+    						parentanchor = center
 							icon = {
 								size = { 20 20 }
 								parentanchor = center
@@ -1641,7 +1640,7 @@ types BottomTypes
 
 						blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'search')]" }
 						blockoverride "button" {
-    						parentanchor = center # Glorp UI
+    						parentanchor = center
 							icon = {
 								size = { 20 20 }
 								parentanchor = center
@@ -1744,7 +1743,7 @@ types BottomTypes
 
 						blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'diplomacy')]" }
 						blockoverride "button" {
-						    parentanchor = center # Glorp UI
+						    parentanchor = center
 							icon = {
 								size = { 20 20 }
 								parentanchor = center
@@ -1780,7 +1779,7 @@ types BottomTypes
 
 						blockoverride "menu"  { visible = "[MapModeSelectorVars.HasValue('tab', 'military')]" }
 						blockoverride "button" {
-    						parentanchor = center # Glorp UI
+    						parentanchor = center
 							icon = {
 								size = { 20 20 }
 								parentanchor = center
@@ -1799,6 +1798,8 @@ types BottomTypes
 
 						blockoverride "datamodel_item" {
 							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('military', '(int32)0')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('military', '(int32)1')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('military', '(int32)2')]"}
 						}
 						blockoverride "base_color" {
 							using = color_military_texture
@@ -1817,7 +1818,7 @@ types BottomTypes
 						}
 
 						blockoverride "button" {
-    						parentanchor = center # Glorp UI
+    						parentanchor = center
 							icon = {
 								size = { 20 20 }
 								parentanchor = center
@@ -1838,6 +1839,7 @@ types BottomTypes
 							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geopolitics', '(int32)0')]"}
 							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geopolitics', '(int32)1')]"}
 							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geopolitics', '(int32)2')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('geopolitics', '(int32)3')]"}
 						}
 						blockoverride "base_color" {
 							using = color_geopolitics_texture
@@ -1856,7 +1858,7 @@ types BottomTypes
 						}
 
 						blockoverride "button" {
-    						parentanchor = center # Glorp UI
+    						parentanchor = center
 							icon = {
 								size = { 20 20 }
 								parentanchor = center
@@ -1897,7 +1899,7 @@ types BottomTypes
 						}
 
 						blockoverride "button" {
-    						parentanchor = center # Glorp UI
+    						parentanchor = center
 							icon = {
 								size = { 20 20 }
 								parentanchor = center
@@ -1918,6 +1920,8 @@ types BottomTypes
 							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)0')]"}
 							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)1')]"}
 							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)2')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)3')]"}
+							mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('debug', '(int32)4')]"}
 						}
 						blockoverride "base_color" {
 							using = color_brown_leather_texture
