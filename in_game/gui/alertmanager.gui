@@ -307,7 +307,7 @@ template alert_banner_setup {
 
 				block "icon_texture_obj" {
 					icon = {
-						size = { 30 30 }
+						size = { 35 35 }
 						block "icon_texture" { 
 							texture = "[AlertEntry.GetDescription.GetIcon]"
 						}
@@ -918,12 +918,6 @@ alert_banner = {
 
 alert_action = {
 	name = "about_to_lose_great_power_status_action"
-	action_tooltip = {
-		click_type = left
-		click_mode = single
-		title = "OPEN_KNOWN_COUNTRIES_TAB"
-		on_action = "[OpenLateralViewWithParams('diplomacy', 'relations_tab = known_countries')]"
-	}
 }
 
 ###########################
@@ -1205,7 +1199,7 @@ alert_tooltip_container = {
 												hbox = {
 													spacing = 2
 													icon = {
-														size = { 30 30 }
+														size = { 35 35 }
 														texture = "[GetConceptTexture('antagonism')]"
 													}
 
@@ -1228,7 +1222,7 @@ alert_tooltip_container = {
 												hbox = {
 													spacing = 2
 													icon = {
-														size = { 30 30 }
+														size = { 35 35 }
 														texture = "[GetConceptTexture('army')]"
 													}
 
@@ -1251,7 +1245,7 @@ alert_tooltip_container = {
 												hbox = {
 													spacing = 2
 													icon = {
-														size = { 30 30 }
+														size = { 35 35 }
 														texture = "[GetConceptTexture('navy')]"
 													}
 
@@ -1274,7 +1268,7 @@ alert_tooltip_container = {
 												hbox = {
 													spacing = 2
 													icon = {
-														size = { 30 30 }
+														size = { 35 35 }
 														texture = "[GetConceptTexture('great_power_rank')]"
 													}
 
@@ -1737,7 +1731,7 @@ alert_banner = {
 	blockoverride "alert_more_icons_before" {
 		piechart = {
 			visible = "[Player.HasDoom]"
-			size = { 30 30 }
+			size = { 35 35 }
 			alwaystransparent = yes
 
 			using = piechart_angles
@@ -1799,7 +1793,7 @@ alert_banner = {
 	blockoverride "alert_more_icons_before" {
 		piechart = {
 			visible = "[Player.HasDoom]"
-			size = { 30 30 }
+			size = { 35 35 }
 			alwaystransparent = yes
 
 			using = piechart_angles
@@ -3545,163 +3539,6 @@ alert_tooltip_container = {
 					blockoverride "column_datamodel"  {
 						datacontext = "[GetCountryNeeds(Player.Self)]"
 						datamodel = "[CountryNeeds.GetMarketNeeds]"
-					}
-				}
-			}
-		}
-		blockoverride "title_button" {
-			hint_button = {
-				action_tooltip = {
-					title = "OPEN_HINT"
-					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_has_buildings_missing_input')]"
-				}
-			}
-		}
-	}
-}
-
-###########################
-# Important Buildings Missing Input
-###########################
-
-alert_banner = {
-	name = "has_important_buildings_missing_input"
-	onmousehierarchyenter = "[SetHighlightedTab('production_group')]"
-	onmousehierarchyleave = "[ResetHighlightedTab]"
-}
-
-alert_action = {
-	name = "has_important_buildings_missing_input_action"
-	action_tooltip = {
-		click_type = left
-		title = "ALERT_CTA_CYCLE_MARKETS_LEFT_CLICK"
-		using = snd_UI_alert_openAndCycle
-		on_action = "[AlertImportantBuildingsMissingInput.Next]"
-	}
-}
-
-alert_tooltip_container = {
-	name = "has_important_buildings_missing_input_tooltip"
-	AlertTooltipType = {
-		blockoverride "tooltip_content" {
-			TooltipTextBlock = {
-				blockoverride "text" {
-					text = "ALERT_IMPORTANT_BUILDINGS_MISSING_INPUT_TEXT"
-				}
-
-				blockoverride "textblock_background_tint"  {
-					modify_texture = {
-						using = color_yellow_texture
-					}
-				}
-			}
-
-			TooltipContentSection = { #1 Market
-				datacontext = "[GetImportantBuildingsCountryNeeds(Player.Self)]"
-				datamodel = "[ImportantBuildingsCountryNeeds.GetMarketNeeds]"
-				visible = "[EqualTo_int32(ImportantBuildingsCountryNeeds.GetMarketBuildingsMissingGoodsCount, '(int32)1' )]"
-				item = {
-					TooltipStringPairList = {
-						blockoverride "block_title" {
-							raw_text = "@market! [MarketCountryNeeds.GetMarket.GetName]:"
-						}
-						visible = "[MarketCountryNeeds.HasBuildingsMissingGoods]"
-						textcontext = "[MarketCountryNeeds.GetBuildingsMissingGoodsInfo]"
-					}
-				}
-			}
-
-			TooltipContentSection = { #2-3 Markets
-				datacontext = "[GetImportantBuildingsCountryNeeds(Player.Self)]"
-				datamodel = "[ImportantBuildingsCountryNeeds.GetMarketNeeds]"
-				visible = "[And(LessThanOrEqualTo_int32(ImportantBuildingsCountryNeeds.GetMarketBuildingsMissingGoodsCount, '(int32)3' ), GreaterThan_int32(ImportantBuildingsCountryNeeds.GetMarketBuildingsMissingGoodsCount, '(int32)1' ))]"
-				item = {
-					TooltipScrolledStringPairList = {
-						blockoverride "block_scrollarea" { maximumsize = { -1 120 } }
-						blockoverride "block_title" {
-							text = "@market! [MarketCountryNeeds.GetMarket.GetName]:"
-						}
-						visible = "[MarketCountryNeeds.HasBuildingsMissingGoods]"
-						textcontext = "[MarketCountryNeeds.GetBuildingsMissingGoodsInfo]"
-
-					}
-				}
-			}
-
-			TooltipListBase = { #+3 Markets
-				datacontext = "[GetImportantBuildingsCountryNeeds(Player.Self)]"
-				visible = "[GreaterThan_int32(ImportantBuildingsCountryNeeds.GetMarketBuildingsMissingGoodsCount, '(int32)3' )]"
-
-				TooltipListColumnContent = {
-					TooltipTableColumn = {
-						blockoverride "column_title" {}
-						blockoverride "column_title_text" {
-							text = "[market|e]"
-						}
-						blockoverride "column_title_right" {
-							expand = {}
-						}
-
-						blockoverride "field_left" {
-							visible = "[MarketCountryNeeds.HasBuildingsMissingGoods]"
-						}
-
-						blockoverride "field_text" {
-							default_format = "#subtle_name"
-							align = left|nobaseline
-							raw_text = "@market! [MarketCountryNeeds.GetMarket.GetName]"
-						}
-
-						blockoverride "field_right" { expand = {} }
-					}
-
-					TooltipTableColumn = {
-						blockoverride "column_title" {}
-						blockoverride "column_title_left" {
-							expand = {}
-						}
-						blockoverride "column_title_text" {
-							text = "[goods_demands|e]"
-							default_format = "#explanation_link"
-
-						}
-
-						blockoverride "field_text" { visible = no }
-						blockoverride "field_right" {
-							spacing = 7
-							expand = {}
-							visible = "[MarketCountryNeeds.HasBuildingsMissingGoods]"
-							datacontext = "[GetImportantBuildingsMarketCountryNeeds(Player.Self, Market.Self)]"
-							datacontext = "[MarketCountryNeeds.GetMarket]"
-							tooltipwidget = { using = market_hub_gov_needs_tooltip }
-
-							text_single = {
-								visible = "[MarketCountryNeeds.HasBuildingsMissingGoods]"
-								text = "[MarketCountryNeeds.GetGovernmentMissingGoodsAmount]"
-							}
-
-							icon = {
-								shaderfile = "gfx/FX/pdxgui_default.shader"
-								size = {15 15}
-								texture = "gfx/interface/icons/alerts_icons/buildings_missing_input.dds"
-
-								using = bg_banner_button_vertical
-
-								blockoverride "banner_button_extra" {}
-
-								blockoverride "banner_button_color" {
-									modify_texture = {
-										using = color_yellow_texture
-										alpha = 0.6
-									}
-								}
-							}
-						}
-					}
-
-					blockoverride "column_datamodel"  {
-						datacontext = "[GetImportantBuildingsCountryNeeds(Player.Self)]"
-						datamodel = "[ImportantBuildingsCountryNeeds.GetMarketNeeds]"
 					}
 				}
 			}
@@ -6356,7 +6193,7 @@ alert_action = {
 				}
 
 				icon = {
-					size = { 30 30 }
+					size = { 35 35 }
 					texture = "gfx/interface/icons/alerts_icons/can_call_ally.dds"
 					texture_density = 2
 					alpha = 1
@@ -6424,7 +6261,7 @@ button = {
 				}
 
 				icon = {
-					size = { 30 30 }
+					size = { 35 35 }
 					texture = "[DiploAlert.GetIconTexture]"
 					texture_density = 2
 					alpha = 1

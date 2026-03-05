@@ -104,7 +104,7 @@ window = {
 	FrontEndMenu = {
 		visible_at_creation = no
 		visible= "[GameIsMultiplayer]"
-		
+
 		blockoverride "frontend_menu_middle_section" {
 			using = frontend_menu_middle_template
 			blockoverride "big_button_size" { size = { -1 60 } }
@@ -321,6 +321,24 @@ template frontend_menu_middle_template {
 		tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "PAUSE_MENU_AI_SETTINGS_TOOLTIP" } } }
 	}
 
+    button_wax = {
+        blockoverride "button_texture" {
+            texture = "gfx/interface/buttons/button_wax_green.dds"
+        }
+        block "small_button_size" { size = { -1 45 } }
+        using = FrontEndMiddleSectionButton
+        text = "Glorp UI"
+        # enabled = "[Not(IsShowingDialog)]"
+
+        onclick = "[GetScriptedGui('glorpUI_initalize').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+        onclick = "[ExecuteConsoleCommand( Select_CString( GetVariableSystem.Exists('glorpUI_window_open'), 'gui.ClearWidgets glorpUI_window', 'gui.createwidget gui/glorpUI_window.gui glorpUI_window' ) )]"
+        onclick = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
+
+        onclick = "[PauseMenu.Resume]"
+
+        tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "PAUSE_MENU_SETTINGS_TOOLTIP" } } }
+    }
+
 	expand = {}
 }
 
@@ -383,7 +401,7 @@ template frontend_menu_bottom_layout_template {
 					size = { -1 60 }
 					layoutpolicy_horizontal = expanding
 					using = color_black_texture
-	
+
 					text_multi = {
 						parentanchor = center
 						size = { 95% 100% }
@@ -393,26 +411,26 @@ template frontend_menu_bottom_layout_template {
 						font = StandardGameFont
 						default_format = "#color_gold"
 					}
-	
+
 					onclick = "[VersionInfoOnClick]"
 					tooltip_enabled = no
-	
+
 					icon = {
 						size = { 100% 100% }
 						using = tile_frame_squared_texture
 						alpha = 0.9
-	
+
 						modify_texture = {
 							texture = "gfx/interface/colors/new_gold.dds"
 						}
-	
+
 						modify_texture = {
 							using = tile_frame_squared_bevel_texture
 							alpha = 0.1
 						}
-					}		
+					}
 				}
 			}
 		}
-	}		
+	}
 }

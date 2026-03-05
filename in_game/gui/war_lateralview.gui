@@ -11,12 +11,38 @@ types war_types {
 
 		hbox = {
 			using = layoutpolicy_expanding
-			margin = { 0 4 }
+			margin = { 4 4 }
 			
 			hbox = {
 				using = layoutpolicy_expanding
 				spacing = 10
 				margin = {8 0}
+
+                # Glorp UI - Player Background
+                background = {
+                    visible = "[And(Country.IsLocalPlayer, Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
+                    using = color_gold_dark_texture
+                }
+                background = {
+                    visible = "[And3(Country.IsPlayer, GetPlayer.IsEnemy(Country.Self), Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
+                    using = color_red_texture
+                }
+                # Glorp UI - Enemy, not subject
+                background = {
+                    visible = "[And3(Not(Country.GetDiplomacy.IsSubject), GetPlayer.IsEnemy(Country.Self), Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
+                    using = color_dark_red_texture
+                    #modify_texture = { blend_mode = overlay alpha = 1 }
+                }
+                # Glorp UI - Friendly, not subject
+                background = {
+                    visible = "[And4(Not(Country.GetDiplomacy.IsSubject), Not(GetPlayer.IsEnemy(Country.Self)), Not(Country.IsLocalPlayer), Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
+                    using = color_mid_green_texture
+                }
+                # Glorp UI - Friendly, player
+                background = {
+                    visible = "[And4(Country.IsPlayer, Not(GetPlayer.IsEnemy(Country.Self)), Not(Country.IsLocalPlayer), Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
+                    using = color_mid_blue_texture
+                }
 
 				# COUNTRY AND PEACE
 				hbox = {
@@ -117,8 +143,26 @@ types war_types {
 					}
 				}
 
-				# COUNTRY ARMY STRENGTH
+                # Glorp UI - Army Strength
+                hbox = {
+                    visible = "[Not(Player.MakeScope.GetVariable('useVanillaArmyStrength').IsSet)]"
+                    tooltipwidget = { using = Army_size_tooltip }
+                    spacing = 5
+                    text_single = {
+                        autoresize = yes
+                        align = right
+                        text = "[Country.GetRaisedAndPotentialLevyStrength] [levies_icon] ([Country.GetRegularArmySize|0L] [regulars_icon])"
+                    }
+
+                    # icon = {
+                    #     size = { 24 24 }
+                    #     texture = "gfx/interface/icons/unit_category/total_strength.dds"
+                    # }
+                }
+
+				# Vanilla - COUNTRY ARMY STRENGTH
 				hbox = {
+                    visible = "[Player.MakeScope.GetVariable('useVanillaArmyStrength').IsSet]"
 					spacing = 5
 					margin_right = 5
 					
@@ -178,8 +222,26 @@ types war_types {
 
 				divider_flavor_01 = {size = { 12 -1 }}
 
-				# COUNTRY NAVY STRENGTH
+                # Glorp UI - Country Navy Strength
+                hbox = {
+                    visible = "[Not(Player.MakeScope.GetVariable('useVanillaArmyStrength').IsSet)]"
+                    tooltipwidget = { using = Navy_size_tooltip }
+                    spacing = 5
+                    text_single = {
+                        autoresize = yes
+                        align = right
+                        text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] ([Country.GetNavySizeValue|0L] @naval_regular!)"
+                    }
+
+                    # icon = {
+                    #     size = { 24 24 }
+                    #     texture = "gfx/interface/icons/flat_icons/declare_war/navy.dds"
+                    # }
+                }
+
+				# Vanilla - COUNTRY NAVY STRENGTH
 				hbox = {
+                    visible = "[Player.MakeScope.GetVariable('useVanillaArmyStrength').IsSet]"
 					spacing = 5
 					margin_right = 10
 				
@@ -679,7 +741,7 @@ lateralview_full = {
 												}
 											}
 										}
-	
+
 										vbox = {
 											layoutpolicy_horizontal = expanding
 											text_single = {
@@ -687,7 +749,7 @@ lateralview_full = {
 												align = left|nobaseline
 												text = "[war_goal|e]"
 											}
-	
+
 											text_single = {
 												layoutpolicy_horizontal = expanding
 												fontsize = 12
@@ -695,7 +757,7 @@ lateralview_full = {
 												raw_text = "[WarLateralView.GetWar.GetWarGoal.GetName]"
 											}
 										}
-	
+
 										# ENFORCE ATTACKER PEACE OR INTERVENE IN ATTACKER WAR
 										hbox = {
 											margin_left = 10
@@ -715,27 +777,27 @@ lateralview_full = {
 																	text = "[WarLateralView.GetEnforceAttackerPeace.GetTooltip]"
 																}
 															}
-														}									
-														
+														}
+
 														hbox = {
 														spacing = 5
 														expand = {}
-									
+
 														icon = {
 															size = {20 20}
 															texture = "gfx/interface/icons/flat_icons/war_view/enforce_peace_button.dds"
 														}
-									
+
 														text_single = {
 															text = "[WarLateralView.GetEnforceAttackerPeace.GetTitle]"
 															align = nobaseline
 															using = Font_Type_Headers
 														}
-									
+
 														expand = {}
 														}
 													}
-			
+
 													button_wax = {
 														layoutpolicy_horizontal = expanding
 														size = { -1 40 }
@@ -748,30 +810,30 @@ lateralview_full = {
 																	text = "[WarLateralView.GetInterveneInAttackerWar.GetTooltip]"
 																}
 															}
-														}									
-															
+														}
+
 														hbox = {
 															spacing = 5
 															expand = {}
-										
+
 															icon = {
 																size = {20 20}
 																texture = "gfx/interface/icons/flat_icons/war_view/declare_war_button.dds"
 															}
-										
+
 															text_single = {
 																text = "[WarLateralView.GetInterveneInAttackerWar.GetTitle]"
 																align = nobaseline
 																using = Font_Type_Headers
 															}
-										
+
 															expand = {}
 														}
 													}
 												}
 											}
 										}
-	
+
 										# ATTACKER LEADER TICKING WARSCORE
 										widget = {
 											visible = "[WarLateralView.GetWar.HasWarGoalController]"
@@ -864,7 +926,7 @@ lateralview_full = {
 												}
 											}
 										}
-	
+
 										# ENFORCE DEFENDER PEACE OR INTERVENE IN DEFENDER WAR
 										hbox = {
 											margin_left = 10
@@ -873,7 +935,7 @@ lateralview_full = {
 												visible = "[And(Not(WarLateralView.IsPlayerInWar), Or3(Player.IsGreatPower, Player.GetDiplomacy.IsRival(WarLateralView.GetEnemyLeader), Player.GetDiplomacy.IsRival(WarLateralView.GetFriendlyLeader)))]"
 												hbox = {
 													layoutpolicy_horizontal = expanding
-													
+
 													button_wax = {
 														layoutpolicy_horizontal = expanding
 														size = { -1 40 }
@@ -886,27 +948,27 @@ lateralview_full = {
 																	text = "[WarLateralView.GetEnforceDefenderPeace.GetTooltip]"
 																}
 															}
-														}									
-															
+														}
+
 														hbox = {
 															spacing = 5
 															expand = {}
-										
+
 															icon = {
 																size = {20 20}
 																texture = "gfx/interface/icons/flat_icons/war_view/enforce_peace_button.dds"
 															}
-										
+
 															text_single = {
 																text = "[WarLateralView.GetEnforceDefenderPeace.GetTitle]"
 																align = nobaseline
 																using = Font_Type_Headers
 															}
-										
+
 															expand = {}
 														}
 													}
-	
+
 													button_wax = {
 														layoutpolicy_horizontal = expanding
 														size = { -1 40 }
@@ -919,23 +981,23 @@ lateralview_full = {
 																	text = "[WarLateralView.GetInterveneInDefenderWar.GetTooltip]"
 																}
 															}
-														}									
-															
+														}
+
 														hbox = {
 															spacing = 5
 															expand = {}
-										
+
 															icon = {
 																size = {20 20}
 																texture = "gfx/interface/icons/flat_icons/war_view/declare_war_button.dds"
 															}
-										
+
 															text_single = {
 																text = "[WarLateralView.GetInterveneInDefenderWar.GetTitle]"
 																align = nobaseline
 																using = Font_Type_Headers
 															}
-										
+
 															expand = {}
 														}
 													}
@@ -1320,7 +1382,7 @@ lateralview_full = {
 											texture = "gfx/interface/icons/alerts_icons/alert_they_can_white_peace.dds"
 										}
 									}
-									
+
 									widget = {
 										size = { 30 30 }
 										visible = "[WarLateralView.IsEnforcePeaceVisible]"
@@ -1337,15 +1399,15 @@ lateralview_full = {
 										size = { 90 50 }
 										visible = "[And(WarLateralView.IsPlayerInWar, Not(WarLateralView.GetWar.IsCivilWar))]"
 										onclick = "[WarLateralView.ShowPeaceOfferLateralView]"
-				
+
 										using = sue_for_peace_action_tooltip
-				
+
 										enabled = "[WarLateralView.TogglePeaceViewEnabled]"
 										icon = {
 											parentanchor = center
 											size = {23 23}
 											texture = "gfx/interface/icons/flat_icons/war_view/offer_peace_button.dds"
-				
+
 											background = {
 												texture = "gfx/interface/icons/flat_icons/war_view/offer_peace_button.dds"
 												texture_density = 2
@@ -1359,7 +1421,7 @@ lateralview_full = {
 											}
 										}
 									}
-	
+
 									widget = {
 										size = { 90 50 }
 										tagtooltip_enabled = yes
@@ -1371,12 +1433,12 @@ lateralview_full = {
 											spriteType = corneredstretched
 											spriteBorder = { 0 0 }
 											alpha = 1
-							
+
 											modify_texture = {
 												using = color_light_red_texture
 												alpha = 1
 											}
-							
+
 											modify_texture = {
 												using = overlay_striped_texture
 												blend_mode = overlay
@@ -1426,7 +1488,7 @@ lateralview_full = {
 											using = color_mid_light_green_texture
 											alpha = 1
 										}
-						
+
 										modify_texture = {
 											using = overlay_striped_texture
 											blend_mode = overlay
@@ -2224,7 +2286,7 @@ lateralview_full = {
 	}
 }
 
-template white_peace_tooltip {	
+template white_peace_tooltip {
 	tooltipwidget = {
 		ContextualTooltipType = {
 			blockoverride "title_icon" {
@@ -2233,15 +2295,15 @@ template white_peace_tooltip {
 					texture = "gfx/interface/icons/alerts_icons/alert_they_can_white_peace.dds"
 				}
 			}
-		
-			blockoverride "title_text" {										
+
+			blockoverride "title_text" {
 				text = "WHITE_PEACE"
 			}
-								
+
 			blockoverride "concept_link" {
 				text = [white_peace|E]
 			}
-		
+
 			blockoverride "tooltip_content" {
 				TooltipTextBlock = {
 					blockoverride "text" {
@@ -2253,7 +2315,7 @@ template white_peace_tooltip {
 	}
 }
 
-template enforce_peace_tooltip {	
+template enforce_peace_tooltip {
 	tooltipwidget = {
 		ContextualTooltipType = {
 			blockoverride "title_icon" {
@@ -2262,15 +2324,15 @@ template enforce_peace_tooltip {
 					texture = "gfx/interface/icons/alerts_icons/wargoal_accepted.dds"
 				}
 			}
-		
-			blockoverride "title_text" {										
+
+			blockoverride "title_text" {
 				text = "ENFORCE_PEACE"
 			}
-								
+
 			blockoverride "concept_link" {
 				text = [peace|E]
 			}
-		
+
 			blockoverride "tooltip_content" {
 				TooltipTextBlock = {
 					blockoverride "text" {
@@ -2282,7 +2344,7 @@ template enforce_peace_tooltip {
 	}
 }
 
-template sue_for_peace_action_tooltip {	
+template sue_for_peace_action_tooltip {
 	tooltipwidget = {
 		ContextualTooltipType = {
 			blockoverride "title_icon" {

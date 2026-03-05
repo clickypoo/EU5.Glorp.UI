@@ -181,10 +181,13 @@ Types HUD_TopbarTypes
 				using = left_topbar_section_size
 				layoutpolicy_vertical = expanding
 				using = top_bar_bg
+                maximumsize = { 550 80 }
 
+                # Default Estates Width
 				hbox = {
+                    visible = "[Not(And(Player.MakeScope.GetVariable('useStaticFlag').IsSet, Not(Player.MakeScope.GetVariable('useVanillaPortrait').IsSet)))]"
 					margin_left = 150
-
+                    size = { 400 80 }
 					visible = "[Country.Exists]"
 					datamodel = "[DataModelFirst(InGameTopbar.GetEstates, '(int32)7')]"
 					item = {
@@ -192,11 +195,13 @@ Types HUD_TopbarTypes
 							layoutpolicy_horizontal = expanding
 							margin = { 5 0 }
 
+                            maximumsize = { 100 80 }
+                            parentanchor = left
 							visible = "[Not(ObjectsEqual(Country.GetGovernment.GetEstateFromKey('crown_estate').GetType, EstatesItem.GetEstate.GetType))]"
 							datacontext = "[EstatesItem.GetEstate]"
 
 							blockoverride "stat_button" {
-								alpha = 0.4
+								alpha = 0.5
 								upframe = 4
 								uphoverframe = 4
 								uppressedframe = 4
@@ -244,32 +249,32 @@ Types HUD_TopbarTypes
 							}
 
 							icon = {
-								visible = "[Not(GreaterThan_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)5'))]" 
+								visible = "[Not(GreaterThan_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)5'))]"
 								size = { 32 32 }
 								texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
 							}
 
 							icon = {
-								visible = "[EqualTo_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)6')]" 
+								visible = "[EqualTo_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)6')]"
 								size = { 28 28 }
 								texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
 							}
 
-							
+
 							widget = {
-								visible = "[GreaterThan_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)6')]" 
+								visible = "[GreaterThan_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)6')]"
 								size = { 12 12 }
 								icon = {
 									parentanchor = center
-									size = { 20 20 }
+									size = { 24 24 }
 									texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
 								}
 							}
-	
+
 							vbox = {
 								margin_left = 3
 								margin_right = 6
-	
+
 								hbox = {
 									using = layoutpolicy_expanding
 									using = text_single_positive_negative
@@ -281,7 +286,7 @@ Types HUD_TopbarTypes
 										text = "[EstatesItem.GetEstate.GetSatisfaction|0%]"
 										visible = "[And(GreaterThanOrEqualTo_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.5'), LessThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.6'))]"
 									}
-	
+
 									blockoverride "text_setup" {
 										maximumsize = { -1 18 }
 										autoresize = yes
@@ -289,24 +294,24 @@ Types HUD_TopbarTypes
 										using = Font_Size_Small
 										text = "[EstatesItem.GetEstate.GetSatisfaction|0%]"
 									}
-	
+
 									blockoverride "visible_positive" {
 										visible = "[GreaterThanOrEqualTo_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.6')]"
 										default_format = "#color_green;bold"
 									}
-	
+
 									blockoverride "visible_negative" {
 										visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.5')]"
 										default_format = "#color_red;bold"
 									}
-	
+
 									expand = {}
 								}
-	
+
 								hbox = {
 									using = layoutpolicy_expanding
 									using = text_single_positive_zero_negative
-	
+
 									blockoverride "text_setup" {
 										maximumsize = { -1 12 }
 										autoresize = yes
@@ -314,24 +319,24 @@ Types HUD_TopbarTypes
 										using = Font_Size_Very_Small
 										text = "[EstatesItem.GetEstate.GetMonthlySatisfactionChange|+=%2]"
 									}
-	
+
 									blockoverride "visible_positive" {
 										visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
 									}
-	
+
 									blockoverride "visible_negative" {
 										visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
 									}
-	
+
 									blockoverride "visible_zero" {
 										visible = "[EqualTo_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
 									}
-	
+
 									blockoverride "text_zero" {
 										raw_text = "0.00%"
 										fontsize = 12
 									}
-	
+
 									expand = {}
 								}
 							}
@@ -347,13 +352,13 @@ Types HUD_TopbarTypes
 							# 	expand = {}
 
 							# 	hbox = {
-							# 		layoutpolicy_horizontal = expanding								
+							# 		layoutpolicy_horizontal = expanding
 
 							# 		# ESTATE ICON
-									
+
 							# 	}
 
-								
+
 							# 	expand = {}
 							# 	hbox = {
 							# 		layoutpolicy_horizontal = expanding
@@ -387,6 +392,215 @@ Types HUD_TopbarTypes
 						}
 					}
 				}
+                # More Estates Width if using Static Flag
+                hbox = {
+                    visible = "[And(Player.MakeScope.GetVariable('useStaticFlag').IsSet, Not(Player.MakeScope.GetVariable('useVanillaPortrait').IsSet))]"
+                    margin_left = 117
+                    size = { 433 80 }
+                    visible = "[Country.Exists]"
+                    datamodel = "[DataModelFirst(InGameTopbar.GetEstates, '(int32)7')]"
+                    item = {
+                        stat_player = {
+                            layoutpolicy_horizontal = expanding
+                            margin = { 5 0 }
+
+                            maximumsize = { 110 80 }
+                            parentanchor = left
+                            visible = "[Not(ObjectsEqual(Country.GetGovernment.GetEstateFromKey('crown_estate').GetType, EstatesItem.GetEstate.GetType))]"
+                            datacontext = "[EstatesItem.GetEstate]"
+
+                            blockoverride "stat_button" {
+                                alpha = 0.5
+                                upframe = 4
+                                uphoverframe = 4
+                                uppressedframe = 4
+                                downframe = 4
+                                downhoverframe = 4
+                                downpressedframe = 4
+                                disableframe = 4
+
+                                color = "[EstatesItem.GetEstate.GetType.GetMapColor]"
+
+                                action_tooltip = {
+                                    click_type = left
+                                    click_mode = single
+                                    title = "ADD_NEW_PRIVILEGE"
+                                }
+
+                                action_tooltip = {
+                                    click_type = right
+                                    click_mode = confirm
+                                    title = "BRIBE_ESTATE_T"
+                                }
+
+                                action_button = {
+                                    onclick = "[EstatesItem.AddNewPrivilege]"
+                                    parentanchor = center
+                                    size = { 100% 90% }
+                                    actor = "[Player]"
+                                    enabled = yes
+                                    parameter = {
+                                        parameter_name = "target"
+                                        parameter_value = "[EstatesItem.GetEstate]"
+                                    }
+                                    right_click_and_hold_action = { action_name = "bribe_estate" }
+                                    tooltip_enabled = no
+                                }
+
+                                tooltipwidget = {
+                                    using = Estate_tooltip
+                                    blockoverride "extra_estates_info" {
+                                        TooltipStringPairList = {
+                                            datacontext = "[StringToStringPairList(Estate.GetSatisfactionTooltip)]"
+                                        }
+                                    }
+                                }
+                            }
+
+                            icon = {
+                                visible = "[Not(GreaterThan_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)5'))]"
+                                size = { 32 32 }
+                                texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
+                            }
+
+                            icon = {
+                                visible = "[EqualTo_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)6')]"
+                                size = { 28 28 }
+                                texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
+                            }
+
+
+                            widget = {
+                                visible = "[GreaterThan_int32(GetDataModelSize(InGameTopbar.GetEstates), '(int32)6')]"
+                                size = { 12 12 }
+                                icon = {
+                                    parentanchor = center
+                                    size = { 24 24 }
+                                    texture = "[GetEstateIcon(EstatesItem.GetEstate.GetType)]"
+                                }
+                            }
+
+                            vbox = {
+                                margin_left = 3
+                                margin_right = 6
+
+                                hbox = {
+                                    using = layoutpolicy_expanding
+                                    using = text_single_positive_negative
+                                    text_single = { # WHITE IF BETWEEN 50 AND 60
+                                        maximumsize = { -1 18 }
+                                        autoresize = yes
+                                        align = left|nobaseline
+                                        using = Font_Size_Small
+                                        text = "[EstatesItem.GetEstate.GetSatisfaction|0%]"
+                                        visible = "[And(GreaterThanOrEqualTo_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.5'), LessThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.6'))]"
+                                    }
+
+                                    blockoverride "text_setup" {
+                                        maximumsize = { -1 18 }
+                                        autoresize = yes
+                                        align = left|nobaseline
+                                        using = Font_Size_Small
+                                        text = "[EstatesItem.GetEstate.GetSatisfaction|0%]"
+                                    }
+
+                                    blockoverride "visible_positive" {
+                                        visible = "[GreaterThanOrEqualTo_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.6')]"
+                                        default_format = "#color_green;bold"
+                                    }
+
+                                    blockoverride "visible_negative" {
+                                        visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction,'(CFixedPoint)0.5')]"
+                                        default_format = "#color_red;bold"
+                                    }
+
+                                    expand = {}
+                                }
+
+                                hbox = {
+                                    using = layoutpolicy_expanding
+                                    using = text_single_positive_zero_negative
+
+                                    blockoverride "text_setup" {
+                                        maximumsize = { -1 12 }
+                                        autoresize = yes
+                                        align = left|nobaseline
+                                        using = Font_Size_Very_Small
+                                        text = "[EstatesItem.GetEstate.GetMonthlySatisfactionChange|+=%2]"
+                                    }
+
+                                    blockoverride "visible_positive" {
+                                        visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+                                    }
+
+                                    blockoverride "visible_negative" {
+                                        visible = "[LessThan_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+                                    }
+
+                                    blockoverride "visible_zero" {
+                                        visible = "[EqualTo_CFixedPoint(EstatesItem.GetEstate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+                                    }
+
+                                    blockoverride "text_zero" {
+                                        raw_text = "0.00%"
+                                        fontsize = 12
+                                    }
+
+                                    expand = {}
+                                }
+                            }
+
+                            expand = {}
+
+                            # vbox = {
+                            # 	using = layoutpolicy_expanding
+                            # 	margin = { 4 0 }
+                            # 	margin_bottom = 2
+                            # 	spacing = -3
+
+                            # 	expand = {}
+
+                            # 	hbox = {
+                            # 		layoutpolicy_horizontal = expanding
+
+                            # 		# ESTATE ICON
+
+                            # 	}
+
+
+                            # 	expand = {}
+                            # 	hbox = {
+                            # 		layoutpolicy_horizontal = expanding
+                            # 		margin = { 2 0 }
+
+                            # 		progressbar = {
+                            # 			visible = "[GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)0.5')]"
+                            # 			using = progress_bar_green_alt
+                            # 			noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+                            # 			block "progress_setup" {}
+                            # 		}
+
+                            # 		progressbar = {
+                            # 			visible = "[Not(GreaterThan_CFixedPoint(EstatesItem.GetEstate.GetSatisfaction, '(CFixedPoint)0.5'))]"
+                            # 			using = progress_bar_red_alt
+                            # 			noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+                            # 			block "progress_setup" {}
+                            # 		}
+
+                            # 		blockoverride "progress_setup" {
+                            # 			layoutpolicy_horizontal = expanding
+                            # 			size = { -1 4 }
+
+                            # 			min = 0
+                            # 			max = 1
+                            # 			value = "[FixedPointToFloat(EstatesItem.GetEstate.GetSatisfaction)]"
+                            # 			direction = horizontal
+                            # 		}
+                            # 	}
+                            # }
+                        }
+                    }
+                }
 			}
 
 			scrollarea = { # Section 2
@@ -490,6 +704,7 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - INCOME
 						stat_player = {
+                            visible = "[Not(Player.MakeScope.GetVariable('disableTopBarIncome').IsSet)]"
 							name = "stat_gold"
 							using = layoutpolicy_expanding
 							margin = { 5 0 }
@@ -577,7 +792,7 @@ Types HUD_TopbarTypes
 										maximumsize = { -1 12 }
 										autoresize = yes
 										align = left|nobaseline
-										using = Font_Size_Very_Small
+										using = Font_Size_Small
 										text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('gold')]"
 									}
 
@@ -606,6 +821,7 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - STABILITY
 						stat_player = {
+                            visible = "[Not(Player.MakeScope.GetVariable('disableTopBarStability').IsSet)]"
 							name = "stat_stability"
 							using = layoutpolicy_expanding
 							margin = { 5 0 }
@@ -710,7 +926,7 @@ Types HUD_TopbarTypes
 										maximumsize = { -1 12 }
 										autoresize = yes
 										align = left|nobaseline
-										using = Font_Size_Very_Small
+										using = Font_Size_Small
 										text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('stability')]"
 									}
 
@@ -739,6 +955,7 @@ Types HUD_TopbarTypes
 
 						# STAT PLAYER - POPULATION
 						stat_player = {
+                            visible = "[Not(Player.MakeScope.GetVariable('disableTopBarPopulation').IsSet)]"
 							name = "stat_population"
 							using = layoutpolicy_expanding
 							margin = { 5 0 }
@@ -793,7 +1010,7 @@ Types HUD_TopbarTypes
 										maximumsize = { -1 12 }
 										autoresize = yes
 										align = left|nobaseline
-										using = Font_Size_Very_Small
+										using = Font_Size_Small
 										text = "[Country.GetLastMonthsPopulationText]"
 									}
 
@@ -822,6 +1039,7 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - LEGITIMACY
 						stat_player = {
+                            visible = "[Not(Player.MakeScope.GetVariable('disableTopBarLegitimacy').IsSet)]"
 							name = "stat_legitimacy"
 							using = layoutpolicy_expanding
 
@@ -897,7 +1115,7 @@ Types HUD_TopbarTypes
 												maximumsize = { -1 18 }
 												autoresize = yes
 												align = left|nobaseline
-												using = Font_Size_Very_Small
+												using = Font_Size_Small
 											}
 
 											blockoverride "visible_positive" {
@@ -952,6 +1170,7 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - PRESTIGE
 						stat_player = {
+                            visible = "[Not(Player.MakeScope.GetVariable('disableTopBarPrestige').IsSet)]"
 							name = "stat_prestige"
 							using = layoutpolicy_expanding
 
@@ -1032,7 +1251,7 @@ Types HUD_TopbarTypes
 												maximumsize = { -1 18 }
 												autoresize = yes
 												align = left|nobaseline
-												using = Font_Size_Very_Small
+												using = Font_Size_Small
 												text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('prestige')]"
 											}
 
@@ -1084,6 +1303,7 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - DIPLO ACTIONS
 						stat_player = {
+                            visible = "[Not(Player.MakeScope.GetVariable('disableTopBarDiplomats').IsSet)]"
 							name = "stat_diplo"
 							using = layoutpolicy_expanding
 
@@ -1176,7 +1396,7 @@ Types HUD_TopbarTypes
 												maximumsize = { -1 18 }
 												autoresize = yes
 												align = left|nobaseline
-												using = Font_Size_Very_Small
+												using = Font_Size_Small
 											}
 
 											blockoverride "visible_positive" {
@@ -1231,6 +1451,7 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - WAR EXHAUSTION
 						stat_player = {
+                            visible = "[Or(Not(Country.IsCurrencyValueEqualOrLessThanZero('war_exhaustion')), Not(Player.MakeScope.GetVariable('dynamicWarStats').IsSet))]"
 							name = "stat_exhaustion"
 							using = layoutpolicy_expanding
 							margin = { 5 0 }
@@ -1314,7 +1535,7 @@ Types HUD_TopbarTypes
 										maximumsize = { -1 12 }
 										autoresize = yes
 										align = left|nobaseline
-										using = Font_Size_Very_Small
+										using = Font_Size_Small
 										text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('war_exhaustion')]"
 									}
 
@@ -1343,6 +1564,7 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - MANPOWER
 						stat_player = {
+                            visible = "[Or(And( Not(Country.IsCurrencyValueEqualOrLessThanZero('manpower')), Not(EqualTo_CFixedPoint( Multiply_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('manpower'), '(CFixedPoint)1000'), '(CFixedPoint)0' )) ), Not(Player.MakeScope.GetVariable('dynamicWarStats').IsSet))]"
 							name = "stat_manpower"
 							using = layoutpolicy_expanding
 
@@ -1355,7 +1577,7 @@ Types HUD_TopbarTypes
 							}
 
 							tooltipmeta = {
-								texture = "gfx/interface/icons/resources/manpower.dds"								
+								texture = "gfx/interface/icons/resources/manpower.dds"
 							}
 							blockoverride "stat_button" {
 								action_tooltip = {
@@ -1438,7 +1660,7 @@ Types HUD_TopbarTypes
 												maximumsize = { -1 18 }
 												autoresize = yes
 												align = left|nobaseline
-												using = Font_Size_Very_Small
+												using = Font_Size_Small
 											}
 
 											blockoverride "visible_positive" {
@@ -1496,12 +1718,13 @@ Types HUD_TopbarTypes
 
 						### STAT PLAYER - SAILORS
 						stat_player = {
-							name = "stat_sailors"
+                            visible = "[Or(And( Not(Country.IsCurrencyValueEqualOrLessThanZero('sailors')), Not(EqualTo_CFixedPoint( Multiply_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('sailors'), '(CFixedPoint)1000'), '(CFixedPoint)0' )) ), Not(Player.MakeScope.GetVariable('dynamicWarStats').IsSet))]"
+                            name = "stat_sailors"
 							using = layoutpolicy_expanding
 							visible = "[GreaterThan_CFixedPoint(Player.GetTotalCoastalPopulation, '(CFixedPoint)0')]"
-							
+
 							tooltipmeta = {
-								texture = "gfx/interface/icons/resources/sailors.dds"								
+								texture = "gfx/interface/icons/resources/sailors.dds"
 							}
 							blockoverride "decreasing_value_gradient_visible" {
 								visible = no
@@ -1587,7 +1810,7 @@ Types HUD_TopbarTypes
 												maximumsize = { -1 18 }
 												autoresize = yes
 												align = left|nobaseline
-												using = Font_Size_Very_Small
+												using = Font_Size_Small
 											}
 
 											blockoverride "visible_positive" {
@@ -2002,7 +2225,7 @@ template speed_bar {
 						# 	texture = "[GetGraphicalCultureTexture('speed_end_button')]"
 						# }
 					}
-					
+
 					# SPEED 7
 					gamespeed_button_disabled = {
 						visible = "[Not(IsGameSpeedEqualOrGreaterThan('(int32)7'))]"
@@ -2030,8 +2253,8 @@ template speed_bar {
 						# blockoverride "gamespeed_button_texture" {
 						# 	texture = "[GetGraphicalCultureTexture('speed_end_button')]"
 						# }
-					}					
-					
+					}
+
 				}
 
 				# FAKE PLAY PAUSE BUTTON

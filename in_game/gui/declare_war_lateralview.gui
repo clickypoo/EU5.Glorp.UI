@@ -54,7 +54,7 @@ lateralview = {
 					spacing = 5
 					margin_left = 10
 					tooltipwidget = {
-						SimpleContextualStringPairTooltipType = {
+						SimpleContextualTooltipType = {
 							blockoverride "title_icon" {
 								icon = {
 									using = tooltip_title_icon_size
@@ -157,7 +157,7 @@ lateralview = {
 					spacing = 5
 					margin_right = 10
 					tooltipwidget = {
-						SimpleContextualStringPairTooltipType = {
+						SimpleContextualTooltipType = {
 							blockoverride "title_icon" {
 								icon = {
 									using = tooltip_title_icon_size
@@ -323,9 +323,6 @@ lateralview = {
 								blockoverride "declare_war_comparison_text" {
 									text = "DECLARE_WAR_TOTAL_COMPARISON_WEAKER"
 								}
-								blockoverride "declare_war_comparison_banner"{
-									texture = "gfx/interface/component_tiles/war_predition_banner_color_red.dds"
-								}
 							}
 
 							declare_war_comparisson = {
@@ -334,9 +331,6 @@ lateralview = {
 								}
 								blockoverride "declare_war_comparison_text" {
 									text = "DECLARE_WAR_TOTAL_COMPARISON_SLIGHTLY_WEAKER"
-								}
-								blockoverride "declare_war_comparison_banner"{
-									texture = "gfx/interface/component_tiles/war_predition_banner_color_red.dds"
 								}
 							}
 
@@ -356,9 +350,6 @@ lateralview = {
 								blockoverride "declare_war_comparison_text" {
 									text = "DECLARE_WAR_TOTAL_COMPARISON_SLIGHTLY_STRONGER"
 								}
-								blockoverride "declare_war_comparison_banner"{
-									texture = "gfx/interface/component_tiles/war_predition_banner_color_green.dds"
-								}
 							}
 
 							declare_war_comparisson = {
@@ -367,9 +358,6 @@ lateralview = {
 								}
 								blockoverride "declare_war_comparison_text" {
 									text = "DECLARE_WAR_TOTAL_COMPARISON_STRONGER"
-								}
-								blockoverride "declare_war_comparison_banner"{
-									texture = "gfx/interface/component_tiles/war_predition_banner_color_green.dds"
 								}
 							}
 						}
@@ -529,12 +517,33 @@ lateralview = {
 
 											blockoverride "joining_countries_card_tooltip"{
 												tooltipwidget = {
-													using = call_to_arms_tooltip
+													SimpleContextualTooltipType = {
+														blockoverride "title_icon" {
+															country_flag_small = {
+																datacontext = "[DeclareWarAlly.GetCountry]"
+															}
+														}
+														blockoverride "title_text" {
+															text = "[DeclareWarAlly.GetCountry.GetLongNameWithNoTooltip]"
+														}
+														blockoverride "concept_link" {
+															text = [call_to_arms|e]
+														}
+														blockoverride "tooltip_content" {
+															TooltipStringPairList = {
+																textcontext = "[DeclareWarAlly.GetAreWillingToJoinTooltip]"
+															}
+														}
+													}
 												}
 											}
 
 											blockoverride "joining_countries_declare_war_title" {
 												text = "PEACE_FRIENDLY_PARTICIPANTS"
+											}
+				
+											blockoverride "joining_countries_declare_war_amount" {
+												text = "[Add_int32('(int32)1', GetDataModelSize(DeclareWarLateralView.GetPlayerAllies))]"
 											}
 
 											blockoverride "side_leader_has_subjects" {
@@ -545,18 +554,8 @@ lateralview = {
 												datacontext = "[DeclareWarLateralView.GetPlayer]"
 											}
 
-											blockoverride "make_cobeligerent_button_visible"
-											{
-												visible = no
-											}
-
 											blockoverride "joining_countries_declare_war_model" {
 												datamodel = "[DeclareWarLateralView.GetPlayerAllies]"
-											}
-
-											blockoverride "joining_countries_declare_war_model_size_text" {
-												visible = "[DeclareWarLateralView.HasPlayerSubjects]"
-												text = "[DeclareWarLateralView.GetAllyLeaderSubjectsAmount]"
 											}
 
 											blockoverride "joining_countries_declare_war_exclude_not_overlords" {
@@ -608,12 +607,53 @@ lateralview = {
 
 											blockoverride "joining_countries_card_tooltip"{
 												tooltipwidget = {
-													using = call_to_arms_tooltip
+													SimpleContextualTooltipType = {
+														blockoverride "title_icon" {
+															country_flag_small = {
+																datacontext = "[DeclareWarAlly.GetCountry]"
+															}
+														}
+														blockoverride "title_text" {
+															text = "[DeclareWarAlly.GetCountry.GetLongNameWithNoTooltip]"
+														}
+														blockoverride "concept_link" {
+															text = [call_to_arms|e]
+														}
+														blockoverride "tooltip_content" {
+															TooltipTextBlock = {
+																visible = "[Not(DeclareWarAlly.GetCountry.GetDiplomacy.GetOverlord.HasHumanController)]"
+																blockoverride "text" {
+																	lowpriotextcontext = "[DeclareWarAlly.GetAreWillingToJoinTooltip]"
+																}
+																blockoverride "textblock_background_tint"  {
+																	modify_texture = {
+																		using = color_yellow_texture
+																	}
+																}
+															}
+															
+															TooltipTextBlock = {
+																visible = "[DeclareWarAlly.GetCountry.GetDiplomacy.GetOverlord.HasHumanController]"
+																blockoverride "text" {
+																	text = "HUMAN_PLAYER_OVERLORD_RESPONSE"
+																}
+																blockoverride "textblock_background_tint"  {
+																	modify_texture = {
+																		using = color_yellow_texture
+																	}
+																}
+															}
+														}
+													}
 												}
 											}
 
 											blockoverride "joining_countries_declare_war_title" {
 												text = "PEACE_FRIENDLY_PARTICIPANTS"
+											}
+
+											blockoverride "joining_countries_declare_war_amount" {
+												text = "[Add_int32('(int32)1', GetDataModelSize(DeclareWarLateralView.GetPlayerAllies))]"
 											}
 
 											blockoverride "side_leader_has_subjects" {
@@ -624,18 +664,8 @@ lateralview = {
 												datacontext = "[DeclareWarLateralView.GetPlayer]"
 											}
 
-											blockoverride "make_cobeligerent_button_visible"
-											{
-												visible = no
-											}
-
 											blockoverride "joining_countries_declare_war_model" {
 												datamodel = "[DeclareWarLateralView.GetPlayerAllies]"
-											}
-
-											blockoverride "joining_countries_declare_war_model_size_text" {
-												visible = "[DeclareWarLateralView.HasPlayerSubjects]"
-												text = "[DeclareWarLateralView.GetAllyLeaderSubjectsAmount]"
 											}
 
 											blockoverride "joining_countries_declare_war_exclude_not_overlords" {
@@ -713,7 +743,7 @@ lateralview = {
 														}
 														blockoverride "tooltip_content" {
 															vbox = {
-																TooltipBlockList = {
+																TooltipStringPairList = {
 																	textcontext = "[DeclareWarAlly.GetAreWillingToJoinTooltip]"
 																}
 
@@ -739,6 +769,10 @@ lateralview = {
 
 											blockoverride "joining_countries_declare_war_title" {
 												text = "PEACE_ENEMY_PARTICIPANTS"
+											}
+
+											blockoverride "joining_countries_declare_war_amount" {
+												text = "[Add_int32('(int32)1', GetDataModelSize(DeclareWarLateralView.GetEnemyAllies))]"
 											}
 
 											blockoverride "side_leader_color" {
@@ -769,11 +803,6 @@ lateralview = {
 												datamodel = "[DeclareWarLateralView.GetEnemyAllies]"
 											}
 
-											blockoverride "joining_countries_declare_war_model_size_text" {
-												visible = "[DeclareWarLateralView.HasEnemySubjects]"
-												text = "[DeclareWarLateralView.GetEnemyLeaderSubjectsAmount]"
-											}
-
 											blockoverride "joining_countries_declare_war_exclude_not_overlords" {
 												visible = "[And(Not(DeclareWarAlly.HasSubjectAllies) , Not(ObjectsEqual(DeclareWarAlly.GetCountry.Self, DeclareWarLateralView.GetEnemyCountry.Self )))]"
 											}
@@ -782,179 +811,19 @@ lateralview = {
 												visible = "[And(DeclareWarAlly.HasSubjectAllies, Not(ObjectsEqual(DeclareWarAlly.GetCountry.Self, DeclareWarLateralView.GetEnemyCountry.Self )))]"
 											}
 
-											blockoverride "joining_countries_declare_war_tick_visible" {
-												visible = "[Or(DeclareWarAlly.IsSubject, And(DeclareWarAlly.IsJoiningWar, Not(DeclareWarAlly.GetCountry.HasHumanController)))]"
-											}
-
-											blockoverride "joining_countries_declare_war_cross_visible" {
-												visible = "[And(Not(DeclareWarAlly.IsJoiningWar), Not(DeclareWarAlly.GetCountry.HasHumanController))]"
-											}
-
-											blockoverride "joining_countries_declare_war_question_visible" {
-												visible = "[And(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.GetCountry.HasHumanController)]"
-											}
-
 											blockoverride "joining_countries_declare_war_show_promise_land" {
-												visible = no
-											}
-
-											blockoverride "not_joining_countries_declare_war_ally_color" {
 												visible = no
 											}
 
 											blockoverride "joining_countries_declare_war_ally_color" {
 												visible = no
-											}
-
-											blockoverride "not_joining_countries_declare_war_enemy_color" {
-												visible = "[Not(Or(DeclareWarAlly.IsSubject, And(DeclareWarAlly.IsJoiningWar, Not(DeclareWarAlly.GetCountry.HasHumanController))))]"
+												using = color_mid_blue_texture
 											}
 
 											blockoverride "joining_countries_declare_war_enemy_color" {
-												visible = "[Or(DeclareWarAlly.IsSubject, And(DeclareWarAlly.IsJoiningWar, Not(DeclareWarAlly.GetCountry.HasHumanController)))]"
-											}
-
-											blockoverride "declare_war_promise_land_button" {
-												# Avoiding assert when checking relations and also simplifying code in checkboxes
-												visible = "[And(Not(DeclareWarAlly.IsOriginalLeader), DeclareWarAlly.IsCallAllyVisible)]"
-											
-												icon = {
-													alwaystransparent = yes
-													parentanchor = center
-													size = {50% 50%}
-													visible = "[Or(And(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.IsCallAllyCheckedOrAutoJoined), And(DeclareWarAlly.IsSubject, DeclareWarAlly.IsOverlordCallAllyCheckedOrAutoJoined))]"
-													texture = "gfx/interface/icons/control_groups/country.dds"
-												}
-
-												# Enabled checkboxes
-												make_cobeligerent_button = {
-													size = { 100% 100% }
-													visible = "[DeclareWarAlly.IsCallAllyVisible]"
-													enabled = "[And(DeclareWarAlly.IsCallAllyEnabled, Or(DeclareWarAlly.WillJoinIfCalled, And(DeclareWarAlly.WillJoinBecauseOfLandPromised, DeclareWarAlly.IsPromiseLandChecked)))]"
-													
-													frame = "[Select_int32(Or(And(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.IsCallAllyCheckedOrAutoJoined), And(DeclareWarAlly.IsSubject, DeclareWarAlly.IsOverlordCallAllyCheckedOrAutoJoined)), '(int32)2', '(int32)1')]"
-
-													tooltipwidget = {
-														SimpleContextualTooltipType = {
-															blockoverride "title_icon" {
-																icon = {
-																	using = tooltip_title_icon_size
-																	texture = "gfx/interface/icons/control_groups/country.dds"
-																}
-															}
-															blockoverride "title_text" {
-																text = "MARK_COBELLIGERENT"
-															}
-															blockoverride "concept_link" {
-																text = [cobelligerent|e]
-															}
-															blockoverride "tooltip_content" {
-																TooltipTextBlock = {
-																	visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
-					
-																	blockoverride "text" {
-																		text = "[SelectLocalization(ObjectsEqual(DeclareWarAlly.GetSideLeader, Player.Self), 'CANT_BREAK_COBELLIGERENT_TRUCE', 'BREAKING_COBELLIGERENT_TRUCE')]"
-																	}
-													
-																	blockoverride "textblock_background_tint"  {
-																		modify_texture = {
-																			using = color_dark_red_texture
-																			alpha = 0.8
-																		}
-																	}
-																}
-
-																TooltipTextBlock = {					
-																	blockoverride "text" {
-																		text = "game_concept_cobelligerent_desc"
-																	}
-																}
-															}
-														}
-													}
-													action_tooltip = {
-														title = "MARK_COBELLIGERENT"
-														on_action = "[DeclareWarAlly.OnCallAllyClick]"
-														conditions = "[MakeItFailIfLoc(DeclareWarAlly.IsSubject, 'CALLALLY_SUBJECT_T')]"
-														enabled = "[And(DeclareWarAlly.IsCallAllyEnabled, Or(DeclareWarAlly.WillJoinIfCalled, And(DeclareWarAlly.WillJoinBecauseOfLandPromised, DeclareWarAlly.IsPromiseLandChecked)))]"
-													}
-
-													# blockoverride "checked_visible" {
-													# 	visible = "[Or(And(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.IsCallAllyCheckedOrAutoJoined), And(DeclareWarAlly.IsSubject, DeclareWarAlly.IsOverlordCallAllyCheckedOrAutoJoined))]"
-													# }
-													blockoverride "unchecked_visible" {
-														visible = "[Not(Or(And(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.IsCallAllyCheckedOrAutoJoined), And(DeclareWarAlly.IsSubject, DeclareWarAlly.IsOverlordCallAllyCheckedOrAutoJoined)))]"
-													}
-													onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCountry( DeclareWarAlly.GetCountry )]"
-												}
-											}
-
-											blockoverride "declare_war_call_into_war_button" {
-												visible = "[Not(DeclareWarAlly.IsOriginalLeader)]"
-												statebutton_checkbox_square = {
-													size = { 20 20 }
-													parentanchor = center
-													enabled = no
-													
-													tooltipwidget = {
-														SimpleContextualTooltipType = {
-															blockoverride "title_icon" {
-																country_flag_small = {
-																	datacontext = "[DeclareWarAlly.GetCountry]"
-																}
-															}
-					
-															blockoverride "tooltip_content" {
-																TooltipBlockList = {
-																	visible = "[Not(DeclareWarAlly.GetCountry.HasHumanController)]"
-																	textcontext = "[DeclareWarAlly.GetAreWillingToJoinTooltip]"
-																}
-					
-																TooltipTextBlock = {
-																	visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
-					
-																	blockoverride "text" {
-																		text = "[SelectLocalization(ObjectsEqual(DeclareWarAlly.GetSideLeader, Player.Self), 'CANT_BREAK_COBELLIGERENT_TRUCE', 'BREAKING_COBELLIGERENT_TRUCE')]"
-																	}
-													
-																	blockoverride "textblock_background_tint"  {
-																		modify_texture = {
-																			using = color_dark_red_texture
-																			alpha = 0.8
-																		}
-																	}
-																}
-																TooltipTextBlock = {
-																	visible = "[DeclareWarAlly.GetCountry.HasHumanController]"
-																	blockoverride "text" {
-																		text = "HUMAN_PLAYER_RESPONSE"
-																	}
-																	blockoverride "textblock_background_tint"  {
-																		modify_texture = {
-																			using = color_yellow_texture
-																		}
-																	}
-																}
-															}									
-					
-															blockoverride "title_text" {
-																text = "[DeclareWarAlly.GetCountry.GetLongNameWithNoTooltip]"
-															}
-															blockoverride "concept_link" {
-																text = [call_to_arms|e]
-															}
-														}
-													}
-													frame = "[Select_int32(DeclareWarAlly.IsJoiningWar, '(int32)2', '(int32)1')]"
-
-													action_tooltip = {
-														title = "game_concept_call_to_arms"
-														on_action = "[DeclareWarAlly.OnCallAllyClick]"
-														conditions = "[MakeItFail(Localize('CALLENEMY_T'))]"
-														enabled = no
-													}
-													onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCountry( DeclareWarAlly.GetCountry )]"
-												}
+												visible = "[Not(DeclareWarAlly.IsSubject)]"
+												using = color_dark_red_texture
+												alpha = 0.8
 											}
 										}
 
@@ -989,7 +858,7 @@ lateralview = {
 														}
 														blockoverride "tooltip_content" {
 															vbox = {
-																TooltipBlockList = {
+																TooltipStringPairList = {
 																	textcontext = "[DeclareWarAlly.GetAreWillingToJoinTooltip]"
 																}
 
@@ -1015,6 +884,10 @@ lateralview = {
 
 											blockoverride "joining_countries_declare_war_title" {
 												text = "PEACE_ENEMY_PARTICIPANTS"
+											}
+
+											blockoverride "joining_countries_declare_war_amount" {
+												text = "[Add_int32('(int32)1', GetDataModelSize(DeclareWarLateralView.GetEnemyAllies))]"
 											}
 
 											blockoverride "side_leader_color" {
@@ -1045,11 +918,6 @@ lateralview = {
 												datamodel = "[DeclareWarLateralView.GetEnemyAllies]"
 											}
 
-											blockoverride "joining_countries_declare_war_model_size_text" {
-												visible = "[DeclareWarLateralView.HasEnemySubjects]"
-												text = "[DeclareWarLateralView.GetEnemyLeaderSubjectsAmount]"
-											}
-
 											blockoverride "joining_countries_declare_war_exclude_not_overlords" {
 												visible = "[And(Not(DeclareWarAlly.HasSubjectAllies) , Not(ObjectsEqual(DeclareWarAlly.GetCountry.Self, DeclareWarLateralView.GetEnemyCountry.Self )))]"
 											}
@@ -1058,36 +926,19 @@ lateralview = {
 												visible = "[And(DeclareWarAlly.HasSubjectAllies, Not(ObjectsEqual(DeclareWarAlly.GetCountry.Self, DeclareWarLateralView.GetEnemyCountry.Self )))]"
 											}
 
-											blockoverride "joining_countries_declare_war_tick_visible" {
-												visible = "[Or(DeclareWarAlly.IsSubject, And(DeclareWarAlly.IsJoiningWar, Not(DeclareWarAlly.GetCountry.HasHumanController)))]"
-											}
-
-											blockoverride "joining_countries_declare_war_cross_visible" {
-												visible = "[And(Not(DeclareWarAlly.IsJoiningWar), Not(DeclareWarAlly.GetCountry.HasHumanController))]"
-											}
-
-											blockoverride "joining_countries_declare_war_question_visible" {
-												visible = "[And(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.GetCountry.HasHumanController)]"
-											}
-
 											blockoverride "joining_countries_declare_war_show_promise_land" {
-												visible = no
-											}
-
-											blockoverride "not_joining_countries_declare_war_ally_color" {
 												visible = no
 											}
 
 											blockoverride "joining_countries_declare_war_ally_color" {
 												visible = no
-											}
-
-											blockoverride "not_joining_countries_declare_war_enemy_color" {
-												visible = "[Not(Or(DeclareWarAlly.IsSubject, And(DeclareWarAlly.IsJoiningWar, Not(DeclareWarAlly.GetCountry.HasHumanController))))]"
+												using = color_mid_blue_texture
 											}
 
 											blockoverride "joining_countries_declare_war_enemy_color" {
-												visible = "[Or(DeclareWarAlly.IsSubject, And(DeclareWarAlly.IsJoiningWar, Not(DeclareWarAlly.GetCountry.HasHumanController)))]"
+												visible = "[Not(DeclareWarAlly.IsSubject)]"
+												using = color_dark_red_texture
+												alpha = 0.8
 											}
 
 											blockoverride "header_color" {
@@ -1103,149 +954,6 @@ lateralview = {
 													using = color_whiteish_texture
 													blend_mode = overlay
 													alpha = 0.5
-												}
-											}
-
-											blockoverride "declare_war_promise_land_button" {
-												# Avoiding assert when checking relations and also simplifying code in checkboxes
-												visible = "[And(Not(DeclareWarAlly.IsOriginalLeader), DeclareWarAlly.IsCallAllyVisible)]"
-
-												icon = {
-													alwaystransparent = yes
-													parentanchor = center
-													size = {50% 50%}
-													visible = "[Or(And(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.IsCallAllyCheckedOrAutoJoined), And(DeclareWarAlly.IsSubject, DeclareWarAlly.IsOverlordCallAllyCheckedOrAutoJoined))]"
-													texture = "gfx/interface/icons/control_groups/country.dds"
-												}
-											
-												# Enabled checkboxes
-												make_cobeligerent_button = {
-													size = { 100% 100% }
-													visible = "[DeclareWarAlly.IsCallAllyVisible]"
-													enabled = "[And(DeclareWarAlly.IsCallAllyEnabled, Or(DeclareWarAlly.WillJoinIfCalled, And(DeclareWarAlly.WillJoinBecauseOfLandPromised, DeclareWarAlly.IsPromiseLandChecked)))]"
-													
-													frame = "[Select_int32(Or(And(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.IsCallAllyCheckedOrAutoJoined), And(DeclareWarAlly.IsSubject, DeclareWarAlly.IsOverlordCallAllyCheckedOrAutoJoined)), '(int32)2', '(int32)1')]"
-
-													tooltipwidget = {
-														SimpleContextualTooltipType = {
-															blockoverride "title_icon" {
-																icon = {
-																	using = tooltip_title_icon_size
-																	texture = "gfx/interface/icons/control_groups/country.dds"
-																}
-															}
-															blockoverride "title_text" {
-																text = "MARK_COBELLIGERENT"
-															}
-															blockoverride "concept_link" {
-																text = [cobelligerent|e]
-															}
-															blockoverride "tooltip_content" {
-																TooltipTextBlock = {
-																	visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
-					
-																	blockoverride "text" {
-																		text = "[SelectLocalization(ObjectsEqual(DeclareWarAlly.GetSideLeader, Player.Self), 'CANT_BREAK_COBELLIGERENT_TRUCE', 'BREAKING_COBELLIGERENT_TRUCE')]"
-																	}
-													
-																	blockoverride "textblock_background_tint"  {
-																		modify_texture = {
-																			using = color_dark_red_texture
-																			alpha = 0.8
-																		}
-																	}
-																}
-
-																TooltipTextBlock = {					
-																	blockoverride "text" {
-																		text = "game_concept_cobelligerent_desc"
-																	}
-																}
-															}
-														}
-													}
-
-													action_tooltip = {
-														title = "MARK_COBELLIGERENT"
-														on_action = "[DeclareWarAlly.OnCallAllyClick]"
-														conditions = "[MakeItFailIfLoc(DeclareWarAlly.IsSubject, 'CALLALLY_SUBJECT_T')]"
-														enabled = "[And(DeclareWarAlly.IsCallAllyEnabled, Or(DeclareWarAlly.WillJoinIfCalled, And(DeclareWarAlly.WillJoinBecauseOfLandPromised, DeclareWarAlly.IsPromiseLandChecked)))]"
-													}
-													# blockoverride "checked_visible" {
-													# 	visible = "[Or(And(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.IsCallAllyCheckedOrAutoJoined), And(DeclareWarAlly.IsSubject, DeclareWarAlly.IsOverlordCallAllyCheckedOrAutoJoined))]"
-													# }
-													blockoverride "unchecked_visible" {
-														visible = "[Not(Or(And(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.IsCallAllyCheckedOrAutoJoined), And(DeclareWarAlly.IsSubject, DeclareWarAlly.IsOverlordCallAllyCheckedOrAutoJoined)))]"
-													}
-													onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCountry( DeclareWarAlly.GetCountry )]"
-												}
-											}
-
-											blockoverride "declare_war_call_into_war_button" {
-												visible = "[Not(DeclareWarAlly.IsOriginalLeader)]"
-												statebutton_checkbox_square = {
-													size = { 20 20 }
-													parentanchor = center
-													enabled = no
-													
-													tooltipwidget = {
-														SimpleContextualTooltipType = {
-															blockoverride "title_icon" {
-																country_flag_small = {
-																	datacontext = "[DeclareWarAlly.GetCountry]"
-																}
-															}
-					
-															blockoverride "tooltip_content" {
-																TooltipBlockList = {
-																	visible = "[Not(DeclareWarAlly.GetCountry.HasHumanController)]"
-																	textcontext = "[DeclareWarAlly.GetAreWillingToJoinTooltip]"
-																}
-					
-																TooltipTextBlock = {
-																	visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
-					
-																	blockoverride "text" {
-																		text = "[SelectLocalization(ObjectsEqual(DeclareWarAlly.GetSideLeader, Player.Self), 'CANT_BREAK_COBELLIGERENT_TRUCE', 'BREAKING_COBELLIGERENT_TRUCE')]"
-																	}
-													
-																	blockoverride "textblock_background_tint"  {
-																		modify_texture = {
-																			using = color_dark_red_texture
-																			alpha = 0.8
-																		}
-																	}
-																}
-																TooltipTextBlock = {
-																	visible = "[DeclareWarAlly.GetCountry.HasHumanController]"
-																	blockoverride "text" {
-																		text = "HUMAN_PLAYER_RESPONSE"
-																	}
-																	blockoverride "textblock_background_tint"  {
-																		modify_texture = {
-																			using = color_yellow_texture
-																		}
-																	}
-																}
-															}									
-					
-															blockoverride "title_text" {
-																text = "[DeclareWarAlly.GetCountry.GetLongNameWithNoTooltip]"
-															}
-															blockoverride "concept_link" {
-																text = [call_to_arms|e]
-															}
-														}
-													}
-													frame = "[Select_int32(DeclareWarAlly.IsJoiningWar, '(int32)2', '(int32)1')]"
-
-													action_tooltip = {
-														title = "game_concept_call_to_arms"
-														on_action = "[DeclareWarAlly.OnCallAllyClick]"
-														conditions = "[MakeItFail(Localize('CALLENEMY_T'))]"
-														enabled = no
-													}
-													onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCountry( DeclareWarAlly.GetCountry )]"
 												}
 											}
 										}
@@ -1357,7 +1065,6 @@ lateralview = {
 																fontsize = 11
 																autoresize = yes
 																align = left|nobaseline
-																maximumsize = { 450 -1 }
 																text = "[DeclareWarLateralView.GetSelectedWarGoalName]"
 																datacontext = "[DeclareWarLateralView.GetSelectedWarGoal]"
 																tooltipwidget = {
@@ -1640,116 +1347,111 @@ types WarGoals {
 		spacing = 5
 		widget = {
 			size = {230 55}
-			widget = {
-				block "declare_war_card_size" {
-					size = {100% 100%}
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				using = bg_paper_card_fancy
+				block "joining_countries_card_tooltip" {}
+
+				joining_countries_button_header = {
+					visible = "[Not(Or(DeclareWarAlly.IsSubject, And(Not(DeclareWarAlly.IsCallAllyEnabled), DeclareWarAlly.IsCallAllyAutoJoin)))]"
 				}
-				vbox = {
+				joining_countries_card_header = {
+					visible = "[Or(DeclareWarAlly.IsSubject, And(Not(DeclareWarAlly.IsCallAllyEnabled), DeclareWarAlly.IsCallAllyAutoJoin))]"
+				}
+
+				widget = {
 					layoutpolicy_horizontal = expanding
-					using = bg_paper_card_fancy
-					block "joining_countries_card_tooltip" {}
-	
-					joining_countries_card_header = {}
-	
-					# joining_countries_button_header = {
-					# 	visible = "[Not(Or(DeclareWarAlly.IsSubject, And(Not(DeclareWarAlly.IsCallAllyEnabled), DeclareWarAlly.IsCallAllyAutoJoin)))]"
-					# }
-					# joining_countries_card_header = {
-					# 	visible = "[Or(DeclareWarAlly.IsSubject, And(Not(DeclareWarAlly.IsCallAllyEnabled), DeclareWarAlly.IsCallAllyAutoJoin))]"
-					# }
-	
-					# joining_countries_button_header = {
-					# 	visible = "[And(DeclareWarAlly.IsCallAllyEnabled, Or(DeclareWarAlly.WillJoinIfCalled, And(DeclareWarAlly.WillJoinBecauseOfLandPromised, DeclareWarAlly.IsPromiseLandChecked)))]"
-					# }
-					# joining_countries_card_header = {
-					# 	visible = "[Not(And(DeclareWarAlly.IsCallAllyEnabled, Or(DeclareWarAlly.WillJoinIfCalled, And(DeclareWarAlly.WillJoinBecauseOfLandPromised, DeclareWarAlly.IsPromiseLandChecked))))]"
-					# }
-	
-					widget = {
-						layoutpolicy_horizontal = expanding
-						size = { -1 25 }
-	
-						hbox = {
-							margin = { 5 0 }
-							text_single = {
-								size = {70 20}
-								autoresize = no
-								align = center|nobaseline
-								raw_text = "[DeclareWarAlly.GetCountry.GetTotalArmyStrengthAndPotentialLevies]@army_strength!"
+					size = { -1 25 }
+
+					hbox = {
+						margin = { 5 0 }
+						text_single = {
+							size = {70 20}
+							autoresize = no
+							align = center|nobaseline
+							raw_text = "[DeclareWarAlly.GetLandStrength]@army_strength!"
+						}
+
+						divider_flavor_01 = { 
+							blockoverride "divider_margin" {}
+							size = {9 -1}
+						}
+
+						text_single = {
+							size = {70 20}
+							autoresize = no
+							align = center|nobaseline
+							raw_text = "[DeclareWarAlly.GetCountry.GetTotalShips]@navy_strength!"
+						}
+
+						divider_flavor_01 = {
+							block "joining_countries_declare_war_show_promise_land" {
+								visible = "[Not(DeclareWarAlly.IsSubject)]"
 							}
-	
-							divider_flavor_01 = { 
-								blockoverride "divider_margin" {}
-								size = {9 -1}
-							}
-	
-							text_single = {
-								size = {70 20}
-								autoresize = no
-								align = center|nobaseline
-								raw_text = "[DeclareWarAlly.GetCountry.GetTotalShips]@navy_strength!"
-							}
-	
-							divider_flavor_01 = {
-								blockoverride "divider_margin" {}
-								size = {9 -1}
-							}
-	
-							hbox = {
-								layoutpolicy_horizontal = expanding
-	
-								text_single = {
-									layoutpolicy_horizontal = expanding
-									autoresize = no
-									align = right|nobaseline
-									visible = "[DeclareWarAlly.HasSubjectAllies]"
-									text = "[GetDataModelSize(DeclareWarAlly.GetSubjectAllies)]"
+							blockoverride "divider_margin" {}
+							size = {9 -1}
+						}
+
+						widget = {
+							layoutpolicy_vertical = expanding
+							size = { 40 -1 }
+
+							icon = {
+								block "joining_countries_declare_war_show_promise_land" {
+									visible = "[Not(DeclareWarAlly.IsSubject)]"
 								}
-	
-								icon = {
-									size = { 19 19 }
-									visible = "[DeclareWarAlly.HasSubjectAllies]"
-									texture = "gfx/interface/icons/treaty_type/become_subject.dds"
-			
-									glow = {
-										name = "drop_shadow"
-										glow_radius = 3
-										color = {0.0 0.0 0.0 1.0}
-										alpha = 0.3
-									}
-			
+								parentanchor = left|vcenter
+								size = {20 20}
+								texture = "gfx/interface/icons/flat_icons/declare_war/antagonism.dds"
+							}
+
+							widget = {
+								parentanchor = right|vcenter
+								size = { 19 19 }
+								# Avoiding assert when checking relations and also simplifying code in checkboxes
+								# Use the same visible as for call ally as they are always together
+								block "joining_countries_declare_war_show_promise_land" {
+									visible = "[Not(DeclareWarAlly.IsSubject)]"
 								}
-	
-								# expand subjects
-								widget = {
+			
+								# Enabled checkboxes
+								button_checkbox = {
+									parentanchor = center
 									size = { 19 19 }
-					
-									# Enabled checkboxes
-									button = {
-										# Avoiding assert when checking relations and also simplifying code in checkboxes
-										visible = "[DeclareWarAlly.HasSubjectAllies]"
-										icon = {
-											size = { 19 19 }
-											visible = "[Not(DeclareWarAlly.IsExpanded)]"
-											texture = "gfx/interface/buttons/flats/button_simple_right.dds"
-											using = button_regular_icon_color
+									enabled = "[DeclareWarAlly.IsPromiseLandEnabled]"
+									
+									tooltipwidget = {
+										SimpleContextualTooltipType = {
+											blockoverride "title_icon" {
+												country_flag_small = {
+													datacontext = "[DeclareWarAlly.GetCountry]"
+												}
+											}
+											blockoverride "title_text" {
+												text = "[DeclareWarAlly.GetCountry.GetLongNameWithNoTooltip]"
+											}
+											blockoverride "concept_link" {
+												text = [call_to_arms|e]
+											}
+											lowpriotextcontext = "[DeclareWarAlly.GetPromiseLandTooltip]"
+											blockoverride "tooltip_extra_content" {
+												TooltipFunctionalBlock = {
+													using = tooltip_left_click_template
+								
+													blockoverride "action_left_text" {
+														text = "PROMISE_LAND"
+													}
+												}
+											}
 										}
-				
-										icon = {
-											size = { 19 19 }
-											visible = "[DeclareWarAlly.IsExpanded]"
-											texture = "gfx/interface/buttons/flats/button_simple_down.dds"
-											using = button_regular_icon_color
-										}
-	
-										size = { 100% 100% }
-										onclick = "[DeclareWarAlly.ToggleExpanded]"
-										action_tooltip = { title = "OUTLINER_SETTINGS_TOGGLE_TOOLTIP" }
-										tooltipwidget = { BasicFunctionalTooltip = {} }
 									}
+									checked = "[DeclareWarAlly.IsPromiseLandChecked]"
+									onclick = "[DeclareWarAlly.OnPromiseLandClick]"
 								}
 							}
 						}
+
+						expand = {}
 					}
 				}
 			}
@@ -1764,18 +1466,9 @@ types WarGoals {
 				vbox = {
 					overlord_cards = {
 						visible = "[DeclareWarAlly.HasSubjectAllies]"
-						blockoverride "declare_war_card_size" {
-							size = {220 55}
-							parentanchor = right
-						}
 					}
 					
-					not_overlord_cards = {
-						blockoverride "declare_war_card_size" {
-							size = {220 55}
-							parentanchor = right
-						}
-					}
+					not_overlord_cards = {}
 				}
 			}
 		}
@@ -1786,66 +1479,110 @@ types WarGoals {
 			visible = "[Not(DeclareWarAlly.HasSubjectAllies)]"
 		}
 		size = {230 55}
-		widget = {
-			block "declare_war_card_size" {
-				size = { 100% 100%}
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			using = bg_paper_card_fancy
+			block "joining_countries_card_tooltip" {}
+
+			joining_countries_button_header = {
+				visible = "[Not(Or(DeclareWarAlly.IsSubject, And(Not(DeclareWarAlly.IsCallAllyEnabled), DeclareWarAlly.IsCallAllyAutoJoin)))]"
 			}
-			vbox = {
+			joining_countries_card_header = {
+				visible = "[Or(DeclareWarAlly.IsSubject, And(Not(DeclareWarAlly.IsCallAllyEnabled), DeclareWarAlly.IsCallAllyAutoJoin))]"
+			}
+
+			widget = {
 				layoutpolicy_horizontal = expanding
-				using = bg_paper_card_fancy
-				block "joining_countries_card_tooltip" {}
-	
-				joining_countries_card_header = {}
-	
-				# joining_countries_button_header = {
-				# 	visible = "[Not(Or(DeclareWarAlly.IsSubject, And(Not(DeclareWarAlly.IsCallAllyEnabled), DeclareWarAlly.IsCallAllyAutoJoin)))]"
-				# }
-				# joining_countries_card_header = {
-				# 	visible = "[Or(DeclareWarAlly.IsSubject, And(Not(DeclareWarAlly.IsCallAllyEnabled), DeclareWarAlly.IsCallAllyAutoJoin))]"
-				# }
-	
-				# joining_countries_button_header = {
-				# 	visible = "[And(DeclareWarAlly.IsCallAllyEnabled, Or(DeclareWarAlly.WillJoinIfCalled, And(DeclareWarAlly.WillJoinBecauseOfLandPromised, DeclareWarAlly.IsPromiseLandChecked)))]"
-				# }
-				# joining_countries_card_header = {
-				# 	visible = "[Not(And(DeclareWarAlly.IsCallAllyEnabled, Or(DeclareWarAlly.WillJoinIfCalled, And(DeclareWarAlly.WillJoinBecauseOfLandPromised, DeclareWarAlly.IsPromiseLandChecked))))]"
-				# }
-	
-	
-				widget = {
-					layoutpolicy_horizontal = expanding
-					size = { -1 25 }
-	
-					hbox = {
-						margin = { 5 0 }
-						text_single = {
-							size = {70 20}
-							autoresize = no
-							align = center|nobaseline
-							raw_text = "[DeclareWarAlly.GetCountry.GetTotalArmyStrengthAndPotentialLevies]@army_strength!"
+				size = { -1 25 }
+
+				hbox = {
+					margin = { 5 0 }
+					text_single = {
+						size = {70 20}
+						autoresize = no
+						align = center|nobaseline
+						raw_text = "[DeclareWarAlly.GetLandStrength]@army_strength!"
+					}
+
+					divider_flavor_01 = { 
+						blockoverride "divider_margin" {}
+						size = {9 -1}
+					}
+
+					text_single = {
+						size = {70 20}
+						autoresize = no
+						align = center|nobaseline
+						raw_text = "[DeclareWarAlly.GetCountry.GetTotalShips]@navy_strength!"
+					}
+
+					divider_flavor_01 = {
+						block "joining_countries_declare_war_show_promise_land" {
+							visible = "[Not(DeclareWarAlly.IsSubject)]"
 						}
-	
-						divider_flavor_01 = { 
-							blockoverride "divider_margin" {}
-							size = {9 -1}
-						}
-	
-						text_single = {
-							size = {70 20}
-							autoresize = no
-							align = center|nobaseline
-							raw_text = "[DeclareWarAlly.GetCountry.GetTotalShips]@navy_strength!"
-						}
-	
-						divider_flavor_01 = {
-							block "joining_countries_declare_war_show_promise_land" {
-								visible = "[Not(DeclareWarAlly.IsSubject)]"
+						blockoverride "divider_margin" {}
+						size = {9 -1}
+					}
+
+					widget = {
+						layoutpolicy_vertical = expanding
+						size = { 67 -1 }
+
+						hbox = {
+							expand = {}
+
+							icon = {
+								block "joining_countries_declare_war_show_promise_land" {
+									visible = "[Not(DeclareWarAlly.IsSubject)]"
+								}
+								size = {18 18}
+								texture = "[GetConceptTexture('area')]"
 							}
-							blockoverride "divider_margin" {}
-							size = {9 -1}
+
+							widget = {
+								size = { 19 19 }
+								# Avoiding assert when checking relations and also simplifying code in checkboxes
+								# Use the same visible as for call ally as they are always together
+								block "joining_countries_declare_war_show_promise_land" {
+									visible = "[Not(DeclareWarAlly.IsSubject)]"
+								}
+							
+								# Enabled checkboxes
+								button_checkbox = {
+									size = { 19 19 }
+									enabled = "[DeclareWarAlly.IsPromiseLandEnabled]"
+
+									tooltipwidget = {
+										SimpleContextualTooltipType = {
+											blockoverride "title_icon" {
+												country_flag_small = {
+													datacontext = "[DeclareWarAlly.GetCountry]"
+												}
+											}
+											blockoverride "title_text" {
+												text = "[DeclareWarAlly.GetCountry.GetLongNameWithNoTooltip]"
+											}
+											blockoverride "concept_link" {
+												text = [call_to_arms|e]
+											}
+											lowpriotextcontext = "[DeclareWarAlly.GetPromiseLandTooltip]"
+											blockoverride "tooltip_extra_content" {
+												TooltipFunctionalBlock = {
+													using = tooltip_left_click_template
+												
+													blockoverride "action_left_text" {
+														text = "PROMISE_LAND"
+													}
+												}
+											}
+										}
+									}
+									checked = "[DeclareWarAlly.IsPromiseLandChecked]"
+									onclick = "[DeclareWarAlly.OnPromiseLandClick]"
+								}
+							}
+							expand = {}
 						}
-	
-						expand = {}
 					}
 				}
 			}
@@ -1854,19 +1591,29 @@ types WarGoals {
 
 	type declare_war_comparisson = text_single {
 		block "declare_war_comparison_visible" {}
-		margin = {20}
-		margin_top = 8
-		margin_bottom = 14
-		block "declare_war_comparison_banner" {
-			background = {
-				texture = "gfx/interface/component_tiles/war_predition_banner_brown.dds"
+		margin = {15 5}
+		background = {
+			texture = "gfx/interface/component_tiles/circle_container_flat.dds"
+			mirror = horizontal
+			texture_density = 2
+			spriteType = corneredstretched
+			spriteBorder = { 16 0 }
+			alpha = 1
+
+			modify_texture = {
+				using = color_bg_brown_texture
+			}
+			modify_texture = {
+				using = overlay_striped_texture
+				blend_mode = overlay
+				alpha = 0.2
+			}
+			modify_texture = {
+				texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_solid.dds"
+				blend_mode = multiply
+				alpha = 0.4
 			}
 		}
-		mirror = horizontal
-		texture_density = 2
-		spriteType = corneredstretched
-		spriteBorder = { 16 0 }
-		alpha = 1
 		default_format = "#yellow_titles"
 		align = nobaseline
 		fontsize = 14
@@ -1874,440 +1621,401 @@ types WarGoals {
 		block "declare_war_comparison_text" {
 			raw_text = " "
 		}
+		icon = {
+			parentanchor = center
+			position = {0 -3}
+			size = {107% 100%}
+			using = baroque_corner_flavor_01
+		}
+	}
+
+	type joining_countries_button_header = button {
+		layoutpolicy_horizontal = expanding
+		size = { -1 30 }
+		using = bg_card_header_01
+
+		using = color_black_texture
+		texture_density = 2
+
+		modify_texture = {
+			block "joining_countries_declare_war_ally_color" {
+				visible = "[Not(DeclareWarAlly.IsSubject)]"
+				using = color_low_green_texture
+				alpha = 0.7
+			}
+		}
+
+		modify_texture = {
+			block "joining_countries_declare_war_enemy_color" {
+				visible = no
+				using = color_dark_red_texture
+				alpha = 0.8
+			}
+		}
+
+		modify_texture = {
+			visible = "[DeclareWarAlly.IsSubject]"
+			using = color_low_green_texture
+			alpha = 0.7
+		}
+
+		modify_texture = {
+			texture = "[GetGraphicalCultureTexture('header_pattern')]"
+			texture_density = 2.3
+			spriteType = corneredtiled
+			blend_mode = overlay
+			alpha = 0.7
+		}
+		
+		modify_texture = {
+			texture = "gfx/interface/component_overlay/cloth_texture.dds"
+			texture_density = 2
+			spriteType = Corneredtiled
+			spriteborder = { 0 0 }
+			blend_mode = overlay
+			alpha = 0.2
+		}
+		
+		icon = {
+			size = {100% 100%}
+			texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+			alpha = 0.2
+			modify_texture = {
+				texture = "gfx/interface/colors/clergy.dds"
+				blend_mode = multiply
+			}
+		}
+
+		hbox = {
+			ignoreinvisible = yes
+			margin_right = 5
+
+			widget = {
+				layoutpolicy_horizontal = expanding
+				size = { -1 30 }
+				hbox = {
+					margin = { -1 1 }
+					spacing = 4
+
+					country_flag_small = {
+						blockoverride "country_flag_small_size" {size = { 42 28 }}
+						datacontext = "[DeclareWarAlly.GetCountry]"
+					}
+
+					text_single = {
+						maximumsize = {80 20}
+						text = "[DeclareWarAlly.GetCountry.GetName]"
+					}
+
+					expand = {}
+
+					widget = {
+						size = { 29 29 }
+
+						visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
+						
+						piechart = {
+							visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
+							parentanchor = center
+
+							size = { 90% 90% }
+
+							using = piechart_angles
+
+							icon = {
+								texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+								size = { 97% 97% }
+								parentanchor = center
+								color = { 0.45 0.59  0.67 1 }
+								alpha = 0.3
+							}
+
+							pieslice = {
+								texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+								value = "[DeclareWarAlly.GetTruceProgress]"
+								color = { 0.01 0.6 0.9 1 }
+							}
+
+							pieslice = {
+								texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+								value = "[Subtract_float('(float)100.0', DeclareWarAlly.GetTruceProgress)]"
+								color = { 1 1 1 0 }
+							}
+						}
+
+						icon = {
+							size = { 80% 80% }
+							visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
+							texture = "gfx/interface/icons/diplomatic_status/truce.dds"
+							parentanchor = center
+							
+							tooltipwidget = {
+								BasicFunctionalTooltip = {
+									blockoverride "tooltip_content" {
+										TooltipTextBlock = {
+											blockoverride "text" {
+												text = "[SelectLocalization(ObjectsEqual(DeclareWarAlly.GetSideLeader, Player.Self), 'CANT_BREAK_COBELLIGERENT_TRUCE', 'BREAKING_COBELLIGERENT_TRUCE')]"
+											}
+							
+											blockoverride "textblock_background_tint"  {
+												modify_texture = {
+													using = color_dark_red_texture
+													alpha = 0.8
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+
+					# icon = {
+					# 	position = { -10 0 }
+					# 	allow_outside = yes
+					# 	size = {20 20}
+					# 	visible = "[And3(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.WillJoinBecauseOfLandPromised, Not(DeclareWarAlly.GetCountry.HasHumanController))]"
+					# 	texture = "[GetConceptTexture('area')]"
+					# 	tooltipwidget = {
+					# 		SimpleContextualTooltipType = {
+					# 			blockoverride "title_icon" {
+					# 				country_flag_small = {
+					# 					datacontext = "[DeclareWarAlly.GetCountry]"
+					# 				}
+					# 			}
+					# 			blockoverride "title_text" {
+					# 				text = "[DeclareWarAlly.GetCountry.GetLongNameWithNoTooltip]"
+					# 			}
+					# 			blockoverride "concept_link" {
+					# 				text = [call_to_arms|e]
+					# 			}
+
+					# 			lowpriotextcontext = "WILL_ACCEPT_PROMISE_LAND"
+					# 		}
+					# 	}
+					# }
+
+					icon = {
+						size = {23 23}
+						visible = "[Or(DeclareWarAlly.IsSubject, And3(DeclareWarAlly.IsCallAllyCheckedOrAutoJoined,DeclareWarAlly.WillJoinIfCalled, Not(DeclareWarAlly.GetCountry.HasHumanController)))]"
+
+						framesize = { 47 46 }
+						texture = "gfx/interface/icons/diplomatic_status/ai_accept_decline_icon.dds"
+						frame = 2
+					}
+
+					icon = {
+						size = {23 23}
+						visible = "[And(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.GetCountry.HasHumanController)]"
+
+						framesize = { 46 46 }
+						texture = "gfx/interface/icons/diplomatic_status/ai_accept_decline_icon.dds"
+						frame = 3
+					}
+
+					icon = {
+						size = {23 23}
+						visible = "[And3(Not(DeclareWarAlly.IsSubject), Not(DeclareWarAlly.WillJoinIfCalled), Not(DeclareWarAlly.GetCountry.HasHumanController))]"
+
+						icon = {
+							parentanchor = left|bottom
+							position = { -8 0}
+							size = {13 13}
+							visible = "[And3(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.WillJoinBecauseOfLandPromised, Not(DeclareWarAlly.GetCountry.HasHumanController))]"
+							texture = "[GetConceptTexture('area')]"
+						}
+
+						framesize = { 47 46 }
+						texture = "gfx/interface/icons/diplomatic_status/ai_accept_decline_icon.dds"
+						frame = 1
+					}
+
+					# IS AUTOJOIN
+					icon = {
+						size = { 19 19 }
+						visible = "[DeclareWarAlly.IsSubject]"
+						texture = "gfx/interface/icons/treaty_type/become_subject.dds"
+
+						glow = {
+							name = "drop_shadow"
+							glow_radius = 3
+							color = {0.0 0.0 0.0 1.0}
+							alpha = 0.3
+						}
+					}
+
+					# call into the war
+					widget = {
+						size = { 21 21 }
+						# Avoiding assert when checking relations and also simplifying code in checkboxes
+						visible = "[And(Not(DeclareWarAlly.IsOriginalLeader), DeclareWarAlly.IsCallAllyVisible)]"
+		
+						# Enabled checkboxes
+						button_checkbox_alt = {
+							size = { 21 21 }
+							visible = "[DeclareWarAlly.IsCallAllyVisible]"
+							enabled = "[DeclareWarAlly.IsCallAllyEnabled]"
+							
+							tooltipwidget = {
+								SimpleContextualTooltipType = {
+									blockoverride "title_icon" {
+										country_flag_small = {
+											datacontext = "[DeclareWarAlly.GetCountry]"
+										}
+									}
+
+									blockoverride "tooltip_content" {
+										TooltipBlockList = {
+											visible = "[Not(DeclareWarAlly.GetCountry.HasHumanController)]"
+											textcontext = "[DeclareWarAlly.GetAreWillingToJoinTooltip]"
+										}
+
+										TooltipTextBlock = {
+											visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
+
+											blockoverride "text" {
+												text = "[SelectLocalization(ObjectsEqual(DeclareWarAlly.GetSideLeader, Player.Self), 'CANT_BREAK_COBELLIGERENT_TRUCE', 'BREAKING_COBELLIGERENT_TRUCE')]"
+											}
+							
+											blockoverride "textblock_background_tint"  {
+												modify_texture = {
+													using = color_dark_red_texture
+													alpha = 0.8
+												}
+											}
+										}
+										TooltipTextBlock = {
+											visible = "[DeclareWarAlly.GetCountry.HasHumanController]"
+											blockoverride "text" {
+												text = "HUMAN_PLAYER_RESPONSE"
+											}
+											blockoverride "textblock_background_tint"  {
+												modify_texture = {
+													using = color_yellow_texture
+												}
+											}
+										}
+									}									
+
+									blockoverride "title_text" {
+										text = "[DeclareWarAlly.GetCountry.GetLongNameWithNoTooltip]"
+									}
+									blockoverride "concept_link" {
+										text = [call_to_arms|e]
+									}
+								}
+							}
+							checked = "[DeclareWarAlly.IsCallAllyCheckedOrAutoJoined]"
+							onclick = "[DeclareWarAlly.OnCallAllyClick]"
+							onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCountry( DeclareWarAlly.GetCountry )]"
+						}
+					}
+
+					# expand subjects
+					widget = {
+						size = { 21 21 }
+						# Avoiding assert when checking relations and also simplifying code in checkboxes
+						visible = "[DeclareWarAlly.HasSubjectAllies]"
+		
+						# Enabled checkboxes
+						button = {
+							icon = {
+								size = { 21 21 }
+								visible = "[Not(DeclareWarAlly.IsExpanded)]"
+								texture = "gfx/interface/buttons/flats/button_simple_right.dds"
+								using = button_regular_icon_color
+							}
 	
-	}
+							icon = {
+								size = { 21 21 }
+								visible = "[DeclareWarAlly.IsExpanded]"
+								texture = "gfx/interface/buttons/flats/button_simple_down.dds"
+								using = button_regular_icon_color
+							}
 
-	type promise_land_button = statebutton_checkbox_diamond_frame {
-		icon = {
-			parentanchor = center
-			size = {50% 50%}
-			block "checked_visible" {
-				visible = no
-			}
-			texture = "[GetConceptTexture('area')]"
-		}
-
-		icon = {
-			parentanchor = center
-			size = {50% 50%}
-			block "unchecked_visible" {
-				visible = no
-			}
-			texture = "[GetConceptTexture('area')]"
-			modify_texture = {
-				using = color_black_texture
-				blend_mode = multiply
-				alpha = 0.6
+							size = { 100% 100% }
+							onclick = "[DeclareWarAlly.ToggleExpanded]"
+							action_tooltip = { title = "OUTLINER_SETTINGS_TOGGLE_TOOLTIP" }
+							tooltipwidget = { BasicFunctionalTooltip = {} }
+						}
+					}
+				}
 			}
 		}
-	}
 
-	type make_cobeligerent_button = statebutton_checkbox_diamond_frame {
-		icon = {
-			parentanchor = center
-			size = {50% 50%}
-			block "checked_visible" {
-				visible = no
-			}
-			texture = "gfx/interface/icons/control_groups/country.dds"
+		action_tooltip = {
+			click_type = left
+			click_mode = single
+			title = "game_concept_call_to_arms"
+			enabled = "[DeclareWarAlly.IsCallAllyEnabled]"
+			description = "[DeclareWarAlly.GetAreWillingToJoinTooltip]"
+			on_action = "[DeclareWarAlly.OnCallAllyClick]"
+			visible = "[And(Not(DeclareWarAlly.IsOriginalLeader), DeclareWarAlly.IsCallAllyVisible)]"
 		}
 
-		icon = {
-			parentanchor = center
-			size = {50% 50%}
-			block "unchecked_visible" {
-				visible = no
-			}
-			texture = "gfx/interface/icons/control_groups/country.dds"
-			modify_texture = {
-				using = color_black_texture
-				blend_mode = multiply
-				alpha = 0.6
-			}
-		}
-	}
+		tooltipwidget = {
+			SimpleContextualTooltipType = {
+				datacontext = "[DeclareWarAlly.GetCountry]"
+				blockoverride "title_icon" {
+					country_flag_small = {
+						datacontext = "[DeclareWarAlly.GetCountry]"
+					}
+				}
+				blockoverride "title_text" {
+					text = "[DeclareWarAlly.GetCountry.GetLongNameWithNoTooltip]"
+				}
+				blockoverride "concept_link" {
+					text = [call_to_arms|e]
+				}
+				blockoverride "tooltip_content" {
+					TooltipStringPairList = {
+						visible = "[Not(DeclareWarAlly.GetCountry.HasHumanController)]"
+						textcontext = "[DeclareWarAlly.GetAreWillingToJoinTooltip]"
+					}
 
-	# type joining_countries_button_header = button {
-	# 	layoutpolicy_horizontal = expanding
-	# 	size = { -1 30 }
-	# 	using = bg_card_header_01
+					TooltipTextBlock = {
+						visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
 
-	# 	using = color_black_texture
-	# 	texture_density = 2
-
-	# 	modify_texture = {
-	# 		block "joining_countries_declare_war_ally_color" {
-	# 			visible = "[Or(DeclareWarAlly.IsSubject, And(DeclareWarAlly.IsJoiningWar, Not(DeclareWarAlly.GetCountry.HasHumanController)))]"
-	# 		}
-	# 		using = color_low_green_texture
-	# 		alpha = 0.8
-	# 	}
-
-	# 	modify_texture = {
-	# 		block "not_joining_countries_declare_war_ally_color" {
-	# 			visible = "[Not(Or(DeclareWarAlly.IsSubject, And(DeclareWarAlly.IsJoiningWar, Not(DeclareWarAlly.GetCountry.HasHumanController))))]"
-	# 		}
-	# 		using = color_mid_blue_texture
-	# 		alpha = 0.8
-	# 	}
-
-	# 	modify_texture = {
-	# 		block "joining_countries_declare_war_enemy_color" {
-	# 			visible = no
-	# 		}
-	# 		using = color_dark_red_texture
-	# 		alpha = 0.8
-	# 	}
+						blockoverride "text" {
+							text = "[SelectLocalization(ObjectsEqual(DeclareWarAlly.GetSideLeader, Player.Self), 'CANT_BREAK_COBELLIGERENT_TRUCE', 'BREAKING_COBELLIGERENT_TRUCE')]"
+						}
 		
-	# 	modify_texture = {
-	# 		block "not_joining_countries_declare_war_enemy_color" {
-	# 			visible = no
-	# 		}
-	# 		using = color_bg_brown_texture
-	# 		alpha = 0.8
-	# 	}
+						blockoverride "textblock_background_tint"  {
+							modify_texture = {
+								using = color_dark_red_texture
+								alpha = 0.8
+							}
+						}
+					}
+					TooltipTextBlock = {
+						visible = "[DeclareWarAlly.GetCountry.HasHumanController]"
+						blockoverride "text" {
+							text = "HUMAN_PLAYER_RESPONSE"
+						}
+						blockoverride "textblock_background_tint"  {
+							modify_texture = {
+								using = color_yellow_texture
+							}
+						}
+					}
+					TooltipTextBlock = {
+						visible = "[And3(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.WillJoinBecauseOfLandPromised, Not(DeclareWarAlly.GetCountry.HasHumanController))]"
+						blockoverride "text" {
+							text = "WILL_ACCEPT_PROMISE_LAND"
+						}
+						blockoverride "textblock_background_tint"  {
+							modify_texture = {
+								using = color_light_green_texture
+							}
+						}
+					}
+				}
+			}
+		}
 
-	# 	modify_texture = {
-	# 		texture = "[GetGraphicalCultureTexture('header_pattern')]"
-	# 		texture_density = 2.3
-	# 		spriteType = corneredtiled
-	# 		blend_mode = overlay
-	# 		alpha = 0.7
-	# 	}
-		
-	# 	modify_texture = {
-	# 		texture = "gfx/interface/component_overlay/cloth_texture.dds"
-	# 		texture_density = 2
-	# 		spriteType = Corneredtiled
-	# 		spriteborder = { 0 0 }
-	# 		blend_mode = overlay
-	# 		alpha = 0.2
-	# 	}
-		
-	# 	icon = {
-	# 		size = {100% 100%}
-	# 		texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
-	# 		alpha = 0.2
-	# 		modify_texture = {
-	# 			texture = "gfx/interface/colors/clergy.dds"
-	# 			blend_mode = multiply
-	# 		}
-	# 	}
-
-	# 	hbox = {
-	# 		ignoreinvisible = yes
-
-	# 		widget = {
-	# 			layoutpolicy_horizontal = expanding
-	# 			size = { -1 30 }
-	# 			hbox = {
-	# 				margin = { -1 1 }
-	# 				spacing = 4
-
-	# 				country_flag_small = {
-	# 					blockoverride "country_flag_small_size" {size = { 42 28 }}
-	# 					datacontext = "[DeclareWarAlly.GetCountry]"
-	# 				}
-
-	# 				text_single = {
-	# 					maximumsize = {80 20}
-	# 					text = "[DeclareWarAlly.GetCountry.GetName]"
-	# 				}
-
-	# 				expand = {}
-
-	# 				widget = {
-	# 					size = { 29 29 }
-
-	# 					visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
-						
-	# 					piechart = {
-	# 						visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
-	# 						parentanchor = center
-
-	# 						size = { 90% 90% }
-
-	# 						using = piechart_angles
-
-	# 						icon = {
-	# 							texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-	# 							size = { 97% 97% }
-	# 							parentanchor = center
-	# 							color = { 0.45 0.59  0.67 1 }
-	# 							alpha = 0.3
-	# 						}
-
-	# 						pieslice = {
-	# 							texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-	# 							value = "[DeclareWarAlly.GetTruceProgress]"
-	# 							color = { 0.01 0.6 0.9 1 }
-	# 						}
-
-	# 						pieslice = {
-	# 							texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-	# 							value = "[Subtract_float('(float)100.0', DeclareWarAlly.GetTruceProgress)]"
-	# 							color = { 1 1 1 0 }
-	# 						}
-	# 					}
-
-	# 					icon = {
-	# 						size = { 80% 80% }
-	# 						visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
-	# 						texture = "gfx/interface/icons/diplomatic_status/truce.dds"
-	# 						parentanchor = center
-							
-	# 						tooltipwidget = {
-	# 							BasicFunctionalTooltip = {
-	# 								blockoverride "tooltip_content" {
-	# 									TooltipTextBlock = {
-	# 										blockoverride "text" {
-	# 											text = "[SelectLocalization(ObjectsEqual(DeclareWarAlly.GetSideLeader, Player.Self), 'CANT_BREAK_COBELLIGERENT_TRUCE', 'BREAKING_COBELLIGERENT_TRUCE')]"
-	# 										}
-							
-	# 										blockoverride "textblock_background_tint"  {
-	# 											modify_texture = {
-	# 												using = color_dark_red_texture
-	# 												alpha = 0.8
-	# 											}
-	# 										}
-	# 									}
-	# 								}
-	# 							}
-	# 						}
-	# 					}
-	# 				}
-
-	# 				widget = {
-	# 					size = { 19 19 }
-	# 					block "declare_war_promise_land_button" {
-	# 						# Avoiding assert when checking relations and also simplifying code in checkboxes
-	# 						block "joining_countries_declare_war_show_promise_land" {
-	# 							visible = "[Not(DeclareWarAlly.IsSubject)]"
-	# 						}
-						
-	# 						# Enabled checkboxes
-	# 						button_checkbox = {
-	# 							size = { 19 19 }
-	# 							visible = "[DeclareWarAlly.IsPromiseLandVisible]"
-	# 							enabled = "[DeclareWarAlly.IsPromiseLandEnabled]"
-
-	# 							tooltipwidget = {
-	# 								SimpleContextualTooltipType = {
-	# 									blockoverride "title_icon" {
-	# 										country_flag_small = {
-	# 											datacontext = "[DeclareWarAlly.GetCountry]"
-	# 										}
-	# 									}
-	# 									blockoverride "title_text" {
-	# 										text = "[DeclareWarAlly.GetCountry.GetLongNameWithNoTooltip]"
-	# 									}
-	# 									blockoverride "concept_link" {
-	# 										text = [call_to_arms|e]
-	# 									}
-	# 									lowpriotextcontext = "[DeclareWarAlly.GetPromiseLandTooltip]"
-	# 									blockoverride "tooltip_extra_content" {
-	# 										TooltipFunctionalBlock = {
-	# 											using = tooltip_left_click_template
-											
-	# 											blockoverride "action_left_text" {
-	# 												text = "PROMISE_LAND"
-	# 											}
-	# 										}
-	# 									}
-	# 								}
-	# 							}
-	# 							checked = "[DeclareWarAlly.IsPromiseLandChecked]"
-	# 							onclick = "[DeclareWarAlly.OnPromiseLandClick]"
-	# 						}
-	# 					}
-	# 				}
-
-	# 				# icon = {
-	# 				# 	position = { -10 0 }
-	# 				# 	allow_outside = yes
-	# 				# 	size = {20 20}
-	# 				# 	visible = "[And3(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.WillJoinBecauseOfLandPromised, Not(DeclareWarAlly.GetCountry.HasHumanController))]"
-	# 				# 	texture = "[GetConceptTexture('area')]"
-	# 				# 	tooltipwidget = {
-	# 				# 		SimpleContextualTooltipType = {
-	# 				# 			blockoverride "title_icon" {
-	# 				# 				country_flag_small = {
-	# 				# 					datacontext = "[DeclareWarAlly.GetCountry]"
-	# 				# 				}
-	# 				# 			}
-	# 				# 			blockoverride "title_text" {
-	# 				# 				text = "[DeclareWarAlly.GetCountry.GetLongNameWithNoTooltip]"
-	# 				# 			}
-	# 				# 			blockoverride "concept_link" {
-	# 				# 				text = [call_to_arms|e]
-	# 				# 			}
-
-	# 				# 			lowpriotextcontext = "WILL_ACCEPT_PROMISE_LAND"
-	# 				# 		}
-	# 				# 	}
-	# 				# }
-
-	# 				widget = {
-	# 					size = { 23 23}
-	# 					visible = "[Not(DeclareWarAlly.IsSubject)]"
-	# 					icon = {
-	# 						size = {100% 100%}
-	# 						block "joining_countries_declare_war_tick_visible" {
-	# 							visible = "[Or(DeclareWarAlly.IsSubject, And(DeclareWarAlly.WillJoinIfCalled, Not(DeclareWarAlly.GetCountry.HasHumanController)))]"
-	# 						}
-
-	# 						framesize = { 46 46 }
-	# 						texture = "gfx/interface/icons/diplomatic_status/ai_accept_decline_icon.dds"
-	# 						frame = 2
-	# 					}
-
-	# 					icon = {
-	# 						size = {100% 100%}
-	# 						block "joining_countries_declare_war_question_visible" {
-	# 							visible = "[And(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.GetCountry.HasHumanController)]"
-	# 						}
-
-	# 						framesize = { 46 46 }
-	# 						texture = "gfx/interface/icons/diplomatic_status/ai_accept_decline_icon.dds"
-	# 						frame = 3
-	# 					}
-
-	# 					icon = {
-	# 						size = {100% 100%}
-	# 						block "joining_countries_declare_war_cross_visible" {
-	# 							visible = "[And3(Not(DeclareWarAlly.IsSubject), Not(DeclareWarAlly.WillJoinIfCalled), Not(DeclareWarAlly.GetCountry.HasHumanController))]"
-	# 						}
-
-	# 						icon = {
-	# 							parentanchor = left|bottom
-	# 							size = {13 13}
-	# 							visible = "[And3(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.WillJoinBecauseOfLandPromised, Not(DeclareWarAlly.GetCountry.HasHumanController))]"
-	# 							texture = "[GetConceptTexture('area')]"
-	# 						}
-
-	# 						framesize = { 46 46 }
-	# 						texture = "gfx/interface/icons/diplomatic_status/ai_accept_decline_icon.dds"
-	# 						frame = 1
-	# 					}
-	# 				}
-
-	# 				# icon = {
-	# 				# 	size = {23 23}
-	# 				# 	visible = "[And3(Not(DeclareWarAlly.IsSubject), Not(DeclareWarAlly.WillJoinIfCalled), Not(DeclareWarAlly.GetCountry.HasHumanController))]"
-
-	# 				# 	icon = {
-	# 				# 		parentanchor = left|bottom
-	# 				# 		size = {13 13}
-	# 				# 		visible = "[And3(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.WillJoinBecauseOfLandPromised, Not(DeclareWarAlly.GetCountry.HasHumanController))]"
-	# 				# 		texture = "[GetConceptTexture('area')]"
-	# 				# 	}
-
-	# 				# 	framesize = { 47 46 }
-	# 				# 	texture = "gfx/interface/icons/diplomatic_status/ai_accept_decline_icon.dds"
-	# 				# 	frame = 1
-	# 				# }
-
-	# 				# IS AUTOJOIN
-	# 				icon = {
-	# 					size = { 19 19 }
-	# 					visible = "[DeclareWarAlly.IsSubject]"
-	# 					texture = "[GetSubjectTypeIcon(DeclareWarAlly.GetCountry.GetDiplomacy.GetSubjectType)]"
-
-	# 					glow = {
-	# 						name = "drop_shadow"
-	# 						glow_radius = 3
-	# 						color = {0.0 0.0 0.0 1.0}
-	# 						alpha = 0.3
-	# 					}
-	# 				}
-
-	# 				# call into the war
-	# 				widget = {
-	# 					size = { 30 30 }
-	# 					block "declare_war_call_into_war_button" {
-	# 						# Avoiding assert when checking relations and also simplifying code in checkboxes
-	# 						visible = "[Not(DeclareWarAlly.IsOriginalLeader)]"
-	# 						# Enabled checkboxes
-	# 						button_checkbox_round = {
-	# 							size = { 30 30 }
-	# 							enabled = "[And(DeclareWarAlly.IsCallAllyEnabled, DeclareWarAlly.IsCallAllyVisible)]"
-								
-	# 							tooltipwidget = {
-	# 								SimpleContextualTooltipType = {
-	# 									blockoverride "title_icon" {
-	# 										country_flag_small = {
-	# 											datacontext = "[DeclareWarAlly.GetCountry]"
-	# 										}
-	# 									}
-
-	# 									blockoverride "tooltip_content" {
-	# 										TooltipBlockList = {
-	# 											visible = "[Not(DeclareWarAlly.GetCountry.HasHumanController)]"
-	# 											textcontext = "[DeclareWarAlly.GetAreWillingToJoinTooltip]"
-	# 										}
-
-	# 										TooltipTextBlock = {
-	# 											visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
-
-	# 											blockoverride "text" {
-	# 												text = "[SelectLocalization(ObjectsEqual(DeclareWarAlly.GetSideLeader, Player.Self), 'CANT_BREAK_COBELLIGERENT_TRUCE', 'BREAKING_COBELLIGERENT_TRUCE')]"
-	# 											}
-								
-	# 											blockoverride "textblock_background_tint"  {
-	# 												modify_texture = {
-	# 													using = color_dark_red_texture
-	# 													alpha = 0.8
-	# 												}
-	# 											}
-	# 										}
-	# 										TooltipTextBlock = {
-	# 											visible = "[DeclareWarAlly.GetCountry.HasHumanController]"
-	# 											blockoverride "text" {
-	# 												text = "HUMAN_PLAYER_RESPONSE"
-	# 											}
-	# 											blockoverride "textblock_background_tint"  {
-	# 												modify_texture = {
-	# 													using = color_yellow_texture
-	# 												}
-	# 											}
-	# 										}
-	# 									}									
-
-	# 									blockoverride "title_text" {
-	# 										text = "[DeclareWarAlly.GetCountry.GetLongNameWithNoTooltip]"
-	# 									}
-	# 									blockoverride "concept_link" {
-	# 										text = [call_to_arms|e]
-	# 									}
-	# 								}
-	# 							}
-	# 							checked = "[Or(DeclareWarAlly.IsCallAllyCheckedOrAutoJoined, Not(DeclareWarAlly.IsCallAllyVisible))]"
-	# 							onclick = "[DeclareWarAlly.OnCallAllyClick]"
-	# 							onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCountry( DeclareWarAlly.GetCountry )]"
-	# 						}
-	# 					}
-	# 				}
-	# 			}
-	# 		}
-	# 	}
-
-	# 	action_tooltip = {
-	# 		click_type = left
-	# 		click_mode = single
-	# 		title = "game_concept_call_to_arms"
-	# 		enabled = "[DeclareWarAlly.IsCallAllyEnabled]"
-	# 		description = "[DeclareWarAlly.GetAreWillingToJoinTooltip]"
-	# 		on_action = "[DeclareWarAlly.OnCallAllyClick]"
-	# 		visible = "[And(Not(DeclareWarAlly.IsOriginalLeader), DeclareWarAlly.IsCallAllyVisible)]"
-	# 	}
-
-	# 	tooltipwidget = {
-	# 		using = call_to_arms_tooltip
-	# 	}
-
-	# 	onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCountry( DeclareWarAlly.GetCountry )]"
-	# 	#enabled = "[DeclareWarAlly.IsCallAllyEnabled]"
-	# }
+		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCountry( DeclareWarAlly.GetCountry )]"
+		enabled = "[DeclareWarAlly.IsCallAllyEnabled]"
+	}
 
 	type joining_countries_card_header = widget {
 		layoutpolicy_horizontal = expanding
@@ -2322,33 +2030,21 @@ types WarGoals {
 
 				modify_texture = {
 					block "joining_countries_declare_war_ally_color" {
-						visible = "[Or(DeclareWarAlly.IsSubject, And(DeclareWarAlly.IsJoiningWar, Not(DeclareWarAlly.GetCountry.HasHumanController)))]"
+						visible = "[Not(DeclareWarAlly.IsSubject)]"
+						using = color_low_green_texture
+						alpha = 0.7
 					}
-					using = color_society_texture
-					alpha = 0.8
 				}
-		
+
 				modify_texture = {
-					block "not_joining_countries_declare_war_ally_color" {
-						visible = "[Not(Or(DeclareWarAlly.IsSubject, And(DeclareWarAlly.IsJoiningWar, Not(DeclareWarAlly.GetCountry.HasHumanController))))]"
-					}
-					using = color_diplomacy_texture
-					alpha = 0.6
+					visible = "[DeclareWarAlly.IsPromiseLandVisible]"
+					using = color_low_green_texture
+					alpha = 0.7
 				}
-		
+
 				modify_texture = {
-					block "joining_countries_declare_war_enemy_color" {
-						visible = no
-					}
-					using = color_military_texture
-					alpha = 0.8
-				}
-				
-				modify_texture = {
-					block "not_joining_countries_declare_war_enemy_color" {
-						visible = no
-					}
-					using = color_bg_brown_texture
+					visible = "[Not(DeclareWarAlly.IsPromiseLandVisible)]"
+					using = color_dark_red_texture
 					alpha = 0.8
 				}
 
@@ -2381,13 +2077,13 @@ types WarGoals {
 
 		hbox = {
 			ignoreinvisible = yes
+			margin_right = 5
 
 			widget = {
 				layoutpolicy_horizontal = expanding
 				size = { -1 30 }
 				hbox = {
 					margin = { -1 1 }
-					margin_right = 1
 					spacing = 4
 
 					country_flag_small = {
@@ -2405,222 +2101,129 @@ types WarGoals {
 
 					expand = {}
 
-					widget = {
-						size = { 24 24 }
+					icon = {
+						size = {23 23}
+						visible = "[And3(DeclareWarAlly.GetCountry.GetDiplomacy.GetOverlord.HasHumanController, Not(DeclareWarAlly.GetCountry.GetDiplomacy.GetOverlord.IsPlayer), Or(DeclareWarAlly.IsCallAllyAutoJoin, DeclareWarAlly.WillJoinIfCalled))]"
 
-						visible = "[And( Not(DeclareWarAlly.IsSubject), DeclareWarAlly.HasTruceWithEnemyLeader)]"
-						
-						piechart = {
-							visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
-							parentanchor = center
-
-							size = { 90% 90% }
-
-							using = piechart_angles
-
-							icon = {
-								texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-								size = { 97% 97% }
-								parentanchor = center
-								color = { 0.45 0.59  0.67 1 }
-								alpha = 0.3
-							}
-
-							pieslice = {
-								texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-								value = "[DeclareWarAlly.GetTruceProgress]"
-								color = { 0.01 0.6 0.9 1 }
-							}
-
-							pieslice = {
-								texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-								value = "[Subtract_float('(float)100.0', DeclareWarAlly.GetTruceProgress)]"
-								color = { 1 1 1 0 }
-							}
-						}
-
-						icon = {
-							size = { 70% 70% }
-							visible = "[DeclareWarAlly.HasTruceWithEnemyLeader]"
-							texture = "gfx/interface/icons/diplomatic_status/truce.dds"
-							parentanchor = center
-							
-							tooltipwidget = {
-								BasicFunctionalTooltip = {
-									blockoverride "tooltip_content" {
-										TooltipTextBlock = {
-											blockoverride "text" {
-												text = "[SelectLocalization(ObjectsEqual(DeclareWarAlly.GetSideLeader, Player.Self), 'CANT_BREAK_COBELLIGERENT_TRUCE', 'BREAKING_COBELLIGERENT_TRUCE')]"
-											}
-							
-											blockoverride "textblock_background_tint"  {
-												modify_texture = {
-													using = color_dark_red_texture
-													alpha = 0.8
-												}
-											}
-										}
-									}
-								}
-							}
-						}
+						framesize = { 46 46 }
+						texture = "gfx/interface/icons/diplomatic_status/ai_accept_decline_icon.dds"
+						frame = 3
 					}
 
-					widget = {
-						size = { 24 24 }
-						block "declare_war_promise_land_button" {
-							# Avoiding assert when checking relations and also simplifying code in checkboxes
-							block "joining_countries_declare_war_show_promise_land" {
-								visible = "[Not(DeclareWarAlly.IsSubject)]"
-							}
-						
-							# Enabled checkboxes
-							promise_land_button = {
-								size = { 100% 100% }
-								visible = "[DeclareWarAlly.IsPromiseLandVisible]"
-								enabled = "[DeclareWarAlly.IsPromiseLandEnabled]"
+					icon = {
+						size = {23 23}
+						visible = "[And(Or(Not(DeclareWarAlly.GetCountry.GetDiplomacy.GetOverlord.HasHumanController), DeclareWarAlly.GetCountry.GetDiplomacy.GetOverlord.IsPlayer), Or(DeclareWarAlly.IsCallAllyAutoJoin, DeclareWarAlly.WillJoinIfCalled))]"
 
-								tooltipwidget = {
-									SimpleContextualTooltipType = {
-										blockoverride "title_icon" {
-											icon = {
-												using = tooltip_title_icon_size
-												texture = "[GetConceptTexture('area')]"
-											}
-										}
-										blockoverride "concept_link" {
-											text = [call_to_arms|e]
-										}
-										lowpriotextcontext = "[DeclareWarAlly.GetPromiseLandTooltip]"
-									}
-								}
-								frame = "[Select_int32(DeclareWarAlly.IsPromiseLandChecked, '(int32)2', '(int32)1')]"
-
-								action_tooltip = {
-									title = "PROMISE_LAND"
-									on_action = "[DeclareWarAlly.OnPromiseLandClick]"
-									enabled = "[DeclareWarAlly.IsPromiseLandEnabled]"
-								}
-
-								blockoverride "checked_visible" {
-									visible = "[DeclareWarAlly.IsPromiseLandChecked]"
-								}
-
-								blockoverride "unchecked_visible" {
-									visible = "[Not(DeclareWarAlly.IsPromiseLandChecked)]"
-								}
-							}
-						}
+						framesize = { 47 46 }
+						texture = "gfx/interface/icons/diplomatic_status/ai_accept_decline_icon.dds"
+						frame = 2
 					}
 
-					widget = {
-						size = { 23 23}
-						visible = "[Not(DeclareWarAlly.IsSubject)]"
-						icon = {
-							size = {100% 100%}
-							block "joining_countries_declare_war_tick_visible" {
-								visible = "[Or(DeclareWarAlly.IsSubject, And(DeclareWarAlly.WillJoinIfCalled, Not(DeclareWarAlly.GetCountry.HasHumanController)))]"
-							}
-							framesize = { 46 46 }
-							texture = "gfx/interface/icons/diplomatic_status/ai_accept_decline_icon.dds"
-							frame = 2
-						}
+					icon = {
+						size = {23 23}
+						visible = "[And(Not(DeclareWarAlly.IsCallAllyAutoJoin), Not(DeclareWarAlly.WillJoinIfCalled))]"
 
-						icon = {
-							size = {100% 100%}
-							block "joining_countries_declare_war_question_visible" {
-								visible = "[And(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.GetCountry.HasHumanController)]"
-							}
-							framesize = { 46 46 }
-							texture = "gfx/interface/icons/diplomatic_status/ai_accept_decline_icon.dds"
-							frame = 3
-						}
-
-						icon = {
-							size = {100% 100%}
-							block "joining_countries_declare_war_cross_visible" {
-								visible = "[And3(Not(DeclareWarAlly.IsSubject), Not(DeclareWarAlly.WillJoinIfCalled), Not(DeclareWarAlly.GetCountry.HasHumanController))]"
-							}
-
-							icon = {
-								parentanchor = left|bottom
-								size = {13 13}
-								visible = "[And3(Not(DeclareWarAlly.IsSubject), DeclareWarAlly.WillJoinBecauseOfLandPromised, Not(DeclareWarAlly.GetCountry.HasHumanController))]"
-								texture = "[GetConceptTexture('area')]"
-							}
-
-							framesize = { 46 46 }
-							texture = "gfx/interface/icons/diplomatic_status/ai_accept_decline_icon.dds"
-							frame = 1
-						}
+						framesize = { 47 46 }
+						texture = "gfx/interface/icons/diplomatic_status/ai_accept_decline_icon.dds"
+						frame = 1
 					}
 
 					# IS AUTOJOIN
-					widget = {
-						size = { 23 23 }
+					icon = {
+						size = { 19 19 }
 						visible = "[DeclareWarAlly.IsSubject]"
-						icon = {
-							size = { 19 19 }
-							parentanchor = center
-							texture = "[GetSubjectTypeIcon(DeclareWarAlly.GetCountry.GetDiplomacy.GetSubjectType)]"
-	
-							glow = {
-								name = "drop_shadow"
-								glow_radius = 3
-								color = {0.0 0.0 0.0 1.0}
-								alpha = 0.3
-							}
-	
-							using = bg_circle_piechart
-	
+						texture = "gfx/interface/icons/treaty_type/become_subject.dds"
+
+						glow = {
+							name = "drop_shadow"
+							glow_radius = 3
+							color = {0.0 0.0 0.0 1.0}
+							alpha = 0.3
 						}
+
+						using = bg_circle_piechart
+
 					}
 
 					# call into the war
 					widget = {
-						size = { 30 30 }
-						block "declare_war_call_into_war_button" {
-							# Avoiding assert when checking relations and also simplifying code in checkboxes
-							visible = "[Not(DeclareWarAlly.IsOriginalLeader)]"
-			
-							# Enabled checkboxes
-							statebutton_checkbox_square = {
-								size = { 20 20 }
-								parentanchor = center
-								enabled = "[And3(DeclareWarAlly.IsCallAllyEnabled, DeclareWarAlly.IsCallAllyVisible, Not(And3(Not(DeclareWarAlly.IsSubject), Not(DeclareWarAlly.WillJoinIfCalled), Not(DeclareWarAlly.GetCountry.HasHumanController))))]"
-								
-								tooltipwidget = {
-									using = call_to_arms_tooltip
+						size = { 21 21 }
+						# Avoiding assert when checking relations and also simplifying code in checkboxes
+						visible = "[And(Not(DeclareWarAlly.IsOriginalLeader), DeclareWarAlly.IsCallAllyVisible)]"
+		
+						# Enabled checkboxes
+						button_checkbox_alt = {
+							size = { 21 21 }
+							visible = "[DeclareWarAlly.IsCallAllyVisible]"
+							enabled = "[DeclareWarAlly.IsCallAllyEnabled]"
+							
+							tooltipwidget = {
+								SimpleContextualTooltipType = {
+									blockoverride "title_icon" {
+										country_flag_small = {
+											datacontext = "[DeclareWarAlly.GetCountry]"
+										}
+									}
+									blockoverride "title_text" {
+										text = "[DeclareWarAlly.GetCountry.GetLongNameWithNoTooltip]"
+									}
+									blockoverride "concept_link" {
+										text = [call_to_arms|e]
+									}
+									
+									blockoverride "tooltip_content" {
+										TooltipStringPairList = {
+											textcontext = "[DeclareWarAlly.GetAreWillingToJoinTooltip]"
+										}
+									}
 								}
-								
-								frame = "[Select_int32(Or(DeclareWarAlly.IsCallAllyCheckedOrAutoJoined, Not(DeclareWarAlly.IsCallAllyVisible)), '(int32)2', '(int32)1')]"
-
-								action_tooltip = {
-									title = "game_concept_call_to_arms"
-									on_action = "[DeclareWarAlly.OnCallAllyClick]"
-									conditions = "[MakeItFailIfLoc(DeclareWarAlly.IsSubject, 'CALLALLY_SUBJECT_T')]"
-									conditions = "[MakeItFailIfLoc(And(Not(And3(DeclareWarAlly.IsCallAllyEnabled, DeclareWarAlly.IsCallAllyVisible, Not(And(Not(DeclareWarAlly.WillJoinIfCalled), Not(DeclareWarAlly.GetCountry.HasHumanController))))), Not(DeclareWarAlly.IsSubject)), 'GOOD_BAD_RATIO_T')]"
-									enabled = "[And3(DeclareWarAlly.IsCallAllyEnabled, DeclareWarAlly.IsCallAllyVisible, Not(And3(Not(DeclareWarAlly.IsSubject), Not(DeclareWarAlly.WillJoinIfCalled), Not(DeclareWarAlly.GetCountry.HasHumanController))))]"
-								}
-								onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCountry( DeclareWarAlly.GetCountry )]"
 							}
+							checked = "[DeclareWarAlly.IsCallAllyCheckedOrAutoJoined]"
+							onclick = "[DeclareWarAlly.OnCallAllyClick]"
+							onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCountry( DeclareWarAlly.GetCountry )]"
 						}
 					}
-
-					# original leader
+					
+					# expand subjects
 					widget = {
-						size = { 30 30 }
-						visible = "[DeclareWarAlly.IsOriginalLeader]"
-						icon = {
-							size = { 20 20 }
-							parentanchor = center
-							texture = "[GetConceptTexture('war')]"
+						size = { 19 19 }
+						# Avoiding assert when checking relations and also simplifying code in checkboxes
+						visible = "[DeclareWarAlly.HasSubjectAllies]"
+		
+						# Enabled checkboxes
+						widget = {
+							size = { 100% 100% }
 
-							glow = {
-								name = "drop_shadow"
-								glow_radius = 3
-								color = {0.0 0.0 0.0 1.0}
-								alpha = 0.3
+							button = {
+								size = { 100% 100% }
+								visible = "[Not(DeclareWarAlly.IsExpanded)]"
+								texture = "gfx/interface/buttons/flats/button_simple_right.dds"
+								onclick = "[DeclareWarAlly.ToggleExpanded]"
+								using = button_regular_icon_color
+								action_tooltip = { title = "OUTLINER_SETTINGS_TOGGLE_TOOLTIP" }
+								tooltipwidget = { BasicFunctionalTooltip = {} }
+								glow = {
+									name = "drop_shadow"
+									glow_radius = 3
+									color = {0.0 0.0 0.0 1.0}
+									alpha = 0.3
+								}
+							}
+	
+							button = {
+								size = { 100% 100% }
+								visible = "[DeclareWarAlly.IsExpanded]"
+								texture = "gfx/interface/buttons/flats/button_simple_down.dds"
+								onclick = "[DeclareWarAlly.ToggleExpanded]"
+								using = button_regular_icon_color
+								action_tooltip = { title = "OUTLINER_SETTINGS_TOGGLE_TOOLTIP" }
+								tooltipwidget = { BasicFunctionalTooltip = {} }
+								glow = {
+									name = "drop_shadow"
+									glow_radius = 3
+									color = {0.0 0.0 0.0 1.0}
+									alpha = 0.3
+								}
 							}
 						}
 					}
@@ -2802,34 +2405,15 @@ types WarGoals {
 # }
 
 template joining_countries_declare_war {
-	widget = {
-		size = {263 100%}
-		parentanchor = hcenter|top
-		position  = {0 34}
-		allow_outside = yes
-		ignore_layout = yes
-		widget = {
-			size = {263 80%}
-			parentanchor = hcenter|top
-			allow_outside = yes
-			ignore_layout = yes
-			icon = {
-				size = {100% 100%}
-				alwaystransparent = yes
-				using = bg_declare_war_header_sides
-				texture_density = 2
-				spriteType = corneredstretched
-				parentanchor = hcenter|top
-			}
-		}
-	}
-	
 	vbox = {
 		using = layoutpolicy_expanding
+		using = bg_declare_war_header_sides
+		
 		widget = {
 			layoutpolicy_horizontal = expanding
 			size = { -1 40 }
 			using = bg_declare_war_header_flag_01
+
 			hbox = {
 				ignoreinvisible = yes
 				margin_top = -9
@@ -2841,7 +2425,15 @@ template joining_countries_declare_war {
 						spacing = 5
 						maximumsize = {100 38}
 						parentanchor = center
+
 						expand = {}
+
+						text_single = {
+							block "joining_countries_declare_war_amount" {}
+							using = Font_Size_Small
+							default_format = "#header_titles"
+							fontsize = 14
+						}
 
 						text_single = {
 							block "joining_countries_declare_war_title" {}
@@ -2857,7 +2449,9 @@ template joining_countries_declare_war {
 
 		widget = {
 			layoutpolicy_horizontal = expanding
-			block "country_declare_war_view_size" {}
+			block "country_declare_war_view_size" {
+			}
+			
 			
 			vbox = {
 				margin = {2 0}
@@ -2873,7 +2467,9 @@ template joining_countries_declare_war {
 					
 					scrollwidget = {
 						vbox = {
+							spacing = 5
 							vbox = {
+								spacing = 5
 								widget = {
 									block "side_leader_country"{}
 									size = {230 55}
@@ -2895,14 +2491,14 @@ template joining_countries_declare_war {
 													modify_texture = {
 														visible = "[Not(Country.GetDiplomacy.IsSubject)]"
 														block "side_leader_color" {
-															using = color_society_texture
+															using = color_low_green_texture
 															alpha = 0.7
 														}
 													}
 
 													modify_texture = {
 														visible = "[Country.GetDiplomacy.IsSubject]"
-														using = color_society_texture
+														using = color_low_green_texture
 														alpha = 0.7
 													}
 
@@ -2932,13 +2528,10 @@ template joining_countries_declare_war {
 													}
 												}
 											}
-											# card_header_button_01 = {
-											# 	size = { 100% 100% }
-											# 	tooltip_enabled = no
-											# 	block "leader_toggle_expand" {
-											# 		onclick = "[DeclareWarLateralView.Vars.Toggle('player_subjects')]"
-											# 	}
-											# }
+											card_header_button_01 = {
+												size = { 100% 100% }
+												tooltip_enabled = no
+											}
 
 											hbox = {
 												ignoreinvisible = yes
@@ -2965,51 +2558,6 @@ template joining_countries_declare_war {
 
 														expand = {}
 
-														# Enabled checkboxes
-														make_cobeligerent_button = {
-															size = { 24 24 }
-															block "make_cobeligerent_button_visible" {
-																visible = "[Not(DeclareWarLateralView.IsOriginalEnemyLeader(Country.Self))]"
-															}
-															enabled = "[DeclareWarLateralView.CanUnmarkAsCobelligerent(Country.Self)]"
-
-															frame = 2
-
-															tooltipwidget = {
-																SimpleContextualTooltipType = {
-																	blockoverride "title_icon" {
-																		icon = {
-																			using = tooltip_title_icon_size
-																			texture = "gfx/interface/icons/control_groups/country.dds"
-																		}
-																	}
-																	blockoverride "title_text" {
-																		text = "UNMARK_COBELLIGERENT"
-																	}
-																	blockoverride "concept_link" {
-																		text = [cobelligerent|e]
-																	}
-																	blockoverride "tooltip_content" {
-																		TooltipTextBlock = {					
-																			blockoverride "text" {
-																				text = "game_concept_cobelligerent_desc"
-																			}
-																		}
-																	}
-																}
-															}
-															action_tooltip = {
-																title = "UNMARK_COBELLIGERENT"
-																enabled = "[DeclareWarLateralView.CanUnmarkAsCobelligerent(Country.Self)]"
-																on_action = "[DeclareWarLateralView.UnmarkAsCobelligerent(Country.Self)]"
-															}
-
-															blockoverride "checked_visible" {
-																visible = yes
-															}
-															onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCountry(Country.Self)]"
-														}
-
 														war_leader_icon = {
 															size = {26 26}
 															blockoverride "war_leader_icon_texture" {
@@ -3022,6 +2570,64 @@ template joining_countries_declare_war {
 																	visible = "[Not(Country.IsPlayer)]"
 																	texture = "gfx/interface/icons/flat_icons/declare_war/war_leader.dds"
 																	size = { 100% 100% }
+																}
+															}
+														}
+														
+														# expand subjects
+														widget = {
+															size = { 19 19 }
+															# Avoiding assert when checking relations and also simplifying code in checkboxes
+															block "side_leader_has_subjects" {
+																visible = no
+															}
+											
+															# Enabled checkboxes
+															widget = {
+																size = { 100% 100% }
+
+																button = {
+																	size = { 100% 100% }
+																	block "leader_is_collapsed" {
+																		visible = "[Not(DeclareWarLateralView.Vars.Exists('player_subjects'))]"
+																	}
+																	block "leader_toggle_expand" {
+																		onclick = "[DeclareWarLateralView.Vars.Toggle('player_subjects')]"
+																	}
+																	texture = "gfx/interface/buttons/flats/button_simple_right.dds"
+																	using = button_regular_icon_color
+
+																	action_tooltip = { title = "OUTLINER_SETTINGS_TOGGLE_TOOLTIP" }
+																	tooltipwidget = { BasicFunctionalTooltip = {} }
+
+																	glow = {
+																		name = "drop_shadow"
+																		glow_radius = 3
+																		color = {0.0 0.0 0.0 1.0}
+																		alpha = 0.3
+																	}
+																}
+										
+																button = {
+																	size = { 100% 100% }
+																	block "leader_is_expanded" {
+																		visible = "[DeclareWarLateralView.Vars.Exists('player_subjects')]"
+																	}
+																	block "leader_toggle_expand" {
+																		onclick = "[DeclareWarLateralView.Vars.Toggle('player_subjects')]"
+																	}
+																	texture = "gfx/interface/buttons/flats/button_simple_down.dds"
+																	using = button_regular_icon_color
+
+																	action_tooltip = { title = "OUTLINER_SETTINGS_TOGGLE_TOOLTIP" }
+																	tooltipwidget = { BasicFunctionalTooltip = {} }
+
+																	glow = {
+																		name = "drop_shadow"
+																		glow_radius = 3
+																		color = {0.0 0.0 0.0 1.0}
+																		alpha = 0.3
+																	}
 																}
 															}
 														}
@@ -3062,92 +2668,7 @@ template joining_countries_declare_war {
 													size = {9 -1}
 												}
 
-												hbox = {
-													layoutpolicy_horizontal = expanding
-
-													text_single = {
-														layoutpolicy_horizontal = expanding
-														autoresize = no
-														align = right|nobaseline
-														block "joining_countries_declare_war_model_size_text" {
-															visible = no
-														}
-													}
-
-													icon = {
-														size = { 19 19 }
-														block "side_leader_has_subjects" {
-															visible = no
-														}
-														texture = "gfx/interface/icons/treaty_type/become_subject.dds"
-								
-														glow = {
-															name = "drop_shadow"
-															glow_radius = 3
-															color = {0.0 0.0 0.0 1.0}
-															alpha = 0.3
-														}
-								
-													}
-
-													widget = {
-														size = { 19 19 }
-										
-														# Enabled checkboxes
-														widget = {
-															size = { 100% 100% }
-						
-															# Avoiding assert when checking relations and also simplifying code in checkboxes
-															block "side_leader_has_subjects" {
-																visible = no
-															}
-						
-															button = {
-																size = { 100% 100% }
-																block "leader_is_collapsed" {
-																	visible = "[Not(DeclareWarLateralView.Vars.Exists('player_subjects'))]"
-																}
-																block "leader_toggle_expand" {
-																	onclick = "[DeclareWarLateralView.Vars.Toggle('player_subjects')]"
-																}
-																texture = "gfx/interface/buttons/flats/button_simple_right.dds"
-																using = button_regular_icon_color
-						
-																action_tooltip = { title = "OUTLINER_SETTINGS_TOGGLE_TOOLTIP" }
-																tooltipwidget = { BasicFunctionalTooltip = {} }
-						
-																glow = {
-																	name = "drop_shadow"
-																	glow_radius = 3
-																	color = {0.0 0.0 0.0 1.0}
-																	alpha = 0.3
-																}
-															}
-									
-															button = {
-																size = { 100% 100% }
-																block "leader_is_expanded" {
-																	visible = "[DeclareWarLateralView.Vars.Exists('player_subjects')]"
-																}
-																block "leader_toggle_expand" {
-																	onclick = "[DeclareWarLateralView.Vars.Toggle('player_subjects')]"
-																}
-																texture = "gfx/interface/buttons/flats/button_simple_down.dds"
-																using = button_regular_icon_color
-						
-																action_tooltip = { title = "OUTLINER_SETTINGS_TOGGLE_TOOLTIP" }
-																tooltipwidget = { BasicFunctionalTooltip = {} }
-						
-																glow = {
-																	name = "drop_shadow"
-																	glow_radius = 3
-																	color = {0.0 0.0 0.0 1.0}
-																	alpha = 0.3
-																}
-															}
-														}
-													}
-												}
+												expand = {}
 											}
 										}
 									}
@@ -3160,29 +2681,18 @@ template joining_countries_declare_war {
 										}
 										vbox = {
 											visible = "[DeclareWarAlly.IsSubject]"
-											margin_top = 5
 											overlord_cards = {
 												block "joining_countries_declare_war_exclude_overlords" {
 													visible = "[DeclareWarAlly.HasSubjectAllies]"
 												}
-												blockoverride "declare_war_card_size" {
-													size = {220 55}
-													parentanchor = right
-												}
 											}
-											not_overlord_cards = {
-												blockoverride "declare_war_card_size" {
-													size = {220 55}
-													parentanchor = right
-												}
-											}
+											not_overlord_cards = {}
 										}
 									}
 								}
 							}
 							vbox = {
 								block "joining_countries_declare_war_model" {}
-								margin_top = 5
 								spacing = 5
 								item = {
 									vbox = {

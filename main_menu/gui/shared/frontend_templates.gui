@@ -319,7 +319,7 @@ types Frontend
 					widget = {
 						size = { 100 30 }
 						using = bg_text_mask_container_dark_brown
-						
+
 						text_single = {
 							margin = { 5 5 }
 							autoresize = yes
@@ -468,6 +468,11 @@ types Frontend
 
 					expand = {}
 
+                    icon = {
+                        texture = "gfx/interface/logos/glorpUI_logo.dds"
+                        size = { 100 100 }
+                    }
+
 					icon = {
 						texture = "gfx/interface/logos/clausewitz_logo.dds"
 						size = { 100 100 }
@@ -607,7 +612,7 @@ types Frontend
 
 							scrollwidget = {
 								vbox = {
-									margin = { 10 10 }	
+									margin = { 10 10 }
 									block "frontend_menu_middle_section" { expand = {} }
 								}
 							}

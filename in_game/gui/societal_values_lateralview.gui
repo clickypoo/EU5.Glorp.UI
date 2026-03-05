@@ -250,27 +250,68 @@ template societal_values {
 							alpha = 0
 						}
 						# LEFT PRGORESSBAR
-						progressbar = {
-							layoutpolicy_horizontal = expanding
-							size = { 0 6 }
-							using = progressbar_bar_small
-							using = progress_bar_blue_alt_left
-							value = "[Abs_float(Min_float(SocietalValueItem.GetPosition, '(float)0'))]"
-							invertprogress = yes
-						}
+                        vbox = {
+                            layoutpolicy_horizontal = expanding
+                            progressbar = {
+                                layoutpolicy_horizontal = expanding
+                                size = { 0 6 }
+                                using = progressbar_bar_small
+                                using = progress_bar_blue_alt_left
+                                value = "[Abs_float(Min_float(SocietalValueItem.GetPosition, '(float)0'))]"
+                                invertprogress = yes
+                            }
+                            progressbar = { # Max Equilibrium
+                                visible = "[LessThan_float(SocietalValueItem.GetDirection, '(float)0')]"
+                                layoutpolicy_horizontal = expanding
+                                size = { 0 4 }
+                                using = progressbar_bar_small
+                                using = progress_bar_goldish
+                                value = "[Abs_float(Multiply_float(SocietalValueItem.GetDirection, '(float)100.0'))|2]"
+                                invertprogress = yes
+                            }
+                            progressbar = { # Show as Empty (wrong direction)
+                                visible = "[Or(GreaterThan_float(SocietalValueItem.GetDirection, '(float)0'), EqualTo_float(SocietalValueItem.GetDirection, '(float)0') )]"
+                                layoutpolicy_horizontal = expanding
+                                size = { 0 4 }
+                                using = progressbar_bar_small
+                                using = progress_bar_goldish
+                                value = "[Abs_float('(float)0')]"
+                                invertprogress = yes
+                            }
+                        }
 
 						widget = {
 							size = {50 1}
 						}
 
 						# RIGHT PRGORESSBAR
-						progressbar = {
-							layoutpolicy_horizontal = expanding
-							size = { 0 6 }
-							using = progressbar_bar_small
-							using = progress_bar_blue_alt
-							value = "[Abs_float(Max_float(SocietalValueItem.GetPosition, '(float)0'))]"
-						}
+                        vbox = {
+                            layoutpolicy_horizontal = expanding
+                            progressbar = {
+                                layoutpolicy_horizontal = expanding
+                                size = { 0 6 }
+                                using = progressbar_bar_small
+                                using = progress_bar_blue_alt
+                                value = "[Abs_float(Max_float(SocietalValueItem.GetPosition, '(float)0'))]"
+                            }
+                            progressbar = { # Max Equilibrium
+                                visible = "[GreaterThan_float(SocietalValueItem.GetDirection, '(float)0')]"
+                                layoutpolicy_horizontal = expanding
+                                size = { 0 4 }
+                                using = progressbar_bar_small
+                                using = progress_bar_goldish
+                                value = "[Abs_float(Multiply_float(SocietalValueItem.GetDirection, '(float)100.0'))|2]"
+                            }
+                            progressbar = { # Show as Empty (wrong direction)
+                                visible = "[Or(LessThan_float(SocietalValueItem.GetDirection, '(float)0'), EqualTo_float(SocietalValueItem.GetDirection, '(float)0') )]"
+                                layoutpolicy_horizontal = expanding
+                                size = { 0 4 }
+                                using = progressbar_bar_small
+                                using = progress_bar_goldish
+                                value = "[Abs_float('(float)0')]"
+                                invertprogress = yes
+                            }
+                        }
 					}
 
 					expand = {}
@@ -278,7 +319,7 @@ template societal_values {
 
 				widget = {
 					size = { 60 20 }
-					position = {0 -7 }
+					position = { 0 -5 }
 					parentanchor = hcenter
 
 					background = {
@@ -343,7 +384,7 @@ template societal_values {
 						text_single = {
 							autoresize = yes
 							# size = { 40 -1 }
-							fontsize = 12
+							fontsize = 13
 							align = center|nobaseline
 							text = "[Abs_float(SocietalValueItem.GetDirection)|2]"
 
@@ -358,7 +399,7 @@ template societal_values {
 							spriteborder = { 0 0 }
 							framesize = { 32 32 }
 							texture_density = 2
-							
+
 							modify_texture = {
 								using = color_light_green_texture
 								alpha = 1
