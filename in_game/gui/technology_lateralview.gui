@@ -470,7 +470,7 @@ types AdvancesTreeView
 
 		widget = {
 			name = "margin_bottom_right" # Do not change this name
-			size = { 0 350 }
+			size = { 0 50 }
 		}
 
 		# This widget tells the layout how to offset and space the lines
@@ -543,27 +543,6 @@ types AdvancesTreeView
 							widget = {
 								size = { 77% 77% }
 								parentanchor = center
-
-								widget = {
-									parentanchor = center
-									size = { 405 405 }
-									allow_outside = yes
-								
-									#RESEARCHED COUNTRY FLAVOUR
-									background = {
-										visible = "[AdvanceNode.GetItem.IsUnlockedAdvance]"
-										texture = "gfx/interface/advance/advances_glow/advances_glow_purple.dds"
-										texture_density = 2
-										alpha = 0.6
-									}
-									#RESEARCHED 
-									background = {
-										visible = "[Not(AdvanceNode.GetItem.IsUnlockedAdvance)]"
-										texture = "gfx/interface/advance/advances_glow/advances_glow_green.dds"
-										texture_density = 2
-										alpha = 0.2
-									}
-								}
 
 								# round bckg
 								widget = {
@@ -723,6 +702,7 @@ types AdvancesTreeView
 										align = center|nobaseline
 										using = Font_Size_Medium
 										default_format = "#flavor_title"
+                                        fontsize = 25
 									}
 								}
 
@@ -755,10 +735,10 @@ types AdvancesTreeView
 																	margin_left = 10
 
 																	widget = {
-																		size = { 40 40 }
+																		size = { 45 45 }
 																		icon = {
 																			alwaystransparent = yes
-																			size = { 40 40 }
+																			size = { 45 45 }
 																			texture = "gfx/interface/icons/outliner/background/_defaultbg.dds"
 																			modify_texture = {
 																				blend_mode = overlay
@@ -767,13 +747,14 @@ types AdvancesTreeView
 																		}
 																		text_single = {
 																			layoutpolicy_horizontal = growing
-																			size = { 25 25 }
-																			parentanchor = center
-																			text = "[AdvanceEffectItem.GetIcon]"
+                                                                            size = { 30 30 }
+                                                                            parentanchor = center
+                                                                            text = "[AdvanceEffectItem.GetIcon]"
+                                                                            fontsize = 20
 																		}
 																		icon = {
 																			alwaystransparent = yes
-																			size = { 40 40 }
+																			size = { 45 45 }
 																			texture = "gfx/interface/graphical_cultures/european_gfx/circle_frame.dds"
 																			modify_texture = {
 																				blend_mode = overlay
@@ -784,12 +765,14 @@ types AdvancesTreeView
 
 																	vbox = {
 																		layoutpolicy_horizontal = expanding
+                                                                        spacing = -5
 																		text_single = {
 																			layoutpolicy_horizontal = expanding
 																			margin_left = 5
 																			margin_right = 15
 																			align = left
 																			text = "[AdvanceEffectItem.GetTitleEffect]"
+                                                                            fontsize = 19
 																		}
 
 																		text_single = {
@@ -798,6 +781,7 @@ types AdvancesTreeView
 																			margin_right = 15
 																			align = left
 																			text = "[AdvanceEffectItem.GetDescEffect]"
+                                                                            fontsize = 19
 																		}
 																	}
 
@@ -989,7 +973,7 @@ types AdvancesTreeView
 						piechart = {
 							visible = "[And3(Not(AdvanceNode.GetItem.IsOwned), AdvanceNode.GetItem.IsCurrentResearch, AdvanceNode.ShowSimplifiedVersion(TechnologyLateralView.Self))]"
 							size = { 270 270 }
-							
+
 							background = {
 								texture = "gfx/interface/buttons/bg_button.dds"
 								texture_density = 2
@@ -1009,44 +993,15 @@ types AdvancesTreeView
 									blend_mode = multiply
 								}
 							}
-							widget = {
-								visible = "[Not(AdvanceNode.GetItem.CanAddToResearchQueue)]"
-								size = { 155% 155% }
-								allow_outside = yes
-								parentanchor = center
-								#RESEARCHING
-								background = {
-									visible = "[And(Not(AdvanceNode.GetItem.CanAddToResearchQueue), Not(AdvanceNode.GetItem.IsUnlockedAdvance))]"
-									texture = "gfx/interface/advance/advances_glow/advances_glow_green.dds"
-									texture_density = 2
-								}
-								#RESEARCHING COUNTRY FLAVOUR
-								background = {	
-									visible = "[And(Not(AdvanceNode.GetItem.CanAddToResearchQueue), AdvanceNode.GetItem.IsUnlockedAdvance)]"
-									texture = "gfx/interface/advance/advances_glow/advances_glow_green_purple.dds"
-									texture_density = 2
-								}
 
-								icon = {
-									size = { 270 270 }
-									parentanchor = center
-									texture = "gfx/interface/buttons/bg_button.dds"
-									texture_density = 2 
-									modify_texture = {
-										using = color_dark_brown_texture
-										blend_mode = multiply
-									}
-								}
-							}
-							
 							using = piechart_angles
-							
+
 							pieslice = {
 								texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
 								value = "[Player.GetCurrentResearch.GetProgress]"
 								color = { 1 1 1 1 }
 							}
-							
+
 							pieslice = {
 								texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
 								value = "[Subtract_float('(float)1.0', Player.GetCurrentResearch.GetProgress)]"
@@ -1059,12 +1014,12 @@ types AdvancesTreeView
 								tooltipwidget = {
 									using = current_research_tooltip
 								}
-	
+
 								widget = {
 									size = { 77% 77% }
 									parentanchor = center
 									allow_outside = yes
-	
+
 									# round bckg
 									widget = {
 										parentanchor = center
@@ -1072,14 +1027,14 @@ types AdvancesTreeView
 										datacontext = "[AdvanceNode.GetItem.GetAdvance.GetDefinition]"
 										using = background_advance
 									}
-	
+
 									icon = {
 										visible = "[Not(AdvanceNode.GetItem.CanAddToResearchQueue)]"
 										size = { 100% 100% }
 										texture = "gfx/interface/advance/backgrounds/unavailable.dds"
 										texture_density = 2
 									}
-	
+
 									widget = {
 										size = { 100% 100% }
 										parentanchor = center
@@ -1105,33 +1060,6 @@ types AdvancesTreeView
 								parentanchor = center
 								allow_outside = yes
 
-								widget = {
-									parentanchor = center
-									size = { 405 405 }
-									allow_outside = yes
-
-									#QUEUED COUNTRY FLAVOUR
-									background = {	
-										visible = "[And3(Not(AdvanceNode.GetItem.IsCurrentResearch), AdvanceNode.GetItem.IsInResearchQueue, AdvanceNode.GetItem.IsUnlockedAdvance)]"
-										texture = "gfx/interface/advance/advances_glow/advances_glow_blue_purple.dds"
-										texture_density = 2
-									}
-
-									#QUEUED 
-									background = {	
-										visible = "[And3(Not(AdvanceNode.GetItem.IsCurrentResearch), AdvanceNode.GetItem.IsInResearchQueue, Not(AdvanceNode.GetItem.IsUnlockedAdvance))]"
-										texture = "gfx/interface/advance/advances_glow/advances_glow_blue.dds"
-										texture_density = 2
-									}
-									
-									#REQUIREMENTS MET
-									background = {
-										visible = "[AdvanceNode.GetItem.CanAddToResearchQueue]"
-										texture = "gfx/interface/advance/advances_glow/advances_glow_yellow.dds"
-										texture_density = 2
-										alpha = 0.7
-									}
-								}
 								# round bckg
 								widget = {
 									parentanchor = center
@@ -1162,7 +1090,7 @@ types AdvancesTreeView
 								}
 							}
 						}
-						
+
 						widget = {
 							visible = "[And(Not(AdvanceNode.GetItem.IsOwned), Not(AdvanceNode.ShowSimplifiedVersion(TechnologyLateralView.Self)))]"
 							size = { 270 270 }
@@ -1265,6 +1193,7 @@ types AdvancesTreeView
 										align = center|nobaseline
 										using = Font_Size_Medium
 										default_format = "#flavor_title"
+                                        fontsize = 25
 									}
 								}
 							}
@@ -1598,10 +1527,10 @@ template advances_tree_item_modifiers {
 										margin_left = 10
 
 										widget = {
-											size = { 35 35 }
+											size = { 40 40 }
 											icon = {
 												alwaystransparent = yes
-												size = { 35 35 }
+												size = { 40 40 }
 												texture = "gfx/interface/icons/outliner/background/_defaultbg.dds"
 												modify_texture = {
 													blend_mode = overlay
@@ -1609,14 +1538,15 @@ template advances_tree_item_modifiers {
 												}
 											}
 											text_single = {
-												layoutpolicy_horizontal = growing
-												size = { 25 25 }
-												parentanchor = center
-												text = "[AdvanceEffectItem.GetIcon]"
+                                                layoutpolicy_horizontal = growing
+                                                size = { 30 30 }
+                                                parentanchor = center
+                                                text = "[AdvanceEffectItem.GetIcon]"
+                                                fontsize = 20
 											}
 											icon = {
 												alwaystransparent = yes
-												size = { 35 35 }
+												size = { 40 40 }
 												texture = "gfx/interface/graphical_cultures/european_gfx/circle_frame.dds"
 												modify_texture = {
 													blend_mode = overlay
@@ -1627,12 +1557,14 @@ template advances_tree_item_modifiers {
 
 										vbox = {
 											layoutpolicy_horizontal = expanding
+                                            spacing = -5
 											text_single = {
 												layoutpolicy_horizontal = expanding
 												margin_left = 5
 												margin_right = 15
 												align = left
 												text = "[AdvanceEffectItem.GetTitleEffect]"
+                                                fontsize = 19
 											}
 
 											text_single = {
@@ -1641,6 +1573,7 @@ template advances_tree_item_modifiers {
 												margin_right = 15
 												align = left
 												text = "[AdvanceEffectItem.GetDescEffect]"
+                                                fontsize = 19
 											}
 										}
 
@@ -2311,13 +2244,13 @@ lateralview_full = {
 						zoom_min = 0.1
 						zoom_max = 1.5
 						pan_position = { 0 0 }
-						clamp_pan_position = yes
+						clamp_pan_position = no
 
 						draggable_by = left
 
 						state = {
 							name = "_zoom_changed"
-							duration = 0.2
+							duration = 0.1
 						}
 
 						zoomwidget = {
