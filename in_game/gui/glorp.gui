@@ -3,10 +3,12 @@ types glorp {
         name = "zoom_to"
         parentanchor = right
         size = { 25 25 }
-        position = { -30 7 }
+        block "position_override" {
+            position = { -30 7 }
+        }
 
         using = ui_direction_button_overlay
-        texture = "gfx/interface/buttons/flats/goto_button_alt.dds"
+        texture = "gfx/interface/icons/unit_actions/go_to.dds"
         texture_density = 2
         background = {
             using = bg_button_light_round_texture
@@ -24,11 +26,7 @@ types glorp {
             click_mode = single
             title = "GO_TO_LOCATION"
         }
-        tooltipwidget = {
-            LeftClickButtonTooltip = {
-                blockoverride "onclick_text" { text = "GO_TO" }
-            }
-        }
+
     }
 
     type stat_item_row = hbox {

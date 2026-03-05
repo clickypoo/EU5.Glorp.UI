@@ -3696,6 +3696,116 @@ OutlinerEntryBase = {
 }
 
 # Available contexts
+# "IO Laws"
+# "Outliner"
+OutlinerEntryBase = {
+	name = "io_law_entry"
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				using = outliner_entry_margin
+				margin_right = 35
+				spacing = 5
+
+				icon = {
+					size = { 20 20 }
+					texture = "[IOLawOutlinerEntry.GetIcon]"
+				}
+				OutlinerTextBase = {
+					using = layoutpolicy_expanding
+					autoresize = no
+					align = left
+					datacontext = "[IOLawOutlinerEntry]"
+					text = "OUTLINER_IO_LAW_DEBATE"
+				}
+
+				OutlinerTextBase = {
+					autoresize = yes
+					text = "OUTLINER_IO_LAW_DEBATE_SHORT"
+				}
+
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+			hbox = {
+				using = outliner_entry_margin
+				margin_right = 35
+				spacing = 5
+
+				icon = {
+					size = { 20 20 }
+					texture = "[IOLawOutlinerEntry.GetIcon]"
+				}
+				OutlinerTextBase = {
+					using = layoutpolicy_expanding
+					autoresize = no
+					align = right
+					datacontext = "[IOLawOutlinerEntry]"
+				text = "OUTLINER_IO_LAW_DEBATE_SHORT"
+				}
+			}
+		}
+	}
+
+	blockoverride "icon_content" {
+		OutlinerIconBg = {
+			piechart = {
+				size = { 100% 100% }
+				using = piechart_angles
+				parentanchor = center
+
+				icon = {
+					parentanchor = center
+					size = { 70% 70% }
+					texture = "gfx/interface/icons/laws/resolutions/law_voting.dds"
+					texture_density = 2
+				}
+
+				pieslice = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[FixedPointToFloat(IOLawOutlinerEntry.GetProgressToDeadline)]"
+					using = color_value_progress_blue
+				}
+
+				pieslice = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Subtract_float('(float)100.0', FixedPointToFloat(IOLawOutlinerEntry.GetProgressToDeadline))]"
+					using = color_value_progress_gray
+				}
+
+				tooltipwidget = {
+					using = international_organization_resolution_voting_outliner_tooltip
+				}
+			}
+		}
+	}
+
+	blockoverride "button_setup" {
+		tooltipwidget = {
+			using = international_organization_resolution_voting_outliner_tooltip
+		}
+		action_tooltip = {
+			click_type = left
+			click_mode = single
+			title = "AUTOMATED_SYSTEM_PARLIAMENT_CLICK"
+			on_action = "[IOLawOutlinerEntry.OnClick]"
+		}
+	}
+
+	blockoverride "category_color" {
+		using = color_government_texture
+	}
+}
+
+
+# Available contexts
 # "Outliner"
 # "GovernmentReform"
 OutlinerEntryBase = {
@@ -4049,7 +4159,7 @@ template cabinet_entry_action_progress {
 
 	block "cabinet_entry_progress_text" {
 		OutlinerTextBase = {
-			maximumsize = { 90 -1 }
+			maximumsize = { 100 -1 }
 			autoresize = yes
 			text = "[Cabinet.GetActionProgress]"
 		}
@@ -6867,6 +6977,17 @@ OutlinerEntryBase = {
                     fontsize = 14
 				}
 
+				icon = {
+					visible = "[And(Not(Rebel.IsTiny('(bool)no')), Not(Rebel.WantsCivilWar))]"
+					size = { 16 16 }
+					texture = "[GetConceptTexture('war')]"
+				}
+				icon = {
+					visible = "[And(Not(Rebel.IsTiny('(bool)no')), Rebel.WantsCivilWar)]"
+					size = { 16 16 }
+					texture = "[GetConceptTexture('war')]"
+				}
+
 				OutlinerTextBase = {
 					autoresize = yes
 					raw_text = "[Rebel.GetProgress|-V%2] ([Rebel.GetLastMonthsProgress|-=%2])"
@@ -7318,34 +7439,7 @@ OutlinerEntryBase = {
 	}
 
 	blockoverride "icon_content" {
-		datacontext = "[OutlinerDiplomacyEntry.GetTargetCountry]"
-		OutlinerIconBg = {
-			piechart = {
-				visible = "[GreaterThan_CFixedPoint(OutlinerDiplomacyEntry.GetTotalNumber, '(CFixedPoint)0')]"
-				parentanchor = center
-				size = { 90% 90% }
-				using = piechart_angles
-
-				pieslice = {
-					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-					value = "[Country.GetDiplomacy.GetBeingAnnexedProgress]"
-					color = { 0.01 0.6 0.9 1 }
-					alpha = 1
-				}
-
-				pieslice = {
-					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-					value = "[Subtract_float('(float)100.0', Country.GetDiplomacy.GetBeingAnnexedProgress)]"
-					color = { 0.0 0.1 0.1 1 }
-					alpha = 1
-				}
-			}
-			icon = {
-				size = { 70% 70% }
-				parentanchor = center
-				texture = "[OutlinerDiplomacyEntry.GetIcon]"
-			}
-		}
+		using = diplomacy_icon_content
 	}
 
 	blockoverride "button_setup" {
@@ -7655,7 +7749,8 @@ OutlinerEntryBase = {
 				OutlinerTextBase = {
 					using = layoutpolicy_expanding
 					autoresize = no
-					text = "[Privateer.GetNameWithNoTooltip]"
+					align = left
+					text = "[Privateer.GetArea.GetNameWithNoTooltip]"
                     fontsize = 14
 				}
 

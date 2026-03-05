@@ -136,6 +136,38 @@ template ScriptedPeaceTreaty_tooltip {
 	}
 }
 
+
+template EconomicalBaseTooltip {
+	ContextualTooltipType = {
+		blockoverride "title_icon" {
+			icon = {
+				using = tooltip_title_icon_size
+				texture = "[GetConceptTexture('economical_base')]"
+			}
+		}
+
+		blockoverride "title_text" {
+			datacontext = "[Country]"
+			text = "ECONOMICALBASE_TOOLTIP_TITLE"
+		}
+
+		blockoverride "concept_link" {
+			text = [economical_base|E]
+		}
+
+		blockoverride "tooltip_content" {
+			hbox = {
+				TooltipStringPairList = {
+					textcontext =  "[Country.GetEconomicalBaseInfo]"
+				}
+			}
+		}
+	}
+}
+
+
+
+
 template TaxBaseTooltip {
 	ContextualTooltipType = {
 		blockoverride "title_icon" {
@@ -526,7 +558,7 @@ template CountryTooltip {
 			}
 
 			TooltipTextBlock = {
-				visible = "[And(Not(Country.IsLocalPlayer), Country.GetDiplomacy.IsAtWar)]"
+				visible = "[And(Not(GetSelectedCountryOrByLocation.IsLocalPlayer), GetSelectedCountryOrByLocation.GetDiplomacy.IsAtWar)]"
 				blockoverride "text" {
 					text = "COUNTRY_TOOLTIP_IS_AT_WAR"
 				}
@@ -541,10 +573,17 @@ template CountryTooltip {
 
 			TooltipRowList = {
 				block "general_text_area" {
-					visible = "[And(Not(Country.IsLocalPlayer), Not(StringIsEmpty(Country.GetPlayerDiplomacyInfo)))]"
+					visible = "[And(GetSelectedCountryOrByLocation.IsLocalPlayer, Not(StringIsEmpty(Country.GetPlayerDiplomacyInfo)))]"
 					textcontext = "[SelectLocalization(Country.Exists, Country.GetPlayerDiplomacyInfo, Localize('COUNTRY_TOOLTIP_DOES_NOT_EXIST'))]"
 				}
 			}
+
+            # Glorp UI - Diplomatic Info
+            TooltipScrolledStringPairList = {
+                visible = "[Not(GetSelectedCountryOrByLocation.IsLocalPlayer)]"
+                blockoverride "block_scrollarea" { maximumsize = { -1 150 } minimumsize = { -1 30 } }
+                textcontext = "[GetSelectedCountryOrByLocation.GetDiplomacy.GetDiplomaticRelationsWithCountryInfo(Country.Self)]"
+            }
 		}
 	}
 }
@@ -1242,8 +1281,18 @@ template country_tooltip_subjects {
 										
 										expand = {}
 
-										text_single = {											
-											text = "[Country.GetDiplomacy.GetSubjectLoyalty|+=]"							
+										text_single = {
+											visible = "[Country.GetDiplomacy.IsDisloyalSubject]"
+											text = "[Country.GetDiplomacy.GetSubjectLoyalty|R2%/]"
+											datacontext = "[Country]"
+											tooltipwidget = {
+												using = SubjectLoyalty_tooltip
+											}
+										}
+
+										text_single = {
+											visible = "[Not(Country.GetDiplomacy.IsDisloyalSubject)]"
+											text = "[Country.GetDiplomacy.GetSubjectLoyalty|G2%/]"
 											datacontext = "[Country]"
 											tooltipwidget = {
 												using = SubjectLoyalty_tooltip
