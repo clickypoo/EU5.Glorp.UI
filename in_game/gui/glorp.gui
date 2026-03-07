@@ -6,7 +6,7 @@ types glorp {
         position = { -30 7 }
 
         using = ui_direction_button_overlay
-        texture = "gfx/interface/buttons/flats/goto_button_alt.dds"
+        texture = "gfx/interface/icons/unit_actions/go_to.dds"
         texture_density = 2
         background = {
             using = bg_button_light_round_texture
