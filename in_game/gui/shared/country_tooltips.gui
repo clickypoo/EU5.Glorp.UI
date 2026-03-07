@@ -1274,7 +1274,7 @@ template country_tooltip_subjects {
 										
 										expand = {}
 
-										text_single = {											
+										text_single = {
 											visible = "[Country.GetDiplomacy.IsDisloyalSubject]"
 											text = "[Country.GetDiplomacy.GetSubjectLoyalty|R2%/]"
 											datacontext = "[Country]"

@@ -830,7 +830,7 @@ template CountryDiplomacyTooltip {
 				using = CountryTooltip_DiplomacyStatBars
 			}
 
-            # GLORP UI - Subject Loyalty and Foreign Country Diplomatic Relations
+            # GLORP UI - Subject Loyalty
             TooltipRowList = {
                 visible = "[And(Country.GetDiplomacy.IsDisloyalSubject, Country.GetDiplomacy.IsSubject)]"
                 textcontext = "SubjectTypeDetail_DESC_NOT"
@@ -845,12 +845,13 @@ template CountryDiplomacyTooltip {
                     using = SubjectLoyalty_tooltip
                 }
             }
+
+            # GLORP UI - Diplomatic Information (Broken???)
             TooltipScrolledStringPairList = {
                 visible = "[Not(GetSelectedCountryOrByLocation.IsLocalPlayer)]"
                 blockoverride "block_scrollarea" { maximumsize = { -1 150 } minimumsize = { -1 30 } }
                 textcontext = "[GetSelectedCountryOrByLocation.GetDiplomacy.GetDiplomaticRelationsWithCountryInfo(Country.Self)]"
             }
-
             TooltipBlockList = {
                 visible = "[GetSelectedCountryOrByLocation.IsLocalPlayer]"
                 textcontext = "[Country.GetPlayerDiplomacyInfo]"
