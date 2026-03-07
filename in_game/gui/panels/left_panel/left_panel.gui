@@ -988,11 +988,26 @@ Types LeftPanelTypes
 				}
 			}
             country_flag_big = { # Glorp UI - Static Flag
-                visible = "[And3(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet)]"
+                visible = "[And4(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet, Player.MakeScope.GetVariable('useFramedStaticFlag').IsSet)]"
                 size = { 80 62 }
                 parentanchor = center
                 position = { 79 -4 }
                 datacontext = "[InGameTopbar.GetPlayer]"
+            }
+            country_flag = { # Glorp UI - Big Static Flag
+                visible = "[And4(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet, Not(Player.MakeScope.GetVariable('useFramedStaticFlag').IsSet))]"
+                size = { 90 70 }
+                parentanchor = center
+                position = { 79 -4 }
+                datacontext = "[InGameTopbar.GetPlayer]"
+                blockoverride "flag" {
+                    datacontext = "[GetCountryCoatOfArms(Country.Self)]"
+                    texture = "[CoatOfArmsWrapper.GetTexture('(int32)192','(int32)128')]"
+                    frame = "[CoatOfArmsWrapper.GetFrame('(int32)192','(int32)128')]"
+                    framesize = "[CoatOfArmsWrapper.GetFrameSizeOrFallback('(int32)192','(int32)128','(float)0.5')]"
+                    texture_density = 2
+                }
+                blockoverride "flag_frame_texture" {}
             }
 		}
 
@@ -1168,12 +1183,27 @@ Types LeftPanelTypes
                     on_action = "[OpenLateralView('government')]"
                 }
             }
-            country_flag_big = {
-                visible = "[And3(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet)]"
+            country_flag_big = { # Glorp UI - Static Flag
+                visible = "[And4(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet, Player.MakeScope.GetVariable('useFramedStaticFlag').IsSet)]"
                 size = { 125 97 }
                 parentanchor = center
-                position = { 55 -2 }
+                position = { 55 -1 }
                 datacontext = "[InGameTopbar.GetPlayer]"
+            }
+            country_flag = { # Glorp UI - Big Static Flag
+                visible = "[And4(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet, Not(Player.MakeScope.GetVariable('useFramedStaticFlag').IsSet))]"
+                size = { 147 114 }
+                parentanchor = center
+                position = { 55 -1 }
+                datacontext = "[InGameTopbar.GetPlayer]"
+                blockoverride "flag" {
+                    datacontext = "[GetCountryCoatOfArms(Country.Self)]"
+                    texture = "[CoatOfArmsWrapper.GetTexture('(int32)192','(int32)128')]"
+                    frame = "[CoatOfArmsWrapper.GetFrame('(int32)192','(int32)128')]"
+                    framesize = "[CoatOfArmsWrapper.GetFrameSizeOrFallback('(int32)192','(int32)128','(float)0.5')]"
+                    texture_density = 2
+                }
+                blockoverride "flag_frame_texture" {}
             }
         }
 
