@@ -856,6 +856,7 @@ Types LeftPanelTypes
                         }
 					}
                     button_panel_tab_ideas = {} # Idea Variation 2
+                    button_panel_tab_uniqueevents = {} # Unique Events Tab
 				}
 			}
 		}
