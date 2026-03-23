@@ -588,7 +588,7 @@ widget = {
 	}
 
 	widget = {
-		visible = "[GameIsMultiplayer]"
+		# visible = "[GameIsMultiplayer]"
 		parentanchor = bottom|left
 		widgetanchor = bottom|left
 		@mp_button_y = -5
