@@ -1,4 +1,4 @@
-types GlorpUIVanillaLocationWindowTypes
+types CMFVanillaLocationWindowTypes
 {
 	type demography_chart = widget {
 
@@ -415,7 +415,8 @@ types GlorpUIVanillaLocationWindowTypes
 						spacing = -1
 						datacontext = "[LocationBuildingItem.GetBuilding.GetType]"
 						datacontext = "[LocationBuildingItem.GetBuilding]"
-						blockoverride "flag_estate_building_card_extra"{
+						blockoverride "flag_estate_building_card_extra" {
+
 							button_square_minus = {
 								layoutpolicy_horizontal = expanding
 								block "square_icon_out_size_minus" {
@@ -840,7 +841,8 @@ types GlorpUIVanillaLocationWindowTypes
 
 							using = location_background
 
-							block "location_card_main_action_button"{
+							block "location_card_main_action_button" {
+
 								action_tooltip = {
 									click_type = left
 									click_mode = single
@@ -1875,7 +1877,8 @@ types GlorpUIVanillaLocationWindowTypes
 					parentanchor = center
 					using = army_builder_ui_action
 
-					# blockoverride "flat_sneaky_button_color"{
+					# blockoverride "flat_sneaky_button_color" {
+
 					# 	using = color_military_texture
 					# 	alpha = 0.8
 					# }
@@ -1906,8 +1909,10 @@ types GlorpUIVanillaLocationWindowTypes
 								size = { 20 20 }
 							}
 
-							blockoverride "construction_marker_tooltip"{}
-							blockoverride "construction_marker_left_action"{}
+							blockoverride "construction_marker_tooltip" {
+}
+							blockoverride "construction_marker_left_action" {
+}
 						}
 
 						text_single = {
@@ -2005,7 +2010,8 @@ types GlorpUIVanillaLocationWindowTypes
 
 	# 		tooltipwidget = {
 	# 			using = BuildingInLocation_tooltip
-	# 			blockoverride "BuildingInLocation_title"{
+	# 			blockoverride "BuildingInLocation_title" {
+
 	# 				text = "BUILDINGS_IN_LOCATION_FROM_POPTYPE"
 	# 			}
 	# 			blockoverride "building_in_location_info" {
