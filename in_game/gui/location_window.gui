@@ -1,3 +1,5 @@
+# CMF Note: All the untouched vanilla types/templates were extracted to cmf_location_window_vanilla_types.gui
+
 lateralview = {
 	name = "location_window"
 	widgetid = "location_window"
