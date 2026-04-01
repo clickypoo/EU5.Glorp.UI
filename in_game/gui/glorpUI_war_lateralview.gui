@@ -150,7 +150,7 @@ types war_types {
                     text_single = {
                         autoresize = yes
                         align = right
-                        text = "[Country.GetRaisedAndPotentialLevyStrength] [levies_icon] ([Country.GetRegularArmySize|0L] [regulars_icon])"
+						raw_text = "[Country.GetRaisedAndPotentialLevyStrength] [levies_icon] ([Country.GetRegularArmySize|0L] [regulars_icon])"
                     }
                 }
 
@@ -224,7 +224,7 @@ types war_types {
                     text_single = {
                         autoresize = yes
                         align = right
-                        text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] ([Country.GetNavySizeValue|0L] @naval_regular!)"
+						raw_text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] ([Country.GetNavySizeValue|0L] @naval_regular!)"
                     }
                 }
 

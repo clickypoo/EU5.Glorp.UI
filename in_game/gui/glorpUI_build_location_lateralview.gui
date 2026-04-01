@@ -213,7 +213,7 @@ template build_location_entry {
                                                     title = "OPEN_GOOD_PANEL"
                                                     on_action = "[ShowGoods(LocationToBuildItem.GetLocation.GetRawMaterial)]"
                                                 }
-                                                texture = "[GetGoodsIcon(LocationToBuildItem.GetLocation.GetRawMaterial))]"
+                                                texture = "[GetGoodsIcon(LocationToBuildItem.GetLocation.GetRawMaterial)]"
 
                                                 datacontext = "[LocationToBuildItem.GetLocation.GetRawMaterial]"
                                                 datacontext = "[LocationToBuildItem.GetLocation.GetOwner]"

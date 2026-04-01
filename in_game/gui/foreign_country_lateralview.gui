@@ -736,12 +736,12 @@ lateralview = {
                             text_single = {
                                 autoresize = yes
                                 align = right|nobaseline
-                                text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] "
+								raw_text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] "
                             }
                             text_single = {
                                 autoresize = yes
                                 align = right|nobaseline
-                                text = "[Country.GetNavySizeValue|0L] @naval_regular!"
+								raw_text = "[Country.GetNavySizeValue|0L] @naval_regular!"
                             }
                         }
 

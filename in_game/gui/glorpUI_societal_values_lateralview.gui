@@ -284,7 +284,7 @@ template societal_values {
 							size = {50 1}
 						}
 
-						# RIGHT PRGORESSBAR
+						# RIGHT PROGRESSBAR
                         vbox = {
                             layoutpolicy_horizontal = expanding
                             progressbar = {

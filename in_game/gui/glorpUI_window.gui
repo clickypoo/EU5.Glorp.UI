@@ -40,7 +40,7 @@ window = {
                     blockoverride "content" {
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
-                            text = "Toggles"
+                            raw_text = "Toggles"
                             down = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'left_panel' ))]"
                             tooltip_enabled = no
                             onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'left_panel' )]"
@@ -48,7 +48,7 @@ window = {
                         #
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
-                            text = "War View"
+                            raw_text = "War View"
                             down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'war_view' )]"
                             default_format = "#medium"
                             tooltip_enabled = no
@@ -57,7 +57,7 @@ window = {
 
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
-                            text = "Top Bar"
+                            raw_text = "Top Bar"
                             down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'top_bar' )]"
                             default_format = "#medium"
                             tooltip_enabled = no
@@ -67,7 +67,7 @@ window = {
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
                             default_format = "#medium"
-                            text = "Other"
+                            raw_text = "Other"
                             down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'other' )]"
                             tooltip_enabled = no
                             onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'other' )]"
