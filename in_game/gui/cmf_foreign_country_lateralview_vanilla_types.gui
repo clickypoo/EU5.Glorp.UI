@@ -1,3 +1,4 @@
+# CMF: All the vanilla types/templates from foreign_country_lateralview.gui
 template countryinfo_block_margin { margin = { 20 0 } }
 
 types SubheaderTypes {

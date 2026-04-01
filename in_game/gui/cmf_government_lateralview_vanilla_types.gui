@@ -1,3 +1,4 @@
+# CMF: All the vanilla types/templates from government_lateralview.gui
 types CountryHeaders {
     # type parliament_subheader_A = subheader_A
     # {

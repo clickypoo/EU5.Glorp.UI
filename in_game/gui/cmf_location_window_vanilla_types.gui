@@ -1,3 +1,4 @@
+# CMF: All the vanilla types/templates from location_window.gui
 types LocationWindowTypes
 {
 	type demography_chart = widget {

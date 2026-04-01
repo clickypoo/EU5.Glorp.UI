@@ -1,3 +1,4 @@
+# CMF Note: All the vanilla untouched types were extracted to cmf_foreign_country_lateralview_vanilla_types.gui
 @countryinfo_block_height = 47
 
 lateralview = {
