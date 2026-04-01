@@ -1,3 +1,4 @@
+# CMF Note: All the untouched vanilla types/templates were extracted to cmf_government_lateralview_vanilla_types.gui
 lateralview = {
 	name = "government_lateralview"
 	widgetid = "government_lateralview"
