@@ -1,4 +1,4 @@
-types CMFVanillaLocationWindowTypes
+types LocationWindowTypes
 {
 	type demography_chart = widget {
 
