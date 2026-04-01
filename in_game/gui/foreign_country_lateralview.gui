@@ -1,4 +1,5 @@
 # CMF Note: All the vanilla untouched types were extracted to cmf_foreign_country_lateralview_vanilla_types.gui
+
 @countryinfo_block_height = 47
 
 lateralview = {
@@ -518,7 +519,7 @@ lateralview = {
 									}
 
 									blockoverride "concept_link" {
-										text = [population|E]
+										text = "[population|E]"
 									}
 
 									blockoverride "tooltip_content" {
@@ -962,7 +963,7 @@ lateralview = {
 														text = "game_concept_country_modifier"
 													}
 													blockoverride "concept_link" {
-														text = [country_modifier|e]
+														text = "[country_modifier|e]"
 													}
 
 													blockoverride "tooltip_content" {
@@ -1347,7 +1348,7 @@ lateralview = {
 						button_secondary_tab_alt = {
 							using = layoutpolicy_expanding
 							visible = "[Country.Exists]"
-							blockoverride "tab_text"{
+							blockoverride "tab_text" {
 								text = "DIPLOMACY_TEXT"
 							}
 							tooltipwidget = {
@@ -1361,7 +1362,7 @@ lateralview = {
 						button_secondary_tab_alt = {
 							using = layoutpolicy_expanding
 							visible = "[Country.Exists]"
-							blockoverride "tab_text"{
+							blockoverride "tab_text" {
 								text = "COUNTRY_TEXT"
 							}
 							tooltipwidget = {
@@ -1374,7 +1375,7 @@ lateralview = {
 						button_secondary_tab_alt = {
 							using = layoutpolicy_expanding
 							visible = "[Country.Exists]"
-							blockoverride "tab_text"{
+							blockoverride "tab_text" {
 								text = "CHARACTERS_TEXT"
 							}
 							tooltipwidget = {
@@ -1387,7 +1388,7 @@ lateralview = {
 						button_secondary_tab_alt = {
 							using = layoutpolicy_expanding
 							visible = "[Not(Country.Exists)]"
-							blockoverride "tab_text"{
+							blockoverride "tab_text" {
 								text = "RULING_HISTORY_TEXT"
 							}
 							tooltip_enabled = no
@@ -1594,7 +1595,7 @@ lateralview = {
 													visible = "[ForeignCountryView.HasOngoingRelations]"
 
 													ongoing_diplomatic_actions_card = {
-														blockoverride "ongoing_diplomatic_actions_card_visibility"{
+														blockoverride "ongoing_diplomatic_actions_card_visibility" {
 															visible = "[ForeignCountryView.HasOngoingRelations]"
 														}
 														blockoverride "ongoing_diplomatic_actions_card_empty" {
@@ -1726,9 +1727,9 @@ lateralview = {
 								button = {
 									size = {30 30}
 									using = header_button_template
-									blockoverride "header_button_template_push_properties"{using = button_tab_toggle_properties_template}
-									blockoverride "header_button_full_content"{}
-									blockoverride "header_button_template_texture"{using = pressed_button_texture}
+									blockoverride "header_button_template_push_properties" {using = button_tab_toggle_properties_template}
+									blockoverride "header_button_full_content" {}
+									blockoverride "header_button_template_texture" {using = pressed_button_texture}
 									tooltipwidget = { 
 										LeftClickButtonTooltip = {
 											blockoverride "onclick_text" { text = "DISPLAY_DIP_ACTIONS_AND_RELATIONS" }
@@ -1748,9 +1749,9 @@ lateralview = {
 								button = {
 									size = {30 30}
 									using = header_button_template
-									blockoverride "header_button_template_push_properties"{using = button_tab_toggle_properties_template}
-									blockoverride "header_button_full_content"{}
-									blockoverride "header_button_template_texture"{using = pressed_button_texture}
+									blockoverride "header_button_template_push_properties" {using = button_tab_toggle_properties_template}
+									blockoverride "header_button_full_content" {}
+									blockoverride "header_button_template_texture" {using = pressed_button_texture}
 									tooltipwidget = { 
 										LeftClickButtonTooltip = {
 											blockoverride "onclick_text" { text = "DISPLAY_DIP_ACTIONS" }
@@ -1865,15 +1866,15 @@ lateralview = {
 									visible = "[GreaterThan_int32(GetDataModelSize(ForeignCountryView.GetInternationalOrganizations), '(int32)4')]"
 								}
 
-								blockoverride "extra_ios_text"{
+								blockoverride "extra_ios_text" {
 									raw_text = "+[Subtract_int32(GetDataModelSize(ForeignCountryView.GetInternationalOrganizations), '(int32)4')]"
 								}
 
-								blockoverride "ios_datamodel"{
+								blockoverride "ios_datamodel" {
 									datamodel = "[DataModelFirst(ForeignCountryView.GetInternationalOrganizations, '(int32)4')]"
 								}
 
-								blockoverride "ios_datamodel_coalitions"{
+								blockoverride "ios_datamodel_coalitions" {
 									datamodel = "[DataModelFirst(ForeignCountryView.GetCountry.GetDiplomacy.GetInternationalOrganizationsWeAreTheTargetOf, '(int32)4')]"
 								}
 
@@ -1885,11 +1886,11 @@ lateralview = {
 									raw_text = "+[Subtract_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)3')]"
 								}
 
-								blockoverride "extra_relations_visible"{
+								blockoverride "extra_relations_visible" {
 									visible = "[GreaterThan_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)3')]"
 								}
 
-								blockoverride "small_relations_datamodel"{
+								blockoverride "small_relations_datamodel" {
 									datamodel = "[DataModelFirst(RelationTypeItem.GetRelations, '(int32)4')]"
 								}
 
@@ -1897,7 +1898,7 @@ lateralview = {
 									raw_text = "+[Subtract_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)4')]"
 								}
 
-								blockoverride "extra_small_relations_visible"{
+								blockoverride "extra_small_relations_visible" {
 									visible = "[GreaterThan_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)4')]"
 								}
 
@@ -1909,7 +1910,7 @@ lateralview = {
 									raw_text = "+[Subtract_int32(GetDataModelSize(ForeignCountryView.GetWars), '(int32)3')]"
 								}
 
-								blockoverride "extra_wars_visible"{
+								blockoverride "extra_wars_visible" {
 									visible = "[GreaterThan_int32(GetDataModelSize(ForeignCountryView.GetWars), '(int32)3')]"
 								}
 								blockoverride "colonial_charters_datamodel" {
@@ -1919,7 +1920,7 @@ lateralview = {
 									raw_text = "+[Subtract_int32(GetDataModelSize(ForeignCountryView.GetColonialCharters), '(int32)4')]"
 								}
 
-								blockoverride "extra_colonial_charters_visible"{
+								blockoverride "extra_colonial_charters_visible" {
 									visible = "[GreaterThan_int32(GetDataModelSize(ForeignCountryView.GetColonialCharters), '(int32)4')]"
 								}
 							}
@@ -1947,19 +1948,19 @@ lateralview = {
 									size = { 240 100 }
 								}
 
-								blockoverride "diplomatic_actions_content_datacontext"{
+								blockoverride "diplomatic_actions_content_datacontext" {
 									datacontext = "[ForeignCountryView.GetDiploCategoriesSortSearch]"
 								}
 
-								blockoverride "diplomatic_actions_content_empty_visible"{
+								blockoverride "diplomatic_actions_content_empty_visible" {
 									visible = "[IsDataModelEmpty(ForeignCountryView.GetCategoryItems)]"
 								}
 
-								blockoverride "diplomatic_actions_content_empty_datamodel"{
+								blockoverride "diplomatic_actions_content_empty_datamodel" {
 									datamodel = "[ForeignCountryView.GetCategoryItems]"
 								}
 
-								blockoverride "diplomatic_actions_content_items_size"{
+								blockoverride "diplomatic_actions_content_items_size" {
 									size = { 252 40 }
 								}
 
@@ -1977,19 +1978,19 @@ lateralview = {
 									visible = no
 								}
 
-								blockoverride "diplomatic_actions_content_datacontext"{
+								blockoverride "diplomatic_actions_content_datacontext" {
 									datacontext = "[ForeignCountryView.GetDiploCategoriesSortSearch]"
 								}
 
-								blockoverride "diplomatic_actions_content_empty_visible"{
+								blockoverride "diplomatic_actions_content_empty_visible" {
 									visible = "[IsDataModelEmpty(ForeignCountryView.GetCategoryItems)]"
 								}
 
-								blockoverride "diplomatic_actions_content_empty_datamodel"{
+								blockoverride "diplomatic_actions_content_empty_datamodel" {
 									datamodel = "[ForeignCountryView.GetCategoryItems]"
 								}
 
-								blockoverride "diplomatic_actions_content_items_size"{
+								blockoverride "diplomatic_actions_content_items_size" {
 									size = { 512 40 }
 								}
 								blockoverride "extra_diplo_macro_margin" {}
@@ -2072,10 +2073,10 @@ lateralview = {
 													parentanchor = center
 													tooltipwidget = {
 														using = CountryEstatesPowerTooltip
-														blockoverride "estates_pie_datamodel"{
+														blockoverride "estates_pie_datamodel" {
 															datamodel = "[ForeignCountryView.GetEstates]" 
 														}
-														blockoverride "estates_datamodel"{
+														blockoverride "estates_datamodel" {
 															datamodel = "[ForeignCountryView.GetEstates]" 
 														}
 													}
@@ -2740,7 +2741,7 @@ lateralview = {
 														}
 
 														blockoverride "concept_link" {
-															text = [institutions|E]
+															text = "[institutions|E]"
 														}
 
 														blockoverride "tooltip_content" {
@@ -2780,7 +2781,7 @@ lateralview = {
 														}
 
 														blockoverride "concept_link" {
-															text = [institutions|E]
+															text = "[institutions|E]"
 														}
 
 														blockoverride "tooltip_content" {
@@ -2833,7 +2834,7 @@ lateralview = {
 														}
 
 														blockoverride "concept_link" {
-															text = [advances|E]
+															text = "[advances|E]"
 														}
 
 
