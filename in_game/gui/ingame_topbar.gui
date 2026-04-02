@@ -431,7 +431,6 @@ widget = {
 					visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger_bottom'), Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))))]"
 					parentanchor = left|top
 					widgetanchor = left|bottom
-					position = { 0 -10 }
 				}
 			}
 		}

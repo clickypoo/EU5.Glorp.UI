@@ -1,4 +1,4 @@
-SetUseVanillaPortrait = {
+﻿SetUseVanillaPortrait = {
     effect = {
         if = {
             limit = { NOT = { has_variable = useVanillaPortrait } }

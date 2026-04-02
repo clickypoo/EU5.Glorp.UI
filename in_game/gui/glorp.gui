@@ -295,6 +295,7 @@ types glorp {
         button = {
             position = { 8 1 }
             size = { 30 30 }
+            tooltip_enabled = no
             onclick = "[GetScriptedGui('SetToggleLeftPanelStatsBar').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 
             block "button_texture" {

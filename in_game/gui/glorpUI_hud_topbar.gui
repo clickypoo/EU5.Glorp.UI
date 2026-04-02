@@ -52,10 +52,9 @@ Types GlorpUI_HUD_TopbarTypes
 
                 # Default Estates Width
 				hbox = {
-                    visible = "[Not(And(Player.MakeScope.GetVariable('useStaticFlag').IsSet, Not(Player.MakeScope.GetVariable('useVanillaPortrait').IsSet)))]"
+                    visible = "[And(Country.Exists, Not(And(Player.MakeScope.GetVariable('useStaticFlag').IsSet, Not(Player.MakeScope.GetVariable('useVanillaPortrait').IsSet))))]"
 					margin_left = 150
                     size = { 400 80 }
-					visible = "[Country.Exists]"
 					datamodel = "[DataModelFirst(InGameTopbar.GetEstates, '(int32)7')]"
 					item = {
 						stat_player = {
@@ -63,7 +62,6 @@ Types GlorpUI_HUD_TopbarTypes
 							margin = { 5 0 }
 
                             maximumsize = { 100 80 }
-                            parentanchor = left
 							visible = "[Not(ObjectsEqual(Country.GetGovernment.GetEstateFromKey('crown_estate').GetType, EstatesItem.GetEstate.GetType))]"
 							datacontext = "[EstatesItem.GetEstate]"
 
@@ -261,10 +259,9 @@ Types GlorpUI_HUD_TopbarTypes
 				}
                 # Glorp UI - Static Flag uses more Estates Width
                 hbox = {
-                    visible = "[And(Player.MakeScope.GetVariable('useStaticFlag').IsSet, Not(Player.MakeScope.GetVariable('useVanillaPortrait').IsSet))]"
+                    visible = "[And3(Country.Exists, Player.MakeScope.GetVariable('useStaticFlag').IsSet, Not(Player.MakeScope.GetVariable('useVanillaPortrait').IsSet))]"
                     margin_left = 117
                     size = { 433 80 }
-                    visible = "[Country.Exists]"
                     datamodel = "[DataModelFirst(InGameTopbar.GetEstates, '(int32)7')]"
                     item = {
                         stat_player = {
@@ -272,7 +269,6 @@ Types GlorpUI_HUD_TopbarTypes
                             margin = { 5 0 }
 
                             maximumsize = { 110 80 }
-                            parentanchor = left
                             visible = "[Not(ObjectsEqual(Country.GetGovernment.GetEstateFromKey('crown_estate').GetType, EstatesItem.GetEstate.GetType))]"
                             datacontext = "[EstatesItem.GetEstate]"
 
@@ -1585,10 +1581,9 @@ Types GlorpUI_HUD_TopbarTypes
 
 						### STAT PLAYER - SAILORS
 						stat_player = {
-                            visible = "[Or(And( Not(Country.IsCurrencyValueEqualOrLessThanZero('sailors')), Not(EqualTo_CFixedPoint( Multiply_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('sailors'), '(CFixedPoint)1000'), '(CFixedPoint)0' )) ), Not(Player.MakeScope.GetVariable('dynamicWarStats').IsSet))]"
+                            visible = "[And(GreaterThan_CFixedPoint(Player.GetTotalCoastalPopulation, '(CFixedPoint)0'), Or(And( Not(Country.IsCurrencyValueEqualOrLessThanZero('sailors')), Not(EqualTo_CFixedPoint( Multiply_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('sailors'), '(CFixedPoint)1000'), '(CFixedPoint)0' )) ), Not(Player.MakeScope.GetVariable('dynamicWarStats').IsSet)))]"
                             name = "stat_sailors"
 							using = layoutpolicy_expanding
-							visible = "[GreaterThan_CFixedPoint(Player.GetTotalCoastalPopulation, '(CFixedPoint)0')]"
 
 							tooltipmeta = {
 								texture = "gfx/interface/icons/resources/sailors.dds"
