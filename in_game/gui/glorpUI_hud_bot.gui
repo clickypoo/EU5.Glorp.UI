@@ -264,7 +264,7 @@ types GlorpUIBottomTypes
             size = { 100% 100% }
             texture = "gfx/interface/buttons/map_modes/map_texture_square.dds"
             blend_mode = multiply
-            opacity = 0.8
+            alpha = 0.8
         }
 
 		icon = {

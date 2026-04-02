@@ -48,7 +48,7 @@ lateralview = {
                     using = color_white_texture
                     blend_mode = overlay
                     color = "[ForeignCountryView.GetCountry.GetMapColor]"
-                    opacity = 0.5
+                    alpha = 0.5
                 }
 			}
 			
