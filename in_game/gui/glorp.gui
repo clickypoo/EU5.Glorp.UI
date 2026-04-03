@@ -37,7 +37,6 @@ types glorp {
     }
 
     type stat_item = hbox {
-        align = nobaseline|left
         minimumsize = { 80 30 }
         maximumsize = { 80 30 }
         datacontext = "[Player]"

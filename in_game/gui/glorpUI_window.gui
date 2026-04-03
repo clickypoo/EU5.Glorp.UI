@@ -327,7 +327,6 @@ window = {
                         visible = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'other' )]"
                         button_regular = {
                             tooltip_enabled = no
-                            autoresize = yes
                             size = {150 35}
                             raw_text = "Toggle Debug Mode"
                             onclick = "[ExecuteConsoleCommand('debug_mode')]"
