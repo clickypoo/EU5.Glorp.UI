@@ -369,7 +369,11 @@ types LocationWindowTypes
 						datacontext = "[LocationBuildingItem.GetBuilding]"
 						using = bg_circle
 					}
-					
+
+					# LSQ auto-expand status icons
+					lsq_is_auto_expand_on_icon_green = {}
+					lsq_is_auto_expand_on_icon_red = {}
+
 					using = bg_circle_tile_shadow
 					background = {
 						texture = "gfx/interface/component_tiles/hud_corners/circle_background.dds"
@@ -532,6 +536,7 @@ types LocationWindowTypes
 						visible = "[And3(LocationBuildingItem.GetBuilding.CanPlayerUpgrade, Not(LocationBuildingItem.GetBuilding.GetType.IsForeign), Not(LocationBuildingItem.GetBuilding.GetType.OnlyEstatesCanBuild))]"
 						datacontext = "[LocationBuildingItem.GetBuilding.GetType.GetNextReplaced(Player.Self)]"
 						datacontext = "[LocationBuildingItem.GetBuilding.GetLocation]"
+						datacontext = "[LocationBuildingItem.GetBuilding]" # lsq Building context needed for upgrade check
 						enabled = "[CanUpgradeToBuilding(BuildingType.Self, Location.Self)]"
 						action_tooltip = {
 							click_mode = single
@@ -542,6 +547,8 @@ types LocationWindowTypes
 							description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
 							cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
 							on_action = "[UpgradeBuildingDefault(BuildingType.Self, Location.Self)]"
+							# lsq upgrade check
+							on_action = "[GetScriptedGui('lsq_check_for_auto_expand_when_upgrading_building').Execute(GuiScope.SetRoot(Building.MakeScope).End)]"
 						}
 
 						action_tooltip = {
@@ -553,6 +560,8 @@ types LocationWindowTypes
 							cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
 							description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
 							on_action = "[UpgradeBuildingCtrl(BuildingType.Self, Location.Self)]"
+							# lsq upgrade check
+							on_action = "[GetScriptedGui('lsq_check_for_auto_expand_when_upgrading_building').Execute(GuiScope.SetRoot(Building.MakeScope).End)]"
 							enabled = "[CanUpgradeToBuilding(BuildingType.Self, Location.Self)]"
 						}
 
@@ -565,6 +574,8 @@ types LocationWindowTypes
 							cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
 							description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
 							on_action = "[UpgradeBuildingShift(BuildingType.Self, Location.Self)]"
+							# lsq upgrade check
+							on_action = "[GetScriptedGui('lsq_check_for_auto_expand_when_upgrading_building').Execute(GuiScope.SetRoot(Building.MakeScope).End)]"
 							enabled = "[CanUpgradeToBuilding(BuildingType.Self, Location.Self)]"
 						}
 

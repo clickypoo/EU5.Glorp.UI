@@ -496,6 +496,10 @@ template build_rgo_entry {
 								size = { 50 36 }
 								hbox = {
 									expand = {}
+
+									# LSQ Auto Expand RGO button
+									lsq_auto_expand_rgo_widget_expand_raw_goods_lateralview = {}
+
 									vbox = {
 										tooltipwidget = {
 											ContextualTooltipType = {

@@ -2027,6 +2027,10 @@ lateralview = {
 											enabled = "[Or(LocationView.CanUpgradeRGO, LocationView.CanReduceRGO)]"
 
 											datacontext = "[LocationView.GetLocation]"
+
+											# LSQ Auto Expand RGO button
+											lsq_auto_expand_rgo_widget_location_window = {}
+
 											tooltipwidget = {
 												using = location_rgo_button_tooltip
 											}
