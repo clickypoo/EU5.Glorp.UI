@@ -42,14 +42,17 @@ lateralview = {
 	blockoverride "panel_header" {
 		window_header_alt = {
 			using = bg_main_inner_alt
-			blockoverride "window_header_alt_color_texture" {
-				using = color_greyish_texture # Glorp UI - Coloured Country Name Bar
-                modify_texture = {
-                    using = color_white_texture
-                    blend_mode = overlay
-                    color = "[ForeignCountryView.GetCountry.GetMapColor]"
-                    alpha = 0.5
-                }
+			blockoverride "window_header_alt_color" { # Glorp UI - Coloured Country Name Bar
+				background = {
+					using = color_greyish_texture
+					modify_texture = {
+						using = color_white_texture
+						blend_mode = overlay
+						color = "[ForeignCountryView.GetCountry.GetMapColor]"
+						alpha = 0.5
+					}
+					using = window_header_alt_fade_template
+				}
 			}
 			
 			blockoverride "header_text_object" {
