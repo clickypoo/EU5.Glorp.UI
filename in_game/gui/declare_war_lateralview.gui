@@ -1371,7 +1371,7 @@ types WarGoals {
 							size = {70 20}
 							autoresize = no
 							align = center|nobaseline
-							raw_text = "[DeclareWarAlly.GetLandStrength]@army_strength!"
+							raw_text = "[DeclareWarAlly.GetCountry.GetTotalArmyStrengthAndPotentialLevies]@army_strength!"
 						}
 
 						divider_flavor_01 = { 
@@ -1503,7 +1503,7 @@ types WarGoals {
 						size = {70 20}
 						autoresize = no
 						align = center|nobaseline
-						raw_text = "[DeclareWarAlly.GetLandStrength]@army_strength!"
+						raw_text = "[DeclareWarAlly.GetCountry.GetTotalArmyStrengthAndPotentialLevies]@army_strength!"
 					}
 
 					divider_flavor_01 = { 
