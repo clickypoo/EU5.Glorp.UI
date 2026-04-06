@@ -1,27 +1,23 @@
-﻿{
-	"name":	"Glorp UI",
-	"id":	"glorp.ui",
-	"version":	"im straight glorping it",
-	"supported_game_version":	"1.1.10",
-	"short_description":	"and by it, lets just say.. my bingus",
-	"tags":	["Fixes", "Overhaul", "User Interface"],
-	"thumbnail": "thumbnail.png",
-	"game_id" : "eu5",
-    "relationships": [
-      {
-        "rel_type": "dependency",
-        "id": "community_mod_framework",
-        "display_name": "Community Mod Framework",
-        "resource_type": "mod",
-        "version": "2.*"
-      },
-      {
-        "rel_type": "dependency",
-        "id": "romaimperator.lsq_forked",
-        "display_name": "Location Specialization QoL (Auto-Expand)",
-        "resource_type": "mod",
-        "version": "*"
-      }
+{
+    "name": "Glorp UI",
+    "id": "glorp.ui",
+    "version": "im straight glorping it",
+    "game_id": "eu5",
+    "supported_game_version": "1.1.10",
+    "short_description": "and by it, lets just say.. my bingus",
+    "tags": [
+        "Fixes",
+        "Overhaul",
+        "User Interface"
     ],
-	"game_custom_data":	{}
+    "relationships": [
+        {
+            "rel_type": "dependency",
+            "id": "community_mod_framework",
+            "display_name": "Community Mod Framework",
+            "resource_type": "mod",
+            "version": "2.*"
+        }
+    ],
+    "game_custom_data": {}
 }

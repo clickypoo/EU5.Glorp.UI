@@ -113,6 +113,23 @@ glorpui_register_cmf_mod = {
 		alias = useVanillaParticipantColour
 	}
 
+	# Mapmodes Bar (Mapmodes) Tab
+	## General (general) Group
+	cmm_register_slider_setting = {
+		mod_id = glorpui
+		setting_id = mapmodes_width
+		tab_id = Mapmodes
+		group_id = general
+		default_value = 820
+		min_value = 585
+		max_value = 1920
+		step_value = 1
+	}
+	cmm_sync_setting_alias = {
+		setting = glorpui__mapmodes_width
+		alias = mapmodes_width
+	}
+
 	# Top Bar (top_bar) Tab
 	## General (general) Group
 	cmm_register_bool_setting = {
@@ -262,6 +279,14 @@ glorpui_handle_cmf_callback = {
 			cmm_sync_bool_alias = {
 				setting = glorpui__useVanillaParticipantColour
 				alias = useVanillaParticipantColour
+			}
+		}
+		# Mapmodes Bar (Mapmodes) Tab
+		## General (general) Group
+		flag:glorpui__mapmodes_width = {
+			cmm_sync_setting_alias = {
+				setting = glorpui__mapmodes_width
+				alias = mapmodes_width
 			}
 		}
 		# Top Bar (top_bar) Tab
