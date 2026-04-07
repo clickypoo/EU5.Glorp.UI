@@ -263,6 +263,7 @@ types GlorpUIBottomTypes
             visible = "[Not(Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet)]"
             size = { 100% 100% }
             texture = "gfx/interface/buttons/map_modes/map_texture_square.dds"
+            blend_mode = multiply
             alpha = 0.8
         }
 
@@ -896,7 +897,7 @@ types GlorpUIBottomTypes
 
 		visible_at_creation = no
 		visible = "[Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible)]"
-		size = { "[GetPlayer.MakeScope.GetVariable('mapmodes_width').GetValue]" @mapselector_height }
+		size = { @mapselector_width @mapselector_height }
 		allow_outside = yes
 
 		block "mapmodes_window_extra" {}
@@ -905,14 +906,14 @@ types GlorpUIBottomTypes
 			name = _show
 			duration = 0.1
 			bezier = { 0.0 1.0 0.0 1.0 }
-			size = { "[GetPlayer.MakeScope.GetVariable('mapmodes_width').GetValue]" @mapselector_height }
+			size = { @mapselector_width @mapselector_height }
 		}
 
 		state = {
 			name = _hide
 			duration = 0.25
 			bezier = { 1.0 0.0 1.0 0.0 }
-			size = { "[GetPlayer.MakeScope.GetVariable('mapmodes_width').GetValue]" 40 }
+			size = { @mapselector_width 40 }
 		}
 
 		widget = {
@@ -922,7 +923,7 @@ types GlorpUIBottomTypes
             # Glorp UI - Removed Vanilla Pin Button
 
 			widget = {
-				size = { "[GetPlayer.MakeScope.GetVariable('mapmodes_width').GetValue]" 50 }
+				size = { @mapselector_width 50 }
 
 				overlappingitembox = {
 					minimumsize = { @[mapselector_width - 50] 40 }

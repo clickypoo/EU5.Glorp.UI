@@ -1,5 +1,4 @@
-﻿#noinspection ALL
-# Hook this mod into CMF shared registration on_action.
+﻿# Hook this mod into CMF shared registration on_action.
 cmf_on_mod_registration = {
 	on_actions = {
 		glorpui_on_register_cmf_mod
