@@ -259,9 +259,8 @@ types GlorpUIBottomTypes
 
 		button_icon_map_square = { visible = "[Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet]" }
 
-        icon = { # Glorp UI - Recolour Dashed Padding
+        modify_texture = { # Glorp UI - Recolour Dashed Padding
             visible = "[Not(Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet)]"
-            size = { 100% 100% }
             texture = "gfx/interface/buttons/map_modes/map_texture_square.dds"
             blend_mode = multiply
             alpha = 0.8
