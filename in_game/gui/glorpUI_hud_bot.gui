@@ -258,13 +258,11 @@ types GlorpUIBottomTypes
 		}
 
 		button_icon_map_square = { visible = "[Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet]" }
-
-        modify_texture = { # Glorp UI - Recolour Dashed Padding
-            visible = "[Not(Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet)]"
-            texture = "gfx/interface/buttons/map_modes/map_texture_square.dds"
-            blend_mode = multiply
-            alpha = 0.8
-        }
+		icon = { # Glorp UI - Recolour Dashed Padding
+			visible = "[Not(Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet)]"
+			size = { 100% 100% }
+			texture = "gfx/interface/buttons/map_modes/map_texture_square.dds"
+		}
 
 		icon = {
 			size = { 28 28 } # Glorp UI - Smaller Mapmode Button Icons
@@ -617,7 +615,7 @@ types GlorpUIBottomTypes
 				texture = "gfx/interface/component_tiles/bottom_menu_ribbon_border.dds"
 				texture_density = 2
 				using = overlay_color_new_gold
-	
+
 				modify_texture = {
 					blend_mode = multiply
 				}
@@ -825,18 +823,18 @@ types GlorpUIBottomTypes
 						scissor = yes
 					}
 				}
-	
+
 				scrollbar_vertical = {
 					using = Scrollbar_Vertical
 				}
-	
+
 				scrollwidget = {
 					fixedgridbox = {
 						addrow = 33
 						setitemsizefromcell = yes
 						addcolumn = 100%
 						datamodel = "[SearchBar.GetAutocompleteEntries]"
-	
+
 						item = {
 							mapmodes_color_ledger_item = {
 								datacontext = "[GetMapColorLedgerByName(AutocompleteEntry.GetName)]"
@@ -857,25 +855,25 @@ types GlorpUIBottomTypes
 						scissor = yes
 					}
 				}
-	
+
 				scrollbar_vertical = {
 					using = Scrollbar_Vertical
 				}
-	
+
 				scrollwidget = {
 					fixedgridbox = {
 						addrow = 33
 						setitemsizefromcell = yes
 						addcolumn = 100%
 						datamodel = "[GetMapColorLedger]"
-	
+
 						item = {
 							mapmodes_color_ledger_item = {}
 						}
 					}
 				}
 			}
-	
+
 			searchbar = {
 				layoutpolicy_horizontal = expanding
 				size = { -1 54 }
