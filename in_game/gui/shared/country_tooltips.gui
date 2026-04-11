@@ -48,12 +48,12 @@ template CountryRank_tooltip {
 		blockoverride "concept_link" {
 			text = [country_rank|E]
 		}
-		
+
 		blockoverride "tooltip_content" {
 			TooltipTextBlock = {
 				textcontext =  "[CountryRank.GetEffectsTitle]"
 			}
-			
+
 			TooltipScrolledStringPairList = {
 				blockoverride "block_scrollarea" { maximumsize = { -1 300 } }
 				blockoverride "block_title" { text = "country_rank_effects_list_title" }
@@ -83,7 +83,7 @@ template Hegemony_tooltip {
 		blockoverride "concept_link" {
 			text = [hegemony|e]
 		}
-		
+
 		blockoverride "tooltip_content" {
 			TooltipStringPairList = {
 				blockoverride "block_title" {
@@ -92,7 +92,7 @@ template Hegemony_tooltip {
 				textcontext = "[Hegemony.GetBaseInfo]"
 			}
 
-		
+
 
 			TooltipFlavorTextBlock = {
 				blockoverride "text" {
@@ -119,14 +119,14 @@ template ScriptedPeaceTreaty_tooltip {
 		blockoverride "concept_link" {
 			text = [peace_treaty|E]
 		}
-	
+
 		blockoverride "tooltip_content" {
 			TooltipTextBlock = {
 				blockoverride "text" {
 					text = "[ScriptedPeaceTreatyType.GetTooltip]"
 				}
 			}
-		
+
 			TooltipFlavorTextBlock = {
 				blockoverride "text" {
 					text = "[ScriptedPeaceTreatyType.GetDesc]"
@@ -190,7 +190,7 @@ template TaxBaseTooltip {
 			hbox = {
 				TooltipStringPairList = {
 					blockoverride "block_title" {
-						
+
 						text = "TAX_BASE_SOURCES"
 					}
 
@@ -200,7 +200,7 @@ template TaxBaseTooltip {
 
 				caesar_plotline = {
 					size = { 400 360 }
-					
+
 					blockoverride "header" {
 						datacontext = "[Country]"
 						text = "TAXBASE_TOOLTIP_HEADER"
@@ -273,7 +273,7 @@ template CountryTooltip {
 			TooltipContentSection = {
 				using = CountryTooltip_RelativePower
 			}
-			
+
 			TooltipStatsBar = {
 				blockoverride "items" {
 					TooltipStatBarItem = {
@@ -316,7 +316,7 @@ template CountryTooltip {
 							using = CountryRank_tooltip
 						}
 					}
-				}	
+				}
 			}
 
 			TooltipRowList = {
@@ -481,7 +481,7 @@ template CountryTooltip {
 							tooltip = "[primary_culture|e]"
 							tagtooltip_enabled = yes
 						}
-						
+
 						text_single = {
 							autoresize = yes
 							align = right
@@ -524,11 +524,11 @@ template CountryTooltip {
 							tooltip = "[subjects|e]"
 							tagtooltip_enabled = yes
 						}
-						
+
 						text_single = {
 							autoresize = yes
 							align = right
-							text = "[subjects|e]"							
+							text = "[subjects|e]"
 						}
 					}
 
@@ -561,6 +561,19 @@ template CountryTooltip {
 				visible = "[And(Not(Country.IsLocalPlayer), Country.GetDiplomacy.IsAtWar)]"
 				blockoverride "text" {
 					text = "COUNTRY_TOOLTIP_IS_AT_WAR"
+				}
+				TooltipStringPairList = {
+					visible = "[Country.HasArmy]"
+					blockoverride "block_title" {
+						text = "CURRENT_ARMY_OVERVIEW"
+					}
+					textcontext = "[Country.GetArmyBreakdown]"
+				}
+				TooltipTextBlock = {
+					visible = "[Not(Country.HasArmy)]"
+					blockoverride "text" {
+						text = "CAW_NO_CURRENT_ARMY"
+					}
 				}
 				tooltip_enabled = "[DataModelHasItems(Country.GetDiplomacy.GetCurrentWars)]"
 				tooltipwidget = {
@@ -629,7 +642,7 @@ template towns_or_cities_tooltip {
 		blockoverride "concept_link" {
 			text = [locations|E]
 		}
-		
+
 		blockoverride "tooltip_content" {
 			TooltipTextBlock = {
 				blockoverride "text" {
@@ -648,7 +661,7 @@ template CountryInteraction_tooltip {
 		blockoverride "title_text" {
 			text = "[CountryInteraction.GetNameWithNoTooltip]"
 		}
-		
+
 		blockoverride "title_icon" {
 			icon = {
 				using = tooltip_title_icon_size
@@ -684,7 +697,7 @@ template ScriptedRelationType_tooltip {
 		blockoverride "concept_link" {
 			text = [relation_type|E]
 		}
-		
+
 		blockoverride "tooltip_content" {
 			TooltipTextBlock = {
 				blockoverride "text" {
@@ -702,13 +715,13 @@ template ScriptedRelationTypeWith_tooltip {
 				datacontext = "[ScriptedRelationTypeWithContextWrap.GetFirstCountry]"
 			}
 		}
-		
+
 		blockoverride "title_button" {
 			country_flag_small = {
 				datacontext = "[ScriptedRelationTypeWithContextWrap.GetSecondCountry]"
 			}
 		}
-	
+
 		blockoverride "title_text" {
 			text = "[ScriptedRelationTypeWithContextWrap.GetScriptedRelationType.GetNameWithNoTooltip]"
 		}
@@ -716,7 +729,7 @@ template ScriptedRelationTypeWith_tooltip {
 		blockoverride "concept_link" {
 			text = [relation_type|E]
 		}
-		
+
 		blockoverride "tooltip_content" {
 			TooltipTextBlock = {
 				blockoverride "text" {
@@ -746,7 +759,7 @@ template formablecountry_info {
 		}
 		textcontext = "[FormableCountry.GetPossibleAdvances]"
 	}
-	
+
 	TooltipRowList = {
 		visible = "[Not(StringIsEmpty( FormableCountry.GetEffects ))]"
 		blockoverride "block_title" {
@@ -767,16 +780,16 @@ template FormableCountry_tooltip {
 		blockoverride "title_icon" {
 			country_flag = {
 				size = { 60 40 }
-				
+
 				blockoverride "tooltip" {
 					tooltip_enabled = no
 					tagtooltip_enabled = no
 				}
-				
+
 				blockoverride "contextmenu" {
 					contextmenu_enabled = no
 				}
-				
+
 				blockoverride "flag" {
 					datacontext = "[FormableCountry.GetOrCreateCoatOfArms(Player.Self)]"
 					texture = "[CoatOfArmsWrapper.GetTexture('(int32)144','(int32)96')]"
@@ -804,7 +817,7 @@ template FormableCountry_tooltip {
 				}
 			}
 			using = formablecountry_info
-			
+
 		}
 	}
 }
@@ -849,11 +862,11 @@ template societal_value_in_country_tooltip {
 										using = SocietalValueItem_tooltip
 									}
 									visible = "[SocietalValueItem.IsLeft]"
-								
+
 									icon = {
 										size = { 337 67 }
 										texture = "[SocietalValueItem.GetType.GetLeftIllustration]"
-										
+
 										hbox = {
 											maximumsize = { 150 25 }
 											margin_left = 52
@@ -861,20 +874,20 @@ template societal_value_in_country_tooltip {
 											background = {
 												texture = "gfx/interface/component_tiles/society_values/society_values_banner.dds"
 											}
-		
+
 											hbox = {
 												margin_right = 13
 												margin_top = 7
 												layoutpolicy_horizontal = expanding
 												spacing = 5
-		
+
 												text_single = {
 													maximumsize = { 120 12 }
 													margin_left = 6
 													margin_bottom = 4
 													align = nobaseline
 													fontsize = 12
-		
+
 													text = "[SocietalValueItem.GetType.GetLeftLabelWithNoTooltip]"
 												}
 											}
@@ -892,14 +905,14 @@ template societal_value_in_country_tooltip {
 										}
 									}
 								}
-								
+
 								container = {
 									visible = "[Not(SocietalValueItem.IsLeft)]"
-								
+
 									icon = {
 										size = { 337 67 }
 										texture = "[SocietalValueItem.GetType.GetRightIllustration]"
-										
+
 										hbox = {
 											parentanchor = right|top
 											maximumsize = { 150 25 }
@@ -908,20 +921,20 @@ template societal_value_in_country_tooltip {
 											background = {
 												texture = "gfx/interface/component_tiles/society_values/society_values_banner_right.dds"
 											}
-		
+
 											hbox = {
 												margin_right = 65
 												margin_top = 7
 												layoutpolicy_horizontal = expanding
 												spacing = 5
-		
+
 												text_single = {
 													maximumsize = { 120 12 }
 													margin_left = 6
 													margin_bottom = 4
 													align = nobaseline
 													fontsize = 12
-		
+
 													text = "[SocietalValueItem.GetType.GetRightLabelWithNoTooltip]"
 												}
 											}
@@ -1031,9 +1044,9 @@ template Army_size_tooltip {
 
 		blockoverride "tooltip_content" {
 			TooltipListBase = {
-				#blockoverride "block_title" {
-				#	text = "ARMY_SIZE_TT_TABLE_TITLE"
-				#}
+				blockoverride "block_title" {
+					text = "ARMY_SIZE_TT_TABLE_TITLE"
+				}
 				TooltipListRowContent = {
 					TooltipManualTableField = {
 						blockoverride "field_content" {
@@ -1086,7 +1099,7 @@ template Country_regulars_tooltip {
 		blockoverride "title_icon_texture" {
 			texture = "gfx/interface/icons/unit_actions/regulars.dds"
 		}
-	
+
 		blockoverride "title_text" {
 			text = "FOREIGN_REL_ARMY_SIZE"
 		}
@@ -1103,7 +1116,7 @@ template Country_levies_tooltip {
 		blockoverride "title_icon_texture" {
 			texture = "gfx/interface/icons/unit_category/army_levies.dds"
 		}
-	
+
 		blockoverride "title_text" {
 			text = "[levies]"
 		}
@@ -1133,7 +1146,7 @@ template Navy_size_tooltip {
 		}
 
 		blockoverride "tooltip_content" {
-			TooltipListBase = { 
+			TooltipListBase = {
 				blockoverride "block_title" {
 					text = "NAVY_SIZE_TT_TABLE_TITLE"
 				}
@@ -1189,7 +1202,7 @@ template Country_navy_levies_tooltip {
 		blockoverride "title_icon_texture" {
 			texture = "gfx/interface/icons/unit_category/navy_levies.dds"
 		}
-	
+
 		blockoverride "title_text" {
 			text = "FOREIGN_REL_NAVY_LEVY_POWER"
 		}
@@ -1206,7 +1219,7 @@ template Country_navy_regulars_tooltip {
 		blockoverride "title_icon_texture" {
 			texture = "gfx/interface/icons/unit_category/regulars_navy.dds"
 		}
-	
+
 		blockoverride "title_text" {
 			text = "FOREIGN_REL_NAVY_SIZE"
 		}
@@ -1224,10 +1237,10 @@ template country_tooltip_subjects {
 			icon = {
 				using = tooltip_title_icon_size
 				texture = "gfx/interface/icons/treaty_type/become_subject.dds"
-			}	
+			}
 		}
-		
-	
+
+
 		blockoverride "title_text" {
 			text = "SUBJECTS_COUNTRY_TOOLTIP"
 		}
@@ -1235,16 +1248,16 @@ template country_tooltip_subjects {
 		blockoverride "concept_link" {
 			text = "[subject|e]"
 		}
-		
+
 		blockoverride "tooltip_content" {
-			TooltipListBase = {					
+			TooltipListBase = {
 				TooltipListScrollArea = {
 					blockoverride "scrollarea_content" {
 						fixedgridbox = {
 							addcolumn = 420
 							addrow = 30
 							setitemsizefromcell = yes
-		
+
 							datamodel = "[Country.GetDiplomacy.GetSubjects]"
 							item = {
 								widget = {
@@ -1261,7 +1274,7 @@ template country_tooltip_subjects {
 										country_flag_small = {
 											datacontext = "[Country]"
 										}
-										
+
 
 										text_single = {
 											align = nobaseline
@@ -1271,7 +1284,7 @@ template country_tooltip_subjects {
 												using = SubjectType_Tooltip
 											}
 										}
-										
+
 										expand = {}
 
 										text_single = {
@@ -1291,11 +1304,11 @@ template country_tooltip_subjects {
 												using = SubjectLoyalty_tooltip
 											}
 										}
-										
+
 										icon = {
-											size = { 24 24 }											
+											size = { 24 24 }
 											texture = "[GetSubjectTypeIcon(Country.GetDiplomacy.GetSubjectType)]"
-											alpha = 0.8							
+											alpha = 0.8
 											glow = {
 												name = "drop_shadow"
 												glow_radius = 3
@@ -1305,8 +1318,8 @@ template country_tooltip_subjects {
 											tooltipwidget = {
 												datacontext = "[Country]"
 												using = SubjectType_Tooltip
-											}						
-										}				
+											}
+										}
 									}
 								}
 							}
