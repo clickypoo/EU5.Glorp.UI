@@ -29,6 +29,22 @@ glorpui_register_cmf_mod = {
 
 	cmm_register_bool_setting = {
 		mod_id = glorpui
+		setting_id = useFramedStaticFlag
+		tab_id = toggles
+		group_id = general
+		default_value = 0
+	}
+	cmm_sync_bool_alias = {
+		setting = glorpui__useFramedStaticFlag
+		alias = useFramedStaticFlag
+	}
+	cmm_add_scripted_gui = {
+		mod_id = glorpui
+		setting_id = useFramedStaticFlag
+	}
+
+	cmm_register_bool_setting = {
+		mod_id = glorpui
 		setting_id = useDefaultIconsBGLeftPanel
 		tab_id = toggles
 		group_id = general
@@ -218,6 +234,12 @@ glorpui_handle_cmf_callback = {
 			cmm_sync_bool_alias = {
 				setting = glorpui__useStaticFlag
 				alias = useStaticFlag
+			}
+		}
+		flag:glorpui__useFramedStaticFlag = {
+			cmm_sync_bool_alias = {
+				setting = glorpui__useFramedStaticFlag
+				alias = useFramedStaticFlag
 			}
 		}
 		flag:glorpui__useDefaultIconsBGLeftPanel = {

@@ -1,4 +1,5 @@
-﻿l_english:
+﻿#noinspection ALL
+l_english:
  # Mod
  glorpui_name: "Glorp UI"
  glorpui_desc: "and by it, lets just say.. my bingus"
@@ -11,6 +12,8 @@
  glorpui__useVanillaPortrait_desc: ""
  glorpui__useStaticFlag_name: "Use Static Flag"
  glorpui__useStaticFlag_desc: ""
+ glorpui__useFramedStaticFlag_name: "Use Framed Static Flag"
+ glorpui__useFramedStaticFlag_desc: ""
  glorpui__useDefaultIconsBGLeftPanel_name: "Vanilla Icon Backgrounds on the Left Panel"
  glorpui__useDefaultIconsBGLeftPanel_desc: ""
  glorpui__useDefaultIconsLeftPanel_name: "Vanilla Icons on the Left Panel"
@@ -60,6 +63,7 @@
  glorpui__top_bar__general: "glorpui__top_bar__general"
  glorpui__useVanillaPortrait: "glorpui__useVanillaPortrait"
  glorpui__useStaticFlag: "glorpui__useStaticFlag"
+ glorpui__useFramedStaticFlag: "glorpui__useFramedStaticFlag"
  glorpui__useDefaultIconsBGLeftPanel: "glorpui__useDefaultIconsBGLeftPanel"
  glorpui__useDefaultIconsLeftPanel: "glorpui__useDefaultIconsLeftPanel"
  glorpui__useVanillaCabinetView: "glorpui__useVanillaCabinetView"
