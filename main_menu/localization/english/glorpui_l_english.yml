@@ -1,3 +1,5 @@
 ﻿#noinspection ALL
 l_english:
  RECRUIT_BEST_IN_LOCATION_ACTION_BUTTON: "Mass Recruit [RecruitInLocationLateralView.GetUnitType.GetName]"
+ GLORP_UI_OTHER: "Other"
+

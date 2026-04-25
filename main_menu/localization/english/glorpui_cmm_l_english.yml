@@ -51,7 +51,12 @@ l_english:
  glorpui__disableTopBarDiplomats_name: "Diplomats"
  glorpui__disableTopBarDiplomats_desc: ""
  glorpui__dynamicWarStats_name: "Dynamic War Stats"
- glorpui__dynamicWarStats_desc: ""
+ glorpui__dynamicWarStats_desc: "Dynamically Shows & Hides Manpower, Sailors and War Exhaustion"
+
+ # Other (other) Tab
+ glorpui__top_bar_name: "Other"
+ ## General (general) Group
+ glorpui__top_bar__toggle_debug_name: "Toggle Debug Mode"
 
  # Optional: self-referencing flag keys to suppress IDE warnings (safe to remove if you want)
  glorpui: "glorpui"
