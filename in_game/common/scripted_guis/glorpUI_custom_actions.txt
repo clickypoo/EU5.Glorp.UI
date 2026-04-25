@@ -226,3 +226,40 @@ SetToggleLeftPanelStatsBar = {
         }
     }
 }
+
+EnableMassRecruiting = {
+	effect = {
+		if = { # Set
+			limit = {
+				NOT = { has_variable = massRecruiting }
+			}
+			set_variable = { name = massRecruiting value = 5 }
+		}
+		else = { # Unset
+			remove_variable = massRecruiting
+		}
+	}
+}
+
+ClearMassRecruiting = {
+	effect = {
+		remove_variable = massRecruiting
+	}
+}
+
+UpdateMassRecruiting = {
+	effect = {
+		if = { # Iterate
+			limit = {
+				var:massRecruiting > 1
+			}
+			change_variable = {
+				name = massRecruiting
+				subtract = 1
+			}
+		}
+		else = { # Unset
+			remove_variable = massRecruiting
+		}
+	}
+}
