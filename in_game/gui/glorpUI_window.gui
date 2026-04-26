@@ -40,15 +40,15 @@ window = {
                     blockoverride "content" {
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
-                            text = "glorpui__toggles"
+                            text = "glorpui__toggles_name"
                             down = "[Or(Not(GetVariableSystem.Exists('glorpUI_tab')), GetVariableSystem.HasValue( 'glorpUI_tab', 'left_panel' ))]"
                             tooltip_enabled = no
                             onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'left_panel' )]"
                         }
-                        #
+
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
-                            text = "glorpui__war_view"
+                            text = "glorpui__war_view_name"
                             down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'war_view' )]"
                             default_format = "#medium"
                             tooltip_enabled = no
@@ -57,7 +57,7 @@ window = {
 
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
-                            text = "glorpui__top_bar"
+                            text = "glorpui__top_bar_name"
                             down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'top_bar' )]"
                             default_format = "#medium"
                             tooltip_enabled = no
@@ -66,8 +66,17 @@ window = {
 
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
+                            text = "glorpui__mapmode_bar_name"
+                            down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'mapmodes' )]"
                             default_format = "#medium"
-                            text = "glorpui__top_bar_name"
+                            tooltip_enabled = no
+                            onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'mapmodes' )]"
+                        }
+
+                        button_secondary_tab_alt = {
+                            using = layoutpolicy_expanding
+                            default_format = "#medium"
+                            text = "glorpui__other_name"
                             down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'other' )]"
                             tooltip_enabled = no
                             onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'other' )]"
@@ -134,6 +143,7 @@ window = {
                                 tooltip_enabled = no
                             }
                         }
+
                         # Left Panel - Vanilla Icons
                         hbox = {
                             spacing = 10
@@ -147,19 +157,6 @@ window = {
                             }
                         }
 
-                        # Cabinet view
-                        hbox = {
-                            spacing = 10
-                            text_single = {
-                                text = "glorpui__useVanillaCabinetView_name"
-                            }
-                            checkbox_square_alt = {
-                                onclick = "[GetScriptedGui('SetUseVanillaCabinetView').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet]"
-                                tooltip_enabled = no
-                            }
-                        }
-
                         # Left Panel Stats Bar
                         hbox = {
                             spacing = 10
@@ -169,19 +166,6 @@ window = {
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetDisableLeftPanelStatsBar').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
                                 checked = "[Not(Player.MakeScope.GetVariable('disableLeftPanelStatsBar').IsSet)]"
-                                tooltip_enabled = no
-                            }
-                        }
-
-                        # Coloured Mapmode Buttons
-                        hbox = {
-                            spacing = 10
-                            text_single = {
-                                text = "glorpui__disableColouredMapmodeButtons_name"
-                            }
-                            checkbox_square_alt = {
-                                onclick = "[GetScriptedGui('SetDisableColouredMapmodeButtons').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Not(Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet)]"
                                 tooltip_enabled = no
                             }
                         }
@@ -322,13 +306,52 @@ window = {
                         }
                     }
 
+					# Mapmode Bar
+					vbox = {
+						visible = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'mapmodes' )]"
+						# Coloured Mapmode Buttons
+						hbox = {
+							spacing = 10
+							text_single = {
+								text = "glorpui__disableColouredMapmodeButtons_name"
+							}
+							checkbox_square_alt = {
+								onclick = "[GetScriptedGui('SetDisableColouredMapmodeButtons').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								checked = "[Not(Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet)]"
+								tooltip_enabled = no
+							}
+						}
+						hbox = {
+							spacing = 10
+							text_single = {
+								text = "glorpui__useVanillaMapmodeWidth_name"
+							}
+							checkbox_square_alt = {
+								onclick = "[GetScriptedGui('SetVanillaMapmodeWidth').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								checked = "[Player.MakeScope.GetVariable('vanillaMapmodeWidth').IsSet]"
+								tooltip_enabled = no
+							}
+						}
+						hbox = {
+							spacing = 10
+							text_single = {
+								text = "glorpui__useVanillaMapmodeHeight_name"
+							}
+							checkbox_square_alt = {
+								onclick = "[GetScriptedGui('SetVanillaMapmodeHeight').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								checked = "[Player.MakeScope.GetVariable('vanillaMapmodeHeight').IsSet]"
+								tooltip_enabled = no
+							}
+						}
+					}
+
                     # Other
                     vbox = {
                         visible = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'other' )]"
                         button_regular = {
                             tooltip_enabled = no
                             size = {150 35}
-                            text = "glorpui__top_bar__toggle_debug_name"
+                            text = "glorpui__toggle_debug_name"
                             onclick = "[ExecuteConsoleCommand('debug_mode')]"
                         }
                     }

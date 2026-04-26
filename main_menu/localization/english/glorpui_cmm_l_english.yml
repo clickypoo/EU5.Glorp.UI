@@ -18,12 +18,8 @@ l_english:
  glorpui__useDefaultIconsBGLeftPanel_desc: ""
  glorpui__useDefaultIconsLeftPanel_name: "Vanilla Icons on the Left Panel"
  glorpui__useDefaultIconsLeftPanel_desc: ""
- glorpui__useVanillaCabinetView_name: "Vanilla Cabinet View"
- glorpui__useVanillaCabinetView_desc: ""
  glorpui__disableLeftPanelStatsBar_name: "Left Panel Stats Bar"
  glorpui__disableLeftPanelStatsBar_desc: ""
- glorpui__disableColouredMapmodeButtons_name: "Coloured Mapmode Buttons"
- glorpui__disableColouredMapmodeButtons_desc: ""
 
  # War View (war_view) Tab
  glorpui__war_view_name: "War View"
@@ -53,10 +49,21 @@ l_english:
  glorpui__dynamicWarStats_name: "Dynamic War Stats"
  glorpui__dynamicWarStats_desc: "Dynamically Shows & Hides Manpower, Sailors and War Exhaustion"
 
- # Other (other) Tab
- glorpui__top_bar_name: "Other"
+ # Mapmodes Bar (mapmodes_bar) Tab
+ glorpui__mapmode_bar_name: "Mapmodes"
  ## General (general) Group
- glorpui__top_bar__toggle_debug_name: "Toggle Debug Mode"
+ glorpui__disableColouredMapmodeButtons_name: "Coloured Mapmode Buttons"
+ glorpui__disableColouredMapmodeButtons_desc: ""
+ glorpui__useVanillaMapmodeWidth_name: "Vanilla Mapmode Width"
+ glorpui__useVanillaMapmodeWidth_desc: ""
+ glorpui__useVanillaMapmodeHeight_name: "Vanilla Mapmode Height"
+ glorpui__useVanillaMapmodeHeight_desc: ""
+
+ # Other (other) Tab
+ glorpui__other_name: "Other"
+ ## General (general) Group
+ glorpui__toggle_debug_name: "Toggle Debug Mode"
+ glorpui__toggle_debug_desc: ""
 
  # Optional: self-referencing flag keys to suppress IDE warnings (safe to remove if you want)
  glorpui: "glorpui"
