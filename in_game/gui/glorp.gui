@@ -345,12 +345,12 @@ types glorp {
                 }
                 blockoverride "title_text" {
                     datacontext = "[Player]"
-                    raw_text = "Toggle Left Panel Stats"
+                    text = "GLORP_UI_TOGGLE_LEFT_PANEL_STATS"
                 }
                 blockoverride "tooltip_content" {
                     TooltipTextBlock = {
                         blockoverride "text" {
-                            raw_text = "Show/Hide Left Panel Stats"
+                            text = "GLORP_UI_SHOWHIDE_LEFT_PANEL_STATS"
                         }
                     }
                 }

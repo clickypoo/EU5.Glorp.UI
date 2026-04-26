@@ -162,7 +162,7 @@
 		}
 		block "small_button_size" { size = { -1 45 } }
 		using = FrontEndMiddleSectionButton
-		raw_text = "Glorp UI"
+		text = "glorpui_name"
 		visible = "[Not(GetGlobalVariable('cmf_active').IsSet)]"
 		onclick = "[ExecuteConsoleCommand( Select_CString( GetVariableSystem.Exists('glorpUI_window_open'), 'gui.ClearWidgets glorpUI_window', 'gui.createwidget gui/glorpUI_window.gui glorpUI_window' ) )]"
 		onclick = "[GetVariableSystem.Toggle('glorpUI_window_open')]"

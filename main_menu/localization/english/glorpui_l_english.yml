@@ -2,4 +2,5 @@
 l_english:
  RECRUIT_BEST_IN_LOCATION_ACTION_BUTTON: "Mass Recruit [RecruitInLocationLateralView.GetUnitType.GetName]"
  GLORP_UI_OTHER: "Other"
-
+ GLORP_UI_TOGGLE_LEFT_PANEL_STATS: "Toggle Left Panel Stats"
+ GLORP_UI_SHOWHIDE_LEFT_PANEL_STATS: "Show/Hide Left Panel Stats"
