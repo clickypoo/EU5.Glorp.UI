@@ -18,13 +18,13 @@
             "resource_type": "mod",
             "version": "2.*"
         },
-		{
-			"rel_type": "dependency",
-			"id": "romaimperator.lsq_forked",
-			"display_name": "Location Specialization QoL (Auto-Expand) - Forked",
-			"resource_type": "mod",
-			"version": "*"
-		}
+        {
+            "rel_type": "dependency",
+            "id": "romaimperator.lsq_forked",
+            "display_name": "Location Specialization QoL (Auto-Expand) - Forked",
+            "resource_type": "mod",
+            "version": "*"
+        }
     ],
     "game_custom_data": {}
 }

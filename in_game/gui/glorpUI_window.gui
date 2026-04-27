@@ -66,7 +66,7 @@ window = {
 
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
-                            text = "glorpui__mapmode_bar_name"
+                            text = "glorpui__mapmodes_bar_name"
                             down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'mapmodes' )]"
                             default_format = "#medium"
                             tooltip_enabled = no
@@ -76,7 +76,7 @@ window = {
                         button_secondary_tab_alt = {
                             using = layoutpolicy_expanding
                             default_format = "#medium"
-                            text = "glorpui__other_name"
+                            text = "GLORP_UI_OTHER"
                             down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'other' )]"
                             tooltip_enabled = no
                             onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'other' )]"
@@ -351,7 +351,7 @@ window = {
                         button_regular = {
                             tooltip_enabled = no
                             size = {150 35}
-                            text = "glorpui__toggle_debug_name"
+                            text = "GLORP_UI_TOGGLE_DEBUG"
                             onclick = "[ExecuteConsoleCommand('debug_mode')]"
                         }
                     }

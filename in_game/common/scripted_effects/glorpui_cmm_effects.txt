@@ -69,18 +69,6 @@ glorpui_register_cmf_mod = {
 
 	cmm_register_bool_setting = {
 		mod_id = glorpui
-		setting_id = useVanillaCabinetView
-		tab_id = toggles
-		group_id = general
-		default_value = 0
-	}
-	cmm_sync_bool_alias = {
-		setting = glorpui__useVanillaCabinetView
-		alias = useVanillaCabinetView
-	}
-
-	cmm_register_bool_setting = {
-		mod_id = glorpui
 		setting_id = disableLeftPanelStatsBar
 		tab_id = toggles
 		group_id = general
@@ -89,18 +77,6 @@ glorpui_register_cmf_mod = {
 	cmm_sync_bool_alias_inverted = {
 		setting = glorpui__disableLeftPanelStatsBar
 		alias = disableLeftPanelStatsBar
-	}
-
-	cmm_register_bool_setting = {
-		mod_id = glorpui
-		setting_id = disableColouredMapmodeButtons
-		tab_id = toggles
-		group_id = general
-		default_value = 1
-	}
-	cmm_sync_bool_alias_inverted = {
-		setting = glorpui__disableColouredMapmodeButtons
-		alias = disableColouredMapmodeButtons
 	}
 
 	# War View (war_view) Tab
@@ -214,6 +190,44 @@ glorpui_register_cmf_mod = {
 		setting = glorpui__dynamicWarStats
 		alias = dynamicWarStats
 	}
+
+	# Mapmodes (mapmodes_bar) Tab
+	## General (general) Group
+	cmm_register_bool_setting = {
+		mod_id = glorpui
+		setting_id = disableColouredMapmodeButtons
+		tab_id = mapmodes_bar
+		group_id = general
+		default_value = 1
+	}
+	cmm_sync_bool_alias_inverted = {
+		setting = glorpui__disableColouredMapmodeButtons
+		alias = disableColouredMapmodeButtons
+	}
+
+	cmm_register_bool_setting = {
+		mod_id = glorpui
+		setting_id = vanillaMapmodeWidth
+		tab_id = mapmodes_bar
+		group_id = general
+		default_value = 0
+	}
+	cmm_sync_bool_alias = {
+		setting = glorpui__vanillaMapmodeWidth
+		alias = vanillaMapmodeWidth
+	}
+
+	cmm_register_bool_setting = {
+		mod_id = glorpui
+		setting_id = vanillaMapmodeHeight
+		tab_id = mapmodes_bar
+		group_id = general
+		default_value = 0
+	}
+	cmm_sync_bool_alias = {
+		setting = glorpui__vanillaMapmodeHeight
+		alias = vanillaMapmodeHeight
+	}
 }
 
 # Callback handler for cmf_on_callback.
@@ -254,22 +268,10 @@ glorpui_handle_cmf_callback = {
 				alias = useDefaultIconsLeftPanel
 			}
 		}
-		flag:glorpui__useVanillaCabinetView = {
-			cmm_sync_bool_alias = {
-				setting = glorpui__useVanillaCabinetView
-				alias = useVanillaCabinetView
-			}
-		}
 		flag:glorpui__disableLeftPanelStatsBar = {
 			cmm_sync_bool_alias_inverted = {
 				setting = glorpui__disableLeftPanelStatsBar
 				alias = disableLeftPanelStatsBar
-			}
-		}
-		flag:glorpui__disableColouredMapmodeButtons = {
-			cmm_sync_bool_alias_inverted = {
-				setting = glorpui__disableColouredMapmodeButtons
-				alias = disableColouredMapmodeButtons
 			}
 		}
 		# War View (war_view) Tab
@@ -328,6 +330,26 @@ glorpui_handle_cmf_callback = {
 			cmm_sync_bool_alias = {
 				setting = glorpui__dynamicWarStats
 				alias = dynamicWarStats
+			}
+		}
+		# Mapmodes (mapmodes_bar) Tab
+		## General (general) Group
+		flag:glorpui__disableColouredMapmodeButtons = {
+			cmm_sync_bool_alias_inverted = {
+				setting = glorpui__disableColouredMapmodeButtons
+				alias = disableColouredMapmodeButtons
+			}
+		}
+		flag:glorpui__vanillaMapmodeWidth = {
+			cmm_sync_bool_alias = {
+				setting = glorpui__vanillaMapmodeWidth
+				alias = vanillaMapmodeWidth
+			}
+		}
+		flag:glorpui__vanillaMapmodeHeight = {
+			cmm_sync_bool_alias = {
+				setting = glorpui__vanillaMapmodeHeight
+				alias = vanillaMapmodeHeight
 			}
 		}
 	}
