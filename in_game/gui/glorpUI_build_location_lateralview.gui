@@ -317,11 +317,12 @@ template build_location_entry {
 									}
 								}
 
-                                # Glorp UI - Market Access, Control
+                                # Glorp UI - Market Access (or Terrain Bonus when constructing a fort), Control
                                 vbox = {
                                     maximumsize = {60 46}
                                     layoutpolicy_horizontal = expanding
                                     hbox = { # Market Access
+                                        visible = "[Not(GetScriptedGui('glorpui_building_type_is_defense_category').IsShown(GuiScope.SetRoot(BuildInLocationLateralView.GetBuildingType.MakeScope).End))]"
                                         piechart = {
                                             size = { 20 20 }
                                             alwaystransparent = yes
@@ -376,6 +377,48 @@ template build_location_entry {
                                             autoresize = no
                                             fontsize = 14
                                             raw_text = "[LocationToBuildItem.GetLocation.GetMarketAccess|0%]"
+                                        }
+                                    }
+                                    hbox = { # Terrain Attacker Penalty (when constructing a fort)
+                                        visible = "[GetScriptedGui('glorpui_building_type_is_defense_category').IsShown(GuiScope.SetRoot(BuildInLocationLateralView.GetBuildingType.MakeScope).End)]"
+                                        datacontext = "[LocationToBuildItem.GetLocation]"
+                                        widget = {
+                                            size = { 20 20 }
+                                            using = bg_circle_piechart
+                                            background = {
+                                                texture = "[GetClimateFrame(Location.GetClimate)]"
+                                                alpha = 0.6
+                                            }
+                                            icon = {
+                                                size = { 70% 70% }
+                                                parentanchor = center
+                                                texture = "[GetTopographyIcon(Location.GetTopography)]"
+                                            }
+                                            button = {
+                                                parentanchor = center
+                                                size = { 100% 100% }
+                                                tooltipwidget = {
+                                                    SimpleContextualStringPairTooltipType = {
+                                                        blockoverride "title_icon" {
+                                                            icon = {
+                                                                using = tooltip_title_icon_size
+                                                                texture = "gfx/interface/icons/modifier_types/fort_level.dds"
+                                                            }
+                                                        }
+                                                        blockoverride "concept_link" {
+                                                            text = "[fort|e]"
+                                                        }
+                                                        lowpriotextcontext = "[JoinText(Localize('line_break'), Localize('TERRAIN_ATTACKER_PENALTY_TT'), Location.GetFortInfo)]"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        text_single = {
+                                            size = { 30 18 }
+                                            align = nobaseline|right
+                                            autoresize = no
+                                            fontsize = 14
+                                            raw_text = "[Location.GetAttackerPenalty|-=]"
                                         }
                                     }
                                     hbox = { # Control
