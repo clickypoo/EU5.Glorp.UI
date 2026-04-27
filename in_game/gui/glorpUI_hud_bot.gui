@@ -984,7 +984,6 @@ types GlorpUIBottomTypes
 
 			mapmodes_spacer = { }
 			vbox = {
-				size = { 100% 100% }
 				layoutpolicy_horizontal = expanding
 				layoutpolicy_vertical = expanding
 				allow_outside = yes
@@ -992,7 +991,8 @@ types GlorpUIBottomTypes
 				# Height Spacer
 				widget = {
 					visible = "[Not(Player.MakeScope.GetVariable('vanillaMapmodeHeight').IsSet)]"
-					size = { 100% 0 }
+					layoutpolicy_horizontal = expanding
+					size = { -1 0 }
 					visible_at_creation = no
 					state = {
 						name = _show
@@ -1009,14 +1009,14 @@ types GlorpUIBottomTypes
 				}
 				vbox = {
 					bottomtotop = yes
-					size = { 100% 100% }
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
 					allow_outside = yes
 
 					hbox = {
-						size = { 100% 60% }
 						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						layoutstretchfactor_vertical = 60
 
 						using = bg_mapmode_menu
 						# Glorp UI - Removed Vanilla Pin Button
@@ -1025,7 +1025,7 @@ types GlorpUIBottomTypes
 						widget = {
 							visible = "[Player.MakeScope.GetVariable('vanillaMapmodeHeight').IsSet]"
 							layoutpolicy_horizontal = expanding
-							size = { 100% 60 }
+							size = { -1 60 }
 							overlappingitembox = {
 								size = { 95% 40 }
 								layoutpolicy_horizontal = expanding
@@ -1046,7 +1046,7 @@ types GlorpUIBottomTypes
 						widget = {
 							visible = "[Not(Player.MakeScope.GetVariable('vanillaMapmodeHeight').IsSet)]"
 							layoutpolicy_horizontal = expanding
-							size = { 100% 50 }
+							size = { -1 50 }
 
 							overlappingitembox = {
 								size = { 95% 43 }
@@ -1071,7 +1071,8 @@ types GlorpUIBottomTypes
 
 					hbox = {
 						layoutpolicy_horizontal = expanding
-						size = { 100% 40% }
+						layoutpolicy_vertical = expanding
+						layoutstretchfactor_vertical = 40
 						allow_outside = yes
 						using = bg_mapmenu_tab
 
@@ -1523,7 +1524,8 @@ types GlorpUIBottomTypes
 
 		visible_at_creation = no
 		visible = "[Player.MakeScope.GetVariable('vanillaMapmodeWidth').IsSet]"
-		size = { 0 100% }
+		layoutpolicy_vertical = expanding
+		size = { 0 -1 }
 		state = {
 			name = _show
 			duration = 0.25

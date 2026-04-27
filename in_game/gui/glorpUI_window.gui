@@ -324,7 +324,7 @@ window = {
 						hbox = {
 							spacing = 10
 							text_single = {
-								text = "glorpui__useVanillaMapmodeWidth_name"
+								text = "glorpui__vanillaMapmodeWidth_name"
 							}
 							checkbox_square_alt = {
 								onclick = "[GetScriptedGui('SetVanillaMapmodeWidth').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -335,7 +335,7 @@ window = {
 						hbox = {
 							spacing = 10
 							text_single = {
-								text = "glorpui__useVanillaMapmodeHeight_name"
+								text = "glorpui__vanillaMapmodeHeight_name"
 							}
 							checkbox_square_alt = {
 								onclick = "[GetScriptedGui('SetVanillaMapmodeHeight').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"

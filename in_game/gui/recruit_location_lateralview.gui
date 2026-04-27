@@ -1654,6 +1654,7 @@ lateralview = {
 								# using = layoutpolicy_expanding
 								size = { 240 40 }
 								onclick = "[GetScriptedGui('EnableMassRecruiting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								tooltip = "RECRUIT_BEST_IN_LOCATION_ACTION_BUTTON"
 								blockoverride "icon_overlay" { }
 								blockoverride "icon_texture" {
 									texture = "[GetUnitIcon(RecruitInLocationLateralView.GetUnitType)]"
@@ -1695,7 +1696,7 @@ lateralview = {
 										visible_at_creation = no
 
 										# first, in locations without army constructions
-										visible = "[LessThan_int32(GetDataModelSize(LocationToRecruitItem.GetLocation.GetArmyConstructions), '(int32)1')))]"
+										visible = "[LessThan_int32(GetDataModelSize(LocationToRecruitItem.GetLocation.GetArmyConstructions), '(int32)1')]"
 
 										# Up to the massRecruit amount
 										text_single = {

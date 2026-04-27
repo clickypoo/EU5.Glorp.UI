@@ -6,7 +6,6 @@ glorpui_cmf_suppress = {
 		set_variable = { name = cmf_callback value = flag:glorpui__useStaticFlag }
 		set_variable = { name = cmf_callback value = flag:glorpui__useDefaultIconsBGLeftPanel }
 		set_variable = { name = cmf_callback value = flag:glorpui__useDefaultIconsLeftPanel }
-		set_variable = { name = cmf_callback value = flag:glorpui__useVanillaCabinetView }
 		set_variable = { name = cmf_callback value = flag:glorpui__disableLeftPanelStatsBar }
 		set_variable = { name = cmf_callback value = flag:glorpui__disableColouredMapmodeButtons }
 		set_variable = { name = cmf_callback value = flag:glorpui__useVanillaArmyStrength }
