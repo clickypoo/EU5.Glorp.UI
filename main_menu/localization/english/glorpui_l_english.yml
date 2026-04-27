@@ -5,3 +5,4 @@ l_english:
  GLORP_UI_TOGGLE_DEBUG: "Toggle Debug"
  GLORP_UI_TOGGLE_LEFT_PANEL_STATS: "Toggle Left Panel Stats"
  GLORP_UI_SHOWHIDE_LEFT_PANEL_STATS: "Show/Hide Left Panel Stats"
+ ICON_COASTAL: "@coastal!"
