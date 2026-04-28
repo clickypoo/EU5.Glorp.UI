@@ -1,0 +1,8 @@
+﻿#noinspection ALL
+l_russian:
+ RECRUIT_BEST_IN_LOCATION_ACTION_BUTTON: "Массовый найм [RecruitInLocationLateralView.GetUnitType.GetName]"
+ GLORP_UI_OTHER: "Прочее"
+ GLORP_UI_TOGGLE_DEBUG: "Переключить отладку"
+ GLORP_UI_TOGGLE_LEFT_PANEL_STATS: "Переключить статистику левой панели"
+ GLORP_UI_SHOWHIDE_LEFT_PANEL_STATS: "Показать/скрыть статистику левой панели"
+ ICON_COASTAL: "@coastal!"

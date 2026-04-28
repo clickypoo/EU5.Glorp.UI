@@ -1,13 +1,13 @@
 ﻿l_spanish:
  # Mod
- glorpui_name: "Glorp UI"
+ glorpui_name: "Interfaz de Glorp"
  glorpui_desc: "y con ello, digamos que... mi bingus"
 
  # Toggles (toggles) Tab
- glorpui__toggles_name: "Interruptores"
+ glorpui__toggles_name: "Conmutadores"
  ## General (general) Group
  glorpui__toggles__general_name: "General"
- glorpui__useVanillaPortrait_name: "Bandera y retrato vanilla"
+ glorpui__useVanillaPortrait_name: "Bandera y retrato originales"
  glorpui__useVanillaPortrait_desc: ""
  glorpui__useStaticFlag_name: "Usar bandera estática"
  glorpui__useStaticFlag_desc: ""
@@ -15,18 +15,16 @@
  glorpui__useDefaultIconsBGLeftPanel_desc: ""
  glorpui__useDefaultIconsLeftPanel_name: "Iconos vanilla en el panel izquierdo"
  glorpui__useDefaultIconsLeftPanel_desc: ""
- glorpui__useVanillaCabinetView_name: "Vista de gabinete original"
- glorpui__useVanillaCabinetView_desc: ""
  glorpui__disableLeftPanelStatsBar_name: "Barra de estadísticas del panel izquierdo"
  glorpui__disableLeftPanelStatsBar_desc: ""
- glorpui__disableColouredMapmodeButtons_name: "Botones de modos de mapa coloreados"
+ glorpui__disableColouredMapmodeButtons_name: "Botones de modo de mapa coloreados"
  glorpui__disableColouredMapmodeButtons_desc: ""
 
  # War View (war_view) Tab
  glorpui__war_view_name: "Vista de guerra"
  ## General (general) Group
  glorpui__war_view__general_name: "General"
- glorpui__useVanillaArmyStrength_name: "Fuerza del ejército original"
+ glorpui__useVanillaArmyStrength_name: "Fuerza del ejército vainilla"
  glorpui__useVanillaArmyStrength_desc: ""
  glorpui__useVanillaParticipantColour_name: "Color de participante vainilla"
  glorpui__useVanillaParticipantColour_desc: ""
@@ -48,7 +46,7 @@
  glorpui__disableTopBarDiplomats_name: "Diplomáticos"
  glorpui__disableTopBarDiplomats_desc: ""
  glorpui__dynamicWarStats_name: "Estadísticas dinámicas de guerra"
- glorpui__dynamicWarStats_desc: ""
+ glorpui__dynamicWarStats_desc: "Muestra y oculta dinámicamente las reservas militares, los marineros y el hastío bélico."
 
  # Optional: self-referencing flag keys to suppress IDE warnings (safe to remove if you want)
  glorpui: "glorpui"
@@ -62,7 +60,6 @@
  glorpui__useStaticFlag: "glorpui__useStaticFlag"
  glorpui__useDefaultIconsBGLeftPanel: "glorpui__useDefaultIconsBGLeftPanel"
  glorpui__useDefaultIconsLeftPanel: "glorpui__useDefaultIconsLeftPanel"
- glorpui__useVanillaCabinetView: "glorpui__useVanillaCabinetView"
  glorpui__disableLeftPanelStatsBar: "glorpui__disableLeftPanelStatsBar"
  glorpui__disableColouredMapmodeButtons: "glorpui__disableColouredMapmodeButtons"
  glorpui__useVanillaArmyStrength: "glorpui__useVanillaArmyStrength"
@@ -74,3 +71,16 @@
  glorpui__disableTopBarPrestige: "glorpui__disableTopBarPrestige"
  glorpui__disableTopBarDiplomats: "glorpui__disableTopBarDiplomats"
  glorpui__dynamicWarStats: "glorpui__dynamicWarStats"
+ glorpui__useFramedStaticFlag_name: "Usar bandera estática enmarcada"
+ glorpui__useFramedStaticFlag_desc: ""
+ glorpui__mapmodes_bar_name: "Modos de mapa"
+ glorpui__mapmodes_bar__general_name: "General"
+ glorpui__vanillaMapmodeWidth_name: "Ancho de la barra de modos de mapa estándar"
+ glorpui__vanillaMapmodeWidth_desc: ""
+ glorpui__vanillaMapmodeHeight_name: "Altura de la barra de modos de mapa original"
+ glorpui__vanillaMapmodeHeight_desc: ""
+ glorpui__mapmodes_bar: "glorpui__mapmodes_bar"
+ glorpui__mapmodes_bar__general: "glorpui__mapmodes_bar__general"
+ glorpui__useFramedStaticFlag: "glorpui__useFramedStaticFlag"
+ glorpui__vanillaMapmodeWidth: "glorpui__vanillaMapmodeWidth"
+ glorpui__vanillaMapmodeHeight: "glorpui__vanillaMapmodeHeight"

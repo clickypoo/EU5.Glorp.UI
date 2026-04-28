@@ -1,31 +1,29 @@
 ﻿l_korean:
  # Mod
- glorpui_name: "Glorp UI"
- glorpui_desc: "그리고 그게 뭐냐면, 말하자면.. 내 빙거스"
+ glorpui_name: "글로프 UI"
+ glorpui_desc: "그리고 그건... 뭐랄까, 제 빙구스라고 해두죠."
 
  # Toggles (toggles) Tab
  glorpui__toggles_name: "토글"
  ## General (general) Group
- glorpui__toggles__general_name: "일반"
- glorpui__useVanillaPortrait_name: "바닐라 국기 및 초상화"
+ glorpui__toggles__general_name: "장군"
+ glorpui__useVanillaPortrait_name: "바닐라 깃발 및 초상화"
  glorpui__useVanillaPortrait_desc: ""
- glorpui__useStaticFlag_name: "정적 국기 사용"
+ glorpui__useStaticFlag_name: "고정 깃발 사용"
  glorpui__useStaticFlag_desc: ""
- glorpui__useDefaultIconsBGLeftPanel_name: "왼쪽 패널의 바닐라 아이콘 배경"
+ glorpui__useDefaultIconsBGLeftPanel_name: "왼쪽 패널 바닐라 아이콘 배경"
  glorpui__useDefaultIconsBGLeftPanel_desc: ""
- glorpui__useDefaultIconsLeftPanel_name: "왼쪽 패널의 바닐라 아이콘"
+ glorpui__useDefaultIconsLeftPanel_name: "좌측 패널 바닐라 아이콘"
  glorpui__useDefaultIconsLeftPanel_desc: ""
- glorpui__useVanillaCabinetView_name: "바닐라 내각 화면"
- glorpui__useVanillaCabinetView_desc: ""
- glorpui__disableLeftPanelStatsBar_name: "왼쪽 패널 상태 표시줄"
+ glorpui__disableLeftPanelStatsBar_name: "좌측 패널 통계 바"
  glorpui__disableLeftPanelStatsBar_desc: ""
- glorpui__disableColouredMapmodeButtons_name: "컬러 지도 모드 버튼"
+ glorpui__disableColouredMapmodeButtons_name: "색상 지도 모드 버튼"
  glorpui__disableColouredMapmodeButtons_desc: ""
 
  # War View (war_view) Tab
- glorpui__war_view_name: "전쟁 창"
+ glorpui__war_view_name: "전쟁창"
  ## General (general) Group
- glorpui__war_view__general_name: "일반"
+ glorpui__war_view__general_name: "장군"
  glorpui__useVanillaArmyStrength_name: "바닐라 육군 전력"
  glorpui__useVanillaArmyStrength_desc: ""
  glorpui__useVanillaParticipantColour_name: "바닐라 참여자 색상"
@@ -34,7 +32,7 @@
  # Top Bar (top_bar) Tab
  glorpui__top_bar_name: "상단 바"
  ## General (general) Group
- glorpui__top_bar__general_name: "일반"
+ glorpui__top_bar__general_name: "장군"
  glorpui__disableTopBarIncome_name: "수입"
  glorpui__disableTopBarIncome_desc: ""
  glorpui__disableTopBarStability_name: "안정도"
@@ -47,8 +45,8 @@
  glorpui__disableTopBarPrestige_desc: ""
  glorpui__disableTopBarDiplomats_name: "외교관"
  glorpui__disableTopBarDiplomats_desc: ""
- glorpui__dynamicWarStats_name: "다이내믹 전쟁 통계"
- glorpui__dynamicWarStats_desc: ""
+ glorpui__dynamicWarStats_name: "동적 전쟁 통계"
+ glorpui__dynamicWarStats_desc: "인력, 수병, 전쟁 피로도를 동적으로 표시 및 숨김"
 
  # Optional: self-referencing flag keys to suppress IDE warnings (safe to remove if you want)
  glorpui: "glorpui"
@@ -62,7 +60,6 @@
  glorpui__useStaticFlag: "glorpui__useStaticFlag"
  glorpui__useDefaultIconsBGLeftPanel: "glorpui__useDefaultIconsBGLeftPanel"
  glorpui__useDefaultIconsLeftPanel: "glorpui__useDefaultIconsLeftPanel"
- glorpui__useVanillaCabinetView: "glorpui__useVanillaCabinetView"
  glorpui__disableLeftPanelStatsBar: "glorpui__disableLeftPanelStatsBar"
  glorpui__disableColouredMapmodeButtons: "glorpui__disableColouredMapmodeButtons"
  glorpui__useVanillaArmyStrength: "glorpui__useVanillaArmyStrength"
@@ -74,3 +71,16 @@
  glorpui__disableTopBarPrestige: "glorpui__disableTopBarPrestige"
  glorpui__disableTopBarDiplomats: "glorpui__disableTopBarDiplomats"
  glorpui__dynamicWarStats: "glorpui__dynamicWarStats"
+ glorpui__useFramedStaticFlag_name: "프레임이 있는 정적 깃발 사용"
+ glorpui__useFramedStaticFlag_desc: ""
+ glorpui__mapmodes_bar_name: "지도 모드"
+ glorpui__mapmodes_bar__general_name: "장군"
+ glorpui__vanillaMapmodeWidth_name: "바닐라 지도 모드 표시줄 너비"
+ glorpui__vanillaMapmodeWidth_desc: ""
+ glorpui__vanillaMapmodeHeight_name: "바닐라 지도 모드 표시줄 높이"
+ glorpui__vanillaMapmodeHeight_desc: ""
+ glorpui__mapmodes_bar: "glorpui__mapmodes_bar"
+ glorpui__mapmodes_bar__general: "glorpui__mapmodes_bar__general"
+ glorpui__useFramedStaticFlag: "glorpui__useFramedStaticFlag"
+ glorpui__vanillaMapmodeWidth: "glorpui__vanillaMapmodeWidth"
+ glorpui__vanillaMapmodeHeight: "glorpui__vanillaMapmodeHeight"

@@ -1,0 +1,8 @@
+﻿#noinspection ALL
+l_turkish:
+ RECRUIT_BEST_IN_LOCATION_ACTION_BUTTON: "Toplu Askere Alım [RecruitInLocationLateralView.GetUnitType.GetName]"
+ GLORP_UI_OTHER: "Diğer"
+ GLORP_UI_TOGGLE_DEBUG: "Hata Ayıklamayı Aç/Kapat"
+ GLORP_UI_TOGGLE_LEFT_PANEL_STATS: "Sol Panel İstatistiklerini Aç/Kapat"
+ GLORP_UI_SHOWHIDE_LEFT_PANEL_STATS: "Sol Panel İstatistiklerini Göster/Gizle"
+ ICON_COASTAL: "@coastal!"
