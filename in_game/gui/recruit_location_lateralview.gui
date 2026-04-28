@@ -1712,6 +1712,7 @@ lateralview = {
 												name = _show
 												on_start = "[GetScriptedGui('UpdateMassRecruiting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 												on_start = "[LocationToRecruitItem.Recruit]"
+												# todo: set hasRecruited flag, if we don't set this.. we re-recruit after iterating armyconstructions counter
 											}
 										}
 
