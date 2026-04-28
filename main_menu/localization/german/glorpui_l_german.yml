@@ -1,0 +1,8 @@
+﻿#noinspection ALL
+l_german:
+ RECRUIT_BEST_IN_LOCATION_ACTION_BUTTON: "Massenrekrutierung [RecruitInLocationLateralView.GetUnitType.GetName]"
+ GLORP_UI_OTHER: "Sonstiges"
+ GLORP_UI_TOGGLE_DEBUG: "Debug umschalten"
+ GLORP_UI_TOGGLE_LEFT_PANEL_STATS: "Linke Panel-Statistiken umschalten"
+ GLORP_UI_SHOWHIDE_LEFT_PANEL_STATS: "Statistiken der linken Leiste ein-/ausblenden"
+ ICON_COASTAL: "@coastal!"

@@ -1,3 +1,5 @@
+# CMF Note: Every type, template, and the lateralview has been modified, so there is no point in extracting anything.
+
 window = {
 	name = "multiplayer_chat"
 	# Modified from code

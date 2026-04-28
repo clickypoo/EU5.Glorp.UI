@@ -1,22 +1,20 @@
 ﻿l_russian:
  # Mod
- glorpui_name: "Glorp UI"
+ glorpui_name: "Интерфейс Glorp"
  glorpui_desc: "и под этим, скажем так.. мой бингус"
 
  # Toggles (toggles) Tab
  glorpui__toggles_name: "Переключатели"
  ## General (general) Group
- glorpui__toggles__general_name: "Общее"
- glorpui__useVanillaPortrait_name: "Оригинальные флаг и портрет"
+ glorpui__toggles__general_name: "Генерал"
+ glorpui__useVanillaPortrait_name: "Ванильные флаг и портрет"
  glorpui__useVanillaPortrait_desc: ""
- glorpui__useStaticFlag_name: "Использовать статичный флаг"
+ glorpui__useStaticFlag_name: "Использовать статический флаг"
  glorpui__useStaticFlag_desc: ""
- glorpui__useDefaultIconsBGLeftPanel_name: "Ванильные фоны иконок на левой панели"
+ glorpui__useDefaultIconsBGLeftPanel_name: "Стандартные фоны иконок на левой панели"
  glorpui__useDefaultIconsBGLeftPanel_desc: ""
  glorpui__useDefaultIconsLeftPanel_name: "Ванильные иконки на левой панели"
  glorpui__useDefaultIconsLeftPanel_desc: ""
- glorpui__useVanillaCabinetView_name: "Стандартный вид кабинета"
- glorpui__useVanillaCabinetView_desc: ""
  glorpui__disableLeftPanelStatsBar_name: "Панель статистики левой панели"
  glorpui__disableLeftPanelStatsBar_desc: ""
  glorpui__disableColouredMapmodeButtons_name: "Цветные кнопки режимов карты"
@@ -25,16 +23,16 @@
  # War View (war_view) Tab
  glorpui__war_view_name: "Окно войны"
  ## General (general) Group
- glorpui__war_view__general_name: "Общие"
+ glorpui__war_view__general_name: "Генерал"
  glorpui__useVanillaArmyStrength_name: "Ванильная сила армии"
  glorpui__useVanillaArmyStrength_desc: ""
- glorpui__useVanillaParticipantColour_name: "Ванильный цвет участников"
+ glorpui__useVanillaParticipantColour_name: "Стандартный цвет участника"
  glorpui__useVanillaParticipantColour_desc: ""
 
  # Top Bar (top_bar) Tab
  glorpui__top_bar_name: "Верхняя панель"
  ## General (general) Group
- glorpui__top_bar__general_name: "Общее"
+ glorpui__top_bar__general_name: "Генерал"
  glorpui__disableTopBarIncome_name: "Доход"
  glorpui__disableTopBarIncome_desc: ""
  glorpui__disableTopBarStability_name: "Стабильность"
@@ -48,7 +46,7 @@
  glorpui__disableTopBarDiplomats_name: "Дипломаты"
  glorpui__disableTopBarDiplomats_desc: ""
  glorpui__dynamicWarStats_name: "Динамическая статистика войны"
- glorpui__dynamicWarStats_desc: ""
+ glorpui__dynamicWarStats_desc: "Динамически показывает и скрывает рекрутов, моряков и усталость от войны"
 
  # Optional: self-referencing flag keys to suppress IDE warnings (safe to remove if you want)
  glorpui: "glorpui"
@@ -62,7 +60,6 @@
  glorpui__useStaticFlag: "glorpui__useStaticFlag"
  glorpui__useDefaultIconsBGLeftPanel: "glorpui__useDefaultIconsBGLeftPanel"
  glorpui__useDefaultIconsLeftPanel: "glorpui__useDefaultIconsLeftPanel"
- glorpui__useVanillaCabinetView: "glorpui__useVanillaCabinetView"
  glorpui__disableLeftPanelStatsBar: "glorpui__disableLeftPanelStatsBar"
  glorpui__disableColouredMapmodeButtons: "glorpui__disableColouredMapmodeButtons"
  glorpui__useVanillaArmyStrength: "glorpui__useVanillaArmyStrength"
@@ -74,3 +71,16 @@
  glorpui__disableTopBarPrestige: "glorpui__disableTopBarPrestige"
  glorpui__disableTopBarDiplomats: "glorpui__disableTopBarDiplomats"
  glorpui__dynamicWarStats: "glorpui__dynamicWarStats"
+ glorpui__useFramedStaticFlag_name: "Использовать статичный флаг в рамке"
+ glorpui__useFramedStaticFlag_desc: ""
+ glorpui__mapmodes_bar_name: "Режимы карты"
+ glorpui__mapmodes_bar__general_name: "Генерал"
+ glorpui__vanillaMapmodeWidth_name: "Ширина стандартной панели режимов карты"
+ glorpui__vanillaMapmodeWidth_desc: ""
+ glorpui__vanillaMapmodeHeight_name: "Высота ванильной панели режимов карты"
+ glorpui__vanillaMapmodeHeight_desc: ""
+ glorpui__mapmodes_bar: "glorpui__mapmodes_bar"
+ glorpui__mapmodes_bar__general: "glorpui__mapmodes_bar__general"
+ glorpui__useFramedStaticFlag: "glorpui__useFramedStaticFlag"
+ glorpui__vanillaMapmodeWidth: "glorpui__vanillaMapmodeWidth"
+ glorpui__vanillaMapmodeHeight: "glorpui__vanillaMapmodeHeight"

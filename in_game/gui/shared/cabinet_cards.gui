@@ -593,7 +593,7 @@ types CabinetCards
 					align = nobaseline
 					using = Font_Type_Flavor
 					text = "[Cabinet.GetCharacter.GetCourtCountry.Custom('GetHeadOfCabinetName')] [Cabinet.GetCharacter.GetNameWithNoTooltip], [Cabinet.GetCharacter.GetAgeInYears]"
-					visible = "[And3(Cabinet.IsCharacterSet, Cabinet.GetCharacter.IsHeadOfCabinet,Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet))]"
+					visible = "[And3(Cabinet.IsCharacterSet, Cabinet.GetCharacter.IsHeadOfCabinet,Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
 				}
                 # Vanilla - Cabinet member name
 				text_single = {
@@ -636,7 +636,7 @@ types CabinetCards
                     using = Font_Type_Flavor
                     text = "[Cabinet.GetCharacter.GetNameWithNoTooltip], [Cabinet.GetCharacter.GetAgeInYears]"
                     visible = "[And3(Cabinet.IsCharacterSet, Not(Cabinet.GetCharacter.IsHeadOfCabinet),
-                    Not(Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)))]"
+                    Not(Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet))]"
                 }
 
 				text_single = {

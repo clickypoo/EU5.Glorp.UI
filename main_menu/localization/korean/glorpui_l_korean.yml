@@ -1,0 +1,8 @@
+﻿#noinspection ALL
+l_korean:
+ RECRUIT_BEST_IN_LOCATION_ACTION_BUTTON: "[RecruitInLocationLateralView.GetUnitType.GetName] 대규모 모집"
+ GLORP_UI_OTHER: "기타"
+ GLORP_UI_TOGGLE_DEBUG: "디버그 전환"
+ GLORP_UI_TOGGLE_LEFT_PANEL_STATS: "좌측 패널 통계 전환"
+ GLORP_UI_SHOWHIDE_LEFT_PANEL_STATS: "좌측 패널 통계 표시/숨기기"
+ ICON_COASTAL: "@coastal!"

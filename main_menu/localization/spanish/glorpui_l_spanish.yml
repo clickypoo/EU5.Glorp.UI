@@ -1,0 +1,8 @@
+﻿#noinspection ALL
+l_spanish:
+ RECRUIT_BEST_IN_LOCATION_ACTION_BUTTON: "Reclutar [RecruitInLocationLateralView.GetUnitType.GetName] en masa"
+ GLORP_UI_OTHER: "Otros"
+ GLORP_UI_TOGGLE_DEBUG: "Alternar depuración"
+ GLORP_UI_TOGGLE_LEFT_PANEL_STATS: "Alternar estadísticas del panel izquierdo"
+ GLORP_UI_SHOWHIDE_LEFT_PANEL_STATS: "Mostrar/Ocultar estadísticas del panel izquierdo"
+ ICON_COASTAL: "@coastal!"

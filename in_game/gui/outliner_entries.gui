@@ -1,214 +1,4 @@
-
-template button_outliner_texture {
-	texture = "gfx/interface/buttons/paper_outliner_button.dds"
-	texture_density = 2
-	spriteType = corneredstretched
-	spriteborder = { 30 0 }
-	frame_grid = { 4 1 }
-
-	block "texture_color" {
-
-		modify_texture = {
-			using = color_paper_texture
-			blend_mode = add
-		}
-		modify_texture = {
-			using = overlay_paper_03
-			blend_mode = overlay
-			alpha = 0.3
-		}
-		modify_texture = {
-			using = overlay_cloth_texture
-			blend_mode = overlay
-			alpha = 0.1
-		}
-	}
-}
-
-template button_outliner_category_texture {
-	texture = "gfx/interface/buttons/outliner/outliner_category_button.dds"
-	texture_density = 2
-	spriteType = corneredstretched
-	spriteborder = { 50 0 }
-	frame_grid = {4 1}
-}
-
-template button_outliner_effect {
-	modify_texture = {
-		visible = "[OutlinerEntry.IsHighlighted]"
-		using = color_white_texture
-		blend_mode = add
-		alpha = 0.1
-	}
-
-	modify_texture = {
-		block "category_color" { using = color_white_texture }
-		alpha = 1
-	}
-
-	modify_texture = {
-		block "category_color_variant" { visible = no}
-		blend_mode = overlay
-		alpha = 1
-	}
-
-	modify_texture = {
-		using = overlay_cloth_texture
-		blend_mode = overlay
-		alpha = 0.2
-	}
-
-	# modify_texture = {
-	# 	texture = "gfx/interface/component_overlay/grunge_texture.dds"
-	# 	blend_mode = overlay
-	# 	alpha = 0.3
-	# }
-
-	# modify_texture = {
-	# 	using = color_black_texture
-	# 	blend_mode = overlay
-	# 	alpha = 0.3
-	# }
-}
-
-template cabinet_entry_color {
-	using = color_government_texture
-}
-
-types OutlinerEntriesTypes
-{
-	# entries iconbg
-	type OutlinerIconBg = widget {
-		alwaystransparent = yes
-		size = { 100% 100% }
-		# using = bg_paper_card
-		background = {
-			texture = "gfx/interface/component_tiles/balance_card_bg.dds"
-			texture_density = 2
-			using = button_outliner_effect
-		}
-		widget = {
-			size = {100% 100%}
-			ignore_layout = yes
-			alwaystransparent = yes
-			using = bg_cabinet_card_frame
-		}
-
-		# texture = "gfx/interface/colors/grey.dds"
-
-		# modify_texture = {
-		# 	block "category_color" {}
-		# 	blend_mode = overlay
-		# 	alpha = 1
-		# }
-	}
-
-	type OutlinerTextBase = text_single {
-		align = right
-		fontsize = 13
-	}
-
-	type OutlinerButtonBase = button {
-		parentanchor = right
-		using = button_outliner_texture
-
-		# using = button_outliner_effect
-		using = button_common_template
-
-		background = {
-			using = button_outliner_texture
-			blockoverride "texture_color" {
-				modify_texture = {
-					using = color_black_texture
-					blend_mode = add
-				}
-			}
-			margin_bottom = 1
-			alpha = 0.7
-		}
-
-		block "button_setup" {
-			tooltip_enabled = no
-		}
-	}
-
-	type OutlinerCategoryButtonBase = button {
-		parentanchor = right
-		using = button_outliner_category_texture
-		
-		using = button_common_template
-		using = button_outliner_effect
-
-		block "button_setup" {}
-	}
-
-	type OutlinerEntryBase = widget {
-		layoutpolicy_horizontal = expanding
-		using = outliner_base_entry_size
-		alwaystransparent = yes
-
-		visible = "[OutlinerEntry.IsVisible]"
-
-		block "outliner_entry_size" {
-			size = { 405 31 }
-		}
-
-		widget = {
-			alwaystransparent = yes
-			visible = "[Or3(Outliner.IsSettingsShowing, Outliner.IsMouseOver, And(Outliner.IsPinned, Not(Outliner.IsAnyOccludingPanelOpened)))]"
-			size = { 100% 100% }
-			parentanchor = right
-
-			state = {
-				using = outliner_hide_animation_template
-				position = { 400 0 }
-			}
-
-			state = {
-				using = outliner_show_animation_template
-				position = { 0 0 }
-			}
-
-			# Expanded Big
-			widget = {
-				visible = "[Outliner.IsExpanded]"
-				size = { 100% 100% }
-				parentanchor = right
-				using = outliner_mouseover_template
-				alwaystransparent = no
-
-				widget = {
-					using = outliner_inner_entry_size
-					block "expanded_big_content" {}
-				}
-			}
-
-			# Expanded Small
-			widget = {
-				visible = "[Not(Outliner.IsExpanded)]"
-				size = { 30% 100% }
-				parentanchor = right
-				using = outliner_mouseover_template
-				alwaystransparent = no
-
-				widget = {
-					using = outliner_inner_entry_size
-					block "expanded_small_content" {}
-				}
-			}
-		}
-
-		# Icon
-		widget = {
-			using = outliner_entry_icon_size
-			using = outliner_mouseover_template
-			parentanchor = right
-			alwaystransparent = "[Or(Outliner.IsMouseOver, And(Outliner.IsPinned, Not(Outliner.IsAnyOccludingPanelOpened)))]"
-
-			block "icon_content" {}
-		}
-	}
-}
+# CMF Note: All the untouched vanilla types/templates were extracted to cmf_outliner_entries_vanilla_types.gui
 
 # Available contexts
 # "OutlinerPlayerEntry"
@@ -250,7 +40,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					text = "[OutlinerPlayerEntry.GetName]"
 				}
-				
+
 				widget = {
 					size = { 32 20 }
 					icon = {
@@ -346,252 +136,21 @@ OutlinerEntryBase = {
 # "OutlinerAgendaEntry"
 # "Outliner"
 
-types AgendaTypes
-{
-	type AgendaCheck = widget {
-		using = bg_text_mask_container_dark_brown
-		size = { 15 15 }
-
-		icon = {
-			block "check_yes" { visible = no }
-			texture = "gfx/interface/icons/text_icons/trigger_yes.dds"
-			size = { 100% 100% }
-			parentanchor = center
-		}
-
-		# icon = {
-		# 	block "check_no" { visible = no }
-		# 	texture = "gfx/interface/icons/text_icons/trigger_no.dds"
-		# 	size = { 100% 100% }
-		# 	parentanchor = center
-		# }
-	}
-
-	# type AgendaIcon = widget {
-	# 	using = outliner_entry_icon_size
-	# 	using = outliner_mouseover_template
-	# 	layoutpolicy_vertical = expanding
-
-	# 	background = {
-	# 		texture = "gfx/interface/component_tiles/balance_card_bg.dds"
-	# 		texture_density = 2
-	# 		using = button_outliner_effect
-	# 	}
-
-	# 	widget = {
-	# 		size = { 100% 100% }
-	# 		ignore_layout = yes
-	# 		alwaystransparent = yes
-	# 		using = bg_cabinet_card_frame
-	# 	}
-
-	# 	OutlinerTextBase = {
-	# 		visible = "[OutlinerAgendaEntry.AreMissionsEnabled]"
-	# 		parentanchor = center
-	# 		size = { 100% 100% }
-	# 		autoresize = yes
-	# 		text = "[CountYes3(GetQuickMissionList.ArePlaystyleMissionsCompletedWithKey('ADMINISTRATIVE'), GetQuickMissionList.ArePlaystyleMissionsCompletedWithKey('DIPLOMATIC'), GetQuickMissionList.ArePlaystyleMissionsCompletedWithKey('MILITARY'))]"
-	# 	}
-
-	# 	icon = {
-	# 		parentanchor = center
-	# 		visible = "[Not(OutlinerAgendaEntry.AreMissionsEnabled)]"
-	# 		size = { 20 20 }
-	# 		texture = "gfx/interface/icons/missions/agenda.dds"
-	# 	}
-	# }
-
-	type AgendaMissionEntry = hbox {
-		visible = "[OutlinerAgendaEntry.AreMissionsEnabled]"
-		layoutpolicy_horizontal = expanding
-		spacing = 5
-
-		# AgendaCheck = {
-		# 	visible = "[And(OutlinerAgendaEntry.HasMissionActive, Player.GetMissionProgress.GetActiveMission.IsFromPlayStyle(PlayStyleItem.Self))]"
-		# 	blockoverride "check_yes" { visible = "[GetQuickMissionList.ArePlaystyleMissionsCompletedWithItem(PlayStyleItem.Self)]" }
-		# }
-
-		button = {
-			block "remove_for_short" { 
-				visible = "[Not(And(OutlinerAgendaEntry.HasMissionActive, Player.GetMissionProgress.GetActiveMission.IsFromPlayStyle(PlayStyleItem.Self)))]"
-			}
-
-			using = bg_square_tile_shadow
-			using = mission_color_texture
-			blockoverride "mission_color_texture_frames" {
-				using = button_common_properties_template
-			}
-			size = { -1 30 }
-			layoutpolicy_horizontal = expanding
-			using = playstyle_button_actions
-
-			hbox = {	
-				block "count_button_minsize" { minimumsize = { 70 30 } }
-				block "remove_for_short" {
-					margin_left = 2
-					margin_right = 12
-					spacing = 5
-				}
-
-				widget = {
-					size = { 30 30 }
-					background = {
-						using = color_black_texture
-						alpha = 0.4
-					}
-					AgendaCheck = {
-						parentanchor = center
-						blockoverride "check_yes" { visible = "[GetQuickMissionList.ArePlaystyleMissionsCompletedWithItem(PlayStyleItem.Self)]" }
-					}
-				}
-				
-				icon = {
-					block "icon_visible" { visible = yes }
-					block "icon_texture" { using = icon_colored_mil_texture }
-					size = { 20 20 }
-
-					glow = {
-						glow_radius = 3
-						color = {0.0 0.0 0.0 1.0}
-						alpha = 0.3
-					}
-				}
-
-				text_single = {
-					visible = "[PlayStyleItem.IsPlayStyleEnabled]"
-					autoresize = yes
-					align = center
-					text = "MISSIONS_ITEM_COMPLETED_SHORT"
-				}
-
-				block "remove_for_short" {
-					text_single = {
-						visible = "[Not(PlayStyleItem.IsPlayStyleEnabled)]"
-						autoresize = yes
-						text = "MISSION_LOCKED_MISSIONS"
-					}
-
-					text_single = {
-						autoresize = yes
-						block "playstyle_name" { title = "PLAYER_PLAYSTYLE_ADMINISTRATIVE_LONG" }
-					}
-
-					expand = {}
-				}
-			}
-		}
-
-		block "remove_for_short" {
-			button = {
-				visible = "[And(OutlinerAgendaEntry.HasMissionActive, Player.GetMissionProgress.GetActiveMission.IsFromPlayStyle(PlayStyleItem.Self))]"
-				using = bg_square_tile_shadow
-				using = mission_color_texture
-				blockoverride "mission_color_texture_frames" {
-					using = button_common_properties_template
-				}
-				using = playstyle_button_actions
-
-				hbox = {
-					set_parent_size_to_minimum = yes
-					block "count_button_minsize" { minimumsize = { 70 30 } }
-					margin_left = 2
-					margin_right = 12
-					spacing = 5
-
-					widget = {
-						size = { 30 30 }
-						background = {
-							using = color_black_texture
-							alpha = 0.4
-						}
-						AgendaCheck = {
-							parentanchor = center
-							blockoverride "check_yes" { visible = "[GetQuickMissionList.ArePlaystyleMissionsCompletedWithItem(PlayStyleItem.Self)]" }
-						}
-					}
-
-					icon = {
-						block "icon_texture" { using = icon_colored_mil_texture }
-						size = { 20 20 }
-
-						glow = {
-							glow_radius = 3
-							color = {0.0 0.0 0.0 1.0}
-							alpha = 0.3
-						}
-					}
-
-					text_single = {
-						visible = "[PlayStyleItem.IsPlayStyleEnabled]"
-						autoresize = yes
-						text = "MISSIONS_ITEM_COMPLETED_SHORT"
-					}
-				}
-			}
-
-			button = {
-				visible = "[And(OutlinerAgendaEntry.HasMissionActive, Player.GetMissionProgress.GetActiveMission.IsFromPlayStyle(PlayStyleItem.Self))]"
-				using = bg_square_tile_shadow
-				using = mission_color_texture
-				blockoverride "mission_color_texture_frames" {
-					using = button_common_properties_template
-				}
-				
-				layoutpolicy_horizontal = expanding
-				size = { -1 30 }
-
-				hbox = {
-					spacing = 5
-					margin = { 10 0 }
-
-					icon = {
-						size = { 24 24 }
-						texture = "gfx/interface/icons/missions/_default.dds"
-					}
-
-					text_single = {
-						using = layoutpolicy_expanding
-						autoresize = no
-						text = "OUTLINER_AGENDA_MISSIONS"
-					}
-
-					text_single = {
-						autoresize = yes
-						text = "[Player.GetMissionProgress.GetActiveMission.GetProgress(Player.Self)|0%]"
-					}
-				}
-
-				action_tooltip = {
-					click_type = left
-					click_mode = single
-					title = "OPEN_MISSIONS_TREE_TEXT"
-					on_action = "[ShowMission(Player.GetMissionProgress.GetActiveMission)]"
-				}
-
-				datacontext = "[Player.GetMissionProgress.GetActiveMission]"
-				tooltipwidget = { using = Mission_tooltip }
-			}
-		}
-		
-		expand = {}
-	}
-}
-
 OutlinerEntryBase = {
 	name = "agenda_category_entry"
 
-	blockoverride "expanded_big_content"  { 
-		using = category_big_template 
+	blockoverride "expanded_big_content"  {
+		using = category_big_template
 		blockoverride "category_icon_texture" {
 			texture = "gfx/interface/icons/missions/_default.dds"
 
-		} 
+		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/missions/_default.dds"
-		} 
+		}
 	}
 	blockoverride "icon_content" { using = category_icon_template }
 
@@ -655,7 +214,7 @@ widget = {
 						using = bg_cabinet_card_frame_mission
 						blockoverride "card_header_pattern" {}
 						blockoverride "card_header_shadow" {}
-						
+
 						margin = { 5 5 }
 						margin_left = 15
 						spacing = 5
@@ -665,7 +224,7 @@ widget = {
 							blockoverride "icon_texture" { using = icon_colored_adm_texture }
 							blockoverride "playstyle_name" { text = "PLAYER_PLAYSTYLE_ADMINISTRATIVE_LONG" }
 							blockoverride "playstyle_name_action" { title = "PLAYER_PLAYSTYLE_ADMINISTRATIVE_LONG" }
-							blockoverride "playstyle_replay_action" { title = "REPLAY_ADM_TUTORIAL" }	
+							blockoverride "playstyle_replay_action" { title = "REPLAY_ADM_TUTORIAL" }
 							blockoverride "mission_color_modify_texture" {
 								modify_texture = {
 									blend_mode = overlay
@@ -693,7 +252,7 @@ widget = {
 							blockoverride "icon_texture" { using = icon_colored_mil_texture }
 							blockoverride "playstyle_name" { text = "PLAYER_PLAYSTYLE_MILITARY_LONG" }
 							blockoverride "playstyle_name_action" { title = "PLAYER_PLAYSTYLE_MILITARY_LONG" }
-							blockoverride "playstyle_replay_action" { title = "REPLAY_MIL_TUTORIAL" }			
+							blockoverride "playstyle_replay_action" { title = "REPLAY_MIL_TUTORIAL" }
 						}
 
 						hbox = {
@@ -858,7 +417,7 @@ widget = {
 								blockoverride "icon_texture" { using = icon_colored_adm_texture }
 								blockoverride "playstyle_name" { text = "PLAYER_PLAYSTYLE_ADMINISTRATIVE_LONG" }
 								blockoverride "playstyle_name_action" { title = "PLAYER_PLAYSTYLE_ADMINISTRATIVE_LONG" }
-								blockoverride "playstyle_replay_action" { title = "REPLAY_ADM_TUTORIAL" }	
+								blockoverride "playstyle_replay_action" { title = "REPLAY_ADM_TUTORIAL" }
 								blockoverride "remove_for_short" {}
 								blockoverride "count_button_minsize" { minimumsize = { 50 30 } }
 								blockoverride "mission_color_modify_texture" {
@@ -892,7 +451,7 @@ widget = {
 								blockoverride "icon_texture" { using = icon_colored_mil_texture }
 								blockoverride "playstyle_name" { text = "PLAYER_PLAYSTYLE_MILITARY_LONG" }
 								blockoverride "playstyle_name_action" { title = "PLAYER_PLAYSTYLE_MILITARY_LONG" }
-								blockoverride "playstyle_replay_action" { title = "REPLAY_MIL_TUTORIAL" }	
+								blockoverride "playstyle_replay_action" { title = "REPLAY_MIL_TUTORIAL" }
 								blockoverride "button_texture" { using = button_regular_red_texture }
 								blockoverride "remove_for_short" {}
 								blockoverride "count_button_minsize" { minimumsize = { 50 30 } }
@@ -905,7 +464,7 @@ widget = {
 								AgendaCheck = {
 									blockoverride "check_yes" { visible = "[Player.GetCurrentResearch.IsActive]" }
 								}
-								
+
 								button = {
 									size = { 20 20 }
 									texture = "gfx/interface/icons/flat_icons/tabicons/advances.dds"
@@ -1016,7 +575,7 @@ widget = {
 					}
 				}
 			}
-		}	
+		}
 	}
 
 	blockoverride "category_color" {
@@ -1123,20 +682,20 @@ widget = {
 OutlinerEntryBase = {
 	name = "country_category_entry"
 
-	blockoverride "expanded_big_content"  { 
-		using = category_big_template 
+	blockoverride "expanded_big_content"  {
+		using = category_big_template
 		blockoverride "category_icon_texture" {
 			texture = "[GetConceptTexture('country')]"
 			texture_density = 2
 
-		} 
+		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "[GetConceptTexture('country')]"
 			texture_density = 2
-		} 
+		}
 	}
 	blockoverride "icon_content" { using = category_icon_template }
 
@@ -1207,13 +766,13 @@ OutlinerEntryBase = {
 							autoresize = yes
 							text = "[Country.GetDiplomacy.GetSubjectLoyalty|2%+=/]"
 						}
-		
+
 						icon = {
 							size = { 18 18 }
 							texture = "[GetConceptTexture('subject_loyalty')]"
 						}
 					}
-	
+
 					hbox = {
 						visible = "[Not(Country.IsLocalPlayer)]"
 						spacing = 3
@@ -1223,7 +782,7 @@ OutlinerEntryBase = {
 							autoresize = yes
 							text = "[Country.GetDiplomacy.GetOpinionOf(GetPlayer)|+=]"
 						}
-		
+
 						icon = {
 							size = { 18 18 }
 							texture = "[GetConceptTexture('opinion')]"
@@ -1304,20 +863,20 @@ OutlinerEntryBase = {
 OutlinerEntryBase = {
 	name = "io_category_entry"
 
-	blockoverride "expanded_big_content"  { 
-		using = category_big_template 
+	blockoverride "expanded_big_content"  {
+		using = category_big_template
 		blockoverride "category_icon_texture" {
 			texture = "[GetConceptTexture('international_organization')]"
 			texture_density = 2
-		} 
+		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "[GetConceptTexture('international_organization')]"
 			texture_density = 2
-		} 
-	
+		}
+
 	}
 	blockoverride "icon_content" { using = category_icon_template }
 
@@ -1426,17 +985,17 @@ OutlinerEntryBase = {
 OutlinerEntryBase = {
 	name = "character_category_entry"
 
-	blockoverride "expanded_big_content"  { 
+	blockoverride "expanded_big_content"  {
 		using = category_big_template
 		blockoverride "category_icon_texture" {
 			texture = "gfx/interface/icons/flat_icons/geography/characters.dds"
-		} 
+		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/flat_icons/geography/characters.dds"
-		} 
+		}
 	}
 	blockoverride "icon_content" { using = category_icon_template }
 
@@ -1476,7 +1035,7 @@ OutlinerEntryBase = {
 						datacontext = "[Character.GetRoleMask]"
 					}
 				}
-	
+
 				OutlinerTextBase = {
 					using = layoutpolicy_expanding
 					align = left|nobaseline
@@ -1491,7 +1050,7 @@ OutlinerEntryBase = {
 						align = right|nobaseline
 						raw_text = " [Character.GetAge|Y]"
 					}
-			
+
 					gender_icon = {
 						blockoverride "tooltip_override" {}
 						blockoverride "gender_icon_size" {
@@ -1540,7 +1099,7 @@ OutlinerEntryBase = {
 		contextmenu_widget = {
 			CharacterContextMenu = {}
 		}
-		
+
 		tooltipwidget = {
 			using = Character_tooltip
 		}
@@ -1571,17 +1130,17 @@ OutlinerEntryBase = {
 OutlinerEntryBase = {
 	name = "conquistador_construction_category_entry"
 
-	blockoverride "expanded_big_content"  { 
-		using = category_big_template 
+	blockoverride "expanded_big_content"  {
+		using = category_big_template
 		blockoverride "category_icon_texture" {
 			texture = "gfx/interface/icons/unit_actions/conquistador.dds"
-		} 
+		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/unit_actions/conquistador.dds"
-		} 
+		}
 	}
 	blockoverride "icon_content" { using = category_icon_template }
 
@@ -1741,17 +1300,17 @@ OutlinerEntryBase = {
 OutlinerEntryBase = {
 	name = "location_category_entry"
 
-	blockoverride "expanded_big_content"  { 
-		using = category_big_template 
+	blockoverride "expanded_big_content"  {
+		using = category_big_template
 		blockoverride "category_icon_texture" {
 			texture = "gfx/interface/icons/map_modes/locations.dds"
-		} 
+		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/map_modes/locations.dds"
-		} 
+		}
 	}
 	blockoverride "icon_content" { using = category_icon_template }
 
@@ -1881,20 +1440,20 @@ OutlinerEntryBase = {
 OutlinerEntryBase = {
 	name = "seazone_category_entry"
 
-	blockoverride "expanded_big_content"  { 
-		using = category_big_template 
+	blockoverride "expanded_big_content"  {
+		using = category_big_template
 		blockoverride "category_icon_texture" {
 			texture = "[GetConceptTexture('seazone')]"
 			texture_density = 2
-		} 
+		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "[GetConceptTexture('seazone')]"
 			texture_density = 2
-		} 
-	
+		}
+
 	}
 	blockoverride "icon_content" { using = category_icon_template }
 
@@ -1939,7 +1498,7 @@ OutlinerEntryBase = {
 						texture = "[GetClimateFrame(Location.GetClimate)]"
 					}
 				}
-				
+
 				OutlinerTextBase = {
 					align = left
 					text = "[Location.GetNameWithNoTooltip]"
@@ -2008,19 +1567,19 @@ OutlinerEntryBase = {
 # "Location"
 OutlinerEntryBase = {
 	name = "goods_category_entry"
-	blockoverride "expanded_big_content"  { 
-		using = category_big_template 
+	blockoverride "expanded_big_content"  {
+		using = category_big_template
 		blockoverride "category_icon_texture" {
 			texture = "[GetConceptTexture('goods')]"
 			texture_density = 2
-		} 
+		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "[GetConceptTexture('goods')]"
 			texture_density = 2
-		} 
+		}
 	}
 	blockoverride "icon_content" { using = category_icon_template }
 
@@ -2075,6 +1634,7 @@ OutlinerEntryBase = {
 
 				OutlinerTextBase = {
 					using = layoutpolicy_expanding
+					size = { 65 20 }
 					autoresize = no
 					align = left
 					text = "[Goods.GetNameWithNoTooltip]"
@@ -2097,11 +1657,11 @@ OutlinerEntryBase = {
 					}
 
 					text_single = {
-						size = { 68 20 }
+						size = { 136 20 }
 						autoresize = no
 						align = right|nobaseline
 						using = Font_Size_Small
-						raw_text = "[GoodsMarketEntry.GetPrice|2]@[GoodsMarketEntry.GetGoods.GetPriceDifferenceIconName(GoodsMarketEntry.GetPrice)]!"
+						raw_text = "[GoodsMarketEntry.GetPriceDifference|-=%] ([GoodsMarketEntry.GetPrice|2]@[GoodsMarketEntry.GetGoods.GetPriceDifferenceIconName(GoodsMarketEntry.GetPrice)]!)"
 					}
 				}
 			}
@@ -2195,7 +1755,7 @@ OutlinerEntryBase = {
 
 	blockoverride "expanded_big_content"  { using = category_big_template }
 	blockoverride "expanded_small_content" { using = category_small_template }
-	
+
 	blockoverride "icon_content" { using = category_icon_template }
 	blockoverride "pin_object" {}
 
@@ -2249,7 +1809,7 @@ OutlinerEntryBase = {
 		}
 	}
 
-	blockoverride "category_small_extra_content" { 
+	blockoverride "category_small_extra_content" {
 		country_flag_very_small = {
 			datacontext = "[WarsOverviewWar.GetMainEnemy]"
 			filter_mouse = none
@@ -2402,10 +1962,10 @@ OutlinerEntryBase = {
 
 				OutlinerTextBase = {
 					visible = "[And3(
-						Not(Siege.IsTooFewMen), 
-						Siege.GetLocation.HasFort, 
+						Not(Siege.IsTooFewMen),
+						Siege.GetLocation.HasFort,
 						And(
-							Not(Siege.GetSiegeDefender.IsPlayer), 
+							Not(Siege.GetSiegeDefender.IsPlayer),
 							Not(Siege.GetSiegeDefender.IsAllied)
 						)
 					)]"
@@ -2415,10 +1975,10 @@ OutlinerEntryBase = {
 
 				OutlinerTextBase = {
 					visible = "[And3(
-						Not(Siege.IsTooFewMen), 
-						Siege.GetLocation.HasFort, 
+						Not(Siege.IsTooFewMen),
+						Siege.GetLocation.HasFort,
 						Or(
-							Siege.GetSiegeDefender.IsPlayer, 
+							Siege.GetSiegeDefender.IsPlayer,
 							Siege.GetSiegeDefender.IsAllied
 						)
 					)]"
@@ -2582,7 +2142,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					text = "[Combat.GetNameWithNoTooltip]"
 				}
-				
+
 				expand = {}
 
 				hbox = {
@@ -2598,79 +2158,79 @@ OutlinerEntryBase = {
 						blockoverride "show_as_button" { visible = no }
 						blockoverride "show_as_icon" { visible = yes }
 					}
-	
+
 					OutlinerTextBase = {
 						autoresize = yes
 						raw_text = "[Combat.GetAttacker.GetEngagedUnitsStrengthShort]"
 					}
-	
+
 					widget = {
 						size = { 20 20 }
-	
+
 						# # Player is Attacker
 						# piechart = {
 						# 	visible = "[Combat.GetAttacker.IsPlayerInCombat]"
 						# 	parentanchor = center
 						# 	size = { 90% 90% }
 						# 	using = piechart_angles
-	
+
 						# 	pieslice_no_highlight = {
 						# 		texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
 						# 		value = "[Subtract_float('(float)100.0', Combat.GetDefender.GetMoralePercent)]"
 						# 		color = { 0.3 0.35 0.4 1 }
 						# 	}
-	
+
 						# 	pieslice_no_highlight = {
 						# 		texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
 						# 		value = "[Combat.GetDefender.GetMoralePercent]"
 						# 		color = { 0.8 0.3 0.3 1 }
 						# 	}
-	
+
 						# 	# ATTACKER SIDE
-	
+
 						# 	pieslice_no_highlight = {
 						# 		texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
 						# 		value = "[Combat.GetAttacker.GetMoralePercent]"
 						# 		color = { 0.3 0.8 0.3 1 }
 						# 	}
-	
+
 						# 	pieslice_no_highlight = {
 						# 		texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
 						# 		value = "[Subtract_float('(float)100.0', Combat.GetAttacker.GetMoralePercent)]"
 						# 		color = { 0.45 0.35 0.35 1 }
 						# 	}
 						# }
-	
+
 						# # Player is Defender
 						# piechart = {
 						# 	visible = "[Combat.GetDefender.IsPlayerInCombat]"
 						# 	parentanchor = center
 						# 	size = { 90% 90% }
 						# 	using = piechart_angles
-	
+
 						# 	pieslice_no_highlight = {
 						# 		texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
 						# 		value = "[Subtract_float('(float)100.0', Combat.GetDefender.GetMoralePercent)]"
 						# 		color = { 0.3 0.35 0.4 1 }
 						# 		alwaystransparent = yes
 						# 	}
-	
+
 						# 	pieslice_no_highlight = {
 						# 		texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
 						# 		value = "[Combat.GetDefender.GetMoralePercent]"
 						# 		color = { 0.3 0.8 0.3 1 }
 						# 		alwaystransparent = yes
 						# 	}
-	
+
 						# 	# ATTACKER SIDE
-	
+
 						# 	pieslice_no_highlight = {
 						# 		texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
 						# 		value = "[Combat.GetAttacker.GetMoralePercent]"
 						# 		color = { 0.8 0.3 0.3 1 }
 						# 		alwaystransparent = yes
 						# 	}
-	
+
 						# 	pieslice_no_highlight = {
 						# 		texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
 						# 		value = "[Subtract_float('(float)100.0', Combat.GetAttacker.GetMoralePercent)]"
@@ -2678,18 +2238,18 @@ OutlinerEntryBase = {
 						# 		alwaystransparent = yes
 						# 	}
 						# }
-	
+
 						icon = {
 							size = { 100% 100% }
 							parentanchor = center
 							texture = "[GetConceptTexture('combat')]"
-	
+
 							modify_texture = {
 								using = overlay_window_texture
 								blend_mode = overlay
 								alpha = 0.7
 							}
-	
+
 							glow = {
 								name = "drop_shadow"
 								glow_radius = 3
@@ -2698,12 +2258,12 @@ OutlinerEntryBase = {
 							}
 						}
 					}
-	
+
 					OutlinerTextBase = {
 						autoresize = yes
 						raw_text = "[Combat.GetDefender.GetEngagedUnitsStrengthShort]"
 					}
-	
+
 					country_flag_very_small = {
 						datacontext = "[Combat.GetDefender.GetCountry]"
 						filter_mouse = none
@@ -2945,7 +2505,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					text = "[Combat.GetNameWithNoTooltip]"
 				}
-				
+
 				expand = {}
 
 				hbox = {
@@ -2961,12 +2521,12 @@ OutlinerEntryBase = {
 						blockoverride "show_as_button" { visible = no }
 						blockoverride "show_as_icon" { visible = yes }
 					}
-	
+
 					OutlinerTextBase = {
 						autoresize = yes
 						raw_text = "[Combat.GetAttacker.GetEngagedUnitsStrengthShort]"
 					}
-	
+
 					icon = {
 						size = { 20 20 }
 						texture = "[GetConceptTexture('combat')]"
@@ -2984,12 +2544,12 @@ OutlinerEntryBase = {
 							alpha = 0.2
 						}
 					}
-	
+
 					OutlinerTextBase = {
 						autoresize = yes
 						raw_text = "[Combat.GetDefender.GetEngagedUnitsStrengthShort]"
 					}
-	
+
 					country_flag_very_small = {
 						datacontext = "[Combat.GetDefender.GetCountry]"
 						filter_mouse = none
@@ -3301,7 +2861,7 @@ OutlinerEntryBase = {
 					text = "[Unit.GetVisualStrengthShort]"
 				}
 			}
-			
+
 		}
 	}
 
@@ -3571,7 +3131,7 @@ OutlinerEntryBase = {
 OutlinerEntryBase = {
 	name = "parliament_entry"
 	datacontext = "[Country.GetGovernment.GetParliament]"
-	
+
 
 	blockoverride "expanded_big_content" {
 		OutlinerButtonBase = {
@@ -3849,7 +3409,7 @@ OutlinerEntryBase = {
 				}
 
 				expand = {}
-	
+
 				OutlinerTextBase = {
 					maximumsize = { 40 -1 }
 					align = right
@@ -3892,7 +3452,7 @@ OutlinerEntryBase = {
 				}
 
 				expand = {}
-	
+
 				OutlinerTextBase = {
 					maximumsize = { 40 -1 }
 					align = right
@@ -3996,7 +3556,7 @@ OutlinerEntryBase = {
 				}
 
 				expand = {}
-	
+
 				OutlinerTextBase = {
 					align = right
 					raw_text = "[FixedPointToFloat(Player.GetGovernment.GetPolicyProgressForLaw(Law.Self))|2]%"
@@ -4020,7 +3580,7 @@ OutlinerEntryBase = {
 				}
 
 				expand = {}
-	
+
 				OutlinerTextBase = {
 					maximumsize = { 40 -1 }
 					align = right
@@ -4092,19 +3652,19 @@ template cabinet_entry_action_progress {
 			datacontext = "[Cabinet.GetCharacter]"
 			visible = "[Cabinet.IsCharacterSet]"
 			size = { 28 28 }
-	
+
 			action_tooltip = {
 				click_type = right
 				click_mode = single
-	
+
 				title = "CHANGE_CABINET"
 				cost = "[Cabinet.GetPriceForAssigningCabinetMemberToSlot]"
 				enabled = "[Cabinet.ArePossibleCabinetCharactersAvailable]"
 				description = "[Cabinet.GetDescriptionForAssigningCabinetMemberToSlot]"
 				on_action_with_params = "[Cabinet.AssigningCabinetMemberToSlot]"
 			}
-	
-			# blockoverride "character_tooltip" { 
+
+			# blockoverride "character_tooltip" {
 			# }
 			blockoverride "character_contextmenu" {}
 			blockoverride "button_setup" {
@@ -4116,19 +3676,19 @@ template cabinet_entry_action_progress {
 			datacontext = "[Cabinet.GetCharacter]"
 			visible = "[Not(Cabinet.IsCharacterSet)]"
 			size = { 28 28 }
-	
+
 			action_tooltip = {
 				click_type = left
 				click_mode = single
-	
+
 				title = "SELECT_CABINET_CHARACTER"
 				cost = "[Cabinet.GetPriceForAssigningCabinetMemberToSlot]"
 				enabled = "[Cabinet.ArePossibleCabinetCharactersAvailable]"
 				description = "[Cabinet.GetDescriptionForReplacingCabinetMemberToSlot]"
 				on_action_with_params = "[Cabinet.AssigningCabinetMemberToSlot]"
 			}
-	
-			blockoverride "character_tooltip" { 
+
+			blockoverride "character_tooltip" {
 				tooltipwidget = {
 					BasicFunctionalTooltip = {}
 				}
@@ -4178,19 +3738,19 @@ template cabinet_entry_small_action_progress {
 			portrait_standard_head_button = {
 				datacontext = "[Cabinet.GetCharacter]"
 				size = { 28 28 }
-		
+
 				action_tooltip = {
 					click_type = left
 					click_mode = single
-		
+
 					title = "SELECT_CABINET_CHARACTER"
 					cost = "[Cabinet.GetPriceForAssigningCabinetMemberToSlot]"
 					enabled = "[Cabinet.ArePossibleCabinetCharactersAvailable]"
 					description = "[Cabinet.GetDescriptionForReplacingCabinetMemberToSlot]"
 					on_action_with_params = "[Cabinet.AssigningCabinetMemberToSlot]"
 				}
-		
-				blockoverride "character_tooltip" { 
+
+				blockoverride "character_tooltip" {
 					tooltipwidget = {
 						BasicFunctionalTooltip = {}
 					}
@@ -4218,19 +3778,19 @@ template cabinet_entry_small_action_progress {
 				datacontext = "[Cabinet.GetCharacter]"
 				visible = "[Cabinet.IsCharacterSet]"
 				size = { 28 28 }
-		
+
 				action_tooltip = {
 					click_type = right
 					click_mode = single
-		
+
 					title = "CHANGE_CABINET"
 					cost = "[Cabinet.GetPriceForAssigningCabinetMemberToSlot]"
 					enabled = "[Cabinet.ArePossibleCabinetCharactersAvailable]"
 					description = "[Cabinet.GetDescriptionForAssigningCabinetMemberToSlot]"
 					on_action_with_params = "[Cabinet.AssigningCabinetMemberToSlot]"
 				}
-		
-				# blockoverride "character_tooltip" { 
+
+				# blockoverride "character_tooltip" {
 				# }
 				blockoverride "character_contextmenu" {}
 				blockoverride "button_setup" {
@@ -4242,19 +3802,19 @@ template cabinet_entry_small_action_progress {
 				datacontext = "[Cabinet.GetCharacter]"
 				visible = "[Not(Cabinet.IsCharacterSet)]"
 				size = { 28 28 }
-		
+
 				action_tooltip = {
 					click_type = left
 					click_mode = single
-		
+
 					title = "SELECT_CABINET_CHARACTER"
 					cost = "[Cabinet.GetPriceForAssigningCabinetMemberToSlot]"
 					enabled = "[Cabinet.ArePossibleCabinetCharactersAvailable]"
 					description = "[Cabinet.GetDescriptionForReplacingCabinetMemberToSlot]"
 					on_action_with_params = "[Cabinet.AssigningCabinetMemberToSlot]"
 				}
-		
-				blockoverride "character_tooltip" { 
+
+				blockoverride "character_tooltip" {
 					tooltipwidget = {
 						BasicFunctionalTooltip = {}
 					}
@@ -4313,7 +3873,7 @@ template cabinet_entry_icon {
 	OutlinerIconBg = {
 		block "cabinet_entry_icon_piechart" {
 		}
-		
+
 		# cabinet_action_power_outliner = {
 		# 	parentanchor = center
 		# }
@@ -4373,19 +3933,19 @@ OutlinerEntryBase = {
 				portrait_standard_head_button = {
 					datacontext = "[Cabinet.GetCharacter]"
 					size = { 28 28 }
-			
+
 					action_tooltip = {
 						click_type = left
 						click_mode = single
-			
+
 						title = "SELECT_CABINET_CHARACTER"
 						cost = "[Cabinet.GetPriceForAssigningCabinetMemberToSlot]"
 						enabled = "[Cabinet.ArePossibleCabinetCharactersAvailable]"
 						description = "[Cabinet.GetDescriptionForReplacingCabinetMemberToSlot]"
 						on_action_with_params = "[Cabinet.AssigningCabinetMemberToSlot]"
 					}
-			
-					blockoverride "character_tooltip" { 
+
+					blockoverride "character_tooltip" {
 						tooltipwidget = {
 							BasicFunctionalTooltip = {}
 						}
@@ -4413,7 +3973,7 @@ OutlinerEntryBase = {
 				spacing = 5
 
 				using = cabinet_entry_action_progress
-				
+
 				blockoverride "cabinet_entry_progress_text" {
 					OutlinerTextBase = {
 						visible = "[Not(StringIsEmpty(Cabinet.GetEffectiveSkillOnlyEffect))]"
@@ -4471,8 +4031,8 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/rebels/fist.dds" }
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/rebels/fist.dds" }
+		blockoverride "cabinet_entry_icon_piechart" {
 			widget = {
 				size = { 100% 100% }
 				alwaystransparent = yes
@@ -4498,7 +4058,7 @@ OutlinerEntryBase = {
 				pieslice_no_highlight = {
 					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
 					value = "[Subtract_float('(float)100.0', Multiply_float(FixedPointToFloat(OutlinerCabinetEntry.GetActionProgressScope.sRebel('target').GetProgress), '(float)100.0'))]"
-					color = { 0.01 0.6 0.9 1 } 
+					color = { 0.01 0.6 0.9 1 }
 					alwaystransparent = yes
 				}
 
@@ -4554,8 +4114,8 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/develop_province.dds"  }
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/develop_province.dds"  }
+		blockoverride "cabinet_entry_icon_piechart" {
 			widget = {
 				size = { 100% 100% }
 				alwaystransparent = yes
@@ -4630,7 +4190,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/encourage_migration.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/encourage_migration.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -4674,7 +4234,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/form_new_culture.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/form_new_culture.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -4710,7 +4270,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/merge_culture_group.dds" }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/merge_culture_group.dds" }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -4746,8 +4306,8 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/increase_control.dds"  }
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/increase_control.dds"  }
+		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
 				size = { 90% 90% }
@@ -4803,8 +4363,8 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/increase_control.dds"  }
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/increase_control.dds"  }
+		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
 				size = { 80% 80% }
@@ -4874,7 +4434,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/reduce_inflation.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/reduce_inflation.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -4925,7 +4485,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/alleviate_concerns.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/alleviate_concerns.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -4976,14 +4536,14 @@ OutlinerEntryBase = {
 							using = warning_icon_texture
 							size = {15 15}
 						}
-						tooltipwidget = { 
+						tooltipwidget = {
 							SimpleContextualTooltipType = {
 								blockoverride "title_text" {
 									text = "MAX_TOWARDS_DUE_TO_INERTIA_TITLE"
 								}
 								blockoverride "concept_link" {
 									raw_text = "[societal_value|e]"
-								}							
+								}
 								blockoverride "title_icon" {
 									widget = {
 										using = tooltip_title_icon_size
@@ -4994,9 +4554,9 @@ OutlinerEntryBase = {
 										}
 									}
 								}
-								
+
 								lowpriotextcontext = "MAX_TOWARDS_DUE_TO_INERTIA_TOOLTIP"
-							}							
+							}
 						}
 					}
 					OutlinerTextBase = {
@@ -5019,9 +4579,9 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "[Cabinet.GetSocietalValue.GetRightIcon]"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "[Cabinet.GetSocietalValue.GetRightIcon]"  }
 
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
 				size = { 80% 80% }
@@ -5078,7 +4638,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/expel_people.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/expel_people.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5129,7 +4689,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/counter_espionage_action.dds" }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/counter_espionage_action.dds" }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5166,7 +4726,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/cabinet_actions/diplomatic_endeavors.dds" }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/cabinet_actions/diplomatic_endeavors.dds" }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5211,9 +4771,9 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/promote_culture.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/promote_culture.dds"  }
 
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_piechart" {
 			widget = {
 				size = { 100% 100% }
 				alwaystransparent = yes
@@ -5239,13 +4799,13 @@ OutlinerEntryBase = {
 				pieslice_no_highlight = {
 					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
 					value = "[Multiply_float(FixedPointToFloat(OutlinerCabinetEntry.GetActionProgressScope.sProvince('target_1').GetCulturePercentage(OutlinerCabinetEntry.GetActionProgressScope.sCulture('target'))), '(float)100.0')]"
-					color = { 0.01 0.6 0.9 1 } 
+					color = { 0.01 0.6 0.9 1 }
 					alwaystransparent = yes
 				}
 
 				pieslice_no_highlight = {
 					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-					value = "[Subtract_float('(float)100.0', 
+					value = "[Subtract_float('(float)100.0',
 					Multiply_float(FixedPointToFloat(OutlinerCabinetEntry.GetActionProgressScope.sProvince('target_1').GetCulturePercentage(OutlinerCabinetEntry.GetActionProgressScope.sCulture('target'))), '(float)100.0'))]"
 					color = { 0.0 0.1 0.1 1 }
 					alwaystransparent = yes
@@ -5288,7 +4848,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/recovery_effort.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/recovery_effort.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5335,9 +4895,9 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/integrate_province.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/integrate_province.dds"  }
 
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
 				size = { 80% 80% }
@@ -5406,9 +4966,9 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/cabinet_actions/turmoil_in_brandenburg.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/cabinet_actions/turmoil_in_brandenburg.dds"  }
 
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
 				size = { 80% 80% }
@@ -5467,7 +5027,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/pacify_population.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/pacify_population.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5512,9 +5072,9 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/promote_religion.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/promote_religion.dds"  }
 
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_piechart" {
 			widget = {
 				size = { 100% 100% }
 				alwaystransparent = yes
@@ -5581,7 +5141,7 @@ OutlinerEntryBase = {
 				spacing = 5
 
 				using = cabinet_entry_action_progress
-				
+
 				blockoverride "cabinet_entry_progress_text" {
 					OutlinerTextBase = {
 						autoresize = yes
@@ -5603,7 +5163,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/stabilize_country.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/stabilize_country.dds"   }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5653,7 +5213,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/strengthen_government.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/strengthen_government.dds"   }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5698,9 +5258,9 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/integrate_area.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/integrate_area.dds"   }
 
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
 				size = { 80% 80% }
@@ -5766,9 +5326,9 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/allow_cabinet_assimilate_area.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/allow_cabinet_assimilate_area.dds"   }
 
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
 				size = { 80% 80% }
@@ -5837,7 +5397,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/reduce_war_exhaustion.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/reduce_war_exhaustion.dds"   }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5887,7 +5447,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/study_institutions.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/study_institutions.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5936,7 +5496,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/pop_promote_action.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/pop_promote_action.dds"   }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5946,7 +5506,7 @@ OutlinerEntryBase = {
 	}
 	blockoverride "category_color" { using = cabinet_entry_color }
 
-	blockoverride "cabinet_entry_icon_piechart"{
+	blockoverride "cabinet_entry_icon_piechart" {
 		piechart = {
 			parentanchor = center
 			size = { 90% 90% }
@@ -6002,7 +5562,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/flat_icons/geopolitics/send_people_to_the_colonies.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/flat_icons/geopolitics/send_people_to_the_colonies.dds"   }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -6039,7 +5599,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/flat_icons/geopolitics/send_people_to_the_colonies.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/flat_icons/geopolitics/send_people_to_the_colonies.dds"   }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -6092,16 +5652,16 @@ OutlinerEntryBase = {
 						# 	visible = "[GreaterThan_CFixedPoint(Market.GetMerchantAvailableCapacity(Player.Self),'(CFixedPoint)1.00')]"
 						# 	size = {15 15}
 						# 	texture = "gfx/interface/icons/flat_icons/trade_capacity.dds"
-		
+
 						# 	glow = {
 						# 		name = "drop_shadow"
 						# 		glow_radius = 3
 						# 		color = {0.0 0.0 0.0 1.0}
 						# 		alpha = 0.5
 						# 	}
-		
+
 						# 	using = bg_banner_button_vertical
-		
+
 						# 	blockoverride "banner_button_color" {
 						# 		modify_texture = {
 						# 			using = color_yellow_texture
@@ -6831,7 +6391,7 @@ OutlinerEntryBase = {
 	blockoverride "expanded_big_content" {
 		OutlinerButtonBase = {
 			size = { 95% 100% }
-			
+
 			hbox = {
 				using = outliner_entry_margin
 				spacing = 5
@@ -6864,7 +6424,7 @@ OutlinerEntryBase = {
 					text = "CONSTRUCTION_DURATION_DAYS"
                     fontsize = 14
 				}
-				
+
 				OutlinerTextBase = {
 					visible = "[Construction.IsStalled]"
 					autoresize = yes
@@ -7024,13 +6584,13 @@ OutlinerEntryBase = {
 							blend_mode = multiply
 						}
 					}
-		
+
 					icon = {
 						texture_density = 2
 						size = { 20 20 }
 						parentanchor = center
 						texture = "[GetRebelsIcon(Rebel.Self)]"
-	
+
 						glow = {
 							name = "drop_shadow"
 							glow_radius = 3
@@ -7130,7 +6690,7 @@ OutlinerEntryBase = {
 						blend_mode = multiply
 					}
 				}
-	
+
 				icon = {
 					texture_density = 2
 					size = { 20 20 }
@@ -7553,12 +7113,12 @@ OutlinerEntryBase = {
 
 			hbox = {
 				using = outliner_entry_margin
-				
+
 				OutlinerTextBase = {
 					using = layoutpolicy_expanding
 					autoresize = no
 					align = left
-					raw_text = "@province! [ColonialCharter.GetProvinceDefinition.GetNameWithNoTooltip]" 
+					raw_text = "@province! [ColonialCharter.GetProvinceDefinition.GetNameWithNoTooltip]"
 					default_format = "#yellow_titles"
                     fontsize = 14
 				}
@@ -7581,7 +7141,7 @@ OutlinerEntryBase = {
                         fontsize = 14
 					}
 				}
-				
+
 			}
 		}
 	}
@@ -7606,13 +7166,13 @@ OutlinerEntryBase = {
 				size = { 80% 80% }
 				using = piechart_angles
 				parentanchor = center
-	
+
 				pieslice = {
 					texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
 					value = "[ColonialCharter.GetProgress]"
 					color = { 1 1 1 1 }
 				}
-	
+
 				pieslice = {
 					texture = "gfx/interface/pie_charts/pie_chart_alpha_80_red.dds"
 					value = "[Subtract_float('(float)100.0', ColonialCharter.GetProgress)]"
@@ -7703,16 +7263,16 @@ OutlinerEntryBase = {
 
 				icon = {
 					size = { 28 28 }
-					visible = "[Exploration.GetArea.IsNaval]"					
+					visible = "[Exploration.GetArea.IsNaval]"
 					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_sea.dds"
 				}
 
 				icon = {
 					size = { 28 28 }
-					visible = "[Not(Exploration.GetArea.IsNaval)]"					
+					visible = "[Not(Exploration.GetArea.IsNaval)]"
 					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_land.dds"
 				}
-				
+
 				OutlinerTextBase = {
 					using = layoutpolicy_expanding
 					autoresize = no
@@ -8027,7 +7587,7 @@ template category_big_template {
 					text = "[OutlinerCategoryEntry.GetName|T]"
 				}
 			}
-			
+
 			block "category_big_extra_content" {}
 
 			hbox = {
@@ -8172,7 +7732,7 @@ template category_small_template {
 			}
 
 			block "category_small_extra_content" { expand = {} }
-			
+
 			hbox = {
 				layoutpolicy_vertical = expanding
 				spacing = -5
@@ -8316,8 +7876,8 @@ OutlinerEntryBase = {
 			texture = "gfx/interface/icons/outliner/human_player.dds"
 		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/outliner/human_player.dds"
 		}
@@ -8367,8 +7927,8 @@ OutlinerEntryBase = {
 			texture = "[GetConceptTexture('army')]"
 		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "[GetConceptTexture('army')]"
 		}
@@ -8397,8 +7957,8 @@ OutlinerEntryBase = {
 			texture = "gfx/interface/icons/flat_icons/declare_war/navy.dds"
 		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/flat_icons/declare_war/navy.dds"
 		}
@@ -8427,8 +7987,8 @@ OutlinerEntryBase = {
 			texture = "gfx/interface/icons/alerts_icons/government.dds"
 		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/alerts_icons/government.dds"
 		}
@@ -8452,13 +8012,13 @@ OutlinerEntryBase = {
 OutlinerEntryBase = {
 	name = "market_category_entry"
 
-	blockoverride "expanded_big_content"  { 
-		using = category_big_template 
+	blockoverride "expanded_big_content"  {
+		using = category_big_template
 		blockoverride "category_icon_texture" {
 			texture = "gfx/interface/icons/map_modes/market.dds"
 		}
 	}
-	blockoverride "expanded_small_content" { 
+	blockoverride "expanded_small_content" {
 		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/map_modes/market.dds"
@@ -8488,8 +8048,8 @@ OutlinerEntryBase = {
 			texture = "[GetConceptTexture('building')]"
 		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "[GetConceptTexture('building')]"
 		}
@@ -8512,14 +8072,14 @@ OutlinerEntryBase = {
 OutlinerEntryBase = {
 	name = "estate_construction_category_entry"
 
-	blockoverride "expanded_big_content"  { 
-		using = category_big_template 
+	blockoverride "expanded_big_content"  {
+		using = category_big_template
 		blockoverride "category_icon_texture" {
 			texture = "[GetConceptTexture('estate')]"
 		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "[GetConceptTexture('estate')]"
 		}
@@ -8548,8 +8108,8 @@ OutlinerEntryBase = {
 			texture = "gfx/interface/icons/alerts_icons/alert_low_army_maintenance.dds"
 		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/alerts_icons/alert_low_army_maintenance.dds"
 		}
@@ -8578,8 +8138,8 @@ OutlinerEntryBase = {
 			texture = "gfx/interface/icons/alerts_icons/alert_low_navy_maintenance.dds"
 		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/alerts_icons/alert_low_navy_maintenance.dds"
 		}
@@ -8609,7 +8169,7 @@ OutlinerEntryBase = {
 		}
 	}
 	blockoverride "expanded_small_content" {
-		using = category_small_template 
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "[GetConceptTexture('rebels')]"
 		}
@@ -8638,8 +8198,8 @@ OutlinerEntryBase = {
 			texture = "gfx/interface/icons/map_modes/diplomacy.dds"
 		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/map_modes/diplomacy.dds"
 		}
@@ -8668,8 +8228,8 @@ OutlinerEntryBase = {
 			texture = "gfx/interface/icons/flat_icons/geopolitics/available_colonies.dds"
 		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/flat_icons/geopolitics/available_colonies.dds"
 		}
@@ -8698,8 +8258,8 @@ OutlinerEntryBase = {
 			texture = "[GetConceptTexture('exploration')]"
 		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "[GetConceptTexture('exploration')]"
 		}
@@ -8728,8 +8288,8 @@ OutlinerEntryBase = {
 			texture = "gfx/interface/icons/flat_icons/geopolitics/privateer.dds"
 		}
 	}
-	blockoverride "expanded_small_content" { 
-		using = category_small_template 
+	blockoverride "expanded_small_content" {
+		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/flat_icons/geopolitics/privateer.dds"
 		}

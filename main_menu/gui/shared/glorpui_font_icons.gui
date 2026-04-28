@@ -1,0 +1,10 @@
+﻿texticon = {
+	icon = coastal
+	iconsize = {
+		texture = "gfx/interface/icons/location_icons/coast.dds"
+		size = { 20 20 }
+		offset = { 0 4 }
+		fontsize = 16
+	}
+}
+

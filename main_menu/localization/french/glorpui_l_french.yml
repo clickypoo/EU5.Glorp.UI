@@ -1,0 +1,8 @@
+﻿#noinspection ALL
+l_french:
+ RECRUIT_BEST_IN_LOCATION_ACTION_BUTTON: "Recrutement en masse [RecruitInLocationLateralView.GetUnitType.GetName]"
+ GLORP_UI_OTHER: "Autre"
+ GLORP_UI_TOGGLE_DEBUG: "Basculer le débogage"
+ GLORP_UI_TOGGLE_LEFT_PANEL_STATS: "Basculer les statistiques du panneau de gauche"
+ GLORP_UI_SHOWHIDE_LEFT_PANEL_STATS: "Afficher/Masquer les statistiques du panneau de gauche"
+ ICON_COASTAL: "@coastal!"

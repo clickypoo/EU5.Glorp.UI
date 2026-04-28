@@ -1,10 +1,12 @@
+# CMF Note: Every type, template, and the lateralview has been modified, so there is no point in extracting anything.
+
 lateralview = {
 	name = "declare_war_lateralview"
 
 	blockoverride "panel_header" {
 		window_header_alt = {
 			using = bg_main_inner_alt
-			blockoverride "window_header_alt_color_texture"{
+			blockoverride "window_header_alt_color_texture" {
 				using = color_default_brown_texture
 			}
 			
@@ -255,7 +257,7 @@ lateralview = {
 			two_countries_header = {
 				using = bg_header_golden_frame
 
-				blockoverride "two_countries_header_image"{
+				blockoverride "two_countries_header_image" {
 					hbox = {
 						ecs_scene_viewer_widget =  {
 							layoutpolicy_horizontal = expanding
@@ -300,7 +302,7 @@ lateralview = {
 					visible = no
 				}
 
-				blockoverride "country_header_dynasty"{
+				blockoverride "country_header_dynasty" {
 					visible = no
 				}
 
@@ -317,7 +319,7 @@ lateralview = {
 						hbox = {
 
 							declare_war_comparisson = {
-								blockoverride "declare_war_comparison_visible"{
+								blockoverride "declare_war_comparison_visible" {
 									visible = "[LessThan_float(Add_float(FixedPointToFloat(DeclareWarLateralView.GetPercentageLandCombatStrength), FixedPointToFloat(DeclareWarLateralView.GetPercentageNavalCombatStrength)), '(float)0.5')]"
 								}
 								blockoverride "declare_war_comparison_text" {
@@ -326,7 +328,7 @@ lateralview = {
 							}
 
 							declare_war_comparisson = {
-								blockoverride "declare_war_comparison_visible"{
+								blockoverride "declare_war_comparison_visible" {
 									visible = "[And(GreaterThan_float(Add_float(FixedPointToFloat(DeclareWarLateralView.GetPercentageLandCombatStrength), FixedPointToFloat(DeclareWarLateralView.GetPercentageNavalCombatStrength)), '(float)0.49'), LessThan_float(Add_float(FixedPointToFloat(DeclareWarLateralView.GetPercentageLandCombatStrength), FixedPointToFloat(DeclareWarLateralView.GetPercentageNavalCombatStrength)), '(float)1'))]"
 								}
 								blockoverride "declare_war_comparison_text" {
@@ -335,7 +337,7 @@ lateralview = {
 							}
 
 							declare_war_comparisson = {
-								blockoverride "declare_war_comparison_visible"{
+								blockoverride "declare_war_comparison_visible" {
 									visible = "[EqualTo_float(Add_float(FixedPointToFloat(DeclareWarLateralView.GetPercentageLandCombatStrength), FixedPointToFloat(DeclareWarLateralView.GetPercentageNavalCombatStrength)), '(float)1')]"
 								}
 								blockoverride "declare_war_comparison_text" {
@@ -344,7 +346,7 @@ lateralview = {
 							}
 
 							declare_war_comparisson = {
-								blockoverride "declare_war_comparison_visible"{
+								blockoverride "declare_war_comparison_visible" {
 									visible = "[And(GreaterThan_float(Add_float(FixedPointToFloat(DeclareWarLateralView.GetPercentageLandCombatStrength), FixedPointToFloat(DeclareWarLateralView.GetPercentageNavalCombatStrength)), '(float)1'), LessThan_float(Add_float(FixedPointToFloat(DeclareWarLateralView.GetPercentageLandCombatStrength), FixedPointToFloat(DeclareWarLateralView.GetPercentageNavalCombatStrength)), '(float)1.51'))]"
 								}
 								blockoverride "declare_war_comparison_text" {
@@ -353,7 +355,7 @@ lateralview = {
 							}
 
 							declare_war_comparisson = {
-								blockoverride "declare_war_comparison_visible"{
+								blockoverride "declare_war_comparison_visible" {
 									visible = "[GreaterThan_float(Add_float(FixedPointToFloat(DeclareWarLateralView.GetPercentageLandCombatStrength), FixedPointToFloat(DeclareWarLateralView.GetPercentageNavalCombatStrength)), '(float)1.5')]"
 								}
 								blockoverride "declare_war_comparison_text" {
@@ -515,7 +517,7 @@ lateralview = {
 												layoutpolicy_vertical = expanding
 											}
 
-											blockoverride "joining_countries_card_tooltip"{
+											blockoverride "joining_countries_card_tooltip" {
 												tooltipwidget = {
 													SimpleContextualTooltipType = {
 														blockoverride "title_icon" {
@@ -605,7 +607,7 @@ lateralview = {
 												layoutpolicy_vertical = expanding
 											}
 
-											blockoverride "joining_countries_card_tooltip"{
+											blockoverride "joining_countries_card_tooltip" {
 												tooltipwidget = {
 													SimpleContextualTooltipType = {
 														blockoverride "title_icon" {
@@ -727,7 +729,7 @@ lateralview = {
 												layoutpolicy_vertical = expanding
 											}
 
-											blockoverride "joining_countries_card_tooltip"{
+											blockoverride "joining_countries_card_tooltip" {
 												tooltipwidget = {
 													SimpleContextualTooltipType = {
 														blockoverride "title_icon" {
@@ -842,7 +844,7 @@ lateralview = {
 												layoutpolicy_vertical = expanding
 											}
 
-											blockoverride "joining_countries_card_tooltip"{
+											blockoverride "joining_countries_card_tooltip" {
 												tooltipwidget = {
 													SimpleContextualTooltipType = {
 														blockoverride "title_icon" {
@@ -1305,7 +1307,7 @@ types WarGoals {
 	# 	item = {
 	# 		button_list_paper = {
 	# 			size = { 460 60 }
-	# 			blockoverride "button_simple_max_size"{}
+	# 			blockoverride "button_simple_max_size" {}
 	# 			onclick = "[DeclareWarSelectWarGoal.OnClick]"
 	# 			enabled = "[DeclareWarSelectWarGoal.IsAllowed]"
 
@@ -1369,7 +1371,7 @@ types WarGoals {
 							size = {70 20}
 							autoresize = no
 							align = center|nobaseline
-							raw_text = "[DeclareWarAlly.GetLandStrength]@army_strength!"
+							raw_text = "[DeclareWarAlly.GetCountry.GetTotalArmyStrengthAndPotentialLevies]@army_strength!"
 						}
 
 						divider_flavor_01 = { 
@@ -1501,7 +1503,7 @@ types WarGoals {
 						size = {70 20}
 						autoresize = no
 						align = center|nobaseline
-						raw_text = "[DeclareWarAlly.GetLandStrength]@army_strength!"
+						raw_text = "[DeclareWarAlly.GetCountry.GetTotalArmyStrengthAndPotentialLevies]@army_strength!"
 					}
 
 					divider_flavor_01 = { 
@@ -2471,7 +2473,7 @@ template joining_countries_declare_war {
 							vbox = {
 								spacing = 5
 								widget = {
-									block "side_leader_country"{}
+									block "side_leader_country" {}
 									size = {230 55}
 									vbox = {
 										layoutpolicy_horizontal = expanding
