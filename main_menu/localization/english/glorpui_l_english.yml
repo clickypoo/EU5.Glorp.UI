@@ -6,3 +6,5 @@ l_english:
  GLORP_UI_TOGGLE_LEFT_PANEL_STATS: "Toggle Left Panel Stats"
  GLORP_UI_SHOWHIDE_LEFT_PANEL_STATS: "Show/Hide Left Panel Stats"
  ICON_COASTAL: "@coastal!"
+ GLORP_UI_PROV_DEF_MEMBERS_HEADER: "The [locations|e] of [ProvinceDefinition.GetNameWithNoTooltip]"
+ GLORP_UI_PROV_DEF_MEMBERS_ENTRY:  "[Location.GetRawMaterial.GetIcon] [Location.GetRank.GetIcon] [Location.GetOwner.GetFlagIcon] [Location.GetName]  [SelectLocalization( Location.IsProvinceCapital , 'PROVINCE_CAPITAL_TOOLTIP', '' )] [SelectLocalization( Location.HasRiver , 'PROXIMITY_ICON_RIVER', '' )] [SelectLocalization( Location.IsCoastal , 'ICON_COASTAL', '' )]"

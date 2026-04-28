@@ -3,60 +3,61 @@ Interface Glorp / Glorp UI
 ===WORKSHOP_DESCRIPTION===
 [i]You are on the DeepL-Generated Portuguese (Brazil) Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
 
-[img]https://i.ibb.co/Q7C7FVvs/image.png[/img]
-
 [img]https://i.ibb.co/TMrcJMrf/image.png[/img]
 
-[quote]
- [b]Glorp UI[/b] melhora a Interface de Usuário do [b]Europa Universalis V[/b]. É simples assim.
+[img]https://i.ibb.co/7x1241bq/image.png[/img]
 
- [b]Tem uma sugestão? Recomende-a logo abaixo![/b]
+[quote]
+ [b]Glorp UI[/b] melhora a Interface de Usuário de [b]Europa Universalis V[/b]. É simples assim.
+
+ [b]Tem uma sugestão? Recomende-a abaixo![/b]
 
  [h3] Customizável [/h3]
  [list]
   [*] [b]Customize sua experiência[/b] usando o [b]Menu de Customização do Glorp UI[/b] dentro do jogo! Suas preferências serão salvas [b]Por Jogo Salvo[/b].
-  [*] Prefere a implementação de outro mod? Basta colocá-lo [b]depois do Glorp UI[/b] na ordem de carregamento e ele substituirá nossas alterações!
+  [*] Prefere a implementação de outro mod? Simplesmente coloque-o [b]depois do Glorp UI[/b] na ordem de carregamento e ele substituirá nossas mudanças!
  [/list]
 
- [h3] Alterações Implementadas [/h3]
+ [h3] Mudanças Implementadas [/h3]
  [list]
   [*] [b]Ícones com Código de Cores[/b] - Para uma navegação intuitiva e um belo toque visual
-  [*] [b]Sem Retrato de Líder[/b] - Mais espaço para sua bela bandeira! Navegue para sua dinastia/governante através do Brasão de Armas!
+  [*] [b]Sem Mais Retratos de Líder[/b] - Mais espaço para sua bela bandeira! Navegue para sua dinastia/governante através do Brasão de Armas!
   [*] [b]Opção de Bandeira Estática[/b] - Prefere as bandeiras estáticas do EU4? Agora isso é uma opção!
-  [*] [b]Barra de Modos de Mapa Larga[/b] - A barra de modos de mapa agora é mais curta e larga. O botão do [b]modo de mapa atual[/b] está em uma posição menos intrusiva.
-  [*] [b]Botões de Modos de Mapa Coloridos[/b] - Adicionamos um tom colorido aos botões de modos de mapa por categoria para facilitar o uso!
+  [*] [b]Barra de Modos de Mapa Larga[/b] - A barra de modos de mapa agora está mais curta e larga. O botão do [b]modo de mapa atual[/b] está em uma posição menos intrusiva.
+  [*] [b]Botões de Modos de Mapa Coloridos[/b] - Adicionada uma tonalidade colorida aos botões de modo de mapa por categoria para facilitar o uso!
   [*] [b]Painel de Estatísticas do País[/b] - Painel de estatísticas do país alternável - informações em um relance!
-  [*] [b]Visualização de Construção Melhorada[/b] - Veja facilmente o [b]Limite de Construção[/b], [b]RGO[/b] e [b]Controle[/b] da Localização enquanto você constrói!
-  [*] [b]Tooltip de Diplomacia Melhorada[/b] - Ao passar o mouse sobre um país, [b]você pode ver as relações dele com o país selecionado[/b], em vez de ver apenas as suas próprias relações. Também há informações extras ao passar o mouse sobre países vassalos.
-  [*] [b]Árvore de Tecnologia Melhorada[/b] - Uma Árvore de Tecnologia compacta. Diminua o zoom e veja a árvore inteira de relance!
+  [*] [b]Visualização de Construções Melhorada[/b] - Veja facilmente o [b]Limite de Construção[/b], [b]RGO[/b] e [b]Controle[/b] da Localização enquanto você está construindo!
+  [*] [b]Dica de Ferramenta de Diplomacia Melhorada[/b] - Ao passar o mouse sobre um país, [b]você pode ver as relações dele com o país selecionado[/b], em vez de ver apenas as suas próprias relações. Também há informações extras ao passar o mouse sobre países vassalos.
+  [*] [b]Árvore de Tecnologia Melhorada[/b] - Uma Árvore de Tecnologia compacta. Diminua o zoom e veja a árvore inteira num relance!
   [*] [b]Visualização Compacta do Gabinete[/b] - Adicionada uma alternância de visualização compacta ao Gabinete
-  [*] [b]Painel de Guerra Melhorado[/b] - Painel de Guerra com código de cores, veja de relance quem é e quem não é um vassalo!
-  [*] [b]Estatísticas da Barra Superior Alternáveis[/b] - Ative e Desative as Estatísticas da Barra Superior ao seu gosto pessoal! As estatísticas de Guerra Dinâmicas ocultam/mostram seu Poder de Reserva, Marinheiros e Exaustão de Guerra automaticamente!
-  [*] [b]Tamanhos Reais do Exército[/b] - Veja os tamanhos de Exército Regular e de Levas de um país no [b]Tooltip do País[/b], na [b]Janela do País[/b] e no [b]Painel de Guerra[/b]
-  [*] [b]Zoom para Localização[/b] - Vá para a localização da [b]Capital de um País[/b], a [b]Localização de um Exército[/b], uma [b]Localização Selecionada[/b] ou a [b]Capital de uma Organização Internacional[/b]! [b](Basta pressionar 'Z'!)[/b]
-  [*] [b]Ícones Maiores[/b] - Os ícones do Banner de Alerta e da Categoria do Outliner estão maiores
-  [*] [b]Modos de Mapa na Visualização de Localização[/b] - Passar o mouse sobre as informações na visualização de localização revela o modo de mapa relevante
-  [*] [b]Tooltip de Coalizão Melhorada[/b] - Veja se o país listado já está na coalizão
+  [*] [b]Painel de Guerra Melhorado[/b] - Painel de Guerra com código de cores, veja num relance quem é e quem não é um vassalo!
+  [*] [b]Estatísticas da Barra Superior Alternáveis[/b] - Ative e desative as Estatísticas da Barra Superior ao seu gosto pessoal! Estatísticas de Guerra dinâmicas escondem/mostram sua Reserva Militar, Marinheiros e Exaustão de Guerra automaticamente!
+  [*] [b]Tamanhos Reais de Exército[/b] - Veja os tamanhos de Regulares e Levas de um país na [b]Dica de Ferramenta do País[/b], na [b]Janela do País[/b] e no [b]Painel de Guerra[/b]
+  [*] [b]Zoom para Localização[/b] - Mova a câmera para a localização da [b]Capital de um País[/b], a [b]Localização de um Exército[/b], uma [b]Localização Selecionada[/b] ou a [b]Capital de uma Organização Internacional[/b]! [b](Apenas pressione 'Z'!)[/b]
+  [*] [b]Ícones Maiores[/b] - Os ícones de Banner de Alerta e Categoria do Organizador (Outliner) estão maiores
+  [*] [b]Modos de Mapa na Visualização de Localização[/b] - Passar o mouse sobre as informações na visualização da localização revela o modo de mapa relevante
+  [*] [b]Dica de Ferramenta de Coalizão Melhorada[/b] - Veja se o país listado já está na coalizão
   [*] [b]Equilíbrio de Valores Sociais Visível[/b] - Há uma nova barra mostrando o valor máximo de cada um de seus valores sociais
   [*] [b]Ativar Modo de Depuração[/b] - Use o [b]Menu de Customização do Glorp UI[/b] para ativar o [b]Modo de Depuração[/b]!
  [/list]
 
  [h3] Mods Recomendados [/h3]
  [list]
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - Modo Escuro
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - Carregue o Glorp UI [b]DEPOIS[/b] deste mod na Ordem de Carregamento
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - Modo Escuro
  [/list]
 
  [h3] Agradecimentos Especiais [/h3]
  [list]
-  [*] [b]EU5 Mod Coop[/b] - Por serem infinitamente prestativos!
-  [*] [b]Mazutaki[/b] - Pela ajuda com os Tamanhos de Exército e Árvore de Tecnologia!
-  [*] [b]Sol_InvictusXLII[/b] - Por criar o Mod Minesweeper, que foi uma ferramenta de aprendizado muito útil!
+  [*] [b]EU5 Mod Coop[/b] - Por ser infinitamente prestativo!
+  [*] [b]Conner[/b] - Por criar e manter o Glorp UI sozinho (muito real, não é falso)
+  [*] [b]Mazutaki[/b] - Ajuda com os Tamanhos de Exército do País e Árvore de Tecnologia!
+  [*] [b]Sol_InvictusXLII[/b] - Por criar o mod Minesweeper, que foi uma ferramenta de aprendizado muito útil!
   [*] [b]Você[/b] - Por baixar
  [/list]
 [/quote]
 
-[img]https://i.ibb.co/7x1241bq/image.png[/img]
-
 [img]https://i.ibb.co/SDH11h1C/Glorp.png[/img]
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776][img]https://i.ibb.co/Kc4D5q36/image.png[/img][/url]
 

@@ -3,60 +3,61 @@ Glorp Arayüzü / Glorp UI
 ===WORKSHOP_DESCRIPTION===
 [i]You are on the DeepL-Generated Turkish Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
 
-[img]https://i.ibb.co/Q7C7FVvs/image.png[/img]
-
 [img]https://i.ibb.co/TMrcJMrf/image.png[/img]
+
+[img]https://i.ibb.co/7x1241bq/image.png[/img]
 
 [quote]
  [b]Glorp UI[/b], [b]Europa Universalis V[/b]'in Kullanıcı Arayüzünü iyileştirir. İşte bu kadar basit.
 
- [b]Bir öneriniz mi var? Aşağıda tavsiye edin![/b]
+ [b]Bir öneriniz mi var? Aşağıda belirtebilirsiniz![/b]
 
  [h3] Özelleştirilebilir [/h3]
  [list]
-  [*] Oyun içi [b]Glorp UI Özelleştirme Menüsü[/b]'nü kullanarak [b]deneyiminizi özelleştirin[/b]! Tercihleriniz [b]Kayıt Dosyası Başına[/b] kaydedilecektir.
-  [*] Başka bir modun uygulamasını mı tercih ediyorsunuz? Onu yükleme sırasında [b]Glorp UI'dan sonraya[/b] yerleştirmeniz yeterlidir; bizim değişikliklerimizin üzerine yazacaktır!
+  [*] Oyun içindeki [b]Glorp UI Özelleştirme Menüsü[/b]'nü kullanarak [b]deneyiminizi kişiselleştirin[/b]! Tercihleriniz [b]Kayıt Dosyası Başına[/b] kaydedilecektir.
+  [*] Başka bir modun uygulamasını mı tercih ediyorsunuz? Yükleme sırasında onu [b]Glorp UI'dan sonra[/b] yerleştirmeniz yeterlidir, bizim değişikliklerimizi geçersiz kılacaktır!
  [/list]
 
  [h3] Uygulanan Değişiklikler [/h3]
  [list]
   [*] [b]Renk Kodlu Simgeler[/b] - Sezgisel navigasyon ve hoş bir görsel hava için
-  [*] [b]Artık Lider Portresi Yok[/b] - Güzel bayrağınız için daha fazla alan! Hanedanınıza/hükümdarınıza Armalar (Coat of Arms) üzerinden ulaşın!
+  [*] [b]Lider Portresine Son[/b] - Güzel bayrağınız için daha fazla alan! Hanedanınıza/hükümdarınıza Arma üzerinden ulaşın!
   [*] [b]Statik Bayrak Seçeneği[/b] - EU4'ün statik bayraklarını mı tercih ediyorsunuz? Bu artık bir seçenek!
-  [*] [b]Geniş Harita Modu Çubuğu[/b] - Harita modu çubuğu artık daha kısa ve geniş. [b]Mevcut harita modu[/b] butonu daha az müdahaleci bir konumda.
-  [*] [b]Renkli Harita Modu Butonları[/b] - Daha kolay kullanım için harita modu butonlarına kategoriye göre renkli bir ton eklendi!
-  [*] [b]Ülke İstatistikleri Paneli[/b] - Açılıp kapanabilir ülke istatistikleri paneli - bir bakışta tüm bilgiler!
-  [*] [b]Geliştirilmiş İnşa Görünümü[/b] - İnşa yaparken konumun [b]İnşa Limitini[/b], [b]RGO[/b] (Hammadde) durumunu ve [b]Kontrol[/b] seviyesini kolayca görün!
-  [*] [b]Daha İyi Diplomasi Bilgi Kutucuğu[/b] - Bir ülkenin üzerine geldiğinizde, sadece kendi ilişkilerinizi değil, [b]o ülkenin seçili ülkeyle olan ilişkilerini de görebilirsiniz[/b]. Ayrıca vasal ülkelerin üzerine gelindiğinde ekstra bilgiler bulunur.
+  [*] [b]Geniş Harita Modu Çubuğu[/b] - Harita modu çubuğu artık daha kısa ve geniş. [b]Mevcut harita modu[/b] butonu daha az rahatsız edici bir konumda.
+  [*] [b]Renkli Harita Modu Butonları[/b] - Kolay kullanım için harita modu butonlarına kategoriye göre renkli bir ton eklendi!
+  [*] [b]Ülke İstatistik Paneli[/b] - Açılıp kapanabilir ülke istatistik paneli - bir bakışta tüm bilgiler!
+  [*] [b]Geliştirilmiş Bina Görünümü[/b] - İnşaat yaparken Konumun [b]Bina Sınırını[/b], [b]RGO (Hammadde Sahası)[/b] ve [b]Kontrolünü[/b] kolayca görün!
+  [*] [b]Daha İyi Diplomasi Bilgi Kutucuğu[/b] - Bir ülkenin üzerine geldiğinizde, sadece kendi ilişkilerinizi görmek yerine [b]o ülkenin seçili ülkeyle olan ilişkilerini görebilirsiniz[/b]. Ayrıca vasal ülkelerin üzerindeyken ekstra bilgiler görünür.
   [*] [b]Geliştirilmiş Teknoloji Ağacı[/b] - Kompakt bir Teknoloji Ağacı. Uzaklaştırın ve tüm ağacı bir bakışta görün!
-  [*] [b]Kompakt Kabine Görünümü[/b] - Kabineye kompakt görünüm anahtarı eklendi
+  [*] [b]Kompakt Kabine Görünümü[/b] - Kabineye kompakt bir görünüm anahtarı eklendi
   [*] [b]Geliştirilmiş Savaş Paneli[/b] - Renk kodlu Savaş Paneli, kimin vasal olup olmadığını bir bakışta görün!
-  [*] [b]Açılıp Kapanabilir Üst Çubuk İstatistikleri[/b] - Üst Çubuk İstatistiklerini kişisel zevkinize göre etkinleştirin veya devre dışı bırakın! Dinamik Savaş istatistikleri; İnsan Gücü, Denizci ve Savaş Yorgunluğu göstergelerinizi otomatik olarak gizler/gösterir!
-  [*] [b]Gerçek Ordu Boyutları[/b] - Bir ülkenin Düzenli ve Milis (Levy) ordusu boyutlarını [b]Ülke Bilgi Kutucuğunda[/b], [b]Ülke Penceresinde[/b] ve [b]Savaş Panelinde[/b] görün
-  [*] [b]Konuma Yakınlaştır[/b] - Bir [b]Ülke Başkentine[/b], bir [b]Ordunun Konumuna[/b], [b]Seçili Bir Konuma[/b] veya bir [b]Uluslararası Organizasyonun Başkentine[/b] odaklanın! [b](Sadece 'Z' tuşuna basın!)[/b]
-  [*] [b]Daha Büyük Simgeler[/b] - Uyarı Sancağı ve Kenar Çizelgesi (Outliner) kategori simgeleri artık daha büyük
+  [*] [b]Açılıp Kapanabilir Üst Çubuk İstatistikleri[/b] - Üst çubuk istatistiklerini kişisel beğeninize göre açın veya kapatın! Dinamik Savaş istatistikleri İnsan Gücü, Denizci ve Savaş Yorgunluğu verilerinizi otomatik olarak gizler/gösterir!
+  [*] [b]Gerçek Ordu Boyutları[/b] - Bir ülkenin Düzenli ve Seferberlik (Levy) ordusu boyutlarını [b]Ülke Bilgi Kutucuğu[/b], [b]Ülke Penceresi[/b] ve [b]Savaş Paneli[/b]'nde görün
+  [*] [b]Konuma Yakınlaştır[/b] - Bir [b]Ülkenin Başkentine[/b], bir [b]Ordunun Konumuna[/b], [b]Seçili Bir Konuma[/b] veya bir [b]Uluslararası Organizasyonun Başkentine[/b] gidin! [b](Sadece 'Z'ye basın!)[/b]
+  [*] [b]Daha Büyük Simgeler[/b] - Uyarı başlığı ve özetleyici kategori simgeleri daha büyük
   [*] [b]Konum Görünümü Harita Modları[/b] - Konum görünümündeki bilgilerin üzerine gelmek ilgili harita modunu ortaya çıkarır
   [*] [b]Geliştirilmiş Koalisyon Bilgi Kutucuğu[/b] - Listelenen ülkenin halihazırda koalisyonda olup olmadığını görün
   [*] [b]Görünür Toplumsal Değerler Dengesi[/b] - Toplumsal değerlerinizin her birinin maksimum değerini gösteren yeni bir çubuk eklendi
-  [*] [b]Hata Ayıklama Modunu Etkinleştir[/b] - [b]Hata Ayıklama (Debug) Modunu[/b] etkinleştirmek için [b]Glorp UI Özelleştirme Menüsünü[/b] kullanın!
+  [*] [b]Hata Ayıklama Modunu Etkinleştir[/b] - [b]Debug Modu[/b]'nu etkinleştirmek için [b]Glorp UI Özelleştirme Menüsü[/b]'nü kullanın!
  [/list]
 
- [h3] Tavsiye Edilen Modlar [/h3]
+ [h3] Önerilen Modlar [/h3]
  [list]
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - Glorp UI'ı Yükleme Sırasında bu moddan [b]SONRA[/b] yükleyin
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - Karanlık Mod
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - Glorp UI'yı Yükleme Sırasında bu moddan [b]SONRA[/b] yükleyin
  [/list]
 
  [h3] Özel Teşekkürler [/h3]
  [list]
   [*] [b]EU5 Mod Coop[/b] - Sonsuz yardımları için!
+  [*] [b]Conner[/b] - Glorp UI'ı tek başına yarattığı ve sürdürdüğü için (çok gerçek, sahte değil)
   [*] [b]Mazutaki[/b] - Ülke Ordu Boyutları ve Teknoloji Ağacı konusundaki yardımları için!
-  [*] [b]Sol_InvictusXLII[/b] - Çok yararlı bir öğrenme aracı olan Minesweeper Mod'u yarattığı için!
+  [*] [b]Sol_InvictusXLII[/b] - Çok yararlı bir öğrenme aracı olan Minesweeper Modunu yarattığı için!
   [*] [b]Siz[/b] - İndirdiğiniz için
  [/list]
 [/quote]
 
-[img]https://i.ibb.co/7x1241bq/image.png[/img]
-
 [img]https://i.ibb.co/SDH11h1C/Glorp.png[/img]
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776][img]https://i.ibb.co/Kc4D5q36/image.png[/img][/url]
 
