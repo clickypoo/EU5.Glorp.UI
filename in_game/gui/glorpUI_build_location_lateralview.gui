@@ -130,9 +130,57 @@ template build_location_entry {
 									hbox = { #top text
 										layoutpolicy_horizontal = expanding
 										spacing = 3
-										icon = {
+
+										widget = { # Glorp UI - Replace Location Icon w/ Clickable Upgrade Button
 											size = { 15 15 }
-											texture = "[Location.GetRankIcon]"
+
+											button = {
+												size = { 100% 100% }
+												position = {0 0}
+
+												action_tooltip = {
+													click_type = left
+													click_mode = confirm
+													enabled = "[Location.CanUpgradeRank]"
+													title = "[Location.GetUpgradeRankName]"
+													cost = "[Location.GetUpgradeRankPrice]"
+													description = "[Location.GetUpgradeRankDescription]"
+													effects = "[Location.GetUpgradeRankEffects]"
+													conditions = "[Location.GetUpgradeRankConditions]"
+													on_action = "[UpgradeLocationRank(Location.Self)]"
+												}
+
+												action_tooltip = {
+													click_type = right
+													click_mode = confirm
+													enabled = "[Location.CanDowngradeRank]"
+													title = "location_downgrade"
+													cost = "[Location.GetDowngradeRankPrice]"
+													description = "[Location.GetDowngradeRankDescription]"
+													effects = "[Location.GetDowngradeRankEffects]"
+													conditions = "[Location.GetDowngradeRankConditions]"
+													on_action = "[DowngradeLocationRank(Location.Self)]"
+												}
+
+												enabled = "[Or(Location.CanUpgradeRank, Location.CanDowngradeRank)]"
+
+												tooltipwidget = {
+													using = location_rank_tooltip
+													blockoverride "location_rank_tooltip_button" {
+														TooltipBlockList = {
+															visible = "[Not(StringIsEmpty(Location.GetUpgradeRankPriceBreakdown))]"
+															textcontext = "[Location.GetUpgradeRankPriceBreakdown]"
+														}
+													}
+												}
+
+												icon = {
+													size = { 100% 100% }
+													parentanchor = center
+													position = {0 0}
+													texture = "[Location.GetRankIcon]"
+												}
+											}
 										}
 
 										text_single = {

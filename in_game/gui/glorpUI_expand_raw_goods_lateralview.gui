@@ -13,8 +13,8 @@ template build_rgo_entry {
 				texture = "gfx/interface/component_tiles/balance_card_bg.dds"
 			}
 
-			
-			
+
+
 			piechart = {
 				visible = "[GreaterThan_CFixedPoint(Location.GetMaxRGOWorkers, '(CFixedPoint)0')]"
 				alwaystransparent = yes
@@ -83,7 +83,7 @@ template build_rgo_entry {
 				size = {100% 46}
 				using = bg_paper_card
 				parentanchor = center
-				
+
 				hbox = {
 					layoutpolicy_horizontal = expanding
 					margin = {0 0}
@@ -108,7 +108,7 @@ template build_rgo_entry {
 						}
 						card_header_button_04 = {
 							size = {220 46}
-							
+
 							hbox = {
 								layoutpolicy_horizontal = expanding
 								margin_right = 0
@@ -117,15 +117,63 @@ template build_rgo_entry {
 									margin = {5 3}
 									margin_right = 0
 									spacing = 4
-									
+
 									hbox = { #top text
 										layoutpolicy_horizontal = expanding
 										spacing = 3
-										icon = {
+
+										widget = { # Glorp UI - Replace Location Icon w/ Clickable Upgrade Button
 											size = { 15 15 }
-											texture = "[Location.GetRankIcon]"
+
+											button = {
+												size = { 100% 100% }
+												position = {0 0}
+
+												action_tooltip = {
+													click_type = left
+													click_mode = confirm
+													enabled = "[Location.CanUpgradeRank]"
+													title = "[Location.GetUpgradeRankName]"
+													cost = "[Location.GetUpgradeRankPrice]"
+													description = "[Location.GetUpgradeRankDescription]"
+													effects = "[Location.GetUpgradeRankEffects]"
+													conditions = "[Location.GetUpgradeRankConditions]"
+													on_action = "[UpgradeLocationRank(Location.Self)]"
+												}
+
+												action_tooltip = {
+													click_type = right
+													click_mode = confirm
+													enabled = "[Location.CanDowngradeRank]"
+													title = "location_downgrade"
+													cost = "[Location.GetDowngradeRankPrice]"
+													description = "[Location.GetDowngradeRankDescription]"
+													effects = "[Location.GetDowngradeRankEffects]"
+													conditions = "[Location.GetDowngradeRankConditions]"
+													on_action = "[DowngradeLocationRank(Location.Self)]"
+												}
+
+												enabled = "[Or(Location.CanUpgradeRank, Location.CanDowngradeRank)]"
+
+												tooltipwidget = {
+													using = location_rank_tooltip
+													blockoverride "location_rank_tooltip_button" {
+														TooltipBlockList = {
+															visible = "[Not(StringIsEmpty(Location.GetUpgradeRankPriceBreakdown))]"
+															textcontext = "[Location.GetUpgradeRankPriceBreakdown]"
+														}
+													}
+												}
+
+												icon = {
+													size = { 100% 100% }
+													parentanchor = center
+													position = {0 0}
+													texture = "[Location.GetRankIcon]"
+												}
+											}
 										}
-	
+
 										text_single = {
 											visible = "[IsDataModelEmpty(Location.GetCivilConstructions)]"
 											maximumsize = { 110 15}
@@ -135,7 +183,7 @@ template build_rgo_entry {
 											using = Font_Size_Small
 											text = "[Location.GetNameWithNoTooltip]"
 											default_format = "#yellow_titles"
-							
+
 											sort_by_left_fade_highlight = {
 												size = { 200% 170% }
 												position = { 40 0 }
@@ -152,7 +200,7 @@ template build_rgo_entry {
 											using = Font_Size_Small
 											text = "[Location.GetNameWithNoTooltip]"
 											default_format = "#yellow_titles"
-							
+
 											sort_by_left_fade_highlight = {
 												size = { 200% 170% }
 												position = { 40 0 }
@@ -167,7 +215,7 @@ template build_rgo_entry {
 											align = left|nobaseline
 											autoresize = no
 											using = Font_Size_Small
-							
+
 											raw_text = " (#L +[GetDataModelSize(Location.GetCivilConstructions)]#! @construction!)"
 
 											hbox = {
@@ -182,10 +230,10 @@ template build_rgo_entry {
 												}
 											}
 										}
-	
+
 										expand = {}
 									}
-			
+
 									hbox = { #bottom rgo
 										layoutpolicy_horizontal = expanding
 										margin = { 2 0 }
@@ -201,14 +249,14 @@ template build_rgo_entry {
 													autoresize = yes
 													fontsize = 13
 													text = "[Location.GetEffectiveUnEmployed(GetPopTypeByName('laborers'))]"
-															
+
 													sort_by_highlight = {
 														ignore_layout = yes
 														size = { 100% 100% }
 														name = "employment"
 													}
 												}
-			
+
 												icon = {
 													size = { 15 15 }
 													texture = "[GetGraphicalCultureTextureForPopType(GetPopTypeByName('laborers'))]"
@@ -227,7 +275,7 @@ template build_rgo_entry {
 													}
 
 													blockoverride "tooltip_extra_content" {
-														TooltipListBase = { 
+														TooltipListBase = {
 															TooltipListRowContent = {
 																TooltipManualTableField = {
 																	tooltipwidget = {
@@ -237,7 +285,7 @@ template build_rgo_entry {
 																		text_single = {
 																			text = "BUILD_LOCATION_POP_PROMOTE"
 																		}
-																		expand = {}									
+																		expand = {}
 																		text_single = {
 																			raw_text = "[Location.GetPromote]"
 																		}
@@ -246,7 +294,7 @@ template build_rgo_entry {
 															}
 														}
 													}
-											
+
 													lowpriotextcontext = BUILD_LOCATION_AVAILABLE_LABORERS
 												}
 											}
@@ -275,7 +323,7 @@ template build_rgo_entry {
 												size = { 15 15 }
 												texture = "gfx/interface/icons/pops/peasants.dds"
 											}
-		
+
 											tooltipwidget = {
 												using = available_peasants_tooltip
 											}
@@ -418,7 +466,7 @@ template build_rgo_entry {
 							action_tooltip = {
 								click_type = right
 								click_mode = single
-			
+
 								cursor = "location_menu"
 								title = "CLICK_ACTION_LOCATION_CONTEXT_MENU"
 								on_action = "[PdxGuiWidget.ToggleContextMenu]"
@@ -442,7 +490,7 @@ template build_rgo_entry {
 						vbox = {
 							visible = "[Not(Country.IsPlayer)]"
 							spacing = 2
-							
+
 							icon = {
 								size = { 20 20 }
 								texture = "[GetSubjectTypeIcon(Country.GetDiplomacy.GetSubjectType)]"
@@ -478,11 +526,11 @@ template build_rgo_entry {
 									alpha = 0.3
 								}
 							}
-							
+
 							country_flag_very_small = {}
 						}
 					}
-					
+
 					expand = {}
 
 					hbox = {
@@ -509,20 +557,20 @@ template build_rgo_entry {
 														texture = "gfx/interface/icons/treaty_type/gold.dds"
 													}
 												}
-											
+
 												blockoverride "title_text" {
 													text = "PROFIT_EXPAND_RGO_TOOLTIP_TITLE"
 												}
-												
+
 												blockoverride "concept_link" {
 													text = "[profit|E]"
 												}
-												
+
 												blockoverride "tooltip_content" {
 													TooltipTextBlock = {
 														blockoverride "text" {
 															text = "PROFIT_EXPAND_RGO_TOOLTIP_TEXT"
-														}		
+														}
 													}
 													TooltipStringPairList = {
 														blockoverride "block_title" {
@@ -556,12 +604,12 @@ template build_rgo_entry {
 														}
 														textcontext = "[RawGoodLocationItem.GetProfitInfo]"
 													}
-	
+
 													TooltipTextBlock = {
 														visible = "[GreaterThan_CFixedPoint(Location.GetMaxRGOWorkers, '(CFixedPoint)0')]"
 														blockoverride "text" {
 															text = "PROFIT_EXPAND_RGO_TOOLTIP_TITLE_TEXT"
-														}		
+														}
 													}
 												}
 											}
@@ -575,7 +623,7 @@ template build_rgo_entry {
 											raw_text = "+[RawGoodLocationItem.GetProfitPerLevel|2]@wealth!"
 											datacontext = "[RawGoodLocationItem.GetLocation]"
 											datacontext = "[RawGoodLocationItem]"
-											
+
 											sort_by_highlight = {
 												size = { 105% 100% }
 												name = "profit"
@@ -595,13 +643,13 @@ template build_rgo_entry {
 												name = "income"
 											}
 										}
-									}	
+									}
 								}
 
 							}
 							widget = {
 								size = { 50 30 }
-								hbox = { 
+								hbox = {
 									layoutpolicy_horizontal = expanding
 									expand = {}
 									text_single = {
@@ -615,7 +663,7 @@ template build_rgo_entry {
 											using = goods_market_price_tooltip
 										}
 									}
-									
+
 								}
 							}
 						}
@@ -630,25 +678,25 @@ template build_rgo_entry {
 							widget = {
 								parentanchor = center
 								size = { 100% 35 }
-								
+
 								sort_by_highlight = {
 									ignore_layout = yes
 									size = { 100% 100% }
 									name = "number_building"
 								}
-								
+
 								hbox = {
 									spacing = 0
 									using = bg_text_mask_container_brown
 									margin = {5 5}
-									
+
 									button_square_minus = {
 										size = { 15 15 }
 										enabled = "[RawGoodLocationItem.CanReduceRGO]"
 
 										action_tooltip = {
 											click_type = left
-											click_mode = single	
+											click_mode = single
 											visible = "[Location.IsMaxRGOWorkersUnderConstruction]"
 											enabled = "[RawGoodLocationItem.CanReduceRGO]"
 											title = "LOCATION_VIEW_UNQUEUE_RGO_TITLE"
@@ -692,7 +740,7 @@ template build_rgo_entry {
 											on_action = "[RawGoodLocationItem.ReduceRGOShift]"
 										}
 
-										datacontext = "[RawGoodLocationItem.GetLocation]"				
+										datacontext = "[RawGoodLocationItem.GetLocation]"
 										onmousehierarchyenter = "[PdxGuiWidget.SetHighlightLocation(Location.Self)]"
 										tooltipwidget = {
 											using = location_rgo_button_tooltip
@@ -705,7 +753,7 @@ template build_rgo_entry {
 											}
 										}
 									}
-	
+
 									widget = {
 										layoutpolicy_vertical = expanding
 										size = {50 -1}
@@ -739,7 +787,7 @@ template build_rgo_entry {
 
 										action_tooltip = {
 											click_type = left
-											click_mode = single	
+											click_mode = single
 											enabled = "[RawGoodLocationItem.CanUpgradeRGO]"
 											title = "LOCATION_VIEW_EXPAND_RGO_TITLE"
 											description = "[RawGoodLocationItem.GetUpgradeRGOTooltip]"
@@ -747,7 +795,7 @@ template build_rgo_entry {
 											on_action = "[RawGoodLocationItem.UpgradeRGO]"
 										}
 
-										datacontext = "[RawGoodLocationItem.GetLocation]"				
+										datacontext = "[RawGoodLocationItem.GetLocation]"
 										onmousehierarchyenter = "[PdxGuiWidget.SetHighlightLocation(Location.Self)]"
 										tooltipwidget = {
 											using = location_rgo_button_tooltip
@@ -773,20 +821,20 @@ template build_rgo_entry {
 					# 					texture = "gfx/interface/icons/treaty_type/gold.dds"
 					# 				}
 					# 			}
-							
+
 					# 			blockoverride "title_text" {
 					# 				text = "PROFIT_EXPAND_RGO_TOOLTIP_TITLE"
 					# 			}
-													
+
 					# 			blockoverride "concept_link" {
 					# 				text = [profit|E]
 					# 			}
-							
+
 					# 			blockoverride "tooltip_content" {
 					# 				TooltipTextBlock = {
 					# 					blockoverride "text" {
 					# 						text = "PROFIT_EXPAND_RGO_TOOLTIP_TEXT"
-					# 					}		
+					# 					}
 					# 				}
 					# 				TooltipStringPairList = {
 					# 					blockoverride "block_title" {
@@ -825,12 +873,12 @@ template build_rgo_entry {
 					# 					visible = "[GreaterThan_CFixedPoint(Location.GetMaxRGOWorkers, '(CFixedPoint)0')]"
 					# 					blockoverride "text" {
 					# 						text = "PROFIT_EXPAND_RGO_TOOLTIP_TITLE_TEXT"
-					# 					}		
+					# 					}
 					# 				}
 					# 			}
 					# 		}
-					# 	}	
-		
+					# 	}
+
 					# 	sort_by_highlight = {
 					# 		size = { 105% 200% }
 					# 		name = "profit"
@@ -873,7 +921,7 @@ template build_rgo_entry {
 					# 	hbox = {
 					# 		visible = "[Not(Country.IsPlayer)]"
 					# 		spacing = 2
-							
+
 					# 		icon = {
 					# 			size = { 20 20 }
 					# 			texture = "[GetSubjectTypeIcon(Country.GetDiplomacy.GetSubjectType)]"
@@ -909,7 +957,7 @@ template build_rgo_entry {
 					# 				alpha = 0.3
 					# 			}
 					# 		}
-							
+
 					# 		country_flag_small = {}
 					# 	}
 					# }
