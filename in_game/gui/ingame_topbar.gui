@@ -608,9 +608,9 @@ widget = {
 		}
 	}
 
-	EnterGameCoA = {
-		name = "flag_animation"
-	}
+	# EnterGameCoA = {
+	# 	name = "flag_animation"
+	# }
 }
 
 widget = {
