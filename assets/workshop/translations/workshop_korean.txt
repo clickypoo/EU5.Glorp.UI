@@ -1,0 +1,63 @@
+===WORKSHOP_TITLE===
+글로프 UI / Glorp UI
+===WORKSHOP_DESCRIPTION===
+[i]You are on the DeepL-Generated Korean Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
+
+[img]https://i.ibb.co/TMrcJMrf/image.png[/img]
+
+[img]https://i.ibb.co/7x1241bq/image.png[/img]
+
+[quote]
+ [b]Glorp UI[/b]는 [b]Europa Universalis V[/b]의 사용자 인터페이스(UI)를 개선합니다. 아주 간단(shrimple)하죠.
+
+ [b]제안 사항이 있으신가요? 아래에 추천해 주세요![/b]
+
+ [h3] 커스터마이징 가능 [/h3]
+ [list]
+  [*] 게임 내 [b]Glorp UI 설정 메뉴[/b]를 통해 [b]사용자 경험을 커스터마이징[/b]하세요! 설정값은 [b]세이브 파일당[/b] 저장됩니다.
+  [*] 다른 모드의 구현 방식을 선호하시나요? 불러오기 순서에서 해당 모드를 [b]Glorp UI 뒤에[/b] 배치하면 저희의 변경 사항을 덮어씌울 수 있습니다!
+ [/list]
+
+ [h3] 구현된 변경 사항 [/h3]
+ [list]
+  [*] [b]색상 구분 아이콘[/b] - 직관적인 탐색과 멋진 시각적 효과를 제공합니다
+  [*] [b]지도자 초상화 제거[/b] - 멋진 국기를 위한 더 넓은 공간을 확보하세요! 문장을 통해 왕조/통치자 창으로 이동할 수 있습니다!
+  [*] [b]정적 국기 옵션[/b] - EU4의 정적 국기를 선호하시나요? 이제 선택 가능합니다!
+  [*] [b]와이드 지형 모드 바[/b] - 지형 모드 바가 더 낮고 넓어졌습니다. [b]현재 지형 모드[/b] 버튼이 방해되지 않는 위치로 이동했습니다.
+  [*] [b]색상형 지형 모드 버튼[/b] - 사용 편의성을 위해 지형 모드 버튼에 카테고리별 색상을 추가했습니다!
+  [*] [b]국가 통계 패널[/b] - 토글 가능한 국가 통계 패널로 정보를 한눈에 확인하세요!
+  [*] [b]건물 뷰 개선[/b] - 건설 중에 해당 지역의 [b]건물 제한[/b], [b]RGO[/b], [b]통제도[/b]를 쉽게 확인할 수 있습니다!
+  [*] [b]외교 툴팁 개선[/b] - 국가 위에 마우스를 올리면 자신의 관계도뿐만 아니라 [b]선택한 국가와 해당 국가 간의 관계[/b]를 볼 수 있습니다. 종속국 위에 마우스를 올릴 때 추가 정보도 제공됩니다.
+  [*] [b]기술 트리 개선[/b] - 컴팩트한 기술 트리입니다. 축소하여 전체 트리를 한눈에 확인하세요!
+  [*] [b]컴팩트 내각 뷰[/b] - 내각 창에 컴팩트 뷰 토글을 추가했습니다
+  [*] [b]전쟁 패널 개선[/b] - 색상으로 구분된 전쟁 패널로 누가 종속국인지 아닌지 한눈에 확인하세요!
+  [*] [b]상단 바 통계 토글[/b] - 취향에 따라 상단 바 통계를 활성화하거나 비활성화하세요! 역동적 전쟁 통계는 인력, 선원, 전쟁 피로도를 자동으로 숨기거나 표시합니다!
+  [*] [b]실제 군대 규모[/b] - [b]국가 툴팁[/b], [b]국가 창[/b], [b]전쟁 패널[/b]에서 국가의 상비군 및 징집병 규모를 확인하세요
+  [*] [b]지역으로 줌[/b] - [b]국가 수도[/b], [b]군대 위치[/b], [b]선택한 지역[/b], 또는 [b]국제 기구의 본부[/b]로 화면을 이동하세요! [b]('Z' 키를 누르기만 하면 됩니다!)[/b]
+  [*] [b]더 큰 아이콘[/b] - 알림 배너와 아웃라이너 카테고리 아이콘이 커졌습니다
+  [*] [b]지역 뷰 지형 모드[/b] - 지역 뷰의 정보 위에 마우스를 올리면 관련 지형 모드가 나타납니다
+  [*] [b]코알리션 툴팁 개선[/b] - 목록에 있는 국가가 이미 코알리션에 가입되어 있는지 확인하세요
+  [*] [b]사회적 가치 평형 표시[/b] - 각 사회적 가치의 최대 수치를 보여주는 새로운 바가 추가되었습니다
+  [*] [b]디버그 모드 활성화[/b] - [b]Glorp UI 설정 메뉴[/b]를 사용하여 [b]디버그 모드[/b]를 활성화하세요!
+ [/list]
+
+ [h3] 추천 모드 [/h3]
+ [list]
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - 불러오기 순서에서 Glorp UI를 이 모드 [b]다음에(AFTER)[/b] 배치하세요
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - 다크 모드
+ [/list]
+
+ [h3] 특별 감사 [/h3]
+ [list]
+  [*] [b]EU5 Mod Coop[/b] - 끝없는 도움에 감사드립니다!
+  [*] [b]Conner[/b] - 혼자서 Glorp UI를 제작하고 유지 관리해주셔서 감사합니다 (매우 실화임, 가짜 아님)
+  [*] [b]Mazutaki[/b] - 국가 군대 규모와 기술 트리 관련 도움에 감사드립니다!
+  [*] [b]Sol_InvictusXLII[/b] - 매우 유용한 학습 도구가 되었던 지뢰찾기 모드 제작에 감사드립니다!
+  [*] [b]여러분[/b] - 다운로드해 주셔서 감사합니다
+ [/list]
+[/quote]
+
+[img]https://i.ibb.co/SDH11h1C/Glorp.png[/img]
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776][img]https://i.ibb.co/Kc4D5q36/image.png[/img][/url]
+

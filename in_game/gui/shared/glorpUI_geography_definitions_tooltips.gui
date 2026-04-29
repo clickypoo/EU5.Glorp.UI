@@ -28,7 +28,7 @@
 			TooltipListBase = {
 
 				blockoverride "block_title" {
-					text = "The [locations|e] of [ProvinceDefinition.GetNameWithNoTooltip]"
+					text = "GLORP_UI_PROV_DEF_MEMBERS_HEADER"
 				}
 
 				TooltipListScrollArea = {
@@ -47,7 +47,7 @@
 									using = layoutpolicy_expanding
 									blockoverride "field_content" {
 										text_single = {
-											text = "[Location.GetRawMaterial.GetIcon] [Location.GetRank.GetIcon] [Location.GetOwner.GetFlagIcon] [Location.GetName]  [SelectLocalization( Location.IsProvinceCapital , 'PROVINCE_CAPITAL_TOOLTIP', '' )] [SelectLocalization( Location.HasRiver , 'PROXIMITY_ICON_RIVER', '' )] [SelectLocalization( Location.IsCoastal , 'ICON_COASTAL', '' )] "
+											text = "GLORP_UI_PROV_DEF_MEMBERS_ENTRY"
 										}
 										expand = {}
 										text_single = {

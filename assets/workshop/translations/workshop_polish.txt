@@ -1,0 +1,63 @@
+===WORKSHOP_TITLE===
+Interfejs Glorp / Glorp UI
+===WORKSHOP_DESCRIPTION===
+[i]You are on the DeepL-Generated Polish Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
+
+[img]https://i.ibb.co/TMrcJMrf/image.png[/img]
+
+[img]https://i.ibb.co/7x1241bq/image.png[/img]
+
+[quote]
+ [b]Glorp UI[/b] ulepsza interfejs użytkownika w [b]Europa Universalis V[/b]. To banalnie proste.
+
+ [b]Masz sugestię? Zaproponuj ją poniżej![/b]
+
+ [h3] Możliwość personalizacji [/h3]
+ [list]
+  [*] [b]Dostosuj swoje wrażenia[/b], korzystając z menu [b]Glorp UI Customization Menu[/b] w grze! Twoje preferencje będą zapisywane [b]dla każdego zapisu gry[/b].
+  [*] Wolisz rozwiązanie z innego moda? Po prostu umieść go [b]po Glorp UI[/b] w kolejności wczytywania, a nadpisze on nasze zmiany!
+ [/list]
+
+ [h3] Wprowadzone zmiany [/h3]
+ [list]
+  [*] [b]Ikony oznaczone kolorami[/b] – dla intuicyjnej nawigacji i estetycznego wyglądu.
+  [*] [b]Koniec z portretami władców[/b] – więcej miejsca na Twoją piękną flagę! Przechodź do swojej dynastii/władcy za pomocą herbu!
+  [*] [b]Opcja statycznej flagi[/b] – wolisz statyczne flagi z EU4? Teraz to możliwe!
+  [*] [b]Szeroki pasek trybów mapy[/b] – pasek trybów mapy jest teraz krótszy i szerszy. Przycisk [b]aktualnego trybu mapy[/b] znajduje się w mniej inwazyjnym miejscu.
+  [*] [b]Kolorowe przyciski trybów mapy[/b] – dodano kolorowe zabarwienie przycisków trybów mapy według kategorii dla łatwiejszej obsługi!
+  [*] [b]Panel statystyk państwa[/b] – przełączalny panel statystyk państwa – najważniejsze informacje na rzut oka!
+  [*] [b]Ulepszony widok budowania[/b] – łatwo sprawdź [b]limit budynków[/b], [b]RGO[/b] oraz [b]kontrolę[/b] lokacji podczas budowania!
+  [*] [b]Lepszy tooltip dyplomatyczny[/b] – po najechaniu kursorem na kraj [b]możesz zobaczyć jego relacje z wybranym państwem[/b], zamiast widzieć tylko własne relacje. Dodano także dodatkowe informacje po najechaniu na kraje wasalne.
+  [*] [b]Ulepszone drzewo technologii[/b] – kompaktowe drzewo technologii. Pomniejsz widok i zobacz całe drzewo naraz!
+  [*] [b]Kompaktowy widok gabinetu[/b] – dodano przełącznik kompaktowego widoku w gabinecie.
+  [*] [b]Ulepszony panel wojny[/b] – panel wojny oznaczony kolorami, sprawdź na rzut oka, kto jest wasalem, a kto nie!
+  [*] [b]Przełączalne statystyki na górnym pasku[/b] – włączaj i wyłączaj statystyki górnego paska według własnych upodobań! Dynamiczne statystyki wojenne automatycznie ukrywają/pokazują Twoje zasoby ludzkie, marynarzy i wyczerpanie wojenne!
+  [*] [b]Rzeczywista wielkość armii[/b] – sprawdź wielkość wojsk regularnych i pospolitego ruszenia w [b]tooltipie kraju[/b], [b]oknie kraju[/b] oraz [b]panelu wojny[/b].
+  [*] [b]Przybliżenie do lokacji[/b] – przenieś widok do [b]stolicy kraju[/b], [b]pozycji armii[/b], [b]wybranej lokacji[/b] lub [b]stolicy organizacji międzynarodowej[/b]! [b](Wystarczy nacisnąć „Z”!)[/b]
+  [*] [b]Większe ikony[/b] – ikony banerów alertów i kategorii outlinera są teraz większe.
+  [*] [b]Tryby mapy w widoku lokacji[/b] – najechanie kursorem na informacje w widoku lokacji pokazuje odpowiedni tryb mapy.
+  [*] [b]Ulepszony tooltip koalicji[/b] – sprawdź, czy wymieniony kraj znajduje się już w koalicji.
+  [*] [b]Widoczna równowaga wartości społecznych[/b] – dodano nowy pasek pokazujący maksymalną wartość każdej z Twoich wartości społecznych.
+  [*] [b]Aktywacja trybu debugowania[/b] – użyj [b]menu personalizacji Glorp UI[/b], aby włączyć [b]tryb debugowania[/b]!
+ [/list]
+
+ [h3] Polecane mody [/h3]
+ [list]
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] – wczytuj Glorp UI [b]PO[/b] tym modzie w kolejności wczytywania.
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] – tryb ciemny.
+ [/list]
+
+ [h3] Specjalne podziękowania [/h3]
+ [list]
+  [*] [b]EU5 Mod Coop[/b] – za nieustanną pomoc!
+  [*] [b]Conner[/b] – za samodzielne stworzenie i utrzymywanie Glorp UI (bardzo prawdziwe, nie fejk)
+  [*] [b]Mazutaki[/b] – pomoc przy wielkościach armii i drzewie technologii!
+  [*] [b]Sol_InvictusXLII[/b] – za stworzenie moda Minesweeper, który był bardzo przydatnym narzędziem do nauki!
+  [*] [b]Ty[/b] – za pobranie
+ [/list]
+[/quote]
+
+[img]https://i.ibb.co/SDH11h1C/Glorp.png[/img]
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776][img]https://i.ibb.co/Kc4D5q36/image.png[/img][/url]
+

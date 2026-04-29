@@ -1,0 +1,10 @@
+﻿#noinspection ALL
+l_polish:
+ RECRUIT_BEST_IN_LOCATION_ACTION_BUTTON: "Masowo rekrutuj [RecruitInLocationLateralView.GetUnitType.GetName]"
+ GLORP_UI_OTHER: "Inne"
+ GLORP_UI_TOGGLE_DEBUG: "Przełącz debugowanie"
+ GLORP_UI_TOGGLE_LEFT_PANEL_STATS: "Przełącz statystyki lewego panelu"
+ GLORP_UI_SHOWHIDE_LEFT_PANEL_STATS: "Pokaż/ukryj statystyki lewego panelu"
+ ICON_COASTAL: "@coastal!"
+ GLORP_UI_PROV_DEF_MEMBERS_HEADER: "[locations|e] [ProvinceDefinition.GetNameWithNoTooltip]"
+ GLORP_UI_PROV_DEF_MEMBERS_ENTRY: "[Location.GetRawMaterial.GetIcon] [Location.GetRank.GetIcon] [Location.GetOwner.GetFlagIcon] [Location.GetName]  [SelectLocalization( Location.IsProvinceCapital , 'PROVINCE_CAPITAL_TOOLTIP', '' )] [SelectLocalization( Location.HasRiver , 'PROXIMITY_ICON_RIVER', '' )] [SelectLocalization( Location.IsCoastal , 'ICON_COASTAL', '' )]"

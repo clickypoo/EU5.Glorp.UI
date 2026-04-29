@@ -1,0 +1,63 @@
+===WORKSHOP_TITLE===
+Glorp-Benutzeroberfläche / Glorp UI
+===WORKSHOP_DESCRIPTION===
+[i]You are on the DeepL-Generated German Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
+
+[img]https://i.ibb.co/TMrcJMrf/image.png[/img]
+
+[img]https://i.ibb.co/7x1241bq/image.png[/img]
+
+[quote]
+ [b]Glorp UI[/b] verbessert die Benutzeroberfläche von [b]Europa Universalis V[/b]. Es ist so shrimpel wie das.
+
+ [b]Hast du einen Vorschlag? Empfiehl ihn unten![/b]
+
+ [h3] Anpassbar [/h3]
+ [list]
+  [*] [b]Personalisiere deine Erfahrung[/b] über das [b]Glorp UI Anpassungsmenü[/b] im Spiel! Deine Einstellungen werden [b]pro Spielstand[/b] gespeichert.
+  [*] Bevorzugst du die Implementierung einer anderen Mod? Platziere sie einfach [b]nach Glorp UI[/b] in der Ladereihenfolge, und sie wird unsere Änderungen überschreiben!
+ [/list]
+
+ [h3] Implementierte Änderungen [/h3]
+ [list]
+  [*] [b]Farbcodierte Icons[/b] - Für intuitive Navigation und ein schönes visuelles Flair.
+  [*] [b]Keine Herrscherporträts mehr[/b] - Mehr Platz für deine wunderschöne Flagge! Navigiere über das Wappen zu deiner Dynastie/deinem Herrscher!
+  [*] [b]Option für statische Flaggen[/b] - Bevorzugst du die statischen Flaggen aus EU4? Das ist jetzt eine Option!
+  [*] [b]Breite Kartenmodus-Leiste[/b] - Die Kartenmodus-Leiste ist jetzt kürzer und breiter. Die Schaltfläche für den [b]aktuellen Kartenmodus[/b] befindet sich an einer weniger störenden Position.
+  [*] [b]Farbige Kartenmodus-Schaltflächen[/b] - Farbige Tönung für die Kartenmodus-Schaltflächen nach Kategorien zur einfacheren Nutzung hinzugefügt!
+  [*] [b]Länderstatistik-Panel[/b] - Umschaltbares Länderstatistik-Panel – Informationen auf einen Blick!
+  [*] [b]Verbesserte Gebäudeansicht[/b] - Sieh das [b]Gebäudelimit[/b], [b]RGO[/b] und die [b]Kontrolle[/b] des Standorts ganz einfach während des Bauens!
+  [*] [b]Besserer Diplomatie-Tooltip[/b] - Wenn du mit der Maus über ein Land fährst, [b]siehst du dessen Beziehungen zum ausgewählten Land[/b], anstatt nur deine eigenen Beziehungen. Es gibt auch zusätzliche Informationen, wenn du über Vasallenländer fährst.
+  [*] [b]Verbesserter Technologiebaum[/b] - Ein kompakter Technologiebaum. Zoom heraus und sieh den gesamten Baum auf einen Blick!
+  [*] [b]Kompakte Kabinettsansicht[/b] - Kompakte Ansicht für das Kabinett hinzugefügt.
+  [*] [b]Verbessertes Kriegspanel[/b] - Farbcodiertes Kriegspanel, erkenne auf einen Blick, wer ein Vasall ist und wer nicht!
+  [*] [b]Umschaltbare Statistiken in der oberen Leiste[/b] - Aktiviere oder deaktiviere die Statistiken in der oberen Leiste nach deinem persönlichen Geschmack! Dynamische Kriegsstatistiken zeigen/verbergen deine Mannstärke, Seeleute und Kriegsmüdigkeit automatisch!
+  [*] [b]Tatsächliche Armeegrößen[/b] - Sieh die regulären & Aufgebots-Größen eines Landes im [b]Länder-Tooltip[/b], im [b]Länderfenster[/b] und im [b]Kriegspanel[/b].
+  [*] [b]Zu Standort zoomen[/b] - Springe zum Standort der [b]Hauptstadt eines Landes[/b], zum [b]Standort einer Armee[/b], zu einem [b]ausgewählten Standort[/b] oder zur [b]Hauptstadt einer Internationalen Organisation[/b]! [b](Drücke einfach 'Z'!)[/b]
+  [*] [b]Größere Icons[/b] - Icons für Alarmbanner und Outliner-Kategorien sind größer.
+  [*] [b]Kartenmodi in der Standortansicht[/b] - Das Bewegen der Maus über die Informationen in der Standortansicht zeigt den relevanten Kartenmodus an.
+  [*] [b]Verbesserter Koalitions-Tooltip[/b] - Sieh, ob das aufgeführte Land bereits in der Koalition ist.
+  [*] [b]Sichtbares Gleichgewicht der gesellschaftlichen Werte[/b] - Es gibt einen neuen Balken, der den Maximalwert jedes deiner gesellschaftlichen Werte anzeigt.
+  [*] [b]Debug-Modus aktivieren[/b] - Nutze das [b]Glorp UI Anpassungsmenü[/b], um den [b]Debug-Modus[/b] zu aktivieren!
+ [/list]
+
+ [h3] Empfohlene Mods [/h3]
+ [list]
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - Lade Glorp UI [b]NACH[/b] dieser Mod in der Ladereihenfolge.
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - Dunkler Modus.
+ [/list]
+
+ [h3] Besonderer Dank [/h3]
+ [list]
+  [*] [b]EU5 Mod Coop[/b] - Für die unendliche Hilfe!
+  [*] [b]Conner[/b] - Für das eigenhändige Erstellen und Pflegen von Glorp UI (sehr echt, kein Fake).
+  [*] [b]Mazutaki[/b] - Hilfe bei den Armeegrößen der Länder und dem Technologiebaum!
+  [*] [b]Sol_InvictusXLII[/b] - Für das Erstellen der Minesweeper-Mod, die ein sehr nützliches Lernwerkzeug war!
+  [*] [b]Dich[/b] - Fürs Herunterladen.
+ [/list]
+[/quote]
+
+[img]https://i.ibb.co/SDH11h1C/Glorp.png[/img]
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776][img]https://i.ibb.co/Kc4D5q36/image.png[/img][/url]
+

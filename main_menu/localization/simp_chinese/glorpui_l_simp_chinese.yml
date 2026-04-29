@@ -1,0 +1,10 @@
+﻿#noinspection ALL
+l_simp_chinese:
+ RECRUIT_BEST_IN_LOCATION_ACTION_BUTTON: "批量招募 [RecruitInLocationLateralView.GetUnitType.GetName]"
+ GLORP_UI_OTHER: "其他"
+ GLORP_UI_TOGGLE_DEBUG: "切换调试"
+ GLORP_UI_TOGGLE_LEFT_PANEL_STATS: "切换左侧面板统计"
+ GLORP_UI_SHOWHIDE_LEFT_PANEL_STATS: "显示/隐藏左侧面板数据"
+ ICON_COASTAL: "@coastal!"
+ GLORP_UI_PROV_DEF_MEMBERS_HEADER: "[ProvinceDefinition.GetNameWithNoTooltip]的[locations|e]"
+ GLORP_UI_PROV_DEF_MEMBERS_ENTRY: "[Location.GetRawMaterial.GetIcon] [Location.GetRank.GetIcon] [Location.GetOwner.GetFlagIcon] [Location.GetName]  [SelectLocalization( Location.IsProvinceCapital , 'PROVINCE_CAPITAL_TOOLTIP', '' )] [SelectLocalization( Location.HasRiver , 'PROXIMITY_ICON_RIVER', '' )] [SelectLocalization( Location.IsCoastal , 'ICON_COASTAL', '' )]"

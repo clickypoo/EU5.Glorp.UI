@@ -1,13 +1,13 @@
 ﻿l_simp_chinese:
  # Mod
- glorpui_name: "Glorp 界面"
- glorpui_desc: "至于它，这么说吧……我的 Bingus"
+ glorpui_name: "格洛普 UI"
+ glorpui_desc: "至于它，咱们就这么说吧……我的宾格斯。"
 
  # Toggles (toggles) Tab
- glorpui__toggles_name: "开关"
+ glorpui__toggles_name: "切换"
  ## General (general) Group
- glorpui__toggles__general_name: "通用"
- glorpui__useVanillaPortrait_name: "原版旗帜与头像"
+ glorpui__toggles__general_name: "将军"
+ glorpui__useVanillaPortrait_name: "原版旗帜与肖像"
  glorpui__useVanillaPortrait_desc: ""
  glorpui__useStaticFlag_name: "使用静态旗帜"
  glorpui__useStaticFlag_desc: ""
@@ -15,26 +15,24 @@
  glorpui__useDefaultIconsBGLeftPanel_desc: ""
  glorpui__useDefaultIconsLeftPanel_name: "左侧面板原版图标"
  glorpui__useDefaultIconsLeftPanel_desc: ""
- glorpui__useVanillaCabinetView_name: "原版内阁视图"
- glorpui__useVanillaCabinetView_desc: ""
- glorpui__disableLeftPanelStatsBar_name: "左侧面板属性条"
+ glorpui__disableLeftPanelStatsBar_name: "左侧面板统计栏"
  glorpui__disableLeftPanelStatsBar_desc: ""
  glorpui__disableColouredMapmodeButtons_name: "彩色地图模式按钮"
  glorpui__disableColouredMapmodeButtons_desc: ""
 
  # War View (war_view) Tab
- glorpui__war_view_name: "战争视图"
+ glorpui__war_view_name: "战争界面"
  ## General (general) Group
- glorpui__war_view__general_name: "通用"
- glorpui__useVanillaArmyStrength_name: "原版军队实力"
+ glorpui__war_view__general_name: "将军"
+ glorpui__useVanillaArmyStrength_name: "原版陆军强度"
  glorpui__useVanillaArmyStrength_desc: ""
  glorpui__useVanillaParticipantColour_name: "原版参与者颜色"
  glorpui__useVanillaParticipantColour_desc: ""
 
  # Top Bar (top_bar) Tab
- glorpui__top_bar_name: "顶部栏"
+ glorpui__top_bar_name: "顶栏"
  ## General (general) Group
- glorpui__top_bar__general_name: "常规"
+ glorpui__top_bar__general_name: "将军"
  glorpui__disableTopBarIncome_name: "收入"
  glorpui__disableTopBarIncome_desc: ""
  glorpui__disableTopBarStability_name: "稳定度"
@@ -48,7 +46,7 @@
  glorpui__disableTopBarDiplomats_name: "外交官"
  glorpui__disableTopBarDiplomats_desc: ""
  glorpui__dynamicWarStats_name: "动态战争统计"
- glorpui__dynamicWarStats_desc: ""
+ glorpui__dynamicWarStats_desc: "动态显示与隐藏人力、水手和厌战情绪"
 
  # Optional: self-referencing flag keys to suppress IDE warnings (safe to remove if you want)
  glorpui: "glorpui"
@@ -62,7 +60,6 @@
  glorpui__useStaticFlag: "glorpui__useStaticFlag"
  glorpui__useDefaultIconsBGLeftPanel: "glorpui__useDefaultIconsBGLeftPanel"
  glorpui__useDefaultIconsLeftPanel: "glorpui__useDefaultIconsLeftPanel"
- glorpui__useVanillaCabinetView: "glorpui__useVanillaCabinetView"
  glorpui__disableLeftPanelStatsBar: "glorpui__disableLeftPanelStatsBar"
  glorpui__disableColouredMapmodeButtons: "glorpui__disableColouredMapmodeButtons"
  glorpui__useVanillaArmyStrength: "glorpui__useVanillaArmyStrength"
@@ -74,3 +71,16 @@
  glorpui__disableTopBarPrestige: "glorpui__disableTopBarPrestige"
  glorpui__disableTopBarDiplomats: "glorpui__disableTopBarDiplomats"
  glorpui__dynamicWarStats: "glorpui__dynamicWarStats"
+ glorpui__useFramedStaticFlag_name: "使用带框静态旗帜"
+ glorpui__useFramedStaticFlag_desc: ""
+ glorpui__mapmodes_bar_name: "地图模式"
+ glorpui__mapmodes_bar__general_name: "将军"
+ glorpui__vanillaMapmodeWidth_name: "原版地图模式栏宽度"
+ glorpui__vanillaMapmodeWidth_desc: ""
+ glorpui__vanillaMapmodeHeight_name: "原版地图模式栏高度"
+ glorpui__vanillaMapmodeHeight_desc: ""
+ glorpui__mapmodes_bar: "glorpui__mapmodes_bar"
+ glorpui__mapmodes_bar__general: "glorpui__mapmodes_bar__general"
+ glorpui__useFramedStaticFlag: "glorpui__useFramedStaticFlag"
+ glorpui__vanillaMapmodeWidth: "glorpui__vanillaMapmodeWidth"
+ glorpui__vanillaMapmodeHeight: "glorpui__vanillaMapmodeHeight"

@@ -1,22 +1,20 @@
 ﻿l_turkish:
  # Mod
  glorpui_name: "Glorp Arayüzü"
- glorpui_desc: "ve bununla, şöyle diyelim.. bingus'um"
+ glorpui_desc: "ve bununla, şöyle diyelim.. benim bingus'um"
 
  # Toggles (toggles) Tab
- glorpui__toggles_name: "Seçenekler"
+ glorpui__toggles_name: "Geçişler"
  ## General (general) Group
- glorpui__toggles__general_name: "Genel"
+ glorpui__toggles__general_name: "General"
  glorpui__useVanillaPortrait_name: "Vanilla Bayrak ve Portre"
  glorpui__useVanillaPortrait_desc: ""
  glorpui__useStaticFlag_name: "Statik Bayrak Kullan"
  glorpui__useStaticFlag_desc: ""
- glorpui__useDefaultIconsBGLeftPanel_name: "Sol Paneldeki Vanilla Simge Arka Planları"
+ glorpui__useDefaultIconsBGLeftPanel_name: "Sol Paneldeki Orijinal Simge Arka Planları"
  glorpui__useDefaultIconsBGLeftPanel_desc: ""
  glorpui__useDefaultIconsLeftPanel_name: "Sol Paneldeki Vanilla Simgeler"
  glorpui__useDefaultIconsLeftPanel_desc: ""
- glorpui__useVanillaCabinetView_name: "Vanilla Kabine Görünümü"
- glorpui__useVanillaCabinetView_desc: ""
  glorpui__disableLeftPanelStatsBar_name: "Sol Panel İstatistik Çubuğu"
  glorpui__disableLeftPanelStatsBar_desc: ""
  glorpui__disableColouredMapmodeButtons_name: "Renkli Harita Modu Düğmeleri"
@@ -25,16 +23,16 @@
  # War View (war_view) Tab
  glorpui__war_view_name: "Savaş Görünümü"
  ## General (general) Group
- glorpui__war_view__general_name: "Genel"
- glorpui__useVanillaArmyStrength_name: "Orijinal Ordu Gücü"
+ glorpui__war_view__general_name: "General"
+ glorpui__useVanillaArmyStrength_name: "Vanilla Ordu Gücü"
  glorpui__useVanillaArmyStrength_desc: ""
- glorpui__useVanillaParticipantColour_name: "Vanilla Katılımcı Rengi"
+ glorpui__useVanillaParticipantColour_name: "Standart Katılımcı Rengi"
  glorpui__useVanillaParticipantColour_desc: ""
 
  # Top Bar (top_bar) Tab
  glorpui__top_bar_name: "Üst Çubuk"
  ## General (general) Group
- glorpui__top_bar__general_name: "Genel"
+ glorpui__top_bar__general_name: "General"
  glorpui__disableTopBarIncome_name: "Gelir"
  glorpui__disableTopBarIncome_desc: ""
  glorpui__disableTopBarStability_name: "İstikrar"
@@ -48,7 +46,7 @@
  glorpui__disableTopBarDiplomats_name: "Diplomatlar"
  glorpui__disableTopBarDiplomats_desc: ""
  glorpui__dynamicWarStats_name: "Dinamik Savaş İstatistikleri"
- glorpui__dynamicWarStats_desc: ""
+ glorpui__dynamicWarStats_desc: "İnsan Gücü, Denizciler ve Savaş Yorgunluğunu Dinamik Olarak Gösterir ve Gizler"
 
  # Optional: self-referencing flag keys to suppress IDE warnings (safe to remove if you want)
  glorpui: "glorpui"
@@ -62,7 +60,6 @@
  glorpui__useStaticFlag: "glorpui__useStaticFlag"
  glorpui__useDefaultIconsBGLeftPanel: "glorpui__useDefaultIconsBGLeftPanel"
  glorpui__useDefaultIconsLeftPanel: "glorpui__useDefaultIconsLeftPanel"
- glorpui__useVanillaCabinetView: "glorpui__useVanillaCabinetView"
  glorpui__disableLeftPanelStatsBar: "glorpui__disableLeftPanelStatsBar"
  glorpui__disableColouredMapmodeButtons: "glorpui__disableColouredMapmodeButtons"
  glorpui__useVanillaArmyStrength: "glorpui__useVanillaArmyStrength"
@@ -74,3 +71,16 @@
  glorpui__disableTopBarPrestige: "glorpui__disableTopBarPrestige"
  glorpui__disableTopBarDiplomats: "glorpui__disableTopBarDiplomats"
  glorpui__dynamicWarStats: "glorpui__dynamicWarStats"
+ glorpui__useFramedStaticFlag_name: "Çerçeveli Statik Bayrak Kullan"
+ glorpui__useFramedStaticFlag_desc: ""
+ glorpui__mapmodes_bar_name: "Harita Modları"
+ glorpui__mapmodes_bar__general_name: "General"
+ glorpui__vanillaMapmodeWidth_name: "Vanilla Harita Modu Çubuğu Genişliği"
+ glorpui__vanillaMapmodeWidth_desc: ""
+ glorpui__vanillaMapmodeHeight_name: "Vanilla Harita Modları Çubuğu Yüksekliği"
+ glorpui__vanillaMapmodeHeight_desc: ""
+ glorpui__mapmodes_bar: "glorpui__mapmodes_bar"
+ glorpui__mapmodes_bar__general: "glorpui__mapmodes_bar__general"
+ glorpui__useFramedStaticFlag: "glorpui__useFramedStaticFlag"
+ glorpui__vanillaMapmodeWidth: "glorpui__vanillaMapmodeWidth"
+ glorpui__vanillaMapmodeHeight: "glorpui__vanillaMapmodeHeight"
