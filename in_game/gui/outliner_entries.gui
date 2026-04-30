@@ -1661,7 +1661,7 @@ OutlinerEntryBase = {
 						autoresize = no
 						align = right|nobaseline
 						using = Font_Size_Small
-						raw_text = "[GoodsMarketEntry.GetPriceDifference|-=%] ([GoodsMarketEntry.GetPrice|2]@[GoodsMarketEntry.GetGoods.GetPriceDifferenceIconName(GoodsMarketEntry.GetPrice)]!)"
+						raw_text = "[GoodsMarketEntry.GetPrice|2]@[GoodsMarketEntry.GetGoods.GetPriceDifferenceIconName(GoodsMarketEntry.GetPrice)]!"
 					}
 				}
 			}
