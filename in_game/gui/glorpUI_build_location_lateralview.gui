@@ -1619,6 +1619,9 @@ types GlorpBuildLocationTypes {
 											texture = "gfx/interface/icons/flat_icons/mass_construct.dds"
 										}
 
+										# LSQ mass auto-expand button
+										lsq_mass_auto_expand_button_bll = {}
+
 										text_single = {
 											fontsize = 13
 											layoutpolicy_horizontal = expanding
@@ -1696,6 +1699,9 @@ types GlorpBuildLocationTypes {
 											size = { 25 25 }
 											texture = "gfx/interface/icons/flat_icons/mass_upgrade.dds"
 										}
+
+										# LSQ mass auto-expand button
+										lsq_mass_auto_expand_button_bll = {}
 
 										text_single = {
 											fontsize = 13
