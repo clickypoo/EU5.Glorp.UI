@@ -6881,6 +6881,8 @@ OutlinerEntryBase = {
 
 	blockoverride "icon_content" {
 		using = diplomacy_icon_content
+		# Autonomous Diplomats auto-cancel widget
+		atd_outliner_auto_cancel_widget = {}
 	}
 
 	blockoverride "button_setup" {
