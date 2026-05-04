@@ -7,11 +7,35 @@
 	}
 }
 
+glorpui_sync_avg_proximity = {
+	if = {
+		limit = { num_locations >= 1 }
+		set_variable = {
+			name = glorpui_avg_proximity
+			value = {
+				value = 0
+				every_owned_location = {
+					add = proximity
+				}
+				divide = num_locations
+				divide = 100
+			}
+		}
+	}
+	else = {
+		set_variable = {
+			name = glorpui_avg_proximity
+			value = 0
+		}
+	}
+}
+
 glorpui_value_sync_var_suppress = {
 	if = {
 		limit = {
 			always = no
 			var:glorpui_avg_control_home_region >= 0
+			var:glorpui_avg_proximity >= 0
 		}
 	}
 }

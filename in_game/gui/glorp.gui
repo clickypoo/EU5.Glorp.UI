@@ -186,10 +186,35 @@ types glorp {
                                 blockoverride "stat_icon" { texture = "gfx/interface/icons/flat_icons/trade_advantage.dds" }
                                 tooltipwidget = { using = merchant_power_tooltip }
                             }
-                            stat_item = {
-                                blockoverride "stat_text" { text = "[Player.GetModifierValueNoFormat('global_merchant_capacity_modifier')]" }
-                                blockoverride "stat_icon" { texture = "gfx/interface/icons/flat_icons/trade_capacity.dds" }
-                                tooltipwidget = { using = merchant_capacity_modifier_tooltip }
+                            button = {
+                                minimumsize = { 80 30 }
+                                maximumsize = { 80 30 }
+                                onclick = "[GetScriptedGui('RefreshAvgProximity').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                tooltipwidget = {
+                                    SimpleContextualTooltipType = {
+                                        blockoverride "title_icon" {
+                                            icon = {
+                                                using = tooltip_title_icon_size
+                                                texture = "gfx/interface/icons/map_modes/proximity.dds"
+                                            }
+                                        }
+                                        blockoverride "title_text" {
+                                            text = "GLORP_UI_AVG_PROXIMITY"
+                                        }
+                                        blockoverride "tooltip_content" {
+                                            TooltipTextBlock = {
+                                                blockoverride "text" {
+                                                    text = "GLORP_UI_AVG_PROXIMITY_DESC"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                stat_item = {
+                                    alwaystransparent = yes
+                                    blockoverride "stat_text" { text = "[Player.MakeScope.GetVariable('glorpui_avg_proximity').GetValue|2%]" }
+                                    blockoverride "stat_icon" { texture = "gfx/interface/icons/map_modes/proximity.dds" }
+                                }
                             }
                             stat_item = {
                                 blockoverride "stat_text" { text = "[Player.MakeScope.GetVariable('glorpui_avg_control_home_region').GetValue|2%]" }
