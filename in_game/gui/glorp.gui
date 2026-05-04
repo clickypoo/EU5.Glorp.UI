@@ -192,9 +192,28 @@ types glorp {
                                 tooltipwidget = { using = merchant_capacity_modifier_tooltip }
                             }
                             stat_item = {
-                                blockoverride "stat_text" { text = "[Player.GetDoubleModifierValueNoFormatTruncated('trade_range','trade_range_modifier')]" }
-                                blockoverride "stat_icon" { texture = "gfx/interface/icons/flat_icons/trade_range.dds" }
-                                tooltipwidget = { using = trade_range_tooltip }
+                                blockoverride "stat_text" { text = "[Player.MakeScope.GetVariable('glorpui_avg_control_home_region').GetValue|2%]" }
+                                blockoverride "stat_icon" { texture = "gfx/interface/icons/location_icons/control.dds" }
+                                tooltipwidget = {
+                                    SimpleContextualTooltipType = {
+                                        blockoverride "title_icon" {
+                                            icon = {
+                                                using = tooltip_title_icon_size
+                                                texture = "gfx/interface/icons/location_icons/control.dds"
+                                            }
+                                        }
+                                        blockoverride "title_text" {
+                                            text = "GLORP_UI_AVG_CONTROL_HOME_REGION"
+                                        }
+                                        blockoverride "tooltip_content" {
+                                            TooltipTextBlock = {
+                                                blockoverride "text" {
+                                                    text = "GLORP_UI_AVG_CONTROL_HOME_REGION_DESC"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                         expand = {}

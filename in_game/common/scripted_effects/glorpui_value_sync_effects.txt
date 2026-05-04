@@ -1,0 +1,17 @@
+﻿glorpui_sync_avg_control_home_region = {
+	set_variable = {
+		name = glorpui_avg_control_home_region
+		value = {
+			add = average_control_in_home_region
+		}
+	}
+}
+
+glorpui_value_sync_var_suppress = {
+	if = {
+		limit = {
+			always = no
+			var:glorpui_avg_control_home_region >= 0
+		}
+	}
+}
