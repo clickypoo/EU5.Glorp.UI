@@ -189,7 +189,7 @@ types glorp {
                             button = {
                                 minimumsize = { 80 30 }
                                 maximumsize = { 80 30 }
-                                onclick = "[GetScriptedGui('RefreshAvgProximity').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                onclick = "[GetScriptedGui('RefreshAvgStats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
                                 tooltipwidget = {
                                     SimpleContextualTooltipType = {
                                         blockoverride "title_icon" {
@@ -216,9 +216,10 @@ types glorp {
                                     blockoverride "stat_icon" { texture = "gfx/interface/icons/map_modes/proximity.dds" }
                                 }
                             }
-                            stat_item = {
-                                blockoverride "stat_text" { text = "[Player.MakeScope.GetVariable('glorpui_avg_control_home_region').GetValue|2%]" }
-                                blockoverride "stat_icon" { texture = "gfx/interface/icons/location_icons/control.dds" }
+                            button = {
+                                minimumsize = { 80 30 }
+                                maximumsize = { 80 30 }
+                                onclick = "[GetScriptedGui('RefreshAvgStats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
                                 tooltipwidget = {
                                     SimpleContextualTooltipType = {
                                         blockoverride "title_icon" {
@@ -238,6 +239,11 @@ types glorp {
                                             }
                                         }
                                     }
+                                }
+                                stat_item = {
+                                    alwaystransparent = yes
+                                    blockoverride "stat_text" { text = "[Player.MakeScope.GetVariable('glorpui_avg_control_home_region').GetValue|2%]" }
+                                    blockoverride "stat_icon" { texture = "gfx/interface/icons/location_icons/control.dds" }
                                 }
                             }
                         }
