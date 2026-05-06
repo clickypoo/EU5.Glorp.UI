@@ -24,6 +24,32 @@ template marker_unit_side_color {
 	}
 }
 
+template marker_unit_side_color_transporting {
+	modify_texture = {
+		using = color_grey_texture
+		alpha = 0.35
+		visible = "[Unit.GetCountry.IsNeutral]"
+	}
+
+	modify_texture = {
+		using = color_enemy_red_texture
+		alpha = 1
+		visible = "[Player.IsEnemy(Unit.GetCountry.Self)]"
+	}
+
+	modify_texture = {
+		using = color_allied_blue_texture
+		alpha = 1
+		visible = "[And(Unit.GetCountry.IsAllied, Not(Unit.IsTransportingOurUnits))]"
+	}
+
+	modify_texture = {
+		using = color_light_green_texture
+		alpha = 0.3
+		visible = "[Or(Unit.GetCountry.IsPlayer, Unit.IsTransportingOurUnits)]"
+	}
+}
+
 template marker_country_side_color {
 	modify_texture = {
 		using = color_grey_texture
@@ -64,7 +90,7 @@ template marker_siege_side_color {
 	modify_texture = {
 		using = color_red_texture
 		# block "player_siege_alpha" {
-			alpha = 0.4
+		alpha = 0.4
 		# }
 		visible = "[And(Siege.GetSiegeDefender.IsPlayer, Not(Siege.GetLocation.HasCombat))]"
 		block "marker_siege_color_blend" {}
@@ -385,7 +411,7 @@ template unit_marker_item_unit_strength {
 	layoutpolicy_horizontal = expanding
 
 	# block "unit_strength_size" {
-		size = { -1 @unit_marker_frame_height }
+	size = { -1 @unit_marker_frame_height }
 	# }
 
 	background = {
@@ -902,7 +928,7 @@ template unit_marker_item_unit_strength {
 template unit_marker_item_commander {
 	visible = "[UnitMarkerItem.HasLeaderFrame]"
 	# block "unit_commander_size" {
-		size = { 33 @unit_marker_frame_height }
+	size = { 33 @unit_marker_frame_height }
 	# }
 
 	background = {
@@ -1556,7 +1582,7 @@ template unit_marker_item_modifiers {
 							}
 						}
 						blockoverride "title_text" {
-								text = "MOVE_LOCKED_TT_TITLE"
+							text = "MOVE_LOCKED_TT_TITLE"
 						}
 						blockoverride "concept_link" {
 							text = [army|e]
@@ -1930,7 +1956,7 @@ template unit_marker_item_unit_banners {
 	item = {
 		widget = {
 			# block "item_banners_size" {
-				size = { 12 15 }
+			size = { 12 15 }
 			# }
 
 			tooltipwidget = {
@@ -4184,7 +4210,7 @@ widget = {
 				}
 			}
 			blockoverride "title_text" {
-					text = "BLOCKED_VISION_TOOLTIP_TEXT"
+				text = "BLOCKED_VISION_TOOLTIP_TEXT"
 			}
 			blockoverride "concept_link" {
 				text = [fow|e]
@@ -4623,7 +4649,7 @@ widget = {
 					}
 				}
 				blockoverride "title_text" {
-						text = "ENCYCLOPEDIA_PAGE_CASUS_BELLIS"
+					text = "ENCYCLOPEDIA_PAGE_CASUS_BELLIS"
 				}
 				blockoverride "concept_link" {
 					text = "[casus_belli|e]"
@@ -4795,7 +4821,7 @@ widget = {
 					}
 				}
 				blockoverride "title_text" {
-						text = "DIPLOMACY_CURRYNG_FAVORS"
+					text = "DIPLOMACY_CURRYNG_FAVORS"
 				}
 				blockoverride "concept_link" {
 					text = "[favors|e]"

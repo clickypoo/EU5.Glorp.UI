@@ -22,13 +22,15 @@ MOD_GUI_DIR = PROJECT_ROOT / "in_game" / "gui"
 OUTPUT_DIR = MOD_GUI_DIR / "vanilla"
 
 VANILLA_FILES = [
+    "battle_lateralview.gui",
     "foreign_country_lateralview.gui",
-    "government_lateralview.gui",
     "ingame_topbar.gui",
     "location_window.gui",
+    "map_markers.gui",
+    "multiplayer_chat.gui",
     "outliner_entries.gui",
+    "recruit_location_lateralview.gui",
     "single_unit_window.gui",
-    "technology_lateralview.gui",
 ]
 
 BOM = "\ufeff"

@@ -17,7 +17,7 @@ template DiploAcceptanceTooltip {
 			TooltipScrolledConditionList = {
 				ontextcontextchanged = "[SetConditionListWithTitleFromTextContext(PdxGuiWidget.AccessSelf)]"
 				visible = "[And(DiplomaticActionItem.HasTarget, DiplomaticActionItem.ShowExtraInfo)]"
-				
+
 				blockoverride "block_scrollarea" { maximumsize = { -1 200 }}
 				blockoverride "block_title" {
 					text = "[SelectLocalization( DiplomaticActionItem.RequiresAcceptance, 'IF_THEY_ACCEPT', 'DECLINE_OFFER_EXTRA_EFFECT' )]"
@@ -32,7 +32,7 @@ template DiploAcceptanceTooltip {
 				}
 				datacontext = "[StringToConditionListWithTitleOnlyFailAndNeutral(DiplomaticActionItem.GetTooltip)]"
 			}
-			
+
 			TooltipScrolledStringPairList = {
 				ontextcontextchanged = "[SetStringPairListWithTitleFromTextContext(PdxGuiWidget.AccessSelf)]"
 				visible = "[And3(DiplomaticActionItem.RequiresAcceptance, DiplomaticActionItem.HasTarget, DiplomaticActionItem.ShowExtraInfo)]"
@@ -77,7 +77,7 @@ template DiploAcceptanceTooltip {
 					raw_text = "[SelectLocalization( EqualTo_int32(DiplomaticActionItem.GetAcceptanceFrame, '(int32)1'), '@trigger_no!', '@trigger_yes!' )]  [DiplomaticActionItem.WillAccept|V]"
 				}
 			}
-			
+
 			TooltipFlavorTextBlock = {
 				visible = no
 				blockoverride "text" {
@@ -108,7 +108,7 @@ template ThreatenWarAcceptanceTooltip {
 
 			TooltipScrolledConditionList = {
 				ontextcontextchanged = "[SetConditionListWithTitleFromTextContext(PdxGuiWidget.AccessSelf)]"
-				
+
 				blockoverride "block_scrollarea" { maximumsize = { -1 200 }}
 				blockoverride "block_title" {
 					text = "IF_THEY_ACCEPT"
@@ -158,7 +158,7 @@ template CasusBelli_tooltip {
 		blockoverride "title_text" {
 			text = "[CasusBelli.GetNameWithNoTooltip]"
 		}
-							
+
 		blockoverride "concept_link" {
 			text = [casus_belli|E]
 		}
@@ -174,7 +174,7 @@ template CasusBelli_tooltip {
 
 		blockoverride "tooltip_content" {
 
-			TooltipStringPairList = { 
+			TooltipStringPairList = {
 				textcontext = "[CasusBelli.GetTooltip]"
 			}
 
@@ -216,22 +216,45 @@ template GenericAction_tooltip {
 	}
 }
 
+template AreaPreference_tooltip {
+	ContextualTooltipType = {
+		blockoverride "title_text" {
+			text = "[AreaPreference.GetNameWithNoTooltip]"
+		}
+
+		blockoverride "title_icon" {
+			icon = {
+				using = tooltip_title_icon_size
+				texture = "gfx/interface/icons/modifiers/_default.dds"
+			}
+		}
+
+		blockoverride "tooltip_content" {
+			TooltipTextBlock = {
+				blockoverride "text" {
+					text = "[AreaPreference.GetTooltip]"
+				}
+			}
+		}
+	}
+}
+
 template CountrySubject_tooltip {
 	datacontext = "[Country.GetDiplomacy]"
 	datacontext = "[Country.GetDiplomacy.GetSubjectType]"
 	ContextualTooltipType = {
 		blockoverride "title_text" {
 			text = "SUBJECT_OF_HEADER_TT"
-			
+
 		}
-		
+
 		blockoverride "title_icon" {
 			icon = {
 				using = tooltip_title_icon_size
 				texture = "[GetSubjectTypeIcon(SubjectType.Self)]"
 			}
 		}
-		
+
 		blockoverride "concept_link" {
 			text = [subject|E]
 		}
@@ -245,7 +268,7 @@ template CountrySubject_tooltip {
 						}
 						textcontext = "[SubjectType.GetStatusRules(Country.GetDiplomacy.GetOverlord.Self, Country.Self)]"
 					}
-					
+
 					TooltipRowList = {
 						visible = "[SubjectType.HasAnnexationRules]"
 						blockoverride "block_title" {
@@ -260,7 +283,7 @@ template CountrySubject_tooltip {
 						}
 						textcontext = "SUBJECT_NOT_ANNEXATION_TT"
 					}
-					
+
 					TooltipRowList = {
 						visible = "[SubjectType.HasBuildingRules]"
 						blockoverride "block_title" {
@@ -268,7 +291,7 @@ template CountrySubject_tooltip {
 						}
 						textcontext = "[SubjectType.GetBuildingRules(Country.GetDiplomacy.GetOverlord.Self, Country.Self)]"
 					}
-					
+
 					TooltipRowList = {
 						visible = "[SubjectType.HasDiplomaticRules]"
 						blockoverride "block_title" {
@@ -276,7 +299,7 @@ template CountrySubject_tooltip {
 						}
 						textcontext = "[SubjectType.GetDiplomaticRules(Country.GetDiplomacy.GetOverlord.Self, Country.Self)]"
 					}
-				
+
 					TooltipStringPairList = {
 						visible = "[SubjectType.HasOverlordBenefits]"
 						blockoverride "block_title" {
@@ -291,7 +314,7 @@ template CountrySubject_tooltip {
 						}
 						textcontext = "[SubjectType.GetSubjectBenefits(Country.GetDiplomacy.GetOverlord.Self, Country.Self)]"
 					}
-					
+
 					TooltipRowList = {
 						visible = "[SubjectType.HasMonthly]"
 						blockoverride "block_title" {
@@ -431,7 +454,7 @@ template Annexation_cost_tooltip {
 			TooltipStringPairList = {
 				textcontext = "[AnnexationCostWrapper.GetTooltip]"
 			}
-        }		
+		}
 	}
 }
 
@@ -440,7 +463,7 @@ template Annexation_tooltip {
 		blockoverride "title_text" {
 			text = "DIP_ANNEXATION_ONGOING"
 		}
-		
+
 		blockoverride "concept_link" {
 			text = [annexing|e]
 		}
@@ -452,7 +475,7 @@ template Annexation_tooltip {
 			}
 		}
 
-		
+
 		blockoverride "tooltip_content" {
 			hbox = {
 				vbox = {
@@ -517,14 +540,14 @@ template Annexation_tooltip {
 					}
 
 					text_single = {
-						text = "[Country.GetDiplomacy.GetBeingAnnexedDate]"						
+						text = "[Country.GetDiplomacy.GetBeingAnnexedDate]"
 						default_format = "#subtle_name"
 					}
 				}
 				widget = {
 					size = { 30 30 }
 				}
-				
+
 				TooltipContentSection = {
 					TooltipStringPairList = {
 						textcontext =  "[Country.GetDiplomacy.GetBeingAnnexedInfo]"
@@ -606,7 +629,7 @@ template CountryTooltip_RelativePower {
 				autoresize = no
 				align = left|vcenter
 				default_format = "#yellow_titles"
-				text = "[GetRelativePowerDescriptionTooltip(GetSelectedCountryOrByLocation.Self, Country.Self)]"
+				text = "[GetRelativePowerDescriptionTooltip(Player.Self, Country.Self)]"
 				fontsize = 14
 				using = FontDefaultColor
 			}
@@ -620,16 +643,13 @@ template CountryTooltip_DiplomacyStatBars {
 	TooltipStatsBar = {
 		blockoverride "items" {
 			TooltipStatBarIconTextItem = { # THEIR OPINION
-                blockoverride "item_icon_coa" { # Glorp UI - Opinion Mini Country Flag
-                    datacontext = "[Country]"
-                }
 				blockoverride "item_icon" {
-					size = { 30 30 }
+					size = { 20 20 }
 					texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
 				}
 
 				blockoverride "item_text" {
-					text = "[Country.GetDiplomacy.GetOpinionOf(GetSelectedCountryOrByLocation)|+=]"
+					text = "[Country.GetDiplomacy.GetOpinionOf(GetPlayer)|+=]"
 					layoutpolicy_horizontal = expanding
 					size = { -1 18}
 					autoresize = no
@@ -654,21 +674,21 @@ template CountryTooltip_DiplomacyStatBars {
 							game_concept = "[opinion|E]"
 						}
 
-						textcontext = "[Country.GetDiplomacy.GetOpinionDescription(GetSelectedCountryOrByLocation)]"
+						textcontext = "[Country.GetDiplomacy.GetOpinionDescription(GetPlayer)]"
 					}
 				}
 			}
-			TooltipStatBarIconTextItem = { # OUR/TARGET OPINION
+			TooltipStatBarIconTextItem = { # OUR OPINION
 				blockoverride "item_icon_coa" {
-					datacontext = "[GetSelectedCountryOrByLocation]"
+					datacontext = "[Player]"
 				}
 				blockoverride "item_icon" {
-					size = { 30 30 }
+					size = { 20 20 }
 					texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
 				}
 
 				blockoverride "item_text" {
-					text = "[GetSelectedCountryOrByLocation.GetDiplomacy.GetOpinionOf(Country.GetDiplomacy.GetCountry)|+=]"
+					text = "[GetPlayer.GetDiplomacy.GetOpinionOf(Country.GetDiplomacy.GetCountry)|+=]"
 					layoutpolicy_horizontal = expanding
 					size = { -1 18}
 					autoresize = no
@@ -693,7 +713,7 @@ template CountryTooltip_DiplomacyStatBars {
 							game_concept = "[opinion|E]"
 						}
 
-						textcontext = "[GetSelectedCountryOrByLocation.GetDiplomacy.GetOpinionDescription(Country.GetDiplomacy.GetCountry)]"
+						textcontext = "[GetPlayer.GetDiplomacy.GetOpinionDescription(Country.GetDiplomacy.GetCountry)]"
 					}
 				}
 			}
@@ -704,15 +724,14 @@ template CountryTooltip_DiplomacyStatBars {
 	TooltipStatsBar = {
 		visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"
 		blockoverride "items" {
-            maximumsize = { 428 40 }
 			TooltipStatBarIconTextItem = { # TRUST
 				blockoverride "item_icon" {
-					size = { 25 25 }
+					size = { 20 20 }
 					texture = "gfx/interface/icons/flat_icons/foreigncountry/trust.dds"
 				}
 
 				blockoverride "item_text" {
-					raw_text = "[Country.GetDiplomacy.GetTrustTowardsString(GetSelectedCountryOrByLocation)]"
+					raw_text = "[Country.GetDiplomacy.GetTrustTowardsString(GetPlayer)]"
 					layoutpolicy_horizontal = expanding
 					size = { -1 18}
 					autoresize = no
@@ -732,15 +751,14 @@ template CountryTooltip_DiplomacyStatBars {
 							text = "[trust|e]"
 						}
 
-						textcontext = "[Country.GetDiplomacy.GetTrustDescription(GetSelectedCountryOrByLocation)]"
+						textcontext = "[Country.GetDiplomacy.GetTrustDescription(GetPlayer)]"
 					}
 				}
 			}
 
 			TooltipStatBarIconTextItem = { # FAVORS
-                visible = "[GetSelectedCountryOrByLocation.IsPlayer]"
 				blockoverride "item_icon" {
-					size = { 25 25 }
+					size = { 20 20 }
 					texture = "gfx/interface/icons/flat_icons/foreigncountry/favors.dds"
 				}
 
@@ -769,9 +787,8 @@ template CountryTooltip_DiplomacyStatBars {
 			}
 
 			TooltipStatBarIconTextItem = { # SPY
-                visible = "[And(GetSelectedCountryOrByLocation.IsPlayer, Not(Country.GetDiplomacy.IsSubjectOf(GetSelectedCountryOrByLocation)))]"
 				blockoverride "item_icon" {
-					size = { 25 25 }
+					size = { 20 20 }
 					texture = "gfx/interface/icons/outliner/categories/spynetwork.dds"
 				}
 
@@ -799,44 +816,14 @@ template CountryTooltip_DiplomacyStatBars {
 				}
 			}
 
-            TooltipStatBarIconTextItem = { # GLORP UI - LOYALTY - LOYAL
-                visible = "[And(Not(Country.GetDiplomacy.IsDisloyalSubject), Country.GetDiplomacy.IsSubjectOf(GetSelectedCountryOrByLocation))]"
-                blockoverride "item_icon" {
-                    size = { 25 25 }
-                    texture = "[GetSubjectTypeIcon(Country.GetDiplomacy.GetSubjectType)]"
-                }
-                blockoverride "item_text" {
-                    raw_text = "[Country.GetDiplomacy.GetSubjectLoyalty|G2%/]"
-                }
-                tooltipwidget = {
-                    datacontext = "[Country]"
-                    using = SubjectLoyalty_tooltip
-                }
-            }
-            TooltipStatBarIconTextItem = { # GLORP UI - LOYALTY - DISLOYAL
-                visible = "[And(Country.GetDiplomacy.IsDisloyalSubject, Country.GetDiplomacy.IsSubjectOf(GetSelectedCountryOrByLocation))]"
-                blockoverride "item_icon" {
-                    size = { 25 25 }
-                    texture = "[GetSubjectTypeIcon(Country.GetDiplomacy.GetSubjectType)]"
-                }
-                blockoverride "item_text" {
-                    raw_text = "[Country.GetDiplomacy.GetSubjectLoyalty|R2%/]"
-                }
-                tooltipwidget = {
-                    datacontext = "[Country]"
-                    using = SubjectLoyalty_tooltip
-                }
-            }
-
 			TooltipStatBarIconTextItem = { # ANTAGONISM
-                visible = "[Not(Country.GetDiplomacy.IsSubjectOf(GetSelectedCountryOrByLocation))]"
 				blockoverride "item_icon" {
-					size = { 25 25 }
+					size = { 20 20 }
 					texture = "gfx/interface/icons/flat_icons/declare_war/antagonism.dds"
 				}
 
 				blockoverride "item_text" {
-					raw_text = "[Country.GetDiplomacy.GetAntagonismTowards(GetSelectedCountryOrByLocation)|-=0]"
+					raw_text = "[Country.GetDiplomacy.GetAntagonismTowards(GetPlayer)|-=0]"
 					layoutpolicy_horizontal = expanding
 					size = { -1 18}
 					autoresize = no
@@ -846,7 +833,7 @@ template CountryTooltip_DiplomacyStatBars {
 				tooltipwidget = {
 					using = AntagonismTooltip
 					blockoverride "antagonism_datacontext" {
-						textcontext = "[Country.GetDiplomacy.GetAntagonismDescription(GetSelectedCountryOrByLocation)]"
+						textcontext = "[Country.GetDiplomacy.GetAntagonismDescription(GetPlayer)]"
 					}
 				}
 			}
@@ -854,69 +841,216 @@ template CountryTooltip_DiplomacyStatBars {
 	}
 }
 
-template CountryDiplomacyTooltip {
+template CountryMapModeDiplomacyTooltip {
 	ContextualTooltipType = {
-        blockoverride "title_icon_texture" {
-            texture = "[GetConceptTexture('diplomacy')]"
-        }
+		blockoverride "title_icon_texture" {
+			texture = "[GetConceptTexture('diplomacy')]"
+		}
 
-        blockoverride "title_text" {
-            text = "DIPLOMACY_TT_TITLE"
-        }
+		blockoverride "title_text" {
+			text = "DIPLOMACY_TT_TITLE"
+		}
 
-        blockoverride "concept_link" {
-            text = "[diplomacy|e]"
-        }
+		blockoverride "concept_link" {
+			text = "[diplomacy|e]"
+		}
 
-        blockoverride "tooltip_content" {
-			TooltipContentSection = {
-				using = CountryTooltip_RelativePower
+		blockoverride "tooltip_content" {
+			TooltipStatsBar = {
+				visible = "[And(Not(IsLobbyOpen), Not(EqualTo_string(Country.GetTag, GetSelectedCountryOrByLocation.GetTag)))]"
+				blockoverride "items" {
+					TooltipStatBarIconTextItem = { # THEIR OPINION
+						blockoverride "item_icon" {
+							size = { 20 20 }
+							texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+						}
+
+						blockoverride "item_text" {
+							text = "[Country.GetDiplomacy.GetOpinionOf(GetSelectedCountryOrByLocation)|+=]"
+							layoutpolicy_horizontal = expanding
+							size = { -1 18}
+							autoresize = no
+							align = center
+						}
+
+						tooltipwidget = {
+							SimpleContextualStringPairTooltipType = {
+								blockoverride "title_icon" {
+									icon = {
+										using = tooltip_title_icon_size
+										texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+									}
+								}
+
+								blockoverride "concept_link" {
+									text = "[opinion|e]"
+								}
+
+								tooltipmeta = {
+									texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+									game_concept = "[opinion|E]"
+								}
+
+								textcontext = "[Country.GetDiplomacy.GetOpinionDescription(GetSelectedCountryOrByLocation)]"
+							}
+						}
+					}
+					TooltipStatBarIconTextItem = { # SELECTED COUNTRY OPINION
+						blockoverride "item_icon_coa" {
+							datacontext = "[GetSelectedCountryOrByLocation]"
+						}
+						blockoverride "item_icon" {
+							size = { 20 20 }
+							texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+						}
+
+						blockoverride "item_text" {
+							text = "[GetSelectedCountryOrByLocation.GetDiplomacy.GetOpinionOf(Country.GetDiplomacy.GetCountry)|+=]"
+							layoutpolicy_horizontal = expanding
+							size = { -1 18}
+							autoresize = no
+							align = center
+						}
+
+						tooltipwidget = {
+							SimpleContextualStringPairTooltipType = {
+								blockoverride "title_icon" {
+									icon = {
+										using = tooltip_title_icon_size
+										texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+									}
+								}
+
+								blockoverride "concept_link" {
+									text = "[opinion|e]"
+								}
+
+								tooltipmeta = {
+									texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+									game_concept = "[opinion|E]"
+								}
+
+								textcontext = "[GetSelectedCountryOrByLocation.GetDiplomacy.GetOpinionDescription(Country.GetDiplomacy.GetCountry)]"
+							}
+						}
+					}
+				}
 			}
 
-			TooltipContentSection = {
-				using = CountryTooltip_DiplomacyStatBars
+			TooltipStatsBar = {
+				visible = "[And(Not(IsLobbyOpen), Not(EqualTo_string(Country.GetTag, GetSelectedCountryOrByLocation.GetTag)))]"
+				blockoverride "items" {
+					TooltipStatBarIconTextItem = { # TRUST
+						blockoverride "item_icon" {
+							size = { 20 20 }
+							texture = "gfx/interface/icons/flat_icons/foreigncountry/trust.dds"
+						}
+
+						blockoverride "item_text" {
+							raw_text = "[Country.GetDiplomacy.GetTrustTowardsString(GetSelectedCountryOrByLocation)]"
+							layoutpolicy_horizontal = expanding
+							size = { -1 18}
+							autoresize = no
+							align = center
+						}
+
+						tooltipwidget = {
+							SimpleContextualStringPairTooltipType = {
+								blockoverride "title_icon" {
+									icon = {
+										using = tooltip_title_icon_size
+										texture = "gfx/interface/icons/flat_icons/foreigncountry/trust.dds"
+									}
+								}
+
+								blockoverride "concept_link" {
+									text = "[trust|e]"
+								}
+
+								textcontext = "[Country.GetDiplomacy.GetTrustDescription(GetSelectedCountryOrByLocation)]"
+							}
+						}
+					}
+
+					TooltipStatBarIconTextItem = { # ANTAGONISM
+						blockoverride "item_icon" {
+							size = { 20 20 }
+							texture = "gfx/interface/icons/flat_icons/declare_war/antagonism.dds"
+						}
+
+						blockoverride "item_text" {
+							raw_text = "[Country.GetDiplomacy.GetAntagonismTowards(GetSelectedCountryOrByLocation)|-=0]"
+							layoutpolicy_horizontal = expanding
+							size = { -1 18}
+							autoresize = no
+							align = center
+						}
+
+						tooltipwidget = {
+							using = AntagonismTooltip
+							blockoverride "antagonism_datacontext" {
+								textcontext = "[Country.GetDiplomacy.GetAntagonismDescription(GetSelectedCountryOrByLocation)]"
+							}
+						}
+					}
+				}
 			}
 
-            # GLORP UI - Subject Loyalty
-            TooltipRowList = {
-                visible = "[And(Country.GetDiplomacy.IsDisloyalSubject, Country.GetDiplomacy.IsSubject)]"
-                textcontext = "SubjectTypeDetail_DESC_NOT"
-                tooltipwidget = {
-                    using = SubjectLoyalty_tooltip
-                }
-            }
-            TooltipRowList = {
-                visible = "[And(Not(Country.GetDiplomacy.IsDisloyalSubject), Country.GetDiplomacy.IsSubject)]"
-                textcontext = "SubjectTypeDetail_DESC"
-                tooltipwidget = {
-                    using = SubjectLoyalty_tooltip
-                }
-            }
+			TooltipBlockList = {
+				blockoverride "set_textcontext" {
+					ontextcontextchanged = "[SetBlockListFromTextContext(PdxGuiWidget.AccessSelf)]"
+				}
 
-            # GLORP UI - Diplomatic Information (Broken???)
-            TooltipScrolledStringPairList = {
-                visible = "[Not(GetSelectedCountryOrByLocation.IsLocalPlayer)]"
-                blockoverride "block_scrollarea" { maximumsize = { -1 150 } minimumsize = { -1 30 } }
-                textcontext = "[GetSelectedCountryOrByLocation.GetDiplomacy.GetDiplomaticRelationsWithCountryInfo(Country.Self)]"
-            }
-            TooltipBlockList = {
-                visible = "[GetSelectedCountryOrByLocation.IsLocalPlayer]"
-                textcontext = "[Country.GetPlayerDiplomacyInfo]"
-            }
-        }
-    }
+				textcontext = "[Country.GetSelectedCountryDiplomacyInfo]"
+			}
+		}
+	}
 }
+
+# template CountryDiplomacyTooltip {
+# 	ContextualTooltipType = {
+#         blockoverride "title_icon_texture" {
+#             texture = "[GetConceptTexture('diplomacy')]"
+#         }
+
+#         blockoverride "title_text" {
+#             text = "DIPLOMACY_TT_TITLE"
+#         }
+
+#         blockoverride "concept_link" {
+#             text = "[diplomacy|e]"
+#         }
+
+#         blockoverride "tooltip_content" {
+# 			TooltipContentSection = {
+# 				using = CountryTooltip_RelativePower
+# 			}
+
+# 			TooltipContentSection = {
+# 				using = CountryTooltip_DiplomacyStatBars
+# 			}
+
+#             TooltipBlockList = {
+# 				blockoverride "set_textcontext" {
+# 					ontextcontextchanged = "[SetBlockListFromTextContext(PdxGuiWidget.AccessSelf)]"
+# 				}
+
+#                 textcontext = "[Country.GetPlayerDiplomacyInfo]"
+#             }
+#         }
+#     }
+# }
 
 template TruceTooltip {
 	ContextualTooltipType = {
 		blockoverride "title_icon_texture" {
 			texture = "gfx/interface/icons/diplomatic_status/truce.dds"
 		}
-	
-		blockoverride "title_text" {				
+
+		blockoverride "title_text" {
 			text = "TRUCE_WITH_COUNTRY_TITLE"
 		}
-				
+
 		blockoverride "concept_link" {
 			text = "[truce|E]"
 		}
@@ -924,7 +1058,7 @@ template TruceTooltip {
 		blockoverride "tooltip_content" {
 			TooltipTextBlock = {
 				blockoverride "text" {
-					text = "[RelationDescItem.GetToolTip]"												
+					text = "[RelationDescItem.GetToolTip]"
 				}
 			}
 		}

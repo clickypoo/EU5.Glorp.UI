@@ -1,10 +1,10 @@
 {
     "name": "Glorp UI",
     "id": "glorp.ui",
-    "version": "1.1.10.2",
+    "version": "1.2.0.1",
     "game_id": "eu5",
-    "supported_game_version": "1.1.10",
-    "short_description": "and by it, lets just say.. my bingus",
+    "supported_game_version": "1.2.*",
+    "short_description": "i'm straight glorping it.. and by it, lets just say.. my bingus",
     "tags": [
         "Fixes",
         "Overhaul",

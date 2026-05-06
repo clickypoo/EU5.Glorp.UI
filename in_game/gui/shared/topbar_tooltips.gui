@@ -24,12 +24,12 @@ template GoldResourceTooltip {
 
 		blockoverride "title_button" {
 			hint_button = {
-                action_tooltip = {
-                    title = "OPEN_HINT"
-                    on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_in_deficit')]"
-                }
-            }
-        }
+				action_tooltip = {
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_in_deficit')]"
+				}
+			}
+		}
 
 		blockoverride "tooltip_content" {
 			TooltipTextBlock = {
@@ -47,9 +47,9 @@ template GoldResourceTooltip {
 					textbox = {
 						align = right
 						# using = Font_Type_Headers
-			
+
 						margin = { 10 5 }
-						
+
 						raw_text = "[EconomyView.GetAllIncome|2+=]@gold!"
 					}
 				}
@@ -65,9 +65,9 @@ template GoldResourceTooltip {
 					textbox = {
 						align = right
 						# using = Font_Type_Headers
-			
+
 						margin = { 10 5 }
-						
+
 						raw_text = "[EconomyView.GetAllExpense|2+=]@gold!"
 					}
 				}
@@ -103,12 +103,12 @@ template StabilityResourceTooltip {
 
 		blockoverride "title_button" {
 			hint_button = {
-                action_tooltip = {
-                    title = "OPEN_HINT"
-                    on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_stability')]"
-                }
-            }
-        }
+				action_tooltip = {
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_stability')]"
+				}
+			}
+		}
 
 		blockoverride "tooltip_content" {
 			TooltipScrolledStringPairList = {
@@ -263,47 +263,47 @@ template ComplacencyResourceTooltip {
 
 
 
-template RitePowerTooltip {
-	ContextualTooltipType = {
-		blockoverride "title_text" {
-			text = "RITE_POWER_RESOURCE_TT_TEXT"
-		}
+# template RitePowerTooltip {
+# 	ContextualTooltipType = {
+# 		blockoverride "title_text" {
+# 			text = "RITE_POWER_RESOURCE_TT_TEXT"
+# 		}
 
-		blockoverride "concept_link" {
-			text = "[rite_power|e]"
-		}
-		
-		blockoverride "title_icon" {
-			icon = {
-				using = tooltip_title_icon_size
-				texture = "gfx/interface/icons/religious_doctrines/miaphysitism/rite_power.dds"
-			}
-		}
-		
-		blockoverride "tooltip_content" {
-			datacontext = "[GetPlayer]"
-			TooltipTextBlock = {
-				blockoverride "text" {
-					text = "RITE_POWER_TT_TEXT"
-				}
-			}
-			TooltipScrolledStringPairList = {
-				blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
-				blockoverride "block_title" {
-					text = "RITE_POWER_TT_TEXT_CHANGE"
-				}
-				textcontext = "[Country.GetDescriptionFor('monthly_rite_power')]"
-			}
-			TooltipScrolledStringPairList = {
-				blockoverride "block_scrollarea" { maximumsize = { -1 250 } minimumsize = { -1 30 } }
-				blockoverride "block_title" {
-					text = "RITE_POWER_TT_TEXT_EFFECT"
-				}
-				textcontext = "[Country.GetCurrencyTooltipDescription('rite_power')]"
-			}
-		}
-	}
-}
+# 		blockoverride "concept_link" {
+# 			text = "[rite_power|e]"
+# 		}
+
+# 		blockoverride "title_icon" {
+# 			icon = {
+# 				using = tooltip_title_icon_size
+# 				texture = "gfx/interface/icons/religious_doctrines/miaphysitism/rite_power.dds"
+# 			}
+# 		}
+
+# 		blockoverride "tooltip_content" {
+# 			datacontext = "[GetPlayer]"
+# 			TooltipTextBlock = {
+# 				blockoverride "text" {
+# 					text = "RITE_POWER_TT_TEXT"
+# 				}
+# 			}
+# 			TooltipScrolledStringPairList = {
+# 				blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
+# 				blockoverride "block_title" {
+# 					text = "RITE_POWER_TT_TEXT_CHANGE"
+# 				}
+# 				textcontext = "[Country.GetDescriptionFor('monthly_rite_power')]"
+# 			}
+# 			TooltipScrolledStringPairList = {
+# 				blockoverride "block_scrollarea" { maximumsize = { -1 250 } minimumsize = { -1 30 } }
+# 				blockoverride "block_title" {
+# 					text = "RITE_POWER_TT_TEXT_EFFECT"
+# 				}
+# 				textcontext = "[Country.GetCurrencyTooltipDescription('rite_power')]"
+# 			}
+# 		}
+# 	}
+# }
 
 template DiplomatResourceTooltip {
 	ContextualTooltipType = {
@@ -314,23 +314,23 @@ template DiplomatResourceTooltip {
 		blockoverride "concept_link" {
 			text = "[diplomats|e]"
 		}
-		
+
 
 		blockoverride "title_button" {
 			hint_button = {
-                action_tooltip = {
-                    title = "OPEN_HINT"
-                    on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_diplomats')]"
-                }
-            }
-        }
+				action_tooltip = {
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_diplomats')]"
+				}
+			}
+		}
 		blockoverride "title_icon" {
 			icon = {
 				using = tooltip_title_icon_size
 				texture = "gfx/interface/icons/resources/diplo_actions.dds"
 			}
 		}
-		
+
 		blockoverride "tooltip_content" {
 			TooltipTextBlock = {
 				blockoverride "text" {
@@ -356,12 +356,6 @@ template DiplomatResourceTooltip {
 					using = DiplomaticCapacity_tooltip
 				}
 			}
-            TooltipStringPairList = {
-                blockoverride "block_title" {
-                    text = "DIPLOMATIC_REPUTATION_TT_TEXT"
-                }
-                textcontext = "[Country.GetDescriptionFor('diplomatic_reputation')]"
-            }
 		}
 	}
 }
@@ -375,7 +369,7 @@ template WarExhaustionTooltip {
 		blockoverride "concept_link" {
 			text = "[war_exhaustion|e]"
 		}
-		
+
 		blockoverride "title_icon" {
 			icon = {
 				using = tooltip_title_icon_size
@@ -385,13 +379,13 @@ template WarExhaustionTooltip {
 
 		blockoverride "title_button" {
 			hint_button = {
-                action_tooltip = {
-                    title = "OPEN_HINT"
-                    on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_war_exhaustion')]"
-                }
-            }
-        }
-		
+				action_tooltip = {
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_war_exhaustion')]"
+				}
+			}
+		}
+
 		blockoverride "tooltip_content" {
 			TooltipScrolledStringPairList = {
 				block "content_datacontext" {}
@@ -424,14 +418,14 @@ template AntagonismTooltipBase {
 		blockoverride "concept_link" {
 			text = "[antagonism|E]"
 		}
-		
+
 		blockoverride "title_icon" {
 			icon = {
 				using = tooltip_title_icon_size
 				texture = "gfx/interface/icons/resources/antagonism.dds"
 			}
 		}
-		
+
 		blockoverride "tooltip_content" {
 			TooltipScrolledStringPairList = {
 				visible = "[Country.HasModifierValue('antagonism_received_modifier')]"
@@ -469,14 +463,14 @@ template AntagonismTwoCountriesTooltip_tooltip {
 		blockoverride "concept_link" {
 			text = "[antagonism|E]"
 		}
-		
+
 		blockoverride "title_icon" {
 			icon = {
 				using = tooltip_title_icon_size
 				texture = "gfx/interface/icons/resources/antagonism.dds"
 			}
 		}
-		
+
 		blockoverride "tooltip_content" {
 			TooltipScrolledStringPairList = {
 				visible = "[AntagonismTwoCountriesWrap.GetUs.HasModifierValue('antagonism_received_modifier')]"
@@ -508,7 +502,7 @@ template ManpowerResourceTooltip {
 		blockoverride "concept_link" {
 			text = "[manpower|E]"
 		}
-		
+
 		blockoverride "title_icon" {
 			icon = {
 				using = tooltip_title_icon_size
@@ -518,13 +512,13 @@ template ManpowerResourceTooltip {
 
 		blockoverride "title_button" {
 			hint_button = {
-                action_tooltip = {
-                    title = "OPEN_HINT"
-                    on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_manpower')]"
-                }
-            }
-        }
-		
+				action_tooltip = {
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_manpower')]"
+				}
+			}
+		}
+
 		blockoverride "tooltip_content" {
 			TooltipTextBlock = {
 				blockoverride "text" {
@@ -536,9 +530,9 @@ template ManpowerResourceTooltip {
 					text = "[Country.GetMaxManpowerTT]"
 				}
 			}
-			
-			
-			
+
+
+
 			TooltipScrolledStringPairList = {
 				block "content_datacontext" {}
 				block "change_visibility" {}
@@ -561,7 +555,7 @@ template SailorsResourceTooltip {
 		blockoverride "concept_link" {
 			text = "[sailors|E]"
 		}
-		
+
 		blockoverride "title_icon" {
 			icon = {
 				using = tooltip_title_icon_size
@@ -571,20 +565,20 @@ template SailorsResourceTooltip {
 
 		blockoverride "title_button" {
 			hint_button = {
-                action_tooltip = {
-                    title = "OPEN_HINT"
-                    on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_sailors')]"
-                }
-            }
-        }
-		
+				action_tooltip = {
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_sailors')]"
+				}
+			}
+		}
+
 		blockoverride "tooltip_content" {
 			TooltipTextBlock = {
 				blockoverride "text" {
 					text = "SAILORS_TOOLTIP"
 				}
 			}
-			
+
 			TooltipTextBlock = {
 				blockoverride "text" {
 					text = "[Country.GetMaxSailorsTT]"

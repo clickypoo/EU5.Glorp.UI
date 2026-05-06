@@ -1,5 +1,3 @@
-# CMF Note: Every type, template, and the lateralview has been modified, so there is no point in extracting anything.
-
 window = {
 	name = "multiplayer_chat"
 	# Modified from code
@@ -23,7 +21,7 @@ window = {
 		position = "[MultiplayerChat.GetChatPosition]"
 		alpha = 1
 	}
-	
+
 	layer = top
 	position = "[MultiplayerChat.GetChatPosition]"
 	widget = {
@@ -43,7 +41,7 @@ window = {
 				blockoverride "close_onclick" {
 					onclick = "[ToggleMultiplayerChat]"
 				}
-	
+
 				blockoverride "close_inputaction" {
 					use_global_input_instance = yes
 				}
@@ -56,7 +54,7 @@ window = {
 			widgetanchor = top|hcenter
 			scrollbarpolicy_horizontal = always_off
 			position = { -7 6 }
-			
+
 			scrollbar_vertical = {
 				using = Scrollbar_Vertical_Small
 			}
@@ -84,16 +82,16 @@ window = {
 								minimumsize = { 360 30 }
 								maximumsize = { 360 100 }
 								alwaystransparent = yes
-	
+
 								multiline = yes
 								autoresize = yes
 								align = left|nobaseline
-	
+
 								# color = {1 0 0 1 }
 								# fontcolor = { 1 1 1 1 }
 								fontsize = 14
 								using = Font_Size_Small
-	
+
 								text = "[MPChatMessage.GetMessage]"
 							}
 							margin_bottom = 5
@@ -159,7 +157,7 @@ window = {
 							}
 						}
 					}
-					
+
 					tooltipwidget = {BasicFunctionalTooltip = {}}
 					action_tooltip = {
 						click_type = left
@@ -172,7 +170,7 @@ window = {
 			}
 		}
 	}
-	
+
 	widget = {
 		visible = "[MultiplayerChat.IsShowingPlayerList]"
 		position = { 400 0 }
@@ -199,7 +197,7 @@ window = {
 			parentanchor = top|hcenter
 			widgetanchor = top|hcenter
 			scrollbarpolicy_horizontal = always_off
-			
+
 			scrollbar_vertical = {
 				using = Scrollbar_Vertical_Small
 			}
@@ -212,7 +210,7 @@ window = {
 
 					datamodel = "[MultiplayerChat.GetPlayers]"
 					item = {
-						
+
 						card_list_button = {
 							layoutpolicy_horizontal = expanding
 							size = { 173 35 }
@@ -271,107 +269,107 @@ types MultiplayerChatTypes
 	type chat_editbox = widget {
 		size = { 350 35 }
 
-		hbox = {
-			parentanchor = center
-			widgetanchor = center
-			layoutpolicy_horizontal = expanding
-			layoutpolicy_vertical = expanding
-			maximumsize = { -1 30 }
-			spacing = 8
-			margin_left = 8
-			
-			ui_direction_button = {
-				size = { 24 24 }
-				down = "[MultiplayerChat.IsChatPinned]"
-				action_tooltip = {
-					click_type = left
-					click_mode = single
-					title = "[GetMultiplayerChat.GetPinTooltip]"
-					on_action = "[MultiplayerChat.PinMPChat]"
-				}
-				tooltipwidget = {
-					BasicFunctionalTooltip = {}
-				}
+	hbox = {
+		parentanchor = center
+		widgetanchor = center
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = expanding
+		maximumsize = { -1 30 }
+		spacing = 8
+		margin_left = 8
 
-				icon = {
-					size = {100% 100%}
-					parentanchor = center
-					texture = "gfx/interface/buttons/round_button_texture_alt.dds"
+		ui_direction_button = {
+			size = { 24 24 }
+			down = "[MultiplayerChat.IsChatPinned]"
+			action_tooltip = {
+				click_type = left
+				click_mode = single
+				title = "[GetMultiplayerChat.GetPinTooltip]"
+				on_action = "[MultiplayerChat.PinMPChat]"
+			}
+			tooltipwidget = {
+				BasicFunctionalTooltip = {}
+			}
 
+			icon = {
+				size = {100% 100%}
+				parentanchor = center
+				texture = "gfx/interface/buttons/round_button_texture_alt.dds"
+
+				modify_texture = {
+					using = color_new_gold_texture
+					blend_mode = overlay
+					alpha = 1
+				}
+				background = {
+					texture = "gfx/interface/buttons/bg_button_light.dds"
+					texture_density = 2
 					modify_texture = {
-						using = color_new_gold_texture
-						blend_mode = overlay
-						alpha = 1
+						using = color_intense_brown_texture
+						blend_mode = add
 					}
-					background = {
-						texture = "gfx/interface/buttons/bg_button_light.dds"
-						texture_density = 2
-						modify_texture = {
-							using = color_intense_brown_texture
-							blend_mode = add
-						}
-						modify_texture = {
-							using = color_super_dark_brown_texture
-							blend_mode = multiply
-							alpha = 0.6
-						}
-					}
-				}
-				icon = {
-					size = { 20 20 }
-					parentanchor = center
-					texture = "gfx/interface/icons/pin.dds"
-					using = button_panel_tab_icon_effect
-
-					blockoverride "icon_effect_visible" {visible = "[MultiplayerChat.IsChatPinned]"}
-					glow = {
-						blockoverride "icon_effect_visible" {}
-						glow_radius = 0
+					modify_texture = {
+						using = color_super_dark_brown_texture
+						blend_mode = multiply
+						alpha = 0.6
 					}
 				}
 			}
+			icon = {
+				size = { 20 20 }
+				parentanchor = center
+				texture = "gfx/interface/icons/pin.dds"
+				using = button_panel_tab_icon_effect
 
-			using = editbox_background
-			
-			widget =  {
-				layoutpolicy_horizontal = expanding
-				size = { -1 30 }
-				filter_mouse = none
-				alwaystransparent = no
-
-				text_single = {
-					layoutpolicy_horizontal = expanding
-					parentanchor = center
-					size = { 100% 100% }
-
-					autoresize = no
-					align = left|nobaseline
-					alpha = 0.5
-					text = "MP_CHAT_TEXT"
-					visible = "[MultiplayerChat.IsTextEmpty]"
+				blockoverride "icon_effect_visible" {visible = "[MultiplayerChat.IsChatPinned]"}
+				glow = {
+					blockoverride "icon_effect_visible" {}
+					glow_radius = 0
 				}
-
-				editbox = {
-					name = "multiplayer_chat_editbox"
-					size = { 100% 100% }
-
-					alwaystransparent = no
-					focuspolicy = all
-					default_format = "#high"
-					maxcharacters = 150
-					
-					ontextedited = "[MultiplayerChat.OnTextEdited(PdxGuiWidget.Self)]"
-					onreturnpressed = "[MultiplayerChat.OnReturnPressed(PdxGuiWidget.AccessSelf)]"
-				}
-			}
-
-			ui_direction_button = {
-				size = { 22 22 }
-				texture = "gfx/interface/buttons/flats/clean_text.dds"
-				visible = "[Not(MultiplayerChat.IsTextEmpty)]"
-				onclick = "[MultiplayerChat.ClearText(PdxGuiWidget.AccessParent.AccessParent.FindChild('multiplayer_chat_editbox'))]"
-				tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "MP_CHAT_CLEAR_TEXT" } } }
 			}
 		}
+
+		using = editbox_background
+
+		widget =  {
+			layoutpolicy_horizontal = expanding
+			size = { -1 30 }
+			filter_mouse = none
+			alwaystransparent = no
+
+			text_single = {
+				layoutpolicy_horizontal = expanding
+				parentanchor = center
+				size = { 100% 100% }
+
+				autoresize = no
+				align = left|nobaseline
+				alpha = 0.5
+				text = "MP_CHAT_TEXT"
+				visible = "[MultiplayerChat.IsTextEmpty]"
+			}
+
+			editbox = {
+				name = "multiplayer_chat_editbox"
+				size = { 100% 100% }
+
+				alwaystransparent = no
+				focuspolicy = all
+				default_format = "#high"
+				maxcharacters = 150
+
+				ontextedited = "[MultiplayerChat.OnTextEdited(PdxGuiWidget.Self)]"
+				onreturnpressed = "[MultiplayerChat.OnReturnPressed(PdxGuiWidget.AccessSelf)]"
+			}
+		}
+
+		ui_direction_button = {
+			size = { 22 22 }
+			texture = "gfx/interface/buttons/flats/clean_text.dds"
+			visible = "[Not(MultiplayerChat.IsTextEmpty)]"
+			onclick = "[MultiplayerChat.ClearText(PdxGuiWidget.AccessParent.AccessParent.FindChild('multiplayer_chat_editbox'))]"
+			tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "MP_CHAT_CLEAR_TEXT" } } }
+		}
 	}
+}
 }

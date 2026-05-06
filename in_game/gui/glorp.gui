@@ -177,18 +177,19 @@ types glorp {
                                 tooltipwidget = { using = ProductionEfficiencyTooltip }
                             }
                             stat_item = {
-                                blockoverride "stat_text" { text = "[Player.GetModifierValueNoFormat('trade_efficiency')]" }
+                                blockoverride "stat_text" { text = "[Player.GetModifierValueNoFormat('selling_efficiency')]" }
                                 blockoverride "stat_icon" { texture = "gfx/interface/icons/flat_icons/trade_efficiency.dds" }
-                                tooltipwidget = { using = trade_efficiency_modifier_tooltip }
+                                tooltipwidget = { using = selling_efficiency_modifier_tooltip }
                             }
                             stat_item = {
-                                blockoverride "stat_text" { text = "[Player.GetModifierValueNoFormat('merchant_maintenance_cost')]" }
+                                blockoverride "stat_text" { text = "[Player.GetModifierValueNoFormat('merchant_maintenance_efficiency')]" }
                                 blockoverride "stat_icon" { texture = "gfx/interface/icons/flat_icons/trade_maintenance.dds" }
                                 tooltipwidget = { using = merchant_maintenance_tooltip }
                             }
                             button = {
                                 minimumsize = { 80 30 }
                                 maximumsize = { 80 30 }
+								onmousehierarchyenter = "[GetScriptedGui('RefreshAvgStats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
                                 onclick = "[GetScriptedGui('RefreshAvgStats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
                                 tooltipwidget = {
                                     SimpleContextualTooltipType = {
@@ -216,36 +217,11 @@ types glorp {
                                     blockoverride "stat_icon" { texture = "gfx/interface/icons/map_modes/proximity.dds" }
                                 }
                             }
-                            button = {
-                                minimumsize = { 80 30 }
-                                maximumsize = { 80 30 }
-                                onclick = "[GetScriptedGui('RefreshAvgStats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                tooltipwidget = {
-                                    SimpleContextualTooltipType = {
-                                        blockoverride "title_icon" {
-                                            icon = {
-                                                using = tooltip_title_icon_size
-                                                texture = "gfx/interface/icons/location_icons/control.dds"
-                                            }
-                                        }
-                                        blockoverride "title_text" {
-                                            text = "GLORP_UI_AVG_CONTROL"
-                                        }
-                                        blockoverride "tooltip_content" {
-                                            TooltipTextBlock = {
-                                                blockoverride "text" {
-                                                    text = "GLORP_UI_AVG_CONTROL_DESC"
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                                stat_item = {
-                                    alwaystransparent = yes
-                                    blockoverride "stat_text" { text = "[Player.MakeScope.GetVariable('glorpui_avg_control').GetValue|2%]" }
-                                    blockoverride "stat_icon" { texture = "gfx/interface/icons/location_icons/control.dds" }
-                                }
-                            }
+							stat_item = {
+								blockoverride "stat_text" { text = "[Player.GetAverageControl|2%]" }
+								blockoverride "stat_icon" { texture = "gfx/interface/icons/location_icons/control.dds" }
+								tooltipwidget = { using = AverageControlTooltip }
+							}
                         }
                         expand = {}
                     }
@@ -346,6 +322,7 @@ types glorp {
             size = { 30 30 }
             tooltip_enabled = no
             onclick = "[GetScriptedGui('SetToggleLeftPanelStatsBar').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+			onclick = "[GetScriptedGui('RefreshAvgStats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 
             block "button_texture" {
                 texture = "gfx/interface/buttons/round_button_texture_alt.dds"
