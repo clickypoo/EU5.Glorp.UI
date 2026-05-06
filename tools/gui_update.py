@@ -37,8 +37,10 @@ ROOT_DIR = os.path.dirname(SCRIPT_DIR)
 CONFIG_PATH = os.path.join(SCRIPT_DIR, "config.toml")
 
 GUI_SOURCES = ["in_game", "main_menu", "loading_screen"]
-TRACKING_DIR_NAME = ".gui-tracking"
-TRACKING_DIR = os.path.join(ROOT_DIR, TRACKING_DIR_NAME)
+# Subdirs treated as vanilla extracts (not mod overrides) and skipped.
+EXCLUDED_DIRS = {"vanilla"}
+TRACKING_DIR_NAME = "tools/dependencies/gui-tracking"
+TRACKING_DIR = os.path.join(ROOT_DIR, *TRACKING_DIR_NAME.split("/"))
 MANIFEST_PATH = os.path.join(TRACKING_DIR, "manifest.json")
 MANIFEST_VERSION = 1
 VANILLA_BRANCH = "gui/vanilla"
@@ -293,10 +295,10 @@ def run_git(args, cwd=ROOT_DIR, check=True, env=None):
             check=check,
             env=run_env,
         )
-        return result.stdout.strip()
-    except subprocess.CalledProcessError as e:
-        if not check:
+        if not check and result.returncode != 0:
             return None
+        return result.stdout.rstrip()
+    except subprocess.CalledProcessError as e:
         print(f"Git error: git {' '.join(args)}")
         if e.stdout:
             print(e.stdout.strip())
@@ -430,7 +432,8 @@ def _scan_definitions(base_dir, source_dirs):
         gui_dir = os.path.join(base_dir, source, "gui")
         if not os.path.isdir(gui_dir):
             continue
-        for dirpath, _, filenames in os.walk(gui_dir):
+        for dirpath, dirnames, filenames in os.walk(gui_dir):
+            dirnames[:] = [d for d in dirnames if d not in EXCLUDED_DIRS]
             for fname in sorted(filenames):
                 if not fname.endswith(".gui"):
                     continue
@@ -694,8 +697,8 @@ def cmd_merge(args):
         print(f"\nConflicts in {len(conflicts)} file(s):")
         for c in conflicts:
             print(f"  {c}")
-        print("\nResolve conflicts in .gui-tracking/, then:")
-        print("  git add .gui-tracking/")
+        print(f"\nResolve conflicts in {TRACKING_DIR_NAME}/, then:")
+        print(f"  git add {TRACKING_DIR_NAME}/")
         print("  git commit")
         print("  python tools/gui_update.py apply")
         return 1
@@ -766,10 +769,12 @@ def cmd_apply(args):
         if has_crlf:
             result = result.replace("\n", "\r\n")
 
+        new_raw = (b"\xef\xbb\xbf" if has_bom else b"") + result.encode("utf-8")
+        if new_raw == raw:
+            continue
+
         with open(abs_mod, "wb") as f:
-            if has_bom:
-                f.write(b"\xef\xbb\xbf")
-            f.write(result.encode("utf-8"))
+            f.write(new_raw)
 
         applied += 1
         print(f"  Applied: {key} -> {mod_file}")
@@ -779,8 +784,8 @@ def cmd_apply(args):
     if applied:
         print(f"\n{applied} definition(s) applied to mod files.")
         print("Review the changes and commit when ready.")
-    else:
-        print("\nNo definitions to apply.")
+    elif not errors:
+        print("\nAll mod files already up to date.")
 
     return 1 if errors else 0
 
@@ -861,7 +866,7 @@ def cmd_refresh(args):
 
     print(f"\nRefreshed: {len(new_set)} definition(s) tracked.")
     if added or removed:
-        print("Stage and commit .gui-tracking/ changes when ready.")
+        print(f"Stage and commit {TRACKING_DIR_NAME}/ changes when ready.")
     return 0
 
 
