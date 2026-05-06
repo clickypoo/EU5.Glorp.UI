@@ -5,47 +5,40 @@ types war_types {
 		datacontext = "[WarLateralViewParticipant.GetCountry]"
 
 		using = bg_paper_card
-		
+
 		using = bg_cabinet_card_frame
 
 		hbox = {
 			using = layoutpolicy_expanding
 			margin = { 4 4 }
-			
+
 			hbox = {
 				using = layoutpolicy_expanding
-				spacing = 10
+				spacing = 6
 				margin = {8 0}
 
-                # Glorp UI - Player Background
-                background = {
-                    visible = "[And(Country.IsLocalPlayer, Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
-                    using = color_gold_dark_texture
-                }
-                background = {
-                    visible = "[And3(Country.IsPlayer, GetPlayer.IsEnemy(Country.Self), Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
-                    using = color_red_texture
-                }
-                # Glorp UI - Enemy, not subject
-                background = {
-                    visible = "[And3(Not(Country.GetDiplomacy.IsSubject), GetPlayer.IsEnemy(Country.Self), Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
-                    using = color_dark_red_texture
-                    #modify_texture = { blend_mode = overlay alpha = 1 }
-                }
-                # Glorp UI - Friendly, not subject
-                background = {
-                    visible = "[And4(Not(Country.GetDiplomacy.IsSubject), Not(GetPlayer.IsEnemy(Country.Self)), Not(Country.IsLocalPlayer), Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
-                    using = color_mid_green_texture
-                }
-                # Glorp UI - Friendly, player
-                background = {
-                    visible = "[And4(Country.IsPlayer, Not(GetPlayer.IsEnemy(Country.Self)), Not(Country.IsLocalPlayer), Not(Player.MakeScope.GetVariable('useVanillaParticipantColour').IsSet))]"
-                    using = color_mid_blue_texture
-                }
+				# War view entry coloring - player / enemy / ally
+				background = {
+					visible = "[Country.IsLocalPlayer]"
+					using = color_society_texture
+					alpha = 0.6
+				}
+				background = {
+					visible = "[And(Not(Country.GetDiplomacy.IsSubject), GetPlayer.IsEnemy(Country.Self))]"
+					using = color_military_texture
+					alpha = 0.6
+				}
+				background = {
+					visible = "[And3(Not(Country.GetDiplomacy.IsSubject), Not(GetPlayer.IsEnemy(Country.Self)), Not(Country.IsLocalPlayer))]"
+					using = color_diplomacy_texture
+					alpha = 0.6
+				}
 
 				# COUNTRY AND PEACE
 				hbox = {
 					using = layoutpolicy_expanding
+					# minimumsize = { 215 -1 }
+					maximumsize = { 225 -1 }
 					spacing = 5
 					# PEACE ACTION
 					widget = {
@@ -54,7 +47,7 @@ types war_types {
 							visible = no
 						}
 
-						button_regular = {
+						button_regular_only_icon = {
 							size = { 100% 100% }
 
 							action_tooltip = {
@@ -63,10 +56,10 @@ types war_types {
 								title = "PEACETITLE"
 								on_action = "[WarLateralView.ShowPeaceOfferLateralViewForCountry(WarLateralViewParticipant.GetCountry)]"
 								description = "[WarLateralView.IsEnemyOrOverlordValidForPeaceTooltip(WarLateralViewParticipant.GetCountry)]"
-								enabled = "[And(WarLateralView.TogglePeaceViewEnabled, WarLateralView.IsEnemyOrOverlordValidForPeace(WarLateralViewParticipant.GetCountry))]"
+								enabled = "[And3(Not(Country.GetDiplomacy.IsSubject), WarLateralView.TogglePeaceViewEnabled, WarLateralView.IsEnemyOrOverlordValidForPeace(WarLateralViewParticipant.GetCountry))]"
 							}
 
-							enabled = "[And(WarLateralView.TogglePeaceViewEnabled, WarLateralView.IsEnemyOrOverlordValidForPeace(WarLateralViewParticipant.GetCountry))]"
+							enabled = "[And3(Not(Country.GetDiplomacy.IsSubject), WarLateralView.TogglePeaceViewEnabled, WarLateralView.IsEnemyOrOverlordValidForPeace(WarLateralViewParticipant.GetCountry))]"
 
 							using = sue_for_peace_action_tooltip
 
@@ -80,12 +73,54 @@ types war_types {
 									blend_mode = overlay
 									alpha = 0.7
 								}
-						
+
 								modify_texture = {
 									texture = "gfx/interface/buttons/buttons_texture.dds"
 									texture_density = 2
 									blend_mode = overlay
 									alpha = 0.6
+								}
+							}
+						}
+					}
+
+					hbox = {
+						layoutpolicy_vertical = expanding
+						bookmark_02 = {
+							blockoverride "bookmark_size" {
+								size = { 12 100% }
+							}
+							blockoverride "bookmark_texture" {
+								texture = "gfx/interface/component_tiles/bookmark_02.dds"
+								position = {0 -4}
+							}
+							blockoverride "bookmark_color" {
+								tintcolor = "[WarLateralViewParticipant.GetCountry.GetMapColor]"
+							}
+
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_text" {
+										datacontext = "[WarLateralViewParticipant.GetCountry]"
+										text = "WAR_LOSSES"
+									}
+
+									blockoverride "concept_link" {
+										text = "[war|e]"
+									}
+
+									blockoverride "title_icon" {
+										icon = {
+											texture = "gfx/interface/icons/disasters/_default.dds"
+											using = tooltip_title_icon_size
+										}
+									}
+
+									blockoverride "tooltip_content" {
+										TooltipColumnList = {
+											textcontext = "[WarLateralView.GetWar.GetLossesFor(WarLateralViewParticipant.GetCountry).GetInfo]"
+										}
+									}
 								}
 							}
 						}
@@ -131,7 +166,8 @@ types war_types {
 					# COUNTRY NAME
 					text_single = {
 						layoutpolicy_horizontal = expanding
-						size = { -1 20 }
+
+						maximumsize = { 107 20 }
 						align = left|nobaseline
 						text = "[Country.GetNameWithNoTooltip]"
 
@@ -140,6 +176,7 @@ types war_types {
 							name = "name"
 						}
 					}
+					expand = {}
 				}
 
                 # Glorp UI - Army Strength
@@ -157,62 +194,20 @@ types war_types {
 				# Vanilla - COUNTRY ARMY STRENGTH
 				hbox = {
                     visible = "[Player.MakeScope.GetVariable('useVanillaArmyStrength').IsSet]"
+					tooltipwidget = { using = Army_size_tooltip }
 					spacing = 5
-					margin_right = 5
-					
 					text_single = {
-						size = { 60 20 }
-						align = right|nobaseline
-						autoresize = no
-						text = "[WarLateralViewParticipant.GetCountry.GetTotalStrength]"
+						autoresize = yes
+						minimumsize = { 100 -1 }
+						maximumsize = { 100 -1 }
+						align = right
+						raw_text = "[Country.GetRaisedAndPotentialLevyStrength] [levies_icon] / [Country.GetRegularArmySize|0L] [regulars_icon]"
 						sort_by_highlight = {
 							using = layoutpolicy_expanding
 							name = "manpower"
 						}
 					}
-
-					icon = {
-						size = { 25 25 }
-						texture = "gfx/interface/icons/unit_category/total_strength.dds"
-						glow = {
-							name = "drop_shadow"
-							glow_radius = 3
-							color = {0.0 0.0 0.0 1.0}
-							alpha = 0.6
-						}
-					}
-					
-					tooltipwidget = {
-						ContextualTooltipType = {
-							blockoverride "title_icon" {
-								icon = {
-									using = tooltip_title_icon_size
-									texture = "gfx/interface/icons/unit_category/army_size.dds"
-								}
-							}
-
-							blockoverride "concept_link" {
-								raw_text = "[army|e]"
-							}
-
-							blockoverride "title_text" {																		
-								datacontext = "[Country]"
-								text = "ARMY_BREAKDOWN_HEADER"				
-							}
-
-							blockoverride "tooltip_content" {
-								TooltipStringPairList = {
-									blockoverride "block_title" {
-										text = "ARMY_BREAKDOWN_HEADER_TOOLTIP_TITLE"
-									}
-									textcontext = "[Country.GetArmyBreakdown]"
-								}								
-							}
-							
-						}
-					}
 				}
-
 
 				divider_flavor_01 = {size = { 12 -1 }}
 
@@ -231,61 +226,19 @@ types war_types {
 				# Vanilla - COUNTRY NAVY STRENGTH
 				hbox = {
                     visible = "[Player.MakeScope.GetVariable('useVanillaArmyStrength').IsSet]"
+					tooltipwidget = { using = Navy_size_tooltip }
 					spacing = 5
-					margin_right = 10
-				
 					text_single = {
-						size = { 40 20 }
-						align = right|nobaseline
-						autoresize = no
-						text = "[WarLateralViewParticipant.GetCountry.GetTotalShips]"
+						autoresize = yes
+						minimumsize = { 80 -1 }
+						maximumsize = { 80 -1 }
+						align = right
+						raw_text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] ([Country.GetNavySizeValue|0L] @naval_regular!)"
 						sort_by_highlight = {
 							size = { 105% 200% }
 							name = "ships"
 						}
 					}
-
-					icon = {
-						size = { 25 25 }
-						texture = "gfx/interface/icons/flat_icons/war_view/navy_unit.dds"
-						glow = {
-							name = "drop_shadow"
-							glow_radius = 3
-							color = {0.0 0.0 0.0 1.0}
-							alpha = 0.6
-						}
-					}
-					expand = {}
-					
-					tooltipwidget = {						
-						ContextualTooltipType = {							
-							blockoverride "title_icon" {
-								icon = {
-									using = tooltip_title_icon_size
-									texture = "gfx/interface/icons/unit_category/navy_size.dds"
-								}
-							}
-
-							blockoverride "concept_link" {
-								raw_text = "[navy|e]"
-							}
-
-							blockoverride "title_text" {																		
-								datacontext = "[Country]"
-								text = "NAVY_BREAKDOWN_HEADER"				
-							}
-
-							blockoverride "tooltip_content" {
-								TooltipStringPairList = {
-									blockoverride "block_title" {
-										text = "NAVY_BREAKDOWN_HEADER_TOOLTIP_TITLE"
-									}
-									textcontext = "[Country.GetNavyBreakdown]"
-								}								
-							}
-							
-						}
-					}				
 				}
 
 				divider_flavor_01 = {size = { 12 -1 }}
@@ -304,7 +257,7 @@ types war_types {
 								datacontext = "[WarLateralViewParticipant.GetCountry.GetEconomy]"
 							}
 						}
-	
+
 						text_single = {
 							layoutpolicy_horizontal = expanding
 							size = { -1 20 }
@@ -312,7 +265,7 @@ types war_types {
 							autoresize = no
 							text = "[WarLateralViewParticipant.GetCountry.GetCurrencyValue('stability')|0]"
 						}
-	
+
 						# Positive Stability
 						progressbar = {
 							visible = "[Not(WarLateralViewParticipant.GetCountry.IsCurrencyValueEqualOrLessThanZero('stability'))]"
@@ -356,7 +309,7 @@ types war_types {
 						tooltipwidget = {
 							using = WarEnthusiasm_tooltip
 						}
-	
+
 						text_single = {
 							layoutpolicy_horizontal = expanding
 							size = { -1 20 }
@@ -364,7 +317,7 @@ types war_types {
 							autoresize = no
 							text = "[WarLateralViewParticipant.GetWarEnthusiasm|0%]"
 						}
-	
+
 						progressbar = {
 							layoutpolicy_horizontal = expanding
 							size = {-1 5}
@@ -398,7 +351,7 @@ types war_types {
 								visible = no
 							}
 						}
-	
+
 						text_single = {
 							layoutpolicy_horizontal = expanding
 							size = { -1 20 }
@@ -406,13 +359,13 @@ types war_types {
 							autoresize = no
 							text = "[WarLateralViewParticipant.GetCountry.GetFixedPointCurrencyValue('war_exhaustion')|0]"
 						}
-	
+
 						progressbar = {
 							layoutpolicy_horizontal = expanding
 							size = {-1 5}
 							using = progress_bar_green_alt
 							min = 0
-							max = 100
+							max = "[FixedPointToFloat(WarLateralViewParticipant.GetCountry.GetCurrencyMaxValue('war_exhaustion'))]"
 							value = "[FixedPointToFloat(WarLateralViewParticipant.GetCountry.GetFixedPointCurrencyValue('war_exhaustion'))]"
 						}
 
@@ -445,7 +398,7 @@ types war_types {
 						tooltipwidget = {
 							using = WarBlockade_tooltip
 						}
-	
+
 						text_single = {
 							layoutpolicy_horizontal = expanding
 							size = { -1 20 }
@@ -453,7 +406,7 @@ types war_types {
 							autoresize = no
 							text = "[WarLateralViewParticipant.GetCountry.GetBlockadedPercent|0%]"
 						}
-	
+
 						progressbar = {
 							layoutpolicy_horizontal = expanding
 							size = {-1 5}
@@ -486,7 +439,7 @@ types war_types {
 								using = war_attacker_participation_tooltip
 							}
 						}
-	
+
 						text_single = {
 							layoutpolicy_horizontal = expanding
 							size = { -1 20 }
@@ -494,7 +447,7 @@ types war_types {
 							autoresize = no
 							text = "[WarLateralViewParticipant.GetWarParticipation|0%]"
 						}
-	
+
 						progressbar = {
 							layoutpolicy_horizontal = expanding
 							size = {-1 5}
@@ -513,48 +466,55 @@ types war_types {
 					}
 				}
 
-				# BOOKMARK
 				hbox = {
-					layoutpolicy_vertical = expanding
-					margin_left = 10
-					bookmark_02 = {
-						blockoverride "bookmark_size" {
-							size = { 12 100% }
-						}
-						blockoverride "bookmark_texture" {
-							texture = "gfx/interface/component_tiles/bookmark_02.dds"
-							position = {0 -4}
-						}
-						blockoverride "bookmark_color" {
-							tintcolor = "[WarLateralViewParticipant.GetCountry.GetMapColor]"
-						}
-	
-						tooltipwidget = {
-							ContextualTooltipType = {
-								blockoverride "title_text" {
-									datacontext = "[WarLateralViewParticipant.GetCountry]"
-									text = "WAR_LOSSES"
-								}
-	
-								blockoverride "concept_link" {
-									text = "[war|e]"
-								}
-	
-								blockoverride "title_icon" {
-									icon = {
-										texture = "gfx/interface/icons/disasters/_default.dds"
-										using = tooltip_title_icon_size
-									}
-								}
-	
-								blockoverride "tooltip_content" {
-									TooltipColumnList = {
-										textcontext = "[WarLateralView.GetWar.GetLossesFor(WarLateralViewParticipant.GetCountry).GetInfo]"
-									}
-								}
+					layoutpolicy_horizontal = expanding
+					minimumsize = { 45 24 }
+					maximumsize = { 45 24 }
+					spacing = 3
+
+					expand = {}
+					text_single = {
+						visible = "[And(Not(WarLateralViewParticipant.GetCountry.GetDiplomacy.IsSubject), WarLateralView.HasSubjects(WarLateralViewParticipant.GetCountry))]"
+						text = "[WarLateralView.GetOverlordSubjectCountInWar(WarLateralViewParticipant.GetCountry)]"
+					}
+
+					widget = {
+						size = { 24 24 }
+						visible = "[And(Not(WarLateralViewParticipant.GetCountry.GetDiplomacy.IsSubject), WarLateralView.HasSubjects(WarLateralViewParticipant.GetCountry))]"
+						button = {
+							size = { 26 26 }
+							using = header_button_template
+							blockoverride "header_button_template_push_properties"{using = button_tab_toggle_properties_template}
+							blockoverride "header_button_full_content"{}
+							blockoverride "header_button_template_texture"{using = pressed_button_texture_light}
+							tooltipwidget = {
+								BasicFunctionalTooltip = {}
+							}
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "SHOW_SUBJECTS"
+								on_action = "[WarLateralView.ToggleOverlordExpanded(WarLateralViewParticipant.GetCountry)]"
+							}
+
+							action_tooltip = {
+								click_type = right
+								click_mode = single
+								title = "TOGGLE_ALL"
+								on_action = "[WarLateralView.ToggleAllOverlordsExpanded(WarLateralViewParticipant.GetCountry)]"
+							}
+
+							down = "[WarLateralView.IsOverlordExpanded(WarLateralViewParticipant.GetCountry)]"
+
+							icon = {
+								size = {70% 70%}
+								parentanchor = center
+								texture = "gfx/interface/icons/diplomatic_status/vassalized.dds"
 							}
 						}
 					}
+					expand = { visible = "[Not(And(Not(WarLateralViewParticipant.GetCountry.GetDiplomacy.IsSubject), WarLateralView.HasSubjects(WarLateralViewParticipant.GetCountry)))]" }
 				}
 			}
 		}

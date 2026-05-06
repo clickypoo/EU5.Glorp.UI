@@ -12,12 +12,12 @@ types AdvancesTreeView
 		# These two widgets determine the margin between graph nodes
 		widget = {
 			name = "margin_top_left" # Do not change this name
-			size = { 0 50 } # GlorpUI 350 -> 50
+			size = { 0 0 }
 		}
 
 		widget = {
 			name = "margin_bottom_right" # Do not change this name
-			size = { 0 50 }
+			size = { 0 75 }
 		}
 
 		# This widget tells the layout how to offset and space the lines
@@ -71,7 +71,7 @@ types AdvancesTreeView
 						visible = "[AdvanceNode.GetItem.IsHighlightedBySearch]"
 						texture = "gfx/interface/buttons/advances_buttons_frame_search.dds"
 					}
-					
+
 					flowcontainer = {
 						ignoreinvisible = yes
 						direction = vertical
@@ -112,67 +112,13 @@ types AdvancesTreeView
 									}
 								}
 
-								# round bckg
+
 								widget = {
-									parentanchor = center
-									size = { 105% 105% }
-									position = {0 2}
-
-									background = {
-										texture = "gfx/interface/advance/backgrounds/green.dds"
-										texture_density = 2
-										modify_texture = {
-											using = color_bronze_texture
-											blend_mode = multiply
-											alpha = 0.4
-										}
-									}
-								}
-
-								icon =  {
-									parentanchor = center
 									size = { 100% 100% }
-									visible = "[Not(AdvanceNode.GetItem.GetAdvance.GetDefinition.HasSubunitUnlocks)]"
-									# gfx\interface\icons\advance
-									texture = "[GetAdvanceIcon(AdvanceNode.GetItem.GetAdvance.GetDefinition)]"
-								}
-
-								widget = {
-									size = { 112% 112% }
-									position = {10 10}
-									visible = "[And(AdvanceNode.GetItem.GetAdvance.GetDefinition.HasSubunitUnlocks, Not(AdvanceNode.GetItem.GetAdvance.GetDefinition.HasNavyUnlocks))]"
-									background = {
-										texture = "[GetSubunitTypeIllustration(AdvanceNode.GetItem.GetAdvance.GetDefinition.GetFirstSubunitUnlock, GetPlayer.GetCulture)]"
-										fittype = start
-										texture_density = 2
-										spriteborder = { 0 0 }
-										frame_grid = {2 1}
-										frame = 1
-										modify_texture = {
-											texture = "gfx/interface/component_masks/advance_unit_unlock_mask.dds"
-											texture_density = 2
-											blend_mode = alphamultiply
-										}
-									}
-								}
-
-								widget = {
-									size = { 114% 114% }
-									position = {8 -23}
-									visible = "[And(AdvanceNode.GetItem.GetAdvance.GetDefinition.HasSubunitUnlocks, AdvanceNode.GetItem.GetAdvance.GetDefinition.HasNavyUnlocks)]"
-									background = {
-										texture = "[GetSubunitTypeIllustration(AdvanceNode.GetItem.GetAdvance.GetDefinition.GetFirstSubunitUnlock, GetPlayer.GetCulture)]"
-										fittype = start
-										texture_density = 2
-										spriteborder = { 0 0 }
-										frame_grid = {3 1}
-										frame = 2
-										modify_texture = {
-											texture = "gfx/interface/component_masks/advance_unit_unlock_navy_mask.dds"
-											texture_density = 2
-											blend_mode = alphamultiply
-										}
-									}
+									parentanchor = center
+									datacontext = "[AdvanceNode.GetItem.GetAdvance.GetDefinition]"
+									datacontext = "[GetPlayer]"
+									using = advance_icon
 								}
 							}
 						}
@@ -295,7 +241,7 @@ types AdvancesTreeView
 														item = {
 															vbox = {
 																layoutpolicy_horizontal = expanding
-																
+
 																using = bg_text_mask_container_brown
 
 																hbox = {
@@ -303,7 +249,8 @@ types AdvancesTreeView
 																	margin_left = 10
 
 																	widget = {
-																		size = { 45 45 }
+																		visible = yes
+																		size = { 40 40 }
 																		icon = {
 																			alwaystransparent = yes
 																			size = { 45 45 }
@@ -324,6 +271,36 @@ types AdvancesTreeView
 																			alwaystransparent = yes
 																			size = { 45 45 }
 																			texture = "gfx/interface/graphical_cultures/european_gfx/circle_frame.dds"
+																			modify_texture = {
+																				blend_mode = overlay
+																				alpha = 1
+																			}
+																		}
+																	}
+
+																	# governmentreforms
+																	widget = {
+																		visible = no
+																		size = { 40 40 }
+																		icon = {
+																			alwaystransparent = yes
+																			size = { 40 40 }
+																			texture = "gfx/interface/buttons/checkbox_bg_square.dds"
+																			modify_texture = {
+																				blend_mode = overlay
+																				alpha = 1
+																			}
+																		}
+																		text_single = {
+																			layoutpolicy_horizontal = growing
+																			size = { 25 25 }
+																			parentanchor = center
+																			text = "[AdvanceEffectItem.GetIcon]"
+																		}
+																		icon = {
+																			alwaystransparent = yes
+																			size = { 40 40 }
+																			texture = "gfx/interface/buttons/checkbox_frame_square.dds"
 																			modify_texture = {
 																				blend_mode = overlay
 																				alpha = 1
@@ -365,91 +342,10 @@ types AdvancesTreeView
 								}
 							}
 
-							# icon
-							widget = {
+							advance_frame_with_icon = {
 								size = { 113 113 }
 								parentanchor = hcenter|top
-
-								widget = {
-									size = { 77% 77% }
-									parentanchor = center
-
-									# round bckg
-									widget = {
-										parentanchor = center
-										size = { 105% 105% }
-										position = {0 2}
-
-										background = {
-											texture = "gfx/interface/advance/backgrounds/green.dds"
-											texture_density = 2
-										}
-									}
-
-									# round bckg
-									widget = {
-										parentanchor = center
-										size = { 105% 105% }
-										position = {0 2}
-										datacontext = "[AdvanceNode.GetItem.GetAdvance.GetDefinition]"
-										using = background_advance
-									}
-
-									icon =  {
-										parentanchor = center
-										size = { 100% 100% }
-										visible = "[Not(AdvanceNode.GetItem.GetAdvance.GetDefinition.HasSubunitUnlocks)]"
-										# gfx\interface\icons\advance
-										texture = "[GetAdvanceIcon(AdvanceNode.GetItem.GetAdvance.GetDefinition)]"
-									}
-									
-									# icon =  {
-									# 	parentanchor = center
-									# 	size = { 100% 100% }
-									# 	visible = "[AdvanceNode.GetItem.GetAdvance.GetDefinition.HasSubunitUnlocks]"
-									# 	texture = "[GetSubunitTypeIllustration(AdvanceNode.GetItem.GetAdvance.GetDefinition.GetFirstSubunitUnlock)]"
-									# }
-
-									widget = {
-										parentanchor = center
-										size = { 112% 112% }
-										position = {8 10}
-										visible = "[And(AdvanceNode.GetItem.GetAdvance.GetDefinition.HasSubunitUnlocks, Not(AdvanceNode.GetItem.GetAdvance.GetDefinition.HasNavyUnlocks))]"
-										background = {
-											texture = "[GetSubunitTypeIllustration(AdvanceNode.GetItem.GetAdvance.GetDefinition.GetFirstSubunitUnlock, GetPlayer.GetCulture)]"
-											fittype = start
-											texture_density = 2
-											spriteborder = { 0 0 }
-											frame_grid = {2 1}
-											frame = 1
-											modify_texture = {
-												texture = "gfx/interface/component_masks/advance_unit_unlock_mask.dds"
-												texture_density = 2
-												blend_mode = alphamultiply
-											}
-										}
-									}
-
-									widget = {
-										parentanchor = center
-										size = { 114% 114% }
-										position = {8 -3}
-										visible = "[And(AdvanceNode.GetItem.GetAdvance.GetDefinition.HasSubunitUnlocks, AdvanceNode.GetItem.GetAdvance.GetDefinition.HasNavyUnlocks)]"
-										background = {
-											texture = "[GetSubunitTypeIllustration(AdvanceNode.GetItem.GetAdvance.GetDefinition.GetFirstSubunitUnlock, GetPlayer.GetCulture)]"
-											fittype = start
-											texture_density = 2
-											spriteborder = { 0 0 }
-											frame_grid = {3 1}
-											frame = 2
-											modify_texture = {
-												texture = "gfx/interface/component_masks/advance_unit_unlock_navy_mask.dds"
-												texture_density = 2
-												blend_mode = alphamultiply
-											}
-										}
-									}
-								}
+								datacontext = "[AdvanceNode.GetItem.GetAdvance]"
 							}
 
 							icon = {
@@ -636,7 +532,9 @@ types AdvancesTreeView
 										size = { 100% 100% }
 										parentanchor = center
 										allow_outside = yes
-										using = round_advance_icon
+										datacontext = "[AdvanceNode.GetItem.GetAdvance.GetDefinition]"
+										datacontext = "[GetPlayer]"
+										using = advance_icon_base
 									}
 								}
 							}
@@ -703,14 +601,9 @@ types AdvancesTreeView
 									size = { 100% 100% }
 									parentanchor = center
 									allow_outside = yes
-									using = round_advance_icon
-									blockoverride "round_advance_icon_army_position" {
-										position = { 8 -10 }
-									}
-									blockoverride "round_advance_icon_navy_position" {
-										parentanchor = center
-										position = { 0 -10 }
-									}
+									datacontext = "[AdvanceNode.GetItem.GetAdvance.GetDefinition]"
+									datacontext = "[GetPlayer]"
+									using = advance_icon_base
 								}
 							}
 						}
@@ -879,7 +772,9 @@ types AdvancesTreeView
 										size = { 100% 100% }
 										parentanchor = center
 										allow_outside = yes
-										using = round_advance_icon
+										datacontext = "[AdvanceNode.GetItem.GetAdvance.GetDefinition]"
+										datacontext = "[GetPlayer]"
+										using = advance_icon_base
 									}
 
 									piechart = {
@@ -913,7 +808,7 @@ types AdvancesTreeView
 									using = current_research_tooltip
 								}
 								size = {100% 100%}
-								
+
 								parentanchor = center
 
 								using = advances_tree_item_modifiers
@@ -927,9 +822,9 @@ types AdvancesTreeView
 									using = Advance_tooltip_for_tech_tree
 								}
 								size = {100% 100%}
-								
+
 								parentanchor = center
-								
+
 								using = advances_tree_item_modifiers
 							}
 
@@ -1139,11 +1034,23 @@ template advances_tree_item_modifiers {
 										margin_left = 10
 
 										widget = {
+											visible = yes
 											size = { 40 40 }
 											icon = {
+												visible = "[Not(AdvanceEffectItem.IsGovernmentReformUnlock)]"
 												alwaystransparent = yes
 												size = { 40 40 }
 												texture = "gfx/interface/icons/outliner/background/_defaultbg.dds"
+												modify_texture = {
+													blend_mode = overlay
+													alpha = 1
+												}
+											}
+											icon = {
+												visible = "[AdvanceEffectItem.IsGovernmentReformUnlock]"
+												alwaystransparent = yes
+												size = { 40 40 }
+												texture = "gfx/interface/buttons/checkbox_bg_square.dds"
 												modify_texture = {
 													blend_mode = overlay
 													alpha = 1
@@ -1157,9 +1064,20 @@ template advances_tree_item_modifiers {
                                                 fontsize = 20
 											}
 											icon = {
+												visible = "[Not(AdvanceEffectItem.IsGovernmentReformUnlock)]"
 												alwaystransparent = yes
 												size = { 40 40 }
 												texture = "gfx/interface/graphical_cultures/european_gfx/circle_frame.dds"
+												modify_texture = {
+													blend_mode = overlay
+													alpha = 1
+												}
+											}
+											icon = {
+												visible = "[AdvanceEffectItem.IsGovernmentReformUnlock]"
+												alwaystransparent = yes
+												size = { 40 40 }
+												texture = "gfx/interface/buttons/checkbox_frame_square.dds"
 												modify_texture = {
 													blend_mode = overlay
 													alpha = 1
@@ -1280,7 +1198,7 @@ lateralview_full = {
 								layoutstretchfactor_horizontal = "[GetDataModelSize(TechnologyLateralView.GetInstitutionItems)]"
 								datamodel = "[TechnologyLateralView.GetInstitutionItems]"
 								datamodel_reuse_widgets = yes
-								
+
 								item = {
 									using = institution_item_subheader
 								}
@@ -1421,19 +1339,26 @@ lateralview_full = {
 									}
 								}
 
-								icon_text_2rows_advances = {
+								icon_text_2rows = {
 									using = bg_paper_card
 									using = bg_cabinet_card_frame
+									blockoverride "size_icon_text_2rows" {
+									size = { 260 52 }
+									# layoutpolicy_horizontal = expanding
+
+									}
+									blockoverride "base_setup" {
+										margin_left = 20
+									}
+
 									blockoverride "icon_obj" {
 										widget = {
-											size = { 40 40 }
+											size = { 38 38 }
 
 											background = {
 												texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
 												texture_density = 2
-
 												alpha = 1
-
 												using = color_gold
 												using = overlay_gold
 											}
@@ -1639,6 +1564,7 @@ lateralview_full = {
 										visible = "[Not(Player.GetCurrentResearch.IsActive)]"
 										text = "NO_ACTIVE_RESEARCH"
 										align = left|nobaseline
+										margin_bottom = 20
 									}
 									blockoverride "alternative_text_setup" {
 										size = { -1 18 }

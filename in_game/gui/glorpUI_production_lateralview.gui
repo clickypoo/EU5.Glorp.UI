@@ -83,6 +83,7 @@ template production_view_poptypes {
 						click_type = left
 						click_mode = single
 						on_action = "[OpenLateralViewWithFilter('production', PopType.GetKey)]"
+						on_action = "[OpenLateralViewWithFilterNoClear('production', 'hide_estate_only_buildings')]"
 						on_action = "[ShowProductionViewWithLocation(Location.GetId, '(bool)no')]"
 						datacontext = "[PopType]"
 						title = "TOGGLE_BUILDINGS_POP_TYPE"
@@ -328,7 +329,7 @@ lateralview = {
 							name = "name"
 							using = layoutpolicy_expanding
 						}
-		
+
 						# sort_by_key_button = {
 						# 	name = "profit"
 						# 	layoutpolicy_vertical = expanding
@@ -579,7 +580,7 @@ lateralview = {
 															enabled = "[GreaterThan_int32(CategoryBuildingTypesItem.GetBuildingTypesAmount, '(int32)0')]"
 															on_action = "[CategoryBuildingTypesItem.Toggle]"
 														}
-								
+
 														action_tooltip = {
 															click_type = right
 															click_mode = single
@@ -869,7 +870,7 @@ lateralview = {
 																			}
 																			background = {
 																				texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
-																				
+
 																				modify_texture = {
 																					using = color_new_gold_texture
 																				}
@@ -908,7 +909,7 @@ lateralview = {
 																					visible = "[BuildingItem.HasBuildingsLackingInput]"
 																					using = bg_circle
 																				}
-																				
+
 																			}
 																		}
 																	}
@@ -1076,7 +1077,7 @@ lateralview = {
 																			}
 																			background = {
 																				texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
-																				
+
 																				modify_texture = {
 																					using = color_new_gold_texture
 																				}
@@ -1115,7 +1116,7 @@ lateralview = {
 																					visible = "[BuildingItem.HasBuildingsLackingInput]"
 																					using = bg_circle
 																				}
-																				
+
 																			}
 																		}
 																	}
@@ -1252,7 +1253,7 @@ lateralview = {
 																						texture = "gfx/interface/buttons/flats/upgrade_button2.dds"
 																					}
 																					visible = "[And(Building.CanPlayerUpgrade, Not(BuildingItem.GetBuildingType.IsForeign))]"
-																					datacontext = "[Building.GetType.GetNextReplaced(Player.Self)]"
+																					datacontext = "[Building.GetType.GetNextReplacementBuilding(Player.Self)]"
 																					datacontext = "[Building.GetLocation]"
 																					enabled = "[CanBuildOrExpandBuilding(BuildingType.Self, Location.Self)]"
 																					action_tooltip = {
@@ -1823,7 +1824,7 @@ types GlorpUIBuildings {
 						position = { 5 0 }
 						size = {42 100%}
 						parentanchor = left|vcenter
-			
+
 						widget = {
 							size = {36 36}
 							using = bg_circle_outline
@@ -1838,8 +1839,8 @@ types GlorpUIBuildings {
 								texture_density = 2
 								margin = {1 1}
 							}
-							
-							
+
+
 							parentanchor = left|vcenter
 							icon = {
 								size = {40 40} # GlorpUI: 40->31
@@ -1868,7 +1869,7 @@ types GlorpUIBuildings {
 						icon = {
 							size = { 10 10 }
 							visible = "[BuildingItem.HasBuildingsLackingInput]"
-							position = { 6 6 }
+							position = { 0 6 }
 							parentanchor = top|left
 							using = warning_icon_texture
 							texture_density = 2
@@ -1887,7 +1888,7 @@ types GlorpUIBuildings {
 							margin = { 35 0 }
 							margin_right = 10
 							datacontext = "[BuildingItem.GetBuildingType]"
-							
+
 							widget = {
 								size = { 16 16}
 								icon = {
