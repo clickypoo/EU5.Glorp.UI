@@ -290,7 +290,6 @@ SetVanillaMapmodeHeight = {
 
 RefreshAvgStats = {
 	effect = {
-		glorpui_sync_avg_control = yes
-		glorpui_sync_avg_proximity = yes
+		glorpui_sync_avg_stats = yes
 	}
 }
