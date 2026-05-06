@@ -16,7 +16,7 @@ import re
 import sys
 from pathlib import Path
 
-GAME_GUI_DIR = Path(r"C:\Steam\steamapps\common\Europa Universalis V\game\in_game\gui")
+GAME_GUI_DIR = Path(r"C:\Program Files (x86)\Steam\steamapps\common\Europa Universalis V\game\in_game\gui")
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 MOD_GUI_DIR = PROJECT_ROOT / "in_game" / "gui"
 OUTPUT_DIR = MOD_GUI_DIR / "vanilla"
