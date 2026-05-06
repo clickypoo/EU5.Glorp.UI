@@ -79,32 +79,6 @@ glorpui_register_cmf_mod = {
 		alias = disableLeftPanelStatsBar
 	}
 
-	# War View (war_view) Tab
-	## General (general) Group
-	cmm_register_bool_setting = {
-		mod_id = glorpui
-		setting_id = useVanillaArmyStrength
-		tab_id = war_view
-		group_id = general
-		default_value = 0
-	}
-	cmm_sync_bool_alias = {
-		setting = glorpui__useVanillaArmyStrength
-		alias = useVanillaArmyStrength
-	}
-
-	cmm_register_bool_setting = {
-		mod_id = glorpui
-		setting_id = useVanillaParticipantColour
-		tab_id = war_view
-		group_id = general
-		default_value = 0
-	}
-	cmm_sync_bool_alias = {
-		setting = glorpui__useVanillaParticipantColour
-		alias = useVanillaParticipantColour
-	}
-
 	# Top Bar (top_bar) Tab
 	## General (general) Group
 	cmm_register_bool_setting = {
@@ -272,20 +246,6 @@ glorpui_handle_cmf_callback = {
 			cmm_sync_bool_alias_inverted = {
 				setting = glorpui__disableLeftPanelStatsBar
 				alias = disableLeftPanelStatsBar
-			}
-		}
-		# War View (war_view) Tab
-		## General (general) Group
-		flag:glorpui__useVanillaArmyStrength = {
-			cmm_sync_bool_alias = {
-				setting = glorpui__useVanillaArmyStrength
-				alias = useVanillaArmyStrength
-			}
-		}
-		flag:glorpui__useVanillaParticipantColour = {
-			cmm_sync_bool_alias = {
-				setting = glorpui__useVanillaParticipantColour
-				alias = useVanillaParticipantColour
 			}
 		}
 		# Top Bar (top_bar) Tab

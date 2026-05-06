@@ -1,35 +1,17 @@
 ﻿glorpui_sync_avg_stats = {
 	if = {
 		limit = { num_locations >= 1 }
-		set_variable = { name = glorpui_tmp_control_sum value = 0 }
-		set_variable = { name = glorpui_tmp_proximity_sum value = 0 }
+		set_variable = { name = glorpui_avg_proximity value = 0 }
 		every_owned_location = {
 			root = {
-				change_variable = { name = glorpui_tmp_control_sum add = prev.local_control }
-				change_variable = { name = glorpui_tmp_proximity_sum add = prev.proximity }
+				change_variable = { name = glorpui_avg_proximity add = prev.proximity }
 			}
 		}
-		set_variable = {
-			name = glorpui_avg_control
-			value = {
-				value = var:glorpui_tmp_control_sum
-				divide = num_locations
-			}
-		}
-		set_variable = {
-			name = glorpui_avg_proximity
-			value = {
-				value = var:glorpui_tmp_proximity_sum
-				divide = num_locations
-				divide = 100
-			}
-		}
-		remove_variable = glorpui_tmp_control_sum
-		remove_variable = glorpui_tmp_proximity_sum
+		change_variable = { name = glorpui_avg_proximity divide = num_locations }
+		change_variable = { name = glorpui_avg_proximity divide = 100 }
 	}
 	else = {
-		set_variable = { name = glorpui_avg_control value = 0 }
-		set_variable = { name = glorpui_avg_proximity value = 0 }
+		set_variable = { name = glorpui_avg_proximity value = 100 }
 	}
 }
 
@@ -37,7 +19,6 @@ glorpui_value_sync_var_suppress = {
 	if = {
 		limit = {
 			always = no
-			var:glorpui_avg_control >= 0
 			var:glorpui_avg_proximity >= 0
 		}
 	}
