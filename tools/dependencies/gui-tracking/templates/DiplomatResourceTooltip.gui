@@ -7,23 +7,23 @@ template DiplomatResourceTooltip {
 		blockoverride "concept_link" {
 			text = "[diplomats|e]"
 		}
-		
+
 
 		blockoverride "title_button" {
 			hint_button = {
-                action_tooltip = {
-                    title = "OPEN_HINT"
-                    on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_diplomats')]"
-                }
-            }
-        }
+				action_tooltip = {
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_diplomats')]"
+				}
+			}
+		}
 		blockoverride "title_icon" {
 			icon = {
 				using = tooltip_title_icon_size
 				texture = "gfx/interface/icons/resources/diplo_actions.dds"
 			}
 		}
-		
+
 		blockoverride "tooltip_content" {
 			TooltipTextBlock = {
 				blockoverride "text" {
@@ -49,12 +49,6 @@ template DiplomatResourceTooltip {
 					using = DiplomaticCapacity_tooltip
 				}
 			}
-            TooltipStringPairList = {
-                blockoverride "block_title" {
-                    text = "DIPLOMATIC_REPUTATION_TT_TEXT"
-                }
-                textcontext = "[Country.GetDescriptionFor('diplomatic_reputation')]"
-            }
 		}
 	}
 }

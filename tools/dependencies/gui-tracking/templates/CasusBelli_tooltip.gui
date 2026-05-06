@@ -10,7 +10,7 @@ template CasusBelli_tooltip {
 		blockoverride "title_text" {
 			text = "[CasusBelli.GetNameWithNoTooltip]"
 		}
-							
+
 		blockoverride "concept_link" {
 			text = [casus_belli|E]
 		}
@@ -26,7 +26,7 @@ template CasusBelli_tooltip {
 
 		blockoverride "tooltip_content" {
 
-			TooltipStringPairList = { 
+			TooltipStringPairList = {
 				textcontext = "[CasusBelli.GetTooltip]"
 			}
 

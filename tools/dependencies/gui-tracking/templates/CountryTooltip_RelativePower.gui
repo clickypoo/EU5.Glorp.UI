@@ -66,7 +66,7 @@ template CountryTooltip_RelativePower {
 				autoresize = no
 				align = left|vcenter
 				default_format = "#yellow_titles"
-				text = "[GetRelativePowerDescriptionTooltip(GetSelectedCountryOrByLocation.Self, Country.Self)]"
+				text = "[GetRelativePowerDescriptionTooltip(Player.Self, Country.Self)]"
 				fontsize = 14
 				using = FontDefaultColor
 			}

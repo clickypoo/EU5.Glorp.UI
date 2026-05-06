@@ -4,16 +4,16 @@ template CountrySubject_tooltip {
 	ContextualTooltipType = {
 		blockoverride "title_text" {
 			text = "SUBJECT_OF_HEADER_TT"
-			
+
 		}
-		
+
 		blockoverride "title_icon" {
 			icon = {
 				using = tooltip_title_icon_size
 				texture = "[GetSubjectTypeIcon(SubjectType.Self)]"
 			}
 		}
-		
+
 		blockoverride "concept_link" {
 			text = [subject|E]
 		}
@@ -27,7 +27,7 @@ template CountrySubject_tooltip {
 						}
 						textcontext = "[SubjectType.GetStatusRules(Country.GetDiplomacy.GetOverlord.Self, Country.Self)]"
 					}
-					
+
 					TooltipRowList = {
 						visible = "[SubjectType.HasAnnexationRules]"
 						blockoverride "block_title" {
@@ -42,7 +42,7 @@ template CountrySubject_tooltip {
 						}
 						textcontext = "SUBJECT_NOT_ANNEXATION_TT"
 					}
-					
+
 					TooltipRowList = {
 						visible = "[SubjectType.HasBuildingRules]"
 						blockoverride "block_title" {
@@ -50,7 +50,7 @@ template CountrySubject_tooltip {
 						}
 						textcontext = "[SubjectType.GetBuildingRules(Country.GetDiplomacy.GetOverlord.Self, Country.Self)]"
 					}
-					
+
 					TooltipRowList = {
 						visible = "[SubjectType.HasDiplomaticRules]"
 						blockoverride "block_title" {
@@ -58,7 +58,7 @@ template CountrySubject_tooltip {
 						}
 						textcontext = "[SubjectType.GetDiplomaticRules(Country.GetDiplomacy.GetOverlord.Self, Country.Self)]"
 					}
-				
+
 					TooltipStringPairList = {
 						visible = "[SubjectType.HasOverlordBenefits]"
 						blockoverride "block_title" {
@@ -73,7 +73,7 @@ template CountrySubject_tooltip {
 						}
 						textcontext = "[SubjectType.GetSubjectBenefits(Country.GetDiplomacy.GetOverlord.Self, Country.Self)]"
 					}
-					
+
 					TooltipRowList = {
 						visible = "[SubjectType.HasMonthly]"
 						blockoverride "block_title" {

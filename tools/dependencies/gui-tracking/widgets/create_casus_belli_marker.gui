@@ -74,7 +74,7 @@ widget = {
 					}
 				}
 				blockoverride "title_text" {
-						text = "ENCYCLOPEDIA_PAGE_CASUS_BELLIS"
+					text = "ENCYCLOPEDIA_PAGE_CASUS_BELLIS"
 				}
 				blockoverride "concept_link" {
 					text = "[casus_belli|e]"

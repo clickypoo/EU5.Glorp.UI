@@ -4,10 +4,10 @@ template Hegemony_tooltip {
 			icon = {
 				texture = "[GetHegemonyBorder(Hegemony.Self)]"
 				using = tooltip_title_icon_size
-            }
+			}
 		}
 		blockoverride "title_text" {
-				text = "[Hegemony.GetNameWithNoTooltip]"
+			text = "[Hegemony.GetNameWithNoTooltip]"
 		}
 		blockoverride "concept_link" {
 			text = [hegemony|e]

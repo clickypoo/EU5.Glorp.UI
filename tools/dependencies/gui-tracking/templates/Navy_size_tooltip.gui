@@ -54,10 +54,7 @@ template Navy_size_tooltip {
 							}
 							expand = {}
 							text_single = {
-								raw_text = "[Country.GetNavyLevyPowerValue|0L] [navy_levies_icon]"
-								tooltipwidget = {
-									using = Country_navy_levies_tooltip
-								}
+								raw_text = "[Country.GetNavyLevyPower|V] [navy_levies_icon]"
 							}
 						}
 					}

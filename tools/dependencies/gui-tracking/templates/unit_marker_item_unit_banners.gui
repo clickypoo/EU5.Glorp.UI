@@ -3,7 +3,7 @@ template unit_marker_item_unit_banners {
 	item = {
 		widget = {
 			# block "item_banners_size" {
-				size = { 12 15 }
+			size = { 12 15 }
 			# }
 
 			tooltipwidget = {

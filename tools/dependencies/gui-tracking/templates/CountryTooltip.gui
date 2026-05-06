@@ -15,7 +15,7 @@ template CountryTooltip {
 		}
 
 		blockoverride "tooltip_content" {
-            TooltipDebugStringPairList = {
+			TooltipDebugStringPairList = {
 				textcontext = "[Country.GetDebugText]"
 			}
 

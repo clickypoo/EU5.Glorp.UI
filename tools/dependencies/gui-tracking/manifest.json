@@ -35,11 +35,25 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/AntagonismTwoCountriesTooltip_tooltip.gui",
       "vanilla_file": "in_game/gui/shared/topbar_tooltips.gui"
     },
+    "template:AreaPreference_tooltip": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/shared/diplomacy_tooltips.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/AreaPreference_tooltip.gui",
+      "vanilla_file": "in_game/gui/shared/diplomacy_tooltips.gui"
+    },
     "template:Army_size_tooltip": {
       "base_widget": null,
       "mod_file": "in_game/gui/shared/country_tooltips.gui",
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/Army_size_tooltip.gui",
+      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
+    },
+    "template:AverageControlTooltip": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/shared/country_tooltips.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/AverageControlTooltip.gui",
       "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
     },
     "template:CasusBelli_tooltip": {
@@ -63,13 +77,6 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/CountryCountryModifier_tooltip.gui",
       "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
     },
-    "template:CountryDiplomacyTooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/diplomacy_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/CountryDiplomacyTooltip.gui",
-      "vanilla_file": "in_game/gui/shared/diplomacy_tooltips.gui"
-    },
     "template:CountryInteraction_tooltip": {
       "base_widget": null,
       "mod_file": "in_game/gui/shared/country_tooltips.gui",
@@ -82,6 +89,13 @@
       "mod_file": "in_game/gui/shared/diplomacy_tooltips.gui",
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/CountryIsThreat_tooltip.gui",
+      "vanilla_file": "in_game/gui/shared/diplomacy_tooltips.gui"
+    },
+    "template:CountryMapModeDiplomacyTooltip": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/shared/diplomacy_tooltips.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/CountryMapModeDiplomacyTooltip.gui",
       "vanilla_file": "in_game/gui/shared/diplomacy_tooltips.gui"
     },
     "template:CountryModifier_tooltip": {
@@ -315,13 +329,6 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/ReleaseCountryTooltip.gui",
       "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
     },
-    "template:RitePowerTooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/topbar_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/RitePowerTooltip.gui",
-      "vanilla_file": "in_game/gui/shared/topbar_tooltips.gui"
-    },
     "template:SailorsResourceTooltip": {
       "base_widget": null,
       "mod_file": "in_game/gui/shared/topbar_tooltips.gui",
@@ -378,6 +385,13 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/ThreatenWarAcceptanceTooltip.gui",
       "vanilla_file": "in_game/gui/shared/diplomacy_tooltips.gui"
     },
+    "template:TotalWealthTooltip": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/shared/country_tooltips.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/TotalWealthTooltip.gui",
+      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
+    },
     "template:TruceTooltip": {
       "base_widget": null,
       "mod_file": "in_game/gui/shared/diplomacy_tooltips.gui",
@@ -398,13 +412,6 @@
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/WarExhaustionTooltip.gui",
       "vanilla_file": "in_game/gui/shared/topbar_tooltips.gui"
-    },
-    "template:advances_tree_item_modifiers": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/technology_lateralview.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/advances_tree_item_modifiers.gui",
-      "vanilla_file": "in_game/gui/technology_lateralview.gui"
     },
     "template:alert_banner_setup": {
       "base_widget": null,
@@ -440,13 +447,6 @@
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/build_rgo_entry.gui",
       "vanilla_file": "in_game/gui/expand_raw_goods_lateralview.gui"
-    },
-    "template:cabinet_card_header_content": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/cabinet_cards.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/cabinet_card_header_content.gui",
-      "vanilla_file": "in_game/gui/shared/cabinet_cards.gui"
     },
     "template:cabinet_entry_icon": {
       "base_widget": null,
@@ -525,12 +525,12 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/io_leader_button.gui",
       "vanilla_file": "in_game/gui/panels/left_panel/left_panel.gui"
     },
-    "template:joining_countries_declare_war": {
+    "template:levy_possible_category_tt": {
       "base_widget": null,
-      "mod_file": "in_game/gui/declare_war_lateralview.gui",
+      "mod_file": "in_game/gui/recruit_location_lateralview.gui",
       "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/joining_countries_declare_war.gui",
-      "vanilla_file": "in_game/gui/declare_war_lateralview.gui"
+      "tracking_path": "tools/dependencies/gui-tracking/templates/levy_possible_category_tt.gui",
+      "vanilla_file": "in_game/gui/recruit_location_lateralview.gui"
     },
     "template:marker_bg_circle": {
       "base_widget": null,
@@ -558,6 +558,13 @@
       "mod_file": "in_game/gui/map_markers.gui",
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/marker_unit_side_color.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "template:marker_unit_side_color_transporting": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/marker_unit_side_color_transporting.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
     },
     "template:organization_piechart_template": {
@@ -714,13 +721,6 @@
       "tracking_path": "tools/dependencies/gui-tracking/types/FrontendPreloadingWidget.gui",
       "vanilla_file": "main_menu/gui/shared/frontend_templates.gui"
     },
-    "type:advances_tree_item": {
-      "base_widget": "container",
-      "mod_file": "in_game/gui/technology_lateralview.gui",
-      "namespace": "AdvancesTreeView",
-      "tracking_path": "tools/dependencies/gui-tracking/types/advances_tree_item.gui",
-      "vanilla_file": "in_game/gui/technology_lateralview.gui"
-    },
     "type:battle_goto_widget": {
       "base_widget": "hbox",
       "mod_file": "in_game/gui/battle_lateralview.gui",
@@ -776,34 +776,6 @@
       "namespace": "GlorpUIBottomTypes",
       "tracking_path": "tools/dependencies/gui-tracking/types/button_mapmode_category.gui",
       "vanilla_file": "in_game/gui/hud_bot.gui"
-    },
-    "type:cabinet_card": {
-      "base_widget": "widget",
-      "mod_file": "in_game/gui/shared/cabinet_cards.gui",
-      "namespace": "CabinetCards",
-      "tracking_path": "tools/dependencies/gui-tracking/types/cabinet_card.gui",
-      "vanilla_file": "in_game/gui/shared/cabinet_cards.gui"
-    },
-    "type:cabinet_character_button": {
-      "base_widget": "card_header_button_cabinet",
-      "mod_file": "in_game/gui/shared/cabinet_cards.gui",
-      "namespace": "CabinetCards",
-      "tracking_path": "tools/dependencies/gui-tracking/types/cabinet_character_button.gui",
-      "vanilla_file": "in_game/gui/shared/cabinet_cards.gui"
-    },
-    "type:cabinet_header_card": {
-      "base_widget": "vbox",
-      "mod_file": "in_game/gui/shared/cabinet_cards.gui",
-      "namespace": "CabinetCards",
-      "tracking_path": "tools/dependencies/gui-tracking/types/cabinet_header_card.gui",
-      "vanilla_file": "in_game/gui/shared/cabinet_cards.gui"
-    },
-    "type:card_header_button_cabinet": {
-      "base_widget": "button",
-      "mod_file": "in_game/gui/shared/cabinet_cards.gui",
-      "namespace": "CabinetCards",
-      "tracking_path": "tools/dependencies/gui-tracking/types/card_header_button_cabinet.gui",
-      "vanilla_file": "in_game/gui/shared/cabinet_cards.gui"
     },
     "type:chat_editbox": {
       "base_widget": "widget",
@@ -882,13 +854,6 @@
       "tracking_path": "tools/dependencies/gui-tracking/types/country_card.gui",
       "vanilla_file": "in_game/gui/diplomacy_macrobuilder_lateralview.gui"
     },
-    "type:declare_war_comparisson": {
-      "base_widget": "text_single",
-      "mod_file": "in_game/gui/declare_war_lateralview.gui",
-      "namespace": "WarGoals",
-      "tracking_path": "tools/dependencies/gui-tracking/types/declare_war_comparisson.gui",
-      "vanilla_file": "in_game/gui/declare_war_lateralview.gui"
-    },
     "type:dynamic_section_regiments": {
       "base_widget": "widget",
       "mod_file": "in_game/gui/battle_lateralview.gui",
@@ -902,13 +867,6 @@
       "namespace": "GlorpUIFoodProductionTypes",
       "tracking_path": "tools/dependencies/gui-tracking/types/food_production_location.gui",
       "vanilla_file": "in_game/gui/food_production_lateralview.gui"
-    },
-    "type:joining_countries_card_header": {
-      "base_widget": "widget",
-      "mod_file": "in_game/gui/declare_war_lateralview.gui",
-      "namespace": "WarGoals",
-      "tracking_path": "tools/dependencies/gui-tracking/types/joining_countries_card_header.gui",
-      "vanilla_file": "in_game/gui/declare_war_lateralview.gui"
     },
     "type:location_card": {
       "base_widget": "hbox",
@@ -987,13 +945,6 @@
       "tracking_path": "tools/dependencies/gui-tracking/types/mapmodes_window.gui",
       "vanilla_file": "in_game/gui/hud_bot.gui"
     },
-    "type:not_overlord_cards": {
-      "base_widget": "widget",
-      "mod_file": "in_game/gui/declare_war_lateralview.gui",
-      "namespace": "WarGoals",
-      "tracking_path": "tools/dependencies/gui-tracking/types/not_overlord_cards.gui",
-      "vanilla_file": "in_game/gui/declare_war_lateralview.gui"
-    },
     "type:organization_panel": {
       "base_widget": "widget",
       "mod_file": "in_game/gui/panels/organization/common.gui",
@@ -1007,13 +958,6 @@
       "namespace": "OrganizationPanel",
       "tracking_path": "tools/dependencies/gui-tracking/types/organization_panel_default.gui",
       "vanilla_file": "in_game/gui/panels/organization/common.gui"
-    },
-    "type:overlord_cards": {
-      "base_widget": "vbox",
-      "mod_file": "in_game/gui/declare_war_lateralview.gui",
-      "namespace": "WarGoals",
-      "tracking_path": "tools/dependencies/gui-tracking/types/overlord_cards.gui",
-      "vanilla_file": "in_game/gui/declare_war_lateralview.gui"
     },
     "type:reserves_status": {
       "base_widget": "vbox",
@@ -1077,13 +1021,6 @@
       "namespace": "unit_marker_types",
       "tracking_path": "tools/dependencies/gui-tracking/types/unit_marker_item_units.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
-    },
-    "type:war_participant_item": {
-      "base_widget": "vbox",
-      "mod_file": "in_game/gui/glorpUI_war_lateralview.gui",
-      "namespace": "war_types",
-      "tracking_path": "tools/dependencies/gui-tracking/types/war_participant_item.gui",
-      "vanilla_file": "in_game/gui/war_lateralview.gui"
     },
     "widget:agenda_category_entry": {
       "base_widget": null,
@@ -1302,13 +1239,6 @@
       "tracking_path": "tools/dependencies/gui-tracking/widgets/currying_favors_marker.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
     },
-    "widget:declare_war_lateralview": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/declare_war_lateralview.gui",
-      "namespace": "lateralview",
-      "tracking_path": "tools/dependencies/gui-tracking/widgets/declare_war_lateralview.gui",
-      "vanilla_file": "in_game/gui/declare_war_lateralview.gui"
-    },
     "widget:desert_connection_marker": {
       "base_widget": null,
       "mod_file": "in_game/gui/map_markers.gui",
@@ -1497,13 +1427,6 @@
       "namespace": "OutlinerEntryBase",
       "tracking_path": "tools/dependencies/gui-tracking/widgets/government_category_entry.gui",
       "vanilla_file": "in_game/gui/outliner_entries.gui"
-    },
-    "widget:government_lateralview": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/government_lateralview.gui",
-      "namespace": "lateralview",
-      "tracking_path": "tools/dependencies/gui-tracking/widgets/government_lateralview.gui",
-      "vanilla_file": "in_game/gui/government_lateralview.gui"
     },
     "widget:import_export_marker": {
       "base_widget": null,
@@ -1945,13 +1868,6 @@
       "namespace": "widget",
       "tracking_path": "tools/dependencies/gui-tracking/widgets/supply_depot_marker.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
-    },
-    "widget:technology_lateralview": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/technology_lateralview.gui",
-      "namespace": "lateralview_full",
-      "tracking_path": "tools/dependencies/gui-tracking/widgets/technology_lateralview.gui",
-      "vanilla_file": "in_game/gui/technology_lateralview.gui"
     },
     "widget:toll_marker": {
       "base_widget": null,

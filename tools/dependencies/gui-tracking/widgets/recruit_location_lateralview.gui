@@ -865,7 +865,7 @@ lateralview = {
 			# 	blendable_channel = "r"
 			# }
 
-			# Levy category icons � shows all levy unit categories this country can raise, with available strength
+			# Levy category icons — shows all levy unit categories this country can raise, with available strength
 			hbox = {
 				visible = "[RecruitInLocationLateralView.IsLevy]"
 				layoutpolicy_horizontal = expanding
@@ -885,7 +885,7 @@ lateralview = {
 						text = "LEVY_POSSIBLE_UNIT_TYPES"
 					}
 
-					expand = {}
+					expand = { }
 
 					# Army levy categories
 					flowcontainer = {
@@ -949,20 +949,20 @@ lateralview = {
 
 					blockoverride "subheader_upper_divider" {
 						hbox = {
-							visible = "[Not(RecruitInLocationLateralView.IsUnitTemplate)]"
+							visible = "[And(Not(RecruitInLocationLateralView.IsUnitTemplate), Not(RecruitInLocationLateralView.IsLevy))]"
 							layoutpolicy_horizontal = expanding
-							margin = { 3 0 }
 							margin_top = 5
-							spacing = 5
+
+							expand = {}
 							header_button_right = {
-								# using = layoutpolicy_expanding
-								size = { 240 40 }
+								blockoverride "adjust_to_content" {
+									minimumsize = { 240 40 }
+									set_parent_size_to_minimum = yes
+								}
 								onclick = "[GetScriptedGui('EnableMassRecruiting').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								tooltip = "RECRUIT_BEST_IN_LOCATION_ACTION_BUTTON"
 								blockoverride "icon_overlay" { }
-								blockoverride "icon_texture" {
-									texture = "[GetUnitIcon(RecruitInLocationLateralView.GetUnitType)]"
-								}
+								blockoverride "icon_texture" { texture = "[GetUnitIcon(RecruitInLocationLateralView.GetUnitType)]" }
 								blockoverride "header_button_text_layout" {
 									hbox = {
 										using = layoutpolicy_expanding
@@ -987,7 +987,7 @@ lateralview = {
 									}
 								}
 							}
-
+							expand = {}
 							vbox = {
 								# Mass Recruiter
 								size = { 0 0 }

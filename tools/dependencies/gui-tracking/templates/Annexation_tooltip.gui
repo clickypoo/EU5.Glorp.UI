@@ -3,7 +3,7 @@ template Annexation_tooltip {
 		blockoverride "title_text" {
 			text = "DIP_ANNEXATION_ONGOING"
 		}
-		
+
 		blockoverride "concept_link" {
 			text = [annexing|e]
 		}
@@ -15,7 +15,7 @@ template Annexation_tooltip {
 			}
 		}
 
-		
+
 		blockoverride "tooltip_content" {
 			hbox = {
 				vbox = {
@@ -80,14 +80,14 @@ template Annexation_tooltip {
 					}
 
 					text_single = {
-						text = "[Country.GetDiplomacy.GetBeingAnnexedDate]"						
+						text = "[Country.GetDiplomacy.GetBeingAnnexedDate]"
 						default_format = "#subtle_name"
 					}
 				}
 				widget = {
 					size = { 30 30 }
 				}
-				
+
 				TooltipContentSection = {
 					TooltipStringPairList = {
 						textcontext =  "[Country.GetDiplomacy.GetBeingAnnexedInfo]"

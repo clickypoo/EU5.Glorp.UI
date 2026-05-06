@@ -28,7 +28,7 @@ template Army_size_tooltip {
 							}
 							expand = {}
 							text_single = {
-								raw_text = "[Country.GetRegularArmySize|0L] [regulars_icon]"
+								raw_text = "[Country.GetRaisedRegularArmySize|0L] [regulars_icon]"
 								tooltipwidget = {
 									using = Country_regulars_tooltip
 								}

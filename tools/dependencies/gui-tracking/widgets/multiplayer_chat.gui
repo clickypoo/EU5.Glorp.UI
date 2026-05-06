@@ -21,7 +21,7 @@ window = {
 		position = "[MultiplayerChat.GetChatPosition]"
 		alpha = 1
 	}
-	
+
 	layer = top
 	position = "[MultiplayerChat.GetChatPosition]"
 	widget = {
@@ -41,7 +41,7 @@ window = {
 				blockoverride "close_onclick" {
 					onclick = "[ToggleMultiplayerChat]"
 				}
-	
+
 				blockoverride "close_inputaction" {
 					use_global_input_instance = yes
 				}
@@ -54,7 +54,7 @@ window = {
 			widgetanchor = top|hcenter
 			scrollbarpolicy_horizontal = always_off
 			position = { -7 6 }
-			
+
 			scrollbar_vertical = {
 				using = Scrollbar_Vertical_Small
 			}
@@ -82,16 +82,16 @@ window = {
 								minimumsize = { 360 30 }
 								maximumsize = { 360 100 }
 								alwaystransparent = yes
-	
+
 								multiline = yes
 								autoresize = yes
 								align = left|nobaseline
-	
+
 								# color = {1 0 0 1 }
 								# fontcolor = { 1 1 1 1 }
 								fontsize = 14
 								using = Font_Size_Small
-	
+
 								text = "[MPChatMessage.GetMessage]"
 							}
 							margin_bottom = 5
@@ -157,7 +157,7 @@ window = {
 							}
 						}
 					}
-					
+
 					tooltipwidget = {BasicFunctionalTooltip = {}}
 					action_tooltip = {
 						click_type = left
@@ -170,7 +170,7 @@ window = {
 			}
 		}
 	}
-	
+
 	widget = {
 		visible = "[MultiplayerChat.IsShowingPlayerList]"
 		position = { 400 0 }
@@ -197,7 +197,7 @@ window = {
 			parentanchor = top|hcenter
 			widgetanchor = top|hcenter
 			scrollbarpolicy_horizontal = always_off
-			
+
 			scrollbar_vertical = {
 				using = Scrollbar_Vertical_Small
 			}
@@ -210,7 +210,7 @@ window = {
 
 					datamodel = "[MultiplayerChat.GetPlayers]"
 					item = {
-						
+
 						card_list_button = {
 							layoutpolicy_horizontal = expanding
 							size = { 173 35 }

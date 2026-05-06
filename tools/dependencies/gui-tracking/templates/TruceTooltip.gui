@@ -3,11 +3,11 @@ template TruceTooltip {
 		blockoverride "title_icon_texture" {
 			texture = "gfx/interface/icons/diplomatic_status/truce.dds"
 		}
-	
-		blockoverride "title_text" {				
+
+		blockoverride "title_text" {
 			text = "TRUCE_WITH_COUNTRY_TITLE"
 		}
-				
+
 		blockoverride "concept_link" {
 			text = "[truce|E]"
 		}
@@ -15,7 +15,7 @@ template TruceTooltip {
 		blockoverride "tooltip_content" {
 			TooltipTextBlock = {
 				blockoverride "text" {
-					text = "[RelationDescItem.GetToolTip]"												
+					text = "[RelationDescItem.GetToolTip]"
 				}
 			}
 		}

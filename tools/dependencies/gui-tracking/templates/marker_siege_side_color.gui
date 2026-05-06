@@ -12,7 +12,7 @@ template marker_siege_side_color {
 	modify_texture = {
 		using = color_red_texture
 		# block "player_siege_alpha" {
-			alpha = 0.4
+		alpha = 0.4
 		# }
 		visible = "[And(Siege.GetSiegeDefender.IsPlayer, Not(Siege.GetLocation.HasCombat))]"
 		block "marker_siege_color_blend" {}

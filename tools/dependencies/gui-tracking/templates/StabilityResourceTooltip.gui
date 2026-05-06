@@ -24,12 +24,12 @@ template StabilityResourceTooltip {
 
 		blockoverride "title_button" {
 			hint_button = {
-                action_tooltip = {
-                    title = "OPEN_HINT"
-                    on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_stability')]"
-                }
-            }
-        }
+				action_tooltip = {
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_stability')]"
+				}
+			}
+		}
 
 		blockoverride "tooltip_content" {
 			TooltipScrolledStringPairList = {

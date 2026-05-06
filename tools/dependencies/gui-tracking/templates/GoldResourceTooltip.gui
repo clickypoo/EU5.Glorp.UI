@@ -24,12 +24,12 @@ template GoldResourceTooltip {
 
 		blockoverride "title_button" {
 			hint_button = {
-                action_tooltip = {
-                    title = "OPEN_HINT"
-                    on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_in_deficit')]"
-                }
-            }
-        }
+				action_tooltip = {
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_in_deficit')]"
+				}
+			}
+		}
 
 		blockoverride "tooltip_content" {
 			TooltipTextBlock = {
@@ -47,9 +47,9 @@ template GoldResourceTooltip {
 					textbox = {
 						align = right
 						# using = Font_Type_Headers
-			
+
 						margin = { 10 5 }
-						
+
 						raw_text = "[EconomyView.GetAllIncome|2+=]@gold!"
 					}
 				}
@@ -65,9 +65,9 @@ template GoldResourceTooltip {
 					textbox = {
 						align = right
 						# using = Font_Type_Headers
-			
+
 						margin = { 10 5 }
-						
+
 						raw_text = "[EconomyView.GetAllExpense|2+=]@gold!"
 					}
 				}

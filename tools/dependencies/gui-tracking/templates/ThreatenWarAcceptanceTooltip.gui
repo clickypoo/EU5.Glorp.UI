@@ -18,7 +18,7 @@ template ThreatenWarAcceptanceTooltip {
 
 			TooltipScrolledConditionList = {
 				ontextcontextchanged = "[SetConditionListWithTitleFromTextContext(PdxGuiWidget.AccessSelf)]"
-				
+
 				blockoverride "block_scrollarea" { maximumsize = { -1 200 }}
 				blockoverride "block_title" {
 					text = "IF_THEY_ACCEPT"

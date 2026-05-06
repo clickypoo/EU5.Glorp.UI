@@ -14,7 +14,7 @@ widget = {
 				}
 			}
 			blockoverride "title_text" {
-					text = "BLOCKED_VISION_TOOLTIP_TEXT"
+				text = "BLOCKED_VISION_TOOLTIP_TEXT"
 			}
 			blockoverride "concept_link" {
 				text = [fow|e]

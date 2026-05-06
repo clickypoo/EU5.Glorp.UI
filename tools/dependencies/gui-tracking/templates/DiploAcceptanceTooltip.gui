@@ -17,7 +17,7 @@ template DiploAcceptanceTooltip {
 			TooltipScrolledConditionList = {
 				ontextcontextchanged = "[SetConditionListWithTitleFromTextContext(PdxGuiWidget.AccessSelf)]"
 				visible = "[And(DiplomaticActionItem.HasTarget, DiplomaticActionItem.ShowExtraInfo)]"
-				
+
 				blockoverride "block_scrollarea" { maximumsize = { -1 200 }}
 				blockoverride "block_title" {
 					text = "[SelectLocalization( DiplomaticActionItem.RequiresAcceptance, 'IF_THEY_ACCEPT', 'DECLINE_OFFER_EXTRA_EFFECT' )]"
@@ -32,7 +32,7 @@ template DiploAcceptanceTooltip {
 				}
 				datacontext = "[StringToConditionListWithTitleOnlyFailAndNeutral(DiplomaticActionItem.GetTooltip)]"
 			}
-			
+
 			TooltipScrolledStringPairList = {
 				ontextcontextchanged = "[SetStringPairListWithTitleFromTextContext(PdxGuiWidget.AccessSelf)]"
 				visible = "[And3(DiplomaticActionItem.RequiresAcceptance, DiplomaticActionItem.HasTarget, DiplomaticActionItem.ShowExtraInfo)]"
@@ -77,7 +77,7 @@ template DiploAcceptanceTooltip {
 					raw_text = "[SelectLocalization( EqualTo_int32(DiplomaticActionItem.GetAcceptanceFrame, '(int32)1'), '@trigger_no!', '@trigger_yes!' )]  [DiplomaticActionItem.WillAccept|V]"
 				}
 			}
-			
+
 			TooltipFlavorTextBlock = {
 				visible = no
 				blockoverride "text" {

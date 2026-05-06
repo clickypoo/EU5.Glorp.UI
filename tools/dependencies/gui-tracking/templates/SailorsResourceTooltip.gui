@@ -7,7 +7,7 @@ template SailorsResourceTooltip {
 		blockoverride "concept_link" {
 			text = "[sailors|E]"
 		}
-		
+
 		blockoverride "title_icon" {
 			icon = {
 				using = tooltip_title_icon_size
@@ -17,20 +17,20 @@ template SailorsResourceTooltip {
 
 		blockoverride "title_button" {
 			hint_button = {
-                action_tooltip = {
-                    title = "OPEN_HINT"
-                    on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_sailors')]"
-                }
-            }
-        }
-		
+				action_tooltip = {
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_low_sailors')]"
+				}
+			}
+		}
+
 		blockoverride "tooltip_content" {
 			TooltipTextBlock = {
 				blockoverride "text" {
 					text = "SAILORS_TOOLTIP"
 				}
 			}
-			
+
 			TooltipTextBlock = {
 				blockoverride "text" {
 					text = "[Country.GetMaxSailorsTT]"

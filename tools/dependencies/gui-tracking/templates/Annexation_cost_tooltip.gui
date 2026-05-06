@@ -18,6 +18,6 @@ template Annexation_cost_tooltip {
 			TooltipStringPairList = {
 				textcontext = "[AnnexationCostWrapper.GetTooltip]"
 			}
-        }		
+		}
 	}
 }

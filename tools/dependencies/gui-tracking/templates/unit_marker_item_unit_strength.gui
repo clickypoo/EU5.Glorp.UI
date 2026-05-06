@@ -2,7 +2,7 @@ template unit_marker_item_unit_strength {
 	layoutpolicy_horizontal = expanding
 
 	# block "unit_strength_size" {
-		size = { -1 @unit_marker_frame_height }
+	size = { -1 @unit_marker_frame_height }
 	# }
 
 	background = {

@@ -1,7 +1,7 @@
 template unit_marker_item_commander {
 	visible = "[UnitMarkerItem.HasLeaderFrame]"
 	# block "unit_commander_size" {
-		size = { 33 @unit_marker_frame_height }
+	size = { 33 @unit_marker_frame_height }
 	# }
 
 	background = {

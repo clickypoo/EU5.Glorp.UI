@@ -501,7 +501,7 @@ template unit_marker_item_modifiers {
 							}
 						}
 						blockoverride "title_text" {
-								text = "MOVE_LOCKED_TT_TITLE"
+							text = "MOVE_LOCKED_TT_TITLE"
 						}
 						blockoverride "concept_link" {
 							text = [army|e]
