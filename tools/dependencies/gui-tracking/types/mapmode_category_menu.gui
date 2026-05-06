@@ -42,7 +42,6 @@
 				spacing = 20
 				margin = { 10 20 }
 
-				datacontext = "[Pin('map_modes')]"
 				block "datamodel_item" {}
 			}
 		}

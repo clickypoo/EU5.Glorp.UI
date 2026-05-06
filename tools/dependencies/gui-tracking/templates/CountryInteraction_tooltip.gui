@@ -15,6 +15,11 @@ template CountryInteraction_tooltip {
 			text = [country_interaction|E]
 		}
 		blockoverride "tooltip_content" {
+			TooltipDebugTextBlock = {
+				blockoverride "text" {
+					debug_text = "[CountryInteraction.GetDebugText]"
+				}
+			}
 			TooltipTextBlock = {
 				blockoverride "text" {
 					text = "[CountryInteraction.GetTooltip(Player.Self,Player.Self)]"

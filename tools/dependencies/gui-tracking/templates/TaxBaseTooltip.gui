@@ -12,6 +12,15 @@ template TaxBaseTooltip {
 			text = "TAXBASE_TOOLTIP_TITLE"
 		}
 
+		blockoverride "title_button" {
+			mapmode_tooltip_button = {
+				datacontext = "[GetMapMode('tax_base')]"
+			}
+			mapmode_tooltip_button = {
+				datacontext = "[GetMapMode('control')]"
+			}
+		}
+
 		blockoverride "concept_link" {
 			text = [tax_base|E]
 		}
@@ -61,6 +70,23 @@ template TaxBaseTooltip {
 					}
 					blockoverride "enddate" {
 						text = "[Country.GetEndDataDate]"
+					}
+					blockoverride "tooltip" {
+						marker = {
+							text_single = {
+								position = { 0 -20 }
+								autoresize = yes				
+								
+								margin_right = 4
+								margin_top = 4
+								align = left|nobaseline
+								#using = Font_Size_Small
+								using = bg_number_container_bckg
+								default_format = "#t"
+
+								text = "[Country.GetDataPointValue(PlotLine.GetSnappedIndexNearMouse)]"
+							}					
+						}				
 					}
 					blockoverride "multiitem" {}
 

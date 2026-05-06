@@ -37,6 +37,7 @@
 							autoresize = yes
 							maximumsize = { 420 -1 }
 							text = "[InternationalOrganization.GetNameWithNoTooltip]"
+							block "header_title_tooltip" {}
 						}
 
 						button_pin = {
@@ -88,11 +89,11 @@
 
 							}
 	
-							# block "organization_panel_left_header" {
-								widget = {
-									size = { 30 40 }
-								}
-							# }
+							block "organization_panel_left_header" {
+							}
+							widget = {
+								size = { 30 40 }
+							}
 	
 							expand = {}
 						}
@@ -114,6 +115,55 @@
 	
 							# TEXT VALUES
 							block "organization_panel_right_header" {
+							}
+
+							button_regular_paper_card_hre = {
+								mirror = horizontal
+								name = "common_ios_subheader_select_menu_button"
+								size = { 190 35 }
+								block "common_ios_subheader_select_menu_button" {
+									visible = no
+								}
+
+								action_tooltip = {
+									click_type = left
+									click_mode = single
+									title = "OPEN_HRE_DIPLOMACY"
+									on_action = "[InternationalOrganizationsView.ToggleIoSubheaderSelectMenu(PdxGuiWidget.Self)]"
+								}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									margin_right = 8
+									righttoleft = yes
+									icon = {
+										visible = "[InternationalOrganizationsView.IsIoSubheaderSelectMenuOpened(PdxGuiWidget.FindParent('common_ios_subheader_select_menu_button').Self)]"
+										size = { 22 22 }
+										texture = "gfx/interface/buttons/flats/button_simple_down.dds"
+										using = color_gold
+										modify_texture = {
+											using = overlay_window_texture
+											blend_mode = overlay
+											alpha = 1
+										}
+									}
+
+									icon = {
+										visible = "[Not(InternationalOrganizationsView.IsIoSubheaderSelectMenuOpened(PdxGuiWidget.FindParent('common_ios_subheader_select_menu_button').Self))]"
+										size = { 22 22 }
+										texture = "gfx/interface/buttons/flats/button_simple_right.dds"
+										using = color_gold
+										modify_texture = {
+											using = overlay_window_texture
+											blend_mode = overlay
+											alpha = 1
+										}
+									}
+									vbox = {
+										block "select_menu_button_text" {}
+									}
+									expand = {}
+								}
 							}
 						}
 						
@@ -179,6 +229,21 @@
 
 						button_secondary_tab_alt = {
 							using = layoutpolicy_expanding
+							block "organization_treasury_tab_visible" {
+								visible = no
+							}
+							blockoverride "tab_text"{
+								text = "SUBTAB_IO_TREASURY"
+							}
+							tooltipwidget = {
+								using = SubTabIOTreasuryTooltip
+							}
+							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'treasury' )]"
+							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'treasury' )]"
+						}
+
+						button_secondary_tab_alt = {
+							using = layoutpolicy_expanding
 							block "organization_candidates_tab_visible" {
 								visible = "[InternationalOrganizationsView.HasCandidates]"
 							}
@@ -196,9 +261,9 @@
 
 						button_secondary_tab_alt = {
 							using = layoutpolicy_expanding
-							# block "organization_laws_tab_visible" {
+							block "organization_laws_tab_visible" {
 								visible = "[InternationalOrganizationsView.HasLaws]"
-							# }
+							}
 							blockoverride "tab_text" {
 								block "organization_laws_tab_text" {
 									text = "game_concept_laws"
@@ -282,7 +347,9 @@
 							# }
 							# block "organization_saints_tab_text" {
 								blockoverride "tab_text"{
-									text = "game_concept_saints"
+									datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.GetReligion]"
+									datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.GetLeaderCountry]"
+									text = "[SelectLocalization(Religion.HasSaintsConcept, Religion.GetSaintsConcept(Country.Self), 'game_concept_saints')]"
 								}
 								tooltipwidget = {
 									using = SubTabIOSaintsTooltip
@@ -319,14 +386,12 @@
 									text = "game_concept_parliament"
 								}
 							}
-							# block "organization_parliament_tooltip" {
-							# 	tooltipwidget = {
-							# 		using = SubTabIOParliamentTooltip
-							# 	}
-							# }
-							tooltipwidget = {
-								using = SubTabIOParliamentTooltip
+							block "organization_parliament_tab_tooltip" {
+								tooltipwidget = {
+									using = SubTabIOParliamentTooltip
+								}
 							}
+							
 							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'parliament' )]"
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'parliament' )]"
 						}
@@ -386,6 +451,13 @@
 							visible = "[And(InternationalOrganizationsView.Vars.NotExistOrHasValue( 'organizations', 'overview' ),
 								Or(InternationalOrganizationsView.HasOverview, InternationalOrganizationsView.HasActions))]"
 						}
+					}
+
+					# TREASURY
+					organization_panel_treasury_area = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						visible = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'treasury' )]"
 					}
 
 					# CANDIDATES

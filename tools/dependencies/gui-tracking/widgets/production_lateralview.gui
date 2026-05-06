@@ -1128,7 +1128,7 @@ lateralview = {
 																						texture = "gfx/interface/buttons/flats/upgrade_button2.dds"
 																					}
 																					visible = "[And(Building.CanPlayerUpgrade, Not(BuildingItem.GetBuildingType.IsForeign))]"
-																					datacontext = "[Building.GetType.GetNextReplaced(Player.Self)]"
+																					datacontext = "[Building.GetType.GetNextReplacementBuilding(Player.Self)]"
 																					datacontext = "[Building.GetLocation]"
 																					enabled = "[CanBuildOrExpandBuilding(BuildingType.Self, Location.Self)]"
 																					action_tooltip = {

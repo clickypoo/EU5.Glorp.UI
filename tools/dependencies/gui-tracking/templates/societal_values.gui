@@ -1,34 +1,34 @@
 template societal_values {
-	button = {
+	widget = {
 		size = { 100% 100% }
 
 		tooltipwidget = {
 			using = SocietalValueItem_tooltip
 		}
 
-		action_tooltip = {
-			click_type = left
-			click_mode = confirm
-			visible = "[SocietalValueItem.GetLeftUIAction.IsLeftClickVisible]"
-			enabled = "[SocietalValueItem.GetLeftUIAction.IsLeftClickEnabled]"
-			title = "[SocietalValueItem.GetLeftUIAction.GetLeftClickTitle]"
-			cost = "[SocietalValueItem.GetLeftUIAction.GetLeftClickCost]"
-			description = "[SocietalValueItem.GetLeftUIAction.GetLeftClickDescription]"
-			conditions = "[SocietalValueItem.GetLeftUIAction.GetLeftClickConditions]"
-			on_action_with_params = "[SocietalValueItem.GetLeftUIAction.OnLeftClick]"
-		}
+		# action_tooltip = {
+		# 	click_type = left
+		# 	click_mode = confirm
+		# 	visible = "[SocietalValueItem.GetLeftUIAction.IsLeftClickVisible]"
+		# 	enabled = "[SocietalValueItem.GetLeftUIAction.IsLeftClickEnabled]"
+		# 	title = "[SocietalValueItem.GetLeftUIAction.GetLeftClickTitle]"
+		# 	cost = "[SocietalValueItem.GetLeftUIAction.GetLeftClickCost]"
+		# 	description = "[SocietalValueItem.GetLeftUIAction.GetLeftClickDescription]"
+		# 	conditions = "[SocietalValueItem.GetLeftUIAction.GetLeftClickConditions]"
+		# 	on_action_with_params = "[SocietalValueItem.GetLeftUIAction.OnLeftClick]"
+		# }
 
-		action_tooltip = {
-			click_type = right
-			click_mode = confirm
-			visible = "[SocietalValueItem.GetRightUIAction.IsLeftClickVisible]"
-			enabled = "[SocietalValueItem.GetRightUIAction.IsLeftClickEnabled]"
-			title = "[SocietalValueItem.GetRightUIAction.GetLeftClickTitle]"
-			cost = "[SocietalValueItem.GetRightUIAction.GetLeftClickCost]"
-			description = "[SocietalValueItem.GetRightUIAction.GetLeftClickDescription]"
-			conditions = "[SocietalValueItem.GetRightUIAction.GetLeftClickConditions]"
-			on_action_with_params = "[SocietalValueItem.GetRightUIAction.OnLeftClick]"
-		}
+		# action_tooltip = {
+		# 	click_type = right
+		# 	click_mode = confirm
+		# 	visible = "[SocietalValueItem.GetRightUIAction.IsLeftClickVisible]"
+		# 	enabled = "[SocietalValueItem.GetRightUIAction.IsLeftClickEnabled]"
+		# 	title = "[SocietalValueItem.GetRightUIAction.GetLeftClickTitle]"
+		# 	cost = "[SocietalValueItem.GetRightUIAction.GetLeftClickCost]"
+		# 	description = "[SocietalValueItem.GetRightUIAction.GetLeftClickDescription]"
+		# 	conditions = "[SocietalValueItem.GetRightUIAction.GetLeftClickConditions]"
+		# 	on_action_with_params = "[SocietalValueItem.GetRightUIAction.OnLeftClick]"
+		# }
 
 		vbox = {
 			alwaystransparent = no
@@ -148,6 +148,7 @@ template societal_values {
 							datacontext = "[SocietalValueItem.GetLeftUIAction]"
 							button_societal_flag = {
 								visible = "[And(SocietalValueItem.GetCountry.IsPlayer, Not(GreaterThan_float(SocietalValueItem.GetPosition, '(float)0')))]"
+								blockoverride "extra_on_click" { onclick = "[SocietalValuesLateralView.SetClickedSocietalValueItem(SocietalValueItem.Self, '(bool)yes')]" }
 							}
 
 							button_societal_flag = {
@@ -160,6 +161,7 @@ template societal_values {
 								blockoverride "alpha" {
 									alpha = 0.6
 								}
+								blockoverride "extra_on_click" { onclick = "[SocietalValuesLateralView.SetClickedSocietalValueItem(SocietalValueItem.Self, '(bool)yes')]" }
 							}
 						}
 
@@ -197,7 +199,9 @@ template societal_values {
 									tooltipwidget = {
 										using = SocietalValueItemRight_tooltip
 									}
-								}								
+								}
+								blockoverride "extra_on_click" { onclick = "[SocietalValuesLateralView.SetClickedSocietalValueItem(SocietalValueItem.Self, '(bool)no')]" }
+							
 							}
 
 							button_societal_flag = {
@@ -219,7 +223,8 @@ template societal_values {
 									tooltipwidget = {
 										using = SocietalValueItemRight_tooltip
 									}
-								}					
+								}
+								blockoverride "extra_on_click" { onclick = "[SocietalValuesLateralView.SetClickedSocietalValueItem(SocietalValueItem.Self, '(bool)no')]" }
 							}
 						}
 					}

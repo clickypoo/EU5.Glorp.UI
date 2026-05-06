@@ -42,6 +42,7 @@ OutlinerEntryBase = {
 					maximumsize = { 160 20 }
 					minimumsize = { 70 20 }
 					raw_text = "[Unit.GetVisualStrength]@army_strength!"
+					fontsize = 14
 				}
 				widget = {
 					size = { 18 18 }
@@ -69,6 +70,36 @@ OutlinerEntryBase = {
 				widget = {
 					size = { 18 18 }
 					icon = {
+						size = { 18 18 }
+						texture = "gfx/interface/icons/unit_view/atrittion_icon.dds"
+						visible = "[GreaterThan_CFixedPoint(Unit.GetAttrition, '(CFixedPoint)0')]"
+						glow = {
+							name = "drop_shadow"
+							glow_radius = 3
+							color = {1.0 0.0 0.0 1.0}
+							alpha = 0.4
+						}
+					}
+				}
+
+				widget = {
+					size = { 18 18 }
+					icon = {
+						size = { 18 18 }
+						texture = "gfx/interface/mapitems/exiles.dds"
+						visible = "[Unit.IsExiled]"
+						glow = {
+							name = "drop_shadow"
+							glow_radius = 3
+							color = {1.0 0.0 0.0 1.0}
+							alpha = 0.4
+						}
+					}
+				}
+
+				widget = {
+					size = { 18 18 }
+					icon = {
 						visible = "[Unit.IsAutomated]"
 						size = { 18 18 }
 						texture = "[GetMilitaryObjectiveIcon(Unit.GetObjectiveGroup.GetObjective.GetType)]"
@@ -81,6 +112,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = right
 					text = "[Unit.GetNameWithNoTooltip]"
+					fontsize = 14
 				}
 				portrait_standard_head_button = {
 					datacontext = "[Unit.GetCommander]"

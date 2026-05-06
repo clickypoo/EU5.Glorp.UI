@@ -9,9 +9,21 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 
+				# icon = {
+				# 	size = { 18 18 }
+				# 	texture = "[GetConceptTexture('market')]"
+				# 	glow = {
+				# 		name = "drop_shadow"
+				# 		glow_radius = 3
+				# 		color = {0.0 0.0 0.0 1.0}
+				# 		alpha = 0.3
+				# 	}
+				# }
+
 				icon = {
+					visible = "[GreaterThan_CFixedPoint(Market.GetCountryPopulation(Player.Self),'(CFixedPoint)0')]"
 					size = { 18 18 }
-					texture = "[GetConceptTexture('market')]"
+					texture = "[GetConceptTexture('domestic_market')]"
 					glow = {
 						name = "drop_shadow"
 						glow_radius = 3
@@ -20,19 +32,70 @@ OutlinerEntryBase = {
 					}
 				}
 
+				icon = {
+					visible = "[And(Not(GreaterThan_CFixedPoint(Market.GetCountryPopulation(Player.Self),'(CFixedPoint)0')),
+						GreaterThan_CFixedPoint(Market.GetTotalMerchantCapacity(Player.Self),'(CFixedPoint)0'))]"
+					size = { 18 18 }
+					texture = "[GetConceptTexture('trading_market')]"
+					glow = {
+						name = "drop_shadow"
+						glow_radius = 3
+						color = {0.0 0.0 0.0 1.0}
+						alpha = 0.3
+					}
+				}
+
+				icon = {
+					visible = "[And(Not(Or(GreaterThan_CFixedPoint(Market.GetCountryPopulation(Player.Self),'(CFixedPoint)0'),
+							GreaterThan_CFixedPoint(Market.GetTotalMerchantCapacity(Player.Self),'(CFixedPoint)0'))), IsMarketInRange(Market.Self))]"
+					size = { 18 18 }
+					texture = "[GetConceptTexture('foreign_market')]"
+					glow = {
+						name = "drop_shadow"
+						glow_radius = 3
+						color = {0.0 0.0 0.0 1.0}
+						alpha = 0.3
+					}
+				}
+				
+				icon = {
+					visible = "[And(Not(Or(GreaterThan_CFixedPoint(Market.GetCountryPopulation(Player.Self),'(CFixedPoint)0'),
+							GreaterThan_CFixedPoint(Market.GetTotalMerchantCapacity(Player.Self),'(CFixedPoint)0'))), Not(IsMarketInRange(Market.Self)))]"
+					size = { 18 18 }
+					texture = "[GetConceptTexture('distant_market')]"
+					glow = {
+						name = "drop_shadow"
+						glow_radius = 3
+						color = {0.0 0.0 0.0 1.0}
+						alpha = 0.3
+					}
+				}
+						
 				OutlinerTextBase = {
+					visible = "[Not(GreaterThan_int32(Market.GetMerchantRanking(Player.Self), '(int32)0'))]"
 					using = layoutpolicy_expanding
 					autoresize = no
 					align = left
 					text = "[Market.GetShortNameWithNoTooltip]"
 					default_format = "#L"
+					fontsize = 14
+				}
+				OutlinerTextBase = {
+					using = layoutpolicy_expanding
+					visible = "[GreaterThan_int32(Market.GetMerchantRanking(Player.Self), '(int32)0')]"
+					autoresize = no
+					align = left
+					raw_text = "[Market.GetShortNameWithNoTooltip] #medium ([Market.GetMerchantRanking(Player.Self)|O])#!"
+					default_format = "#L"
+					fontsize = 13
 				}
 				widget = {
-					size = { 100 15 }
+					size = { 65 15 }
 					hbox = {
 						datacontext = "[GetMarketCountryNeeds(Player.Self, Market.Self)]"
+						margin_right = 2
 						expand = {}
-						spacing = 10
+						spacing = 7
 						# icon = {
 						# 	visible = "[GreaterThan_CFixedPoint(Market.GetMerchantAvailableCapacity(Player.Self),'(CFixedPoint)1.00')]"
 						# 	size = {15 15}
@@ -60,7 +123,7 @@ OutlinerEntryBase = {
 						# }
 
 						icon = {
-							size = {15 15}
+							size = {14 14}
 							texture = "gfx/interface/icons/flat_icons/parliament_needs.dds"
 							visible = "[Not(And(Not(MarketCountryNeeds.HasBuildingsMissingGoods), Not(MarketCountryNeeds.HasGovernmentMissingGoods)))]"
 
@@ -85,7 +148,7 @@ OutlinerEntryBase = {
 						icon = {
 							visible = "[And(MarketCountryNeeds.HasPopsMissingGoods, MarketCountryNeeds.HasRebelPopsMissingGoods)]"
 							shaderfile = "gfx/FX/pdxgui_default.shader"
-							size = {15 15}
+							size = {14 14}
 							texture = "gfx/interface/icons/alerts_icons/pops_wanting_stuff.dds"
 
 							using = bg_banner_button_vertical
@@ -103,7 +166,7 @@ OutlinerEntryBase = {
 
 						icon = {
 							visible = "[Or(Market.HasStarvingProvinces, Market.WillRunOutOfFoodStochpile)]"
-							size = {15 15}
+							size = {14 14}
 							texture = "gfx/interface/icons/location_icons/food.dds"
 
 							using = bg_banner_button_vertical
@@ -129,21 +192,35 @@ OutlinerEntryBase = {
 
 				widget = {
 					layoutpolicy_vertical = expanding
-					size = { 70 -1 }
+					size = { 114 -1 }
 					hbox = {
-						expand = {}
 						visible = "[GreaterThan_CFixedPoint(Market.GetTotalMerchantCapacity(Player.Self),'(CFixedPoint)0')]"
 						datacontext = "[Market.GetMerchant(Player.Self)]"
+						datacontext = "[Player]"
 						OutlinerTextBase = {
-							autoresize = yes
-							raw_text = "[Merchant.GetTotalTradeProfit|+=2]@gold!"
-							tooltipwidget = {
-								using = market_hub_trade_tooltip
+							minimumsize = { 45 -1 }
+							maximumsize = { 45 -1 }
+							raw_text = "[Market.GetTotalMerchantCapacity(Player.Self)|1W]@trade_capacity!"
+						}
+						icon = {
+							size = {14 14}
+							texture = "gfx/interface/buttons/flats/button_simple.dds"						
+
+							modify_texture = {
+								using = color_bone_texture
+								blend_mode = normal
 							}
+						}
+						OutlinerTextBase = {
+							minimumsize = { 55 -1 }
+							maximumsize = { 55 -1 }
+							raw_text = "[Multiply_CFixedPoint(Merchant.GetTotalTradeProfit, Country.GetModifier('trade_income'))|2+=]@income!"
+						}
+						tooltipwidget = {
+							using = market_hub_trade_tooltip
 						}
 					}
 				}
-
 			}
 		}
 	}
@@ -159,6 +236,7 @@ OutlinerEntryBase = {
 				autoresize = no
 				text = "[Market.GetShortNameWithNoTooltip]"
 				default_format = "#L"
+				fontsize = 14
 			}
 		}
 	}

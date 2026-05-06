@@ -218,19 +218,26 @@ lateralview_full = {
 									}
 								}
 
-								icon_text_2rows_advances = {
+								icon_text_2rows = {
 									using = bg_paper_card
 									using = bg_cabinet_card_frame
+									blockoverride "size_icon_text_2rows" {
+									size = { 260 52 }
+									# layoutpolicy_horizontal = expanding
+
+									}
+									blockoverride "base_setup" {
+										margin_left = 20
+									} 
+						
 									blockoverride "icon_obj" {
 										widget = {
-											size = { 40 40 }
+											size = { 38 38 }
 
 											background = {
 												texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
 												texture_density = 2
-
 												alpha = 1
-
 												using = color_gold
 												using = overlay_gold
 											}
@@ -436,6 +443,7 @@ lateralview_full = {
 										visible = "[Not(Player.GetCurrentResearch.IsActive)]"
 										text = "NO_ACTIVE_RESEARCH"
 										align = left|nobaseline
+										margin_bottom = 20
 									}
 									blockoverride "alternative_text_setup" {
 										size = { -1 18 }

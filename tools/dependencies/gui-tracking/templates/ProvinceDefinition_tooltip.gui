@@ -15,10 +15,8 @@ template ProvinceDefinition_tooltip {
         }
 
         blockoverride "tooltip_content" {
-            TooltipDebugTextBlock = {
-                blockoverride "text" {
-                    debug_text = "[ProvinceDefinition.GetLogInfo]"
-                }
+            TooltipDebugStringPairList = {
+				textcontext = "[ProvinceDefinition.GetLogInfo]"
             }
 
             TooltipStringPairList = {

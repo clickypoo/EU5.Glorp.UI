@@ -17,6 +17,11 @@ template SubjectType_tooltip {
 			text = [subject_type|E]
 		}
 		blockoverride "tooltip_content" {
+			TooltipDebugTextBlock = {
+				blockoverride "text" {
+					debug_text = "[SubjectType.GetDebugText]"
+				}
+			}
 			TooltipFlavorTextBlock = {
 				blockoverride "text" {
 					text = "[SubjectType.GetFlavor]"

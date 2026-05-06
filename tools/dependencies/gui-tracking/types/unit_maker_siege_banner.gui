@@ -34,9 +34,6 @@
 			onmousehierarchyenter = "[PdxGuiWidget.SetHighlightLocation(Siege.GetLocation)]"
 			datacontext = "[Siege]"
 			tooltipwidget = {
-				blockoverride "shift_left_extra" {
-					replacement_shift_item = {}
-				}
 				container = {
 					alwaystransparent = no
 					container = {
@@ -62,6 +59,7 @@
 				click_modifier = shift
 				click_type = left
 				title = "ALERT_HINT"
+				click_modifier_description = "OPEN_HINT_TEXT"
 				using = snd_UI_alert_openAndCycle
 				on_action = "[SelectLocation(Siege.GetLocation)]"
 				on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_siege_and_occupation')]"
@@ -144,7 +142,7 @@
 				visible = "[Not(Siege.IsTooFewMen)]"
 				size = { 30 16 }
 				position = { 0 -2 }
-				autoresize = no
+				autoresize = yes
 				parentanchor = center
 				align = center|nobaseline
 

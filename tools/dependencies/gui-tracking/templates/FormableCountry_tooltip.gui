@@ -39,8 +39,10 @@ template FormableCountry_tooltip {
 					debug_text = "[FormableCountry.GetDebugText]"
 				}
 			}
-			using = formablecountry_info
-			
+
+			TooltipContentSection = {
+				using = formablecountry_info
+			}
 		}
 	}
 }

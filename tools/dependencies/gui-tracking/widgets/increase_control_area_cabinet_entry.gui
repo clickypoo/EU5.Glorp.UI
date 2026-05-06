@@ -49,6 +49,7 @@ OutlinerEntryBase = {
 		tooltipwidget = {
 			using = action_progress_tooltip
 		}
+		ondoubleclick = "[PanToLocation(OutlinerCabinetEntry.GetActionProgressScope.sArea('selected_area').GetCapital)]"
 	}
 	blockoverride "category_color" { using = cabinet_entry_color }
 }

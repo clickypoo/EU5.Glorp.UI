@@ -41,6 +41,12 @@ template StabilityResourceTooltip {
 				textcontext = "[Localize(ShowAutoModifierEffectForCountry(Country.Self, 'stability'))]"
 			}
 			TooltipScrolledStringPairList = {
+				
+				tooltipmeta = {
+					texture = "gfx/interface/icons/resources/stability.dds"
+					game_concept = "[stability|E]"
+				}
+
 				block "content_datacontext" {}
 				block "change_visibility" {}
 				blockoverride "block_scrollarea" { maximumsize = { -1 150 } minimumsize = { -1 30 } }

@@ -63,6 +63,7 @@ lateralview = {
 						click_modifier = shift
 						click_type = left
 						title = "OPEN_HINT"
+						click_modifier_description = "OPEN_HINT_TEXT"
 						on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_control')]"
 					}
 
@@ -79,9 +80,6 @@ lateralview = {
 
 					tooltipwidget = {
 						using = location_tooltip_alt
-						blockoverride "shift_left_extra" {
-							replacement_shift_item = {}
-						}
 					}
 
 					contextmenu_widget = {
@@ -557,6 +555,7 @@ lateralview = {
 									datacontext = "[Player.GetDiplomacy.GetOverlord.GetGovernment.GetRulerOrRegent]"	
 								}
 								blockoverride "portrait_position" {position = { 0 -1 }}
+								blockoverride "portrait_size" { size = { 85% 90% } }
 
 								allow_outside = yes
 								
@@ -573,8 +572,28 @@ lateralview = {
 								}
 
 								blockoverride "character_ribbon" {
+									character_ribbon_1 = {
+										visible = "[Character.HasRebel]"
+										blockoverride "stretchable" {}
+										blockoverride "ribbon color" {
+											modify_texture = {
+												using = color_black_texture
+												blend_mode = overlay
+											}
+										}
+									}
 									character_ribbon_3 = {
-										visible = "[Character.IsRuler]"
+										visible = "[And(Character.IsCivilWarRuler, Not(Character.HasRebel))]"
+										blockoverride "stretchable" {}
+										blockoverride "ribbon color" {
+											modify_texture = {
+												using = color_black_texture
+												blend_mode = overlay
+											}
+										}
+									}
+									character_ribbon_3 = {
+										visible = "[And3(Character.IsRuler, Not(Character.HasRebel), Not(Character.IsCivilWarRuler))]"
 										blockoverride "stretchable" {}
 									}
 								}
@@ -660,15 +679,15 @@ lateralview = {
 								visible = "[And(Player.GetDiplomacy.GetOverlord.IsValid, Country.GetGovernment.CareAboutProducingHeirs)]"
 								size = { 5 -1 }
 							}
-							# FIRST SPOUSE (previously consort, now consort status is an additional icon on it)
 							character_frame_medium = {
 								size = {56 66}
 								visible = "[Country.GetGovernment.CareAboutProducingHeirs]"
 								
 								blockoverride "portrait_datacontext" {
-									datacontext = "[Country.GetGovernment.GetRuler.GetSpouse]"
+									datacontext = "[Country.GetGovernment.GetConsort]"
 								}
 								blockoverride "portrait_position" {position = { 0 -1 }}
+								blockoverride "portrait_size" { size = { 85% 90% } }
 
 								allow_outside = yes
 								
@@ -682,8 +701,28 @@ lateralview = {
 								}
 
 								blockoverride "character_ribbon" {
+									character_ribbon_1 = {
+										visible = "[Character.HasRebel]"
+										blockoverride "stretchable" {}
+										blockoverride "ribbon color" {
+											modify_texture = {
+												using = color_black_texture
+												blend_mode = overlay
+											}
+										}
+									}
 									character_ribbon_3 = {
-										visible = "[Character.IsRuler]"
+										visible = "[And(Character.IsCivilWarRuler, Not(Character.HasRebel))]"
+										blockoverride "stretchable" {}
+										blockoverride "ribbon color" {
+											modify_texture = {
+												using = color_black_texture
+												blend_mode = overlay
+											}
+										}
+									}
+									character_ribbon_3 = {
+										visible = "[And3(Character.IsRuler, Not(Character.HasRebel), Not(Character.IsCivilWarRuler))]"
 										blockoverride "stretchable" {}
 									}
 								}
@@ -735,39 +774,39 @@ lateralview = {
 									}
 								}
 
-								widget = {
-									size = {15 15}
-									visible = "[Country.GetGovernment.GetRuler.GetSpouse.IsConsort]"
-									parentanchor = hcenter|top
-									position = {0 -4}
-									using = bg_circle_piechart
-									blockoverride "frame_color" {
-										modify_texture = {
-											using = color_gold_texture
-											blend_mode = overlay
-										}
-										modify_texture = {
-											texture = "gfx/interface/component_overlay/gold_overlay_circle.dds"
-											texture_density = 2
-											spriteType = stretched
-											spriteborder = { 250 250 }
-											blend_mode = add
-											alpha = 0.1
-										}
-									}
-									icon = {
-										size = { 106% 106% }
-										texture = "gfx/interface/icons/character_roles/consort.dds"
-										parentanchor = center
+								# widget = {
+								# 	size = {15 15}
+								# 	visible = "[Country.GetGovernment.GetRuler.GetSpouse.IsConsort]"
+								# 	parentanchor = hcenter|top
+								# 	position = {0 -4}
+								# 	using = bg_circle_piechart
+								# 	blockoverride "frame_color" {
+								# 		modify_texture = {
+								# 			using = color_gold_texture
+								# 			blend_mode = overlay
+								# 		}
+								# 		modify_texture = {
+								# 			texture = "gfx/interface/component_overlay/gold_overlay_circle.dds"
+								# 			texture_density = 2
+								# 			spriteType = stretched
+								# 			spriteborder = { 250 250 }
+								# 			blend_mode = add
+								# 			alpha = 0.1
+								# 		}
+								# 	}
+								# 	icon = {
+								# 		size = { 106% 106% }
+								# 		texture = "gfx/interface/icons/character_roles/consort.dds"
+								# 		parentanchor = center
 
-										glow = {
-											name = "drop_shadow"
-											glow_radius = 3
-											color = {0.0 0.0 0.0 1.0}
-											alpha = 0.7
-										}
-									}
-								}
+								# 		glow = {
+								# 			name = "drop_shadow"
+								# 			glow_radius = 3
+								# 			color = {0.0 0.0 0.0 1.0}
+								# 			alpha = 0.7
+								# 		}
+								# 	}
+								# }
 							}
 							widget = {
 								size = {2 -1}
@@ -783,6 +822,7 @@ lateralview = {
 								size = {56 66}
 								datacontext = "[GovernmentView.GetHeirSelection]"
 								blockoverride "portrait_position" {position = { 0 -1 }}
+								blockoverride "portrait_size" { size = { 85% 90% } }
 								blockoverride "portrait_datacontext" {
 									datacontext = "[GovernmentView.GetPlayer.GetGovernment.GetHeir]"
 								}
@@ -802,8 +842,28 @@ lateralview = {
 								}
 
 								blockoverride "character_ribbon" {
+									character_ribbon_1 = {
+										visible = "[Character.HasRebel]"
+										blockoverride "stretchable" {}
+										blockoverride "ribbon color" {
+											modify_texture = {
+												using = color_black_texture
+												blend_mode = overlay
+											}
+										}
+									}
 									character_ribbon_3 = {
-										visible = "[Character.IsRuler]"
+										visible = "[And(Character.IsCivilWarRuler, Not(Character.HasRebel))]"
+										blockoverride "stretchable" {}
+										blockoverride "ribbon color" {
+											modify_texture = {
+												using = color_black_texture
+												blend_mode = overlay
+											}
+										}
+									}
+									character_ribbon_3 = {
+										visible = "[And3(Character.IsRuler, Not(Character.HasRebel), Not(Character.IsCivilWarRuler))]"
 										blockoverride "stretchable" {}
 									}
 								}
@@ -825,12 +885,18 @@ lateralview = {
 									tooltipwidget = {
 										using = HeirSelectionCandidate_tooltip
 
-										blockoverride "heir_selection_candidate_tooltip_action" {}
+										blockoverride "heir_selection_candidate_tooltip_action" {
+											TooltipConditionList = {
+												blockoverride "block_title" { text = "game_concept_conditions" }
+												datacontext = "[StringToConditionListOnlyFailCollapseRequirement(HeirSelectionCandidate.GetHeirSelection.GetLockedReasonTooltip(GovernmentView.GetPlayer.Self))]"
+												visible = "[ConditionList.HasItems]"
+											}
+										}
 									}
-									
+								
 									action_tooltip = {
 										click_type = left
-										conditions = "HEIR_SELECTION_ALLOW_TRIGGER_NO"
+										conditions = "[MakeItFail(HeirSelectionCandidate.GetHeirSelection.GetLockedReasonTooltip(GovernmentView.GetPlayer.Self))]"
 										title = "NEW_SUCCESSION_LAW"
 										enabled = "[Not(HeirSelectionCandidate.GetHeirSelection.IsLocked(GovernmentView.GetPlayer.Self))]"
 										on_action = "[ShowSelectSuccessionLaw]"
@@ -1444,6 +1510,9 @@ lateralview = {
 													visible = "[Not(Player.GetGovernment.HasPolicyForLaw(Law.Self))]"
 													text = "NO_POLICY_SELECTED"
 												}
+												blockoverride "law_unique_icon_visible" {
+													visible = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).IsUnique]"
+												}
 												# blockoverride "law_piechart" {
 												# 	widget = {
 												# 		size = { 30 30 }
@@ -1563,6 +1632,7 @@ lateralview = {
 							
 							# HIRE ADVISOR
 							flowcontainer = {
+								spacing = 10
 								parentanchor = center
 								header_action_button_left = {
 									size = { 40 40 }
@@ -1586,6 +1656,50 @@ lateralview = {
 										}										
 									}
 								}
+
+								widget = {
+                                    size = { 40 40 }
+                                    header_button_right = {
+                                        visible = "[Not(LateralView.Vars.Exists( 'cabinet_compacted' ))]"
+                                        size = { 40 40 }
+                                        blockoverride "button_icon_stretch_sprite" {}
+                                        blockoverride "header_button_frame_inner" { visible = no }
+                                        blockoverride "header_button_icon_size" { size = { 40 40 } }
+                                        blockoverride "header_button_text_layout" {}
+                                        blockoverride "icon_texture" {
+                                            texture =  "gfx/interface/icons/flat_icons/menu_icon.dds"
+                                            texture_density = 2
+                                        }
+                                        onclick = "[LateralView.Vars.Toggle( 'cabinet_compacted' )]"
+										tooltipwidget = {
+                                            LeftClickButtonTooltip = {
+                                                blockoverride "onclick_text" {
+                                                    text = "COMPACT_CABINET_VIEW"
+                                                }
+                                            }
+                                        }
+                                    }
+                                    header_button_right = {
+                                        visible = "[LateralView.Vars.Exists( 'cabinet_compacted' )]"
+                                        size = { 40 40 }
+                                        blockoverride "button_icon_stretch_sprite" {}
+                                        blockoverride "header_button_frame_inner" { visible = no }
+                                        blockoverride "header_button_icon_size" { size = { 40 40 } }
+                                        blockoverride "header_button_text_layout" {}
+                                        blockoverride "icon_texture" {
+                                            texture =  "gfx/interface/icons/flat_icons/menu_icon_square.dds"
+                                            texture_density = 2
+                                        }
+                                        onclick = "[LateralView.Vars.Toggle( 'cabinet_compacted' )]"
+										tooltipwidget = {
+                                            LeftClickButtonTooltip = {
+                                                blockoverride "onclick_text" {
+                                                    text = "EXPANDED_CABINET_VIEW"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
 							}
 						}
 
@@ -1619,7 +1733,8 @@ lateralview = {
 												datacontext = "[CabinetItem.GetCabinet]"
 
 												cabinet_card = {
-													visible = "[And(Not(Cabinet.IsCharacterSet), Not(Cabinet.IsActive))]"
+													datacontext = "[GovernmentView]"
+													visible = "[And3(Not(Cabinet.IsCharacterSet), Not(Cabinet.IsActive), Not(LateralView.Vars.Exists( 'cabinet_compacted' )))]"
 													blockoverride "cabinet_card_size" {
 														layoutpolicy_horizontal = expanding
 														size = {-1 90}
@@ -1627,12 +1742,31 @@ lateralview = {
 												}
 
 												cabinet_card = {
-													visible = "[Or(Cabinet.IsCharacterSet, Cabinet.IsActive)]"
+													datacontext = "[GovernmentView]"
+													visible = "[And(Or(Cabinet.IsCharacterSet, Cabinet.IsActive), Not(LateralView.Vars.Exists( 'cabinet_compacted' )))]"
 													blockoverride "cabinet_card_size" {
 														layoutpolicy_horizontal = expanding
 														size = {-1 120}
 													}
 												}
+
+                                                cabinet_card = {
+													datacontext = "[GovernmentView]"
+                                                    visible = "[And3(Not(Cabinet.IsCharacterSet), Not(Cabinet.IsActive), LateralView.Vars.Exists( 'cabinet_compacted' ))]"
+                                                    blockoverride "cabinet_card_size" {
+                                                        layoutpolicy_horizontal = expanding
+                                                        size = {-1 40}
+                                                    }
+                                                }
+
+                                                cabinet_card = {
+													datacontext = "[GovernmentView]"
+                                                    visible = "[And(Or(Cabinet.IsCharacterSet, Cabinet.IsActive), LateralView.Vars.Exists( 'cabinet_compacted' ))]"
+                                                    blockoverride "cabinet_card_size" {
+                                                        layoutpolicy_horizontal = expanding
+                                                        size = {-1 40}
+                                                    }
+                                                }
 
 												widget = {
 													layoutpolicy_horizontal = expanding
@@ -1859,6 +1993,9 @@ lateralview = {
 									hbox = {
 										layoutpolicy_horizontal = expanding
 										spacing = 5
+										tooltipmeta = {
+											game_concept = "[parliament|e]"
+										}
 										
 										card_header_action_button_01 = {
 											layoutpolicy_horizontal = expanding

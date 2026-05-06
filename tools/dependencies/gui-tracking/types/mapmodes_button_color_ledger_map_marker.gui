@@ -7,7 +7,7 @@
 			
 			block "button_ledger_map_marker_position_visible" {
 				position = { -140 0 }
-				visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
+				visible = "[And3(Not(IsPauseMenuShown), Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))]"
 			}
 		}
 

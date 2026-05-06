@@ -46,6 +46,7 @@
 			}
 		}
 		hbox = {
+            visible = "[Not(LateralView.Vars.Exists( 'cabinet_compacted' ))]"
 			layoutpolicy_horizontal = expanding
 			layoutpolicy_vertical = expanding
 			block "bottom_content" {}

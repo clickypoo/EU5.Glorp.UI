@@ -12,6 +12,15 @@ widget = {
 		parentanchor = center
 		allow_outside = yes
 		onclick = "[CombatMarker.OnClick]"
+		onrightclick = "[CombatMarker.OnRightClick]"
+
+		action_tooltip = {
+			click_type = right
+			click_mode = single
+			visible = "[HasAnyUnitsSelected]"
+			title = "CLICK_ACTION_UNIT_MOVE_TO_BATTLE"
+			on_action = "[CombatMarker.OnRightClick]"
+		}
 		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightLocation(CombatMarker.GetLocation)]"
 
 		background = {
@@ -131,6 +140,15 @@ widget = {
 				size = { 68 66 }
 				parentanchor = center
 				using = goto_battle_action
+				onrightclick = "[CombatMarker.OnRightClick]"
+
+				action_tooltip = {
+					click_type = right
+					click_mode = single
+					visible = "[HasAnyUnitsSelected]"
+					title = "CLICK_ACTION_UNIT_MOVE_TO_BATTLE"
+					on_action = "[CombatMarker.OnRightClick]"
+				}
 	
 				hbox = {
 					margin = { 5 0 }

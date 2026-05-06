@@ -15,8 +15,15 @@ template CountryTooltip {
 		}
 
 		blockoverride "tooltip_content" {
-			TooltipDebugTextBlock = {
+            TooltipDebugStringPairList = {
 				textcontext = "[Country.GetDebugText]"
+			}
+
+			TooltipDebugTextBlock = {
+				visible = "[And(IsBuildDebug, Country.HasActiveAreaPreferences)]"
+				blockoverride "text" {
+					debug_text = "[Country.GetActiveAreaPreferencesInfo]"
+				}
 			}
 
 			TooltipTextBlock = {
@@ -72,6 +79,10 @@ template CountryTooltip {
 						}
 					}
 				}	
+			}
+
+			TooltipContentSection = {
+				using = CountryTooltip_DiplomacyStatBars
 			}
 
 			TooltipRowList = {
@@ -213,12 +224,12 @@ template CountryTooltip {
 						text_single = {
 							autoresize = yes
 							align = right
-							text = "[Country.GetTotalArmyStrengthAndPotentialLevies|L0]"
+							text = "[Country.GetRaisedAndPotentialLevyStrength] [levies_icon] / [Country.GetRegularArmySize|0L] [regulars_icon]"
 						}
 
 						icon = {
 							size = { 24 24 }
-							texture = "gfx/interface/icons/unit_category/total_strength.dds"
+							texture = "gfx/interface/icons/flat_icons/declare_war/army_size.dds"
 						}
 					}
 				}
@@ -265,6 +276,7 @@ template CountryTooltip {
 						}
 					}
 				}
+
 				TooltipManualTableField = { #Subjects
 					visible = "[Country.GetDiplomacy.HasSubjects]"
 					hbox = {
@@ -306,10 +318,41 @@ template CountryTooltip {
 						}
 					}
 				}
-			}
 
-			TooltipContentSection = {
-				using = CountryTooltip_DiplomacyStatBars
+				TooltipManualTableField = { # Personality and Disposition
+					hbox = {
+						spacing = 5
+						datacontext = "[Country.GetAiPersonality]"
+						tooltipwidget = { using = AiPersonality_tooltip }
+	
+						icon = {
+							size = { 20 20 }
+							texture = "[GetAiPersonalityIcon(AiPersonality.Self)]"
+						}
+						text_single = {
+							autoresize = yes
+							text = "[AiPersonality.GetName|L]"
+						}
+					}
+	
+					expand = {}
+	
+					hbox = {
+						visible = "[And(IsPlayerValid, Not(Country.IsPlayer))]"
+						spacing = 5
+						tooltipwidget = { using = AiDisposition_tooltip }
+	
+						text_single = {
+							autoresize = yes
+							text = "[Country.GetDispositionToPlayer|L]"
+						}
+
+						icon = {
+							size = { 20 20 }
+							texture = "[GetAiDispositionIcon(Country.Self)]"
+						}
+					}
+				}
 			}
 
 			TooltipTextBlock = {

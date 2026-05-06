@@ -23,6 +23,7 @@ OutlinerEntryBase = {
 				}
 
 				OutlinerTextBase = {
+					visible = "[GreaterThan_CFixedPoint(IOLawOutlinerEntry.GetDaysLeft, '(CFixedPoint)0')]"
 					autoresize = yes
 					text = "OUTLINER_IO_LAW_DEBATE_SHORT"
 				}
@@ -48,7 +49,8 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = right
 					datacontext = "[IOLawOutlinerEntry]"
-				text = "OUTLINER_IO_LAW_DEBATE_SHORT"
+					visible = "[GreaterThan_CFixedPoint(IOLawOutlinerEntry.GetDaysLeft, '(CFixedPoint)0')]"
+					text = "OUTLINER_IO_LAW_DEBATE_SHORT"
 				}
 			}
 		}

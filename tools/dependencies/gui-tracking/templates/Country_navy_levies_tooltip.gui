@@ -11,6 +11,11 @@ template Country_navy_levies_tooltip {
 		blockoverride "concept_link" {
 			text = "[navy_levies|e]"
 		}
-		lowpriotextcontext = "[Country.GetPotentialNavyLevyPowerTooltip]"
+		blockoverride "tooltip_content" {
+			TooltipScrolledRowList = {
+				blockoverride "block_scrollarea" { maximumsize = { -1 420 } }
+				textcontext = "[Country.GetPotentialNavyLevyPowerTooltip]"
+			}
+		}
 	}
 }

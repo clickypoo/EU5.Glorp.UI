@@ -1,12 +1,9 @@
 	type button_mapmode = button {
 		size = { 40 40 }
 
-		using = button_mapmode_actions
-		action_tooltip = {
-			click_mode = confirm
-			click_type = right
-			on_action = "[PinCollection.ToggleWithDefaultValue( MapMode.GetKey, MapMode.IsMapModePinnedByDefault )]"
-			title = "UNPIN_ACTION"
+		block "button_mapmode_actions"
+		{
+			using = button_mapmode_actions
 		}
 
 		tooltipmeta = {

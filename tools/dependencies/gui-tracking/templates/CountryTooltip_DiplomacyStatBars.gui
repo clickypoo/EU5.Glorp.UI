@@ -1,6 +1,7 @@
 template CountryTooltip_DiplomacyStatBars {
+	visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"
+
 	TooltipStatsBar = {
-		visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"
 		blockoverride "items" {
 			TooltipStatBarIconTextItem = { # THEIR OPINION
 				blockoverride "item_icon" {
@@ -91,7 +92,7 @@ template CountryTooltip_DiplomacyStatBars {
 				}
 
 				blockoverride "item_text" {
-					raw_text = "[Country.GetDiplomacy.GetTrustTowards(GetPlayer)|+=2]"
+					raw_text = "[Country.GetDiplomacy.GetTrustTowardsString(GetPlayer)]"
 					layoutpolicy_horizontal = expanding
 					size = { -1 18}
 					autoresize = no

@@ -15,6 +15,18 @@
 				parentanchor = center
 
 				using = button_mapmode_actions
+				block "button_mapmode_actions_extra" {
+					action_tooltip = {
+						click_type = right
+						on_action = "[PdxGuiWidget.ToggleContextMenu]"
+						title = "MAPMODE_SLOT_MENU"
+					}
+
+					contextmenu_widget = {
+						using = mapmode_slot_pick_menu
+					}
+				}
+				
 				texture = "gfx/interface/buttons/map_modes/banner.dds"
 				texture_density = 2
 				spriteType = Corneredstretched
@@ -78,17 +90,5 @@
 
 		expand = {}
 
-		button_pin = {
-			size = { 25 25 }
-
-			onclick = "[PinCollection.ToggleWithDefaultValue( MapMode.GetKey, MapMode.IsMapModePinnedByDefault )]"
-			checked = "[PinCollection.IsPinnedWithDefaultValue( MapMode.GetKey, MapMode.IsMapModePinnedByDefault )]"
-			tooltipwidget = {
-				LeftClickButtonTooltip = {
-					blockoverride "onclick_text" {
-						text = "[SelectLocalization(PinCollection.IsPinnedWithDefaultValue( MapMode.GetKey, MapMode.IsMapModePinnedByDefault ), 'UNPIN_ACTION', 'PIN_ACTION')]"
-					}
-				}
-			}
-		}
+		block "button_mapmode_right" {}
 	}

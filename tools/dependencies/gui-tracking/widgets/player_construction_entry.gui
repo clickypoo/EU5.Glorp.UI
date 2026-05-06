@@ -18,7 +18,7 @@ OutlinerEntryBase = {
 					layoutpolicy_horizontal = expanding
 					autoresize = no
 					align = left
-					fontsize = 13
+					fontsize = 14
 					using = OnlyVisibleWhenOneInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip]"
 				}
@@ -26,7 +26,7 @@ OutlinerEntryBase = {
 					layoutpolicy_horizontal = expanding
 					autoresize = no
 					align = left
-					fontsize = 13
+					fontsize = 14
 					using = OnlyVisibleWhenMultipleInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip] #L (+[Subtract_int32(Construction.CountAllInLocation, '(int32)1')]) #!"
 				}
@@ -35,11 +35,13 @@ OutlinerEntryBase = {
 					visible = "[Not(Construction.IsStalled)]"
 					autoresize = yes
 					text = "CONSTRUCTION_DURATION_DAYS"
+					fontsize = 14
 				}
 				OutlinerTextBase = {
 					visible = "[Construction.IsStalled]"
 					autoresize = yes
 					text = "CONSTRUCTION_INFO_STALLED"
+					fontsize = 14
 				}
 			}
 		}
@@ -59,6 +61,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = right
 					text = "CONSTRUCTION_DURATION_DAYS"
+					fontsize = 14
 				}
 	
 				OutlinerTextBase = {
@@ -68,6 +71,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = right
 					text = "CONSTRUCTION_DURATION_DAYS_PLUS_QUEUE"
+					fontsize = 14
 				}
 			}
 

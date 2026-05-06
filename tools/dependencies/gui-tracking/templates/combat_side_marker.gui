@@ -176,19 +176,31 @@ template combat_side_marker {
 					size = { 100% 100% }
 					visible = "[Unit.IsArmy]"
 					block "combat_side_marker_mirror" {}
+					onrightclick = "[CombatMarker.OnRightClick]"
 
 					action_tooltip = {
 						title = "OPEN_COMBAT_VIEW"
 						on_action = "[CombatMarker.OnClick]"
 					}
 
-					tooltipwidget = { BasicFunctionalTooltip = {} }
+					action_tooltip = {
+						click_type = right
+						click_mode = single
+						visible = "[HasAnyUnitsSelected]"
+						title = "CLICK_ACTION_UNIT_MOVE_TO_BATTLE"
+						on_action = "[CombatMarker.OnRightClick]"
+					}
+
+					tooltipwidget = {
+						BasicFunctionalTooltip = {}
+					}
 				}
 
 				unit_marker_navy_button = {
 					size = { 100% 100% }
 					visible = "[Not(Unit.IsArmy)]"
 					onclick = "[CombatMarker.OnClick]"
+					onrightclick = "[CombatMarker.OnRightClick]"
 					block "combat_side_marker_mirror" {}
 
 					action_tooltip = {
@@ -196,7 +208,17 @@ template combat_side_marker {
 						on_action = "[CombatMarker.OnClick]"
 					}
 
-					tooltipwidget = { BasicFunctionalTooltip = {} }
+					action_tooltip = {
+						click_type = right
+						click_mode = single
+						visible = "[HasAnyUnitsSelected]"
+						title = "CLICK_ACTION_UNIT_MOVE_TO_BATTLE"
+						on_action = "[CombatMarker.OnRightClick]"
+					}
+
+					tooltipwidget = {
+						BasicFunctionalTooltip = {}
+					}
 				}
 
 				# terrain penalties icon

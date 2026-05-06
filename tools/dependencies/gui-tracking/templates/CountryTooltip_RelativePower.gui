@@ -1,6 +1,41 @@
 template CountryTooltip_RelativePower {
+	visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"
+
 	TooltipListBase = {
-		visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"
+		#Relative Power STRONGER
+		background = {
+			visible = "[GreaterThan_CFixedPoint(GetOverallPowerRatio(Player.Self, Country.Self), '(CFixedPoint)0.60')]"
+			using = text_mask_container_texture
+			margin_bottom = 0
+			alpha = 0.5
+
+			modify_texture = {
+				using = color_light_green_texture
+			}
+		}
+		#Relative Power EQUAL
+		background = {
+			visible = "[And(LessThan_CFixedPoint(GetOverallPowerRatio(Player.Self, Country.Self), '(CFixedPoint)0.61'), GreaterThan_CFixedPoint(GetOverallPowerRatio(Player.Self, Country.Self), '(CFixedPoint)0.39'))]"
+			using = text_mask_container_texture
+			margin_bottom = 0
+			alpha = 0.5
+
+			modify_texture = {
+				using = color_yellow_texture
+			}
+		}
+		#Relative Power WEAKER
+		background = {
+			visible = "[LessThan_CFixedPoint(GetOverallPowerRatio(Player.Self, Country.Self), '(CFixedPoint)0.40')]"
+			using = text_mask_container_texture
+			margin_bottom = 1
+			alpha = 0.5
+
+			modify_texture = {
+				using = color_red_texture
+			}
+		}
+
 		hbox = {
 			layoutpolicy_horizontal = expanding
 			margin = { 10 3 }

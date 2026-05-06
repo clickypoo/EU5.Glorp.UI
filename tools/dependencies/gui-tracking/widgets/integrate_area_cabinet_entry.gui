@@ -58,7 +58,6 @@ OutlinerEntryBase = {
 		tooltipwidget = {
 			using = action_progress_tooltip
 		}
-		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCabinetActionTarget(Cabinet.Self)]"
 	}
 	blockoverride "category_color" { using = cabinet_entry_color }
 }

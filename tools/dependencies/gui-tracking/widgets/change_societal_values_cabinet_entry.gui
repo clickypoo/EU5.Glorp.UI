@@ -26,7 +26,7 @@ OutlinerEntryBase = {
 
 				blockoverride "cabinet_entry_progress_text" {
 					widget = {
-						visible = "[Cabinet.HasReachedMaxSocietalValue]"
+						visible = "[Not(Cabinet.HasCabinetProgress)]"
 						size = {15 15}
 
 						using = bg_circle_piechart

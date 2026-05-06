@@ -19,6 +19,7 @@ template category_icon_template {
 			autoresize = no
 			align = center
 			block "outliner_category_count" { text = "[OutlinerCategoryEntry.GetEntryCount]" }
+			fontsize = 14
 		}
 	}
 }

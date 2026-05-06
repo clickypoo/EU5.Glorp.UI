@@ -24,6 +24,11 @@ template cabinet_card_header_content {
 				align = left
 			}
 
+            tooltipwidget = {
+                using = action_progress_tooltip
+            }
+
+
 			text_single = {
 				visible = "[Not(Cabinet.IsActive)]"
 				text = "NO_CABINET_ACTION"
