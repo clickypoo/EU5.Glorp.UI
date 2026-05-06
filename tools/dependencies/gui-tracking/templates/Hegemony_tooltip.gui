@@ -1,0 +1,33 @@
+template Hegemony_tooltip {
+	ContextualTooltipType = {
+		blockoverride "title_icon" {
+			icon = {
+				texture = "[GetHegemonyBorder(Hegemony.Self)]"
+				using = tooltip_title_icon_size
+            }
+		}
+		blockoverride "title_text" {
+				text = "[Hegemony.GetNameWithNoTooltip]"
+		}
+		blockoverride "concept_link" {
+			text = [hegemony|e]
+		}
+		
+		blockoverride "tooltip_content" {
+			TooltipStringPairList = {
+				blockoverride "block_title" {
+					text = "HEGEMONY_INFO_BASE"
+				}
+				textcontext = "[Hegemony.GetBaseInfo]"
+			}
+
+		
+
+			TooltipFlavorTextBlock = {
+				blockoverride "text" {
+					text = "[Hegemony.GetDesc]"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,25 @@
+template CountryInteraction_tooltip {
+	ContextualTooltipType = {
+		blockoverride "title_text" {
+			text = "[CountryInteraction.GetNameWithNoTooltip]"
+		}
+		
+		blockoverride "title_icon" {
+			icon = {
+				using = tooltip_title_icon_size
+				texture = "gfx/interface/icons/flat_icons/tabicons/diplomacy.dds"
+			}
+		}
+
+		blockoverride "concept_link" {
+			text = [country_interaction|E]
+		}
+		blockoverride "tooltip_content" {
+			TooltipTextBlock = {
+				blockoverride "text" {
+					text = "[CountryInteraction.GetTooltip(Player.Self,Player.Self)]"
+				}
+			}
+		}
+	}
+}

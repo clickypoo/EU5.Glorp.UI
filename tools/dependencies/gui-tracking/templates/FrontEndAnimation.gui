@@ -1,0 +1,11 @@
+template FrontEndAnimation {
+	state = {
+		name = _show
+		using = FrontEndOnShowAnimation
+	}
+
+	state = {
+		name = _hide
+		using = FrontEndOnHideAnimation
+	}
+}

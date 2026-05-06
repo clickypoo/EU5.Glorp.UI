@@ -1,0 +1,104 @@
+	type cabinet_character_button = card_header_button_cabinet {
+
+		layoutpolicy_horizontal = expanding
+		size = { -1 31 }
+		using = button_action
+		using = bg_paper_card
+		using = bg_card_header_01
+		
+		blockoverride "header_color" {
+			using = color_government_texture
+		}
+
+		using = header_button_texture
+		spriteborder = { 10 10 }
+		
+		hbox = {
+			using = layoutpolicy_expanding
+			margin_left = 5
+
+			icon = {
+				size = { 25 25 }
+				texture = "gfx/interface/buttons/flats/replace.dds"
+				visible = "[Cabinet.IsCharacterSet]"
+				modify_texture = {
+					using = color_new_gold_texture
+					blend_mode = add
+				}
+				glow = {
+					name = "drop_shadow"
+					glow_radius = 3
+					color = {0.0 0.0 0.0 1.0}
+					alpha = 0.8
+				}	
+			}
+	
+			icon = {
+				size = { 25 25 }
+				texture = "gfx/interface/buttons/estate_privileges/ep_plus.dds"
+				visible = "[Not(Cabinet.IsCharacterSet)]"
+				modify_texture = {
+					using = color_new_gold_texture
+					blend_mode = add
+				}
+				glow = {
+					name = "drop_shadow"
+					glow_radius = 3
+					color = {0.0 0.0 0.0 1.0}
+					alpha = 0.8
+				}
+			}
+		
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 5
+				margin_left = 5
+				
+				text_single = {
+					maximumsize = {290 -1}
+					align = nobaseline
+					using = Font_Type_Flavor
+					text = "[Cabinet.GetCharacter.GetCourtCountry.Custom('GetHeadOfCabinetName')] [Cabinet.GetCharacter.GetNameWithNoTooltip], [Cabinet.GetCharacter.GetAgeInYears]"
+					visible = "[And(Cabinet.IsCharacterSet, Cabinet.GetCharacter.IsHeadOfCabinet)]"
+				}
+				text_single = {
+					maximumsize = {290 -1}
+					align = nobaseline
+					using = Font_Type_Flavor
+					text = "[Localize('game_concept_cabinet_member')] [Cabinet.GetCharacter.GetNameWithNoTooltip], [Cabinet.GetCharacter.GetAgeInYears]"
+					visible = "[And(Cabinet.IsCharacterSet, Not(Cabinet.GetCharacter.IsHeadOfCabinet))]"
+				}
+	
+				text_single = {
+					align = nobaseline
+					using = Font_Type_Flavor
+					text = "ADD_CABINET_CHARACTER"
+					visible = "[Not(Cabinet.IsCharacterSet)]"
+				}
+	
+				expand = {}
+	
+				# HEAD OF CABINET
+				widget = {
+					visible = "[Cabinet.GetCharacter.IsHeadOfCabinet]"
+					tooltip = "[head_of_the_cabinet|e]"
+					tagtooltip_enabled = yes
+					size = { 32 32 }
+					icon = {
+						using = bg_circle_piechart
+						using = bg_circle_alt_brown
+						size = { 91% 91% }
+						parentanchor = center
+	
+						texture = "gfx/interface/icons/character_roles/head_of_cabinet.dds"
+						glow = {
+							name = "drop_shadow"
+							glow_radius = 3
+							color = {0.0 0.0 0.0 1.0}
+							alpha = 0.6
+						}
+					}
+				}
+			}
+		}
+	}

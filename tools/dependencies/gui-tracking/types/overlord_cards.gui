@@ -1,0 +1,144 @@
+	type overlord_cards = vbox {
+		spacing = 5
+		widget = {
+			size = {230 55}
+			widget = {
+				block "declare_war_card_size" {
+					size = {100% 100%}
+				}
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					using = bg_paper_card_fancy
+					block "joining_countries_card_tooltip" {}
+	
+					joining_countries_card_header = {}
+	
+					# joining_countries_button_header = {
+					# 	visible = "[Not(Or(DeclareWarAlly.IsSubject, And(Not(DeclareWarAlly.IsCallAllyEnabled), DeclareWarAlly.IsCallAllyAutoJoin)))]"
+					# }
+					# joining_countries_card_header = {
+					# 	visible = "[Or(DeclareWarAlly.IsSubject, And(Not(DeclareWarAlly.IsCallAllyEnabled), DeclareWarAlly.IsCallAllyAutoJoin))]"
+					# }
+	
+					# joining_countries_button_header = {
+					# 	visible = "[And(DeclareWarAlly.IsCallAllyEnabled, Or(DeclareWarAlly.WillJoinIfCalled, And(DeclareWarAlly.WillJoinBecauseOfLandPromised, DeclareWarAlly.IsPromiseLandChecked)))]"
+					# }
+					# joining_countries_card_header = {
+					# 	visible = "[Not(And(DeclareWarAlly.IsCallAllyEnabled, Or(DeclareWarAlly.WillJoinIfCalled, And(DeclareWarAlly.WillJoinBecauseOfLandPromised, DeclareWarAlly.IsPromiseLandChecked))))]"
+					# }
+	
+					widget = {
+						layoutpolicy_horizontal = expanding
+						size = { -1 25 }
+	
+						hbox = {
+							margin = { 5 0 }
+							text_single = {
+								size = {70 20}
+								autoresize = no
+								align = center|nobaseline
+								raw_text = "[DeclareWarAlly.GetCountry.GetTotalArmyStrengthAndPotentialLevies]@army_strength!"
+							}
+	
+							divider_flavor_01 = { 
+								blockoverride "divider_margin" {}
+								size = {9 -1}
+							}
+	
+							text_single = {
+								size = {70 20}
+								autoresize = no
+								align = center|nobaseline
+								raw_text = "[DeclareWarAlly.GetCountry.GetTotalShips]@navy_strength!"
+							}
+	
+							divider_flavor_01 = {
+								blockoverride "divider_margin" {}
+								size = {9 -1}
+							}
+	
+							hbox = {
+								layoutpolicy_horizontal = expanding
+	
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									autoresize = no
+									align = right|nobaseline
+									visible = "[DeclareWarAlly.HasSubjectAllies]"
+									text = "[GetDataModelSize(DeclareWarAlly.GetSubjectAllies)]"
+								}
+	
+								icon = {
+									size = { 19 19 }
+									visible = "[DeclareWarAlly.HasSubjectAllies]"
+									texture = "gfx/interface/icons/treaty_type/become_subject.dds"
+			
+									glow = {
+										name = "drop_shadow"
+										glow_radius = 3
+										color = {0.0 0.0 0.0 1.0}
+										alpha = 0.3
+									}
+			
+								}
+	
+								# expand subjects
+								widget = {
+									size = { 19 19 }
+					
+									# Enabled checkboxes
+									button = {
+										# Avoiding assert when checking relations and also simplifying code in checkboxes
+										visible = "[DeclareWarAlly.HasSubjectAllies]"
+										icon = {
+											size = { 19 19 }
+											visible = "[Not(DeclareWarAlly.IsExpanded)]"
+											texture = "gfx/interface/buttons/flats/button_simple_right.dds"
+											using = button_regular_icon_color
+										}
+				
+										icon = {
+											size = { 19 19 }
+											visible = "[DeclareWarAlly.IsExpanded]"
+											texture = "gfx/interface/buttons/flats/button_simple_down.dds"
+											using = button_regular_icon_color
+										}
+	
+										size = { 100% 100% }
+										onclick = "[DeclareWarAlly.ToggleExpanded]"
+										action_tooltip = { title = "OUTLINER_SETTINGS_TOGGLE_TOOLTIP" }
+										tooltipwidget = { BasicFunctionalTooltip = {} }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		vbox = {
+			visible = "[And(DeclareWarAlly.HasSubjectAllies, DeclareWarAlly.IsExpanded)]"
+			datamodel = "[DeclareWarAlly.GetSubjectAllies]"
+			spacing = 5
+			item = {
+				recursive = yes
+				vbox = {
+					overlord_cards = {
+						visible = "[DeclareWarAlly.HasSubjectAllies]"
+						blockoverride "declare_war_card_size" {
+							size = {220 55}
+							parentanchor = right
+						}
+					}
+					
+					not_overlord_cards = {
+						blockoverride "declare_war_card_size" {
+							size = {220 55}
+							parentanchor = right
+						}
+					}
+				}
+			}
+		}
+	}

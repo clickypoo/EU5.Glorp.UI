@@ -1,0 +1,37 @@
+template VersionLabelBackground {
+	background = {
+		using = tile_background_squared_texture
+
+		modify_texture = {
+			using = color_dark_brown_texture
+		}
+
+		modify_texture = {
+			using = overlay_cloth_texture
+			blend_mode = overlay
+			alpha = 0.3
+		}
+
+		modify_texture = {
+			using = overlay_striped_texture
+			blend_mode = overlay
+			alpha = 0.1
+		}
+	}
+
+	background = {
+		using = tile_frame_squared_texture
+		alpha = 0.4
+		margin = {-4 -4}
+
+		modify_texture = {
+			using = color_brown_leather_texture
+		}
+
+		modify_texture = {
+			using = overlay_cloth_texture
+			blend_mode = multiply
+			alpha = 0.5
+		}
+	}
+}

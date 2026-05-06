@@ -1,0 +1,16 @@
+template Country_navy_regulars_tooltip {
+	SimpleContextualRowTooltipType = {
+		blockoverride "title_icon_texture" {
+			texture = "gfx/interface/icons/unit_category/regulars_navy.dds"
+		}
+	
+		blockoverride "title_text" {
+			text = "FOREIGN_REL_NAVY_SIZE"
+		}
+
+		blockoverride "concept_link" {
+			text = "[navies|e]"
+		}
+		lowpriotextcontext = "[Country.GetNavySizeTooltip]"
+	}
+}

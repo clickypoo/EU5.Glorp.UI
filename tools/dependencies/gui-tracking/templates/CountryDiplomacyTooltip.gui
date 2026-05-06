@@ -1,0 +1,29 @@
+template CountryDiplomacyTooltip {
+	ContextualTooltipType = {
+        blockoverride "title_icon_texture" {
+            texture = "[GetConceptTexture('diplomacy')]"
+        }
+
+        blockoverride "title_text" {
+            text = "DIPLOMACY_TT_TITLE"
+        }
+
+        blockoverride "concept_link" {
+            text = "[diplomacy|e]"
+        }
+
+        blockoverride "tooltip_content" {
+			TooltipContentSection = {
+				using = CountryTooltip_RelativePower
+			}
+
+			TooltipContentSection = {
+				using = CountryTooltip_DiplomacyStatBars
+			}
+
+            TooltipBlockList = {
+                textcontext = "[Country.GetPlayerDiplomacyInfo]"
+            }
+        }
+    }
+}

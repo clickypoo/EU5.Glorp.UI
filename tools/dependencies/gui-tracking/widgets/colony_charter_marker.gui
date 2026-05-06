@@ -1,0 +1,80 @@
+widget = {
+	name = "colony_charter_marker"
+	size = { 40 40 }
+	widgetanchor = left
+	position = { 0 2 }
+
+	using = bg_circle_piechart
+
+	tooltipwidget = {		
+		ContextualTooltipType = {
+			blockoverride "title_icon" {
+				icon = {
+					texture = "gfx/interface/mapitems/colonial_charter.dds"
+					using = tooltip_title_icon_size
+				}
+			}
+			blockoverride "title_text" {
+				text = "COLONIAL_PROGRESS_POT_HEADER"
+			}
+
+			blockoverride "concept_link" {
+				text = [colonial_charter|e]
+			}
+				
+			blockoverride "tooltip_content" {
+				TooltipScrolledRowList = { 
+					textcontext = "[ColonyCharterMarker.GetTooltip]"
+				}
+			}
+		}
+	}
+	
+	tooltip_offset = { 20 20 }
+
+	button = {
+		parentanchor = center
+		allow_outside = yes
+
+		block "button_size" {
+			size = { 80% 80% }
+		}
+
+		tooltip_enabled = no
+
+		texture = "gfx/interface/mapitems/colonial_charter.dds"
+		glow = {
+			name = "drop_shadow"
+			glow_radius = 3
+			color = {0.0 0.0 0.0 1.0}
+			alpha = 0.5  
+		}
+		texture_density = 2
+
+		onclick = "[ShowProvinceDefinition(ColonyCharterMarker.GetLocation.GetProvinceDefinition)]"
+		onrightclick = "[OpenLateralViewWithParams('expansion', 'low_tab = colonisation')]"
+
+		onmousehierarchyenter = "[ColonyCharterMarker.HighlightCharter]"	
+		onmousehierarchyleave = "[ColonyCharterMarker.ClearHighlightedCharter]"	
+	}
+
+	piechart = {
+		parentanchor = center
+		size = { 90% 90% }
+		using = piechart_angles
+
+		pieslice = {
+			texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+			value = "[ColonyCharterMarker.GetProgress]"
+			color = { 0.01 0.6 0.9 1 }
+			alwaystransparent = yes
+		}
+
+		pieslice = {
+			texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+			value = "[Subtract_float('(float)100.0', ColonyCharterMarker.GetProgress)]"
+			color = { 0.0 0.1 0.0 1 }
+			alwaystransparent = yes
+		}
+	}
+}

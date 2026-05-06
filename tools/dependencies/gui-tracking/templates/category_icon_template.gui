@@ -1,0 +1,24 @@
+template category_icon_template {
+	visible = "[Not(Or3(Outliner.IsSettingsShowing, Outliner.IsMouseOver, And(Outliner.IsPinned, Not(Outliner.IsAnyOccludingPanelOpened))))]"
+
+	widget = {
+		size = { 100% 100% }
+		background = {
+			texture = "gfx/interface/component_tiles/balance_card_bg.dds"
+			texture_density = 2
+			using = button_outliner_effect
+		}
+		widget = {
+			size = {100% 100%}
+			ignore_layout = yes
+			alwaystransparent = yes
+			using = bg_cabinet_card_frame
+		}
+		OutlinerTextBase = {
+			size = { 100% 100% }
+			autoresize = no
+			align = center
+			block "outliner_category_count" { text = "[OutlinerCategoryEntry.GetEntryCount]" }
+		}
+	}
+}

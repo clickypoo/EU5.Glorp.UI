@@ -1,0 +1,33 @@
+	type combat_side_modifier_icon = icon {
+		visible = "[Not(EqualTo_string(CombatModifier.GetKey, 'dice'))]"
+		texture = "[GetConceptTexture(CombatModifier.GetKey)]"
+		size = {20 20}
+		glow = {
+			name = "drop_shadow"
+			glow_radius = 3
+			color = {0.0 0.0 0.0 1.0}
+			alpha = 0.3
+		}
+		
+		tooltipwidget = {
+			ContextualTooltipType = {
+				blockoverride "title_text" {
+					text = "COMBAT_MODIFIER"
+				}
+				blockoverride "concept_link" {
+					text = "[battle|e]"
+				}
+				blockoverride "title_icon" {
+					icon = {
+						texture = "[GetConceptTexture(CombatModifier.GetKey)]"
+						using = tooltip_title_icon_size
+					}
+				}
+				blockoverride "tooltip_content" {
+					TooltipStringPairList = {
+						textcontext = "COMBAT_MODIFIER_TT"
+					}
+				}
+			}
+		}
+	}

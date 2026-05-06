@@ -1,0 +1,32 @@
+container = {
+	name = "fort_marker"
+	allow_outside = yes
+
+	datacontext = "[FortMarker.GetLocation]"
+	flowcontainer = {
+		location_rank_icon = {
+			visible = "[Or(Location.IsProvinceCapital, Location.IsCapital)]"
+			parentanchor = center
+			blockoverride "icon_size" {
+				size =  { 30 30 }
+				parentanchor = bottom
+			}
+		}
+		icon = {
+			visible = "[Location.HasAnyFort]"
+			parentanchor = center
+			texture = "[GetBuildingIcon(Location.GetBestFortBuilding.GetType)]"
+			size = { 30 30 }
+
+			glow = {
+				glow_radius = 2
+				color = {0.0 0.0 0.0 1.0}
+				alpha = 0.5
+			}
+
+			tooltipwidget = {
+				using = Garrison_tooltip
+			}
+		}
+	}
+}

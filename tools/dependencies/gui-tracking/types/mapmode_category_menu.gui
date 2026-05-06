@@ -1,0 +1,59 @@
+	type mapmode_category_menu = scrollarea {
+		name = "mapmode_category_menu"
+
+		visible_at_creation = no
+		using = bg_mapmode_category
+		allow_outside = yes
+
+		autoresizescrollarea = yes
+		autoresizeviewport = yes
+		scrollbarpolicy_horizontal = always_off
+		maximumsize = { -1 770 }
+
+		scrollbar_vertical = {
+			using = Scrollbar_Vertical
+		}
+
+		position = { 0 @[-topbar_inner_vertical_margin] }
+
+		state = {
+			name = _show
+			duration = 0.1
+			alpha = 1
+			bezier = { 1.0 0.0 1.0 0.0 }
+			position = { 0 @[-topbar_inner_vertical_margin] }
+			block "mapmode_category_menu_onshow" {}
+		}
+
+		state = {
+			name = _hide
+			duration = 0.2
+			alpha = 0.1
+			bezier = { 0.0 1.0 0.0 0.0 }
+			position = { 0 10 }
+		}
+
+		scrollwidget = {
+			vbox = {
+				set_parent_size_to_minimum = yes
+				ignoreinvisible = yes
+				minimumsize = { 320 100 }
+
+				spacing = 20
+				margin = { 10 20 }
+
+				datacontext = "[Pin('map_modes')]"
+				block "datamodel_item" {}
+			}
+		}
+
+		window_bottom_paper_template = {
+			ignore_layout = yes
+			parentanchor = top
+			size = { 100% 10 }
+
+			blockoverride "image_prop" {
+				using = window_top_paper_texture
+			}
+		}
+	}

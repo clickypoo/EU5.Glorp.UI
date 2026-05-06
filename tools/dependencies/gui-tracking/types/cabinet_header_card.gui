@@ -1,0 +1,53 @@
+	type cabinet_header_card = vbox {
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = expanding
+	
+		widget = {
+			layoutpolicy_horizontal = expanding
+			block "header_size" {
+				size = { -1 40 }
+			}
+			
+			using = bg_card_header_01
+			
+			blockoverride "bg_card_header_01_bg" {
+				background = {
+					using = bg_card_header_01_default
+					alpha = 0.6
+				}
+			}
+			blockoverride "header_color" {
+				using = color_government_texture
+			}
+			blockoverride "header_pattern_texture_density" {texture_density = 1.75}
+		
+			vbox = {
+				margin = {3 0}
+				card_header_button_cabinet = {
+					layoutpolicy_horizontal = expanding
+					size = {-1 36}
+					
+					block "header_content" {}
+				}
+				block "header_content_empty" {}
+
+				expand = {}
+			}
+
+			widget = {
+				layoutpolicy_horizontal = expanding
+				size = {100% 100%}
+				ignore_layout = yes
+				using = bg_card_header_cabinet
+				blockoverride "header_cabinet_margin" {
+					margin = { 5 5}
+					margin_bottom = 0
+				}
+			}
+		}
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			block "bottom_content" {}
+		}
+	}

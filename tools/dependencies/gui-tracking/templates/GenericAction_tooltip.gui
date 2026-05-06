@@ -1,0 +1,22 @@
+template GenericAction_tooltip {
+	ContextualTooltipType = {
+		blockoverride "title_text" {
+			text = "[GenericAction.GetNameWithNoTooltip]"
+		}
+
+		blockoverride "title_icon" {
+			icon = {
+				using = tooltip_title_icon_size
+				texture = "gfx/interface/icons/modifiers/_default.dds"
+			}
+		}
+		
+		blockoverride "tooltip_content" {
+			TooltipTextBlock = {
+				blockoverride "text" {
+					text = "[GenericAction.GetBasicTooltip]"
+				}
+			}
+		}		
+	}
+}

@@ -1,0 +1,83 @@
+	type FrontendPreloadingWidget = widget {
+		parentanchor = top|hcenter
+		position = { 0 10 }
+		name = "preloading_widget"
+
+		background = {
+			using = tile_background_squared_texture
+
+			modify_texture = {
+				using = color_dark_brown_texture
+			}
+			modify_texture = {
+				using = overlay_cloth_texture
+				blend_mode = overlay
+				alpha = 0.3
+			}
+			modify_texture = {
+				using = overlay_striped_texture
+				blend_mode = overlay
+				alpha = 0.1
+			}
+		}
+		using = Animation_ShowHide_Quick
+
+		state = {
+			trigger_on_create = yes
+			name = "no"
+			on_start = "[PdxGuiWidget.SetVisible(IsGamePreloading)]"
+		}
+
+		state = {
+			name = _show
+			on_start = "[PdxGuiWidget.SetVisible(IsGamePreloading)]"
+		}
+
+		hbox = {
+			resizeparent = yes
+			margin = { 20 20 }
+			spacing = 20
+			visible = "[IsGamePreloading]"
+			textbox = {
+				name = "loading_ingame_resources"
+				text = LOADING_INGAME_RESOURCES
+				margin = { 10 10 }
+				align = nobaseline
+				autoresize = yes
+
+				using = text_single_template
+				using = Font_Size_Medium
+				using = Font_Type_Headers
+			}
+
+			progressbar = {
+				size = { 44 44 }
+				using = loading_progress_texture
+			}
+		}
+
+		vbox = {
+			resizeparent = yes
+			margin = { 20 20 }
+			spacing = 20
+			visible = "[IsGamePreloadingComplete]"
+
+			state = {
+				name = _show
+				duration = 5
+				on_finish = "[PdxGuiWidget.AccessParent.Hide]"
+			}
+
+			textbox = {
+				name = "transition_ready_to_commit"
+				text = TRANSITION_READY_TO_COMMIT
+				margin = { 10 10 }
+				align = nobaseline
+				autoresize = yes
+
+				using = text_single_template
+				using = Font_Size_Medium
+				using = Font_Type_Headers
+			}
+		}
+	}

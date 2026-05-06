@@ -1,0 +1,4 @@
+template FrontEndBottomSectionButton {
+	layoutpolicy_horizontal = expanding
+	size = { -1 30 }
+}

@@ -1,0 +1,1034 @@
+	type country_card = hbox {
+		using = layoutpolicy_expanding
+		datacontext = "[GetQuickTemporaryCountryRelations(Player.Self)]"
+		# FOREIGN COUNTRY
+		hbox = {
+			using = layoutpolicy_expanding
+			visible = "[Not(ObjectsEqual(Country.Self, Player.Self))]"
+			spacing = -3
+
+			# FLAG
+			widget = {
+				size = { 88 59 }
+
+				country_flag_mid = {
+					size = { 100% 100% }
+					blockoverride "click" {
+						action_tooltip = {
+							click_type = left
+							click_mode = single
+							title = "COUNTRY_CLICK_TOOLTIP_LEFT_CLICK"
+							on_action = "[ShowForeignCountry(Country.Self)]"
+						}
+					}
+				}
+			}
+			
+			vbox = {
+				using = layoutpolicy_expanding
+				spacing = 2
+				block "country_card_margins" {
+					margin = {0 4}
+					margin_right = 3
+				}
+				datacontext = "[QuickTemporaryCountryRelations.GetTemporaryRelation(Country.Self)]"
+				
+				# TOP CONTENT
+				hbox = {
+					using = layoutpolicy_expanding
+					layoutstretchfactor_vertical = 5
+
+					# COUNTRY BUTTON
+					card_header_button_01 = {
+						name = "country_button_intro"
+						using = layoutpolicy_expanding
+						size = {-1 31}
+						using = bg_paper_card
+						using = bg_card_header_01
+						blockoverride "bg_card_header_01_bg" {
+							background = {
+								texture = "[GetGraphicalCultureTexture('top_header_bg')]"
+								texture_density = 2.4
+								spriteType = corneredtiled
+								spriteborder = { 0 0 }
+								alpha = 0.6
+							}
+							background = {
+								visible = "[Country.IsPlayer]"
+								using = color_society_texture
+								alpha = 0.8
+							}
+							background = {
+								visible = "[Country.IsAllied]"
+								using = color_diplomacy_texture
+								alpha = 0.8
+							}
+							background = {
+								visible = "[GetPlayer.IsEnemy(Country.Self)]"
+								using = color_military_texture
+								alpha = 0.8
+							}
+							background = {
+								visible = "[And3(Not(GetPlayer.IsEnemy(Country.Self)),
+								Not(Country.IsAllied), IsInDiplomaticRange(Country.Self))]"
+								using = color_bg_brown_texture
+								alpha = 0.8
+							}
+							background = {
+								visible = "[Not(IsInDiplomaticRange(Country.Self))]"
+								using = color_grey_texture
+								alpha = 0.8
+								modify_texture = {
+									using = color_black_texture
+									alpha = 0.4
+									blend_mode = multiply
+								}
+							}
+						}
+						
+						blockoverride "header_color" {
+							using = color_diplomacy_texture
+						}
+						blockoverride "header_pattern_texture_density" {texture_density = 2.4}
+						blockoverride "header_pattern_alpha" { alpha = 0.5 }
+												
+						block "country_card_main_action" {
+							action_tooltip = {
+								visible = "[Country.IsValid]"
+								click_type = left
+								click_mode = single
+								title = "COUNTRY_CLICK_TOOLTIP_LEFT_CLICK"
+								on_action = "[OpenDiplomacy(Country.Self)]"
+								on_action = "[PanToCountry(Country.Self)]"
+							}
+						}
+				
+						action_tooltip = {
+							visible = "[Country.IsValid]"
+							click_type = right
+							click_mode = single
+				
+							cursor = "country_menu"
+							title = "CLICK_ACTION_COUNTRY_CONTEXT_MENU"
+							on_action = "[PdxGuiWidget.ToggleContextMenu]"
+						}
+						
+						tooltip_enabled = "[Country.Exists]" 
+						tagtooltip_enabled = "[Country.IsValid]"
+						contextmenu_enabled = "[Country.IsValid]"
+						contextmenu_widget = {
+							CountryContextMenu = {}
+						}
+
+						# block "country_card_title_tooltip" {
+							tooltipwidget = {
+								using = CountryTooltip
+							}
+						# }
+
+						hbox = {
+							margin = {10 0}
+							margin_left = 10
+							spacing = 8
+							
+							country_rank_banner = {
+								visible = "[Not(Country.IsGreatPower)]"
+								blockoverride "country_rank_banner_size" {
+									size = {28 32}
+								}
+								tooltipwidget = {
+									using = non_great_power_info_tooltip
+								}
+							}
+							country_rank_banner = {
+								visible = "[Country.IsGreatPower]"
+								blockoverride "country_rank_banner_size" {
+									size = {28 32}
+								}
+								tooltipwidget = {
+									using = great_power_info_tooltip
+								}
+							}
+
+							block "country_card_title_extra" {}
+			
+							text_single = {
+								using = layoutpolicy_expanding
+								autoresize = no
+								align = nobaseline
+								text = "[Country.GetLongNameWithNoTooltip]"
+
+								block "name_sort_highlight" {}
+							}
+
+							button_pin = {
+								size = { 21 21 }
+								visible = "[IsPlayerValid]"
+								onclick = "[ToggleCountryFav(Country.Self)]"
+								checked = "[IsCountryFaved(Country.Self)]"
+								tooltipwidget = { 
+									LeftClickButtonTooltip = {
+										blockoverride "onclick_text" { 
+											text = "[SelectLocalization(IsCountryFaved(Country.Self), 'UNPIN_OUTLINER', 'PIN_OUTLINER')]"
+										}
+									}
+								}
+							}
+
+							# block "country_card_topcontent_extra" {}
+
+							hbox = {
+								visible = "[And(IsPlayerValid, Country.GetDiplomacy.IsSubjectOf(GetPlayer))]"
+								spacing = 7
+								widget = {
+									size = {25 25}
+									piechart = {
+										size = { 100% 100% }
+										using = piechart_angles
+										using = bg_circle_piechart
+
+										datacontext = "[Country]"
+										tooltipwidget = {
+											using = SubjectTypeDetail_tooltip
+										}
+				
+										pieslice = {
+											texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
+											value = "[FixedPointToFloat(Country.GetDiplomacy.GetSubjectLoyalty)]"
+											color = { 1 1 1 1 }
+										}
+				
+										pieslice = {
+											texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+											value = "[Subtract_float('(float)100.0', FixedPointToFloat(Country.GetDiplomacy.GetSubjectLoyalty))]"
+											color = { 1 1 1 0 }
+										}
+				
+										icon = {
+											texture = "gfx/interface/icons/diplomatic_status/vassalized.dds"
+											size = { 70% 70% }
+											parentanchor = center
+										}
+									}
+								}
+								text_single = {
+									#autoresize = no
+									align = center
+									text = "[Country.GetDiplomacy.GetSubjectLoyalty|2%/]"
+									tooltipwidget = {
+										using = SubjectTypeDetail_tooltip
+									}
+								}
+							}
+
+							# Temporary Relations
+							hbox = {
+								visible = "[QuickTemporaryCountryRelations.HasTemporaryRelation(Country.Self)]"
+								hbox = {
+									visible = "[Or6(HasDiplomaticPendingWithCountry(Country.Self),
+									OngoingRelationCountry.IsBuildingSpyNetwork,
+									OngoingRelationCountry.IsCreatingCasusBelli,
+									OngoingRelationCountry.IsImprovingOpinion,
+									OngoingRelationCountry.IsCurryingFavors,
+									OngoingRelationCountry.IsAnnexing)]"
+									margin = { 5 0 }
+									hbox = {
+										spacing = 2
+										# DIPLOMAT ON ROUTE
+										widget = {
+											size = {25 25}
+											visible = "[HasDiplomaticPendingWithCountry(Country.Self)]"
+											piechart = {
+												size = { 90% 90% }
+						
+												using = piechart_angles
+												using = bg_circle_piechart
+												tooltipwidget = {
+													ContextualTooltipType = {
+														blockoverride "title_text" { text = "DIPLO_DELAY_TT_TITLE" }
+														blockoverride "concept_link" { text = "[diplomacy|e]"}
+														blockoverride "title_icon" {
+															widget = {
+																size = {50 50}
+																visible = "[HasDiplomaticPendingWithCountry(Country.Self)]"
+																piechart = {
+																	size = { 90% 90% }
+											
+																	using = piechart_angles
+																	using = bg_circle_piechart
+																	tooltip = "[GetDiplomaticPendingWithCountryText(Country.Self)]"
+											
+																	pieslice = {
+																		texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
+																		value = "[GetDiplomaticPendingWithCountryProgress(Country.Self)]"
+																		color = { 1 1 1 1 }
+																	}
+											
+																	pieslice = {
+																		texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+																		value = "[Subtract_float('(float)100.0', GetDiplomaticPendingWithCountryProgress(Country.Self))]"
+																		color = { 1 1 1 0 }
+																	}
+											
+																	icon = {
+																		texture = "gfx/interface/icons/resources/diplo_actions.dds"
+																		size = { 70% 70% }
+																		parentanchor = center
+																	}
+																}
+															}
+														}
+														blockoverride "tooltip_content" {
+															TooltipTextBlock = {
+																blockoverride "text" {
+																	text = "[GetDiplomaticPendingWithCountryText(Country.Self)]"
+																}
+															}
+														}
+													}
+												}
+						
+												pieslice = {
+													texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
+													value = "[GetDiplomaticPendingWithCountryProgress(Country.Self)]"
+													color = { 1 1 1 1 }
+												}
+						
+												pieslice = {
+													texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+													value = "[Subtract_float('(float)100.0', GetDiplomaticPendingWithCountryProgress(Country.Self))]"
+													color = { 1 1 1 0 }
+												}
+						
+												icon = {
+													texture = "gfx/interface/icons/resources/diplo_actions.dds"
+													size = { 60% 60% }
+													parentanchor = center
+												}
+											}
+										}
+
+										# SPY NETWORK
+										widget = {
+											size = {25 25}
+											visible = "[OngoingRelationCountry.IsBuildingSpyNetwork]"
+											piechart = {
+												size = { 90% 90% }
+												using = piechart_angles
+												using = bg_circle_piechart
+												tooltipwidget = {
+													datacontext = "[OngoingRelationCountry.GetCountry]"
+													using = spy_network_tooltip
+												}
+						
+												pieslice = {
+													texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
+													value = "[OngoingRelationCountry.GetBuildingSpyNetworkProgress]"
+													color = { 1 1 1 1 }
+												}
+						
+												pieslice = {
+													texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+													value = "[Subtract_float('(float)100.0', OngoingRelationCountry.GetBuildingSpyNetworkProgress)]"
+													color = { 1 1 1 0 }
+												}
+						
+												icon = {
+													using = spy_network_texture
+													size = { 60% 60% }
+													parentanchor = center
+												}
+											}
+										}
+
+										# CREATE CASUS BELLI
+										widget = {
+											size = {25 25}
+											visible = "[OngoingRelationCountry.IsCreatingCasusBelli]"
+											piechart = {
+												size = { 90% 90% }
+												using = piechart_angles
+												using = bg_circle_piechart
+												tooltipwidget = {
+													datacontext = "[OngoingRelationCountry.GetCountry]"
+													using = casus_belli_tooltip
+												}
+						
+												pieslice = {
+													texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
+													value = "[OngoingRelationCountry.GetCasusBelliCreationProgress]"
+													color = { 1 1 1 1 }
+												}
+						
+												pieslice = {
+													texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+													value = "[Subtract_float('(float)100.0', OngoingRelationCountry.GetCasusBelliCreationProgress)]"
+													color = { 1 1 1 0 }
+												}
+						
+												icon = {
+													texture = "gfx/interface/icons/flat_icons/declare_war/casus_belli.dds"
+													size = { 60% 60% }
+													# using = overlay_color_light_blue
+													parentanchor = center
+												}
+											}
+										}
+
+										# IMPROVEING OPINION
+										widget = {
+											size = {25 25}
+											visible = "[OngoingRelationCountry.IsImprovingOpinion]"
+											
+											piechart = {
+												size = { 90% 90% }
+												using = piechart_angles
+												using = bg_circle_piechart
+												tooltipwidget = {
+													datacontext = "[OngoingRelationCountry.GetCountry]"
+													using = improve_opinion_tooltip
+												}
+						
+												pieslice = {
+													texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
+													value = "[OngoingRelationCountry.GetOpinionImprovementProgress]"
+													color = { 1 1 1 1 }
+												}
+						
+												pieslice = {
+													texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+													value = "[Subtract_float('(float)100.0', OngoingRelationCountry.GetOpinionImprovementProgress)]"
+													color = { 1 1 1 0 }
+												}
+						
+												icon = {
+													texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+													size = { 60% 60% }
+													# using = overlay_color_light_blue
+													parentanchor = center
+												}
+											}
+										}
+
+										# CURRYING FAVORS
+										widget = {
+											size = {25 25}
+											visible = "[OngoingRelationCountry.IsCurryingFavors]"
+											piechart = {
+												size = { 100% 100% }
+												using = piechart_angles
+												using = bg_circle_piechart
+												tooltipwidget = {
+													using = currying_favors_tooltip
+												}
+						
+												pieslice = {
+													texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
+													value = "[OngoingRelationCountry.GetCurryFavorsProgress]"
+													color = { 1 1 1 1 }
+												}
+						
+												pieslice = {
+													texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+													value = "[Subtract_float('(float)100.0', OngoingRelationCountry.GetCurryFavorsProgress)]"
+													color = { 1 1 1 0 }
+												}
+						
+												icon = {
+													using = favors_texture
+													size = { 70% 70% }
+													parentanchor = center
+												}
+											}
+										}
+
+										# ANNEXING
+										widget = {
+											size = {25 25}
+											visible = "[OngoingRelationCountry.IsAnnexing]"
+											piechart = {
+												size = { 100% 100% }
+												using = piechart_angles
+												using = bg_circle_piechart
+												datacontext = "[OngoingRelationCountry.GetCountry]"
+												tooltip_enabled = "[Country.IsBeingAnnexed]"
+												tooltipwidget = {
+													using = Annexation_tooltip
+												}
+						
+												pieslice = {
+													texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
+													value = "[OngoingRelationCountry.GetAnnexationProgress]"
+													color = { 1 1 1 1 }
+												}
+						
+												pieslice = {
+													texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+													value = "[Subtract_float('(float)100.0', OngoingRelationCountry.GetAnnexationProgress)]"
+													color = { 1 1 1 0 }
+												}
+						
+												icon = {
+													texture = "gfx/interface/icons/diplomatic_actions/annex.dds"
+													size = { 70% 70% }
+													parentanchor = center
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+
+				# BOTTOM CONTENT
+				hbox = {
+					using = layoutpolicy_expanding
+					layoutstretchfactor_vertical = 6
+					margin = { 2 0 }
+					spacing = 2
+					datacontext = "[Country.GetQuickDiplomaticActions]"
+
+					widget = {
+						using = layoutpolicy_expanding
+						visible = "[IsObservingWithoutSelectedCountry]"
+						button_regular = {
+							size = {100% 100%}
+							enabled = "[IsObservingWithoutSelectedCountry]"
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "END_GAME_VIEW_OBSERVE"
+								on_action = "[Country.StartObservingCountry]"
+								enabled = "[IsObservingWithoutSelectedCountry]"
+							}
+
+							tooltipwidget = { BasicFunctionalTooltip = {} }
+
+							icon = {
+								parentanchor = center
+								size = { 20 20 }
+								texture = "gfx/interface/icons/messages_settings/map.dds"
+							}
+						}
+					}
+
+					# COUNTRY OPINION OF PLAYER
+					widget = {
+						using = layoutpolicy_expanding
+						visible = "[QuickDiplomaticActions.HasSpecificAction('improve_relation')]"
+						button_regular = {
+							name = "improve_opinion_button"
+							size = {100% 100%}
+							datacontext = "[QuickDiplomaticActions.GetSpecificAction('improve_relation')]"
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "[DiplomaticActionItem.GetTitle]"
+								enabled = "[DiplomaticActionItem.IsEnabled]"
+								conditions = "[DiplomaticActionItem.GetTooltip]"
+								on_action = "[DiplomaticActionItem.OnClick]"
+							}
+							enabled = "[DiplomaticActionItem.IsEnabled]"
+
+							widget = {
+								visible = "[QuickTemporaryCountryRelations.HasTemporaryRelation(Country.Self)]"
+								size = {100% 100%}
+								icon = {
+									visible = "[OngoingRelationCountry.IsImprovingOpinion]"
+									size = {100% 100%}
+									using = button_regular_texture
+
+									modify_texture = {
+										using = color_white_texture
+										blend_mode = overlay
+										alpha = 0.5
+									}
+
+									modify_texture = {
+										using = color_new_gold_texture
+										blend_mode = overlay
+										alpha = 0.2
+									}
+								}
+							}
+
+							tooltipwidget = {
+								using = diplomatic_action_tooltip
+								blockoverride "diplomatic_action_tooltip_content_extra"{
+									tooltipmeta = {
+										texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+										game_concept = "[opinion|E]"
+									}
+									TooltipScrolledStringPairList = {
+										blockoverride "block_scrollarea" { maximumsize = { -1 420 }}
+										textcontext = "[Country.GetDiplomacy.GetOpinionDescription(GetPlayer)]"
+									}
+								}
+							}
+
+							hbox = {
+								margin = { 8 2 }
+								spacing = 2
+								icon = {
+									size = { 18 18 }
+									texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+								}
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									size = { -1 18}
+									autoresize = no
+									align = center
+									raw_text = "[Country.GetDiplomacy.GetOpinionOf(GetPlayer)|+=2]"
+								}
+
+								block "opinion_sort_highlight" {}
+							}
+						}
+					}
+
+					# COUNTRY TRUST OF PLAYER
+					widget = {
+						using = layoutpolicy_expanding
+						visible = "[QuickDiplomaticActions.HasSpecificAction('professtrust')]"
+						button_regular = {
+							size = {100% 100%}
+							datacontext = "[QuickDiplomaticActions.GetSpecificAction('professtrust')]"
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "[DiplomaticActionItem.GetTitle]"
+								enabled = "[DiplomaticActionItem.IsEnabled]"
+								conditions = "[DiplomaticActionItem.GetTooltip]"
+								on_action = "[DiplomaticActionItem.OnClick]"
+							}
+							enabled = "[DiplomaticActionItem.IsEnabled]"
+
+							tooltipwidget = {
+								using = diplomatic_action_tooltip
+								blockoverride "diplomatic_action_tooltip_content_extra"{
+									TooltipScrolledStringPairList = {
+										blockoverride "block_scrollarea" { maximumsize = { -1 420 }}
+										textcontext = "[Country.GetDiplomacy.GetTrustDescription(GetPlayer)]"
+									}
+								}
+							}
+
+							hbox = {
+								margin = { 8 2 }
+								spacing = 2
+								icon = {
+									size = { 18 18 }
+									texture = "gfx/interface/icons/flat_icons/foreigncountry/trust.dds"
+								}
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									size = { -1 18}
+									autoresize = no
+									align = center
+									raw_text = "[Country.GetDiplomacy.GetTrustTowards(GetPlayer)|+=2]"
+								}
+
+								block "trust_sort_highlight" {}
+							}
+						}
+					}
+
+					# COUNTRY FAVORS FROM PLAYER
+					widget = {
+						using = layoutpolicy_expanding
+						visible = "[QuickDiplomaticActions.HasSpecificAction('curry_favors')]"
+						button_regular = {
+							size = {100% 100%}
+							datacontext = "[QuickDiplomaticActions.GetSpecificAction('curry_favors')]"
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "[DiplomaticActionItem.GetTitle]"
+								enabled = "[DiplomaticActionItem.IsEnabled]"
+								conditions = "[DiplomaticActionItem.GetTooltip]"
+								on_action = "[DiplomaticActionItem.OnClick]"
+							}
+							enabled = "[DiplomaticActionItem.IsEnabled]"
+
+							tooltipwidget = {
+								using = diplomatic_action_tooltip
+								blockoverride "diplomatic_action_tooltip_content_extra"{
+									TooltipScrolledStringPairList = {
+										blockoverride "block_scrollarea" { maximumsize = { -1 420 }}
+										textcontext = "[Country.GetDiplomaticCurrencyDesc('favors')]"
+									}
+								}
+							}
+
+							widget = {
+								visible = "[QuickTemporaryCountryRelations.HasTemporaryRelation(Country.Self)]"
+								size = {100% 100%}
+								icon = {
+									visible = "[OngoingRelationCountry.IsCurryingFavors]"
+									size = {100% 100%}
+									using = button_regular_texture
+
+									modify_texture = {
+										using = color_white_texture
+										blend_mode = overlay
+										alpha = 0.5
+									}
+
+									modify_texture = {
+										using = color_new_gold_texture
+										blend_mode = overlay
+										alpha = 0.2
+									}
+								}
+							}
+
+							hbox = {
+								margin = { 8 2 }
+								spacing = 2
+								icon = {
+									size = { 18 18 }
+									texture = "gfx/interface/icons/flat_icons/foreigncountry/favors.dds"
+								}
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									size = { -1 18}
+									autoresize = no
+									align = center
+									text = "[Country.GetDiplomaticCurrency('favors')]"
+								}
+
+								block "favors_sort_highlight" {}
+							}
+						}
+					}
+
+					# COUNTRY SPY NETWORK OF PLAYER
+					widget = {
+						using = layoutpolicy_expanding
+						visible = "[QuickDiplomaticActions.HasSpecificAction('building_spy_network')]"
+						button_regular = {
+							size = {100% 100%}
+							datacontext = "[QuickDiplomaticActions.GetSpecificAction('building_spy_network')]"
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "[DiplomaticActionItem.GetTitle]"
+								enabled = "[DiplomaticActionItem.IsEnabled]"
+								conditions = "[DiplomaticActionItem.GetTooltip]"
+								on_action = "[DiplomaticActionItem.OnClick]"
+							}
+							enabled = "[DiplomaticActionItem.IsEnabled]"
+
+							widget = {
+								visible = "[QuickTemporaryCountryRelations.HasTemporaryRelation(Country.Self)]"
+								size = {100% 100%}
+								icon = {
+									visible = "[OngoingRelationCountry.IsBuildingSpyNetwork]"
+									size = {100% 100%}
+									using = button_regular_texture
+
+									modify_texture = {
+										using = color_white_texture
+										blend_mode = overlay
+										alpha = 0.5
+									}
+
+									modify_texture = {
+										using = color_new_gold_texture
+										blend_mode = overlay
+										alpha = 0.2
+									}
+								}
+							}
+
+							tooltipwidget = {
+								using = diplomatic_action_tooltip
+								blockoverride "diplomatic_action_tooltip_content_extra"{
+									TooltipScrolledStringPairList = {
+										blockoverride "block_scrollarea" { maximumsize = { -1 420 }}
+										textcontext = "[Country.GetDiplomaticCurrencyDesc('spy_network')]"
+									}
+								}
+							}
+
+							hbox = {
+								margin = { 8 2 }
+								spacing = 2
+								icon = {
+									size = { 18 18 }
+									texture = "gfx/interface/icons/outliner/categories/spynetwork.dds"
+								}
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									size = { -1 18}
+									autoresize = no
+									align = center
+									raw_text = "[Country.GetDiplomaticCurrency('spy_network')]"
+								}
+								
+								block "spy_network_sort_highlight" {}
+							}
+						}
+					}
+
+					# COUNTRY CB OF PLAYER
+					widget = {
+						layoutpolicy_vertical = expanding
+						size = { 40 -1 }
+						visible = "[QuickDiplomaticActions.HasSpecificAction('create_casus_belli')]"
+						button_regular = {
+							size = {100% 100%}
+							datacontext = "[QuickDiplomaticActions.GetSpecificAction('create_casus_belli')]"
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "[DiplomaticActionItem.GetTitle]"
+								enabled = "[DiplomaticActionItem.IsEnabled]"
+								conditions = "[DiplomaticActionItem.GetTooltip]"
+								on_action = "[DiplomaticActionItem.OnClick]"
+							}
+							action_tooltip = {
+								enabled = yes
+								click_modifier = shift
+								click_type = left
+								title = "ALERT_HINT"
+								using = snd_UI_alert_openAndCycle
+								on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_casus_belli')]"
+								on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
+							}
+							enabled = "[DiplomaticActionItem.IsEnabled]"
+
+							widget = {
+								visible = "[QuickTemporaryCountryRelations.HasTemporaryRelation(Country.Self)]"
+								size = {100% 100%}
+								icon = {
+									visible = "[OngoingRelationCountry.IsCreatingCasusBelli]"
+									size = {100% 100%}
+									using = button_regular_texture
+
+									modify_texture = {
+										using = color_white_texture
+										blend_mode = overlay
+										alpha = 0.5
+									}
+
+									modify_texture = {
+										using = color_new_gold_texture
+										blend_mode = overlay
+										alpha = 0.2
+									}
+								}
+							}
+
+							tooltipwidget = {
+								using = diplomatic_action_tooltip
+								blockoverride "shift_left_extra" {
+									replacement_shift_item = {}
+								}
+
+								blockoverride "title_button" {
+									hint_button = {
+										action_tooltip = {
+											title = "OPEN_HINT"
+											on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_casus_belli')]"
+										}
+									}
+								}
+							}
+
+							icon = {
+								parentanchor = center
+								size = { 18 18 }
+								texture = "gfx/interface/icons/flat_icons/declare_war/casus_belli.dds"
+							}
+						}
+					}
+
+					# COUNTRY WAR FROM PLAYER
+					widget = {
+						layoutpolicy_vertical = expanding
+						size = { 40 -1 }
+						visible = "[QuickDiplomaticActions.HasSpecificAction('declarewar')]"
+						button_regular_red = {
+							size = {100% 100%}
+							datacontext = "[QuickDiplomaticActions.GetSpecificAction('declarewar')]"
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "[DiplomaticActionItem.GetTitle]"
+								enabled = "[DiplomaticActionItem.IsEnabled]"
+								conditions = "[DiplomaticActionItem.GetTooltip]"
+								on_action = "[DiplomaticActionItem.OnClick]"
+							}
+							enabled = "[DiplomaticActionItem.IsEnabled]"
+
+							tooltipwidget = {
+								using = diplomatic_action_tooltip
+
+								blockoverride "title_button" {
+									hint_button = {
+										action_tooltip = {
+											title = "OPEN_HINT"
+											on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_war')]"
+										}
+									}
+								}
+							}
+
+							icon = {
+								parentanchor = center
+								size = { 16 16 }
+								texture = "gfx/interface/icons/map_modes/war.dds"
+							}
+						}
+					}
+
+					# COUNTRY PEACE FROM PLAYER
+					widget = {
+						layoutpolicy_vertical = expanding
+						size = { 40 -1 }
+						visible = "[QuickDiplomaticActions.HasSpecificAction('requestpeace')]"
+
+						button_regular = {
+							size = {100% 100%}
+							datacontext = "[QuickDiplomaticActions.GetSpecificAction('requestpeace')]"
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "[DiplomaticActionItem.GetTitle]"
+								enabled = "[DiplomaticActionItem.IsEnabled]"
+								conditions = "[DiplomaticActionItem.GetTooltip]"
+								on_action = "[DiplomaticActionItem.OnClick]"
+							}
+							enabled = "[DiplomaticActionItem.IsEnabled]"
+
+							tooltipwidget = {
+								using = diplomatic_action_tooltip
+							}
+
+							icon = {
+								parentanchor = center
+								size = { 18 18 }
+								texture = "gfx/interface/icons/alerts_icons/alert_call_for_peace.dds"
+							}
+						}
+					}
+				}
+			}
+		}
+
+		# PLAYER COUNTRY
+		hbox = {
+			using = layoutpolicy_expanding
+			visible = "[ObjectsEqual(Country.Self, Player.Self)]"
+
+			# FLAG
+			widget = {
+				size = { 82 55 }
+
+				country_flag_mid = {
+					size = { 100% 100% }
+				}
+			}
+			
+			vbox = {
+				using = layoutpolicy_expanding
+				block "country_card_margins" {
+					margin = {0 5}
+					margin_right = 5
+				}
+				
+				hbox = {
+					using = layoutpolicy_expanding
+					layoutstretchfactor_vertical = 5
+
+					# COUNTRY BUTTON
+					button = {
+						using = layoutpolicy_expanding
+						using = bg_card_header_01
+						block "bg_card_header_01_bg" {
+							background = {
+								texture = "[GetGraphicalCultureTexture('top_header_bg')]"
+								texture_density = 1.4
+								spriteType = corneredtiled
+								spriteborder = { 0 0 }
+								alpha = 0.6
+							}
+							background = {
+								using = color_society_texture
+								alpha = 0.8
+							}
+						}
+						
+
+						action_tooltip = {
+							visible = "[Country.IsValid]"
+							click_type = left
+							click_mode = single
+							title = "COUNTRY_CLICK_TOOLTIP_LEFT_CLICK"
+							on_action = "[OpenLateralView('diplomacy_macrobuilder')]"
+						}
+				
+						action_tooltip = {
+							visible = "[Country.IsValid]"
+							click_type = right
+							click_mode = single
+				
+							cursor = "country_menu"
+							title = "CLICK_ACTION_COUNTRY_CONTEXT_MENU"
+							on_action = "[PdxGuiWidget.ToggleContextMenu]"
+						}
+						
+						tooltip_enabled = "[Country.Exists]" 
+						tagtooltip_enabled = "[Country.IsValid]"
+						contextmenu_enabled = "[Country.IsValid]"
+						contextmenu_widget = {
+							CountryContextMenu = {}
+						}
+
+						# block "country_card_title_tooltip" {
+							tooltipwidget = {
+								using = CountryTooltip
+							}
+						# }
+
+						hbox = {
+							margin = {5 -5}
+							spacing = 8
+							
+							using = bg_black_fade_horizontal
+
+							country_rank_banner = {
+								blockoverride "country_rank_banner_size" {
+									size = {34 55}
+								}
+							}
+			
+							text_single = {
+								using = layoutpolicy_expanding
+								autoresize = no
+								align = nobaseline
+								text = "[Country.GetLongNameWithNoTooltip]"
+							}
+
+							# block "country_card_topcontent_extra" {}
+						}
+					}
+				}
+			}
+		}
+	}

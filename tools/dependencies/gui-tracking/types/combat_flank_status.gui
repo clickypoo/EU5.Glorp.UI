@@ -1,0 +1,300 @@
+	type combat_flank_status = vbox {
+		layoutpolicy_horizontal = expanding
+		block "combat_flank_status_direction" {}
+
+		# ENGAGED UNITS
+		widget = {
+			layoutpolicy_horizontal = expanding
+			size = {-1 40}
+
+			vbox = {
+				margin = {0 5}
+				using = bg_tile_shadow
+				blockoverride "shadow_tile_margin" {
+					margin = { 9 7 }
+					margin_bottom = 10
+					margin_right = 10
+				}
+				using = bg_battle_map_unit
+
+				block "combat_flank_status_direction" {}
+				tooltipwidget = {
+					using = CombatSubUnitArray_tooltip
+				}
+
+				# frontage
+				widget = {
+					layoutpolicy_horizontal = expanding
+					size = { -1 5 }
+					hbox = {
+
+						widget = {
+							layoutpolicy_horizontal = expanding
+							size = { -1 5 }
+							progressbar = {
+								parentanchor = bottom|hcenter
+								size = { 100% 5 }
+								using = progress_bar_blue_grey_alt
+								mirror = horizontal
+								min = 0
+								max = "[CombatSubUnitArray.GetCombatSide.GetPossibleFrontage]"
+								value = "[CombatSubUnitArray.GetEngagedFrontage]"
+							}
+						}
+
+						widget = {
+							layoutpolicy_horizontal = expanding
+							size = { -1 5 }
+							progressbar = {
+								parentanchor = bottom|hcenter
+								size = { 100% 5 }
+								using = progress_bar_blue_grey_alt
+								min = 0
+								max = "[CombatSubUnitArray.GetCombatSide.GetPossibleFrontage]"
+								value = "[CombatSubUnitArray.GetEngagedFrontage]"
+							}
+						}
+					}
+				}
+				
+				# morale text
+				widget = {
+					using = layoutpolicy_expanding
+					
+					text_single = {
+						size = { 100% 100% }
+						visible = "[Not(Combat.IsNavalCombat)]"
+						autoresize = no
+						align = center
+
+						text = "[CombatSubUnitArray.GetEngagedStrength]"
+						using = bg_text_mask_container_dark_brown
+					}
+
+					text_single = {
+						size = { 100% 100% }
+						visible = "[Combat.IsNavalCombat]"
+						autoresize = no
+						align = center
+
+						text = "[CombatSubUnitArray.GetEngagedSize]"
+						using = bg_text_mask_container_dark_brown
+					}
+				}
+
+				expand = {}
+
+				# morale
+				widget = {
+					layoutpolicy_horizontal = expanding
+					size = { -1 5 }
+					hbox = {
+						widget = {
+							visible = "[Not(GreaterThan_int32(CombatSubUnitArray.GetSize, '(int32)0'))]"
+							layoutpolicy_horizontal = expanding
+							size = { -1 5 }
+							progressbar = {
+								parentanchor = bottom|hcenter
+								size = { 100% 5 }
+								using = progress_bar_blue_grey_alt
+								value = 0
+							}
+						}
+
+						widget = {
+							visible = "[GreaterThan_int32(CombatSubUnitArray.GetSize, '(int32)0')]"
+							layoutpolicy_horizontal = expanding
+							size = { -1 5 }
+							progressbar = {
+								parentanchor = bottom|hcenter
+								size = { 100% 5 }
+								using = progress_bar_green_red_alt
+								value = "[CombatSubUnitArray.GetMoralePercentage]"
+							}
+							tooltipwidget = {
+								SimpleContextualTooltipType = {
+									lowpriotextcontext = "[CombatSubUnitArray.GetMoraleTooltip]"
+									blockoverride "concept_link" {
+										text = "[morale|e]"
+									}
+									blockoverride "title_icon" {
+										icon = {
+											using = tooltip_title_icon_size
+											texture = "gfx/interface/icons/unit_view/morale.dds"												
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			widget = {
+				size = {100% 100%}
+				ignore_layout = yes
+				alwaystransparent = yes
+				using = bg_cabinet_card_frame
+			}
+		}
+
+		# FRONTAGE STATUS
+		widget = {
+			size = { 115 24 }
+			using = bg_battle_arrow
+			icon = {
+				visible = "[And(Not(IsDataModelEmpty(CombatSubUnitArray.GetNonEngaged)), Not(CombatSide.CanEngageUnits(CombatSubUnitArray.Self)))]"
+				size = { 20 20 }
+				parentanchor = center
+				texture = "gfx/interface/icons/flat_icons/battle/pause.dds"
+				tooltipwidget = {
+					using = CombatFlankInitiativeInfo_tooltip
+					blockoverride "combat_flank_info_tooltip_text" {
+						text = "FRONTAGE_FULL"
+					}
+					blockoverride "combat_flank_initiative_info_tooltip_title" {
+						text = "REGIMENTS_WAITING_ENGAGE"
+					}
+					blockoverride "combat_flank_initiative_info_tooltip_extra" {
+						TooltipScrolledColumnList = {
+							blockoverride "block_title" {
+								datacontext = "[CombatSubUnitArray]"
+								text = "CANNOT_ENGAGE_TITLE"
+							}
+
+							visible = "[GreaterThan_CFixedPoint(CombatSubUnitArray.GetNonEngagedFrontage,'(CFixedPoint)0.0')]"
+
+							blockoverride "block_scrollarea" { maximumsize = { -1 320 }}
+							textcontext = "[CombatSubUnitArray.GetNonEngagedUnits]"
+						}
+					}
+				}
+
+				glow = {
+					name = "drop_shadow"
+					glow_radius = 3
+					color = {0.0 0.0 0.0 1.0}
+					alpha = 0.3
+				}
+			}
+
+			icon = {
+				visible = "[And(Not(IsDataModelEmpty(CombatSubUnitArray.GetNonEngaged)), CombatSide.CanEngageUnits(CombatSubUnitArray.Self))]"
+				size = { 18 18 }
+				parentanchor = center
+				texture = "[GetConceptTexture('initiative')]"
+				tooltipwidget = {
+					using = CombatFlankInitiativeInfo_tooltip
+					blockoverride "combat_flank_info_tooltip_text" {
+						text = "FRONTAGE_POSSIBLE"
+					}
+					blockoverride "combat_flank_initiative_info_tooltip_extra" {
+						TooltipScrolledColumnList = {
+							blockoverride "block_title" {
+								datacontext = "[CombatSubUnitArray]"
+								text = "NON_ENGAGED_TITLE"
+							}
+
+							visible = "[GreaterThan_CFixedPoint(CombatSubUnitArray.GetNonEngagedFrontage,'(CFixedPoint)0.0')]"
+
+							blockoverride "block_scrollarea" { maximumsize = { -1 320 }}
+							textcontext = "[CombatSubUnitArray.GetNonEngagedUnits]"
+						}
+					}
+				}
+				using = bg_circle_piechart
+			}
+
+			widget = {
+				visible = "[IsDataModelEmpty(CombatSubUnitArray.GetNonEngaged)]"
+				size = { 100% 100% }
+				tooltipwidget = {
+					using = CombatFlankInitiativeInfo_tooltip
+					blockoverride "combat_flank_info_tooltip_text" {
+						text = "FRONTAGE_NO_POSSIBLE_UNITS"
+					}
+				}
+			}
+		}
+
+		# FRONTAGE UNITS
+		widget = {
+			layoutpolicy_horizontal = expanding
+			size = {-1 55}
+
+			vbox = {
+				tooltipwidget = {
+					using = CombatSubUnitArray_tooltip
+				}
+
+				block "combat_flank_status_direction" {}
+				using = bg_tile_shadow
+				blockoverride "shadow_tile_margin" {
+					margin = { 9 7 }
+					margin_bottom = 10
+					margin_right = 10
+				}
+				using = bg_battle_map_unit
+							
+				margin = {0 3}
+				
+				# NON ENGAGED UNITS
+				dynamic_section_regiments = {
+					blockoverride "dynamic_section_visible_big" {
+						visible = "[Not(GreaterThan_int32(GetDataModelSize(CombatSubUnitArray.GetNonEngaged), '(int32)20'))]"
+					}
+					blockoverride "dynamic_section_datamodel_big" {
+						datamodel = "[DataModelFirst(CombatSubUnitArray.GetNonEngaged, '(int32)20')]"
+					}
+					blockoverride "dynamic_row_amount_big" {
+						datamodel_wrap = 10
+					}
+					blockoverride "dynamic_section_visible_small" {
+						visible =  "[GreaterThan_int32(GetDataModelSize(CombatSubUnitArray.GetNonEngaged), '(int32)20')]"
+					}
+					blockoverride "dynamic_section_datamodel_small" {
+						datamodel = "[DataModelFirst(CombatSubUnitArray.GetNonEngaged, '(int32)16')]"
+					}
+					blockoverride "dynamic_row_amount_small" {
+						datamodel_wrap = 8
+					}
+					blockoverride "extra_subunits_text" {
+						raw_text = "+[Subtract_int32(GetDataModelSize(CombatSubUnitArray.GetNonEngaged), '(int32)16')]"
+					}
+				}
+
+				# bottom content
+				widget = {
+					layoutpolicy_horizontal = expanding
+					size = { -1 18 }
+
+					text_single = {
+						size = { 100% 100% }
+						autoresize = no
+						align = center
+
+						visible = "[Not(Combat.IsNavalCombat)]"
+						text = "[CombatSubUnitArray.GetNonEngagedStrength]"
+						alpha = 0.6
+						using = bg_text_mask_container_dark_brown
+					}
+
+					text_single = {
+						size = { 100% 100% }
+						autoresize = no
+						align = center
+
+						visible = "[Combat.IsNavalCombat]"
+						text = "[CombatSubUnitArray.GetNonEngagedSize]"
+						alpha = 0.6
+						using = bg_text_mask_container_dark_brown
+					}
+				}
+			}
+			widget = {
+				size = {100% 100%}
+				ignore_layout = yes
+				alwaystransparent = yes
+				using = bg_cabinet_card_frame
+			}
+		}
+	}

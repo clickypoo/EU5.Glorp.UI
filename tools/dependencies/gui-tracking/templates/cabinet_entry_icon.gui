@@ -1,0 +1,22 @@
+template cabinet_entry_icon {
+	OutlinerIconBg = {
+		block "cabinet_entry_icon_piechart" {
+		}
+		
+		# cabinet_action_power_outliner = {
+		# 	parentanchor = center
+		# }
+		icon = {
+			parentanchor = center
+			size = { 63% 63% }
+			block "cabinet_entry_icon_texture" {}
+			glow = {
+				name = "drop_shadow"
+				glow_radius = 3
+				color = {0.0 0.0 0.0 1.0}
+				alpha = 0.3
+			}
+			position = { 0 1 }
+		}
+	}
+}

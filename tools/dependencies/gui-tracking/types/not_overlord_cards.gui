@@ -1,0 +1,70 @@
+	type not_overlord_cards = widget {
+		block "joining_countries_declare_war_exclude_not_overlords" {
+			visible = "[Not(DeclareWarAlly.HasSubjectAllies)]"
+		}
+		size = {230 55}
+		widget = {
+			block "declare_war_card_size" {
+				size = { 100% 100%}
+			}
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				using = bg_paper_card_fancy
+				block "joining_countries_card_tooltip" {}
+	
+				joining_countries_card_header = {}
+	
+				# joining_countries_button_header = {
+				# 	visible = "[Not(Or(DeclareWarAlly.IsSubject, And(Not(DeclareWarAlly.IsCallAllyEnabled), DeclareWarAlly.IsCallAllyAutoJoin)))]"
+				# }
+				# joining_countries_card_header = {
+				# 	visible = "[Or(DeclareWarAlly.IsSubject, And(Not(DeclareWarAlly.IsCallAllyEnabled), DeclareWarAlly.IsCallAllyAutoJoin))]"
+				# }
+	
+				# joining_countries_button_header = {
+				# 	visible = "[And(DeclareWarAlly.IsCallAllyEnabled, Or(DeclareWarAlly.WillJoinIfCalled, And(DeclareWarAlly.WillJoinBecauseOfLandPromised, DeclareWarAlly.IsPromiseLandChecked)))]"
+				# }
+				# joining_countries_card_header = {
+				# 	visible = "[Not(And(DeclareWarAlly.IsCallAllyEnabled, Or(DeclareWarAlly.WillJoinIfCalled, And(DeclareWarAlly.WillJoinBecauseOfLandPromised, DeclareWarAlly.IsPromiseLandChecked))))]"
+				# }
+	
+	
+				widget = {
+					layoutpolicy_horizontal = expanding
+					size = { -1 25 }
+	
+					hbox = {
+						margin = { 5 0 }
+						text_single = {
+							size = {70 20}
+							autoresize = no
+							align = center|nobaseline
+							raw_text = "[DeclareWarAlly.GetCountry.GetTotalArmyStrengthAndPotentialLevies]@army_strength!"
+						}
+	
+						divider_flavor_01 = { 
+							blockoverride "divider_margin" {}
+							size = {9 -1}
+						}
+	
+						text_single = {
+							size = {70 20}
+							autoresize = no
+							align = center|nobaseline
+							raw_text = "[DeclareWarAlly.GetCountry.GetTotalShips]@navy_strength!"
+						}
+	
+						divider_flavor_01 = {
+							block "joining_countries_declare_war_show_promise_land" {
+								visible = "[Not(DeclareWarAlly.IsSubject)]"
+							}
+							blockoverride "divider_margin" {}
+							size = {9 -1}
+						}
+	
+						expand = {}
+					}
+				}
+			}
+		}
+	}

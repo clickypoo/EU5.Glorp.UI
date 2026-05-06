@@ -1,0 +1,16 @@
+template Country_levies_tooltip {
+	SimpleContextualRowTooltipType = {
+		blockoverride "title_icon_texture" {
+			texture = "gfx/interface/icons/unit_category/army_levies.dds"
+		}
+	
+		blockoverride "title_text" {
+			text = "[levies]"
+		}
+
+		blockoverride "concept_link" {
+			text = "[levies|e]"
+		}
+		lowpriotextcontext = "[Country.GetArmyLevyPowerTooltip]"
+	}
+}

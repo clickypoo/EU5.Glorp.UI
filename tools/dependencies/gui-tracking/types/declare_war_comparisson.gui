@@ -1,0 +1,24 @@
+	type declare_war_comparisson = text_single {
+		block "declare_war_comparison_visible" {}
+		margin = {20}
+		margin_top = 8
+		margin_bottom = 14
+		block "declare_war_comparison_banner" {
+			background = {
+				texture = "gfx/interface/component_tiles/war_predition_banner_brown.dds"
+			}
+		}
+		mirror = horizontal
+		texture_density = 2
+		spriteType = corneredstretched
+		spriteBorder = { 16 0 }
+		alpha = 1
+		default_format = "#yellow_titles"
+		align = nobaseline
+		fontsize = 14
+		using = FontDefaultColor
+		block "declare_war_comparison_text" {
+			raw_text = " "
+		}
+	
+	}

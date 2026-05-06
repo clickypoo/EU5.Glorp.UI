@@ -1,0 +1,11 @@
+template goto_battle_action {
+	block "battle_goto_action" {
+		action_tooltip = {
+			click_type = left
+			click_mode = single
+			title = "SHOW_BATTLE"
+			on_action = "[ShowCombat(Combat.Self)]"
+		}
+	}
+	tooltipwidget = { BasicFunctionalTooltip = {} }
+}

@@ -1,0 +1,73 @@
+	type countries_battle_modifiers_dice = battle_header_card {
+
+		allow_outside = yes
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			margin = { 7 0 }
+			spacing = 5
+
+			# ATTACKER MODIFIERS
+			combat_side_modifiers = {
+				datacontext = "[Combat.GetAttacker]"
+				datacontext = "[CombatSide.GetCountry]"
+			}
+
+
+			expand = {}
+			vbox = {
+				widget = {
+					size = { 0 10 }
+				}
+				text_single = {
+					raw_text = "[Combat.GetLocation.GetModifierValue('local_frontage_allowed')]@frontage!"
+					fontsize = 13
+				}
+			}
+			expand = {}
+			
+			# DEFENDER MODIFIERS
+			combat_side_modifiers = {
+				datacontext = "[Combat.GetDefender]"
+				datacontext = "[CombatSide.GetCountry]"
+				righttoleft = yes
+			}
+		}
+		
+		#RETREAT BUTTON
+		header_button_left = {
+			ignore_layout = yes
+			position = { 0 -11 }
+			parentanchor = center
+			widgetanchor = bottom|hcenter
+			size = { 28 28 }
+			blockoverride "button_icon_stretch_sprite" {}
+			blockoverride "header_button_frame_inner" {visible = no}
+			blockoverride "header_button_icon_size" { size = { 22 22 } }
+			blockoverride "icon_overlay" {}
+			blockoverride "header_button_text_layout" {}
+			visible = "[Or(Combat.GetDefender.IsPlayerInCombat, Combat.GetAttacker.IsPlayerInCombat)]"
+
+			blockoverride "icon_texture" {
+				texture = "gfx/interface/buttons/flats/retreating.dds"
+				texture_density = 2
+			}
+
+			onclick = "[CombatRetreat(Combat.Self)]"
+			enabled = "[CanRetreatCombat(Combat.Self)]"
+			tooltipwidget = {
+				SimpleContextualTooltipType = {									
+					blockoverride "title_icon" {
+						icon = {
+							using = tooltip_title_icon_size
+							texture = "gfx/interface/buttons/flats/retreating.dds"
+						}
+					}
+					blockoverride "concept_link" {
+						text = "[retreat|e]"
+					}
+
+					lowpriotextcontext =  "[GetRetreatCombatTooltip(Combat.Self)]"
+				}
+			}
+		}
+	}

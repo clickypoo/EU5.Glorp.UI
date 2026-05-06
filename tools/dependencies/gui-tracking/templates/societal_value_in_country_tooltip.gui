@@ -1,0 +1,141 @@
+template societal_value_in_country_tooltip {
+	ContextualTooltipType = {
+		blockoverride "title_text" {
+			text = "SOCIETAL_VALUES_IN"
+		}
+
+		blockoverride "title_icon" {
+			icon = {
+				texture = "gfx/interface/icons/cabinet_actions/change_societal_values.dds"
+				using = tooltip_concept_title_icon_size
+			}
+		}
+
+		blockoverride "concept_link" {
+			text = [societal_values|E]
+		}
+
+		blockoverride "tooltip_content" {
+			TooltipListScrollArea = {
+				blockoverride "block_scrollarea" {
+					maximumsize = { -1 1000 }
+				}
+
+				blockoverride "scrollarea_content" {
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						set_parent_dimension_to_minimum = height
+						spacing = 8
+						datamodel = "[SocietalValueInCountryWrap.GetSocietalValues]"
+						item = {
+							widget = {
+								tooltipwidget = {
+									using = SocietalValueItem_tooltip
+								}
+								size = { 337 67 }
+								container = {
+									tooltipwidget = {
+										using = SocietalValueItem_tooltip
+									}
+									visible = "[SocietalValueItem.IsLeft]"
+								
+									icon = {
+										size = { 337 67 }
+										texture = "[SocietalValueItem.GetType.GetLeftIllustration]"
+										
+										hbox = {
+											maximumsize = { 150 25 }
+											margin_left = 52
+											margin_bottom = 10
+											background = {
+												texture = "gfx/interface/component_tiles/society_values/society_values_banner.dds"
+											}
+		
+											hbox = {
+												margin_right = 13
+												margin_top = 7
+												layoutpolicy_horizontal = expanding
+												spacing = 5
+		
+												text_single = {
+													maximumsize = { 120 12 }
+													margin_left = 6
+													margin_bottom = 4
+													align = nobaseline
+													fontsize = 12
+		
+													text = "[SocietalValueItem.GetType.GetLeftLabelWithNoTooltip]"
+												}
+											}
+										}
+									}
+									icon = {
+										position = {20 -4}
+										parentanchor = left|top
+										size = { 35 35 }
+										texture = "gfx/interface/buttons/button_societal_values.dds"
+										icon = {
+											size = { 25 25 }
+											parentanchor = center
+											texture = "[SocietalValueItem.GetType.GetLeftIcon]"
+										}
+									}
+								}
+								
+								container = {
+									visible = "[Not(SocietalValueItem.IsLeft)]"
+								
+									icon = {
+										size = { 337 67 }
+										texture = "[SocietalValueItem.GetType.GetRightIllustration]"
+										
+										hbox = {
+											parentanchor = right|top
+											maximumsize = { 150 25 }
+											margin_left = 15
+											margin_bottom = 10
+											background = {
+												texture = "gfx/interface/component_tiles/society_values/society_values_banner_right.dds"
+											}
+		
+											hbox = {
+												margin_right = 65
+												margin_top = 7
+												layoutpolicy_horizontal = expanding
+												spacing = 5
+		
+												text_single = {
+													maximumsize = { 120 12 }
+													margin_left = 6
+													margin_bottom = 4
+													align = nobaseline
+													fontsize = 12
+		
+													text = "[SocietalValueItem.GetType.GetRightLabelWithNoTooltip]"
+												}
+											}
+										}
+									}
+									icon = {
+										position = {-20 -4}
+										parentanchor = right|top
+										size = { 35 35 }
+										texture = "gfx/interface/buttons/button_societal_values.dds"
+										icon = {
+											size = { 25 25 }
+											parentanchor = center
+											texture = "[SocietalValueItem.GetType.GetRightIcon]"
+										}
+									}
+									tooltipwidget = {
+										using = SocietalValueItem_tooltip
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

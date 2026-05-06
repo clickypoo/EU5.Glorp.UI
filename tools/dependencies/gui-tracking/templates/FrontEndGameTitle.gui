@@ -1,0 +1,7 @@
+template FrontEndGameTitle {
+	icon = {
+		size = { 356 356 }
+		parentanchor = hcenter|top
+		texture =  "gfx/interface/logos/eu5_logo.dds"
+	}
+}
