@@ -182,9 +182,9 @@ types glorp {
                                 tooltipwidget = { using = trade_efficiency_modifier_tooltip }
                             }
                             stat_item = {
-                                blockoverride "stat_text" { text = "[Player.GetModifierValueNoFormat('global_merchant_power')]" }
-                                blockoverride "stat_icon" { texture = "gfx/interface/icons/flat_icons/trade_advantage.dds" }
-                                tooltipwidget = { using = merchant_power_tooltip }
+                                blockoverride "stat_text" { text = "[Player.GetModifierValueNoFormat('merchant_maintenance_cost')]" }
+                                blockoverride "stat_icon" { texture = "gfx/interface/icons/flat_icons/trade_maintenance.dds" }
+                                tooltipwidget = { using = merchant_maintenance_tooltip }
                             }
                             button = {
                                 minimumsize = { 80 30 }
