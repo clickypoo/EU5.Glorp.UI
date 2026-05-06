@@ -73,6 +73,7 @@ OutlinerEntryBase = {
 		tooltipwidget = {
 			using = action_progress_tooltip
 		}
+		ondoubleclick = "[PanToProvince(OutlinerCabinetEntry.GetActionProgressScope.sProvince('target'))]"
 	}
 	blockoverride "category_color" {
 		using = color_government_texture

@@ -1,15 +1,15 @@
 	type cabinet_header_card = vbox {
 		layoutpolicy_horizontal = expanding
 		layoutpolicy_vertical = expanding
-
+	
 		widget = {
 			layoutpolicy_horizontal = expanding
 			block "header_size" {
 				size = { -1 40 }
 			}
-
+			
 			using = bg_card_header_01
-
+			
 			blockoverride "bg_card_header_01_bg" {
 				background = {
 					using = bg_card_header_01_default
@@ -20,13 +20,13 @@
 				using = color_government_texture
 			}
 			blockoverride "header_pattern_texture_density" {texture_density = 1.75}
-
+		
 			vbox = {
 				margin = {3 0}
 				card_header_button_cabinet = {
 					layoutpolicy_horizontal = expanding
 					size = {-1 36}
-
+					
 					block "header_content" {}
 				}
 				block "header_content_empty" {}
@@ -46,7 +46,7 @@
 			}
 		}
 		hbox = {
-            visible = "[Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet]"
+            visible = "[Not(LateralView.Vars.Exists( 'cabinet_compacted' ))]"
 			layoutpolicy_horizontal = expanding
 			layoutpolicy_vertical = expanding
 			block "bottom_content" {}

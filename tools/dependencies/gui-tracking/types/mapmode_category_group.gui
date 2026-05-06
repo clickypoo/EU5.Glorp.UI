@@ -3,7 +3,6 @@
 		spacing = 2
 		margin = { 5 0 }
 
-		datacontext = "[Pin('map_modes')]"
 		item = {
 			button_mapmode_category = {}
 		}

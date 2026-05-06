@@ -136,7 +136,7 @@ OutlinerEntryBase = {
 		tooltipwidget = {
 			using = GovernmentReform_tooltip
 			blockoverride "UIActionDescription" {
-				TooltipStringPairList = {
+				TooltipBlockList = {
 					visible = "[And(Not(GovReformOutlinerEntry.GetReformItem.IsImplemented), GovReformOutlinerEntry.GetReformItem.IsValid)]"
 					textcontext = "[GovReformOutlinerEntry.GetReformItem.GetUIAction.GetDescription]"
 				}

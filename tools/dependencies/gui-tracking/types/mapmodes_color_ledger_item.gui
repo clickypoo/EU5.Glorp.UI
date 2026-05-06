@@ -1,4 +1,7 @@
 	type mapmodes_color_ledger_item = widget {
+		alwaystransparent = no
+		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightLedger(MapColorLedger.Self)]"
+
 		background = {
 			visible = "[IsEven_int32(PdxGuiWidget.GetIndexInDataModel)]"
 			using = color_whiteish_texture

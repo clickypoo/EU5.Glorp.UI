@@ -83,6 +83,7 @@ template production_view_poptypes {
 						click_type = left
 						click_mode = single
 						on_action = "[OpenLateralViewWithFilter('production', PopType.GetKey)]"
+						on_action = "[OpenLateralViewWithFilterNoClear('production', 'hide_estate_only_buildings')]"
 						on_action = "[ShowProductionViewWithLocation(Location.GetId, '(bool)no')]"
 						datacontext = "[PopType]"
 						title = "TOGGLE_BUILDINGS_POP_TYPE"

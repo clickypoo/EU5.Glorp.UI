@@ -146,8 +146,9 @@ template recruit_location_entry {
 					tooltipwidget = {
 						using = location_army_levy_per_location_tt
 					}
+					minimumsize = { 50 -1 }
+					maximumsize = { 50 -1 }
 					text_single = {
-						autoresize = yes
 						resizeparent = yes
 						raw_text = "[LocationToRecruitItem.GetMaxStrength|0]@army_strength!"
 

@@ -67,7 +67,6 @@
 						icon = {
 							size = { 20 20 }
 							parentanchor = center
-							position = {1 0}
 							texture = "[Location.GetRankIcon]"
 
 							glow = {
@@ -77,6 +76,134 @@
 								alpha = 0.6
 							}
 						}
+					}
+
+					# Town Rights
+					widget = {
+						size = { 33 33 }
+						visible = "[Or(GreaterThan_int32(GetDataModelSize(Location.GetTownRights), '(int32)0'), And(Location.GetOwner.IsPlayer, Not(Location.GetRank.IsDefault)))]"
+						enabled = "[And(ShowGrantLocationTownRights(Location.Self), Not(Location.GetRank.IsDefault))]"
+
+						button_townrights = {
+							visible = "[Not(GreaterThan_int32(GetDataModelSize(Location.GetTownRights), '(int32)0'))]"
+
+							size = { 100% 100% }
+							# position = {0 1}
+
+							tooltipwidget = {
+								BasicFunctionalTooltip = {}
+							}
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "GRANT_NEW_TOWN_RIGHTS"
+								on_action = "[GrantLocationTownRights(Location.Self)]"
+								conditions = "[AddLocalizationIf(Not(Location.GetOwner.IsPlayer), 'TWR_NOT_OTHER_COUNTRY_LOCATIONS')]"
+								conditions = "[AddLocalizationIf(And(Location.GetOwner.IsPlayer, Location.GetRank.IsDefault), 'TWR_ONLY_URBAN_LOCATIONS')]"
+								conditions = "[AddLocalizationIf(And3(Location.GetOwner.IsPlayer, Not(Location.GetRank.IsDefault), Not(ShowGrantLocationTownRights(Location.Self))), 'TWR_NOT_CAPABLE')]"
+								enabled = "[And(ShowGrantLocationTownRights(Location.Self), Not(Location.GetRank.IsDefault))]"
+							}
+						}
+
+						widget = {
+							size = { 100% 100% }
+							position = {0 1}
+
+						}
+
+						button_regular = {
+							visible = "[GreaterThan_int32(GetDataModelSize(Location.GetTownRights), '(int32)1')]"
+							size = { 100% 100% }
+							position = {0 1}
+
+							action_tooltip = {
+								click_type = left
+								click_mode = single
+								title = "GRANT_NEW_TOWN_RIGHTS"
+								on_action = "[GrantLocationTownRights(Location.Self)]"
+								conditions = "[AddLocalizationIf(Not(Location.GetOwner.IsPlayer), 'TWR_NOT_OTHER_COUNTRY_LOCATIONS')]"
+								conditions = "[AddLocalizationIf(And(Location.GetOwner.IsPlayer, Location.GetRank.IsDefault), 'TWR_ONLY_URBAN_LOCATIONS')]"
+								conditions = "[AddLocalizationIf(And3(Location.GetOwner.IsPlayer, Not(Location.GetRank.IsDefault), Not(ShowGrantLocationTownRights(Location.Self))), 'TWR_NOT_CAPABLE')]"
+								enabled = "[And(ShowGrantLocationTownRights(Location.Self), Not(Location.GetRank.IsDefault))]"
+							}
+
+							tooltipwidget = {
+								using = location_town_rights_tooltip
+							}
+						}
+
+						# No Town Rights Selected
+						icon = {
+							visible = "[Not(GreaterThan_int32(GetDataModelSize(Location.GetTownRights), '(int32)0'))]"
+							size = { 18 18 }
+							parentanchor = center
+							texture = "gfx/interface/buttons/estate_privileges/ep_plus.dds"
+							texture_density = 2
+
+							modify_texture = {
+								using = color_new_gold_texture
+								blend_mode = add
+							}
+
+							glow = {
+								name = "drop_shadow"
+								glow_radius = 3
+								color = {0.0 0.0 0.0 1.0}
+								alpha = 0.8
+							}
+						}
+
+						# ONE TOWN RIGHT SELECTED
+						hbox = {
+							visible = "[EqualTo_int32(GetDataModelSize(Location.GetTownRights), '(int32)1')]"
+							datamodel = "[Location.GetTownRights]"
+							item = {
+								button_townrights = {
+									using = layoutpolicy_expanding
+
+									action_tooltip = {
+										click_type = left
+										click_mode = single
+										title = "GRANT_NEW_TOWN_RIGHTS"
+										on_action = "[GrantLocationTownRights(Location.Self)]"
+										conditions = "[AddLocalizationIf(Not(Location.GetOwner.IsPlayer), 'TWR_NOT_OTHER_COUNTRY_LOCATIONS')]"
+										conditions = "[AddLocalizationIf(And(Location.GetOwner.IsPlayer, Location.GetRank.IsDefault), 'TWR_ONLY_URBAN_LOCATIONS')]"
+										conditions = "[AddLocalizationIf(And3(Location.GetOwner.IsPlayer, Not(Location.GetRank.IsDefault), Not(ShowGrantLocationTownRights(Location.Self))), 'TWR_NOT_CAPABLE')]"
+										enabled = "[And(ShowGrantLocationTownRights(Location.Self), Not(Location.GetRank.IsDefault))]"
+									}
+									tooltipwidget = {
+										using = TownRights_tooltip
+										blockoverride "concept_link" {
+											text = "[location_modifier|e]"
+										}
+									}
+									icon = {
+										size = { 24 24 }
+										parentanchor = center
+										texture = "[TownRights.GetIcon]"
+									}
+								}
+							}
+						}
+
+						# MORE THAN ONE TOWN RIGHT SELECTED
+						hbox = {
+							visible = "[GreaterThan_int32(GetDataModelSize(Location.GetTownRights), '(int32)1')]"
+							margin = { 2 0 }
+							text_single = {
+								using = layoutpolicy_expanding
+								align = center
+								autoresize = no
+								text = "[GetDataModelSize(Location.GetTownRights)]"
+							}
+							icon = {
+								size = { 16 16 }
+								texture = "[GetConceptTexture('town_rights')]"
+							}
+						}
+
+						block "location_town_rights_sort_highlight" {}
 					}
 
 					hbox = {
@@ -231,6 +358,7 @@
 									autoresize = no
 									align = nobaseline
 									text = "[Location.GetNameWithNoTooltip]"
+									block "location_name_sort_highlight" {}
 								}
 
 								# block "location_card_topcontent_extra" {}
@@ -483,6 +611,7 @@
 									size = { -1 15 }
 									raw_text = "[Location.GetTotalPopulation]@population!"
 									fontsize = 13
+									block "location_population_sort_highlight" {}
 								}
 
 								progressbar = {
@@ -517,6 +646,7 @@
 							title = "LOC_VIEW_CREATE_MARKET"
 							visible = "[Not(Location.IsMarketCenter)]"
 							enabled = "[CanCreateMarketInLocation(Location.Self)]"
+							cost = "[GetCreateMarketInLocationPrice(Location.Self)]"
 							on_action = "[CreateMarketInLocation(Location.Self)]"
 							conditions = "[CanCreateMarketInLocationTooltip(Location.Self)]"
 						}
@@ -620,15 +750,13 @@
 							click_modifier = shift
 							click_type = left
 							title = "OPEN_HINT"
+							click_modifier_description = "OPEN_HINT_TEXT"
 							on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_control')]"
 						}
 						enabled = "[And(IsCabinetActionAllowed('increase_control_province'), Location.GetOwner.IsPlayer)]"
 
 						tooltipwidget = {
 							using = location_control_tooltip
-							blockoverride "shift_left_extra" {
-								replacement_shift_item = {}
-							}
 						}
 
 						hbox = {
@@ -675,6 +803,7 @@
 									autoresize = no
 									fontsize = 14
 									raw_text = "[Location.GetControl|0%]"
+									block "location_control_sort_highlight" {}
 								}
 							}
 						}
@@ -759,6 +888,7 @@
 											texture = "[GetGoodsIcon(Location.GetRawMaterial)]"
 										}
 									}
+									block "location_raw_good_sort_highlight" {}
 								}
 
 								text_single = {
@@ -850,6 +980,7 @@
 											using = overlay_gold
 										}
 									}
+									block "location_income_sort_highlight" {}
 								}
 
 								text_single = {
@@ -859,6 +990,7 @@
 									autoresize = no
 									fontsize = 14
 									raw_text = "[Location.GetTotalPossibleTaxBase|W2]"
+									block "location_wealth_sort_highlight" {}
 								}
 
 								# text_single = {

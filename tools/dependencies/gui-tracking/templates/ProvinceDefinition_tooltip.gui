@@ -14,12 +14,10 @@ template ProvinceDefinition_tooltip {
 			text = "[province_definition|e]"
 		}
 
-		blockoverride "tooltip_content" {
-			TooltipDebugTextBlock = {
-				blockoverride "text" {
-					debug_text = "[ProvinceDefinition.GetLogInfo]"
-				}
-			}
+        blockoverride "tooltip_content" {
+            TooltipDebugStringPairList = {
+				textcontext = "[ProvinceDefinition.GetLogInfo]"
+            }
 
 			TooltipStringPairList = {
 				textcontext = "[ProvinceDefinition.GetUITooltip]"

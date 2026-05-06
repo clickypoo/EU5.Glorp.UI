@@ -40,17 +40,20 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					text = "[Goods.GetNameWithNoTooltip]"
-                    fontsize = 14
+					default_format = "#L"
+					fontsize = 14
 				}
 
 				hbox = {
 					margin_right = 3
 					spacing = 5
-					using = layoutpolicy_expanding
 
 					expand = {}
 
 					text_single = {
+						tooltipwidget = {
+							using = goods_market_balance_tooltip
+						}
 						size = { 65 20 }
 						autoresize = no
 						align = right|nobaseline
@@ -58,13 +61,54 @@ OutlinerEntryBase = {
 						raw_text = "[Subtract_CFixedPoint(Market.GetSupply(GoodsMarketEntry.GetGoods), Market.GetDemand(GoodsMarketEntry.GetGoods))|+=2]@balance!"
 					}
 
-					text_single = {
-						size = { 136 20 }
-						autoresize = no
-						align = right|nobaseline
-						using = Font_Size_Small
-						raw_text = "[GoodsMarketEntry.GetPrice|2]@[GoodsMarketEntry.GetGoods.GetPriceDifferenceIconName(GoodsMarketEntry.GetPrice)]!"
+					hbox = {
+						tooltipwidget = {
+							using = goods_market_price_tooltip
+						}
+						text_single = {
+							size = { 50 20 }
+							autoresize = no
+							align = right|nobaseline
+							using = Font_Size_Small
+							raw_text = "[GoodsMarketEntry.GetPrice|1]@[GoodsMarketEntry.GetGoods.GetPriceDifferenceIconName(GoodsMarketEntry.GetPrice)]!"
+						}
+
+						widget = {
+							size = { 10 16}
+							icon = {
+								visible = "[Not(EqualTo_CFixedPoint(GoodsMarketEntry.GetPrice, GoodsMarketEntry.GetTargetPrice))]"
+								size = {16 16}
+								texture = "gfx/interface/buttons/flats/button_simple.dds"
+
+								modify_texture = {
+									using = color_bone_texture
+									blend_mode = normal
+								}
+							}
+						}
+						widget = {
+							visible = "[EqualTo_CFixedPoint(GoodsMarketEntry.GetPrice, GoodsMarketEntry.GetTargetPrice)]"
+							size = { 50 20 }
+							icon = {
+								parentanchor = center
+								visible = "[EqualTo_CFixedPoint(GoodsMarketEntry.GetPrice, GoodsMarketEntry.GetTargetPrice)]"
+								size = {16 16}
+								texture = "gfx/interface/icons/flat_icons/trade_market/equal.dds"
+							}
+						}
+
+
+						text_single = {
+							visible = "[Not(EqualTo_CFixedPoint(GoodsMarketEntry.GetPrice, GoodsMarketEntry.GetTargetPrice))]"
+							size = { 50 20 }
+							autoresize = no
+							align = right|nobaseline
+							using = Font_Size_Small
+							raw_text = "[GoodsMarketEntry.GetTargetPrice|1]@[GoodsMarketEntry.GetGoods.GetPriceDifferenceIconName(GoodsMarketEntry.GetTargetPrice)]!"
+							default_format = "#medium"
+						}
 					}
+
 				}
 			}
 		}

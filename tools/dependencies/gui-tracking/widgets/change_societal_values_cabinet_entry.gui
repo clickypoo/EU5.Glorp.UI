@@ -26,7 +26,7 @@ OutlinerEntryBase = {
 
 				blockoverride "cabinet_entry_progress_text" {
 					widget = {
-						visible = "[Cabinet.HasReachedMaxSocietalValue]"
+						visible = "[Not(Cabinet.HasCabinetProgress)]"
 						size = {15 15}
 
 						using = bg_circle_piechart
@@ -78,9 +78,9 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture" { texture = "[Cabinet.GetSocietalValue.GetRightIcon]"  }
+		blockoverride "cabinet_entry_icon_texture"{ texture = "[Cabinet.GetSocietalValue.GetRightIcon]"  }
 
-		blockoverride "cabinet_entry_icon_piechart" {
+		blockoverride "cabinet_entry_icon_piechart"{
 			piechart = {
 				parentanchor = center
 				size = { 80% 80% }

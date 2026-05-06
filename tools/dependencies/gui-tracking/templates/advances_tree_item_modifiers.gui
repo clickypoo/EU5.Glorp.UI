@@ -28,11 +28,23 @@ template advances_tree_item_modifiers {
 										margin_left = 10
 
 										widget = {
+											visible = yes
 											size = { 40 40 }
 											icon = {
+												visible = "[Not(AdvanceEffectItem.IsGovernmentReformUnlock)]"
 												alwaystransparent = yes
 												size = { 40 40 }
 												texture = "gfx/interface/icons/outliner/background/_defaultbg.dds"
+												modify_texture = {
+													blend_mode = overlay
+													alpha = 1
+												}
+											}
+											icon = {
+												visible = "[AdvanceEffectItem.IsGovernmentReformUnlock]"
+												alwaystransparent = yes
+												size = { 40 40 }
+												texture = "gfx/interface/buttons/checkbox_bg_square.dds"
 												modify_texture = {
 													blend_mode = overlay
 													alpha = 1
@@ -46,9 +58,20 @@ template advances_tree_item_modifiers {
                                                 fontsize = 20
 											}
 											icon = {
+												visible = "[Not(AdvanceEffectItem.IsGovernmentReformUnlock)]"
 												alwaystransparent = yes
 												size = { 40 40 }
 												texture = "gfx/interface/graphical_cultures/european_gfx/circle_frame.dds"
+												modify_texture = {
+													blend_mode = overlay
+													alpha = 1
+												}
+											}
+											icon = {
+												visible = "[AdvanceEffectItem.IsGovernmentReformUnlock]"
+												alwaystransparent = yes
+												size = { 40 40 }
+												texture = "gfx/interface/buttons/checkbox_frame_square.dds"
 												modify_texture = {
 													blend_mode = overlay
 													alpha = 1

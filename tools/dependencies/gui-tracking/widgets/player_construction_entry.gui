@@ -35,13 +35,13 @@ OutlinerEntryBase = {
 					visible = "[Not(Construction.IsStalled)]"
 					autoresize = yes
 					text = "CONSTRUCTION_DURATION_DAYS"
-                    fontsize = 14
+					fontsize = 14
 				}
 				OutlinerTextBase = {
 					visible = "[Construction.IsStalled]"
 					autoresize = yes
 					text = "CONSTRUCTION_INFO_STALLED"
-                    fontsize = 14
+					fontsize = 14
 				}
 			}
 		}
@@ -61,6 +61,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = right
 					text = "CONSTRUCTION_DURATION_DAYS"
+					fontsize = 14
 				}
 
 				OutlinerTextBase = {
@@ -70,6 +71,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = right
 					text = "CONSTRUCTION_DURATION_DAYS_PLUS_QUEUE"
+					fontsize = 14
 				}
 			}
 

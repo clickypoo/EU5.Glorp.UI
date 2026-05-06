@@ -5,14 +5,14 @@
 		using = button_action
 		using = bg_paper_card
 		using = bg_card_header_01
-
+		
 		blockoverride "header_color" {
 			using = color_government_texture
 		}
 
 		using = header_button_texture
 		spriteborder = { 10 10 }
-
+		
 		hbox = {
 			using = layoutpolicy_expanding
 			margin_left = 5
@@ -30,9 +30,9 @@
 					glow_radius = 3
 					color = {0.0 0.0 0.0 1.0}
 					alpha = 0.8
-				}
+				}	
 			}
-
+	
 			icon = {
 				size = { 25 25 }
 				texture = "gfx/interface/buttons/estate_privileges/ep_plus.dds"
@@ -48,35 +48,18 @@
 					alpha = 0.8
 				}
 			}
-
+		
 			hbox = {
 				layoutpolicy_horizontal = expanding
-				spacing = -2  # Glorp UI - Spacing & Margin Changes
+				spacing = -2
 				margin_left = 0
                 margin_right = 10
-
-                # Vanilla - Head cabinet member name
-				text_single = {
-					maximumsize = {400 -1}
-					align = nobaseline
-					using = Font_Type_Flavor
-					text = "[Cabinet.GetCharacter.GetCourtCountry.Custom('GetHeadOfCabinetName')] [Cabinet.GetCharacter.GetNameWithNoTooltip], [Cabinet.GetCharacter.GetAgeInYears]"
-					visible = "[And3(Cabinet.IsCharacterSet, Cabinet.GetCharacter.IsHeadOfCabinet,Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
-				}
-                # Vanilla - Cabinet member name
-				text_single = {
-					maximumsize = {400 -1}
-					align = nobaseline
-					using = Font_Type_Flavor
-					text = "[Localize('game_concept_cabinet_member')] [Cabinet.GetCharacter.GetNameWithNoTooltip], [Cabinet.GetCharacter.GetAgeInYears]"
-					visible = "[And3(Cabinet.IsCharacterSet, Not(Cabinet.GetCharacter.IsHeadOfCabinet),Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
-				}
-                # Glorp UI - Estate Icon
+                
                 icon = {
-                    visible = "[Not(Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
+                    visible = "[LateralView.Vars.Exists( 'cabinet_compacted' )]"
                     block "estate_icon" {}
                     block "character_frame_estate_visible" {
-                        visible = "[And(Cabinet.IsCharacterSet, Not(Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet))]"
+                        visible = "[And(Cabinet.IsCharacterSet, LateralView.Vars.Exists( 'cabinet_compacted' ))]"
                     }
                     block "character_frame_estate_size" {
                         size = { 30 30 }
@@ -88,25 +71,23 @@
                         using = Estate_tooltip
                     }
                 }
-                # Glorp UI - Head cabinet member name
-                text_single = {
-                    maximumsize = {400 -1}
-                    align = nobaseline
-                    using = Font_Type_Flavor
-                    text = "[Cabinet.GetCharacter.GetNameWithNoTooltip], [Cabinet.GetCharacter.GetAgeInYears]"
-                    visible = "[And3(Cabinet.IsCharacterSet, Cabinet.GetCharacter.IsHeadOfCabinet,
-                    Not(Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet))]"
-                }
-                #Glorp UI - Cabinet member name
-                text_single = {
-                    maximumsize = {400 -1}
-                    align = nobaseline
-                    using = Font_Type_Flavor
-                    text = "[Cabinet.GetCharacter.GetNameWithNoTooltip], [Cabinet.GetCharacter.GetAgeInYears]"
-                    visible = "[And3(Cabinet.IsCharacterSet, Not(Cabinet.GetCharacter.IsHeadOfCabinet),
-                    Not(Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet))]"
-                }
-
+				
+				text_single = {
+					maximumsize = {290 -1}
+					align = nobaseline
+					using = Font_Type_Flavor
+					text = "[Cabinet.GetCharacter.GetCourtCountry.Custom('GetHeadOfCabinetName')] [Cabinet.GetCharacter.GetNameWithNoTooltip], [Cabinet.GetCharacter.GetAgeInYears]"
+					visible = "[And(Cabinet.IsCharacterSet, Cabinet.GetCharacter.IsHeadOfCabinet)]"
+				}
+				
+				text_single = {
+					maximumsize = {290 -1}
+					align = nobaseline
+					using = Font_Type_Flavor
+					text = "[Localize('game_concept_cabinet_member')] [Cabinet.GetCharacter.GetNameWithNoTooltip], [Cabinet.GetCharacter.GetAgeInYears]"
+					visible = "[And(Cabinet.IsCharacterSet, Not(Cabinet.GetCharacter.IsHeadOfCabinet))]"
+				}
+	
 				text_single = {
 					align = nobaseline
 					using = Font_Type_Flavor
@@ -116,13 +97,27 @@
 
                 expand = {}
 
-                # Glorp UI - Show character stats next to name
+				hbox = {
+					visible = "[Cabinet.IsCharacterSet]"
+					margin = { 5 0 }
+					datamodel = "[Cabinet.GetCharacter.GetTraitsByCategory('cabinet')]"
+					
+					item = {
+						widget = {
+							size = { 24 24 }
+							using = trait_item
+							blockoverride "trait_item_size" {
+								size = { 24 24 }
+							}
+						}
+					}
+				}
                 hbox = {
                     tagtooltip_enabled = yes
-                    visible = "[And(Cabinet.IsCharacterSet, Not(Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet))]"
+                    visible = "[Cabinet.IsCharacterSet]"
                     datacontext = "[Cabinet.GetCharacter]"
                     tooltip = "[Character.GetAbilityTooltip]"
-
+					spacing = 8
 
                     hbox = {
                         visible = "[Cabinet.IsCharacterSet]"
@@ -138,6 +133,15 @@
                                 text = "[Cabinet.GetCharacter.GetAbility('adm')]"
                                 align = nobaseline
                             }
+							background = {
+								visible = "[And(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('adm'))]"
+								texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+								modify_texture = {
+									using = color_paper_texture
+									blend_mode = multiply
+								}
+								margin = { 2 2 }
+							}
                         }
                         hbox = {
                             icon = {
@@ -150,6 +154,15 @@
                                 text = "[Cabinet.GetCharacter.GetAbility('dip')]"
                                 align = nobaseline
                             }
+							background = {
+								visible = "[And(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('dip'))]"
+								texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+								modify_texture = {
+									using = color_paper_texture
+									blend_mode = multiply
+								}
+								margin = { 2 2 }
+							}
                         }
                         hbox = {
                             icon = {
@@ -162,6 +175,15 @@
                                 text = "[Cabinet.GetCharacter.GetAbility('mil')]"
                                 align = nobaseline
                             }
+							background = {
+								visible = "[And(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('mil'))]"
+								texture = "gfx/interface/component_masks/mask_rough_edges.dds"
+								modify_texture = {
+									using = color_paper_texture
+									blend_mode = multiply
+								}
+								margin = { 2 2 }
+							}
                         }
                     }
                 }

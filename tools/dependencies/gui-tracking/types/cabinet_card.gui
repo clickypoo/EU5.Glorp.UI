@@ -46,41 +46,40 @@
 					using = color_dark_blue_texture
 				}
 
-                # Vanilla - Card Backgrounds
 				background = {
-					visible = "[And3(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('adm'), Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
+					visible = "[And3(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('adm'), Not(LateralView.Vars.Exists( 'cabinet_compacted' )))]"
 					alpha = 0.4
 					texture = "gfx/interface/illustrations/cabinet/adm_cabinet.dds"
 				}
 
 				background = {
-					visible = "[And3(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('dip'), Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
+					visible = "[And3(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('dip'), Not(LateralView.Vars.Exists( 'cabinet_compacted' )))]"
 					alpha = 0.4
 					texture = "gfx/interface/illustrations/cabinet/dip_cabinet.dds"
 				}
 
 				background = {
-					visible = "[And3(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('mil'), Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
+					visible = "[And3(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('mil'), Not(LateralView.Vars.Exists( 'cabinet_compacted' )))]"
 					alpha = 0.4
 					texture = "gfx/interface/illustrations/cabinet/mil_cabinet.dds"
 				}
 
 				background = {
-					visible = "[And(Not(Cabinet.IsActive), Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
+					visible = "[And(Not(Cabinet.IsActive), Not(LateralView.Vars.Exists( 'cabinet_compacted' )))]"
 					alpha = 0.4
 					texture = "gfx/interface/illustrations/cabinet/empty.dds"
 				}
 
 				widget = {
-					visible = "[And3(Not(Cabinet.IsCharacterSet), Cabinet.IsActive, Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
+					visible = "[And3(Not(Cabinet.IsCharacterSet), Cabinet.IsActive, Not(LateralView.Vars.Exists( 'cabinet_compacted' )))]"
 					size = { 70 70 }
 
-					block "no_advisor_portrait" {
+					block "no_advisor_portrait"{
 						portrait_standard_head_button = {
 							parentanchor = hcenter|bottom
 							size = { 55 70 }
 							position = { 0 10 }
-							block "cabinet_char_action" {}
+							block "cabinet_char_action"{}
 
 							datacontext = "[Cabinet.GetCharacter]"
 							blockoverride "character_tooltip" {
@@ -94,9 +93,9 @@
 								using = button_action_provider_base
 							}
 
-							blockoverride "character_contextmenu" {}
-							blockoverride "rightclick" {}
-							blockoverride "hover" {}
+							blockoverride "character_contextmenu"{}
+							blockoverride "rightclick"{}
+							blockoverride "hover"{}
 						}
 					}
 				}
@@ -106,9 +105,9 @@
 					size = { 55 70 }
 				}
 
-				# Vanilla - CABINET CHARACTER
+				# CABINET CHARACTER
 				widget = {
-					visible = "[And(Cabinet.IsCharacterSet, Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
+					visible = "[And(Cabinet.IsCharacterSet, Not(LateralView.Vars.Exists( 'cabinet_compacted' )))]"
 					size = { 80 70 }
 					# allow_outside = yes
 					character_frame_small = {
@@ -129,105 +128,6 @@
 					}
 				}
 
-				# Vanilla - CHARACTER ABILITIES (in card)
-				vbox = {
-                    visible = "[Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet]"
-					margin_right = 5
-					vbox = {
-						# set_parent_size_to_minimum = yes
-						layoutpolicy_vertical = expanding
-						spacing = 2
-						margin = {8 7}
-
-						tagtooltip_enabled = yes
-						visible = "[Cabinet.IsCharacterSet]"
-						datacontext = "[Cabinet.GetCharacter]"
-						tooltip = "[Character.GetAbilityTooltip]"
-
-						using = bg_dark_paper_card
-						using = bg_cabinet_card_frame
-
-						flowcontainer = {
-							spacing = 5
-							layoutpolicy_horizontal = expanding
-
-							background = {
-								visible = "[And(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('adm'))]"
-								texture = "gfx/interface/component_masks/mask_rough_edges.dds"
-								modify_texture = {
-									using = color_paper_texture
-									blend_mode = multiply
-								}
-								margin = { 6 2 }
-							}
-
-							widget = {
-								name = "adm"
-								size = { 20 20 }
-								using = icon_adm_alt
-							}
-
-							text_single = {
-								visible = "[Or(Cabinet.IsActive, Cabinet.IsCharacterSet)]"
-								text = "[Cabinet.GetCharacter.GetAbility('adm')]"
-								align = nobaseline
-							}
-						}
-
-						flowcontainer = {
-							layoutpolicy_horizontal = expanding
-							spacing = 5
-							background = {
-								visible = "[And(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('dip'))]"
-								texture = "gfx/interface/component_masks/mask_rough_edges.dds"
-								modify_texture = {
-									using = color_paper_texture
-									blend_mode = multiply
-								}
-								margin = { 6 2 }
-							}
-
-							widget = {
-								name = "dip"
-								size = { 20 20 }
-								using = icon_dip_alt
-							}
-
-							text_single = {
-								visible = "[Or(Cabinet.IsActive, Cabinet.IsCharacterSet)]"
-								text = "[Cabinet.GetCharacter.GetAbility('dip')]"
-								align = nobaseline
-							}
-						}
-
-						flowcontainer = {
-							layoutpolicy_horizontal = expanding
-							spacing = 5
-							background = {
-								visible = "[And(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('mil'))]"
-								texture = "gfx/interface/component_masks/mask_rough_edges.dds"
-								modify_texture = {
-									using = color_paper_texture
-									blend_mode = multiply
-								}
-								margin = { 10 2 }
-							}
-
-							widget = {
-								name = "mil"
-								size = { 20 20 }
-								using = icon_mil_alt
-							}
-
-							text_single = {
-								visible = "[Or(Cabinet.IsActive, Cabinet.IsCharacterSet)]"
-								text = "[Cabinet.GetCharacter.GetAbility('mil')]"
-								align = nobaseline
-							}
-						}
-					}
-				}
-
 				### Role Data
 				# Role Assigned
 				hbox = {
@@ -236,7 +136,7 @@
 					spacing = 5
 
 					scrollarea = {
-                        visible = "[Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet]"
+                        visible = "[Not(LateralView.Vars.Exists( 'cabinet_compacted' ))]"
 						using = bg_text_mask_container_brown
 
 						scrollbarpolicy_horizontal = always_off
@@ -291,7 +191,7 @@
 					}
 
 					hbox = {
-						visible = "[And(IsDataModelEmpty(CabinetCardModifier.GetEntries), Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
+						visible = "[And(IsDataModelEmpty(CabinetCardModifier.GetEntries), Not(LateralView.Vars.Exists( 'cabinet_compacted' )))]"
 						layoutpolicy_horizontal = expanding
 					}
 
@@ -356,18 +256,18 @@
 				expand = {}
 			}
 		}
-		# Vanilla - CABINET CHARACTER
+		# #CABINET CHARACTER
 		widget = {
-			visible = "[And3(Not(Cabinet.IsCharacterSet), Not(Cabinet.IsActive), Player.MakeScope.GetVariable('useVanillaCabinetView').IsSet)]"
+			visible = "[And3(Not(Cabinet.IsCharacterSet), Not(Cabinet.IsActive), Not(LateralView.Vars.Exists( 'cabinet_compacted' )))]"
 			size = { 90 90 }
 			parentanchor = bottom
 
-			block "no_advisor_portrait" {
+			block "no_advisor_portrait"{
 				portrait_standard_head_button = {
 					parentanchor = hcenter|bottom
 					size = { 75 90 }
 					position = { 0 10 }
-					block "cabinet_char_action" {}
+					block "cabinet_char_action"{}
 
 					datacontext = "[Cabinet.GetCharacter]"
 					blockoverride "character_tooltip" {
@@ -381,9 +281,9 @@
 						using = button_action_provider_base
 					}
 
-					blockoverride "character_contextmenu" {}
-					blockoverride "rightclick" {}
-					blockoverride "hover" {}
+					blockoverride "character_contextmenu"{}
+					blockoverride "rightclick"{}
+					blockoverride "hover"{}
 				}
 			}
 		}

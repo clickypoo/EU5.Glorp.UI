@@ -87,6 +87,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = right
 					text = "[Unit.GetNameWithNoTooltip]"
+					fontsize = 14
 				}
 				portrait_standard_head_button = {
 					datacontext = "[Unit.GetCommander]"

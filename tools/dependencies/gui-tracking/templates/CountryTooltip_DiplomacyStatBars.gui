@@ -1,6 +1,7 @@
 template CountryTooltip_DiplomacyStatBars {
+	visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"
+
 	TooltipStatsBar = {
-		visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"
 		blockoverride "items" {
 			TooltipStatBarIconTextItem = { # THEIR OPINION
                 blockoverride "item_icon_coa" { # Glorp UI - Opinion Mini Country Flag
@@ -82,7 +83,7 @@ template CountryTooltip_DiplomacyStatBars {
 			}
 		}
 	}
-	
+
 	# even more country stats icons
 	TooltipStatsBar = {
 		visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"
@@ -95,7 +96,7 @@ template CountryTooltip_DiplomacyStatBars {
 				}
 
 				blockoverride "item_text" {
-					raw_text = "[Country.GetDiplomacy.GetTrustTowards(GetSelectedCountryOrByLocation)|+=2]"
+					raw_text = "[Country.GetDiplomacy.GetTrustTowardsString(GetSelectedCountryOrByLocation)]"
 					layoutpolicy_horizontal = expanding
 					size = { -1 18}
 					autoresize = no
@@ -148,7 +149,7 @@ template CountryTooltip_DiplomacyStatBars {
 						}
 						textcontext = "[Country.GetDiplomaticCurrencyDesc('favors')]"
 					}
-				}					
+				}
 			}
 
 			TooltipStatBarIconTextItem = { # SPY

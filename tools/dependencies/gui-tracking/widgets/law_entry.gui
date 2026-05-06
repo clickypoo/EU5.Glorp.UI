@@ -23,6 +23,7 @@ OutlinerEntryBase = {
 				OutlinerTextBase = {
 					align = left
 					raw_text = "[Law.GetNameWithNoTooltip]: [Player.GetGovernment.GetPolicyForLaw(Law.Self).GetNameWithNoTooltip]"
+					maximumsize = { 260 -1 }
 				}
 
 				expand = {}

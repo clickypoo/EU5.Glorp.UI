@@ -17,11 +17,17 @@ template CountryModifier_tooltip {
 		}
 
 		blockoverride "tooltip_content" {
+			TooltipTextBlock = {
+				visible = "[CountryModifierWrap.HasMinCap]"
+				blockoverride "text" {
+					text = "[CountryModifierWrap.GetMinCapDescription]"
+				}
+			}
 			blockoverride "block_title" {
 				text = "COUNTRYMODIFIERWRAP_TOOLTIP_TEXT"
 			}
 			TooltipStringPairList = {
-				datacontext = "[StringToStringPairList(CountryModifierWrap.GetTooltip)]"
+				textcontext = "[CountryModifierWrap.GetTooltip]"
 			}
 		}
 	}

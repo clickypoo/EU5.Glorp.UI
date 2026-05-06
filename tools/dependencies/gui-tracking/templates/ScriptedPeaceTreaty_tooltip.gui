@@ -7,7 +7,7 @@ template ScriptedPeaceTreaty_tooltip {
 		blockoverride "title_icon" {
 			icon = {
 				using = tooltip_title_icon_size
-				texture = "gfx/interface/icons/character_interactions/peace.dds"
+				texture = "gfx/interface/icons/peace_treaty/sue_for_peace.dds"
 			}
 		}
 

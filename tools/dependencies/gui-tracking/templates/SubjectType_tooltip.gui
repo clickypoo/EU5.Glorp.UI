@@ -4,7 +4,7 @@ template SubjectType_tooltip {
 		blockoverride "title_text" {
 			text = "[SubjectType.GetNameWithNoTooltip]"
 		}
-		
+
 		blockoverride "title_icon" {
 			icon = {
 				using = tooltip_title_icon_size
@@ -17,6 +17,11 @@ template SubjectType_tooltip {
 			text = [subject_type|E]
 		}
 		blockoverride "tooltip_content" {
+			TooltipDebugTextBlock = {
+				blockoverride "text" {
+					debug_text = "[SubjectType.GetDebugText]"
+				}
+			}
 			TooltipFlavorTextBlock = {
 				blockoverride "text" {
 					text = "[SubjectType.GetFlavor]"
@@ -32,7 +37,7 @@ template SubjectType_tooltip {
 						}
 						textcontext = "[SubjectType.GetStatusRulesForType]"
 					}
-					
+
 					TooltipRowList = {
 						visible = "[SubjectType.HasAnnexationRules]"
 						blockoverride "block_title" {
@@ -45,10 +50,10 @@ template SubjectType_tooltip {
 						visible = "[Not(SubjectType.HasAnnexationRules)]"
 						blockoverride "block_title" {
 							text = "SUBJECT_ANNEXATION_TT"
-						}				
+						}
 						textcontext = "SUBJECT_NOT_ANNEXATION_TT"
 					}
-					
+
 					TooltipRowList = {
 						visible = "[SubjectType.HasBuildingRules]"
 						blockoverride "block_title" {
@@ -56,7 +61,7 @@ template SubjectType_tooltip {
 						}
 						textcontext = "[SubjectType.GetBuildingRulesForType]"
 					}
-					
+
 					TooltipRowList = {
 						visible = "[SubjectType.HasDiplomaticRules]"
 						blockoverride "block_title" {
@@ -64,7 +69,7 @@ template SubjectType_tooltip {
 						}
 						textcontext = "[SubjectType.GetDiplomaticRulesForType]"
 					}
-				
+
 					TooltipStringPairList = {
 						visible = "[SubjectType.HasOverlordBenefits]"
 						blockoverride "block_title" {
@@ -79,7 +84,7 @@ template SubjectType_tooltip {
 						}
 						textcontext = "[SubjectType.GetSubjectBenefitsForType]"
 					}
-					
+
 					TooltipRowList = {
 						visible = "[SubjectType.HasMonthly]"
 						blockoverride "block_title" {

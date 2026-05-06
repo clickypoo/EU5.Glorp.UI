@@ -204,7 +204,7 @@ lateralview = {
 							name = "name"
 							using = layoutpolicy_expanding
 						}
-		
+
 						# sort_by_key_button = {
 						# 	name = "profit"
 						# 	layoutpolicy_vertical = expanding
@@ -455,7 +455,7 @@ lateralview = {
 															enabled = "[GreaterThan_int32(CategoryBuildingTypesItem.GetBuildingTypesAmount, '(int32)0')]"
 															on_action = "[CategoryBuildingTypesItem.Toggle]"
 														}
-								
+
 														action_tooltip = {
 															click_type = right
 															click_mode = single
@@ -745,7 +745,7 @@ lateralview = {
 																			}
 																			background = {
 																				texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
-																				
+
 																				modify_texture = {
 																					using = color_new_gold_texture
 																				}
@@ -784,7 +784,7 @@ lateralview = {
 																					visible = "[BuildingItem.HasBuildingsLackingInput]"
 																					using = bg_circle
 																				}
-																				
+
 																			}
 																		}
 																	}
@@ -952,7 +952,7 @@ lateralview = {
 																			}
 																			background = {
 																				texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
-																				
+
 																				modify_texture = {
 																					using = color_new_gold_texture
 																				}
@@ -991,7 +991,7 @@ lateralview = {
 																					visible = "[BuildingItem.HasBuildingsLackingInput]"
 																					using = bg_circle
 																				}
-																				
+
 																			}
 																		}
 																	}
@@ -1128,7 +1128,7 @@ lateralview = {
 																						texture = "gfx/interface/buttons/flats/upgrade_button2.dds"
 																					}
 																					visible = "[And(Building.CanPlayerUpgrade, Not(BuildingItem.GetBuildingType.IsForeign))]"
-																					datacontext = "[Building.GetType.GetNextReplaced(Player.Self)]"
+																					datacontext = "[Building.GetType.GetNextReplacementBuilding(Player.Self)]"
 																					datacontext = "[Building.GetLocation]"
 																					enabled = "[CanBuildOrExpandBuilding(BuildingType.Self, Location.Self)]"
 																					action_tooltip = {

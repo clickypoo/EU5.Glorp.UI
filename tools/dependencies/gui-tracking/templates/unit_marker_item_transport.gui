@@ -8,7 +8,7 @@ template unit_marker_item_transport {
 		texture_density = 2
 		spriteType = corneredstretched
 		spriteBorder = { 20 20 }
-		using = marker_unit_side_color
+		using = marker_unit_side_color_transporting
 
 		modify_texture = {
 			using = color_grey_texture

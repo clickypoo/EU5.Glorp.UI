@@ -4,7 +4,7 @@
 		alwaystransparent = no
 		filter_mouse = all
 		allow_outside = yes
-	
+
 		# block "additional_precontent" {}
 		# block "organization_panel_content" {
 			# Opened panel
@@ -41,5 +41,5 @@
 				}
 			}
 			lateralview_topbuttons = {}
-		# }
-	}
+			# }
+		}

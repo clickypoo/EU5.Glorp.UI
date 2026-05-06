@@ -7,7 +7,7 @@ lateralview = {
 			blockoverride "window_header_alt_color_texture" {
 				using = color_default_brown_texture
 			}
-			
+
 			blockoverride "header_text_object" {
 				hbox = {
 					spacing = 5
@@ -68,7 +68,7 @@ lateralview = {
 							lowpriotextcontext = "[DeclareWarLateralView.GetLandComparisonTooltip]"
 
 						}
-					}					
+					}
 
 					piechart = {
 						size = { 32 32 }
@@ -149,7 +149,7 @@ lateralview = {
 						}
 					}
 				}
-					
+
 				# NAVAL COMPARISON
 				hbox = {
 					layoutpolicy_horizontal = expanding
@@ -169,7 +169,7 @@ lateralview = {
 							}
 							lowpriotextcontext = "[DeclareWarLateralView.GetNavalComparisonTooltip]"
 						}
-					}								
+					}
 
 					vbox = {
 						layoutpolicy_horizontal = expanding
@@ -277,25 +277,25 @@ lateralview = {
 						}
 					}
 				}
-		
+
 				blockoverride "FirstCountryContext" {
 					datacontext = "[DeclareWarLateralView.GetPlayer]"
 				}
-		
+
 				blockoverride "SecondCountryContext" {
 					datacontext = "[DeclareWarLateralView.GetEnemyCountry]"
 				}
-		
+
 				# blockoverride "history_button_anchor" {}
-		
+
 				blockoverride "first_character_portrait_anchor" {
 					parentanchor = bottom|left
 				}
-		
+
 				blockoverride "second_character_portrait_anchor" {
 					parentanchor = bottom|right
 				}
-		
+
 				blockoverride "character_religion_visibility" {
 					visible = no
 				}
@@ -380,7 +380,7 @@ lateralview = {
 									position = {-20 0}
 								}
 							}
-							
+
 							widget = {
 								layoutpolicy_horizontal = expanding
 								size = { -1 45 }
@@ -402,7 +402,7 @@ lateralview = {
 												default_format = "#header_titles"
 												autoresize = no
 											}
-					
+
 											text_single = {
 												align = left|nobaseline
 												size = {155 16}
@@ -416,7 +416,7 @@ lateralview = {
 									}
 								}
 							}
-		
+
 							widget = {
 								layoutpolicy_horizontal = expanding
 								size = { -1 45 }
@@ -426,8 +426,8 @@ lateralview = {
 										using = layoutpolicy_expanding
 										spacing = 5
 										datacontext = "[DeclareWarLateralView.GetEnemyCountry]"
-										margin_left = 25	
-										country_flag_mid = {size = { 48 32 }}										
+										margin_left = 25
+										country_flag_mid = {size = { 48 32 }}
 										vbox = {
 											expand = {}
 											text_single = {
@@ -454,11 +454,11 @@ lateralview = {
 						}
 					}
 				}
-		
+
 				blockoverride "character_name_maximumsize" {
 					maximumsize = { 270 -1 }
 				}
-		
+
 				blockoverride "abilities_box" {
 					visible = no
 				}
@@ -541,7 +541,7 @@ lateralview = {
 											blockoverride "joining_countries_declare_war_title" {
 												text = "PEACE_FRIENDLY_PARTICIPANTS"
 											}
-				
+
 											blockoverride "joining_countries_declare_war_amount" {
 												text = "[Add_int32('(int32)1', GetDataModelSize(DeclareWarLateralView.GetPlayerAllies))]"
 											}
@@ -631,7 +631,7 @@ lateralview = {
 																	}
 																}
 															}
-															
+
 															TooltipTextBlock = {
 																visible = "[DeclareWarAlly.GetCountry.GetDiplomacy.GetOverlord.HasHumanController]"
 																blockoverride "text" {
@@ -753,7 +753,7 @@ lateralview = {
 																	blockoverride "text" {
 																		text = "[SelectLocalization(ObjectsEqual(DeclareWarAlly.GetSideLeader, Player.Self), 'CANT_BREAK_COBELLIGERENT_TRUCE', 'BREAKING_COBELLIGERENT_TRUCE')]"
 																	}
-													
+
 																	blockoverride "textblock_background_tint"  {
 																		modify_texture = {
 																			using = color_dark_red_texture
@@ -786,7 +786,7 @@ lateralview = {
 											blockoverride "leader_is_expanded" {
 												visible = "[DeclareWarLateralView.Vars.Exists('enemy_subjects')]"
 											}
-											
+
 											blockoverride "leader_toggle_expand" {
 												onclick = "[DeclareWarLateralView.Vars.Toggle('enemy_subjects')]"
 											}
@@ -868,7 +868,7 @@ lateralview = {
 																	blockoverride "text" {
 																		text = "[SelectLocalization(ObjectsEqual(DeclareWarAlly.GetSideLeader, Player.Self), 'CANT_BREAK_COBELLIGERENT_TRUCE', 'BREAKING_COBELLIGERENT_TRUCE')]"
 																	}
-													
+
 																	blockoverride "textblock_background_tint"  {
 																		modify_texture = {
 																			using = color_dark_red_texture
@@ -905,7 +905,7 @@ lateralview = {
 											blockoverride "leader_toggle_expand" {
 												onclick = "[DeclareWarLateralView.Vars.Toggle('enemy_subjects')]"
 											}
-												
+
 											blockoverride "side_leader_has_subjects" {
 												visible = "[DeclareWarLateralView.HasEnemySubjects]"
 											}
@@ -978,9 +978,6 @@ lateralview = {
 													tooltipwidget = {
 														using = CasusBelli_tooltip
 														# BasicFunctionalTooltip = {}
-														blockoverride "shift_left_extra" {
-															replacement_shift_item = {}
-														}
 													}
 													action_tooltip = {
 														click_type = left
@@ -988,17 +985,18 @@ lateralview = {
 														title = "SELECT_CASUS_BELLI_TT"
 														on_action = "[DeclareWarLateralView.ShowSelectCasusBelli]"
 													}
-		
+
 													action_tooltip = {
 														click_modifier = shift
 														click_type = left
 														title = "ALERT_HINT"
+														click_modifier_description = "OPEN_HINT_TEXT"
 														using = snd_UI_alert_openAndCycle
 														on_action = "[DeclareWarLateralView.ShowSelectCasusBelli]"
 														on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_casus_belli')]"
 														on_action = "[PdxGuiTriggerAllAnimations('reset_carousel')]"
 													}
-		
+
 												}
 												layoutpolicy_horizontal = expanding
 												size = { -1 45 }
@@ -1006,11 +1004,11 @@ lateralview = {
 													spacing = 5
 													margin = { 6 3 }
 													margin_right = 10
-													
+
 													icon = {
 														size = { 36 36 }
 														texture = "gfx/interface/icons/flat_icons/declare_war/casus_belli_change.dds"
-														texture_density = 2														
+														texture_density = 2
 														glow = {
 															name = "drop_shadow"
 															glow_radius = 3
@@ -1022,15 +1020,15 @@ lateralview = {
 														margin = { 0 3 }
 														visible = "[Not(DeclareWarLateralView.IsAnyCasusBelliSelected)]"
 														using = layoutpolicy_expanding
-										
+
 														text_single = {
 															layoutpolicy_horizontal = expanding
 															fontsize = 14
 															align = left|nobaseline
 															text = "CASUS_BELLI_AND_WARGOAL"
-						
+
 														}
-										
+
 														text_single = {
 															layoutpolicy_horizontal = expanding
 															fontsize = 11
@@ -1060,7 +1058,7 @@ lateralview = {
 																size = { 13 13 }
 																texture = "[GetWarGoalIcon(DeclareWarLateralView.GetSelectedWarGoal.GetWarGoalType)]"
 															}
-						
+
 															text_single = {
 																fontsize = 11
 																autoresize = yes
@@ -1089,7 +1087,7 @@ lateralview = {
 																tooltipwidget = {
 																	using = game_concept_tooltip
 																}
-					
+
 																hbox = {
 																	spacing = 5
 																	expand = {}
@@ -1099,20 +1097,20 @@ lateralview = {
 																		texture = "[CurrencyPriceWrap.GetIcon]"
 																		texture_density = 2
 																	}
-					
+
 																	text_single = {
 																		maximumsize = {50 20}
 																		align = nobaseline
 																		fontsize = 12
 																		text = "[CurrencyPriceWrap.GetCost]"
 																	}
-					
+
 																	tooltipwidget = {
 																		ContextualTooltipType = {
 																			blockoverride "title_text" {
 																				text = "DECLARE_WAR_COST"
 																			}
-																			
+
 																			blockoverride "title_icon" {
 																				icon = {
 																					using = tooltip_title_icon_size
@@ -1124,7 +1122,7 @@ lateralview = {
 																			blockoverride "concept_link" {
 																				text = [price|E]
 																			}
-																			
+
 																			blockoverride "tooltip_content" {
 																				vbox = {
 																					spacing = 5
@@ -1148,13 +1146,13 @@ lateralview = {
 													widget = {
 														size = {80 30}
 														visible = "[DeclareWarLateralView.GetPriceImpactFromWar.HasAntagonism]"
-				
+
 														using = bg_text_mask_container_dark_blue
 
 														datacontext = "[GC('antagonism')]"
 														tagtooltip_enabled = yes
 														tooltip = "[DeclareWarLateralView.GetPriceImpactFromWar.GetBaseAntagonismValueString]"
-				
+
 														hbox = {
 															spacing = 5
 															expand = {}
@@ -1163,7 +1161,7 @@ lateralview = {
 																texture = "[GetConceptTexture('antagonism')]"
 																texture_density = 2
 															}
-				
+
 															text_single = {
 																visible = "[DeclareWarLateralView.IsAntagonismCalculationDone]"
 																maximumsize = {50 20}
@@ -1193,7 +1191,7 @@ lateralview = {
 
 						button_wax = {
 							layoutpolicy_horizontal = expanding
-			
+
 							hbox = {
 								spacing = 5
 								expand = {}
@@ -1202,12 +1200,12 @@ lateralview = {
 									size = {25 25}
 									texture = "gfx/interface/icons/flat_icons/declare_war/declare_war_button.dds"
 								}
-			
+
 								text_single = {
 									text = "WARTITLE"
 									using = Font_Type_Headers
 								}
-			
+
 								expand = {}
 							}
 
@@ -1217,28 +1215,28 @@ lateralview = {
 								position = { -11 0 }
 								datacontext = "[DeclareWarLateralView.GetEnemyCountry]"
 								visible = "[Country.GetDiplomacy.GetRelation(GetPlayer.Self).HasTruce]"
-			
+
 								using = bg_circle_piechart
 								using = piechart_angles
-			
+
 								pieslice = {
 									texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
 									value = "[Country.GetDiplomacy.GetRelation(GetPlayer.Self).GetTruceProgress]"
 									color = { 0.01 0.6 0.9 1 }
 								}
-			
+
 								pieslice = {
 									texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
 									value = "[Subtract_float('(float)100.0', Country.GetDiplomacy.GetRelation(GetPlayer.Self).GetTruceProgress)]"
 									color = { 1 1 1 0 }
 								}
-			
+
 								icon = {
 									texture = "gfx/interface/icons/diplomatic_status/truce.dds"
 									size = { 65% 65% }
 									parentanchor = center
 								}
-			
+
 								tooltipwidget = {
 									ContextualTooltipType = {
 										blockoverride "title_icon" {
@@ -1247,16 +1245,16 @@ lateralview = {
 												texture = "gfx/interface/icons/diplomatic_status/truce.dds"
 											}
 										}
-									
+
 										blockoverride "title_text" {
 											datacontext = "[Country]"
 											text = "TRUCE_WITH_COUNTRY_TITLE"
 										}
-															
+
 										blockoverride "concept_link" {
 											text = [truce|E]
 										}
-				
+
 										blockoverride "tooltip_content" {
 											TooltipTextBlock = {
 												blockoverride "text" {
@@ -1267,7 +1265,7 @@ lateralview = {
 									}
 								}
 							}
-			
+
 							datacontext = "[DeclareWarLateralView.GetDeclareWarAction]"
 							using = button_action_provider
 							tooltipwidget = {

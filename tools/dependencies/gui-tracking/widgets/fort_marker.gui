@@ -3,29 +3,37 @@ container = {
 	allow_outside = yes
 
 	datacontext = "[FortMarker.GetLocation]"
-	flowcontainer = {
-		location_rank_icon = {
-			visible = "[Or(Location.IsProvinceCapital, Location.IsCapital)]"
-			parentanchor = center
-			blockoverride "icon_size" {
-				size =  { 30 30 }
-				parentanchor = bottom
+	widget = {
+		hbox = {
+			set_parent_size_to_minimum = yes
+			widget = {
+				size =  { 20 30 }
+				location_rank_icon = {
+					visible = "[Or3(Location.IsProvinceCapital, Location.IsCapital, Location.HasAnyFort)]"
+					parentanchor = center
+					position = { 0 2 }
+					blockoverride "icon_size" {
+						size =  { 20 20 }
+						parentanchor = hcenter|bottom
+					}
+				}
 			}
-		}
-		icon = {
-			visible = "[Location.HasAnyFort]"
-			parentanchor = center
-			texture = "[GetBuildingIcon(Location.GetBestFortBuilding.GetType)]"
-			size = { 30 30 }
+			icon = {
+				alwaystransparent = no
+				visible = "[Location.HasAnyFort]"
+				texture = "[GetBuildingIcon(Location.GetBestFortBuilding.GetType)]"
+				size = { 30 30 }
+				onmousehierarchyenter = "[PdxGuiWidget.SetHighlightFort(Location.Self)]"
 
-			glow = {
-				glow_radius = 2
-				color = {0.0 0.0 0.0 1.0}
-				alpha = 0.5
-			}
+				glow = {
+					glow_radius = 2
+					color = {0.0 0.0 0.0 1.0}
+					alpha = 0.5
+				}
 
-			tooltipwidget = {
-				using = Garrison_tooltip
+				tooltipwidget = {
+					using = Garrison_tooltip
+				}
 			}
 		}
 	}

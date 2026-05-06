@@ -56,8 +56,6 @@ OutlinerEntryBase = {
 		}
 	}
 	blockoverride "button_setup" {
-		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCabinetActionTarget(Cabinet.Self)]"
-
 		using = cabinet_entry_actions
 		tooltipwidget = {
 			using = action_progress_tooltip

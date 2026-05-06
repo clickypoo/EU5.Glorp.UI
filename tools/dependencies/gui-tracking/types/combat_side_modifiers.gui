@@ -53,10 +53,10 @@
 				autoresize = no
 				size = {30 17}
 				align = center
-				text = "[Country.GetModifierValueNoFormat('military_tactics')]"
+				text = "[CombatSide.GetCommander.GetCombatModifierNoFormat(CombatSide.GetCountry, 'military_tactics', CombatSide.GetCombat.IsNavalCombat)|+=2]"
 			}
 			tooltipwidget = {
-				using = MilitaryTacticsTooltip
+				using = CombatMilitaryTacticsTooltip
 			}
 		}
 
@@ -112,7 +112,7 @@
 				autoresize = no
 				size = {40 17}
 				align = center
-				text = "[CombatSide.GetCommander.GetCombatModifierNoFormat(CombatSide.GetCountry, 'discipline')|%+]"
+				text = "[CombatSide.GetCommander.GetCombatModifierNoFormat(CombatSide.GetCountry, 'discipline', CombatSide.GetCombat.IsNavalCombat)|%+]"
 			}
 
 			tooltipwidget = {

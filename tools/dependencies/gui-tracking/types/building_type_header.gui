@@ -131,7 +131,7 @@
 						position = { 5 0 }
 						size = {42 100%}
 						parentanchor = left|vcenter
-			
+
 						widget = {
 							size = {36 36}
 							using = bg_circle_outline
@@ -146,8 +146,8 @@
 								texture_density = 2
 								margin = {1 1}
 							}
-							
-							
+
+
 							parentanchor = left|vcenter
 							icon = {
 								size = {40 40} # GlorpUI: 40->31
@@ -176,7 +176,7 @@
 						icon = {
 							size = { 10 10 }
 							visible = "[BuildingItem.HasBuildingsLackingInput]"
-							position = { 6 6 }
+							position = { 0 6 }
 							parentanchor = top|left
 							using = warning_icon_texture
 							texture_density = 2
@@ -195,7 +195,7 @@
 							margin = { 35 0 }
 							margin_right = 10
 							datacontext = "[BuildingItem.GetBuildingType]"
-							
+
 							widget = {
 								size = { 16 16}
 								icon = {

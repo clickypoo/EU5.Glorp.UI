@@ -1,7 +1,7 @@
 template cabinet_card_header_content {
 	hbox = {
 		using = layoutpolicy_expanding
-		spacing = -12
+		spacing = 5
 		margin_left = 10
 		margin_right = 10
 
@@ -23,7 +23,7 @@ template cabinet_card_header_content {
 				default_format = "#yellow_titles"
 				align = left
 			}
-            # Glorp UI
+
             tooltipwidget = {
                 using = action_progress_tooltip
             }
