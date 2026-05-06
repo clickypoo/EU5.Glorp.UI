@@ -229,12 +229,12 @@ types glorp {
                                             }
                                         }
                                         blockoverride "title_text" {
-                                            text = "GLORP_UI_AVG_CONTROL_HOME_REGION"
+                                            text = "GLORP_UI_AVG_CONTROL"
                                         }
                                         blockoverride "tooltip_content" {
                                             TooltipTextBlock = {
                                                 blockoverride "text" {
-                                                    text = "GLORP_UI_AVG_CONTROL_HOME_REGION_DESC"
+                                                    text = "GLORP_UI_AVG_CONTROL_DESC"
                                                 }
                                             }
                                         }
@@ -242,7 +242,7 @@ types glorp {
                                 }
                                 stat_item = {
                                     alwaystransparent = yes
-                                    blockoverride "stat_text" { text = "[Player.MakeScope.GetVariable('glorpui_avg_control_home_region').GetValue|2%]" }
+                                    blockoverride "stat_text" { text = "[Player.MakeScope.GetVariable('glorpui_avg_control').GetValue|2%]" }
                                     blockoverride "stat_icon" { texture = "gfx/interface/icons/location_icons/control.dds" }
                                 }
                             }

@@ -20,7 +20,7 @@ glorpui_on_country_value_sync = {
 	effect = {
 		if = {
 			limit = { is_human = yes }
-			glorpui_sync_avg_control_home_region = yes
+			glorpui_sync_avg_control = yes
 			glorpui_sync_avg_proximity = yes
 		}
 	}
@@ -28,7 +28,7 @@ glorpui_on_country_value_sync = {
 
 glorpui_on_human_country_value_sync_init = {
 	effect = {
-		glorpui_sync_avg_control_home_region = yes
+		glorpui_sync_avg_control = yes
 		glorpui_sync_avg_proximity = yes
 	}
 }
