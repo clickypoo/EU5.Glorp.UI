@@ -1,0 +1,39 @@
+	type declare_war_comparisson = text_single {
+		block "declare_war_comparison_visible" {}
+		margin = {15 5}
+		background = {
+			texture = "gfx/interface/component_tiles/circle_container_flat.dds"
+			mirror = horizontal
+			texture_density = 2
+			spriteType = corneredstretched
+			spriteBorder = { 16 0 }
+			alpha = 1
+
+			modify_texture = {
+				using = color_bg_brown_texture
+			}
+			modify_texture = {
+				using = overlay_striped_texture
+				blend_mode = overlay
+				alpha = 0.2
+			}
+			modify_texture = {
+				texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_solid.dds"
+				blend_mode = multiply
+				alpha = 0.4
+			}
+		}
+		default_format = "#yellow_titles"
+		align = nobaseline
+		fontsize = 14
+		using = FontDefaultColor
+		block "declare_war_comparison_text" {
+			raw_text = " "
+		}
+		icon = {
+			parentanchor = center
+			position = {0 -3}
+			size = {107% 100%}
+			using = baroque_corner_flavor_01
+		}
+	}

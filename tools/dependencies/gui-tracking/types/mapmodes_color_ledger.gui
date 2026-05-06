@@ -1,0 +1,111 @@
+	type mapmodes_color_ledger = vbox {
+		#size = { 280 300 }
+		min_height = "[Min_int32('(int32)300', Add_int32('(int32)84', Multiply_int32(GetDataModelSize(GetMapColorLedger), '(int32)33')))]"
+		using = bg_paper_card
+		datacontext = "[GetMapColorLedgerSearchBar]"
+
+		vbox = {
+			using = layoutpolicy_expanding
+
+			widget = {
+				layoutpolicy_horizontal = expanding
+				size = { -1 30 }
+				# using = bg_card_header_01
+				background = {
+					texture = "gfx/interface/buttons/button_banner_02.dds"
+					texture_density = 2
+					alpha = 1
+					spriteType = corneredstretched
+					spriteborder = { 40 0 }
+					frame_grid = {4 1}
+					frame = 1
+					margin = { 13 3 }
+
+					modify_texture = {
+						using = overlay_cloth_texture
+						blend_mode = overlay
+						alpha = 0.1
+					}
+				}
+
+				text_single = {
+					margin_top = 2
+					parentanchor = hcenter
+					text = "MAP_COLOR_LEDGER_TITLE"
+				}
+			}
+
+			scrollarea = {
+				visible = "[Not(SearchBar.IsTextFilterEmpty)]"
+				using = layoutpolicy_expanding
+
+				scrollbarpolicy_horizontal = always_off
+				autoresizeviewport = yes
+				viewportwidget = {
+					widget = {
+						scissor = yes
+					}
+				}
+
+				scrollbar_vertical = {
+					using = Scrollbar_Vertical
+				}
+
+				scrollwidget = {
+					fixedgridbox = {
+						addrow = 33
+						setitemsizefromcell = yes
+						addcolumn = 100%
+						datamodel = "[SearchBar.GetAutocompleteEntries]"
+
+						item = {
+							mapmodes_color_ledger_item = {
+								datacontext = "[GetMapColorLedgerByName(AutocompleteEntry.GetName)]"
+							}
+						}
+					}
+				}
+			}
+
+			scrollarea = {
+				visible = "[SearchBar.IsTextFilterEmpty]"
+				using = layoutpolicy_expanding
+
+				scrollbarpolicy_horizontal = always_off
+				autoresizeviewport = yes
+				viewportwidget = {
+					widget = {
+						scissor = yes
+					}
+				}
+
+				scrollbar_vertical = {
+					using = Scrollbar_Vertical
+				}
+
+				scrollwidget = {
+					fixedgridbox = {
+						addrow = 33
+						setitemsizefromcell = yes
+						addcolumn = 100%
+						datamodel = "[GetMapColorLedger]"
+
+						item = {
+							mapmodes_color_ledger_item = {}
+						}
+					}
+				}
+			}
+
+			searchbar = {
+				layoutpolicy_horizontal = expanding
+				size = { -1 54 }
+				minimumsize = { 210 -1 }
+				blockoverride "searchbar_editbox_setup" {
+					onreturnpressed = "[MapModeSelectorVars.ClearIf('tab', MapModeSelectorVars.HasValue('tab', 'search'))]"
+					onfocusout = "[MapModeSelectorVars.ClearIf('tab', MapModeSelectorVars.HasValue('tab', 'search'))]"
+				}
+				blockoverride "autocomplete_dropdown" { widget = { name = "autocomplete" } }
+			}
+		}
+	}

@@ -1,0 +1,41 @@
+	type unit_marker_battle_side_flank = widget {
+		size = { 10 10 }
+		using = bg_square_tile_shadow
+
+		tooltipwidget = {
+			using = CombatSubUnitArray_tooltip
+		}
+
+		background = {
+			texture = "gfx/interface/icons/flat_icons/battle/base.dds"
+			texture_density = 2
+
+			modify_texture = {
+				using = color_black_texture
+				alpha = 0.4
+				blend_mode = overlay
+			}
+
+			# Flank without regiments
+			modify_texture = {
+				visible = "[Or(And3(Not(Combat.IsInBombardPhase), IsDataModelEmpty(CombatSubUnitArray.GetEngaged), IsDataModelEmpty(CombatSubUnitArray.GetNonEngaged)), And(Combat.IsInBombardPhase, IsDataModelEmpty(CombatSubUnitArray.GetCanBombard)))]"
+				using = color_enemy_red_texture
+			}
+
+			# Flank with regiments not engaged
+			modify_texture = {
+				visible = "[And3(Not(Combat.IsInBombardPhase), IsDataModelEmpty(CombatSubUnitArray.GetEngaged), Not(IsDataModelEmpty(CombatSubUnitArray.GetNonEngaged)))]"
+				using = color_mid_yellow_texture
+				alpha = 0.8
+			}
+
+			# Flank with regiments engaged
+			modify_texture = {
+				visible = "[Or(
+				And(Not(Combat.IsInBombardPhase), GreaterThan_CFixedPoint(CombatSubUnitArray.GetEngagedFrontage,'(CFixedPoint)0.0')),
+				And(Combat.IsInBombardPhase, Not(IsDataModelEmpty(CombatSubUnitArray.GetCanBombard))))]"
+				using = color_light_green_texture
+				alpha = 0.4
+			}
+		}
+	}

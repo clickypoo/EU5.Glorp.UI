@@ -1,0 +1,99 @@
+template country_tooltip_subjects {
+	ContextualTooltipType = {
+		blockoverride "title_icon" {
+			icon = {
+				using = tooltip_title_icon_size
+				texture = "gfx/interface/icons/treaty_type/become_subject.dds"
+			}
+		}
+
+
+		blockoverride "title_text" {
+			text = "SUBJECTS_COUNTRY_TOOLTIP"
+		}
+
+		blockoverride "concept_link" {
+			text = "[subject|e]"
+		}
+
+		blockoverride "tooltip_content" {
+			TooltipListBase = {
+				TooltipListScrollArea = {
+					blockoverride "scrollarea_content" {
+						fixedgridbox = {
+							addcolumn = 420
+							addrow = 30
+							setitemsizefromcell = yes
+
+							datamodel = "[Country.GetDiplomacy.GetSubjects]"
+							item = {
+								widget = {
+									background = {
+										visible = "[IsOdd_int32(PdxGuiWidget.GetIndexInDataModel)]"
+										using = tooltip_table_field_texture
+									}
+
+									hbox = {
+										using = layoutpolicy_expanding
+										margin = { 10 0 }
+										spacing = 10
+
+										country_flag_small = {
+											datacontext = "[Country]"
+										}
+
+
+										text_single = {
+											align = nobaseline
+											text = "[Country.GetLongNameWithNoTooltip]"
+											tooltipwidget = {
+												datacontext = "[Country]"
+												using = SubjectType_Tooltip
+											}
+										}
+
+										expand = {}
+
+										text_single = {
+											visible = "[Country.GetDiplomacy.IsDisloyalSubject]"
+											text = "[Country.GetDiplomacy.GetSubjectLoyalty|R2%/]"
+											datacontext = "[Country]"
+											tooltipwidget = {
+												using = SubjectLoyalty_tooltip
+											}
+										}
+
+										text_single = {
+											visible = "[Not(Country.GetDiplomacy.IsDisloyalSubject)]"
+											text = "[Country.GetDiplomacy.GetSubjectLoyalty|G2%/]"
+											datacontext = "[Country]"
+											tooltipwidget = {
+												using = SubjectLoyalty_tooltip
+											}
+										}
+
+										icon = {
+											size = { 24 24 }
+											texture = "[GetSubjectTypeIcon(Country.GetDiplomacy.GetSubjectType)]"
+											alpha = 0.8
+											glow = {
+												name = "drop_shadow"
+												glow_radius = 3
+												color = {0.0 0.0 0.0 1.0}
+												alpha = 0.3
+											}
+											tooltipwidget = {
+												datacontext = "[Country]"
+												using = SubjectType_Tooltip
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,114 @@
+	type not_overlord_cards = widget {
+		block "joining_countries_declare_war_exclude_not_overlords" {
+			visible = "[Not(DeclareWarAlly.HasSubjectAllies)]"
+		}
+		size = {230 55}
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			using = bg_paper_card_fancy
+			block "joining_countries_card_tooltip" {}
+
+			joining_countries_button_header = {
+				visible = "[Not(Or(DeclareWarAlly.IsSubject, And(Not(DeclareWarAlly.IsCallAllyEnabled), DeclareWarAlly.IsCallAllyAutoJoin)))]"
+			}
+			joining_countries_card_header = {
+				visible = "[Or(DeclareWarAlly.IsSubject, And(Not(DeclareWarAlly.IsCallAllyEnabled), DeclareWarAlly.IsCallAllyAutoJoin))]"
+			}
+
+			widget = {
+				layoutpolicy_horizontal = expanding
+				size = { -1 25 }
+
+				hbox = {
+					margin = { 5 0 }
+					text_single = {
+						size = {70 20}
+						autoresize = no
+						align = center|nobaseline
+						raw_text = "[DeclareWarAlly.GetCountry.GetTotalArmyStrengthAndPotentialLevies]@army_strength!"
+					}
+
+					divider_flavor_01 = { 
+						blockoverride "divider_margin" {}
+						size = {9 -1}
+					}
+
+					text_single = {
+						size = {70 20}
+						autoresize = no
+						align = center|nobaseline
+						raw_text = "[DeclareWarAlly.GetCountry.GetTotalShips]@navy_strength!"
+					}
+
+					divider_flavor_01 = {
+						block "joining_countries_declare_war_show_promise_land" {
+							visible = "[Not(DeclareWarAlly.IsSubject)]"
+						}
+						blockoverride "divider_margin" {}
+						size = {9 -1}
+					}
+
+					widget = {
+						layoutpolicy_vertical = expanding
+						size = { 67 -1 }
+
+						hbox = {
+							expand = {}
+
+							icon = {
+								block "joining_countries_declare_war_show_promise_land" {
+									visible = "[Not(DeclareWarAlly.IsSubject)]"
+								}
+								size = {18 18}
+								texture = "[GetConceptTexture('area')]"
+							}
+
+							widget = {
+								size = { 19 19 }
+								# Avoiding assert when checking relations and also simplifying code in checkboxes
+								# Use the same visible as for call ally as they are always together
+								block "joining_countries_declare_war_show_promise_land" {
+									visible = "[Not(DeclareWarAlly.IsSubject)]"
+								}
+							
+								# Enabled checkboxes
+								button_checkbox = {
+									size = { 19 19 }
+									enabled = "[DeclareWarAlly.IsPromiseLandEnabled]"
+
+									tooltipwidget = {
+										SimpleContextualTooltipType = {
+											blockoverride "title_icon" {
+												country_flag_small = {
+													datacontext = "[DeclareWarAlly.GetCountry]"
+												}
+											}
+											blockoverride "title_text" {
+												text = "[DeclareWarAlly.GetCountry.GetLongNameWithNoTooltip]"
+											}
+											blockoverride "concept_link" {
+												text = [call_to_arms|e]
+											}
+											lowpriotextcontext = "[DeclareWarAlly.GetPromiseLandTooltip]"
+											blockoverride "tooltip_extra_content" {
+												TooltipFunctionalBlock = {
+													using = tooltip_left_click_template
+												
+													blockoverride "action_left_text" {
+														text = "PROMISE_LAND"
+													}
+												}
+											}
+										}
+									}
+									checked = "[DeclareWarAlly.IsPromiseLandChecked]"
+									onclick = "[DeclareWarAlly.OnPromiseLandClick]"
+								}
+							}
+							expand = {}
+						}
+					}
+				}
+			}
+		}
+	}

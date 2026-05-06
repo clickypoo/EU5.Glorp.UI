@@ -1,0 +1,28 @@
+template formablecountry_info {
+	TooltipTextBlock = {
+		blockoverride "text" {
+			text = "[FormableCountry.GetRank]"
+		}
+	}
+	TooltipRowList = {
+		visible = "[FormableCountry.HasPossibleAdvances]"
+		blockoverride "block_title" {
+			text = "POSSIBLE_ADVANCES_FOR_FORMABLE"
+		}
+		textcontext = "[FormableCountry.GetPossibleAdvances]"
+	}
+
+	TooltipRowList = {
+		visible = "[Not(StringIsEmpty( FormableCountry.GetEffects ))]"
+		blockoverride "block_title" {
+			text = "WHEN_FORMED"
+		}
+		textcontext = "[FormableCountry.GetEffects]"
+	}
+	TooltipFlavorTextBlock = {
+		visible = "[Not(StringIsEmpty( FormableCountry.GetFlavorText ))]"
+		blockoverride "text" {
+			text = "[FormableCountry.GetFlavorText]"
+		}
+	}
+}

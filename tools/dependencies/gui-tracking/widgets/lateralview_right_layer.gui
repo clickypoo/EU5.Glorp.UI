@@ -1,0 +1,4 @@
+widget = {
+	name = "lateralview_right_layer"
+	using = lateralview_right_setup
+}

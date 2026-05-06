@@ -1,0 +1,26 @@
+	type mapmodes_color_ledger_item = widget {
+		background = {
+			visible = "[IsEven_int32(PdxGuiWidget.GetIndexInDataModel)]"
+			using = color_whiteish_texture
+			alpha = 0.2
+		}
+
+		hbox = {
+			margin = { 10 0 }
+			spacing = 5
+
+			icon = {
+				texture = "gfx/interface/pie_charts/piechart_legend.dds"
+				texture_density = 2
+				size = { 18 18 }
+				color = "[MapColorLedger.GetColor]"
+			}
+
+			text_single = {
+				layoutpolicy_horizontal = expanding
+				autoresize = yes
+				align = left|nobaseline
+				text = "[MapColorLedger.GetName]"
+			}
+		}
+	}

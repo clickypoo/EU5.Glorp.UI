@@ -1,0 +1,238 @@
+template CountryTooltip_DiplomacyStatBars {
+	TooltipStatsBar = {
+		visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"
+		blockoverride "items" {
+			TooltipStatBarIconTextItem = { # THEIR OPINION
+                blockoverride "item_icon_coa" { # Glorp UI - Opinion Mini Country Flag
+                    datacontext = "[Country]"
+                }
+				blockoverride "item_icon" {
+					size = { 30 30 }
+					texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+				}
+
+				blockoverride "item_text" {
+					text = "[Country.GetDiplomacy.GetOpinionOf(GetSelectedCountryOrByLocation)|+=]"
+					layoutpolicy_horizontal = expanding
+					size = { -1 18}
+					autoresize = no
+					align = center
+				}
+
+				tooltipwidget = {
+					SimpleContextualStringPairTooltipType = {
+						blockoverride "title_icon" {
+							icon = {
+								using = tooltip_title_icon_size
+								texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+							}
+						}
+
+						blockoverride "concept_link" {
+							text = "[opinion|e]"
+						}
+
+						tooltipmeta = {
+							texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+							game_concept = "[opinion|E]"
+						}
+
+						textcontext = "[Country.GetDiplomacy.GetOpinionDescription(GetSelectedCountryOrByLocation)]"
+					}
+				}
+			}
+			TooltipStatBarIconTextItem = { # OUR/TARGET OPINION
+				blockoverride "item_icon_coa" {
+					datacontext = "[GetSelectedCountryOrByLocation]"
+				}
+				blockoverride "item_icon" {
+					size = { 30 30 }
+					texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+				}
+
+				blockoverride "item_text" {
+					text = "[GetSelectedCountryOrByLocation.GetDiplomacy.GetOpinionOf(Country.GetDiplomacy.GetCountry)|+=]"
+					layoutpolicy_horizontal = expanding
+					size = { -1 18}
+					autoresize = no
+					align = center
+				}
+
+				tooltipwidget = {
+					SimpleContextualStringPairTooltipType = {
+						blockoverride "title_icon" {
+							icon = {
+								using = tooltip_title_icon_size
+								texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+							}
+						}
+
+						blockoverride "concept_link" {
+							text = "[opinion|e]"
+						}
+
+						tooltipmeta = {
+							texture = "gfx/interface/icons/flat_icons/foreigncountry/opinion.dds"
+							game_concept = "[opinion|E]"
+						}
+
+						textcontext = "[GetSelectedCountryOrByLocation.GetDiplomacy.GetOpinionDescription(Country.GetDiplomacy.GetCountry)]"
+					}
+				}
+			}
+		}
+	}
+	
+	# even more country stats icons
+	TooltipStatsBar = {
+		visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"
+		blockoverride "items" {
+            maximumsize = { 428 40 }
+			TooltipStatBarIconTextItem = { # TRUST
+				blockoverride "item_icon" {
+					size = { 25 25 }
+					texture = "gfx/interface/icons/flat_icons/foreigncountry/trust.dds"
+				}
+
+				blockoverride "item_text" {
+					raw_text = "[Country.GetDiplomacy.GetTrustTowards(GetSelectedCountryOrByLocation)|+=2]"
+					layoutpolicy_horizontal = expanding
+					size = { -1 18}
+					autoresize = no
+					align = center
+				}
+
+				tooltipwidget = {
+					SimpleContextualStringPairTooltipType = {
+						blockoverride "title_icon" {
+							icon = {
+								using = tooltip_title_icon_size
+								texture = "gfx/interface/icons/flat_icons/foreigncountry/trust.dds"
+							}
+						}
+
+						blockoverride "concept_link" {
+							text = "[trust|e]"
+						}
+
+						textcontext = "[Country.GetDiplomacy.GetTrustDescription(GetSelectedCountryOrByLocation)]"
+					}
+				}
+			}
+
+			TooltipStatBarIconTextItem = { # FAVORS
+                visible = "[GetSelectedCountryOrByLocation.IsPlayer]"
+				blockoverride "item_icon" {
+					size = { 25 25 }
+					texture = "gfx/interface/icons/flat_icons/foreigncountry/favors.dds"
+				}
+
+				blockoverride "item_text" {
+					text = "[Country.GetDiplomaticCurrency('favors')]"
+					layoutpolicy_horizontal = expanding
+					size = { -1 18}
+					autoresize = no
+					align = center
+				}
+
+				tooltipwidget = {
+					SimpleContextualStringPairTooltipType = {
+						blockoverride "title_icon" {
+							icon = {
+								using = tooltip_title_icon_size
+								texture = "gfx/interface/icons/flat_icons/foreigncountry/favors.dds"
+							}
+						}
+						blockoverride "concept_link" {
+							text = "[favors|e]"
+						}
+						textcontext = "[Country.GetDiplomaticCurrencyDesc('favors')]"
+					}
+				}					
+			}
+
+			TooltipStatBarIconTextItem = { # SPY
+                visible = "[And(GetSelectedCountryOrByLocation.IsPlayer, Not(Country.GetDiplomacy.IsSubjectOf(GetSelectedCountryOrByLocation)))]"
+				blockoverride "item_icon" {
+					size = { 25 25 }
+					texture = "gfx/interface/icons/outliner/categories/spynetwork.dds"
+				}
+
+				blockoverride "item_text" {
+					text = "[Country.GetDiplomaticCurrency('spy_network')]"
+					layoutpolicy_horizontal = expanding
+					size = { -1 18}
+					autoresize = no
+					align = center
+				}
+
+				tooltipwidget = {
+					SimpleContextualStringPairTooltipType = {
+						blockoverride "title_icon" {
+							icon = {
+								using = tooltip_title_icon_size
+								texture = "gfx/interface/icons/outliner/categories/spynetwork.dds"
+							}
+						}
+						blockoverride "concept_link" {
+							text = "[spy_network|e]"
+						}
+						textcontext = "[Country.GetDiplomaticCurrencyDesc('spy_network')]"
+					}
+				}
+			}
+
+            TooltipStatBarIconTextItem = { # GLORP UI - LOYALTY - LOYAL
+                visible = "[And(Not(Country.GetDiplomacy.IsDisloyalSubject), Country.GetDiplomacy.IsSubjectOf(GetSelectedCountryOrByLocation))]"
+                blockoverride "item_icon" {
+                    size = { 25 25 }
+                    texture = "[GetSubjectTypeIcon(Country.GetDiplomacy.GetSubjectType)]"
+                }
+                blockoverride "item_text" {
+                    raw_text = "[Country.GetDiplomacy.GetSubjectLoyalty|G2%/]"
+                }
+                tooltipwidget = {
+                    datacontext = "[Country]"
+                    using = SubjectLoyalty_tooltip
+                }
+            }
+            TooltipStatBarIconTextItem = { # GLORP UI - LOYALTY - DISLOYAL
+                visible = "[And(Country.GetDiplomacy.IsDisloyalSubject, Country.GetDiplomacy.IsSubjectOf(GetSelectedCountryOrByLocation))]"
+                blockoverride "item_icon" {
+                    size = { 25 25 }
+                    texture = "[GetSubjectTypeIcon(Country.GetDiplomacy.GetSubjectType)]"
+                }
+                blockoverride "item_text" {
+                    raw_text = "[Country.GetDiplomacy.GetSubjectLoyalty|R2%/]"
+                }
+                tooltipwidget = {
+                    datacontext = "[Country]"
+                    using = SubjectLoyalty_tooltip
+                }
+            }
+
+			TooltipStatBarIconTextItem = { # ANTAGONISM
+                visible = "[Not(Country.GetDiplomacy.IsSubjectOf(GetSelectedCountryOrByLocation))]"
+				blockoverride "item_icon" {
+					size = { 25 25 }
+					texture = "gfx/interface/icons/flat_icons/declare_war/antagonism.dds"
+				}
+
+				blockoverride "item_text" {
+					raw_text = "[Country.GetDiplomacy.GetAntagonismTowards(GetSelectedCountryOrByLocation)|-=0]"
+					layoutpolicy_horizontal = expanding
+					size = { -1 18}
+					autoresize = no
+					align = center
+				}
+
+				tooltipwidget = {
+					using = AntagonismTooltip
+					blockoverride "antagonism_datacontext" {
+						textcontext = "[Country.GetDiplomacy.GetAntagonismDescription(GetSelectedCountryOrByLocation)]"
+					}
+				}
+			}
+		}
+	}
+}

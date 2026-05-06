@@ -1,0 +1,52 @@
+template CountryDiplomacyTooltip {
+	ContextualTooltipType = {
+        blockoverride "title_icon_texture" {
+            texture = "[GetConceptTexture('diplomacy')]"
+        }
+
+        blockoverride "title_text" {
+            text = "DIPLOMACY_TT_TITLE"
+        }
+
+        blockoverride "concept_link" {
+            text = "[diplomacy|e]"
+        }
+
+        blockoverride "tooltip_content" {
+			TooltipContentSection = {
+				using = CountryTooltip_RelativePower
+			}
+
+			TooltipContentSection = {
+				using = CountryTooltip_DiplomacyStatBars
+			}
+
+            # GLORP UI - Subject Loyalty
+            TooltipRowList = {
+                visible = "[And(Country.GetDiplomacy.IsDisloyalSubject, Country.GetDiplomacy.IsSubject)]"
+                textcontext = "SubjectTypeDetail_DESC_NOT"
+                tooltipwidget = {
+                    using = SubjectLoyalty_tooltip
+                }
+            }
+            TooltipRowList = {
+                visible = "[And(Not(Country.GetDiplomacy.IsDisloyalSubject), Country.GetDiplomacy.IsSubject)]"
+                textcontext = "SubjectTypeDetail_DESC"
+                tooltipwidget = {
+                    using = SubjectLoyalty_tooltip
+                }
+            }
+
+            # GLORP UI - Diplomatic Information (Broken???)
+            TooltipScrolledStringPairList = {
+                visible = "[Not(GetSelectedCountryOrByLocation.IsLocalPlayer)]"
+                blockoverride "block_scrollarea" { maximumsize = { -1 150 } minimumsize = { -1 30 } }
+                textcontext = "[GetSelectedCountryOrByLocation.GetDiplomacy.GetDiplomaticRelationsWithCountryInfo(Country.Self)]"
+            }
+            TooltipBlockList = {
+                visible = "[GetSelectedCountryOrByLocation.IsLocalPlayer]"
+                textcontext = "[Country.GetPlayerDiplomacyInfo]"
+            }
+        }
+    }
+}

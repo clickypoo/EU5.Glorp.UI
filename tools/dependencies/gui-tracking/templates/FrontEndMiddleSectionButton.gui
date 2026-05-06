@@ -1,0 +1,4 @@
+template FrontEndMiddleSectionButton {
+	layoutpolicy_horizontal = expanding
+	size = { -1 40 }
+}

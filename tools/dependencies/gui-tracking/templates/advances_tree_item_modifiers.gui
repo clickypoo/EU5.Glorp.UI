@@ -1,0 +1,91 @@
+template advances_tree_item_modifiers {
+	widget = {
+		size = { 95% 105 }
+		parentanchor = hcenter|bottom
+		position = { 0 -24 }
+
+		widget = {
+			size = { 93% 100% }
+			parentanchor = hcenter|top
+
+			vbox = {
+				margin_top = 5
+				margin_bottom = 10
+
+				scroll_list = {
+					blockoverride "scroll_list_layout" {
+						vbox = {
+							layoutpolicy_vertical = expanding
+							datamodel = "[AdvanceNode.GetItem.GetAdvanceEffectItemsNoTooltip]"
+							spacing = 2
+							item = {
+								vbox = {
+									layoutpolicy_horizontal = expanding
+									using = bg_text_mask_container_brown
+
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										margin_left = 10
+
+										widget = {
+											size = { 40 40 }
+											icon = {
+												alwaystransparent = yes
+												size = { 40 40 }
+												texture = "gfx/interface/icons/outliner/background/_defaultbg.dds"
+												modify_texture = {
+													blend_mode = overlay
+													alpha = 1
+												}
+											}
+											text_single = {
+                                                layoutpolicy_horizontal = growing
+                                                size = { 30 30 }
+                                                parentanchor = center
+                                                text = "[AdvanceEffectItem.GetIcon]"
+                                                fontsize = 20
+											}
+											icon = {
+												alwaystransparent = yes
+												size = { 40 40 }
+												texture = "gfx/interface/graphical_cultures/european_gfx/circle_frame.dds"
+												modify_texture = {
+													blend_mode = overlay
+													alpha = 1
+												}
+											}
+										}
+
+										vbox = {
+											layoutpolicy_horizontal = expanding
+                                            spacing = -5
+											text_single = {
+												layoutpolicy_horizontal = expanding
+												margin_left = 5
+												margin_right = 15
+												align = left
+												text = "[AdvanceEffectItem.GetTitleEffect]"
+                                                fontsize = 19
+											}
+
+											text_single = {
+												layoutpolicy_horizontal = expanding
+												margin_left = 5
+												margin_right = 15
+												align = left
+												text = "[AdvanceEffectItem.GetDescEffect]"
+                                                fontsize = 19
+											}
+										}
+
+										expand = {}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,46 @@
+template FormableCountry_tooltip {
+	ContextualTooltipType = {
+		blockoverride "title_icon" {
+			country_flag = {
+				size = { 60 40 }
+
+				blockoverride "tooltip" {
+					tooltip_enabled = no
+					tagtooltip_enabled = no
+				}
+
+				blockoverride "contextmenu" {
+					contextmenu_enabled = no
+				}
+
+				blockoverride "flag" {
+					datacontext = "[FormableCountry.GetOrCreateCoatOfArms(Player.Self)]"
+					texture = "[CoatOfArmsWrapper.GetTexture('(int32)144','(int32)96')]"
+					frame = "[CoatOfArmsWrapper.GetFrame('(int32)144','(int32)96')]"
+					framesize = "[CoatOfArmsWrapper.GetFrameSizeOrFallback('(int32)144','(int32)96','(float)0.5')]"
+					texture_density = 2
+				}
+
+				blockoverride "click" {}
+				blockoverride "double_click" {}
+				blockoverride "hover" {}
+			}
+		}
+		blockoverride "title_text" {
+			text = "[FormableCountry.GetNameWithNoTooltip|U]"
+		}
+
+		blockoverride "concept_link" {
+			text = [formable_country|E]
+		}
+		blockoverride "tooltip_content" {
+			TooltipDebugTextBlock = {
+				blockoverride "text" {
+					debug_text = "[FormableCountry.GetDebugText]"
+				}
+			}
+			using = formablecountry_info
+
+		}
+	}
+}

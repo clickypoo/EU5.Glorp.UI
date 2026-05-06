@@ -1,0 +1,53 @@
+template unit_marker_item_commander {
+	visible = "[UnitMarkerItem.HasLeaderFrame]"
+	# block "unit_commander_size" {
+		size = { 33 @unit_marker_frame_height }
+	# }
+
+	background = {
+		texture = "gfx/interface/component_tiles/bg_navy_unit_map.dds"
+		texture_density = 2
+		spriteType = corneredstretched
+		spriteBorder = { 20 20 }
+		margin = {0 -2}
+
+		modify_texture = {
+			using = color_bg_blue_texture
+		}
+
+		modify_texture = {
+			using = overlay_striped_texture
+			blend_mode = overlay
+			alpha = 0.2
+		}
+	}
+
+	button = {
+		size = { 100% 100% }
+
+		tagtooltip_enabled = yes
+		tooltip = "[UnitMarkerItem.GetTooltip]"
+		contextmenu_widget = {
+			UnitMarkerContextMenu = {}
+		}
+
+		action_tooltip = {
+			click_type = left
+			click_mode = single
+
+			title = "UNIT_CLICK_TOOLTIP_LEFT_CLICK"
+			on_action = "[UnitMarkerItem.OnClick]"
+		}
+
+		action_tooltip = {
+			click_type = right
+			click_mode = single
+
+			cursor = "unit_menu"
+			title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK"
+			on_action = "[PdxGuiWidget.ToggleContextMenu]"
+		}
+	}
+
+	block "item_unit_commander_text_object" {}
+}

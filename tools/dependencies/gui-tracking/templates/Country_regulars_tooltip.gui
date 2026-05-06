@@ -1,0 +1,16 @@
+template Country_regulars_tooltip {
+	SimpleContextualRowTooltipType = {
+		blockoverride "title_icon_texture" {
+			texture = "gfx/interface/icons/unit_actions/regulars.dds"
+		}
+
+		blockoverride "title_text" {
+			text = "FOREIGN_REL_ARMY_SIZE"
+		}
+
+		blockoverride "concept_link" {
+			text = "[regulars|e]"
+		}
+		lowpriotextcontext = "[Country.GetRaisedRegularArmySizeTooltip]"
+	}
+}

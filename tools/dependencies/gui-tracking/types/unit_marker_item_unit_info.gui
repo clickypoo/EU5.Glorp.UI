@@ -1,0 +1,23 @@
+	type unit_marker_item_unit_info = widget {
+		block "unit_marker_item_unit_info_size" {
+			layoutpolicy_horizontal = expanding
+			size = {-1 @unit_marker_frame_height}
+		}
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			ignoreinvisible = yes
+			spacing = -5
+
+			# widget = { using = unit_marker_item_total_units }
+			# widget = { size = { 0 @unit_marker_morale_progressbar_size } }
+			widget = {
+				visible = "[And(Not(Unit.IsArmy), UnitMarkerItem.IsTransporting)]"
+				using = unit_marker_item_transport
+			}
+			widget = {
+				# using = bg_unit_marker_item_unit_strength
+				using = unit_marker_item_unit_strength
+			}
+		}
+	}

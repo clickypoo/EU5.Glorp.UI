@@ -1,0 +1,15 @@
+	type unit_marker_item_modifiers = widget {
+		layoutpolicy_horizontal = expanding
+		size = {-1 26}
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			margin = { 10 0 }
+			using = unit_marker_item_modifiers
+			ignoreinvisible = yes
+
+			blockoverride "item_container_size" {
+				allow_outside = yes
+				size = { 1 1 }
+			}
+		}
+	}
