@@ -42,20 +42,6 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/AreaPreference_tooltip.gui",
       "vanilla_file": "in_game/gui/shared/diplomacy_tooltips.gui"
     },
-    "template:Army_size_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/Army_size_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
-    "template:AverageControlTooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/AverageControlTooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
     "template:CasusBelli_tooltip": {
       "base_widget": null,
       "mod_file": "in_game/gui/shared/diplomacy_tooltips.gui",
@@ -69,20 +55,6 @@
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/ComplacencyResourceTooltip.gui",
       "vanilla_file": "in_game/gui/shared/topbar_tooltips.gui"
-    },
-    "template:CountryCountryModifier_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/CountryCountryModifier_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
-    "template:CountryInteraction_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/CountryInteraction_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
     },
     "template:CountryIsThreat_tooltip": {
       "base_widget": null,
@@ -98,20 +70,6 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/CountryMapModeDiplomacyTooltip.gui",
       "vanilla_file": "in_game/gui/shared/diplomacy_tooltips.gui"
     },
-    "template:CountryModifier_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/CountryModifier_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
-    "template:CountryRank_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/CountryRank_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
     "template:CountrySubject_tooltip": {
       "base_widget": null,
       "mod_file": "in_game/gui/shared/diplomacy_tooltips.gui",
@@ -121,7 +79,7 @@
     },
     "template:CountryTooltip": {
       "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
+      "mod_file": "in_game/gui/shared/glorpUI_country_tooltips.gui",
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/CountryTooltip.gui",
       "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
@@ -140,41 +98,6 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/CountryTooltip_RelativePower.gui",
       "vanilla_file": "in_game/gui/shared/diplomacy_tooltips.gui"
     },
-    "template:CountryType_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/CountryType_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
-    "template:Country_levies_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/Country_levies_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
-    "template:Country_navy_levies_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/Country_navy_levies_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
-    "template:Country_navy_regulars_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/Country_navy_regulars_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
-    "template:Country_regulars_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/Country_regulars_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
     "template:DiploAcceptanceTooltip": {
       "base_widget": null,
       "mod_file": "in_game/gui/shared/diplomacy_tooltips.gui",
@@ -188,20 +111,6 @@
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/DiplomatResourceTooltip.gui",
       "vanilla_file": "in_game/gui/shared/topbar_tooltips.gui"
-    },
-    "template:EconomicalBaseTooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/EconomicalBaseTooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
-    "template:FormableCountry_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/FormableCountry_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
     },
     "template:FrontEndAnimation": {
       "base_widget": null,
@@ -280,13 +189,6 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/GoldResourceTooltip.gui",
       "vanilla_file": "in_game/gui/shared/topbar_tooltips.gui"
     },
-    "template:Hegemony_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/Hegemony_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
     "template:LegitimacyResourceTooltip": {
       "base_widget": null,
       "mod_file": "in_game/gui/shared/topbar_tooltips.gui",
@@ -300,13 +202,6 @@
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/ManpowerResourceTooltip.gui",
       "vanilla_file": "in_game/gui/shared/topbar_tooltips.gui"
-    },
-    "template:Navy_size_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/Navy_size_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
     },
     "template:PrestigeResourceTooltip": {
       "base_widget": null,
@@ -322,40 +217,12 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/ProvinceDefinition_tooltip.gui",
       "vanilla_file": "in_game/gui/shared/geography_definitions_tooltips.gui"
     },
-    "template:ReleaseCountryTooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/ReleaseCountryTooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
     "template:SailorsResourceTooltip": {
       "base_widget": null,
       "mod_file": "in_game/gui/shared/topbar_tooltips.gui",
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/SailorsResourceTooltip.gui",
       "vanilla_file": "in_game/gui/shared/topbar_tooltips.gui"
-    },
-    "template:ScriptedPeaceTreaty_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/ScriptedPeaceTreaty_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
-    "template:ScriptedRelationTypeWith_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/ScriptedRelationTypeWith_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
-    "template:ScriptedRelationType_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/ScriptedRelationType_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
     },
     "template:StabilityResourceTooltip": {
       "base_widget": null,
@@ -371,26 +238,12 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/SubjectType_tooltip.gui",
       "vanilla_file": "in_game/gui/shared/diplomacy_tooltips.gui"
     },
-    "template:TaxBaseTooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/TaxBaseTooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
     "template:ThreatenWarAcceptanceTooltip": {
       "base_widget": null,
       "mod_file": "in_game/gui/shared/diplomacy_tooltips.gui",
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/ThreatenWarAcceptanceTooltip.gui",
       "vanilla_file": "in_game/gui/shared/diplomacy_tooltips.gui"
-    },
-    "template:TotalWealthTooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/TotalWealthTooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
     },
     "template:TruceTooltip": {
       "base_widget": null,
@@ -490,20 +343,6 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/combat_side_marker.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
     },
-    "template:country_tooltip_subjects": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/country_tooltip_subjects.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
-    "template:formablecountry_info": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/formablecountry_info.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
     "template:frontend_menu_middle_template": {
       "base_widget": null,
       "mod_file": "in_game/gui/glorpUI_ingame_menu.gui",
@@ -595,13 +434,6 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/recruit_location_entry.gui",
       "vanilla_file": "in_game/gui/recruit_location_lateralview.gui"
     },
-    "template:societal_value_in_country_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/societal_value_in_country_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
-    },
     "template:societal_values": {
       "base_widget": null,
       "mod_file": "in_game/gui/glorpUI_societal_values_lateralview.gui",
@@ -622,13 +454,6 @@
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/text_single_positive_zero_negative.gui",
       "vanilla_file": "in_game/gui/panels/left_panel/left_panel.gui"
-    },
-    "template:towns_or_cities_tooltip": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/shared/country_tooltips.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/towns_or_cities_tooltip.gui",
-      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
     },
     "template:unit_marker_bg": {
       "base_widget": null,
