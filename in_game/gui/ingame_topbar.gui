@@ -482,7 +482,7 @@ widget = {
 					spacing = 10
 					#bottomtotop = yes
                     control_groups = { # Glorp UI
-                        visible = "[Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
+                        visible = "[Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))]"
                     }
 					mapmode_current_button = {
 						allow_outside = yes
@@ -572,7 +572,7 @@ widget = {
 				size = { 100% 100% }
 				visible_at_creation = no
 				allow_outside = yes
-				visible = "[And(Player.MakeScope.GetVariable('vanillaMapmodeWidth').IsSet, Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
+				visible = "[And(Player.MakeScope.GetVariable('vanillaMapmodeWidth').IsSet, Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))]"
 
 				state = {
 					name = _show
@@ -592,10 +592,10 @@ widget = {
 						position = { 340 0 }
 						parentanchor = hcenter|top
 						widgetanchor = hcenter|bottom
-						visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
+						visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))]"
 					}
 					mapmodes_color_ledger = {
-						visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger_bottom'), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible)))]"
+						visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger_bottom'), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned)))]"
 						parentanchor = left|top
 						widgetanchor = left|bottom
 						position = { 0 -10 }
@@ -605,7 +605,7 @@ widget = {
 					visible_at_creation = no
 					blockoverride "button_ledger_map_marker_position_visible" {
 						position = { -340 0 }
-						visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
+						visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))]"
 					}
 				}
 			}
@@ -615,7 +615,7 @@ widget = {
 				size = { 100% 100% }
 				visible_at_creation = no
 				allow_outside = yes
-				visible = "[And(Not(Player.MakeScope.GetVariable('vanillaMapmodeWidth').IsSet), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
+				visible = "[And(Not(Player.MakeScope.GetVariable('vanillaMapmodeWidth').IsSet), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))]"
 
 				state = {
 					name = _show
@@ -635,10 +635,10 @@ widget = {
 						position = { 450 0 }
 						parentanchor = hcenter|top
 						widgetanchor = hcenter|bottom
-						visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
+						visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))]"
 					}
 					mapmodes_color_ledger = {
-						visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger_bottom'), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible)))]"
+						visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger_bottom'), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned)))]"
 						parentanchor = left|top
 						widgetanchor = left|bottom
 						position = { 0 -10 }
@@ -647,7 +647,7 @@ widget = {
 				mapmodes_button_color_ledger_map_marker = {
 					blockoverride "button_ledger_map_marker_position_visible" {
 						position = { -450 0 }
-						visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), MapModeSelectorVars.IsVisible))]"
+						visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))]"
 					}
 				}
 			}
