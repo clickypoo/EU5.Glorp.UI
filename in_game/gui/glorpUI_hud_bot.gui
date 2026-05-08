@@ -419,7 +419,36 @@ types GlorpUIBottomTypes
 
 		expand = {}
 
-		block "button_mapmode_right" {}
+		block "button_mapmode_right" {
+			button_pin_alt = {
+				size = { 27 27 }
+				# TODO: Check if the mapmode has been pinned in any of the slots.
+				# datamodel = "[DataModelRepeatedItem(GetDataModelSize(GetMapModesSlots))]"
+				# item = {
+				# 	datacontext_from_model = {
+				# 		datamodel = "[GetMapModesSlots]"
+				# 		index = "[Subtract_int32(GetDataModelSize(GetMapModesSlots), Subtract_int32(PdxGuiWidget.GetIndexInDataModel, '(int32)-1'))]"
+				# 	}
+				# 	visible = "[MapMode.IsInSlot(MapModeSlot.GetSlotIndex)]"
+				# }
+				# frame = "[Select_int32(Player.MakeScope.GetVariable('MapmodePinned').IsSet, '(int32)2', '(int32)1')]"
+
+				action_tooltip = {
+					click_type = left
+					on_action = "[PdxGuiWidget.ToggleContextMenu]"
+					title = "MAPMODE_SLOT_MENU"
+				}
+				contextmenu_widget = {
+					using = mapmode_slot_pick_menu
+				}
+				tooltipwidget = {
+					SimpleContextualTooltipType = {
+						blockoverride "title_icon_texture" { texture = "[MapMode.GetIcon]" }
+						lowpriotextcontext = "[MapMode.GetTooltip]"
+					}
+				}
+			}
+		}
 	}
 
 	type mapmode_current_button = widget {
