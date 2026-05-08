@@ -368,13 +368,8 @@ types GlorpUIBottomTypes
 					}
 				}
 
-				texture = "gfx/interface/buttons/map_modes/banner.dds"
-				texture_density = 2
-				spriteType = Corneredstretched
-				spriteborder = { 10 10 }
 				using = button_outliner_category_texture
 				using = mapmode_color
-				mirror = horizontal
 
 				icon = {
 					mirror = horizontal
@@ -1106,10 +1101,13 @@ types GlorpUIBottomTypes
 					widget = {
 						visible = "[Not(Player.MakeScope.GetVariable('vanillaMapmodeHeight').IsSet)]"
 						layoutpolicy_horizontal = expanding
-						size = { -1 50 }
+						size = { -1 37 }
+
 						overlappingitembox = {
-							size = { 95% 43 }
-							layoutpolicy_horizontal = expanding
+							visible = "[Player.MakeScope.GetVariable('vanillaMapmodeWidth').IsSet]"
+							autoresize = yes
+							margin_bottom = 1
+							maximumsize = { 555 -1 }
 							parentanchor = center
 
 							spacing = 5
@@ -1117,92 +1115,22 @@ types GlorpUIBottomTypes
 
 							datamodel = "[GetMapModesSlots]"
 							item = {
-								widget = {
-									size = { 30 30 }
-									datacontext = "[ActiveMapModeForSlot(PdxGuiWidget.GetIndexInDataModel)]"
-									onmousehierarchyenter = "[MapModeSelectorVars.Clear('slot_highlight')]"
+								glorp_mapmode_button = { }
+							}
+						}
+						overlappingitembox = {
+							visible = "[Not(Player.MakeScope.GetVariable('vanillaMapmodeWidth').IsSet)]"
+							autoresize = yes
+							margin_bottom = 1
+							maximumsize = { 800 -1 }
+							parentanchor = center
 
-									background = {
-										visible = "[MapModeSelectorVars.HasValue('slot_highlight', ToString_int32(MapModeSlot.GetSlotIndex))]"
-										using = color_white_texture
-										alpha = 0.3
-									}
+							spacing = 5
+							ignoreinvisible = yes
 
-									icon = {
-										size = { 100% 100% }
-										visible = "[IsDataModelEmpty(MapModeSlot.GetMapModes)]"
-										texture = "gfx/interface/buttons/map_modes/map_texture_square.dds"
-
-										modify_texture = {
-											using = color_white_texture
-											alpha = 0.6
-										}
-
-										text_single = {
-											parentanchor = center
-											using = Font_Size_Big
-											text = "[SlotFromIndex(PdxGuiWidget.GetIndexInDataModel)]"
-										}
-
-										tooltip_type = widget
-										tooltip_parentanchor = top|hcenter
-										tooltip_widgetanchor = bottom|hcenter
-
-										tooltipwidget = {
-											using = mapmode_slot_tooltip
-										}
-									}
-
-									button_mapmode = {
-										size = { 100% 100% }
-										visible = "[DataModelHasItems(MapModeSlot.GetMapModes)]"
-
-										blockoverride "button_mapmode_actions"
-										{
-											visible = "[CanChangeMapMode]"
-											input_action = "[MapModeSlot.GetInputAction]"
-											use_global_input_instance = yes
-
-											action_tooltip = {
-												click_type = left
-												click_mode = single
-												title = "MAPMODE_SLOT_CYCLE"
-												on_action = "[CycleSlot(PdxGuiWidget.GetIndexInDataModel)]"
-												block "button_mapmode_actions_left" { }
-											}
-
-											modify_texture = {
-												visible = "[MapMode.IsSet]"
-												using = color_white_texture
-												alpha = 0.2
-											}
-
-											modify_texture = {
-												visible = "[MapModeSelectorVars.HasValue('slot_highlight', ToString_int32(MapModeSlot.GetSlotIndex))]"
-												using = color_red_texture
-												alpha = 0.7
-											}
-
-											action_tooltip = {
-												click_type = right
-												on_action = "[PdxGuiWidget.ToggleContextMenu]"
-												title = "MAPMODE_SLOT_EDIT_MENU"
-											}
-
-											tooltip_type = widget
-											tooltip_parentanchor = top|hcenter
-											tooltip_widgetanchor = bottom|hcenter
-
-											tooltipwidget = {
-												using = mapmode_slot_tooltip
-											}
-
-											contextmenu_widget = {
-												using = mapmode_slot_edit_menu
-											}
-										}
-									}
-								}
+							datamodel = "[GetMapModesSlots]"
+							item = {
+								glorp_mapmode_button = { }
 							}
 						}
 					}
@@ -1697,6 +1625,93 @@ types GlorpUIBottomTypes
 			duration = 0.25
 			bezier = { 0.0 1.0 0.0 1.0 }
 			size = { -1 0 }
+		}
+	}
+
+	type glorp_mapmode_button = widget {
+		size = { 30 30 }
+		datacontext = "[ActiveMapModeForSlot(PdxGuiWidget.GetIndexInDataModel)]"
+		onmousehierarchyenter = "[MapModeSelectorVars.Clear('slot_highlight')]"
+
+		background = {
+			visible = "[MapModeSelectorVars.HasValue('slot_highlight', ToString_int32(MapModeSlot.GetSlotIndex))]"
+			using = color_white_texture
+			alpha = 0.3
+		}
+
+		icon = {
+			size = { 100% 100% }
+			visible = "[IsDataModelEmpty(MapModeSlot.GetMapModes)]"
+			texture = "gfx/interface/buttons/map_modes/map_texture_square.dds"
+
+			modify_texture = {
+				using = color_white_texture
+				alpha = 0.6
+			}
+
+			text_single = {
+				parentanchor = center
+				using = Font_Size_Big
+				text = "[SlotFromIndex(PdxGuiWidget.GetIndexInDataModel)]"
+			}
+
+			tooltip_type = widget
+			tooltip_parentanchor = top|hcenter
+			tooltip_widgetanchor = bottom|hcenter
+
+			tooltipwidget = {
+				using = mapmode_slot_tooltip
+			}
+		}
+
+		button_mapmode = {
+			size = { 100% 100% }
+			visible = "[DataModelHasItems(MapModeSlot.GetMapModes)]"
+
+			blockoverride "button_mapmode_actions"
+			{
+				visible = "[CanChangeMapMode]"
+				input_action = "[MapModeSlot.GetInputAction]"
+				use_global_input_instance = yes
+
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+					title = "MAPMODE_SLOT_CYCLE"
+					on_action = "[CycleSlot(PdxGuiWidget.GetIndexInDataModel)]"
+					block "button_mapmode_actions_left" { }
+				}
+
+				modify_texture = {
+					visible = "[MapMode.IsSet]"
+					using = color_white_texture
+					alpha = 0.2
+				}
+
+				modify_texture = {
+					visible = "[MapModeSelectorVars.HasValue('slot_highlight', ToString_int32(MapModeSlot.GetSlotIndex))]"
+					using = color_red_texture
+					alpha = 0.7
+				}
+
+				action_tooltip = {
+					click_type = right
+					on_action = "[PdxGuiWidget.ToggleContextMenu]"
+					title = "MAPMODE_SLOT_EDIT_MENU"
+				}
+
+				tooltip_type = widget
+				tooltip_parentanchor = top|hcenter
+				tooltip_widgetanchor = bottom|hcenter
+
+				tooltipwidget = {
+					using = mapmode_slot_tooltip
+				}
+
+				contextmenu_widget = {
+					using = mapmode_slot_edit_menu
+				}
+			}
 		}
 	}
 }
