@@ -131,7 +131,7 @@
 		block "small_button_size" { size = { -1 45 } }
 		using = FrontEndMiddleSectionButton
 		text = "CMM_PAUSE_MENU_BUTTON"
-		visible = "[And(GetGlobalVariable('cmf_active').IsSet, Or(Not(GameIsMultiplayer), IsHost))]"
+		visible = "[And(GetVariableSystem.Exists('cmf_active'), Or(Not(GameIsMultiplayer), IsHost))]"
 		onclick = "[GetScriptedGui('CMM_SetHostAndRegisterCoreMod').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 		onclick = "[GetVariableSystem.Clear('cmm_mod_search_text')]"
 		onclick = "[GetVariableSystem.Toggle('cmm_window_open')]"
@@ -147,7 +147,7 @@
 		block "small_button_size" { size = { -1 45 } }
 		using = FrontEndMiddleSectionButton
 		text = "CMM_PAUSE_MENU_BUTTON"
-		visible = "[And(GetGlobalVariable('cmf_active').IsSet, And(GameIsMultiplayer, Not(IsHost)))]"
+		visible = "[And(GetVariableSystem.Exists('cmf_active'), And(GameIsMultiplayer, Not(IsHost)))]"
 		onclick = "[GetScriptedGui('CMM_RegisterCoreMod').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 		onclick = "[GetVariableSystem.Clear('cmm_mod_search_text')]"
 		onclick = "[GetVariableSystem.Toggle('cmm_window_open')]"
@@ -163,7 +163,7 @@
 		block "small_button_size" { size = { -1 45 } }
 		using = FrontEndMiddleSectionButton
 		text = "glorpui_name"
-		visible = "[Not(GetGlobalVariable('cmf_active').IsSet)]"
+		visible = "[Not(GetVariableSystem.Exists('cmf_active'))]"
 		onclick = "[ExecuteConsoleCommand( Select_CString( GetVariableSystem.Exists('glorpUI_window_open'), 'gui.ClearWidgets glorpUI_window', 'gui.createwidget gui/glorpUI_window.gui glorpUI_window' ) )]"
 		onclick = "[GetVariableSystem.Toggle('glorpUI_window_open')]"
 		onclick = "[PauseMenu.Resume]"
