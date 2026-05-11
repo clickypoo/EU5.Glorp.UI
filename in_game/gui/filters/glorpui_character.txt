@@ -1,0 +1,9 @@
+﻿glorpui_character_has_architectural_visionary = {
+	scope = character
+	group = 0
+	exclusive_group = no
+	tag = ruler
+	trigger = {
+		has_trait = architectural_visionary
+	}
+}
