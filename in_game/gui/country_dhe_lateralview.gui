@@ -105,7 +105,6 @@
 					addcolumn = 100%
 					addrow = 55
 					setitemsizefromcell = yes
-					margin = { 14 0 }
 
 					datamodel = "[CountryDHEView.GetEntries]"
 					item = {

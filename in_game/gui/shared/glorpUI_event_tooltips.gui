@@ -320,14 +320,14 @@ types GlorpUIEventTypes {
 				align = left|nobaseline
 				using = Font_Type_Headers
 				default_format = "#yellow_titles"
-				block "title_text" { text = "Placeholder" }
+				block "title_text" { raw_text = "Placeholder" }
 			}
 			text_single = {
 				layoutpolicy_horizontal = expanding
 				align = left|nobaseline
 				fontsize = 12
 				default_format = "#subtle_name"
-				block "subtitle_text" { text = "Placeholder Subtitle" }
+				block "subtitle_text" { raw_text = "Placeholder Subtitle" }
 			}
 		}
 	}

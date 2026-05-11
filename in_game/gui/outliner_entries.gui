@@ -7477,7 +7477,6 @@ template category_big_template {
 			OutlinerTextBase = {
 				using = layoutpolicy_expanding
 				autoresize = no
-				fontsize = 13
 				align = left
 				fontsize = 15
 				block "category_name" {

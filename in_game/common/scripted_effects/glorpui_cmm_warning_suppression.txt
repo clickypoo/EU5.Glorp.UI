@@ -8,8 +8,6 @@ glorpui_cmf_suppress = {
 		set_variable = { name = cmf_callback value = flag:glorpui__useDefaultIconsLeftPanel }
 		set_variable = { name = cmf_callback value = flag:glorpui__disableLeftPanelStatsBar }
 		set_variable = { name = cmf_callback value = flag:glorpui__disableColouredMapmodeButtons }
-		set_variable = { name = cmf_callback value = flag:glorpui__useVanillaArmyStrength }
-		set_variable = { name = cmf_callback value = flag:glorpui__useVanillaParticipantColour }
 		set_variable = { name = cmf_callback value = flag:glorpui__disableTopBarIncome }
 		set_variable = { name = cmf_callback value = flag:glorpui__disableTopBarStability }
 		set_variable = { name = cmf_callback value = flag:glorpui__disableTopBarPopulation }
@@ -18,4 +16,4 @@ glorpui_cmf_suppress = {
 		set_variable = { name = cmf_callback value = flag:glorpui__disableTopBarDiplomats }
 		set_variable = { name = cmf_callback value = flag:glorpui__dynamicWarStats }
 	}
-}
+}

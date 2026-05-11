@@ -1343,7 +1343,6 @@ types GlorpUIBottomTypes
 									}
 								}
 
-								down = "[IsMapModeMenuPinned]"
 								tooltipwidget = { BasicFunctionalTooltip = { } }
 								action_tooltip = {
 									click_type = left
