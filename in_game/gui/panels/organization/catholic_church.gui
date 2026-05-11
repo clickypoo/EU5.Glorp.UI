@@ -321,6 +321,14 @@ organization_religious_theme = {
 																				}
 																			}
 																		}
+																		TooltipConditionList = {
+																			blockoverride "block_title" {
+																				text = "[Localize(ResolutionGlue.GetEnactResolution.GetKey)]"
+																				default_format = "#yellow_titles"
+																			}
+																			visible = "[Not(StringIsEmpty(ResolutionGlue.GetEnactResolution.GetSuccessEffect))]"
+																			textcontext = "[ShowModifierEffect(ResolutionGlue.GetEnactResolution.GetKey)]"
+																		}
 																	}
 
 																	blockoverride "tooltip_ui_action_block" {

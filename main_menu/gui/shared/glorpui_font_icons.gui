@@ -8,3 +8,12 @@
 	}
 }
 
+texticon = {
+	icon = active_io_resolution
+	iconsize = {
+		texture = gfx/interface/icons/alerts_icons/active_io_resolution.dds"
+		size = { 20 20 }
+		offset = { 0 4 }
+		fontsize = 16
+	}
+}
