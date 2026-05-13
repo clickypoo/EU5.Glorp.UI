@@ -166,6 +166,7 @@ window = {
 	filter_mouse = none
 
 	using = Animation_Show_Hide_UI
+	max_update_rate = 9999 # Limit auto update - Faster!
 }
 
 window = {
@@ -246,6 +247,23 @@ widget = {
 			using = HostileParliamentInSession_tooltip
 			# using = ParliamentInSession_tooltipdd
 		}
+	}
+}
+
+### Holy Site
+widget = {
+	name = "holy_site_marker"
+	allow_outside = yes
+	size = { 40 40 }
+	position = { 0 -10 }
+
+	icon = {
+		parentanchor = center
+		size = { 40 40 }
+		texture = "gfx/interface/icons/location_icons/holy_sites.dds"
+		texture_density = 2
+
+		tooltip = "[HolySiteMarker.GetTooltip]"
 	}
 }
 
