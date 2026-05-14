@@ -16,21 +16,22 @@ import re
 import sys
 from pathlib import Path
 
-GAME_GUI_DIR = Path(r"C:\Program Files (x86)\Steam\steamapps\common\Europa Universalis V\game\in_game\gui")
+PREFIX = "cmfg_"
+
+GAME_GUI_DIR = Path(r"C:\Steam\steamapps\common\Europa Universalis V\game\in_game\gui")
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 MOD_GUI_DIR = PROJECT_ROOT / "in_game" / "gui"
 OUTPUT_DIR = MOD_GUI_DIR / "vanilla"
 
 VANILLA_FILES = [
-    "battle_lateralview.gui",
+    "food_production_lateralview.gui",
     "foreign_country_lateralview.gui",
+    "government_lateralview.gui",
     "ingame_topbar.gui",
     "location_window.gui",
-    "map_markers.gui",
-    "multiplayer_chat.gui",
     "outliner_entries.gui",
-    "recruit_location_lateralview.gui",
     "single_unit_window.gui",
+    "technology_lateralview.gui",
 ]
 
 BOM = "\ufeff"
@@ -310,7 +311,7 @@ def process_file(filename, mod_types, mod_templates):
         extracted.pop()
 
     stem = filename.removesuffix(".gui")
-    output_name = f"cmf_{stem}_vanilla_types.gui"
+    output_name = f"{PREFIX}{stem}_vanilla_types.gui"
     output_path = OUTPUT_DIR / output_name
 
     if not stats["variables"] and not stats["templates"] and not stats["types_blocks"]:
