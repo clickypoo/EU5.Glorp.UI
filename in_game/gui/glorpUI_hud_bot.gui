@@ -1323,6 +1323,73 @@ types GlorpUIBottomTypes
 						}
 
 						mapmode_category_block = {
+							# Glorp UI - Settings
+							size = { 28 28 }
+							layoutpolicy_horizontal = fixed
+
+							blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab','settings')]" }
+							blockoverride "button" {
+								parentanchor = center
+								icon = {
+									size = { 17 17 }
+									parentanchor = center
+									texture = "gfx/interface/icons/cog.dds"
+								}
+
+								tooltipwidget = { BasicFunctionalTooltip = { } }
+								onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'settings')]"
+							}
+							blockoverride "datamodel_item" {
+								hbox = {
+									spacing = 10
+									margin_left = 20
+									layoutpolicy_horizontal = expanding
+									checkbox_square_alt = {
+										onclick = "[GetScriptedGui('SetDisableColouredMapmodeButtons').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										checked = "[Not(Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet)]"
+										tooltip_enabled = no
+									}
+									text_single = {
+										text = "glorpui__disableColouredMapmodeButtons_name"
+									}
+									expand = {}
+								}
+								hbox = {
+									spacing = 10
+									margin_left = 20
+									layoutpolicy_horizontal = expanding
+									checkbox_square_alt = {
+										onclick = "[GetScriptedGui('SetVanillaMapmodeWidth').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										checked = "[Player.MakeScope.GetVariable('vanillaMapmodeWidth').IsSet]"
+										tooltip_enabled = no
+									}
+									text_single = {
+										text = "glorpui__vanillaMapmodeWidth_name"
+									}
+									expand = {}
+								}
+								hbox = {
+									spacing = 10
+									margin_left = 20
+									layoutpolicy_horizontal = expanding
+									checkbox_square_alt = {
+										onclick = "[GetScriptedGui('SetVanillaMapmodeHeight').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										checked = "[Player.MakeScope.GetVariable('vanillaMapmodeHeight').IsSet]"
+										tooltip_enabled = no
+									}
+									text_single = {
+										text = "glorpui__vanillaMapmodeHeight_name"
+									}
+									expand = {}
+								}
+							}
+							blockoverride "base_color" {
+								using = color_dark_turquoise_texture
+								blend_mode = overlay
+							}
+						}
+
+						mapmode_category_block = {
 							# Glorp UI - Pin Button
 							size = { 28 28 }
 							layoutpolicy_horizontal = fixed
