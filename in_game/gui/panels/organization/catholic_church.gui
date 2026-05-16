@@ -68,39 +68,39 @@ organization_religious_theme = {
 	blockoverride "ios_information_header_content_extra_1" {
 		using = ios_header_content_extra_template
 		blockoverride "ios_header_content_extra" {
-		hbox = {
-			using = layoutpolicy_expanding
-			text_single = {
-				autoresize = yes
-				align = right
-				margin_right = -3
-				raw_text = "[GetReligionByKey('catholic').GetReformDesire|2%Y]"
-			}
+			hbox = {
+				using = layoutpolicy_expanding
+				text_single = {
+					autoresize = yes
+					align = right
+					margin_right = -3
+					raw_text = "[GetReligionByKey('catholic').GetReformDesire|2%Y]"
+				}
 
-			widget = {
-				size = { 24 24 }
-				using = organization_piechart_template
-				blockoverride "organization_piechart_size" { size = { 24 24 } }
-				blockoverride "organization_piechart_value"
-				{
-					value = "[FixedPointToFloat(GetReligionByKey('catholic').GetReformDesire)]"
+				widget = {
+					size = { 24 24 }
+					using = organization_piechart_template
+					blockoverride "organization_piechart_size" { size = { 24 24 } }
+					blockoverride "organization_piechart_value"
+					{
+						value = "[FixedPointToFloat(GetReligionByKey('catholic').GetReformDesire)]"
+					}
+					blockoverride "organization_piechart_max_value"
+					{
+						value = "[Subtract_float('(float)1.0', FixedPointToFloat(GetReligionByKey('catholic').GetReformDesire))]"
+					}
+					blockoverride "organization_piechart_icon"
+					{
+						texture = "gfx/interface/icons/religious_aspects/reform_desire.dds"
+					}
 				}
-				blockoverride "organization_piechart_max_value"
-				{
-					value = "[Subtract_float('(float)1.0', FixedPointToFloat(GetReligionByKey('catholic').GetReformDesire))]"
-				}
-				blockoverride "organization_piechart_icon"
-				{
-					texture = "gfx/interface/icons/religious_aspects/reform_desire.dds"
+				tooltipwidget = {
+					using = reform_desire_tooltip
+					blockoverride "religion_context" {
+						datacontext = "[GetReligionByKey('catholic')]"
+					}
 				}
 			}
-			tooltipwidget = {
-				using = reform_desire_tooltip
-				blockoverride "religion_context" {
-					datacontext = "[GetReligionByKey('catholic')]"
-				}
-			}
-		}
 		}
 	}
 	blockoverride "ios_information_header_content_extra_2" {
@@ -163,11 +163,11 @@ organization_religious_theme = {
 						}
 					}
 					# block "flavor_tooltip" {
-						TooltipFlavorTextBlock = {
-							blockoverride "text" {
-								text = "game_concept_papal_bull_desc"
-							}
+					TooltipFlavorTextBlock = {
+						blockoverride "text" {
+							text = "game_concept_papal_bull_desc"
 						}
+					}
 					# }
 					TooltipTextBlock = {
 						visible = "[Not(InternationalOrganizationsView.HasResolutions)]"
@@ -323,8 +323,7 @@ organization_religious_theme = {
 																		}
 																		TooltipConditionList = {
 																			blockoverride "block_title" {
-																				text = "[Localize(ResolutionGlue.GetEnactResolution.GetKey)]"
-																				default_format = "#yellow_titles"
+																				text = "[UIAction.GetTitle]"
 																			}
 																			visible = "[Not(StringIsEmpty(ResolutionGlue.GetEnactResolution.GetSuccessEffect))]"
 																			textcontext = "[ShowModifierEffect(ResolutionGlue.GetEnactResolution.GetKey)]"
