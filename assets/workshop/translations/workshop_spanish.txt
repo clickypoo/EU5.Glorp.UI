@@ -1,63 +1,73 @@
 ===WORKSHOP_TITLE===
-Interfaz Glorp / Glorp UI
+Glorp UI / Glorp UI
 ===WORKSHOP_DESCRIPTION===
 [i]You are on the DeepL-Generated Spanish Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
+
+[img]https://i.ibb.co/DfrcCqPG/image.png[/img]
 
 [img]https://i.ibb.co/TMrcJMrf/image.png[/img]
 
 [img]https://i.ibb.co/7x1241bq/image.png[/img]
 
 [quote]
- [b]Glorp UI[/b] mejora la interfaz de usuario de [b]Europa Universalis V[/b]. Es así de sencillo.
+ [b]Glorp UI[/b] mejora la interfaz de usuario de [b]Europa Universalis V[/b]. Así de sencillo.
 
- [b]¿Tienes alguna sugerencia? ¡Recomiéndala aquí abajo![/b]
+ [b]¿Tienes alguna sugerencia? Recomiéndala abajo![/b]
 
- [h3] Personalizable [/h3]
+ [h3] Personalizable[/h3]
  [list]
-  [*] [b]Personaliza tu experiencia[/b] usando el [b]menú de personalización de Glorp UI[/b] dentro del juego. Tus preferencias se guardarán [b]por partida[/b].
-  [*] ¿Prefieres la implementación de otro mod? ¡Simplemente colócalo [b]después de Glorp UI[/b] en el orden de carga y sobrescribirá nuestros cambios!
+  [*] [b]¡Personaliza tu experiencia[/b] usando el [b]Menú de Personalización de la IU de Glorp[/b] del juego! Tus preferencias se guardarán [b]Por partida guardada[/b].
+  [¿Prefieres otra implementación de mods? Simplemente colócalo [b]después de Glorp UI[/b] en el orden de carga ¡y anulará nuestros cambios!
+[*] [b]¡Glorp UI[/b] está completamente integrado en el [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/b][/b]! ¡Gestiona todos nuestros ajustes desde su [b]Mod Menu[/b] unificado!
  [/list]
 
- [h3] Cambios implementados [/h3]
+ [h3] Cambios implementados[/h3]
  [list]
-  [*] [b]Iconos con códigos de colores[/b]: para una navegación intuitiva y un toque visual agradable.
-  [*] [b]Sin retratos de líderes[/b]: ¡más espacio para tu hermosa bandera! ¡Navega a tu dinastía/gobernante a través del escudo de armas!
-  [*] [b]Opción de bandera estática[/b]: ¿prefieres las banderas estáticas de EU4? ¡Ahora es una opción!
-  [*] [b]Barra de modos de mapa ancha[/b]: la barra de modos de mapa ahora es más corta y ancha. El botón del [b]modo de mapa actual[/b] está en una posición menos intrusiva.
-  [*] [b]Botones de modos de mapa de colores[/b]: ¡se ha añadido un tinte de color a los botones de modos de mapa por categoría para facilitar su uso!
-  [*] [b]Panel de estadísticas del país[/b]: panel de estadísticas del país conmutable - ¡información de un vistazo!
-  [*] [b]Vista de construcción mejorada[/b]: ¡mira fácilmente el [b]límite de edificios[/b], el [b]RGO[/b] y el [b]control[/b] de la localización mientras construyes!
-  [*] [b]Descripción emergente de diplomacia mejorada[/b]: al pasar el ratón sobre un país, [b]puedes ver sus relaciones con el país seleccionado[/b], en lugar de ver solo tus propias relaciones. También hay información adicional al pasar el ratón sobre países vasallos.
-  [*] [b]Árbol tecnológico mejorado[/b]: un árbol tecnológico compacto. ¡Aleja el zoom y mira todo el árbol de un vistazo!
-  [*] [b]Vista de gabinete compacta[/b]: se ha añadido un interruptor de vista compacta al gabinete.
-  [*] [b]Panel de guerra mejorado[/b]: panel de guerra con códigos de colores, ¡mira de un vistazo quién es vasallo y quién no!
-  [*] [b]Estadísticas de la barra superior conmutables[/b]: ¡habilita y deshabilita las estadísticas de la barra superior a tu gusto personal! ¡Las estadísticas de guerra dinámicas ocultan/muestran tu reserva militar, marineros y hastío bélico automáticamente!
-  [*] [b]Tamaños reales del ejército[/b]: mira el tamaño de las tropas regulares y las levas en la [b]descripción emergente del país[/b], en la [b]ventana del país[/b] y en el [b]panel de guerra[/b].
-  [*] [b]Zoom a localización[/b]: ¡desplázate a la ubicación de la [b]capital de un país[/b], la [b]ubicación de un ejército[/b], una [b]localización seleccionada[/b] o la [b]capital de una organización internacional[/b]! [b](¡Solo pulsa 'Z'!)[/b]
-  [*] [b]Iconos más grandes[/b]: los iconos del banner de alertas y de las categorías del organizador son más grandes.
-  [*] [b]Modos de mapa en la vista de localización[/b]: pasar el ratón sobre la información en la vista de localización revela el modo de mapa correspondiente.
-  [*] [b]Descripción emergente de coalición mejorada[/b]: mira si el país de la lista ya está en la coalición.
-  [*] [b]Equilibrio de valores sociales visible[/b]: hay una nueva barra que muestra el valor máximo de cada uno de tus valores sociales.
-  [*] [b]Activar modo depuración[/b]: ¡usa el [b]menú de personalización de Glorp UI[/b] para habilitar el [b]modo depuración[/b]!
+  [*] [b]Iconos codificados por colores[/b] - Para una navegación intuitiva y un bonito toque visual
+  [*] [b]No más retrato del líder[/b] - ¡Más espacio para tu hermosa bandera! ¡Navega hasta tu dinastía/gobernante a través del Escudo de Armas!
+  [*] [b]Opción de Bandera Estática[/b] - ¿Prefieres las banderas estáticas de EU4? ¡Ahora es una opción! Hay disponibles opciones enmarcadas y sin enmarcar.
+  [*] [b]Barra de modo de mapa personalizable[/b] - Personaliza la altura/anchura de la barra de modo de mapa. El botón [b]Modo de mapa actual[/b] también está en una posición menos intrusiva. El modo de mapa 'Político' ya no aparece cuando se selecciona (igual que Terreno).
+  [*] [b]Botones de modo de mapa coloreados[/b] - Se ha añadido un tinte de color a los botones de modo de mapa en función de su categoría para facilitar su uso.
+  [*] [b]Lista de categorías de modos de mapa rediseñada[/b] - Rediseñada la lista de categorías de modos de mapa vainilla.
+  [*] [b]Panel de estadísticas de país[/b] - Panel de estadísticas de país conmutable: ¡información de todo el país de un vistazo!
+  [*] [b]Equilibrio visible de valores sociales[/b] - Hay una nueva barra que muestra el valor máximo de cada uno de tus valores sociales.
+  [*] [b]Estadísticas de la barra superior conmutables[/b] - ¡Activa y desactiva las estadísticas de la barra superior a tu gusto personal! ¡Las estadísticas de guerra dinámicas ocultan/mostran tu Mano de Obra, Marineros y Agotamiento de Guerra automáticamente!
+  [*] [b]Visor de Eventos Rediseñado[/b] - ¡Rediseñado el simplista visor de eventos!
+  [*] [b]Vista de Construcción Mejorada[/b] - ¡Ve el [b]Límite de Construcción[/b], [b]RGO[/b] y [b]Control[/b] de una Localización cuando construyas! Incluye [b]Impacto del terreno[/b] para los fuertes. Puedes hacer clic en el icono de rango de la ubicación para subir o bajar el nivel del asentamiento.
+  [*] [b]Información sobre diplomacia mejorada[/b] - Al pasar el ratón por encima de un país, [b]verás sus relaciones con el país seleccionado en ese momento[/b], en lugar de ver sólo tus propias relaciones. También mostramos información más relevante al pasar el ratón por encima de los países vasallos. Mientras se está en guerra, se muestran las tropas actualmente desplegadas de un país.
+  [*] [b]Información sobre provincias mejorada[/b]: se han añadido iconos de RGO y de río/costa a la lista de ubicaciones de la información sobre provincias.
+  [*] [b]Información sobre toro papal mejorada[/b] - Se ha añadido un efecto de toro papal a la información sobre el botón de votación para que el usuario no tenga que ir a la profundidad 999 de la información sobre herramientas.
+  [*] [b]Zoom a ubicación[/b] - Desplázate a la ubicación de la capital de un país, la ubicación de un ejército, una ubicación seleccionada o la capital de una organización internacional. [b](¡Sólo tienes que pulsar 'Z'!)[/b]
+  [*] [b]Modos de mapa de la vista de ubicación[/b]: al pasar el ratón por encima de los iconos de información de la vista de ubicación, se revela el modo de mapa correspondiente.
+  [*] [b]Construir RGOs desde el Visor de Materias Primas[/b] - Simplemente haz clic en el icono del mapa RGO en el Modo Mapa de Materias Primas para abrir el menú Construir RGO.
+  [*] [b]Impacto del terreno combinado[/b] - Se ha añadido un banner que muestra el modificador de impacto del terreno combinado durante una batalla.
+  [*] [b]Flashbang Be Gone[/b] - Eliminada la animación Flashbang Intro cada vez que entras en una partida
+  [*] [b]Activar Modo Depuración[/b] - ¡Utiliza el [b]Menú de Personalización de la IU de Glorp[/b] para activar el [b]Modo Depuración[/b]!
+  [*] [b]Mejoras varias[/b] - Los iconos del Banner de Alerta son más grandes. Los iconos de las categorías del perfil son más grandes.
  [/list]
 
- [h3] Mods recomendados [/h3]
+ [h3] Mods recomendados[/h3]
  [list]
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - Carga Glorp UI [b]DESPUÉS[/b] de este mod en el orden de carga.
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - Modo oscuro.
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/b][/b] - ¡Glorp UI está completamente integrado en el [b]Community Mod Framework[/b]'s Mod Menu!
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/b][/b] - Modo Oscuro de UI
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3697317887]Colección de modos de mapa de Zorange[/url][/b] ¡Añade más modos de mapa!
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Diplomáticos Autónomos[/url][/b] ¡Recupera el sistema de diplomáticos automáticos de EU4!
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Correcciones y adiciones de banderas de Zyrph[/url][/b] - Me gustan las banderas...
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]La Variación de Ideas 2[/url][/b] - ¡Añade Ideas Nacionales al estilo EU4! Carga Glorp UI [b]DESPUÉS[/b] de este mod en el Orden de Carga
  [/list]
 
- [h3] Agradecimientos especiales [/h3]
+ [h3] Agradecimientos Especiales [/h3]
  [list]
-  [*] [b]EU5 Mod Coop[/b] - ¡Por ser infinitamente serviciales!
-  [*] [b]Conner[/b] - Por crear y mantener Glorp UI él solo (muy real, no falso).
-  [*] [b]Mazutaki[/b] - ¡Ayuda con el tamaño de los ejércitos de los países y el árbol tecnológico!
-  [*] [b]Sol_InvictusXLII[/b] - ¡Por crear el mod de Buscaminas, que fue una herramienta de aprendizaje muy útil!
-  [*] [b]Tú[/b] - Por descargarlo.
+  [*] [b]EU5 Mod Coop[/b] - ¡Sin ellos este mod no sería posible!
+  [*] [b]Conner[/b] - Por crear y mantener sin ayuda la IU de Glorp desde 1453 (muy real, no falso)
+  [*] [b]Mazutaki[/b] - ¡Ayuda con los tamaños de los ejércitos de los países y el árbol tecnológico!
+  [*] [b]Sol_InvictusXLII[/b] - Por crear el Mod Buscaminas, ¡que fue una herramienta de aprendizaje muy útil al principio del desarrollo!
+  [*] [b]Lord Lambert[/b] - ¡Por ser el mayor hipnotizador de Glorp UI!
+  [*] [b]Tú[/b] - Por descargar
  [/list]
 [/quote]
 
 [img]https://i.ibb.co/SDH11h1C/Glorp.png[/img]
 
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776][img]https://i.ibb.co/Kc4D5q36/image.png[/img][/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776][img]https://raw.githubusercontent.com/Europa-Universalis-5-Modding-Co-op/community-mod-framework/main/assets/images/cmf/CMF_Member_Banner.png[/img][/url]
 

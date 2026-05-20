@@ -1,63 +1,73 @@
 ===WORKSHOP_TITLE===
-Interfejs Glorp / Glorp UI
+Glorp UI / Glorp UI
 ===WORKSHOP_DESCRIPTION===
 [i]You are on the DeepL-Generated Polish Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
+
+[img]https://i.ibb.co/DfrcCqPG/image.png[/img]
 
 [img]https://i.ibb.co/TMrcJMrf/image.png[/img]
 
 [img]https://i.ibb.co/7x1241bq/image.png[/img]
 
 [quote]
- [b]Glorp UI[/b] ulepsza interfejs użytkownika w [b]Europa Universalis V[/b]. To banalnie proste.
+ [b]Glorp UI[/b] poprawia interfejs użytkownika [b]Europa Universalis V[/b]. To takie proste.
 
- [b]Masz sugestię? Zaproponuj ją poniżej![/b]
+ [b]Masz sugestię? Poleć ją poniżej![/b]
 
- [h3] Możliwość personalizacji [/h3]
- [list]
-  [*] [b]Dostosuj swoje wrażenia[/b], korzystając z menu [b]Glorp UI Customization Menu[/b] w grze! Twoje preferencje będą zapisywane [b]dla każdego zapisu gry[/b].
-  [*] Wolisz rozwiązanie z innego moda? Po prostu umieść go [b]po Glorp UI[/b] w kolejności wczytywania, a nadpisze on nasze zmiany!
+ [h3] Możliwość dostosowania [/h3]
+ [lista]
+  [*] [b]Dostosuj swoje doświadczenie[/b] za pomocą [b]Menu dostosowywania interfejsu Glorp[/b] w grze! Twoje preferencje zostaną zapisane [b]Per Save Game[/b].
+  [Preferujesz inną implementację modów? Po prostu umieść go [b]po Glorp UI[/b] w kolejności ładowania, a zastąpi on nasze zmiany!
+[*] [b]Glorp UI[/b] jest w pełni zintegrowany z [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b]! Zarządzaj wszystkimi naszymi ustawieniami z ich zunifikowanego [b]Mod Menu[/b]!
  [/list]
 
  [h3] Wprowadzone zmiany [/h3]
  [list]
-  [*] [b]Ikony oznaczone kolorami[/b] – dla intuicyjnej nawigacji i estetycznego wyglądu.
-  [*] [b]Koniec z portretami władców[/b] – więcej miejsca na Twoją piękną flagę! Przechodź do swojej dynastii/władcy za pomocą herbu!
-  [*] [b]Opcja statycznej flagi[/b] – wolisz statyczne flagi z EU4? Teraz to możliwe!
-  [*] [b]Szeroki pasek trybów mapy[/b] – pasek trybów mapy jest teraz krótszy i szerszy. Przycisk [b]aktualnego trybu mapy[/b] znajduje się w mniej inwazyjnym miejscu.
-  [*] [b]Kolorowe przyciski trybów mapy[/b] – dodano kolorowe zabarwienie przycisków trybów mapy według kategorii dla łatwiejszej obsługi!
-  [*] [b]Panel statystyk państwa[/b] – przełączalny panel statystyk państwa – najważniejsze informacje na rzut oka!
-  [*] [b]Ulepszony widok budowania[/b] – łatwo sprawdź [b]limit budynków[/b], [b]RGO[/b] oraz [b]kontrolę[/b] lokacji podczas budowania!
-  [*] [b]Lepszy tooltip dyplomatyczny[/b] – po najechaniu kursorem na kraj [b]możesz zobaczyć jego relacje z wybranym państwem[/b], zamiast widzieć tylko własne relacje. Dodano także dodatkowe informacje po najechaniu na kraje wasalne.
-  [*] [b]Ulepszone drzewo technologii[/b] – kompaktowe drzewo technologii. Pomniejsz widok i zobacz całe drzewo naraz!
-  [*] [b]Kompaktowy widok gabinetu[/b] – dodano przełącznik kompaktowego widoku w gabinecie.
-  [*] [b]Ulepszony panel wojny[/b] – panel wojny oznaczony kolorami, sprawdź na rzut oka, kto jest wasalem, a kto nie!
-  [*] [b]Przełączalne statystyki na górnym pasku[/b] – włączaj i wyłączaj statystyki górnego paska według własnych upodobań! Dynamiczne statystyki wojenne automatycznie ukrywają/pokazują Twoje zasoby ludzkie, marynarzy i wyczerpanie wojenne!
-  [*] [b]Rzeczywista wielkość armii[/b] – sprawdź wielkość wojsk regularnych i pospolitego ruszenia w [b]tooltipie kraju[/b], [b]oknie kraju[/b] oraz [b]panelu wojny[/b].
-  [*] [b]Przybliżenie do lokacji[/b] – przenieś widok do [b]stolicy kraju[/b], [b]pozycji armii[/b], [b]wybranej lokacji[/b] lub [b]stolicy organizacji międzynarodowej[/b]! [b](Wystarczy nacisnąć „Z”!)[/b]
-  [*] [b]Większe ikony[/b] – ikony banerów alertów i kategorii outlinera są teraz większe.
-  [*] [b]Tryby mapy w widoku lokacji[/b] – najechanie kursorem na informacje w widoku lokacji pokazuje odpowiedni tryb mapy.
-  [*] [b]Ulepszony tooltip koalicji[/b] – sprawdź, czy wymieniony kraj znajduje się już w koalicji.
-  [*] [b]Widoczna równowaga wartości społecznych[/b] – dodano nowy pasek pokazujący maksymalną wartość każdej z Twoich wartości społecznych.
-  [*] [b]Aktywacja trybu debugowania[/b] – użyj [b]menu personalizacji Glorp UI[/b], aby włączyć [b]tryb debugowania[/b]!
+  [*] [b]Kolorowe ikony[/b] - intuicyjna nawigacja i ładny wygląd.
+  [*] [b]Koniec z portretem przywódcy[/b] - Więcej miejsca na piękną flagę! Nawigacja do dynastii/władcy poprzez herb!
+  [*] [b]Opcja statycznej flagi[/b] - Wolisz statyczne flagi z EU4? Teraz jest taka opcja! Dostępne są opcje w ramce i bez ramki.
+  [*] [b]Konfigurowalny pasek trybu mapy[/b] - Dostosuj wysokość/szerokość paska trybu mapy. Przycisk [b]Bieżący tryb mapy[/b] znajduje się również w mniej inwazyjnej pozycji. Tryb mapy "Polityczny" nie pojawia się już po wybraniu (tak samo jak Teren).
+  [*] [b]Kolorowe przyciski trybu mapy[/b] - Dodano kolorowy odcień do przycisków trybu mapy w oparciu o ich kategorię, co znacznie ułatwia korzystanie z nich!
+  [*] [b]Przeprojektowana lista kategorii trybów map[/b] - Przeprojektowano waniliową listę kategorii trybów map.
+  [*] [b]Panel statystyk kraju[/b] - Przełączany panel statystyk kraju - informacje o całym kraju na pierwszy rzut oka!
+  [*] [b]Widoczna równowaga wartości społecznych[/b] - Pojawił się nowy pasek pokazujący maksymalną wartość każdej z wartości społecznych.
+  [*] [b]Przełączane statystyki na górnym pasku[/b] - Włączaj i wyłączaj statystyki na górnym pasku według własnych upodobań! Dynamiczne statystyki wojenne automatycznie ukrywają/pokazują siłę roboczą, marynarzy i wyczerpanie wojenne!
+  [*] [b]Przeprojektowana przeglądarka wydarzeń[/b] - Przeprojektowano uproszczoną przeglądarkę wydarzeń!
+  [*] [b]Ulepszony widok budynków[/b] - Zobacz [b]Limit budynków[/b], [b]RGO[/b] i [b]Kontrolę[/b] lokacji podczas budowania! Zawiera [b]Wpływ terenu[/b] dla fortów! Możesz kliknąć ikonę rangi lokalizacji, aby ulepszyć/obniżyć rangę osady!
+  [*] [b]Ulepszone podpowiedzi dyplomacji[/b] - Po najechaniu kursorem na kraj [b]zobaczysz jego relacje z aktualnie wybranym krajem[/b], zamiast widzieć tylko własne relacje. Pokazujemy również więcej istotnych informacji po najechaniu kursorem na kraje wasalne. Podczas wojny wyświetlane są aktualnie zebrane oddziały danego kraju.
+  [*] [b]Ulepszone podpowiedzi prowincji[/b] - Dodano ikony RGO i rzek/wybrzeży do listy lokalizacji podpowiedzi prowincji.
+  [*] [b]Ulepszona podpowiedź Byka Papieskiego[/b] - Dodano efekt Byka Papieskiego do podpowiedzi Przycisku Głosowania, aby zaoszczędzić użytkownikowi konieczności przechodzenia do 999 podpowiedzi.
+  [*] [b]Zoom do lokalizacji[/b] - Przesuń do lokalizacji [b]stolicy kraju[/b], [b]lokalizacji armii[/b], [b]wybranej lokalizacji[/b] lub [b]stolicy organizacji międzynarodowej[/b]! [b](Wystarczy nacisnąć 'Z'!)[/b]
+  [*] [b]Tryby mapy widoku lokalizacji[/b] - Najechanie kursorem na ikony informacji w widoku lokalizacji ujawnia odpowiedni tryb mapy.
+  [*] [b]Buduj RGO z przeglądarki surowców[/b] - Wystarczy kliknąć ikonę mapy RGO w trybie mapy surowców, aby otworzyć menu budowania RGO.
+  [*] [b]Łączny wpływ terenu[/b] - Dodano baner pokazujący łączny modyfikator wpływu terenu podczas bitwy.
+  [*] [b]Flashbang Be Gone[/b] - Usunięto animację wprowadzającą Flashbang przy każdym wejściu do gry.
+  [*] [b]Activate Debug Mode[/b] - Użyj [b]Glorp UI Customization Menu[/b], aby włączyć [b]Debug Mode[/b]!
+  [*] [b]Różne ulepszenia[/b] - Ikony banerów alertów są większe. Ikony kategorii Outlinera są większe.
  [/list]
 
  [h3] Polecane mody [/h3]
  [list]
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] – wczytuj Glorp UI [b]PO[/b] tym modzie w kolejności wczytywania.
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] – tryb ciemny.
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] - Glorp UI jest w pełni zintegrowany z menu modów [b]Community Mod Framework[/b]!
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - Tryb ciemny interfejsu użytkownika.
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3697317887]Zorange's Mapmode Collection[/url][/b] Dodaje więcej trybów map!
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Autonomiczni dyplomaci[/url][/b] Przywraca automatyczny system dyplomatów z EU4!
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph's Flag Fixes & Additions[/url][/b] - Lubię flagi...
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]Wariacja Pomysłów 2[/url][/b] - Dodaje Pomysły Narodowe w stylu EU4! Załaduj Glorp UI [b]PO[/b] tym modzie w kolejności ładowania
  [/list]
 
  [h3] Specjalne podziękowania [/h3]
  [list]
-  [*] [b]EU5 Mod Coop[/b] – za nieustanną pomoc!
-  [*] [b]Conner[/b] – za samodzielne stworzenie i utrzymywanie Glorp UI (bardzo prawdziwe, nie fejk)
-  [*] [b]Mazutaki[/b] – pomoc przy wielkościach armii i drzewie technologii!
-  [*] [b]Sol_InvictusXLII[/b] – za stworzenie moda Minesweeper, który był bardzo przydatnym narzędziem do nauki!
-  [*] [b]Ty[/b] – za pobranie
+  [*] [b]EU5 Mod Coop[/b] - Bez nich ten mod nie byłby możliwy!
+  [*] [b]Conner[/b] - Za samodzielne tworzenie i utrzymywanie Glorp UI od 1453 roku (bardzo prawdziwe, nie fałszywe).
+  [*] [b]Mazutaki[/b] - Za pomoc przy rozmiarach armii i drzewku technologicznym!
+  [*] [b]Sol_InvictusXLII[/b] - Za stworzenie Minesweeper Mod, który był bardzo przydatnym narzędziem do nauki na wczesnym etapie rozwoju!
+  [*] [b]Lord Lambert[/b] - Za bycie największym hypemanem Glorp UI!
+  [*] [b]Ty[/b] - Za pobranie
  [/list]
 [/quote]
 
 [img]https://i.ibb.co/SDH11h1C/Glorp.png[/img]
 
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776][img]https://i.ibb.co/Kc4D5q36/image.png[/img][/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776][img]https://raw.githubusercontent.com/Europa-Universalis-5-Modding-Co-op/community-mod-framework/main/assets/images/cmf/CMF_Member_Banner.png[/img][/url]
 

@@ -12,3 +12,5 @@ l_braz_por:
  GLORP_UI_AVG_CONTROL_DESC: "Sua média [control|E] em todas as [locations|E] de sua propriedade."
  GLORP_UI_AVG_PROXIMITY: "Média [proximity|e]"
  GLORP_UI_AVG_PROXIMITY_DESC: "Sua média [proximity|E] em todos os [locations|E] de sua propriedade."
+ OPEN_MAPMODE_SETTINGS: "Abrir as configurações da barra do modo mapa"
+ CLOSE_MAPMODE_SETTINGS: "Fechar as configurações da barra do modo mapa"

@@ -1,63 +1,73 @@
 ===WORKSHOP_TITLE===
-Glorp 界面 / Glorp UI
+Glorp UI / Glorp UI
 ===WORKSHOP_DESCRIPTION===
 [i]You are on the DeepL-Generated Simplified Chinese Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
+
+[img]https://i.ibb.co/DfrcCqPG/image.png[/img]
 
 [img]https://i.ibb.co/TMrcJMrf/image.png[/img]
 
 [img]https://i.ibb.co/7x1241bq/image.png[/img]
 
-[quote]
- [b]Glorp UI[/b] 改进了 [b]《欧陆风云 5》(Europa Universalis V)[/b] 的用户界面。就这么简单。
+引用
+ [Glorp UI[/b]改进了[b]Europa Universalis V[/b]的用户界面。］就这么简单。
 
- [b]有任何建议？请在下方留言推荐！[/b]
+ [b]有建议？请在下面推荐！[/b］
 
- [h3] 可自定义 [/h3]
- [list]
-  [*] 使用游戏内的 [b]Glorp UI 自定义菜单[/b] 来 [b]自定义您的体验[/b]！您的偏好将 [b]按存档[/b] 进行保存。
-  [*] 更喜欢其他模组的实现方式？只需在加载顺序中将其放在 [b]Glorp UI 之后[/b]，它就会覆盖我们的修改！
- [/list]
+ [可定制 [/h3]
+ 列表
+  [*] [b]Customize your experience[/b] using the in game [b]Glorp UI Customization Menu[/b]！您的偏好将在 [b]每次保存游戏时保存[/b]。
+  [*] 更喜欢其他 mods 执行方式？只需在加载顺序中将其放在 [b]Glorp UI[/b] 之后，它就会覆盖我们的更改！
+[*] [b]Glorp UI[/b] 完全集成在 [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] 中！从统一的 [b]Mod Menu[/b] 管理我们所有的设置！
+ [/list］
 
- [h3] 已实现的更改 [/h3]
- [list]
-  [*] [b]彩色图标[/b] - 提供直观的导航和精美的视觉效果。
-  [*] [b]不再显示领袖肖像[/b] - 为您美丽的旗帜留出更多空间！通过纹章即可导航至您的王朝/统治者界面！
-  [*] [b]静态旗帜选项[/b] - 喜欢 EU4 的静态旗帜？现在提供该选项！
-  [*] [b]宽地图模式栏[/b] - 地图模式栏现在更短且更宽。[b]当前地图模式[/b]按钮位于一个干扰较小的位置。
-  [*] [b]彩色地图模式按钮[/b] - 按类别为地图模式按钮添加了色调，更易于使用！
-  [*] [b]国家统计面板[/b] - 可切换的国家统计面板 - 信息一目了然！
-  [*] [b]改进的建筑视图[/b] - 在建造时可以轻松查看地点的 [b]建筑上限[/b]、[b]RGO（原材料产出）[/b] 和 [b]控制度[/b]！
-  [*] [b]更好的外交提示信息[/b] - 将鼠标悬停在国家上时，[b]您可以看到它与所选国家的关系[/b]，而不仅仅是看到您自己的关系。悬停在附属国上时还会显示额外信息。
-  [*] [b]改进的科技树[/b] - 紧凑型科技树。缩小视图即可一目了然地查看整棵树！
-  [*] [b]紧凑型内阁视图[/b] - 为内阁界面添加了紧凑视图切换开关。
-  [*] [b]改进的战争面板[/b] - 彩色标记的战争面板，一眼就能看出谁是（或不是）附属国！
-  [*] [b]可切换的顶栏统计数据[/b] - 根据个人喜好启用或禁用顶栏统计数据！动态战争统计功能会自动隐藏/显示您的人力、水手和战争疲劳！
-  [*] [b]实际军队规模[/b] - 在 [b]国家提示信息[/b]、[b]国家窗口[/b] 和 [b]战争面板[/b] 中查看国家的正规军和征召兵规模。
-  [*] [b]缩放到地点[/b] - 平移相机至 [b]国家首都[/b]、[b]军队位置[/b]、[b]选定地点[/b] 或 [b]国际组织总部[/b]！[b]（只需按下 'Z' 键！）[/b]
-  [*] [b]更大的图标[/b] - 警报横幅和概览栏类别图标变得更大了。
-  [*] [b]地点视图地图模式[/b] - 悬停在地点视图的信息上会显示相关的地图模式。
-  [*] [b]改进的联军提示信息[/b] - 查看所列国家是否已经在联军中。
-  [*] [b]可见的社会价值平衡[/b] - 新增了一个条形图，显示您各项社会价值的最大值（均衡点）。
-  [*] [b]激活调试模式[/b] - 使用 [b]Glorp UI 自定义菜单[/b] 来启用 [b]调试模式[/b]！
- [/list]
+ [h3] 已实施的更改 [/h3]
+ 列表
+  [*] [b]彩色编码图标[/b] - 直观的导航和漂亮的视觉效果
+  [*] [b]No More Leader Portrait[/b] - 为您的漂亮旗帜提供更多空间！通过纹章导航到您的王朝/统治者！
+  [*] [b]Static Flag Option[/b] - 喜欢 EU4 中的静态旗帜吗？现在可以选择了！有框架和无框架两种选择。
+  [*] [b]Customizable Mapmode Bar[/b] - 自定义地图模式栏的高度/宽度。当前地图模式[/b]按钮的位置也有所改善。选择 "政治 "地图模式时不再显示（与 "地形 "相同）。
+  [*] [b]彩色地图模式按钮[/b] - 根据类别为地图模式按钮添加了彩色色调，使使用更加方便！
+  [*] [b]重新设计的地图模式类别列表[/b] - 重新设计了新版地图模式类别列表。
+  [*] [b]Country Stats Panel[/b] - 可切换的国家统计面板 - 一目了然的国家信息！
+  [*] [b]Visible Societal Values Equilibrium[/b] - 新增一个显示每个社会价值最大值的条形图。
+  [*] [b]Toggleable Top Bar Stats[/b] - 根据个人喜好启用或禁用顶栏统计！动态战争统计自动隐藏/显示您的人力、水手和战争消耗！
+  [*] [b]重新设计的事件查看器[/b] - 重新设计了简洁的事件查看器！
+  [*] [b]Improved Building View[/b] - 在建造时查看地点的 [b]Building Limit[/b]、[b]RGO[/b] 和 [b]Control[/b] ！包括堡垒的 [b]Terrain Impact[/b] 地形影响[/b]！您可以点击地点的等级图标来升级/降级定居点！
+  [*] [b]Improved Diplomacy Tooltip[/b] - 当鼠标悬停在一个国家上时，[b]您会看到它与当前选定国家的关系[/b]，而不是只看到您自己的关系。当鼠标悬停在附庸国时，我们还会显示更多相关信息。在战争期间，会列出一个国家当前调集的部队。
+  [*] [b]改进的省份工具提示[/b] - 在省份工具提示的位置列表中添加了 RGO 和河流/海岸图标。
+  [*] [b]改进的教皇公牛工具提示[/b] - 在投票按钮的工具提示中添加了教皇公牛效果，使用户无需深入查看 999 工具提示
+  [*] [b]Zoom To Location[/b] - 平移到[b]国家首都[/b]、[b]军队所在地[/b]、[b]选定地点[/b]或[b]国际组织首都[/b]的位置！[b]（按 "Z "键即可！）[/b］
+  [*] [b]Location View Mapmodes[/b] - 将鼠标悬停在位置视图上的信息图标上，就会显示相关的地图模式。
+  [*] [b]从原料查看器建造 RGO[/b] - 只需点击原料地图模式上的 RGO 地图图标，即可打开 RGO 建造菜单。
+  [*] [b]综合地形影响[/b] - 在战斗中添加了显示综合地形影响修改器的标语
+  [*] [b]Flashbang Be Gone[/b] - 移除每次进入游戏时的闪光弹介绍动画
+  [*] [b]Activate Debug Mode[/b] - 使用 [b]Glorp UI Customization Menu[/b] 启用 [b]Debug Mode[/b]！
+  [*] [b]Miscellaneous Improvements[/b] - Alert Banner 图标更大。Outliner 分类图标更大。
+ [/list］
 
- [h3] 推荐模组 [/h3]
- [list]
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - 在加载顺序中将 Glorp UI 放在此模组 [b]之后[/b]
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - 深色模式
- [/list]
+ [h3] 推荐的修改 [/h3]
+ 列表
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] - Glorp UI 完全集成在 [b]Community Mod Framework[/b] 的 Mod 菜单中！
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - UI 黑暗模式
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3697317887]Zorange 的地图模式集[/url][/b] 新增更多地图模式！
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Autonomous Diplomats[/url][/b] 恢复 EU4 中的自动外交官系统！
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph 的旗帜修正与添加[/url][/b] - 我喜欢旗帜...
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - 加入 EU4 风格的国家理念！加载 Glorp UI [b]AFTER[/b] 此 mod 的加载顺序
+ [/list］
 
- [h3] 特别鸣谢 [/h3]
- [list]
-  [*] [b]EU5 Mod Coop[/b] - 感谢他们提供的无尽帮助！
-  [*] [b]Conner[/b] - 感谢他独力创建并维护了 Glorp UI（真的，不是开玩笑）
-  [*] [b]Mazutaki[/b] - 感谢在国家军队规模和科技树方面提供的帮助！
-  [*] [b]Sol_InvictusXLII[/b] - 感谢创建了扫雷模组，这是一个非常有用的学习工具！
-  [*] [b]你[/b] - 感谢下载
- [/list]
-[/quote]
+ [h3] 特别感谢 [/h3]
+ 列表
+  [*] [b]EU5 Mod Coop[/b] - 没有他们就不可能有本 mod！
+  [*] [b]Conner[/b] - 自 1453 年以来一手创建并维护 Glorp UI（非常真实，不是假的）
+  [*] [b]Mazutaki[/b] - 帮助制作国家军队尺寸和科技树！
+  [*] [b]Sol_InvictusXLII[/b] - 制作扫雷模块，这是开发初期非常有用的学习工具！
+  [*] [b]Lord Lambert[/b] - 因为他是 Glorp UI 最伟大的催眠师！
+  [*] [b]You[/b] - 为了下载
+ [/list］
+[/quote］
 
 [img]https://i.ibb.co/SDH11h1C/Glorp.png[/img]
 
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776][img]https://i.ibb.co/Kc4D5q36/image.png[/img][/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776][img]https://raw.githubusercontent.com/Europa-Universalis-5-Modding-Co-op/community-mod-framework/main/assets/images/cmf/CMF_Member_Banner.png[/img][/url]
 

@@ -1322,8 +1322,8 @@ types GlorpUIBottomTypes
 							}
 						}
 
+						# Glorp UI - Settings
 						mapmode_category_block = {
-							# Glorp UI - Settings
 							size = { 28 28 }
 							layoutpolicy_horizontal = fixed
 
@@ -1337,7 +1337,16 @@ types GlorpUIBottomTypes
 								}
 
 								tooltipwidget = { BasicFunctionalTooltip = { } }
-								onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'settings')]"
+								action_tooltip = {
+									visible = "[Not(MapModeSelectorVars.HasValue('tab','settings'))]"
+									title = "OPEN_MAPMODE_SETTINGS"
+									on_action = "[MapModeSelectorVars.SetOrToggle('tab', 'settings')]"
+								}
+								action_tooltip = {
+									visible = "[MapModeSelectorVars.HasValue('tab','settings')]"
+									title = "CLOSE_MAPMODE_SETTINGS"
+									on_action = "[MapModeSelectorVars.SetOrToggle('tab', 'settings')]"
+								}
 							}
 							blockoverride "datamodel_item" {
 								hbox = {
@@ -1388,9 +1397,8 @@ types GlorpUIBottomTypes
 								blend_mode = overlay
 							}
 						}
-
+						# Glorp UI - Pin Button
 						mapmode_category_block = {
-							# Glorp UI - Pin Button
 							size = { 28 28 }
 							layoutpolicy_horizontal = fixed
 

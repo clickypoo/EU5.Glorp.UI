@@ -12,3 +12,5 @@ l_japanese:
  GLORP_UI_AVG_CONTROL_DESC: "所有するすべての[locations|E]における平均[control|E]。"
  GLORP_UI_AVG_PROXIMITY: "平均 [proximity|e]"
  GLORP_UI_AVG_PROXIMITY_DESC: "所有するすべての[locations|E]における平均[proximity|E]。"
+ OPEN_MAPMODE_SETTINGS: "マップモードバーの設定を開く"
+ CLOSE_MAPMODE_SETTINGS: "地図モードバーの設定を閉じる"

@@ -1,63 +1,73 @@
 ===WORKSHOP_TITLE===
-Glorp Arayüzü / Glorp UI
+Glorp Kullanıcı Arayüzü / Glorp UI
 ===WORKSHOP_DESCRIPTION===
 [i]You are on the DeepL-Generated Turkish Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
+
+[img]https://i.ibb.co/DfrcCqPG/image.png[/img]
 
 [img]https://i.ibb.co/TMrcJMrf/image.png[/img]
 
 [img]https://i.ibb.co/7x1241bq/image.png[/img]
 
-[quote]
- [b]Glorp UI[/b], [b]Europa Universalis V[/b]'in Kullanıcı Arayüzünü iyileştirir. İşte bu kadar basit.
+[alıntı]
+ [b]Glorp UI[/b], [b]Europa Universalis V[/b]'in Kullanıcı Arayüzünü geliştirir. Bu kadar basit.
 
- [b]Bir öneriniz mi var? Aşağıda belirtebilirsiniz![/b]
+ [b]Bir öneriniz mi var? Aşağıda tavsiye edin![/b]
 
  [h3] Özelleştirilebilir [/h3]
- [list]
-  [*] Oyun içindeki [b]Glorp UI Özelleştirme Menüsü[/b]'nü kullanarak [b]deneyiminizi kişiselleştirin[/b]! Tercihleriniz [b]Kayıt Dosyası Başına[/b] kaydedilecektir.
-  [*] Başka bir modun uygulamasını mı tercih ediyorsunuz? Yükleme sırasında onu [b]Glorp UI'dan sonra[/b] yerleştirmeniz yeterlidir, bizim değişikliklerimizi geçersiz kılacaktır!
+ [liste]
+  [*] [b]Oyun içi [b]Glorp Kullanıcı Arayüzü Özelleştirme Menüsünü[/b] kullanarak deneyiminizi özelleştirin[/b]! Tercihleriniz [b]Oyun Kaydetme Başına[/b] kaydedilecektir.
+  [*] Başka bir mod uygulamasını mı tercih ediyorsunuz? Basitçe yükleme sırasına [b]Glorp UI[/b]'den sonra yerleştirin ve değişikliklerimizi geçersiz kılacaktır!
+[*] [b]Glorp UI[/b] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] ile tamamen entegre edilmiştir! Tüm ayarlarımızı birleşik [b]Mod Menüsünden[/b] yönetin!
  [/list]
 
  [h3] Uygulanan Değişiklikler [/h3]
- [list]
-  [*] [b]Renk Kodlu Simgeler[/b] - Sezgisel navigasyon ve hoş bir görsel hava için
-  [*] [b]Lider Portresine Son[/b] - Güzel bayrağınız için daha fazla alan! Hanedanınıza/hükümdarınıza Arma üzerinden ulaşın!
-  [*] [b]Statik Bayrak Seçeneği[/b] - EU4'ün statik bayraklarını mı tercih ediyorsunuz? Bu artık bir seçenek!
-  [*] [b]Geniş Harita Modu Çubuğu[/b] - Harita modu çubuğu artık daha kısa ve geniş. [b]Mevcut harita modu[/b] butonu daha az rahatsız edici bir konumda.
-  [*] [b]Renkli Harita Modu Butonları[/b] - Kolay kullanım için harita modu butonlarına kategoriye göre renkli bir ton eklendi!
-  [*] [b]Ülke İstatistik Paneli[/b] - Açılıp kapanabilir ülke istatistik paneli - bir bakışta tüm bilgiler!
-  [*] [b]Geliştirilmiş Bina Görünümü[/b] - İnşaat yaparken Konumun [b]Bina Sınırını[/b], [b]RGO (Hammadde Sahası)[/b] ve [b]Kontrolünü[/b] kolayca görün!
-  [*] [b]Daha İyi Diplomasi Bilgi Kutucuğu[/b] - Bir ülkenin üzerine geldiğinizde, sadece kendi ilişkilerinizi görmek yerine [b]o ülkenin seçili ülkeyle olan ilişkilerini görebilirsiniz[/b]. Ayrıca vasal ülkelerin üzerindeyken ekstra bilgiler görünür.
-  [*] [b]Geliştirilmiş Teknoloji Ağacı[/b] - Kompakt bir Teknoloji Ağacı. Uzaklaştırın ve tüm ağacı bir bakışta görün!
-  [*] [b]Kompakt Kabine Görünümü[/b] - Kabineye kompakt bir görünüm anahtarı eklendi
-  [*] [b]Geliştirilmiş Savaş Paneli[/b] - Renk kodlu Savaş Paneli, kimin vasal olup olmadığını bir bakışta görün!
-  [*] [b]Açılıp Kapanabilir Üst Çubuk İstatistikleri[/b] - Üst çubuk istatistiklerini kişisel beğeninize göre açın veya kapatın! Dinamik Savaş istatistikleri İnsan Gücü, Denizci ve Savaş Yorgunluğu verilerinizi otomatik olarak gizler/gösterir!
-  [*] [b]Gerçek Ordu Boyutları[/b] - Bir ülkenin Düzenli ve Seferberlik (Levy) ordusu boyutlarını [b]Ülke Bilgi Kutucuğu[/b], [b]Ülke Penceresi[/b] ve [b]Savaş Paneli[/b]'nde görün
-  [*] [b]Konuma Yakınlaştır[/b] - Bir [b]Ülkenin Başkentine[/b], bir [b]Ordunun Konumuna[/b], [b]Seçili Bir Konuma[/b] veya bir [b]Uluslararası Organizasyonun Başkentine[/b] gidin! [b](Sadece 'Z'ye basın!)[/b]
-  [*] [b]Daha Büyük Simgeler[/b] - Uyarı başlığı ve özetleyici kategori simgeleri daha büyük
-  [*] [b]Konum Görünümü Harita Modları[/b] - Konum görünümündeki bilgilerin üzerine gelmek ilgili harita modunu ortaya çıkarır
-  [*] [b]Geliştirilmiş Koalisyon Bilgi Kutucuğu[/b] - Listelenen ülkenin halihazırda koalisyonda olup olmadığını görün
-  [*] [b]Görünür Toplumsal Değerler Dengesi[/b] - Toplumsal değerlerinizin her birinin maksimum değerini gösteren yeni bir çubuk eklendi
-  [*] [b]Hata Ayıklama Modunu Etkinleştir[/b] - [b]Debug Modu[/b]'nu etkinleştirmek için [b]Glorp UI Özelleştirme Menüsü[/b]'nü kullanın!
+ [liste]
+  [*] [b]Renk Kodlu Simgeler[/b] - Sezgisel navigasyon ve hoş bir görsel yetenek için
+  [*] [b]Artık Lider Portresi Yok[/b] - Güzel bayrağınız için daha fazla alan! Arma üzerinden hanedanınıza/hükümdarınıza gidin!
+  [*] [b]Statik Bayrak Seçeneği[/b] - EU4'ün statik bayraklarını mı tercih ediyorsunuz? Artık bu da bir seçenek! Çerçeveli ve Çerçevesiz seçenekler mevcuttur.
+  [*] [b]Özelleştirilebilir Mapmode Çubuğu[/b] - Mapmode çubuğunun yüksekliğini/genişliğini özelleştirin. b]Geçerli Harita Modu[/b] düğmesi de daha az rahatsız edici bir konumda.'Siyasi' harita modu artık seçildiğinde görünmüyor (Arazi ile aynı).
+  [*] [b]Renkli Harita Modu Düğmeleri[/b] - Çok daha kolay kullanım için harita modu düğmelerine kategorilerine göre renkli bir renk tonu eklendi!
+  [*] [b]Yeniden Tasarlanan Harita Modu Kategori Listesi[/b] - Vanilya harita modu kategori listesi yeniden tasarlandı.
+  [*] [b]Ülke İstatistikleri Paneli[/b] - Değiştirilebilir ülke istatistikleri paneli - bir bakışta ülke çapında bilgi!
+  [*] [b]Görünür Toplumsal Değerler Dengesi[/b] - Toplumsal değerlerinizin her birinin maksimum değerini gösteren yeni bir çubuk var
+  [*] [b]Değiştirilebilir Üst Çubuk İstatistikleri[/b] - Üst Çubuk İstatistiklerini kişisel beğeninize göre etkinleştirin ve devre dışı bırakın! Dinamik Savaş istatistikleri İnsan Gücünüzü, Denizcilerinizi ve Savaş Tükenmenizi otomatik olarak gizler/gösterir!
+  [*] [b]Yeniden Tasarlanan Olay Görüntüleyici[/b] - Basit olay görüntüleyici yeniden tasarlandı!
+  [*] [b]Geliştirilmiş Bina Görünümü[/b] - İnşa ederken bir Konumun [b]Bina Sınırı[/b], [b]RGO[/b] ve [b]Kontrol[/b] değerlerini görün! Kaleler için [b]Arazi Etkisi[/b] içerir! Yerleşimi yükseltmek/düşürmek için Konumun Rütbe Simgesine tıklayabilirsiniz!
+  [*] [b]Geliştirilmiş Diplomasi Araç İpucu[/b] - Bir ülkenin üzerine geldiğinizde, [b]sadece kendi ilişkilerinizi görmek yerine, o anda seçili olan ülke[/b] ile olan ilişkilerini görürsünüz. Ayrıca vasal ülkelerin üzerine gelindiğinde daha alakalı bilgiler gösteriyoruz. Savaş halindeyken, bir ülkenin o anda kaldırılmış birlikleri listelenir.
+  [*] [b]Geliştirilmiş İller Araç İpucu[/b] - İl Araç İpucu'nun Konum Listesine RGO'lar ve Nehir/Kıyı simgeleri eklendi
+  [*] [b]Geliştirilmiş Papalık Boğası Araç İpucu[/b] - Kullanıcıyı 999 araç ipucu derinliğine gitmek zorunda bırakmamak için Oy Düğmesinin araç ipucuna Papalık Boğası efekti eklendi
+  [*] [b]Konuma Yakınlaştır[/b] - Bir [b]Ülkenin Başkentinin[/b], bir [b]Ordunun Konumunun[/b], bir [b]Seçilen Konumun[/b] veya [b]Bir Uluslararası Örgütün Başkentinin[/b] konumuna kaydırın! [b](Sadece 'Z' tuşuna basın!)[/b]
+  [*] [b]Konum Görünümü Harita Modları[/b] - Konum görünümündeki bilgi simgelerinin üzerine gelindiğinde ilgili harita modu ortaya çıkar.
+  [*] [b]Hammadde Görüntüleyicisinden RGO Oluştur[/b] - RGO Oluştur menüsünü açmak için Hammadde Harita Modundaki RGO harita simgesine tıklamanız yeterlidir
+  [*] [b]Birleşik Arazi Etkisi[/b] - Savaş sırasında birleşik arazi etkisi değiştiricisini gösteren bir başlık eklendi
+  [*] [b]Flashbang Be Gone[/b] - Oyuna her girdiğinizde Flashbang Giriş animasyonu kaldırıldı
+  [*] [b]Hata Ayıklama Modunu Etkinleştir[/b] - [b]Hata Ayıklama Modunu[/b] etkinleştirmek için [b]Glorp UI Özelleştirme Menüsünü[/b] kullanın!
+  [*] [b]Çeşitli İyileştirmeler[/b] - Uyarı Başlığı simgeleri daha büyük. Outliner Kategori simgeleri daha büyüktür.
  [/list]
 
  [h3] Önerilen Modlar [/h3]
- [list]
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - Glorp UI'ı Yükleme Sırasında bu moddan [b]SONRA[/b] yükleyin
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - Karanlık Mod
+ [liste]
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Topluluk Mod Çerçevesi[/url][/b] - Glorp Kullanıcı Arayüzü [b]Topluluk Mod Çerçevesi[/b]'nin Mod Menüsüne Tamamen Entegre!
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - UI Karanlık Modu
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3697317887]Zorange'ın Mapmode Koleksiyonu[/url][/b] Daha fazla mapmode ekliyor!
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Otonom Diplomatlar[/url][/b] EU4'teki otomatik diplomat sistemini geri getiriyor!
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph'in Bayrak Düzeltmeleri ve Eklemeleri[/url][/b] - Bayrakları severim...
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]Fikir Varyasyonu 2[/url][/b] - EU4 Tarzı Ulusal Fikirler Ekler! Glorp UI'yi [b]Yükleme Sırasında bu moddan SONRA[/b] yükleyin
  [/list]
 
  [h3] Özel Teşekkürler [/h3]
- [list]
-  [*] [b]EU5 Mod Coop[/b] - Sonsuz yardımları için!
-  [*] [b]Conner[/b] - Glorp UI'ı tek başına yarattığı ve sürdürdüğü için (çok gerçek, sahte değil)
-  [*] [b]Mazutaki[/b] - Ülke Ordu Boyutları ve Teknoloji Ağacı konusundaki yardımları için!
-  [*] [b]Sol_InvictusXLII[/b] - Çok yararlı bir öğrenme aracı olan Minesweeper Modunu yarattığı için!
-  [*] [b]Siz[/b] - İndirdiğiniz için
+ [liste]
+  [*] [b]EU5 Mod Coop[/b] - Onlar olmadan bu mod mümkün olmazdı!
+  [*] [b]Conner[/b] - 1453'ten beri Glorp kullanıcı arayüzünü tek başına yarattığı ve sürdürdüğü için (çok gerçek, sahte değil)
+  [*] [b]Mazutaki[/b] - Ülke Ordu Boyutları ve Teknoloji Ağacı konusunda yardım!
+  [*] [b]Sol_InvictusXLII[/b] - Geliştirmenin başlarında çok faydalı bir öğrenme aracı olan Mayın Tarlası Modunu yarattığı için!
+  [*] [b]Lord Lambert[/b] - Glorp UI'nin en büyük hipamanı olduğu için!
+  [*] [b]Sen[/b] - İndirmek için
  [/list]
 [/quote]
 
 [img]https://i.ibb.co/SDH11h1C/Glorp.png[/img]
 
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776][img]https://i.ibb.co/Kc4D5q36/image.png[/img][/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776][img]https://raw.githubusercontent.com/Europa-Universalis-5-Modding-Co-op/community-mod-framework/main/assets/images/cmf/CMF_Member_Banner.png[/img][/url]
 

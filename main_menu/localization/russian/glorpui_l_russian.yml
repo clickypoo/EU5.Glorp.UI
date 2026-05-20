@@ -12,3 +12,5 @@ l_russian:
  GLORP_UI_AVG_CONTROL_DESC: "Ваш средний показатель [control|E] по всем принадлежащим вам [locations|E]."
  GLORP_UI_AVG_PROXIMITY: "Среднее [proximity|e]"
  GLORP_UI_AVG_PROXIMITY_DESC: "Ваш средний показатель [proximity|E] по всем принадлежащим вам [locations|E]."
+ OPEN_MAPMODE_SETTINGS: "Открыть настройки панели «Режим карты»"
+ CLOSE_MAPMODE_SETTINGS: "Закрыть настройки панели режима карты"

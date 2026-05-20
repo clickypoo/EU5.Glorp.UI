@@ -12,3 +12,5 @@ l_polish:
  GLORP_UI_AVG_CONTROL_DESC: "Średnia wartość [control|E] dla wszystkich posiadanych [locations|E]."
  GLORP_UI_AVG_PROXIMITY: "Średnia [proximity|e]"
  GLORP_UI_AVG_PROXIMITY_DESC: "Średnia wartość [proximity|E] dla wszystkich posiadanych [locations|E]."
+ OPEN_MAPMODE_SETTINGS: "Otwórz ustawienia paska trybu mapy"
+ CLOSE_MAPMODE_SETTINGS: "Zamknij pasek trybu mapy Ustawienia"

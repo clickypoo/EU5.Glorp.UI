@@ -12,3 +12,5 @@ l_french:
  GLORP_UI_AVG_CONTROL_DESC: "Votre moyenne [control|E] sur l'ensemble des [locations|E] que vous possédez."
  GLORP_UI_AVG_PROXIMITY: "Moyenne [proximity|e]"
  GLORP_UI_AVG_PROXIMITY_DESC: "Votre moyenne [proximity|E] sur l'ensemble de vos [locations|E]."
+ OPEN_MAPMODE_SETTINGS: "Ouvrir les paramètres de la barre du mode Carte"
+ CLOSE_MAPMODE_SETTINGS: "Fermer les paramètres de la barre du mode carte"

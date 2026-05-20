@@ -12,3 +12,5 @@ l_english:
  GLORP_UI_AVG_CONTROL_DESC: "Your average [control|E] across all owned [locations|E]."
  GLORP_UI_AVG_PROXIMITY: "Average [proximity|e]"
  GLORP_UI_AVG_PROXIMITY_DESC: "Your average [proximity|E] across all owned [locations|E]."
+ OPEN_MAPMODE_SETTINGS: "Open Mapmode Bar Settings"
+ CLOSE_MAPMODE_SETTINGS: "Close Mapmode Bar Settings"

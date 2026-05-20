@@ -12,3 +12,5 @@ l_spanish:
  GLORP_UI_AVG_CONTROL_DESC: "Tu promedio [control|E] en todas [locations|E] que posees."
  GLORP_UI_AVG_PROXIMITY: "Promedio [proximity|e]"
  GLORP_UI_AVG_PROXIMITY_DESC: "Tu media [proximity|E] en todas [locations|E] que posees."
+ OPEN_MAPMODE_SETTINGS: "Abrir la barra de configuración del modo mapa"
+ CLOSE_MAPMODE_SETTINGS: "Cerrar la barra de configuración del modo mapa"

@@ -12,3 +12,5 @@ l_german:
  GLORP_UI_AVG_CONTROL_DESC: "Ihr Durchschnittswert [control|E] über alle eigenen [locations|E]."
  GLORP_UI_AVG_PROXIMITY: "Durchschnitt [proximity|e]"
  GLORP_UI_AVG_PROXIMITY_DESC: "Dein Durchschnittswert [proximity|E] über alle eigenen [locations|E]."
+ OPEN_MAPMODE_SETTINGS: "Einstellungen der Kartenmodus-Leiste öffnen"
+ CLOSE_MAPMODE_SETTINGS: "Einstellungen der Kartenmodus-Leiste schließen"

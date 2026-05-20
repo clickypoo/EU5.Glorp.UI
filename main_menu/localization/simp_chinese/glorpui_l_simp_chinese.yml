@@ -12,3 +12,5 @@ l_simp_chinese:
  GLORP_UI_AVG_CONTROL_DESC: "您在所有拥有的[locations|E]中的平均[control|E]。"
  GLORP_UI_AVG_PROXIMITY: "平均 [proximity|e]"
  GLORP_UI_AVG_PROXIMITY_DESC: "您在所有自有[proximity|E]中的平均[locations|E]。"
+ OPEN_MAPMODE_SETTINGS: "打开地图模式栏设置"
+ CLOSE_MAPMODE_SETTINGS: "关闭地图模式栏设置"
