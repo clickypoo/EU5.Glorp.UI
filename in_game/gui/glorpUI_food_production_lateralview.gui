@@ -196,7 +196,7 @@ types GlorpUIFoodProductionTypes {
 				}
 
 				# LSQ Auto Food button (only on food-RGO locations)
-				lsq_auto_food_widget_food_production_lateralview = {}
+				cm_auto_food_widget_food_production_lateralview = {}
 
 				widget = {
 					size = { 90 25 }

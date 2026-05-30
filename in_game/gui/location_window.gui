@@ -3113,10 +3113,10 @@ lateralview = {
 											datacontext = "[LocationView.GetLocation]"
 
 											# LSQ Auto Food button (only on food-RGO locations)
-											lsq_auto_food_widget_location_window = {}
+											cm_auto_food_widget_location_window = {}
 
 											# LSQ Auto Expand RGO button
-											lsq_auto_expand_rgo_widget_location_window = {}
+											cm_auto_expand_rgo_widget_location_window = {}
 
 											tooltipwidget = {
 												using = location_rgo_button_tooltip
