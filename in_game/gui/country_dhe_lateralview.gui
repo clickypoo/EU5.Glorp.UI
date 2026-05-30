@@ -75,30 +75,6 @@
 					using = bg_secondary_inner_notabs_alt
 				}
 
-				blockoverride "subheader_upper_divider" {
-					# TODO: Filter Buttons
-					# datamodel = "[SelectSearchFilter.AccessSearchBar.GetSearchFilterCategories]"
-					# item = {
-					# 	hbox = {
-					# 		using = layoutpolicy_expanding
-					# 		vbox = {
-					# 			using = layoutpolicy_expanding
-					# 			# visible = "[And(SearchFilterCategory.IsExpanded, Not(SearchFilterCategory.HasGroups))]"
-					# 			datamodel = "[SearchFilterCategory.GetFilters]"
-					# 			item = {
-					# 				text_single = {
-					# 					margin_left = 10
-					# 					fontsize = 12
-					# 					autoresize = yes
-					# 					alwaystransparent = yes
-					# 					text = "[SearchFilter.GetName]"
-					# 				}
-					# 			}
-					# 		}
-					# 	}
-					# }
-				}
-
 				blockoverride "scroll_list_content" {
 					using = layoutpolicy_expanding
 

@@ -301,8 +301,14 @@ widget = {
 
 			# Regular chat badge (blue, smaller)
 			icon = {
+				state = {
+					name = _show
+					trigger_on_create = yes
+					on_start = "[PlayAudioEffect('UI_alert_appear_green_diplo')]"
+				}
 				parentanchor = top|right
-				visible = "[And(MPChatNewMessage, Not(MPChatNewWhisper))]"
+				visible_at_creation = no
+				# visible = yes
 				size = { 14 14 }
 				alwaystransparent = yes
 				texture = "gfx/interface/buttons/checkbox_bg_round.dds"
@@ -318,8 +324,14 @@ widget = {
 
 			# DM badge (orange, slightly larger)
 			icon = {
+				state = {
+					name = _show
+					trigger_on_create = yes
+					on_start = "[PlayAudioEffect('UI_alert_appear_green_diplo')]"
+				}
 				parentanchor = top|right
-				visible = "[MPChatNewWhisper]"
+				visible_at_creation = no
+				# visible = yes
 				size = { 16 16 }
 				alwaystransparent = yes
 				texture = "gfx/interface/buttons/checkbox_bg_round.dds"

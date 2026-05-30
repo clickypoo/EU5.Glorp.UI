@@ -70,18 +70,6 @@ SetUseDefaultIconsRightPanel = {
     }
 }
 
-SetUseVanillaCabinetView = {
-    effect = {
-        if = {
-            limit = { NOT = { has_variable = useVanillaCabinetView } }
-            set_variable = { name = useVanillaCabinetView value = 1 }
-        }
-        else = {
-            remove_variable = useVanillaCabinetView
-        }
-    }
-}
-
 ### TOP BAR ###
 SetDisableTopBarIncome = {
     effect = {
@@ -184,9 +172,19 @@ SetDisableColouredMapmodeButtons = {
         if = {
             limit = { NOT = { has_variable = disableColouredMapmodeButtons } }
             set_variable = { name = disableColouredMapmodeButtons value = 1 }
+			cmf_change_variable_map = {
+				name = cmm
+				key = flag:glorpui__disableColouredMapmodeButtons
+				value = 0
+			}
         }
         else = {
             remove_variable = disableColouredMapmodeButtons
+			cmf_change_variable_map = {
+				name = cmm
+				key = flag:glorpui__disableColouredMapmodeButtons
+				value = 1
+			}
         }
     }
 }
@@ -245,9 +243,19 @@ SetVanillaMapmodeWidth = {
 		if = {
 			limit = { NOT = { has_variable = vanillaMapmodeWidth } }
 			set_variable = { name = vanillaMapmodeWidth value = 1 }
+			cmf_change_variable_map = {
+				name = cmm
+				key = flag:glorpui__vanillaMapmodeWidth
+				value = 1
+			}
 		}
 		else = {
 			remove_variable = vanillaMapmodeWidth
+			cmf_change_variable_map = {
+				name = cmm
+				key = flag:glorpui__vanillaMapmodeWidth
+				value = 0
+			}
 		}
 	}
 }
@@ -257,9 +265,19 @@ SetVanillaMapmodeHeight = {
 		if = {
 			limit = { NOT = { has_variable = vanillaMapmodeHeight } }
 			set_variable = { name = vanillaMapmodeHeight value = 1 }
+			cmf_change_variable_map = {
+				name = cmm
+				key = flag:glorpui__vanillaMapmodeHeight
+				value = 1
+			}
 		}
 		else = {
 			remove_variable = vanillaMapmodeHeight
+			cmf_change_variable_map = {
+				name = cmm
+				key = flag:glorpui__vanillaMapmodeHeight
+				value = 0
+			}
 		}
 	}
 }
