@@ -1,0 +1,28 @@
+﻿# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
+template marker_country_side_color {
+	modify_texture = {
+		using = color_grey_texture
+		alpha = 0.35
+		visible = "[Country.IsNeutral]"
+	}
+
+	modify_texture = {
+		using = color_enemy_red_texture
+		alpha = 1
+		visible = "[Player.IsEnemy(Country.Self)]"
+	}
+
+	modify_texture = {
+		using = color_allied_blue_texture
+		alpha = 1
+		visible = "[Country.IsAllied]"
+	}
+
+	modify_texture = {
+		using = color_light_green_texture
+		alpha = 0.3
+		visible = "[Country.IsPlayer]"
+	}
+}

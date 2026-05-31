@@ -1,0 +1,139 @@
+﻿# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "conquistador_construction_entry"
+
+	blockoverride "category_color" {
+		using = color_geopolitics_texture
+	}
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				using = outliner_entry_margin
+				OutlinerTextBase = {
+					layoutpolicy_horizontal = expanding
+					autoresize = no
+					align = left
+					fontsize = 13
+					raw_text = "[Construction.GetNameWithNoTooltip]"
+				}
+
+				OutlinerTextBase = {
+					visible = "[Not(Construction.IsStalled)]"
+					autoresize = yes
+					text = "CONSTRUCTION_DURATION_DAYS"
+				}
+				OutlinerTextBase = {
+					visible = "[Construction.IsStalled]"
+					autoresize = yes
+					text = "CONSTRUCTION_INFO_STALLED"
+				}
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			OutlinerTextBase = {
+				visible = "[Not(Construction.IsStalled)]"
+				size = { 100% 100% }
+				using = outliner_entry_margin
+				autoresize = no
+				text = "CONSTRUCTION_DURATION_DAYS"
+			}
+			OutlinerTextBase = {
+				visible = "[Construction.IsStalled]"
+				size = { 100% 100% }
+				using = outliner_entry_margin
+				autoresize = no
+				text = "CONSTRUCTION_INFO_STALLED"
+			}
+		}
+	}
+
+	blockoverride "icon_content" {
+		OutlinerIconBg = {
+			piechart = {
+				visible = "[Not(Construction.IsStalled)]"
+				parentanchor = center
+				size = { 80% 80% }
+				using = piechart_angles
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Construction.GetProgress]"
+					color = { 0.01 0.6 0.9 1 }
+					alwaystransparent = yes
+				}
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Construction.GetInverseProgress]"
+					color = { 0.0 0.1 0.1 1 }
+					alwaystransparent = yes
+				}
+			}
+
+			piechart = {
+				visible = "[Construction.IsStalled]"
+				parentanchor = center
+				size = { 80% 80% }
+				using = piechart_angles
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Construction.GetProgress]"
+					color = { 0.5 0.5 0.5 1 }
+					alwaystransparent = yes
+				}
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Construction.GetInverseProgress]"
+					color = { 0.0 0.1 0.1 1 }
+					alwaystransparent = yes
+				}
+			}
+
+			icon = {
+				parentanchor = center
+				size = { 50% 50% }
+				texture = "[GetConstructionIcon(Construction.Self)]"
+				texture_density = 2
+			}
+		}
+	}
+
+	blockoverride "button_setup" {
+		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightLocation(Construction.GetLocation)]"
+
+		tooltipwidget = {
+			using = Construction_tooltip
+		}
+		action_tooltip = {
+			click_type = left
+			click_mode = single
+			title = "GO_TO_LOCATION"
+			on_action = "[ShowLocation(Construction.GetLocation)]"
+		}
+		action_tooltip = {
+			click_type = right
+			click_mode = single
+			title = "CANCEL_CONSTRUCTION"
+			on_action = "[ShowConstructionCancellationDialog(Construction.Self, '(bool)no')]"
+		}
+		action_tooltip = {
+			click_type = right
+			click_mode = single
+			click_modifier = shift
+			title = "CANCEL_CONSTRUCTION_FORCED"
+			on_action = "[ShowConstructionCancellationDialog(Construction.Self, '(bool)yes')]"
+		}
+	}
+}

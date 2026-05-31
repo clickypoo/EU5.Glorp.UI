@@ -1,0 +1,24 @@
+﻿# vanilla: in_game/gui/hud_bot.gui
+# mod: in_game/gui/glorpUI_hud_bot.gui
+
+	type mapmode_category_block = widget {
+		using = layoutpolicy_expanding
+		allow_outside = yes
+
+		mapmode_category_menu = {
+			block "menu_anchor" {
+				parentanchor = hcenter|top
+				widgetanchor = hcenter|bottom
+			}
+
+			block "menu" {}
+		}
+
+		mapmode_category_button = {
+			size = { 100% 80% } # Glorp UI - Smaller Mapmode Category Buttons
+			allow_outside = yes
+			tooltip_enabled = yes
+
+			block "button" {}
+		}
+	}

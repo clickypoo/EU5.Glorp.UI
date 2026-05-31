@@ -1,0 +1,125 @@
+﻿# vanilla: in_game/gui/hud_bot.gui
+# mod: in_game/gui/glorpUI_hud_bot.gui
+
+	type mapmodes_button_color_ledger = widget {
+		size = { 41 32 }
+
+		block "button_ledger_position_visible" {
+			position = { 140 0 }
+			parentanchor = hcenter|top
+			widgetanchor = hcenter|bottom
+			visible = "[And3(Not(IsPauseMenuShown), Not(TutorialHasVar('intro_hide_ui_1')), Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned)))]"
+		}
+
+		icon = {
+			size = { 100% 100% }
+			position = { 2 0 }
+			parentanchor = vcenter|left
+
+			texture = "gfx/interface/component_tiles/bottom_menu_ribbon.dds"
+			texture_density = 2
+			using = overlay_color_blue
+
+			modify_texture = {
+				texture = "gfx/interface/component_overlay/overlay_leather.dds"
+				texture_density = 2
+				spriteType = stretched
+				spriteborder = { 250 250 }
+				blend_mode = overlay
+				alpha = 0.7
+			}
+
+			glow = {
+				name = "drop_shadow"
+				glow_radius = 3
+				color = {0.0 0.0 0.0 1.0}
+				alpha = 0.7
+			}
+
+			icon = {
+				size = { 100% 100% }
+				texture = "gfx/interface/component_tiles/bottom_menu_ribbon_border.dds"
+				texture_density = 2
+				using = overlay_color_new_gold
+
+				modify_texture = {
+					blend_mode = multiply
+				}
+			}
+		}
+
+		button = {
+			position = { 7 -1 }
+			size = { 30 30 }
+
+			block "button_ledger_setup" {
+				tooltipwidget = {
+					SimpleContextualTooltipType = {
+						blockoverride "title_icon" {
+							icon = {
+								using = tooltip_title_icon_size
+								texture = "gfx/interface/icons/flat_icons/tabicons/color_ledger.dds"
+							}
+						}
+						lowpriotextcontext = "MAP_COLOR_LEDGER_SIMPLE"
+					}
+				}
+
+				action_tooltip = {
+					visible = "[Not(MapModeSelectorVars.Exists('color_ledger_bottom'))]"
+					on_action = "[MapModeSelectorVars.Toggle('color_ledger_bottom')]"
+					on_action = "[MapModeSelectorVars.Clear('color_ledger')]"
+					on_action = "[GetMapColorLedgerSearchBar.ClearTextFilter(PdxGuiWidget.AccessParent.AccessParent.FindChild('searchbar_editbox'))]"
+					title = "OPEN_MAP_COLOR_LEDGER"
+				}
+
+				action_tooltip = {
+					visible = "[MapModeSelectorVars.Exists('color_ledger_bottom')]"
+					on_action = "[MapModeSelectorVars.Toggle('color_ledger_bottom')]"
+					on_action = "[MapModeSelectorVars.Clear('color_ledger')]"
+					title = "CLOSE_MAP_COLOR_LEDGER"
+				}
+			}
+
+			block "button_texture" {
+				texture = "gfx/interface/buttons/round_button_texture_alt.dds"
+				texture_density = 2
+			}
+
+			modify_texture = {
+				using = color_new_gold_texture
+				blend_mode = overlay
+				alpha = 1
+			}
+
+			modify_texture = {
+				using = overlay_stone_texture
+				blend_mode = overlay
+				alpha = 1
+			}
+
+			block "navigational_bg" {
+				background = {
+					texture = "gfx/interface/buttons/bg_button_light.dds"
+					texture_density = 2
+					modify_texture = {
+						using = color_intense_brown_texture
+						blend_mode = add
+					}
+					modify_texture = {
+						using = color_super_dark_brown_texture
+						blend_mode = multiply
+						alpha = 0.6
+					}
+				}
+			}
+
+			icon = {
+				size = { 20 20 }
+				parentanchor = center
+				block "icon_texture" {
+					texture = "gfx/interface/icons/flat_icons/tabicons/color_ledger.dds"
+				}
+			}
+		}
+	}

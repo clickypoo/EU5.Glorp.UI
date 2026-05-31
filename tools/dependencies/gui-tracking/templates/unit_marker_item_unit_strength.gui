@@ -1,0 +1,520 @@
+﻿# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
+template unit_marker_item_unit_strength {
+	layoutpolicy_horizontal = expanding
+
+	# block "unit_strength_size" {
+	size = { -1 @unit_marker_frame_height }
+	# }
+
+	background = {
+		texture = "gfx/interface/component_tiles/map_markers/map_marker_shadow.dds"
+		texture_density = 2
+		spriteType = corneredstretched
+		spriteBorder = {35 35}
+		margin_bottom = 15
+		blend_mode = multiply
+		alpha = 0.5
+	}
+	background = {
+		texture = "gfx/interface/component_tiles/map_markers/map_marker_shadow.dds"
+		texture_density = 2
+		spriteType = corneredstretched
+		spriteBorder = {35 35}
+		margin = {5 0}
+		margin_bottom = 15
+		blend_mode = multiply
+		alpha = 0.5
+		visible = "[UnitMarkerItem.IsSelectedOrHighlighted]"
+	}
+
+	background = {
+		using = marker_unit_side_color
+		visible ="[Unit.IsArmy]"
+		texture = "gfx/interface/component_tiles/bg_army_unit_map.dds"
+		texture_density = 2
+		spriteType = corneredstretched
+		spriteBorder = { 20 0 }
+		margin_left = -11
+		margin_right = -3
+		margin_top = -2
+		margin_bottom = -2
+
+		modify_texture = {
+			using = overlay_striped_texture
+			blend_mode = overlay
+			alpha = 0.2
+		}
+
+		modify_texture = {
+			using = color_progress_blue_texture
+			alpha = 0.1
+			visible = "[UnitMarkerItem.IsSelectedOrHighlighted]"
+		}
+	}
+
+	background = {
+		using = marker_unit_side_color
+		visible ="[Not(Unit.IsArmy)]"
+		texture = "gfx/interface/component_tiles/bg_navy_unit_map.dds"
+		texture_density = 2
+		spriteType = corneredstretched
+		spriteBorder = { 20 0 }
+		margin_left = -3
+		margin_right = -8
+		margin_top = -2
+
+		modify_texture = {
+			using = overlay_striped_texture
+			blend_mode = overlay
+			alpha = 0.2
+		}
+
+		modify_texture = {
+			using = color_progress_blue_texture
+			alpha = 0.1
+			visible = "[UnitMarkerItem.IsSelectedOrHighlighted]"
+		}
+	}
+
+	block "item_unit_text_object" {
+		text_single = {
+			size = { 100% 100% }
+			autoresize = no
+			align = right|nobaseline
+			margin_left = @[unit_marker_morale_progressbar_size * 0.6]
+			margin_right = @unit_marker_frame_text_margin
+			text = "[UnitMarkerItem.GetLabel]"
+		}
+	}
+
+	# ARMY NAVY BUTTON OURS
+	widget = {
+		size = {100% 100%}
+
+		unit_marker_army_button = {
+			size = { 100% 100% }
+			name = "unit_marker_for_army"
+			visible = "[And(UnitMarkerItem.IsPlayer, Unit.IsArmy)]"
+
+			tagtooltip_enabled = yes
+			tooltip = "[UnitMarkerItem.GetTooltip]"
+			contextmenu_widget = {
+				UnitMarkerContextMenu = {}
+			}
+
+			action_tooltip = {
+				click_type = left
+				click_mode = single
+
+				visible = "[UnitMarkerItem.IsPlayer]"
+				title = "UNIT_CLICK_TOOLTIP_LEFT_CLICK"
+				on_action = "[UnitMarkerItem.OnClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+
+				visible = "[And(And(Not(UnitMarkerItem.RightClickToJoin),Not(UnitMarkerItem.RightClickToChase)), UnitMarkerItem.IsPlayer)]"
+				cursor = "unit_menu"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK"
+				on_action = "[PdxGuiWidget.ToggleContextMenu]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_transport"
+
+				visible = "[And(UnitMarkerItem.RightClickToJoin, UnitMarkerItem.GetUnit.IsNavy)]"
+				title = "EMBARK_ACTION"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_movement" # TODO: "unit_join"
+
+				visible = "[And(UnitMarkerItem.RightClickToJoin, Not(UnitMarkerItem.GetUnit.IsNavy))]"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK_JOIN"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_chasing"
+
+				visible = "[UnitMarkerItem.RightClickToChase]"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK_CHASE"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+		}
+
+		unit_marker_navy_button = {
+			size = { 100% 100% }
+			visible = "[And(UnitMarkerItem.IsPlayer, Not(Unit.IsArmy))]"
+
+			tagtooltip_enabled = yes
+			tooltip = "[UnitMarkerItem.GetTooltip]"
+			contextmenu_widget = {
+				UnitMarkerContextMenu = {}
+			}
+
+			action_tooltip = {
+				click_type = left
+				click_mode = single
+
+				visible = "[UnitMarkerItem.IsPlayer]"
+				title = "UNIT_CLICK_TOOLTIP_LEFT_CLICK"
+				on_action = "[UnitMarkerItem.OnClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+
+				visible = "[And(And(Not(UnitMarkerItem.RightClickToJoin),Not(UnitMarkerItem.RightClickToChase)), UnitMarkerItem.IsPlayer)]"
+				cursor = "unit_menu"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK"
+				on_action = "[PdxGuiWidget.ToggleContextMenu]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_transport"
+
+				visible = "[And(UnitMarkerItem.RightClickToJoin, UnitMarkerItem.GetUnit.IsNavy)]"
+				title = "EMBARK_ACTION"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_movement" # TODO: "unit_join"
+
+				visible = "[And(UnitMarkerItem.RightClickToJoin, Not(UnitMarkerItem.GetUnit.IsNavy))]"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK_JOIN"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_chasing"
+
+				visible = "[UnitMarkerItem.RightClickToChase]"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK_CHASE"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+		}
+	}
+
+	# ARMY NAVY BUTTON ENEMY
+	widget = {
+		size = { 100% 100% }
+		visible = "[Player.IsEnemy(Unit.GetCountry.Self)]"
+
+		unit_marker_army_button = {
+			size = { 100% 100% }
+			visible = "[Unit.IsArmy]"
+			blockoverride "if_notplayer" {
+				upframe = 5
+				overframe = 5
+				downframe = 5
+				disableframe = 5
+			}
+
+			tagtooltip_enabled = yes
+			tooltip = "[UnitMarkerItem.GetTooltip]"
+			contextmenu_widget = {
+				UnitMarkerContextMenu = {}
+			}
+
+			action_tooltip = {
+				click_type = left
+				click_mode = single
+
+				visible = "[UnitMarkerItem.IsPlayer]"
+				title = "UNIT_CLICK_TOOLTIP_LEFT_CLICK"
+				on_action = "[UnitMarkerItem.OnClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+
+				visible = "[And(And(Not(UnitMarkerItem.RightClickToJoin),Not(UnitMarkerItem.RightClickToChase)), UnitMarkerItem.IsPlayer)]"
+				cursor = "unit_menu"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK"
+				on_action = "[PdxGuiWidget.ToggleContextMenu]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_transport"
+
+				visible = "[And(UnitMarkerItem.RightClickToJoin, UnitMarkerItem.GetUnit.IsNavy)]"
+				title = "EMBARK_ACTION"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_movement" # TODO: "unit_join"
+
+				visible = "[And(UnitMarkerItem.RightClickToJoin, Not(UnitMarkerItem.GetUnit.IsNavy))]"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK_JOIN"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_chasing"
+
+				visible = "[UnitMarkerItem.RightClickToChase]"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK_CHASE"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+		}
+
+		unit_marker_navy_button = {
+			size = { 100% 100% }
+			visible = "[Not(Unit.IsArmy)]"
+			blockoverride "if_notplayer" {
+				upframe = 3
+				overframe = 4
+				downframe = 4
+				disableframe = 3
+			}
+
+			tagtooltip_enabled = yes
+			tooltip = "[UnitMarkerItem.GetTooltip]"
+			contextmenu_widget = {
+				UnitMarkerContextMenu = {}
+			}
+
+			action_tooltip = {
+				click_type = left
+				click_mode = single
+
+				visible = "[UnitMarkerItem.IsPlayer]"
+				title = "UNIT_CLICK_TOOLTIP_LEFT_CLICK"
+				on_action = "[UnitMarkerItem.OnClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+
+				visible = "[And(And(Not(UnitMarkerItem.RightClickToJoin),Not(UnitMarkerItem.RightClickToChase)), UnitMarkerItem.IsPlayer)]"
+				cursor = "unit_menu"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK"
+				on_action = "[PdxGuiWidget.ToggleContextMenu]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_transport"
+
+				visible = "[And(UnitMarkerItem.RightClickToJoin, UnitMarkerItem.GetUnit.IsNavy)]"
+				title = "EMBARK_ACTION"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_movement" # TODO: "unit_join"
+
+				visible = "[And(UnitMarkerItem.RightClickToJoin, Not(UnitMarkerItem.GetUnit.IsNavy))]"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK_JOIN"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_chasing"
+
+				visible = "[UnitMarkerItem.RightClickToChase]"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK_CHASE"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+		}
+	}
+
+	# ARMY NAVY BUTTON NEUTRAL ALLIED
+	widget = {
+		size = { 100% 100% }
+		visible = "[Or(Unit.GetCountry.IsNeutral, Unit.GetCountry.IsAllied)]"
+
+		button = {
+			size = { 100% 100% }
+			visible = "[Unit.IsArmy]"
+			# blockoverride "if_notplayer" {
+			# 	upframe = 3
+			# 	overframe = 3
+			# 	downframe = 3
+			# 	disableframe = 3
+			# }
+
+			tagtooltip_enabled = yes
+			tooltip = "[UnitMarkerItem.GetTooltip]"
+			contextmenu_widget = {
+				UnitMarkerContextMenu = {}
+			}
+
+			action_tooltip = {
+				click_type = left
+				click_mode = single
+
+				visible = "[UnitMarkerItem.IsPlayer]"
+				title = "UNIT_CLICK_TOOLTIP_LEFT_CLICK"
+				on_action = "[UnitMarkerItem.OnClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+
+				visible = "[And(And(Not(UnitMarkerItem.RightClickToJoin),Not(UnitMarkerItem.RightClickToChase)), UnitMarkerItem.IsPlayer)]"
+				cursor = "unit_menu"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK"
+				on_action = "[PdxGuiWidget.ToggleContextMenu]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_transport"
+
+				visible = "[And(UnitMarkerItem.RightClickToJoin, UnitMarkerItem.GetUnit.IsNavy)]"
+				title = "EMBARK_ACTION"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_movement" # TODO: "unit_join"
+
+				visible = "[And(UnitMarkerItem.RightClickToJoin, Not(UnitMarkerItem.GetUnit.IsNavy))]"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK_JOIN"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_chasing"
+
+				visible = "[UnitMarkerItem.RightClickToChase]"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK_CHASE"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+		}
+
+		button = {
+			size = { 100% 100% }
+			visible = "[Not(Unit.IsArmy)]"
+			# blockoverride "if_notplayer" {
+			# 	upframe = 5
+			# 	overframe = 5
+			# 	downframe = 5
+			# 	disableframe = 5
+			# }
+
+			tagtooltip_enabled = yes
+			tooltip = "[UnitMarkerItem.GetTooltip]"
+			contextmenu_widget = {
+				UnitMarkerContextMenu = {}
+			}
+
+			action_tooltip = {
+				click_type = left
+				click_mode = single
+
+				visible = "[UnitMarkerItem.IsPlayer]"
+				title = "UNIT_CLICK_TOOLTIP_LEFT_CLICK"
+				on_action = "[UnitMarkerItem.OnClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+
+				visible = "[And(And(Not(UnitMarkerItem.RightClickToJoin),Not(UnitMarkerItem.RightClickToChase)), UnitMarkerItem.IsPlayer)]"
+				cursor = "unit_menu"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK"
+				on_action = "[PdxGuiWidget.ToggleContextMenu]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_transport"
+
+				visible = "[And(UnitMarkerItem.RightClickToJoin, UnitMarkerItem.GetUnit.IsNavy)]"
+				title = "EMBARK_ACTION"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_movement" # TODO: "unit_join"
+
+				visible = "[And(UnitMarkerItem.RightClickToJoin, Not(UnitMarkerItem.GetUnit.IsNavy))]"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK_JOIN"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+
+			action_tooltip = {
+				click_type = right
+				click_mode = single
+				cursor = "unit_chasing"
+
+				visible = "[UnitMarkerItem.RightClickToChase]"
+				title = "UNIT_CLICK_TOOLTIP_RIGHT_CLICK_CHASE"
+				on_action = "[UnitMarkerItem.OnRightClick]"
+			}
+		}
+	}
+
+	# PLAYER BUTTON SELECTED
+	widget = {
+		size = {100% 100%}
+		visible = "[UnitMarkerItem.IsSelectedOrHighlighted]"
+
+		icon = {
+			size = {100% 100%}
+			visible = "[And(UnitMarkerItem.IsPlayer, Unit.IsArmy)]"
+			texture = "gfx/interface/buttons/map_widget_army_button.dds"
+			frame_grid = {4 1}
+			frame = 2
+			spriteType = Corneredstretched
+			texture_density = 2
+			spriteborder = { 40 0 }
+		}
+		icon = {
+			size = {100% 100%}
+			visible = "[And(UnitMarkerItem.IsPlayer, Not(Unit.IsArmy))]"
+			texture = "gfx/interface/buttons/map_widget_navy_button.dds"
+			frame_grid = {4 1}
+			frame = 2
+			spriteType = Corneredstretched
+			texture_density = 2
+			spriteborder = { 40 0 }
+		}
+	}
+}

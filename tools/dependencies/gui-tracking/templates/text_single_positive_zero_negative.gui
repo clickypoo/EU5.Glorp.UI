@@ -1,0 +1,20 @@
+﻿# vanilla: in_game/gui/panels/left_panel/left_panel.gui
+# mod: in_game/gui/panels/left_panel/left_panel.gui
+
+template text_single_positive_zero_negative {
+	text_single = {
+		block "visible_positive" { visible = no }
+		block "text_setup" {}
+	}
+
+	text_single = {
+		block "visible_zero" { visible = no }
+		block "text_setup" {}
+		block "text_zero" {}
+	}
+
+	text_single = {
+		block "visible_negative" { visible = no }
+		block "text_setup" {}
+	}
+}

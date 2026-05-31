@@ -1,0 +1,45 @@
+﻿# vanilla: in_game/gui/battle_lateralview.gui
+# mod: in_game/gui/battle_lateralview.gui
+
+	type battle_goto_widget = hbox {
+		scissor = no
+		layoutpolicy_horizontal = expanding
+		margin = { 0 5 }
+		battle_side_small_card = {
+			datacontext = "[Combat.GetAttacker]"
+			datacontext = "[CombatSide.GetCountry]"
+		}
+
+		battle_side_small_card = {
+			datacontext = "[Combat.GetDefender]"
+			datacontext = "[CombatSide.GetCountry]"
+			blockoverride "battle_side_small_card_direction" {
+				margin_left = 30
+				righttoleft = yes
+			}
+			blockoverride "battle_side_small_card_mirror" {}
+			blockoverride "combat_side_marker_morale_mirror" {}
+		}
+
+		circular_widget_button = {
+			size = { 45 45 }
+			scissor = no
+			ignore_layout = yes
+			parentanchor = center
+			using = bg_circle_tile_shadow
+			blockoverride "shadow_tile_margin" {
+				margin = { 6 6 }
+			}
+			# blockoverride "shadow_tile_alpha" {
+			# 	alpha = 0.5
+			# }
+			using = bg_circle_piechart
+			icon = {
+				size = { 65% 65% }
+				parentanchor = center
+				texture = "[GetConceptTexture('battle')]"
+			}
+
+			using = goto_battle_action
+		}
+	}

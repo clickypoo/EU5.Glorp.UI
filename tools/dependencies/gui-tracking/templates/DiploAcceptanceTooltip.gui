@@ -1,0 +1,92 @@
+﻿# vanilla: in_game/gui/shared/diplomacy_tooltips.gui
+# mod: in_game/gui/shared/diplomacy_tooltips.gui
+
+template DiploAcceptanceTooltip {
+	ContextualTooltipType = {
+		blockoverride "title_icon" {
+			country_flag_mid = {
+			}
+		}
+
+		blockoverride "title_text" {
+			text = "[DiplomaticActionItem.GetTitle]" #IF_THEY_ACCEPT
+		}
+
+		blockoverride "concept_link" {
+			text = "[diplomatic_action|e]"
+		}
+
+		blockoverride "tooltip_content" {
+			TooltipScrolledConditionList = {
+				ontextcontextchanged = "[SetConditionListWithTitleFromTextContext(PdxGuiWidget.AccessSelf)]"
+				visible = "[And(DiplomaticActionItem.HasTarget, DiplomaticActionItem.ShowExtraInfo)]"
+
+				blockoverride "block_scrollarea" { maximumsize = { -1 200 }}
+				blockoverride "block_title" {
+					text = "[SelectLocalization( DiplomaticActionItem.RequiresAcceptance, 'IF_THEY_ACCEPT', 'DECLINE_OFFER_EXTRA_EFFECT' )]"
+				}
+				textcontext = "[DiplomaticActionItem.GetEffect]"
+			}
+
+			TooltipConditionList = {
+				visible = "[And4(Not(DiplomaticActionItem.IsEnabled), DiplomaticActionItem.HasTarget, DiplomaticActionItem.ShowExtraInfo, ConditionList.HasItems)]"
+				blockoverride "block_title" {
+					text = "NOT_POSSIBLE_DUE_TO"
+				}
+				datacontext = "[StringToConditionListWithTitleOnlyFailAndNeutral(DiplomaticActionItem.GetTooltip)]"
+			}
+
+			TooltipScrolledStringPairList = {
+				ontextcontextchanged = "[SetStringPairListWithTitleFromTextContext(PdxGuiWidget.AccessSelf)]"
+				visible = "[And3(DiplomaticActionItem.RequiresAcceptance, DiplomaticActionItem.HasTarget, DiplomaticActionItem.ShowExtraInfo)]"
+				blockoverride "block_scrollarea" { maximumsize = { -1 200 }}
+				textcontext = "[DiplomaticActionItem.GetAcceptanceTooltip]"
+			}
+
+			TooltipTextBlock = {
+				visible = "[DiplomaticActionItem.RequiresAcceptance]"
+				blockoverride "text" {
+					text = "GOOD_BAD_RATIO_T"
+				}
+			}
+
+			TooltipTextBlock = {
+				visible = "[And(DiplomaticActionItem.HasInnerRequirements, Not(DiplomaticActionItem.HasAnyInnerPossible))]"
+				blockoverride "text" {
+					text = "DIPLO_NOT_HAS_INNER"
+				}
+				blockoverride "textblock_background_tint"  {
+					modify_texture = {
+						using = color_red_texture
+					}
+				}
+			}
+
+			TooltipTextBlock = {
+				visible = "[And(DiplomaticActionItem.HasInnerRequirements, DiplomaticActionItem.HasAnyInnerPossible)]"
+				blockoverride "text" {
+					text = "DIPLO_HAS_INNER"
+				}
+				blockoverride "textblock_background_tint"  {
+					modify_texture = {
+						using = color_light_green_texture
+					}
+				}
+			}
+
+			TooltipTableHeader = {
+				visible = "[DiplomaticActionItem.RequiresAcceptance]"
+				blockoverride "tableheader_text" {
+					raw_text = "[SelectLocalization( EqualTo_int32(DiplomaticActionItem.GetAcceptanceFrame, '(int32)1'), '@trigger_no!', '@trigger_yes!' )]  [DiplomaticActionItem.WillAccept|V]"
+				}
+			}
+
+			TooltipFlavorTextBlock = {
+				visible = no
+				blockoverride "text" {
+					text = "[DiplomaticActionItem.GetFlavor]"
+				}
+			}
+		}
+	}
+}

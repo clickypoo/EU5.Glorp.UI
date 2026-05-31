@@ -1,0 +1,12 @@
+﻿# vanilla: in_game/gui/hud_bot.gui
+# mod: in_game/gui/glorpUI_hud_bot.gui
+
+	type mapmode_category_group = vbox {
+		layoutpolicy_horizontal = expanding
+		spacing = 2
+		margin = { 5 0 }
+
+		item = {
+			button_mapmode_category = {}
+		}
+	}

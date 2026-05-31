@@ -1,0 +1,41 @@
+﻿# vanilla: in_game/gui/shared/topbar_tooltips.gui
+# mod: in_game/gui/shared/topbar_tooltips.gui
+
+template AntagonismTwoCountriesTooltip_tooltip {
+	ContextualTooltipType = {
+		blockoverride "title_text" {
+			text = "ANTAGONISM_2C_TOOLTIP_T"
+		}
+
+		blockoverride "concept_link" {
+			text = "[antagonism|E]"
+		}
+
+		blockoverride "title_icon" {
+			icon = {
+				using = tooltip_title_icon_size
+				texture = "gfx/interface/icons/resources/antagonism.dds"
+			}
+		}
+
+		blockoverride "tooltip_content" {
+			TooltipScrolledStringPairList = {
+				visible = "[AntagonismTwoCountriesWrap.GetUs.HasModifierValue('antagonism_received_modifier')]"
+				block "content_datacontext" {}
+				blockoverride "block_scrollarea" { maximumsize = { -1 150 } minimumsize = { -1 30 } }
+				blockoverride "block_title" {
+					text = "ANTAGONISM_IMPACT_T"
+				}
+				textcontext = "[AntagonismTwoCountriesWrap.GetUs.GetModifierValue('antagonism_received_modifier')]"
+			}
+			TooltipScrolledStringPairList = {
+				block "content_datacontext" {}
+				blockoverride "block_scrollarea" { maximumsize = { -1 150 } minimumsize = { -1 30 } }
+				blockoverride "block_title" {
+					text = "ANTAGONISM_2C_TOOLTIP_T"
+				}
+				datacontext = "[StringToStringPairList(AntagonismTwoCountriesWrap.GetUs.GetDiplomacy.GetAntagonismDescription(AntagonismTwoCountriesWrap.GetThemRef))]"
+			}
+		}
+	}
+}
