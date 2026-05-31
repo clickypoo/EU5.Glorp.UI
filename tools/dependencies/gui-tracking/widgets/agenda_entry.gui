@@ -1,0 +1,414 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+widget = {
+	name = "agenda_entry"
+	alwaystransparent = yes
+	size = { 405 122 }
+	parentanchor = right
+
+	visible = "[OutlinerEntry.IsVisible]"
+	vbox = {
+		using = outliner_mouseover_template
+		ignoreinvisible = yes
+
+		state = {
+			using = outliner_hide_animation_template
+			position = { 400 0 }
+		}
+
+		state = {
+			using = outliner_show_animation_template
+			position = { 0 0 }
+		}
+
+		# EXPANDED
+		vbox = {
+			visible = "[And(Outliner.IsExpanded, Or3(Outliner.IsSettingsShowing, Outliner.IsMouseOver, And(Outliner.IsPinned, Not(Outliner.IsAnyOccludingPanelOpened))))]"
+			vbox = {
+				using = outliner_agenda_entry_size
+				layoutpolicy_horizontal = expanding
+
+				vbox = {
+					using = layoutpolicy_expanding
+					using = outliner_mouseover_template
+					alwaystransparent = no
+					visible = "[And(OutlinerAgendaEntry.IsOpened, OutlinerAgendaEntry.AreMissionsEnabled)]"
+					margin_left = 10
+					margin_right = 4
+					margin_bottom = 10
+					margin_top = 2
+
+					vbox = {
+						using = layoutpolicy_expanding
+						using = bg_cabinet_card_frame_mission
+						blockoverride "card_header_pattern" {}
+						blockoverride "card_header_shadow" {}
+						
+						margin = { 5 5 }
+						margin_left = 15
+						spacing = 5
+
+						AgendaMissionEntry = {
+							datacontext = "[GetPlayStyleItem('ADMINISTRATIVE')]"
+							blockoverride "icon_texture" { using = icon_colored_adm_texture }
+							blockoverride "playstyle_name" { text = "PLAYER_PLAYSTYLE_ADMINISTRATIVE_LONG" }
+							blockoverride "playstyle_name_action" { title = "PLAYER_PLAYSTYLE_ADMINISTRATIVE_LONG" }
+							blockoverride "playstyle_replay_action" { title = "REPLAY_ADM_TUTORIAL" }	
+							blockoverride "mission_color_modify_texture" {
+								modify_texture = {
+									blend_mode = overlay
+									using = color_yellow_texture
+								}
+							}
+						}
+
+						AgendaMissionEntry = {
+							datacontext = "[GetPlayStyleItem('DIPLOMATIC')]"
+							blockoverride "icon_texture" { using = icon_colored_dip_texture }
+							blockoverride "playstyle_name" { text = "PLAYER_PLAYSTYLE_DIPLOMATIC_LONG" }
+							blockoverride "playstyle_name_action" { title = "PLAYER_PLAYSTYLE_DIPLOMATIC_LONG" }
+							blockoverride "playstyle_replay_action" { title = "REPLAY_DIP_TUTORIAL" }
+							blockoverride "mission_color_modify_texture" {
+								modify_texture = {
+									blend_mode = overlay
+									using = color_blue_texture
+								}
+							}
+						}
+
+						AgendaMissionEntry = {
+							datacontext = "[GetPlayStyleItem('MILITARY')]"
+							blockoverride "icon_texture" { using = icon_colored_mil_texture }
+							blockoverride "playstyle_name" { text = "PLAYER_PLAYSTYLE_MILITARY_LONG" }
+							blockoverride "playstyle_name_action" { title = "PLAYER_PLAYSTYLE_MILITARY_LONG" }
+							blockoverride "playstyle_replay_action" { title = "REPLAY_MIL_TUTORIAL" }			
+						}
+
+						hbox = {
+							visible = no
+							layoutpolicy_horizontal = expanding
+							spacing = 5
+							AgendaCheck = {
+								blockoverride "check_yes" { visible = "[Player.GetCurrentResearch.IsActive]" }
+							}
+
+							text_single = {
+								visible = "[Player.GetCurrentResearch.IsActive]"
+								layoutpolicy_horizontal = expanding
+								size = { -1 30 }
+								autoresize = no
+								text = "OUTLINER_AGENDA_RESEARCH"
+							}
+
+							button_regular = {
+								visible = "[Not(Player.GetCurrentResearch.IsActive)]"
+								using = button_resize_to_fit_text
+								size = { -1 30 }
+								text = "OUTLINER_AGENDA_NO_RESEARCH"
+
+								action_tooltip = {
+									click_type = left
+									title = "TAB_TOOLTIP_ADVANCES_LEFT_CLICK"
+									on_action = "[OpenLateralGroup('advances_group')]"
+								}
+
+								tooltipwidget = { BasicFunctionalTooltip = {} }
+							}
+
+							expand = {}
+						}
+
+						hbox = {
+							visible = no
+							layoutpolicy_horizontal = expanding
+							spacing = 5
+							AgendaCheck = {
+								blockoverride "check_yes" { visible = "[Not(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_GREEN'))]" }
+							}
+
+							icon = {
+								size = { 12 20 }
+								texture = "gfx/interface/buttons/banner_button_vertical.dds"
+								modify_texture = { using = color_light_green_texture }
+							}
+
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 30 }
+								autoresize = no
+								text = "[SelectLocalization(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_GREEN'), 'OUTLINER_AGENDA_GREEN_ALERTS', 'OUTLINER_AGENDA_NO_GREEN_ALERTS')]"
+							}
+						}
+
+						hbox = {
+							visible = no
+							layoutpolicy_horizontal = expanding
+							spacing = 5
+							AgendaCheck = {
+								blockoverride "check_yes" { visible = "[Not(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_YELLOW'))]" }
+							}
+
+							icon = {
+								size = { 12 20 }
+								texture = "gfx/interface/buttons/banner_button_vertical.dds"
+								modify_texture = { using = color_yellow_texture }
+							}
+
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 30 }
+								autoresize = no
+								text = "[SelectLocalization(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_YELLOW'), 'OUTLINER_AGENDA_YELLOW_ALERTS', 'OUTLINER_AGENDA_NO_YELLOW_ALERTS')]"
+							}
+						}
+
+						hbox = {
+							visible = no
+							layoutpolicy_horizontal = expanding
+							spacing = 5
+							AgendaCheck = {
+								blockoverride "check_yes" { visible = "[Not(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_ORANGE'))]" }
+							}
+
+							icon = {
+								size = { 12 20 }
+								texture = "gfx/interface/buttons/banner_button_vertical.dds"
+								modify_texture = { using = color_mid_orange_texture }
+							}
+
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 30 }
+								autoresize = no
+								text = "[SelectLocalization(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_ORANGE'), 'OUTLINER_AGENDA_ORANGE_ALERTS', 'OUTLINER_AGENDA_NO_ORANGE_ALERTS')]"
+							}
+						}
+
+						hbox = {
+							visible = no
+							layoutpolicy_horizontal = expanding
+							spacing = 5
+							AgendaCheck = {
+								blockoverride "check_yes" { visible = "[Not(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_RED'))]" }
+							}
+
+							icon = {
+								size = { 12 20 }
+								texture = "gfx/interface/buttons/banner_button_vertical.dds"
+								modify_texture = { using = color_red_texture }
+							}
+
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 30 }
+								autoresize = no
+								text = "[SelectLocalization(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_RED'), 'OUTLINER_AGENDA_RED_ALERTS', 'OUTLINER_AGENDA_NO_RED_ALERTS')]"
+							}
+						}
+					}
+				}
+			}
+		}
+
+		# NOT EXPANDED
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			visible = "[And(Not(Outliner.IsExpanded), Or3(Outliner.IsSettingsShowing, Outliner.IsMouseOver, And(Outliner.IsPinned, Not(Outliner.IsAnyOccludingPanelOpened))))]"
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				expand = {}
+				vbox = {
+					using = outliner_agenda_small_entry_size
+
+					vbox = {
+						using = layoutpolicy_expanding
+						using = outliner_mouseover_template
+						alwaystransparent = no
+						visible = "[And(OutlinerAgendaEntry.IsOpened, OutlinerAgendaEntry.AreMissionsEnabled)]"
+						margin_right = 4
+						margin_bottom = 10
+						margin_top = 2
+
+						vbox = {
+							using = layoutpolicy_expanding
+							using = bg_scroll_card_header
+							blockoverride "card_header_pattern" {}
+							blockoverride "card_header_shadow" {}
+
+							margin = { 5 5 }
+							margin_left = 15
+							spacing = 5
+
+							AgendaMissionEntry = {
+								datacontext = "[GetPlayStyleItem('ADMINISTRATIVE')]"
+								blockoverride "icon_visible" { visible = "[Not(PlayStyleItem.IsPlayStyleEnabled)]" }
+								blockoverride "icon_texture" { using = icon_colored_adm_texture }
+								blockoverride "playstyle_name" { text = "PLAYER_PLAYSTYLE_ADMINISTRATIVE_LONG" }
+								blockoverride "playstyle_name_action" { title = "PLAYER_PLAYSTYLE_ADMINISTRATIVE_LONG" }
+								blockoverride "playstyle_replay_action" { title = "REPLAY_ADM_TUTORIAL" }	
+								blockoverride "remove_for_short" {}
+								blockoverride "count_button_minsize" { minimumsize = { 50 30 } }
+								blockoverride "mission_color_modify_texture" {
+									modify_texture = {
+										blend_mode = overlay
+										using = color_yellow_texture
+									}
+								}
+							}
+
+							AgendaMissionEntry = {
+								datacontext = "[GetPlayStyleItem('DIPLOMATIC')]"
+								blockoverride "icon_visible" { visible = "[Not(PlayStyleItem.IsPlayStyleEnabled)]" }
+								blockoverride "icon_texture" { using = icon_colored_dip_texture }
+								blockoverride "playstyle_name" { text = "PLAYER_PLAYSTYLE_DIPLOMATIC_LONG" }
+								blockoverride "playstyle_name_action" { title = "PLAYER_PLAYSTYLE_DIPLOMATIC_LONG" }
+								blockoverride "playstyle_replay_action" { title = "REPLAY_DIP_TUTORIAL" }
+								blockoverride "remove_for_short" {}
+								blockoverride "count_button_minsize" { minimumsize = { 50 30 } }
+								blockoverride "mission_color_modify_texture" {
+									modify_texture = {
+										blend_mode = overlay
+										using = color_blue_texture
+									}
+								}
+							}
+
+							AgendaMissionEntry = {
+								datacontext = "[GetPlayStyleItem('MILITARY')]"
+								blockoverride "icon_visible" { visible = "[Not(PlayStyleItem.IsPlayStyleEnabled)]" }
+								blockoverride "icon_texture" { using = icon_colored_mil_texture }
+								blockoverride "playstyle_name" { text = "PLAYER_PLAYSTYLE_MILITARY_LONG" }
+								blockoverride "playstyle_name_action" { title = "PLAYER_PLAYSTYLE_MILITARY_LONG" }
+								blockoverride "playstyle_replay_action" { title = "REPLAY_MIL_TUTORIAL" }	
+								blockoverride "button_texture" { using = button_regular_red_texture }
+								blockoverride "remove_for_short" {}
+								blockoverride "count_button_minsize" { minimumsize = { 50 30 } }
+							}
+
+							hbox = {
+								visible = no
+								using = layoutpolicy_expanding
+								spacing = 5
+								AgendaCheck = {
+									blockoverride "check_yes" { visible = "[Player.GetCurrentResearch.IsActive]" }
+								}
+								
+								button = {
+									size = { 20 20 }
+									texture = "gfx/interface/icons/flat_icons/tabicons/advances.dds"
+									visible = "[Not(OutlinerAgendaEntry.HasMissionActive)]"
+
+									action_tooltip = {
+										click_type = left
+										title = "TAB_TOOLTIP_ADVANCES_LEFT_CLICK"
+										on_action = "[OpenLateralGroup('advances_group')]"
+									}
+
+									tooltipwidget = { BasicFunctionalTooltip = {} }
+								}
+
+								expand = {
+									size = { -1 30 }
+								}
+							}
+
+							hbox = {
+								visible = no
+								using = layoutpolicy_expanding
+								spacing = 5
+								AgendaCheck = {
+									blockoverride "check_yes" { visible = "[Not(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_GREEN'))]" }
+								}
+
+								icon = {
+									size = { 12 20 }
+									texture = "gfx/interface/buttons/banner_button_vertical.dds"
+									modify_texture = { using = color_light_green_texture }
+								}
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									size = { -1 30 }
+									autoresize = no
+									text = "[SelectLocalization(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_GREEN'), 'OUTLINER_AGENDA_GREEN_ALERTS_SHORT', 'OUTLINER_AGENDA_NO_ALERTS_SHORT')]"
+								}
+							}
+
+							hbox = {
+								visible = no
+								using = layoutpolicy_expanding
+								spacing = 5
+								AgendaCheck = {
+									blockoverride "check_yes" { visible = "[Not(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_YELLOW'))]" }
+								}
+
+								icon = {
+									size = { 12 20 }
+									texture = "gfx/interface/buttons/banner_button_vertical.dds"
+									modify_texture = { using = color_yellow_texture }
+								}
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									size = { -1 30 }
+									autoresize = no
+									text = "[SelectLocalization(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_YELLOW'), 'OUTLINER_AGENDA_YELLOW_ALERTS_SHORT', 'OUTLINER_AGENDA_NO_ALERTS_SHORT')]"
+								}
+							}
+
+							hbox = {
+								visible = no
+								using = layoutpolicy_expanding
+								spacing = 5
+								AgendaCheck = {
+									blockoverride "check_yes" { visible = "[Not(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_ORANGE'))]" }
+								}
+
+								icon = {
+									size = { 12 20 }
+									texture = "gfx/interface/buttons/banner_button_vertical.dds"
+									modify_texture = { using = color_mid_orange_texture }
+								}
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									size = { -1 30 }
+									autoresize = no
+									text = "[SelectLocalization(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_ORANGE'), 'OUTLINER_AGENDA_ORANGE_ALERTS_SHORT', 'OUTLINER_AGENDA_NO_ALERTS_SHORT')]"
+								}
+							}
+
+							hbox = {
+								visible = no
+								using = layoutpolicy_expanding
+								spacing = 5
+								AgendaCheck = {
+									blockoverride "check_yes" { visible = "[Not(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_RED'))]" }
+								}
+
+								icon = {
+									size = { 12 20 }
+									texture = "gfx/interface/buttons/banner_button_vertical.dds"
+									modify_texture = { using = color_red_texture }
+								}
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									size = { -1 30 }
+									autoresize = no
+									text = "[SelectLocalization(IsAnyAlertOfTypeShowing('ALERT_PRIORITY_RED'), 'OUTLINER_AGENDA_RED_ALERTS_SHORT', 'OUTLINER_AGENDA_NO_ALERTS_SHORT')]"
+								}
+							}
+						}
+					}
+				}
+			}
+		}	
+	}
+
+	blockoverride "category_color" {
+		using = color_light_blue_texture
+	}
+}

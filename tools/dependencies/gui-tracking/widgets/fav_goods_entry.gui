@@ -1,0 +1,194 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "fav_goods_entry"
+
+	blockoverride "category_color" {
+		using = color_production_texture
+	}
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				datacontext = "[Player.GetCapital.GetMarket]"
+				datacontext = "[Market.GetMarketEntry(Goods.Self)]"
+				using = outliner_entry_margin
+				spacing = 5
+
+				icon = {
+					size = { 20 20 }
+					texture = "[GetGoodsIcon(Goods.Self)]"
+				}
+
+				widget = {
+					size = {15 22}
+
+					progressbar = {
+						parentanchor = center
+						size = { 5 22 }
+						using = progress_bar_green_alt
+						value = "[FixedPointToFloat(GoodsMarketEntry.GetStockpile)]"
+						min = 0
+						max = "[FixedPointToFloat(Market.GetCenterLocation.GetModifierValueFixed('maximum_stockpile_capacity'))]"
+						direction = vertical
+					}
+				}
+
+				OutlinerTextBase = {
+					using = layoutpolicy_expanding
+					autoresize = no
+					align = left
+					text = "[Goods.GetNameWithNoTooltip]"
+					default_format = "#L"
+					fontsize = 14
+				}
+
+				hbox = {
+					margin_right = 3
+					spacing = 5
+
+					expand = {}
+
+					text_single = {
+						tooltipwidget = {
+							using = goods_market_balance_tooltip
+						}
+						size = { 65 20 }
+						autoresize = no
+						align = right|nobaseline
+						using = Font_Size_Small
+						raw_text = "[Subtract_CFixedPoint(Market.GetSupply(GoodsMarketEntry.GetGoods), Market.GetDemand(GoodsMarketEntry.GetGoods))|+=2]@balance!"
+					}
+
+					hbox = {
+						tooltipwidget = {
+							using = goods_market_price_tooltip
+						}
+						text_single = {
+							size = { 50 20 }
+							autoresize = no
+							align = right|nobaseline
+							using = Font_Size_Small
+							raw_text = "[GoodsMarketEntry.GetPrice|1]@[GoodsMarketEntry.GetGoods.GetPriceDifferenceIconName(GoodsMarketEntry.GetPrice)]!"
+						}
+
+						widget = {
+							size = { 10 16}
+							icon = {
+								visible = "[Not(EqualTo_CFixedPoint(GoodsMarketEntry.GetPrice, GoodsMarketEntry.GetTargetPrice))]"
+								size = {16 16}
+								texture = "gfx/interface/buttons/flats/button_simple.dds"			
+	
+								modify_texture = {
+									using = color_bone_texture
+									blend_mode = normal
+								}
+							}
+						}
+						widget = {
+							visible = "[EqualTo_CFixedPoint(GoodsMarketEntry.GetPrice, GoodsMarketEntry.GetTargetPrice)]"
+							size = { 50 20 }
+							icon = {
+								parentanchor = center
+								visible = "[EqualTo_CFixedPoint(GoodsMarketEntry.GetPrice, GoodsMarketEntry.GetTargetPrice)]"
+								size = {16 16}
+								texture = "gfx/interface/icons/flat_icons/trade_market/equal.dds" 
+							}
+						}
+
+	
+						text_single = {
+							visible = "[Not(EqualTo_CFixedPoint(GoodsMarketEntry.GetPrice, GoodsMarketEntry.GetTargetPrice))]"
+							size = { 50 20 }
+							autoresize = no
+							align = right|nobaseline
+							using = Font_Size_Small
+							raw_text = "[GoodsMarketEntry.GetTargetPrice|1]@[GoodsMarketEntry.GetGoods.GetPriceDifferenceIconName(GoodsMarketEntry.GetTargetPrice)]!"
+							default_format = "#medium"
+						}
+					}
+
+				}
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+			hbox = {
+				datacontext = "[Player.GetCapital.GetMarket]"
+				datacontext = "[Market.GetMarketEntry(Goods.Self)]"
+				using = layoutpolicy_expanding
+				margin_right = 26
+
+				widget = {
+					size = { 68 20 }
+					hbox = {
+						hbox = {
+							spacing = 3
+							text_single = {
+								maximumsize = { 45 20 }
+								align = center|nobaseline
+								using = Font_Size_Small
+								text = "[GoodsMarketEntry.GetPrice|2]"
+							}
+
+							text_single = {
+								maximumsize = { 20 20 }
+								align = center|nobaseline
+								using = Font_Size_Small
+								raw_text = "@[GoodsMarketEntry.GetGoods.GetPriceDifferenceIconName(GoodsMarketEntry.GetPrice)]!"
+							}
+						}
+					}
+				}
+
+				expand = {}
+
+				widget = {
+					size = {15 22}
+
+					progressbar = {
+						parentanchor = center
+						size = { 5 22 }
+						using = progress_bar_green_alt
+						value = "[FixedPointToFloat(GoodsMarketEntry.GetStockpile)]"
+						min = 0
+						max = "[FixedPointToFloat(Market.GetCenterLocation.GetModifierValueFixed('maximum_stockpile_capacity'))]"
+						direction = vertical
+					}
+				}
+			}
+		}
+	}
+
+	blockoverride "icon_content" {
+		OutlinerIconBg = {
+			filter_mouse = none
+			icon = {
+				size = { 70% 70% }
+				parentanchor = center
+				texture = "[GetGoodsIcon(Goods.Self)]"
+			}
+		}
+	}
+
+	blockoverride "button_setup" {
+		action_tooltip = {
+			click_type = left
+			click_mode = single
+			title = "OPEN_GOOD_PANEL"
+			on_action = "[ShowGoods(Goods.Self)]"
+		}
+
+		datacontext = "[Player.GetCapital.GetMarket]"
+		datacontext = "[Market.GetMarketEntry(Goods.Self)]"
+		tooltipwidget = {
+			using = SpecificGoodsMarket_tooltip
+		}
+	}
+}

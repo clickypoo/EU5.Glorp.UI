@@ -1,0 +1,29 @@
+# vanilla: in_game/gui/panels/left_panel/left_panel.gui
+# mod: in_game/gui/panels/left_panel/left_panel.gui
+
+template io_leader_button {
+	header_button_left = {
+		visible = "[InternationalOrganization.IsIOLeaderCountry(GetPlayer)]"
+		
+		size = { 34 34 }
+		blockoverride "button_icon_stretch_sprite" {}
+		blockoverride "header_button_frame_inner" {visible = no}
+		blockoverride "header_button_icon_size" { size = { 32 32 } }
+		blockoverride "icon_overlay" {}
+		blockoverride "header_button_text_layout" {}
+
+		blockoverride "icon_texture" {
+			texture = "[InternationalOrganization.GetIcon]"
+			texture_density = 2
+		}
+
+		onclick = "[OpenInternationalOrganizationView(InternationalOrganization.Self)]"
+		tooltipwidget = {
+			LeftClickButtonTooltip = {
+				blockoverride "onclick_text" {
+					text = "OPEN_IO"
+				}
+			}
+		}
+	}
+}

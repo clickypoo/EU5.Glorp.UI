@@ -1,0 +1,37 @@
+# vanilla: in_game/gui/recruit_location_lateralview.gui
+# mod: in_game/gui/recruit_location_lateralview.gui
+
+template levy_possible_category_tt {
+	ContextualTooltipType = {
+		blockoverride "title_text" {
+			text = "[SubUnitCategory.GetNameWithNoTooltip]"
+		}
+		blockoverride "title_icon" {
+			icon = {
+				using = tooltip_title_icon_size
+				texture = "[GetSubUnitCategoryIcon(SubUnitCategory.Self)]"
+			}
+		}
+		
+		blockoverride "concept_link" {
+			text = "[levies|e]"
+		}
+							
+		blockoverride "tooltip_content" {
+			TooltipTextBlock = {
+				blockoverride "text" {
+					raw_text = "[RecruitInLocationLateralView.GetLevyCategoryStrengthForUI(SubUnitCategory.Self)]"
+				}
+			}
+			TooltipRowList = {
+				blockoverride "block_title" { text = "LEVY_POSSIBLE_LEVIES_FOR_CATEGORY_TT" }
+				blockoverride "rowlist_datamodel_is_empty" { visible = "[IsDataModelEmpty(RecruitInLocationLateralView.GetValidLeviesForCategory(SubUnitCategory.Self))]" }
+				blockoverride "rowlist_datamodel_has_items" { visible = "[DataModelHasItems(RecruitInLocationLateralView.GetValidLeviesForCategory(SubUnitCategory.Self))]" }
+				blockoverride "rowlist_datamodel" { datamodel = "[RecruitInLocationLateralView.GetValidLeviesForCategory(SubUnitCategory.Self)]" }
+				blockoverride "rowlist_item" {
+					raw_text = "[GetLevySetupLabel(LevySetup.Self)]: [RecruitInLocationLateralView.GetLevySetupStrengthForUI(LevySetup.Self)]"
+				}
+			}
+		}
+	}
+}

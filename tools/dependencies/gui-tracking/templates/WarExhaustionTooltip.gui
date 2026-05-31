@@ -1,0 +1,55 @@
+# vanilla: in_game/gui/shared/topbar_tooltips.gui
+# mod: in_game/gui/shared/topbar_tooltips.gui
+
+template WarExhaustionTooltip {
+	ContextualTooltipType = {
+		blockoverride "title_text" {
+			text = "WAR_EXHAUSTION_TOOLTIP_T"
+		}
+
+		blockoverride "concept_link" {
+			text = "[war_exhaustion|e]"
+		}
+		
+		blockoverride "title_icon" {
+			icon = {
+				using = tooltip_title_icon_size
+				texture = "gfx/interface/icons/resources/war_exhaustion.dds"
+			}
+		}
+
+		blockoverride "title_button" {
+			hint_button = {
+                action_tooltip = {
+                    title = "OPEN_HINT"
+                    on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_war_exhaustion')]"
+                }
+            }
+        }
+		
+		blockoverride "tooltip_content" {
+			TooltipScrolledStringPairList = {
+				block "content_datacontext" {}
+				blockoverride "block_scrollarea" { maximumsize = { -1 150 } minimumsize = { -1 30 } }
+				blockoverride "block_title" {
+					text = "WAR_EXHAUSTION_TT_TEXT"
+				}
+				textcontext = "[Country.GetCurrencyTooltipDescription('war_exhaustion')]"
+			}
+			TooltipScrolledStringPairList = {
+				block "content_datacontext" {}
+				block "change_visibility" {}
+				blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
+				blockoverride "block_title" {
+					text = "WAR_EXHAUSTION_TOOLTIP"
+				}
+				textcontext = "[Country.GetDescriptionFor('monthly_war_exhaustion')]"
+			}
+			TooltipTextBlock = {
+				blockoverride "text" {
+					text = "MAX_WAR_EXHAUSTION_TT_TEXT"
+				}
+			}
+		}
+	}
+}

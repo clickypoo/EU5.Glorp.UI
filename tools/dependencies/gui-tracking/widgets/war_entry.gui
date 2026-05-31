@@ -1,0 +1,88 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "war_entry"
+
+	blockoverride "expanded_big_content"  { using = category_big_template }
+	blockoverride "expanded_small_content" { using = category_small_template }
+	
+	blockoverride "icon_content" { using = category_icon_template }
+	blockoverride "pin_object" {}
+
+	blockoverride "category_name" {
+		text = "[War.GetNameWithNoTooltip|T]"
+	}
+
+	blockoverride "outliner_category_count" {
+		text = "[OutlinerWarEntry.GetEntryCount|T]"
+	}
+
+	blockoverride "category_icon_texture" { texture = "[GetConceptTexture('war')]" }
+	blockoverride "small_category_icon_texture" { texture = "[GetConceptTexture('war')]" }
+	blockoverride "category_is_closed_visible"  { visible = "[OutlinerWarEntry.IsClosed]"}
+	blockoverride "category_is_opened_visible"  { visible = "[OutlinerWarEntry.IsOpened]"}
+
+	blockoverride "category_big_extra_content" {
+		hbox = {
+			spacing = 1
+			
+			country_flag_very_small = {
+				datacontext = "[War.GetAttackerWarLeader]"
+				filter_mouse = none
+				alwaystransparent = yes
+				blockoverride "tooltip" {}
+				blockoverride "contextmenu" {}
+				blockoverride "click" {}
+				blockoverride "double_click" {}
+				blockoverride "show_as_button" { visible = no }
+				blockoverride "show_as_icon" { visible = yes }
+			}
+
+			OutlinerTextBase = {
+				maximumsize = { 34 -1 }
+				minimumsize = { 34 -1 }
+				align = center
+				text = "[War.GetWarScore|+=0%/]"
+			}
+
+			country_flag_very_small = {
+				datacontext = "[War.GetDefenderWarLeader]"
+				filter_mouse = none
+				alwaystransparent = yes
+				blockoverride "tooltip" {}
+				blockoverride "contextmenu" {}
+				blockoverride "click" {}
+				blockoverride "double_click" {}
+				blockoverride "show_as_button" { visible = no }
+				blockoverride "show_as_icon" { visible = yes }
+			}
+		}
+	}
+
+	blockoverride "category_small_extra_content" { 
+		country_flag_very_small = {
+			datacontext = "[WarsOverviewWar.GetMainEnemy]"
+			filter_mouse = none
+			alwaystransparent = yes
+			blockoverride "tooltip" {}
+			blockoverride "contextmenu" {}
+			blockoverride "click" {}
+			blockoverride "double_click" {}
+			blockoverride "show_as_button" { visible = no }
+			blockoverride "show_as_icon" { visible = yes }
+		}
+	}
+
+	blockoverride "button_setup" {
+		tooltipwidget = { using = War_tooltip }
+		action_tooltip = {
+			title = "[SelectLocalization(OutlinerWarEntry.IsOpened, 'CLOSE_CATEGORY', 'EXPAND_CATEGORY')]"
+			on_action = "[OutlinerWarEntry.Toggle]"
+		}
+	}
+
+	blockoverride "category_color" {
+		using = color_military_texture
+	}
+}

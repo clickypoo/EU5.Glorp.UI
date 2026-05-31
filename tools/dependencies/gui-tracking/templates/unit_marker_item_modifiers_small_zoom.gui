@@ -1,0 +1,81 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
+template unit_marker_item_modifiers_small_zoom {
+	widget = {
+		visible = "[UnitMarkerItem.IsExiled]"
+		block "item_container_size" {
+			size = { 22 22 }
+		}
+
+		widget = {
+			parentanchor = center
+			using = bg_unit_marker_item_modifiers
+			block "item_modifiers_size" {
+				size = { 22 22 }
+			}
+
+			icon = {
+				parentanchor = center
+				size = { 75% 75% }
+				texture = "gfx/interface/mapitems/exiles.dds"
+				tooltipwidget = {
+					SimpleContextualTooltipType = {
+						blockoverride "title_icon" {
+							icon = {
+								using = tooltip_title_icon_size
+								texture = "gfx/interface/mapitems/exiles.dds"
+							}
+						}
+	
+						blockoverride "concept_link" {
+							raw_text = "[exile|e]"
+						}
+						
+						lowpriotextcontext = "IS_EXILED_TT"
+	
+					}
+				}
+			}
+		}
+	}
+
+	widget = {
+		visible = "[UnitMarkerItem.IsRetreating]"
+
+		block "item_container_size" {
+			size = { 22 22 }
+		}
+
+		widget = {
+			parentanchor = center
+			using = bg_unit_marker_item_modifiers
+			block "item_modifiers_size" {
+				size = { 22 22 }
+			}
+
+			icon = {
+				parentanchor = center
+				size = { 75% 75% }
+				texture = "gfx/interface/mapitems/retreating.dds"
+				tooltipwidget = {
+					SimpleContextualTooltipType = {
+						blockoverride "title_icon" {
+							icon = {
+								using = tooltip_title_icon_size
+								texture = "gfx/interface/mapitems/retreating.dds"
+							}
+						}
+		
+						blockoverride "concept_link" {
+							text = "[modifier|e]"
+						}
+						
+						lowpriotextcontext = "UNIT_IS_RETREAT_TT"
+		
+					}
+				}	
+			}
+		}
+	}
+}

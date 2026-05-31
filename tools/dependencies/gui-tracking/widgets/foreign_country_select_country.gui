@@ -1,0 +1,56 @@
+# vanilla: in_game/gui/foreign_country_lateralview.gui
+# mod: in_game/gui/foreign_country_lateralview.gui
+
+select_menu_left = {
+	datacontext = "[GetQuickVisibleCountries(Player.Self)]"
+	blockoverride "menu_setup" {
+		name = "foreign_country_select_country"
+	}
+
+	blockoverride "close_button" {
+		onclick = "[ForeignCountrySelectCountry.OnClose]"
+	}
+
+	blockoverride "select_content" {
+		select_menu_header = {
+			blockoverride "select_menu_header_extra" {
+				text_single = {
+					using = Font_Type_Headers
+					using = Font_Size_Small
+					align = nobaseline
+					text = "VISIBLE_COUNTRIES_TT"
+				}
+			}
+		}
+
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			spacing = 10
+
+			datamodel = "[QuickVisibleCountries.GetVisibleCountries]"
+			item = {
+				widget = {
+					size = { 485 70 }
+
+					hbox = {
+						using = bg_market_card
+						using = bg_cabinet_card_frame
+
+						country_card = {
+							blockoverride "country_card_main_action" {
+								action_tooltip = {
+									visible = "[Country.IsValid]"
+									click_type = left
+									click_mode = single
+									title = "COUNTRY_CLICK_TOOLTIP_LEFT_CLICK"
+									on_action = "[ShowForeignCountry(Country.Self)]"
+									on_action = "[PanToCountry(Country.Self)]"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

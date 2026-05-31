@@ -1,0 +1,159 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "gov_reform_entry"
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				using = outliner_entry_margin
+				spacing = 10
+				margin_left = 15
+
+				estate_reform_action_button_alt = {
+					size = {16 23}
+					blockoverride "estate_reform_button_visible" {
+						visible = no
+					}
+					blockoverride "estate_reform_icon_visible" {
+						visible = yes
+					}
+					blockoverride "icon_texture" {
+						texture = "[GetGovernmentReformIllustration(GovernmentReform.Self)]"
+					}
+					blockoverride "reform_item_normal_visibility" {
+						visible = "[And(Not(GovernmentReform.IsUnique),Not(GovernmentReform.IsMajor))]"
+					}
+					blockoverride "reform_item_unique_visibility" {
+						visible = "[GovernmentReform.IsUnique]"
+					}
+					blockoverride "reform_item_major_visibility" {
+						visible = "[And(Not(GovernmentReform.IsUnique),GovernmentReform.IsMajor)]"
+					}
+				}
+
+				OutlinerTextBase = {
+					align = left
+					text = "[GovReformOutlinerEntry.GetName]"
+				}
+
+				expand = {}
+	
+				OutlinerTextBase = {
+					maximumsize = { 40 -1 }
+					align = right
+					raw_text = "[GovReformOutlinerEntry.GetReformProgress|2]%"
+				}
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				using = outliner_entry_margin
+				spacing = 3
+				margin_left = 14
+
+				estate_reform_action_button_alt = {
+					size = {16 23}
+					blockoverride "estate_reform_button_visible" {
+						visible = no
+					}
+					blockoverride "estate_reform_icon_visible" {
+						visible = yes
+					}
+					blockoverride "icon_texture" {
+						texture = "[GetGovernmentReformIllustration(GovernmentReform.Self)]"
+					}
+					blockoverride "reform_item_normal_visibility" {
+						visible = "[And(Not(GovernmentReform.IsUnique),Not(GovernmentReform.IsMajor))]"
+					}
+					blockoverride "reform_item_unique_visibility" {
+						visible = "[GovernmentReform.IsUnique]"
+					}
+					blockoverride "reform_item_major_visibility" {
+						visible = "[And(Not(GovernmentReform.IsUnique),GovernmentReform.IsMajor)]"
+					}
+				}
+
+				expand = {}
+	
+				OutlinerTextBase = {
+					maximumsize = { 40 -1 }
+					align = right
+					raw_text = "[GovReformOutlinerEntry.GetReformProgress|2]%"
+				}
+			}
+		}
+	}
+
+	blockoverride "icon_content" {
+		OutlinerIconBg = {
+
+			piechart = {
+				alwaystransparent = yes
+				parentanchor = center
+				allow_outside = yes
+				size = { 80% 80% }
+
+				using = piechart_angles
+
+				pieslice = {
+					alwaystransparent = yes
+					texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
+					value = "[GovReformOutlinerEntry.GetReformProgress]"
+					color = { 1 1 1 1 }
+				}
+
+				pieslice = {
+					alwaystransparent = yes
+					texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
+					value = "[Subtract_float('(float)100.0', GovReformOutlinerEntry.GetReformProgress)]"
+					color = { 0.0 0.1 0.1 1 }
+				}
+			}
+
+			icon = {
+				parentanchor = center
+				size = { 60% 60% }
+				texture = "gfx/interface/icons/flat_icons/reforms.dds"
+			}
+		}
+	}
+
+	blockoverride "button_setup" {
+		datacontext = "[GovReformOutlinerEntry.GetReformItem.GetReform]"
+		datacontext = "[GovReformOutlinerEntry.GetReformItem.GetUIAction]"
+
+		using = button_action_provider
+		enabled = yes
+
+		tooltipwidget = {
+			using = GovernmentReform_tooltip
+			blockoverride "UIActionDescription" {
+				TooltipBlockList = {
+					visible = "[And(Not(GovReformOutlinerEntry.GetReformItem.IsImplemented), GovReformOutlinerEntry.GetReformItem.IsValid)]"
+					textcontext = "[GovReformOutlinerEntry.GetReformItem.GetUIAction.GetDescription]"
+				}
+				TooltipFlavorTextBlock = {
+					visible = "[Not(StringIsEmpty(GovReformOutlinerEntry.GetReformItem.GetUIAction.GetConditions))]"
+					blockoverride "text" {
+						text = "[GovReformOutlinerEntry.GetReformItem.GetUIAction.GetConditions]"
+					}
+				}
+			}
+		}
+	}
+
+	blockoverride "category_color" {
+		using = color_government_texture
+	}
+}

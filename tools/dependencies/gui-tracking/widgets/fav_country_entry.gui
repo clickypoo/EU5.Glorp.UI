@@ -1,0 +1,147 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "fav_country_entry"
+	widgetid = "fav_country_entry"
+
+	blockoverride "category_color" {
+		using = color_government_texture
+	}
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				using = outliner_entry_margin
+				spacing = 5
+
+				country_flag_very_small = {
+					filter_mouse = none
+					alwaystransparent = yes
+					blockoverride "show_as_button" { visible = no }
+					blockoverride "show_as_icon" { visible = yes }
+					blockoverride "tooltip" {}
+					blockoverride "contextmenu" {}
+					blockoverride "click" {}
+					blockoverride "double_click" {}
+				}
+
+				OutlinerTextBase = {
+					maximumsize = { 160 -1 }
+					autoresize = yes
+					align = left
+					text = "[Country.GetLongNameWithNoTooltip]"
+					default_format = "#L"
+				}
+
+				icon = {
+					size = { 18 18 }
+					visible = "[And(Not(Country.IsLocalPlayer), Country.GetDiplomacy.IsAtWar)]"
+					texture = "[GetConceptTexture('war')]"
+				}
+
+				expand = {}
+
+				hbox = {
+					spacing = 5
+					hbox = {
+						spacing = 3
+						visible = "[And(IsPlayerValid, Country.GetDiplomacy.IsSubjectOf(GetPlayer))]"
+						OutlinerTextBase = {
+							maximumsize = { 50 -1 }
+							minimumsize = { 50 -1 }
+							autoresize = yes
+							text = "[Country.GetDiplomacy.GetSubjectLoyalty|2%+=/]"
+						}
+		
+						icon = {
+							size = { 18 18 }
+							texture = "[GetConceptTexture('subject_loyalty')]"
+						}
+					}
+	
+					hbox = {
+						visible = "[Not(Country.IsLocalPlayer)]"
+						spacing = 3
+						OutlinerTextBase = {
+							maximumsize = { 50 -1 }
+							minimumsize = { 50 -1 }
+							autoresize = yes
+							text = "[Country.GetDiplomacy.GetOpinionOf(GetPlayer)|+=]"
+						}
+		
+						icon = {
+							size = { 18 18 }
+							texture = "[GetConceptTexture('opinion')]"
+						}
+					}
+				}
+
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			OutlinerTextBase = {
+				size = { 100% 100% }
+				using = outliner_entry_margin
+				align = left|nobaseline
+				autoresize = no
+				text = "[Country.GetNameWithNoTooltip]"
+				default_format = "#L"
+			}
+		}
+	}
+
+	blockoverride "icon_content" {
+		OutlinerIconBg = {
+			filter_mouse = none
+			country_flag_very_small = {
+				filter_mouse = none
+				alwaystransparent = yes
+				parentanchor = center
+				blockoverride "show_as_button" { visible = no }
+				blockoverride "show_as_icon" { visible = yes }
+				blockoverride "tooltip" {}
+				blockoverride "contextmenu" {}
+				blockoverride "click" {}
+				blockoverride "double_click" {}
+			}
+		}
+	}
+
+	blockoverride "button_setup" {
+		action_tooltip = {
+			visible = "[Country.IsValid]"
+			click_type = left
+			click_mode = single
+			title = "COUNTRY_CLICK_TOOLTIP_LEFT_CLICK"
+			on_action = "[OpenDiplomacy(Country.Self)]"
+		}
+
+		action_tooltip = {
+			visible = "[Country.IsValid]"
+			click_type = right
+			click_mode = single
+
+			cursor = "country_menu"
+			title = "CLICK_ACTION_COUNTRY_CONTEXT_MENU"
+			on_action = "[PdxGuiWidget.ToggleContextMenu]"
+		}
+
+		tooltip_enabled = "[Country.Exists]"
+		tagtooltip_enabled = "[Country.IsValid]"
+		tooltip = "[Country.GetName]"
+		contextmenu_enabled = "[Country.IsValid]"
+		contextmenu_widget = {
+			CountryContextMenu = {}
+		}
+
+		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCountry(Country.Self)]"
+	}
+}

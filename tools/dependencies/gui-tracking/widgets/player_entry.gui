@@ -1,0 +1,131 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "player_entry"
+
+	blockoverride "outliner_entry_size" {
+		size = { 405 31 }
+	}
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				using = outliner_entry_margin
+				spacing = 8
+				icon = {
+					visible = "[And(OutlinerPlayerEntry.GetCountry.GetDiplomacy.IsAtWar, IsPlayerAtWarWithOtherPlayer(OutlinerPlayerEntry.GetCountry))]"
+					size = {20 20}
+					texture = "gfx/interface/icons/flat_icons/war_human_enemy.dds"
+					tooltip_enabled = "[DataModelHasItems(OutlinerPlayerEntry.GetCountry.GetDiplomacy.GetCurrentWars)]"
+					tooltipwidget = {
+						using = War_list_tooltip
+					}
+				}
+				icon = {
+					visible = "[And(OutlinerPlayerEntry.GetCountry.GetDiplomacy.IsAtWar, Not(IsPlayerAtWarWithOtherPlayer(OutlinerPlayerEntry.GetCountry)))]"
+					size = {20 20}
+					texture = "gfx/interface/icons/diplomatic_status/war.dds"
+					tooltip_enabled = "[DataModelHasItems(OutlinerPlayerEntry.GetCountry.GetDiplomacy.GetCurrentWars)]"
+					tooltipwidget = {
+						using = War_list_tooltip
+					}
+				}
+				OutlinerTextBase = {
+					using = layoutpolicy_expanding
+					autoresize = no
+					text = "[OutlinerPlayerEntry.GetName]"
+				}
+				
+				widget = {
+					size = { 32 20 }
+					icon = {
+						parentanchor = center
+						visible = "[Not(OutlinerPlayerEntry.GetCountry.IsValid)]"
+						size = { 20 20 }
+						texture = "gfx/interface/icons/messages_settings/map.dds"
+					}
+
+					country_flag_very_small = {
+						parentanchor = center
+						visible = "[OutlinerPlayerEntry.GetCountry.IsValid]"
+						datacontext = "[OutlinerPlayerEntry.GetCountry]"
+					}
+				}
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				using = outliner_entry_margin
+
+				widget = {
+					size = { 32 20 }
+					icon = {
+						parentanchor = center
+						visible = "[Not(OutlinerPlayerEntry.GetCountry.IsValid)]"
+						size = { 20 20 }
+						texture = "gfx/interface/icons/messages_settings/map.dds"
+					}
+
+					country_flag_very_small = {
+						parentanchor = center
+						visible = "[OutlinerPlayerEntry.GetCountry.IsValid]"
+						datacontext = "[OutlinerPlayerEntry.GetCountry]"
+					}
+				}
+			}
+		}
+	}
+
+	blockoverride "icon_content" {
+		OutlinerIconBg = {
+			icon = {
+				size = {20 20}
+				parentanchor = center
+				texture = "[OutlinerPlayerEntry.GetIcon]"
+			}
+			blockoverride "category_color" {
+				using = color_light_blue_texture
+			}
+		}
+	}
+
+	blockoverride "button_setup" {
+		action_tooltip = {
+			visible = "[OutlinerPlayerEntry.GetCountry.IsValid]"
+			click_type = left
+			click_mode = single
+			title = "COUNTRY_CLICK_TOOLTIP_LEFT_CLICK"
+			on_action = "[OpenDiplomacy(OutlinerPlayerEntry.GetCountry)]"
+		}
+
+		action_tooltip = {
+			visible = "[OutlinerPlayerEntry.GetCountry.IsValid]"
+			click_type = right
+			click_mode = single
+
+			cursor = "country_menu"
+			title = "CLICK_ACTION_COUNTRY_CONTEXT_MENU"
+			on_action = "[PdxGuiWidget.ToggleContextMenu]"
+		}
+
+		datacontext = "[OutlinerPlayerEntry.GetCountry]"
+		tooltip_enabled = "[Country.Exists]"
+		tagtooltip_enabled = "[Country.IsValid]"
+		tooltip = "[Country.GetName]"
+
+		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCountry(Country.Self)]"
+
+		contextmenu_enabled = "[Country.IsValid]"
+		contextmenu_widget = {
+			CountryContextMenu = {}
+		}
+	}
+}

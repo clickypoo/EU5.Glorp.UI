@@ -1,0 +1,165 @@
+# vanilla: in_game/gui/battle_lateralview.gui
+# mod: in_game/gui/battle_lateralview.gui
+
+	type countries_strength_bar = battle_header_card {
+		allow_outside = yes
+		widget = {
+			visible = "[Not(Combat.IsInBombardPhase)]"
+			parentanchor = top|hcenter
+			widgetanchor = bottom|hcenter
+			ignore_layout = yes
+			position = { 0 11 }
+			size = {45 45}
+			tagtooltip_enabled = yes
+			tooltip = "[combat_phase|e]"
+			using = bg_circle_piechart
+			icon = {
+				parentanchor = center
+				size = {40 40}
+				texture = "[GetConceptTexture('battle')]"
+			
+				modify_texture = {
+					using = overlay_window_texture
+					blend_mode = overlay
+					alpha = 0.7
+				}
+			}
+		}
+
+		widget = {
+			visible = "[Combat.IsInBombardPhase]"
+			parentanchor = top|hcenter
+			widgetanchor = bottom|hcenter
+			ignore_layout = yes
+			position = { 0 11 }
+			size = {45 45}
+			tagtooltip_enabled = yes
+			tooltip = "[bombard_phase|e]"
+			using = bg_circle_piechart
+			icon = {
+				texture = "[GetConceptTexture('bombard_phase')]"
+				parentanchor = center
+			
+				size = {40 40}
+				modify_texture = {
+					using = overlay_window_texture
+					blend_mode = overlay
+					alpha = 0.7
+				}
+			}
+		}
+
+		hbox = {
+			margin = { 7 0 }
+			margin_top = 3
+
+			# ATTACKER COUNTRIES
+			combat_participating_countries_card = {
+				datacontext = "[Combat.GetAttacker]"
+				margin_right = 39
+				margin_left = 15
+				blockoverride "combat_participating_countries_tooltip_name" {
+					text = "ATTACKER"
+				}
+				blockoverride "combat_participating_countries_tooltip_link" {
+					text = "[attacker|e]"
+				}
+				blockoverride "combat_card_strength_extra" {
+					righttoleft = yes
+				}
+			}
+			
+			
+			# DEFENDER COUNTRIES
+			combat_participating_countries_card = {
+				datacontext = "[Combat.GetDefender]"
+				righttoleft = yes
+				margin_left = 39
+				margin_right = 15
+			}
+		}
+		
+		blockoverride "battle_header_card_frame" {}
+		blockoverride "battle_header_card_extra" {
+			widget = {
+				size = {100% 53}
+				ignore_layout = yes
+				parentanchor = vcenter
+				position = {0 2}
+				widget = {
+					ignore_layout = yes
+					size = {50% 100%}
+					alwaystransparent = yes
+					parentanchor = right|vcenter
+					background = {
+						visible = "[Not(Combat.GetDefender.GetLeadingUnit.GetCountry.IsPlayer)]"
+						texture = "gfx/interface/component_decoration/declare_war_header.dds"
+						texture_density = 2
+						frame_grid = {3 1}
+						frame = 3
+						margin_right = 7
+						spriteType = corneredstretched
+						spriteborder = {40 0}
+						modify_texture = {
+							using = overlay_cloth_texture
+							blend_mode = overlay
+							alpha = 0.2
+						}
+					}
+					background = {
+						visible = "[Combat.GetDefender.GetLeadingUnit.GetCountry.IsPlayer]"
+						texture = "gfx/interface/component_decoration/declare_war_header.dds"
+						mirror = horizontal
+						texture_density = 2
+						frame_grid = {3 1}
+						frame = 1
+						margin_right = 7
+						spriteType = corneredstretched
+						spriteborder = {40 0}
+						modify_texture = {
+							using = overlay_cloth_texture
+							blend_mode = overlay
+							alpha = 0.2
+						}
+					}
+				}
+				widget = {
+					ignore_layout = yes
+					size = {50% 100%}
+					alwaystransparent = yes
+					parentanchor = left|vcenter
+					background = {
+						visible = "[Combat.GetAttacker.GetLeadingUnit.GetCountry.IsPlayer]"
+						texture = "gfx/interface/component_decoration/declare_war_header.dds"
+						texture_density = 2
+						frame_grid = {3 1}
+						frame = 1
+						margin_left = 7
+						spriteType = corneredstretched
+						spriteborder = {40 0}
+						modify_texture = {
+							using = overlay_cloth_texture
+							blend_mode = overlay
+							alpha = 0.2
+						}
+					}
+					background = {
+						visible = "[Not(Combat.GetAttacker.GetLeadingUnit.GetCountry.IsPlayer)]"
+						texture = "gfx/interface/component_decoration/declare_war_header.dds"
+						mirror = horizontal
+						texture_density = 2
+						frame_grid = {3 1}
+						frame = 3
+						margin_left = 7
+						spriteType = corneredstretched
+						spriteborder = {40 0}
+						modify_texture = {
+							using = overlay_cloth_texture
+							blend_mode = overlay
+							alpha = 0.2
+						}
+					}
+				}
+			}
+		}
+	}

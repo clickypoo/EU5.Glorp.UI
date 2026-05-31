@@ -1,0 +1,34 @@
+# vanilla: in_game/gui/shared/geography_definitions_tooltips.gui
+# mod: in_game/gui/shared/glorpUI_geography_definitions_tooltips.gui
+
+template ProvinceDefinition_tooltip {
+    ContextualTooltipType = {
+        blockoverride "title_text" {
+            text = "MAP_TT_PROVINCE_TITLE"
+        }
+        blockoverride "title_icon" {
+            icon = {
+                using = tooltip_title_icon_size
+                texture = "gfx/interface/icons/map_modes/provinces.dds"
+            }
+        }
+
+        blockoverride "concept_link" {
+            text = "[province_definition|e]"
+        }
+
+        blockoverride "tooltip_content" {
+            TooltipDebugStringPairList = {
+				textcontext = "[ProvinceDefinition.GetLogInfo]"
+            }
+
+            TooltipStringPairList = {
+                textcontext = "[ProvinceDefinition.GetUITooltip]"
+            }
+
+            TooltipStringPairList = {
+                textcontext = "[ProvinceDefinition.GetMembersInfo]"
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+# vanilla: in_game/gui/ingame_topbar.gui
+# mod: in_game/gui/ingame_topbar.gui
+
+widget = {
+	visible = "[Not(TutorialHasVar('intro_hide_ui_4'))]"
+	name = "lateralview_left_layer"
+	using = lateralview_left_setup
+}

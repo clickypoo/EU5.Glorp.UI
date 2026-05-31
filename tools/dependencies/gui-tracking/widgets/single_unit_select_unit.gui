@@ -1,0 +1,47 @@
+# vanilla: in_game/gui/single_unit_window.gui
+# mod: in_game/gui/single_unit_window.gui
+
+select_menu_left = {
+	blockoverride "menu_setup" {
+		name = "single_unit_select_unit"
+	}
+
+	blockoverride "close_button" {
+		onclick = "[SingleUnitSelectUnit.OnClose]"
+	}
+
+	blockoverride "select_content" {
+		select_menu_header = {
+			blockoverride "select_menu_header_extra" {
+				text_single = {
+					using = Font_Type_Headers
+					using = Font_Size_Small
+					align = nobaseline
+					text = "OWNED_UNITS_TT"
+				}
+			}
+		}
+
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			spacing = 10
+
+			datamodel = "[AccessPlayerUnits]"
+			item = {
+				widget = {
+					size = { 485 70 }
+					visible = "[Or(And(SingleUnitSelectUnit.Parent.GetSelectedUnit.IsArmy, Unit.IsArmy), And(SingleUnitSelectUnit.Parent.GetSelectedUnit.IsNavy, Unit.IsNavy))]"
+					
+					hbox = {
+						datacontext = "[Unit.GetLocation]"
+						
+						using = bg_market_card
+						using = bg_cabinet_card_frame
+	
+						unit_card = {}
+					}
+				}
+			}
+		}
+	}
+}

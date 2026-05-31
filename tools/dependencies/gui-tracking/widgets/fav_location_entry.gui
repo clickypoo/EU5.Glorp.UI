@@ -1,0 +1,109 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "fav_location_entry"
+	widgetid = "fav_location_entry"
+
+	blockoverride "category_color" {
+		using = color_geopolitics_texture
+	}
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				using = outliner_entry_margin
+				spacing = 5
+
+				icon = {
+					size = { 20 20 }
+					texture = "[Location.GetRankIcon]"
+				}
+
+				OutlinerTextBase = {
+					using = layoutpolicy_expanding
+					autoresize = no
+					align = left
+					text = "[Location.GetNameWithNoTooltip]"
+					default_format = "#L"
+				}
+
+				OutlinerTextBase = {
+					maximumsize = { 60 -1 }
+					minimumsize = { 60 -1 }
+					autoresize = yes
+					raw_text = "[Location.GetTotalTaxBase|2] @tax_base!"
+				}
+
+				OutlinerTextBase = {
+					maximumsize = { 60 -1 }
+					minimumsize = { 60 -1 }
+					autoresize = yes
+					raw_text = "[Location.GetTotalPopulation] @population!"
+				}
+			}
+
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			OutlinerTextBase = {
+				size = { 100% 100% }
+				using = outliner_entry_margin
+				autoresize = no
+				align = left
+				text = "[Location.GetNameWithNoTooltip]"
+				default_format = "#L"
+			}
+		}
+	}
+
+	blockoverride "icon_content" {
+		OutlinerIconBg = {
+			filter_mouse = none
+			country_flag_very_small = {
+				filter_mouse = none
+				alwaystransparent = yes
+				parentanchor = center
+				datacontext = "[Location.GetProvince.GetCountry]"
+				blockoverride "show_as_button" { visible = no }
+				blockoverride "show_as_icon" { visible = yes }
+				blockoverride "tooltip" {}
+				blockoverride "contextmenu" {}
+				blockoverride "click" {}
+				blockoverride "double_click" {}
+			}
+		}
+	}
+
+	blockoverride "button_setup" {
+		action_tooltip = {
+			click_type = left
+			click_mode = single
+			title = "GO_TO_LOCATION"
+			on_action = "[ShowLocation(Location.Self)]"
+		}
+		action_tooltip = {
+			click_type = right
+			click_mode = single
+
+			cursor = "location_menu"
+			title = "CLICK_ACTION_LOCATION_CONTEXT_MENU"
+			on_action = "[PdxGuiWidget.ToggleContextMenu]"
+		}
+
+		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightLocation(Location.Self)]"
+
+		tooltipwidget = {
+			using = location_simple_tooltip
+		}
+		contextmenu_widget = {
+			LocationContextMenu = {}
+		}
+	}
+}

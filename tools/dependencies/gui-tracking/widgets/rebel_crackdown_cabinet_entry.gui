@@ -1,0 +1,76 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "rebel_crackdown_cabinet_entry"
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				visible = "[Cabinet.IsActive]"
+				datacontext = "[Cabinet.GetCharacter]"
+				using = outliner_entry_margin
+				spacing = 5
+
+				using = cabinet_entry_action_progress
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" { using = cabinet_entry_small_action_progress }
+
+	blockoverride "icon_content" {
+		using = cabinet_entry_icon
+
+		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/rebels/fist.dds" }
+		blockoverride "cabinet_entry_icon_piechart"{
+			widget = {
+				size = { 100% 100% }
+				alwaystransparent = yes
+				ignore_layout = yes
+				background = {
+					texture = "gfx/interface/buttons/checkbox_bg_round.dds"
+					texture_density = 2
+					using = button_outliner_effect
+				}
+
+				widget = {
+					size = {100% 100%}
+					ignore_layout = yes
+					alwaystransparent = yes
+					using = circular_wood_frame
+				}
+			}
+			piechart = {
+				parentanchor = center
+				size = { 80% 80% }
+				using = piechart_angles
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Subtract_float('(float)100.0', Multiply_float(FixedPointToFloat(OutlinerCabinetEntry.GetActionProgressScope.sRebel('target').GetProgress), '(float)100.0'))]"
+					color = { 0.01 0.6 0.9 1 } 
+					alwaystransparent = yes
+				}
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Subtract_float('(float)100.0', Subtract_float('(float)100.0', Multiply_float(FixedPointToFloat(OutlinerCabinetEntry.GetActionProgressScope.sRebel('target').GetProgress), '(float)100.0')))]"
+					color = { 0.0 0.1 0.1 1 }
+					alwaystransparent = yes
+				}
+			}
+		}
+	}
+	blockoverride "button_setup" {
+		using = cabinet_entry_actions
+		tooltipwidget = {
+			using = action_progress_tooltip
+		}
+	}
+	blockoverride "category_color" {
+		using = color_government_texture
+	}
+}
