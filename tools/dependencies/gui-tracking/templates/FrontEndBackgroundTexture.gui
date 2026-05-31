@@ -1,3 +1,0 @@
-template FrontEndBackgroundTexture {
-	texture = "gfx/interface/illustrations/loading_screens/frontend_bg_1.dds"
-}

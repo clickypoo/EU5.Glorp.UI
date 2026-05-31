@@ -1,5 +1,0 @@
-widget = {
-	visible = "[Not(TutorialHasVar('intro_hide_ui_4'))]"
-	name = "lateralview_left_layer"
-	using = lateralview_left_setup
-}

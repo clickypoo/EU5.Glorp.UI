@@ -1,6 +1,0 @@
-template AntagonismTooltip {
-	using = AntagonismTooltipBase
-	blockoverride "title_text" {
-		text = "ANTAGONISM_TOOLTIP_T"
-	}
-}

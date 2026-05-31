@@ -1,9 +1,0 @@
-	type mapmode_category_group = vbox {
-		layoutpolicy_horizontal = expanding
-		spacing = 2
-		margin = { 5 0 }
-
-		item = {
-			button_mapmode_category = {}
-		}
-	}
