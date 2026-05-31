@@ -2503,6 +2503,7 @@ widget = {
 			name = "unit_items_grid"
 			addcolumn = @unit_marker_item_width
 			addrow = @unit_marker_item_height
+			datamodel_reuse_widgets = yes
 			allow_outside = yes
 
 			parentanchor = center
