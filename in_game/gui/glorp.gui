@@ -218,9 +218,28 @@ types glorp {
                                 }
                             }
 							stat_item = {
-								blockoverride "stat_text" { text = "[Player.GetAverageControl|2%]" }
+								blockoverride "stat_text" { text = "[Player.MakeScope.GetVariable('glorpui_avg_max_control').GetValue|2%]" }
 								blockoverride "stat_icon" { texture = "gfx/interface/icons/location_icons/control.dds" }
-								tooltipwidget = { using = AverageControlTooltip }
+								tooltipwidget = {
+									SimpleContextualTooltipType = {
+										blockoverride "title_icon" {
+											icon = {
+												using = tooltip_title_icon_size
+												texture = "gfx/interface/icons/location_icons/control.dds"
+											}
+										}
+										blockoverride "title_text" {
+											text = "GLORP_UI_AVG_CONTROL"
+										}
+										blockoverride "tooltip_content" {
+											TooltipTextBlock = {
+												blockoverride "text" {
+													text = "GLORP_UI_AVG_CONTROL_DESC"
+												}
+											}
+										}
+									}
+								}
 							}
                         }
                         expand = {}
