@@ -18,7 +18,7 @@ Glorp UI / Glorp UI
  [lista]
   [*] [b]Dostosuj swoje doświadczenie[/b] za pomocą [b]Menu dostosowywania interfejsu Glorp[/b] w grze! Twoje preferencje zostaną zapisane [b]Per Save Game[/b].
   [Preferujesz inną implementację modów? Po prostu umieść go [b]po Glorp UI[/b] w kolejności ładowania, a zastąpi on nasze zmiany!
-[*] [b]Glorp UI[/b] jest w pełni zintegrowany z [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b]! Zarządzaj wszystkimi naszymi ustawieniami z ich zunifikowanego [b]Mod Menu[/b]!
+  [*] [b]Glorp UI[/b] jest w pełni zintegrowany z [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b]! Zarządzaj wszystkimi naszymi ustawieniami z ich zunifikowanego [b]Mod Menu[/b]!
  [/list]
 
  [h3] Wprowadzone zmiany [/h3]
@@ -53,7 +53,8 @@ Glorp UI / Glorp UI
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3697317887]Zorange's Mapmode Collection[/url][/b] Dodaje więcej trybów map!
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Autonomiczni dyplomaci[/url][/b] Przywraca automatyczny system dyplomatów z EU4!
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph's Flag Fixes & Additions[/url][/b] - Lubię flagi...
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]Wariacja Pomysłów 2[/url][/b] - Dodaje Pomysły Narodowe w stylu EU4! Załaduj Glorp UI [b]PO[/b] tym modzie w kolejności ładowania
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]Wariacja Pomysłów 2[/url][/b] - Dodaje Pomysły Narodowe w stylu EU4! Załaduj Glorp UI [b]PO[/b] tym modzie w kolejności ładowania.
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3659626562]Construction Manager[/url][/b] - Oszczędza wiele kliknięć (wczytaj przed/przed Glorp UI).
  [/list]
 
  [h3] Specjalne podziękowania [/h3]

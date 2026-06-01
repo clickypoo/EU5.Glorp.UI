@@ -18,7 +18,7 @@ Glorp UI / Glorp UI
  [list]
   [*] [b]Passe dein Erlebnis[/b] mit dem [b]Glorp UI Customization Menu[/b] im Spiel an! Deine Einstellungen werden [b]Per Save Game[/b] gespeichert.
   [*] Bevorzugst du eine andere Mods-Implementierung? Platziere sie einfach [b]nach Glorp UI[/b] in der Ladereihenfolge und sie wird unsere Änderungen überschreiben!
-[*] [b]Glorp UI[/b] ist vollständig in das [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] integriert! Verwalte alle unsere Einstellungen über das einheitliche [b]Mod-Menü[/b]!
+  [*] [b]Glorp UI[/b] ist vollständig in das [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] integriert! Verwalte alle unsere Einstellungen über das einheitliche [b]Mod-Menü[/b]!
  [/list]
 
  [h3] Eingeführte Änderungen [/h3]
@@ -41,7 +41,7 @@ Glorp UI / Glorp UI
   [*] [b]Kartenmodi der Ortsansicht[/b] - Wenn ihr mit dem Mauszeiger über die Infosymbole in der Ortsansicht fahrt, wird der entsprechende Kartenmodus angezeigt.
   [*] [b]RGOs aus der Rohstoffansicht bauen[/b] - Klicken Sie einfach auf das RGO-Kartensymbol im Rohstoff-Kartenmodus, um das RGO-Baumenü zu öffnen
   [*] [b]Kombinierte Geländewirkung[/b] - Es wurde ein Banner hinzugefügt, das den kombinierten Geländewirkungsmodifikator während eines Kampfes anzeigt.
-  [*] [b]Flashbang Be Gone[/b] - Die Flashbang-Intro-Animation bei jedem Spielstart wurde entfernt.
+  [*] [b]Flashbang Be Gone[/b] - Die Flashbang-Intro-Animation, die jedes Mal beim Betreten eines Spiels erscheint, wurde entfernt.
   [*] [b]Debug-Modus aktivieren[/b] - Benutze das [b]Glorp UI-Anpassungsmenü[/b], um den [b]Debug-Modus[/b] zu aktivieren!
   [*] [b]Diverse Verbesserungen[/b] - Die Symbole für das Alert Banner sind größer. Outliner-Kategoriesymbole sind größer.
  [/list]
@@ -53,7 +53,8 @@ Glorp UI / Glorp UI
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3697317887]Zorange's Mapmode Collection[/url][/b] Fügt weitere Mapmodes hinzu!
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Autonome Diplomaten[/url][/b] Bringt das automatische Diplomatensystem aus EU4 zurück!
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph's Flag Fixes & Additions[/url][/b] - Ich mag Flaggen...
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]Die Ideen-Variante 2[/url][/b] - Fügt nationale Ideen im EU4-Stil hinzu! Lade Glorp UI [b]NACH[/b] dieser Mod in der Reihenfolge des Ladens
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]Die Ideen-Variante 2[/url][/b] - Fügt nationale Ideen im EU4-Stil hinzu! Lade Glorp UI [b]NACH[/b] dieser Mod in der Ladereihenfolge
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3659626562]Construction Manager[/url][/b] - Spart so viele Klicks (vor/über Glorp UI laden)
  [/list]
 
  [h3] Besonderer Dank [/h3]

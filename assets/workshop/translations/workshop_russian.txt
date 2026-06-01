@@ -18,7 +18,7 @@ Glorp UI / Glorp UI
  [list]
   [*] [b]Настройте свой опыт[/b], используя внутриигровое меню [b]Glorp UI Customization Menu[/b]! Ваши настройки будут сохранены [b]при сохранении игры[/b].
   [*] Предпочитаете другую реализацию мода? Просто поставьте его [b]после Glorp UI[/b] в порядке загрузки, и он отменит наши изменения!
-[*] [b]Glorp UI[/b] полностью интегрирован в [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b]! Управляйте всеми нашими настройками из единого [b]Mod Menu[/b]!
+  [*] [b]Glorp UI[/b] полностью интегрирован в [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b]! Управляйте всеми нашими настройками из единого [b]Mod Menu[/b]!
  [/list]
 
  [h3] Реализованные изменения [/h3]
@@ -54,9 +54,10 @@ Glorp UI / Glorp UI
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Автономные дипломаты[/url][/b] Возвращает автоматизированную систему дипломатов из EU4!
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph's Flag Fixes & Additions[/url][/b] - Я люблю флаги...
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - Добавляет национальные идеи в стиле EU4! Загрузите Glorp UI [b]ПОСЛЕ[/b] этого мода в порядке загрузки
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3659626562]Construction Manager[/url][/b] - экономит много кликов (загружать до/после Glorp UI)
  [/list]
 
- [h3] Особая благодарность [/h3]
+ [h3] Отдельное спасибо [/h3]
  [list]
   [*] [b]EU5 Mod Coop[/b] - Без них этот мод был бы невозможен!
   [*] [b]Коннер[/b] - За то, что в одиночку создал и поддерживал Glorp UI с 1453 года (очень реальный, не поддельный)

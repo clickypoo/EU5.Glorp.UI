@@ -18,7 +18,7 @@ Glorp Kullanıcı Arayüzü / Glorp UI
  [liste]
   [*] [b]Oyun içi [b]Glorp Kullanıcı Arayüzü Özelleştirme Menüsünü[/b] kullanarak deneyiminizi özelleştirin[/b]! Tercihleriniz [b]Oyun Kaydetme Başına[/b] kaydedilecektir.
   [*] Başka bir mod uygulamasını mı tercih ediyorsunuz? Basitçe yükleme sırasına [b]Glorp UI[/b]'den sonra yerleştirin ve değişikliklerimizi geçersiz kılacaktır!
-[*] [b]Glorp UI[/b] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] ile tamamen entegre edilmiştir! Tüm ayarlarımızı birleşik [b]Mod Menüsünden[/b] yönetin!
+  [*] [b]Glorp UI[/b] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] ile tamamen entegre edilmiştir! Tüm ayarlarımızı birleşik [b]Mod Menüsünden[/b] yönetin!
  [/list]
 
  [h3] Uygulanan Değişiklikler [/h3]
@@ -54,6 +54,7 @@ Glorp Kullanıcı Arayüzü / Glorp UI
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Otonom Diplomatlar[/url][/b] EU4'teki otomatik diplomat sistemini geri getiriyor!
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph'in Bayrak Düzeltmeleri ve Eklemeleri[/url][/b] - Bayrakları severim...
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]Fikir Varyasyonu 2[/url][/b] - EU4 Tarzı Ulusal Fikirler Ekler! Glorp UI'yi [b]Yükleme Sırasında bu moddan SONRA[/b] yükleyin
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3659626562]İnşaat Müdürü[/url][/b] - Çok fazla tıklama tasarrufu sağlar (Glorp kullanıcı arayüzünden önce/sonra yükle)
  [/list]
 
  [h3] Özel Teşekkürler [/h3]

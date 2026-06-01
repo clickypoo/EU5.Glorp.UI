@@ -14,11 +14,11 @@ Glorp UI / Glorp UI
 
  [b]¿Tienes alguna sugerencia? Recomiéndala abajo![/b]
 
- [h3] Personalizable[/h3]
+ [h3] Personalizable [/h3]
  [list]
   [*] [b]¡Personaliza tu experiencia[/b] usando el [b]Menú de Personalización de la IU de Glorp[/b] del juego! Tus preferencias se guardarán [b]Por partida guardada[/b].
   [¿Prefieres otra implementación de mods? Simplemente colócalo [b]después de Glorp UI[/b] en el orden de carga ¡y anulará nuestros cambios!
-[*] [b]¡Glorp UI[/b] está completamente integrado en el [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/b][/b]! ¡Gestiona todos nuestros ajustes desde su [b]Mod Menu[/b] unificado!
+  [*] [b]¡Glorp UI[/b] está completamente integrado en el [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/b][/b]! ¡Gestiona todos nuestros ajustes desde su [b]Mod Menu[/b] unificado!
  [/list]
 
  [h3] Cambios implementados[/h3]
@@ -54,9 +54,10 @@ Glorp UI / Glorp UI
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Diplomáticos Autónomos[/url][/b] ¡Recupera el sistema de diplomáticos automáticos de EU4!
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Correcciones y adiciones de banderas de Zyrph[/url][/b] - Me gustan las banderas...
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]La Variación de Ideas 2[/url][/b] - ¡Añade Ideas Nacionales al estilo EU4! Carga Glorp UI [b]DESPUÉS[/b] de este mod en el Orden de Carga
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3659626562]Gestor de Construcción[/url][/b] - Ahorra muchos clics (carga antes/encima de Glorp UI)
  [/list]
 
- [h3] Agradecimientos Especiales [/h3]
+ [h3] Agradecimientos especiales [/h3]
  [list]
   [*] [b]EU5 Mod Coop[/b] - ¡Sin ellos este mod no sería posible!
   [*] [b]Conner[/b] - Por crear y mantener sin ayuda la IU de Glorp desde 1453 (muy real, no falso)

@@ -18,7 +18,7 @@ Glorp UI / Glorp UI
  [liste]
   [*] [b]Personnalisez votre expérience[/b] en utilisant le [b]menu de personnalisation de l'interface Glorp[/b] en jeu ! Vos préférences seront sauvegardées [b]à chaque sauvegarde[/b].
   [*] Vous préférez une autre implémentation de mods ? Placez-le simplement [b]après Glorp UI[/b] dans l'ordre de chargement et il remplacera nos changements !
-[*] [b]Glorp UI[/b] est entièrement intégré au [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] ! Gérer tous nos paramètres depuis leur [b]Mod Menu[/b] unifié !
+  [*] [b]Glorp UI[/b] est entièrement intégré au [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] ! Gérer tous nos paramètres depuis leur [b]Mod Menu[/b] unifié !
  [/list]
 
  [h3] Changements implémentés [/h3]
@@ -54,6 +54,7 @@ Glorp UI / Glorp UI
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Diplomates autonomes[/url][/b] Ramène le système de diplomates automatisés de EU4 !
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph's Flag Fixes & Additions[/url][/b] - J'aime les drapeaux...
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - Ajoute des idées nationales dans le style EU4 ! Chargez Glorp UI [b]APRES[/b] ce mod dans l'ordre de chargement.
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3659626562]Construction Manager[/url][/b] - Permet d'économiser de nombreux clics (charger avant/avant Glorp UI)
  [/list]
 
  [h3] Remerciements particuliers [/h3]

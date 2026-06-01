@@ -10,7 +10,7 @@ IU da Glorp / Glorp UI
 [img]https://i.ibb.co/7x1241bq/image.png[/img]
 
 [quote]
- O [b]Glorp UI[/b] melhora a interface de usuário do [b]Europa Universalis V[/b]. É tão simples quanto isso.
+ O [b]Glorp UI[/b] melhora a interface do usuário do [b]Europa Universalis V[/b]. É tão simples quanto isso.
 
  [Tem alguma sugestão? Recomende-a abaixo!
 
@@ -18,7 +18,7 @@ IU da Glorp / Glorp UI
  [lista]
   [*] [b]Personalize sua experiência[/b] usando o [b]Menu de personalização da interface do usuário Glorp[/b] no jogo! Suas preferências serão salvas [b]Por jogo salvo[/b].
   [Prefere outra implementação de mods? Basta colocá-lo [b]depois do Glorp UI[/b] na ordem de carregamento e ele substituirá nossas alterações!
-[A [b]Glorp UI[/b] está totalmente integrada ao [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b]! Gerencie todas as nossas configurações em seu [b]Mod Menu[/b] unificado!
+  [A [b]Glorp UI[/b] está totalmente integrada ao [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b]! Gerencie todas as nossas configurações em seu [b]Mod Menu[/b] unificado!
  [/list]
 
  [h3] Mudanças implementadas [/h3]
@@ -53,12 +53,13 @@ IU da Glorp / Glorp UI
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3697317887]Zorange's Mapmode Collection[/url][/b] Adiciona mais mapmodes!
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Autonomous Diplomats[/url][/b] Traz de volta o sistema de diplomatas automatizados do EU4!
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph's Flag Fixes & Additions[/url][/b] - Eu gosto de bandeiras...
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - Adiciona ideias nacionais no estilo UE4! Carregar Glorp UI [b]DEPOIS[/b] deste mod na ordem de carregamento
- [/lista]
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - Adiciona ideias nacionais no estilo UE4! Carregue o Glorp UI [b]DEPOIS[/b] deste mod na ordem de carregamento
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3659626562]Construction Manager[/url][/b] - Economiza muitos cliques (carregar antes/acima da IU do Glorp)
+ [/list]
 
  [h3] Agradecimentos especiais [/h3]
  [list]
-  [*] [b]EU5 Mod Coop[/b] - Sem eles, esse mod não seria possível!
+  [*] [b]EU5 Mod Coop[/b] - Sem eles, este mod não seria possível!
   [*] [b]Conner[/b] - Por criar e manter sozinho a Glorp UI desde 1453 (muito real, não falsa)
   [*] [b]Mazutaki[/b] - Ajuda com os tamanhos dos exércitos dos países e com a árvore técnica!
   [*] [b]Sol_InvictusXLII[/b] - Por criar o Mod Campo Minado, que foi uma ferramenta de aprendizado muito útil no início do desenvolvimento!
