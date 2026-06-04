@@ -20,6 +20,11 @@ Commands:
     apply     Write resolved tracking files back to mod GUI files
     refresh   Re-extract mod definitions into tracking files
     status    Show tracking status
+
+Pass ``--beta`` (``-b``) to any vanilla-reading command (init, check, merge,
+refresh) to target the EU5 closed-beta install (Project Caesar Review) instead
+of the live game. Beta-sourced gui/vanilla commits are tagged ``(beta)`` in
+their subject.
 """
 
 import argparse
@@ -65,6 +70,15 @@ STEAM_GAME_PATHS = [
                  "common", "Europa Universalis V", "game"),
     os.path.join("C:" + os.sep, "Program Files", "Steam", "steamapps",
                  "common", "Europa Universalis V", "game"),
+]
+
+BETA_STEAM_GAME_PATHS = [
+    os.path.join("C:" + os.sep, "Steam", "steamapps", "common",
+                 "Project Caesar Review", "game"),
+    os.path.join("C:" + os.sep, "Program Files (x86)", "Steam", "steamapps",
+                 "common", "Project Caesar Review", "game"),
+    os.path.join("C:" + os.sep, "Program Files", "Steam", "steamapps",
+                 "common", "Project Caesar Review", "game"),
 ]
 
 # ─── Regex (used with .match() on lstripped lines) ───────────────────────────
@@ -305,6 +319,32 @@ def find_definition_in_file(text, name, kind, namespace=None):
             return (d.start_line, d.end_line)
     return None
 
+
+def _assert_unique_top_level_defs(text, path):
+    """Report duplicated top-level definitions in *text*.
+
+    Checks that no ``(kind, namespace, name)`` parsed from *text* is defined
+    more than once. A repeated definition, typically a top-level widget name
+    appearing twice, is the signature of a corrupted ``.gui`` file that EU5
+    fails to load. Prints an error for each duplicate and returns ``False``
+    when any is found, ``True`` when *text* is clean.
+    """
+    seen = {}
+    unique = True
+    for d in parse_gui_file(text, path):
+        sig = (d.kind, d.namespace, d.name)
+        first = seen.get(sig)
+        if first is None:
+            seen[sig] = d
+            continue
+        label = f"{d.kind} '{d.name}'"
+        if d.namespace:
+            label += f" ({d.namespace})"
+        print(f"  Error: Duplicate {label} in {path}: lines "
+              f"{first.start_line + 1} and {d.start_line + 1}.")
+        unique = False
+    return unique
+
 # ─── Git Helpers ──────────────────────────────────────────────────────────────
 
 def run_git(args, cwd=ROOT_DIR, check=True, env=None):
@@ -431,18 +471,27 @@ def _push_refs(refs, force=False):
                 print(f"  {line}")
 
 
+def _versioned_message(message, version, beta=False):
+    """Prefix the commit subject *message* with *version* when it is set,
+    tagging it ``(beta)`` after the version when *beta*."""
+    marker = " (beta)" if beta else ""
+    if version:
+        return f"{version}{marker}: {message}"
+    return f"(beta) {message}" if beta else message
+
+
 def _update_vanilla_branch(tracking_files,
                            message="Update vanilla GUI definitions",
                            version=None,
-                           force_push=False):
+                           force_push=False,
+                           beta=False):
     """Create or update the ``gui/vanilla`` branch via plumbing (no checkout).
 
     *tracking_files* maps relative paths to content strings.
-    *version* prefixes the commit subject when provided.
+    *version* prefixes the commit subject when provided; *beta* tags it.
     Returns the new commit SHA.
     """
-    if version:
-        message = f"{version}: {message}"
+    message = _versioned_message(message, version, beta=beta)
     tmp_index = os.path.join(ROOT_DIR, ".git", "tmp_gui_index")
     plumbing = {"GIT_INDEX_FILE": tmp_index}
 
@@ -520,8 +569,12 @@ def _constant_tracking_key(mod_file, vanilla_file, name):
 
 # ─── Scanner ─────────────────────────────────────────────────────────────────
 
-def _scan_definitions(base_dir, source_dirs):
-    """Recursively parse all ``.gui`` files and return ``[GuiDefinition, …]``."""
+def _scan_definitions(base_dir, source_dirs, assert_unique=False):
+    """Recursively parse all ``.gui`` files and return ``[GuiDefinition, …]``.
+
+    With *assert_unique*, a file containing a duplicated top-level definition
+    aborts the run before its definitions are collected.
+    """
     all_defs = []
     for source in source_dirs:
         gui_dir = os.path.join(base_dir, source, "gui")
@@ -540,6 +593,11 @@ def _scan_definitions(base_dir, source_dirs):
                 except (OSError, UnicodeDecodeError) as e:
                     print(f"  Warning: Could not read {rel}: {e}")
                     continue
+                if assert_unique and not _assert_unique_top_level_defs(
+                        text, rel):
+                    print("Aborting: refusing to sync tracking from a "
+                          "corrupted mod file.")
+                    sys.exit(1)
                 all_defs.extend(parse_gui_file(text, rel))
     return all_defs
 
@@ -618,16 +676,28 @@ def _resolve_game_dir(args):
         print(f"Error: Game directory not found: {args.game_dir}")
         sys.exit(1)
 
-    cfg = _load_config().get("game_directory", "")
-    if cfg and os.path.isdir(cfg):
-        return cfg
+    beta = getattr(args, "beta", False)
+    cfg = _load_config()
+    if beta:
+        cfg_dir = cfg.get("beta_game_directory", "")
+        search_paths = BETA_STEAM_GAME_PATHS
+        config_key = "beta_game_directory"
+        label = "EU5 closed beta (Project Caesar Review)"
+    else:
+        cfg_dir = cfg.get("game_directory", "")
+        search_paths = STEAM_GAME_PATHS
+        config_key = "game_directory"
+        label = "EU5 game"
 
-    for p in STEAM_GAME_PATHS:
+    if cfg_dir and os.path.isdir(cfg_dir):
+        return cfg_dir
+
+    for p in search_paths:
         if os.path.isdir(p):
             return p
 
-    print("Error: Could not locate EU5 game directory.")
-    print("Set 'game_directory' in config.toml or use --game-dir.")
+    print(f"Error: Could not locate {label} directory.")
+    print(f"Set '{config_key}' in config.toml or use --game-dir.")
     sys.exit(1)
 
 # ─── Utilities ───────────────────────────────────────────────────────────────
@@ -904,13 +974,24 @@ def _prompt_version_value(default):
         return _normalize_version(resp)
 
 
+def _confirm_or_correct_version(detected):
+    """Confirm *detected* or type a correction; return the chosen version."""
+    resp = _ask("Press [Enter]/[y] to confirm, or type the correct "
+                "version: ").strip()
+    if not resp or resp.lower() in ("y", "yes"):
+        return detected
+    if _version_key(resp) is None:
+        return _prompt_version_value(detected)
+    return _normalize_version(resp)
+
+
 def _resolve_game_version(args, is_init):
     """Resolve the version to prefix onto the gui/vanilla commit subject.
 
-    A ``--game-version`` flag wins. Otherwise ``init`` confirms the
-    continue_game.json reading interactively; ``merge`` and ``refresh`` reuse
-    it only when it is newer than the last tracked commit, and prompt when it
-    is not.
+    A ``--game-version`` flag wins and skips prompting. Otherwise the detected
+    version is always shown for interactive confirmation (press [Enter]/[y] to
+    accept or type a correction), including when it is newer than the last
+    tracked commit, so an auto-detection can always be fixed.
     """
     flag = getattr(args, "game_version", None)
     if flag:
@@ -924,21 +1005,15 @@ def _resolve_game_version(args, is_init):
     if is_init:
         if detected:
             print(f"\nGame version read from continue_game.json: {detected}")
-            resp = _ask("Press [Enter]/[y] to confirm, or type the correct "
-                        "version: ").strip()
-            if not resp or resp.lower() in ("y", "yes"):
-                return detected
-            if _version_key(resp) is None:
-                return _prompt_version_value(detected)
-            return _normalize_version(resp)
+            return _confirm_or_correct_version(detected)
         print("\nGame version not found in continue_game.json.")
         return _prompt_version_value(None)
 
     last = _last_vanilla_commit_version()
     if detected and last and _version_key(detected) > _version_key(last):
-        print(f"Using game version {detected} "
+        print(f"\nGame version read from continue_game.json: {detected} "
               f"(newer than last tracked {last}).")
-        return detected
+        return _confirm_or_correct_version(detected)
 
     print("\nNo newer game version detected automatically:")
     print(f"  continue_game.json: {detected or '(unavailable)'}")
@@ -1051,7 +1126,8 @@ def cmd_init(args):
         vanilla_files,
         "Initialize vanilla GUI definitions",
         version=version,
-        force_push=args.force)
+        force_push=args.force,
+        beta=getattr(args, "beta", False))
 
     # 2. Anchor gui/vanilla-merged at the same commit for the next merge base.
     run_git(["update-ref", f"refs/heads/{MERGED_BRANCH}", new_vanilla_sha])
@@ -1071,7 +1147,9 @@ def cmd_init(args):
     # 4. Commit
     run_git(["add", TRACKING_DIR_NAME + "/"])
     run_git(["commit", "-m",
-             f"Initialize GUI tracking with {total} definition(s)"])
+             _versioned_message(
+                 f"Initialize GUI tracking with {total} definition(s)",
+                 version)])
 
     print(f"\nDone! Tracking {total} GUI override(s).")
     print("Run 'gui_update.py check' after a game update to detect changes.")
@@ -1175,7 +1253,7 @@ def cmd_merge(args):
         print("Skipping mod-state sync.")
     else:
         print("Syncing tracking files from current mod content...")
-        mod_defs = _scan_definitions(ROOT_DIR, GUI_SOURCES)
+        mod_defs = _scan_definitions(ROOT_DIR, GUI_SOURCES, assert_unique=True)
         mod_map = {}
         mod_consts = {}
         for d in mod_defs:
@@ -1278,11 +1356,13 @@ def cmd_merge(args):
         new_vanilla_sha = _update_vanilla_branch(
             tracking_files,
             f"Update {updated} vanilla GUI definition(s)",
-            version=version)
+            version=version,
+            beta=getattr(args, "beta", False))
     else:
         print(f"{VANILLA_BRANCH} has unmerged commits from a previous "
               "run; resuming merge.")
         new_vanilla_sha = vanilla_sha
+        version = _last_vanilla_commit_version()
 
     # Per-file three-way merge using gui/vanilla-merged as base and
     # gui/vanilla as theirs.
@@ -1349,7 +1429,8 @@ def cmd_merge(args):
             _stage_merge_entries(tp, base, ours, theirs)
         # Set MERGE_HEAD/MERGE_MSG so the next git commit produces a 2-parent merge.
         affected = len(conflicts) + len(clean_paths)
-        msg = f"Merge vanilla GUI updates ({affected} definition(s))"
+        msg = _versioned_message(
+            f"Merge vanilla GUI updates ({affected} definition(s))", version)
         _setup_merge_state(new_vanilla_sha, msg)
 
         print(f"\nConflicts in {len(conflicts)} file(s):")
@@ -1367,7 +1448,10 @@ def cmd_merge(args):
     )
     if diff_check.returncode != 0:
         run_git(["commit", "-m",
-                 f"Merge vanilla GUI updates ({len(clean_paths)} definition(s))"])
+                 _versioned_message(
+                     f"Merge vanilla GUI updates "
+                     f"({len(clean_paths)} definition(s))",
+                     version)])
 
     # Advance the bookmark to match gui/vanilla.
     run_git(["update-ref",
@@ -1438,12 +1522,17 @@ def cmd_apply(args):
             errors += 1
             continue
 
-        # Read mod file (preserve BOM + detect line endings)
+        # Read mod file (detect line endings; BOM is always restored on write).
         with open(abs_mod, "rb") as f:
             raw = f.read()
-        has_bom = raw.startswith(b"\xef\xbb\xbf")
         has_crlf = b"\r\n" in raw
         mod_text = raw.decode("utf-8-sig").replace("\r\n", "\n")
+        # Any U+FEFF past byte 0 is a corruption artifact.
+        mod_text = mod_text.replace("\ufeff", "")
+
+        if not _assert_unique_top_level_defs(mod_text, mod_file):
+            errors += 1
+            continue
 
         if key.startswith("constant:"):
             kind = "constant"
@@ -1464,10 +1553,14 @@ def cmd_apply(args):
         new_lines = lines[:start] + new_text.split("\n") + lines[end + 1:]
         result = "\n".join(new_lines)
 
+        if not _assert_unique_top_level_defs(result, mod_file):
+            errors += 1
+            continue
+
         if has_crlf:
             result = result.replace("\n", "\r\n")
 
-        new_raw = (b"\xef\xbb\xbf" if has_bom else b"") + result.encode("utf-8")
+        new_raw = b"\xef\xbb\xbf" + result.encode("utf-8")
         if new_raw == raw:
             continue
 
@@ -1587,7 +1680,8 @@ def cmd_refresh(args):
                 header + vd.text + "\n")
     version = _resolve_game_version(args, is_init=False)
     new_vanilla_sha = _update_vanilla_branch(
-        vanilla_files, "Refresh vanilla GUI definitions", version=version)
+        vanilla_files, "Refresh vanilla GUI definitions", version=version,
+        beta=getattr(args, "beta", False))
 
     # Refresh re-baselines tracking, so the bookmark moves to the new tip.
     run_git(["update-ref",
@@ -1687,6 +1781,14 @@ def main():
                  "(e.g. 1.2.5). Overrides auto-detection and prompting.",
         )
 
+    def add_beta_arg(p):
+        p.add_argument(
+            "--beta", "--early-access", "-b", "--b", dest="beta",
+            action="store_true",
+            help="Target the EU5 closed-beta install (Project Caesar "
+                 "Review) instead of the live game.",
+        )
+
     init_parser = sub.add_parser(
         "init", help="Initialize GUI tracking for this mod")
     init_parser.add_argument(
@@ -1696,17 +1798,21 @@ def main():
              f"{MERGED_BRANCH}) before re-initializing.",
     )
     add_version_arg(init_parser)
-    sub.add_parser("check",
-                   help="Check for vanilla GUI changes")
+    add_beta_arg(init_parser)
+    check_parser = sub.add_parser("check",
+                                  help="Check for vanilla GUI changes")
+    add_beta_arg(check_parser)
     merge_parser = sub.add_parser(
         "merge", help="Update vanilla branch and merge changes")
     add_version_arg(merge_parser)
+    add_beta_arg(merge_parser)
     sub.add_parser("apply",
                    help="Apply resolved changes back to mod GUI files")
     refresh_parser = sub.add_parser(
         "refresh",
         help="Re-extract mod definitions into tracking files")
     add_version_arg(refresh_parser)
+    add_beta_arg(refresh_parser)
     sub.add_parser("status",
                    help="Show tracking status")
 
