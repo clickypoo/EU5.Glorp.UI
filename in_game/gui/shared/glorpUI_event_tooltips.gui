@@ -297,7 +297,7 @@ types GlorpUIEventTypes {
 		item = {
 			button_regular = {
 				using = layoutpolicy_expanding
-				text = "[CString.GetString]"
+				text = "[CPdxStringView.GetStringView]"
 			}
 		}
 	}

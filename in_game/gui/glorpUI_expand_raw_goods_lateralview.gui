@@ -107,7 +107,7 @@ template build_rgo_entry {
 							}
 						}
 						card_header_button_04 = {
-							size = {220 46}
+							size = {200 46}
 
 							hbox = {
 								layoutpolicy_horizontal = expanding
@@ -485,6 +485,36 @@ template build_rgo_entry {
 							}
 							contextmenu_widget = {
 								LocationContextMenu = {}
+							}
+						}
+					}
+
+					widget = {
+						size = { 20 44 }
+						datacontext = "[RawGoodLocationItem.GetLocation]"
+						button_square_checkbox = {
+							size = { 20 20 }
+							parentanchor = center
+							widgetanchor = center
+							tooltipwidget = { using = AutoExpand_RGO_Tooltip }
+							blockoverride "check_texture" {
+								texture = "gfx/interface/icons/flat_icons/mass_upgrade.dds"
+							}
+							blockoverride "checked_visible" {
+								visible = "[IsAutoExpandRGO(Location.Self)]"
+							}
+							blockoverride "unchecked_visible" {
+								visible = "[Not(IsAutoExpandRGO(Location.Self))]"
+							}
+							action_tooltip = {
+								click_type = left
+								title = "[SelectLocalization(IsAutoExpandRGO(Location.Self), 'TOGGLE_AUTO_EXPAND_RGO_ON', 'TOGGLE_AUTO_EXPAND_RGO_OFF')]"
+								on_action = "[ToggleAutoExpandRGO(Location.Self)]"
+							}
+							action_tooltip = {
+								click_type = right
+								title = "TOGGLE_AUTO_EXPAND_ALL_RGO"
+								on_action = "[ExpandRawGoodsLateralView.ToggleAutoExpandAllRGOs]"
 							}
 						}
 					}

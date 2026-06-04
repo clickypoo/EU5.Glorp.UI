@@ -385,10 +385,13 @@ template build_location_entry {
 								# Glorp UI - Market Access (or Terrain Bonus when constructing a fort), Control
 								vbox = {
 									maximumsize = { 60 46 }
+									margin = { 6 0 }
 									layoutpolicy_horizontal = expanding
 									hbox = {
 										# Market Access
+										layoutpolicy_horizontal = expanding
 										visible = "[Not(GetScriptedGui('glorpui_building_type_is_defense_category').IsShown(GuiScope.SetRoot(BuildInLocationLateralView.GetBuildingType.MakeScope).End))]"
+										expand = {}
 										piechart = {
 											size = { 20 20 }
 											alwaystransparent = yes
@@ -448,49 +451,39 @@ template build_location_entry {
 									}
 									hbox = {
 										# Terrain Attacker Penalty (when constructing a fort)
+										layoutpolicy_horizontal = expanding
 										visible = "[GetScriptedGui('glorpui_building_type_is_defense_category').IsShown(GuiScope.SetRoot(BuildInLocationLateralView.GetBuildingType.MakeScope).End)]"
 										datacontext = "[LocationToBuildItem.GetLocation]"
-										widget = {
+										expand = {}
+										icon = {
+											texture = "gfx/interface/icons/location_icons/new/fort.dds"
 											size = { 20 20 }
-											using = bg_circle_piechart
-											background = {
-												texture = "[GetClimateFrame(Location.GetClimate)]"
-												alpha = 0.6
-											}
-											icon = {
-												size = { 70% 70% }
-												parentanchor = center
-												texture = "[GetTopographyIcon(Location.GetTopography)]"
-											}
-											button = {
-												parentanchor = center
-												size = { 100% 100% }
-												tooltipwidget = {
-													SimpleContextualStringPairTooltipType = {
-														blockoverride "title_icon" {
-															icon = {
-																using = tooltip_title_icon_size
-																texture = "gfx/interface/icons/modifier_types/fort_level.dds"
-															}
-														}
-														blockoverride "concept_link" {
-															text = "[fort|e]"
-														}
-														lowpriotextcontext = "[JoinText(Localize('line_break'), Localize('TERRAIN_ATTACKER_PENALTY_TT'), Location.GetFortInfo)]"
-													}
-												}
-											}
 										}
 										text_single = {
 											size = { 30 18 }
-											align = nobaseline|right
+											align = nobaseline|center
 											autoresize = no
 											fontsize = 14
+											visible = "[Or(Location.GetVegetation.HasDefensiveBonus, Location.GetTopography.HasDefensiveBonus)]"
 											raw_text = "[Location.GetAttackerPenalty|-=]"
+										}
+										text_single = {
+											size = { 30 18 }
+											align = nobaseline|center
+											autoresize = no
+											fontsize = 14
+											visible = "[Not(Or(Location.GetVegetation.HasDefensiveBonus, Location.GetTopography.HasDefensiveBonus))]"
+											raw_text = "--"
+										}
+
+										tooltipwidget = {
+											using = Tactical_tooltip
 										}
 									}
 									hbox = {
 										# Control
+										layoutpolicy_horizontal = expanding
+										expand = {}
 										piechart = {
 											name = "location_control"
 											using = bg_circle
@@ -729,6 +722,46 @@ template build_location_entry {
 
 							country_flag_very_small = {
 								datacontext = "[LocationToBuildItem.GetLocation.GetOwner]"
+							}
+						}
+					}
+
+					widget = {
+						size = { 20 44 }
+						visible = "[And(ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self), LocationToBuildItem.GetBuilding.GetType.IsMultipleLevels)]"
+						datacontext = "[LocationToBuildItem.GetBuilding]"
+						button_square_checkbox = {
+							size = { 20 20 }
+							parentanchor = center
+							widgetanchor = center
+							tooltipwidget = { using = AutoExpand_Building_Tooltip }
+							blockoverride "check_texture" {
+								texture = "gfx/interface/icons/flat_icons/mass_upgrade.dds"
+							}
+							blockoverride "checked_visible" {
+								visible = "[IsAutoExpand(Building.Self)]"
+							}
+							blockoverride "unchecked_visible" {
+								visible = "[Not(IsAutoExpand(Building.Self))]"
+							}
+							background = {
+								texture = "gfx/interface/buttons/checkbox_bg_square.dds"
+								texture_density = 2
+								modify_texture = {
+									using = color_market_grey_texture
+									blend_mode = add
+									alpha = 0.5
+								}
+							}
+							action_tooltip = {
+								click_type = left
+								title = "[SelectLocalization(IsAutoExpand(Building.Self), 'TOGGLE_AUTO_EXPAND_ON', 'TOGGLE_AUTO_EXPAND_OFF')]"
+								on_action = "[ToggleAutoExpandBuilding(Building.Self)]"
+							}
+							action_tooltip = {
+								click_type = right
+								title = "TOGGLE_AUTO_EXPAND_ALL_BUILDINGS"
+								on_action = "[BuildInLocationLateralView.ToggleAutoExpandAllBuildings]"
 							}
 						}
 					}
@@ -1431,7 +1464,6 @@ template build_location_entry {
 					}
 				}
 			}
-			# Glorp UI Deleted Commented-Out Code
 		}
 	}
 }

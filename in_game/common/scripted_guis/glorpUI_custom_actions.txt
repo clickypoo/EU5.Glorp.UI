@@ -22,6 +22,8 @@ SetUseStaticFlag = {
     }
 }
 
+// This is backwards at the moment, setting this variable actually disables the Frame on the Static Flag.
+// I wanted the Framed Static Flag to be the default when you toggle the Static Flag on
 SetUseFramedStaticFlag = {
     effect = {
         if = {

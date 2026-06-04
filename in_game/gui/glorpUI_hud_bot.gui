@@ -1389,7 +1389,7 @@ types GlorpUIBottomTypes
 										layoutpolicy_horizontal = expanding
 										checkbox_square_alt = {
 											onclick = "[GetScriptedGui('SetDisableColouredMapmodeButtons').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											checked = "[Not(Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet)]"
+											down = "[Not(Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet)]"
 											tooltip_enabled = no
 										}
 										text_single = {
@@ -1403,7 +1403,7 @@ types GlorpUIBottomTypes
 										layoutpolicy_horizontal = expanding
 										checkbox_square_alt = {
 											onclick = "[GetScriptedGui('SetVanillaMapmodeWidth').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											checked = "[Player.MakeScope.GetVariable('vanillaMapmodeWidth').IsSet]"
+											down = "[Player.MakeScope.GetVariable('vanillaMapmodeWidth').IsSet]"
 											tooltip_enabled = no
 										}
 										text_single = {
@@ -1417,7 +1417,7 @@ types GlorpUIBottomTypes
 										layoutpolicy_horizontal = expanding
 										checkbox_square_alt = {
 											onclick = "[GetScriptedGui('SetVanillaMapmodeHeight').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-											checked = "[Player.MakeScope.GetVariable('vanillaMapmodeHeight').IsSet]"
+											down = "[Player.MakeScope.GetVariable('vanillaMapmodeHeight').IsSet]"
 											tooltip_enabled = no
 										}
 										text_single = {

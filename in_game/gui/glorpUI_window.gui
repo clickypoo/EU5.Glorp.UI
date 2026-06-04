@@ -90,7 +90,7 @@ window = {
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetUseVanillaPortrait').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Player.MakeScope.GetVariable('useVanillaPortrait').IsSet]"
+                                down =  "[Player.MakeScope.GetVariable('useVanillaPortrait').IsSet]"
                                 tooltip_enabled = no
                             }
                         }
@@ -103,7 +103,7 @@ window = {
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetUseStaticFlag').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Player.MakeScope.GetVariable('useStaticFlag').IsSet]"
+                                down =  "[Player.MakeScope.GetVariable('useStaticFlag').IsSet]"
                                 tooltip_enabled = no
                             }
                         }
@@ -117,7 +117,7 @@ window = {
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetUseFramedStaticFlag').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Player.MakeScope.GetVariable('useFramedStaticFlag').IsSet]"
+                                down =  "[Not(Player.MakeScope.GetVariable('useFramedStaticFlag').IsSet)]"
                                 tooltip_enabled = no
                             }
                         }
@@ -130,7 +130,7 @@ window = {
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetUseDefaultIconsBGLeftPanel').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet]"
+                                down =  "[Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet]"
                                 tooltip_enabled = no
                             }
                         }
@@ -143,7 +143,7 @@ window = {
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetUseDefaultIconsLeftPanel').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
+                                down =  "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]"
                                 tooltip_enabled = no
                             }
                         }
@@ -156,7 +156,7 @@ window = {
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetDisableLeftPanelStatsBar').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Not(Player.MakeScope.GetVariable('disableLeftPanelStatsBar').IsSet)]"
+                                down =  "[Not(Player.MakeScope.GetVariable('disableLeftPanelStatsBar').IsSet)]"
                                 tooltip_enabled = no
                             }
                         }
@@ -191,7 +191,7 @@ window = {
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetDisableTopBarIncome').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Not(Player.MakeScope.GetVariable('disableTopBarIncome').IsSet)]"
+                                down =  "[Not(Player.MakeScope.GetVariable('disableTopBarIncome').IsSet)]"
                                 tooltip_enabled = no
                             }
                         }
@@ -202,7 +202,7 @@ window = {
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetDisableTopBarStability').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Not(Player.MakeScope.GetVariable('disableTopBarStability').IsSet)]"
+                                down =  "[Not(Player.MakeScope.GetVariable('disableTopBarStability').IsSet)]"
                                 tooltip_enabled = no
                             }
                         }
@@ -213,7 +213,7 @@ window = {
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetDisableTopBarPopulation').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Not(Player.MakeScope.GetVariable('disableTopBarPopulation').IsSet)]"
+                                down =  "[Not(Player.MakeScope.GetVariable('disableTopBarPopulation').IsSet)]"
                                 tooltip_enabled = no
                             }
                         }
@@ -224,7 +224,7 @@ window = {
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetDisableTopBarLegitimacy').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Not(Player.MakeScope.GetVariable('disableTopBarLegitimacy').IsSet)]"
+                                down =  "[Not(Player.MakeScope.GetVariable('disableTopBarLegitimacy').IsSet)]"
                                 tooltip_enabled = no
                             }
                         }
@@ -235,7 +235,7 @@ window = {
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetDisableTopBarPrestige').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Not(Player.MakeScope.GetVariable('disableTopBarPrestige').IsSet)]"
+                                down =  "[Not(Player.MakeScope.GetVariable('disableTopBarPrestige').IsSet)]"
                                 tooltip_enabled = no
                             }
                         }
@@ -246,7 +246,7 @@ window = {
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetDisableTopBarDiplomats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Not(Player.MakeScope.GetVariable('disableTopBarDiplomats').IsSet)]"
+                                down =  "[Not(Player.MakeScope.GetVariable('disableTopBarDiplomats').IsSet)]"
                                 tooltip_enabled = no
                             }
                         }
@@ -257,7 +257,7 @@ window = {
                             }
                             checkbox_square_alt = {
                                 onclick = "[GetScriptedGui('SetEnableDynamicWarStats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                checked = "[Player.MakeScope.GetVariable('dynamicWarStats').IsSet]"
+                                down =  "[Player.MakeScope.GetVariable('dynamicWarStats').IsSet]"
                                 tooltip_enabled = no
                             }
                             tooltipwidget = {
@@ -279,7 +279,7 @@ window = {
 							}
 							checkbox_square_alt = {
 								onclick = "[GetScriptedGui('SetDisableColouredMapmodeButtons').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								checked = "[Not(Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet)]"
+								down =  "[Not(Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet)]"
 								tooltip_enabled = no
 							}
 						}
@@ -290,7 +290,7 @@ window = {
 							}
 							checkbox_square_alt = {
 								onclick = "[GetScriptedGui('SetVanillaMapmodeWidth').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								checked = "[Player.MakeScope.GetVariable('vanillaMapmodeWidth').IsSet]"
+								down =  "[Player.MakeScope.GetVariable('vanillaMapmodeWidth').IsSet]"
 								tooltip_enabled = no
 							}
 						}
@@ -301,7 +301,7 @@ window = {
 							}
 							checkbox_square_alt = {
 								onclick = "[GetScriptedGui('SetVanillaMapmodeHeight').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								checked = "[Player.MakeScope.GetVariable('vanillaMapmodeHeight').IsSet]"
+								down =  "[Player.MakeScope.GetVariable('vanillaMapmodeHeight').IsSet]"
 								tooltip_enabled = no
 							}
 						}

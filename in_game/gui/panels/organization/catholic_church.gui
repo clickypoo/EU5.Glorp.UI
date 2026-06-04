@@ -69,18 +69,17 @@ organization_religious_theme = {
 		using = ios_header_content_extra_template
 		blockoverride "ios_header_content_extra" {
 			hbox = {
-				using = layoutpolicy_expanding
 				text_single = {
 					autoresize = yes
 					align = right
-					margin_right = -3
+					margin_right = 6
 					raw_text = "[GetReligionByKey('catholic').GetReformDesire|2%Y]"
 				}
 
 				widget = {
-					size = { 24 24 }
+					size = { 22 22 }
 					using = organization_piechart_template
-					blockoverride "organization_piechart_size" { size = { 24 24 } }
+					blockoverride "organization_piechart_size" { size = { 22 22 } }
 					blockoverride "organization_piechart_value"
 					{
 						value = "[FixedPointToFloat(GetReligionByKey('catholic').GetReformDesire)]"
@@ -108,8 +107,9 @@ organization_religious_theme = {
 		blockoverride "ios_header_content_extra" {
 			text_single = {
 				autoresize = yes
-				align = right
-				raw_text = "[GetPlayer.GetCurrencyValue('religious_influence')|2%]"
+				maximumsize = { 40 -1 }
+				align = center
+				raw_text = "[GetPlayer.GetShortCurrencyValue('religious_influence')]"
 			}
 
 			widget = {
@@ -321,6 +321,7 @@ organization_religious_theme = {
 																				}
 																			}
 																		}
+																		# Glorp UI - Add Papal Bull Effect
 																		TooltipConditionList = {
 																			blockoverride "block_title" {
 																				text = "[UIAction.GetTitle]"
