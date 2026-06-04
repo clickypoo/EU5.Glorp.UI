@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
 OutlinerEntryBase = {
 	name = "annexation_diplomatic_entry"
 
@@ -31,8 +34,9 @@ OutlinerEntryBase = {
 		action_tooltip = {
 			click_type = right
 			click_mode = single
-			enabled = "[And(OutlinerDiplomacyEntry.CanRightClick, Player.GetDiplomacy.HasDiplomats)]"
+			enabled = "[OutlinerDiplomacyEntry.CanRightClick]"
 			title = "ABORTANNEXTITLE"
+			conditions = "[OutlinerDiplomacyEntry.CanRightClickConditions]"
 			on_action = "[OutlinerDiplomacyEntry.OnRightClick]"
 		}
 	}

@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/build_location_lateralview.gui
+# mod: in_game/gui/glorpUI_build_location_lateralview.gui
+
 	type build_location_lateralview_panel_content = vbox {
 		using = layoutpolicy_expanding
 		using = bg_main_inner_notabs_alt
@@ -311,7 +314,7 @@
 
 									title = "BUILD_IN_BEST_LOCATION_ACTION"
 									cost = "[LocationToBuildItem.GetCost]"
-									description = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
+									conditions = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
 									on_action = "[BuildInLocationLateralView.BuildBestFromRankingItemsDefault]"
 									enabled = "[LocationToBuildItem.CanCreateBuilding]"
 								}
@@ -323,7 +326,7 @@
 
 									title = "BUILD_IN_BEST_LOCATION_ACTION_CTRL"
 									cost = "[LocationToBuildItem.GetCost]"
-									description = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
+									conditions = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
 									on_action = "[BuildInLocationLateralView.BuildBestFromRankingItemsCtrl]"
 									enabled = "[LocationToBuildItem.CanCreateBuilding]"
 								}
@@ -335,7 +338,7 @@
 
 									title = "BUILD_IN_BEST_LOCATION_ACTION_SHIFT"
 									cost = "[LocationToBuildItem.GetCost]"
-									description = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
+									conditions = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
 									on_action = "[BuildInLocationLateralView.BuildBestFromRankingItemsShift]"
 									enabled = "[LocationToBuildItem.CanCreateBuilding]"
 								}
@@ -389,7 +392,7 @@
 
 									title = "UPGRADE_IN_BEST_LOCATION_ACTION"
 									cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
-									description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
+									conditions = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
 									on_action = "[BuildInLocationLateralView.BuildBestFromRankingItemsDefault]"
 									enabled = "[CanUpgradeToBuilding(BuildingType.Self, Location.Self)]"
 								}
@@ -401,7 +404,7 @@
 
 									title = "UPGRADE_IN_BEST_LOCATION_ACTION_CTRL"
 									cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
-									description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
+									conditions = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
 									on_action = "[BuildInLocationLateralView.BuildBestFromRankingItemsCtrl]"
 									enabled = "[CanUpgradeToBuilding(BuildingType.Self, Location.Self)]"
 								}
@@ -413,7 +416,7 @@
 
 									title = "UPGRADE_IN_BEST_LOCATION_ACTION_SHIFT"
 									cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
-									description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
+									conditions = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
 									on_action = "[BuildInLocationLateralView.BuildBestFromRankingItemsShift]"
 									enabled = "[CanUpgradeToBuilding(BuildingType.Self, Location.Self)]"
 								}
@@ -1067,10 +1070,20 @@
 					sort_by_key_button = {
 						name = "production_efficiency"
 						layoutpolicy_vertical = expanding
-						size = { 70 -1 }
+						size = { 40 -1 }
 						visible = "[BuildInLocationLateralView.GetBuildingType.IsProducing]"
 						blockoverride "sort_by_key_button_texture" {
 							texture = "gfx/interface/icons/sort/efficiency.dds"
+						}
+					}
+
+					sort_by_key_button = {
+						name = "establishment"
+						layoutpolicy_vertical = expanding
+						size = { 40 -1 }
+						visible = "[And(BuildInLocationLateralView.GetBuildingType.IsEstablishmentSystemEnabled, BuildInLocationLateralView.GetBuildingType.IsProducing)]"
+						blockoverride "sort_by_key_button_texture" {
+							texture = "gfx/interface/icons/flat_icons/building_panel/establishment.dds"
 						}
 					}
 

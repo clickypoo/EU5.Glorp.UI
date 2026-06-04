@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
 OutlinerEntryBase = {
 	name = "army_unit_entry"
 
@@ -32,8 +35,30 @@ OutlinerEntryBase = {
 					}
 					button_checkbox = {
 						size = { 100% 100% }
-						checked = "[IsUnitSelected(Unit.Self)]"
+						down = "[IsUnitSelected(Unit.Self)]"
 						alwaystransparent = yes
+					}
+				}
+
+				widget = {
+					size = { 9 20 }
+					allow_outside = yes
+					# margin = { 1 1 }
+
+					unit_composition_bar = {
+						size = { 8 20 }
+					}
+
+					icon = {
+						size = { 100% 100% }
+						texture = "gfx/interface/component_tiles/square_outline_alt.dds"
+						texture_density = 2
+						spriteType = corneredstretched
+						spriteBorder = { 20 20 }
+						modify_texture = {
+							using = color_super_dark_brown_texture
+							blend_mode = multiply
+						}
 					}
 				}
 
@@ -44,6 +69,7 @@ OutlinerEntryBase = {
 					raw_text = "[Unit.GetVisualStrength]@army_strength!"
 					fontsize = 14
 				}
+
 				widget = {
 					size = { 18 18 }
 					icon = {
@@ -67,20 +93,6 @@ OutlinerEntryBase = {
 					}
 				}
 
-				widget = {
-					size = { 18 18 }
-					icon = {
-						size = { 18 18 }
-						texture = "gfx/interface/icons/unit_view/atrittion_icon.dds"
-						visible = "[GreaterThan_CFixedPoint(Unit.GetAttrition, '(CFixedPoint)0')]"
-						glow = {
-							name = "drop_shadow"
-							glow_radius = 3
-							color = {1.0 0.0 0.0 1.0}
-							alpha = 0.4
-						}
-					}
-				}
 
 				widget = {
 					size = { 18 18 }

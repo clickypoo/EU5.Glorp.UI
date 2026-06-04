@@ -1,8 +1,31 @@
+# vanilla: in_game/gui/single_unit_window.gui
+# mod: in_game/gui/single_unit_window.gui
+
 lateralview = {
 	name = "single_unit_window"
 	widgetid = "single_unit_window"
 
 	blockoverride "lateralview_topbuttons_extra" {
+		widget = {
+			parentanchor = vcenter
+			size = { 40 40 }
+			position = { 30 0 }
+			button_minimize = {
+				size = { 25 25 }
+				parentanchor = vcenter
+
+				blockoverride "button_texture" {
+					texture = "gfx/interface/buttons/flats/rename_new.dds"					
+					texture_density = 2
+				}
+				
+				action_tooltip = {
+					title = "RENAME_UNIT"
+					on_action = "[SingleUnitWindow.Vars.Toggle('edit_name')]"
+				}
+			}
+		}
+
 		widget = {
 			parentanchor = right|vcenter
 			size = { 40 40 }
@@ -50,7 +73,14 @@ lateralview = {
 					button = {
 						using = layoutpolicy_expanding
 						enabled = "[SingleUnitWindow.CanRenameUnit]"
-						onclick = "[SingleUnitWindow.Vars.Toggle('edit_name')]"
+
+						action_tooltip = {
+							cursor = "text"
+							enabled = "[SingleUnitWindow.CanRenameUnit]"
+							title = "RENAME_UNIT"
+							on_action = "[SingleUnitWindow.Vars.Toggle('edit_name')]"
+						}
+
 						tooltipwidget = {
 							ContextualTooltipType = {
 								blockoverride "title_icon" {
@@ -72,13 +102,6 @@ lateralview = {
 									TooltipTextBlock = {
 										blockoverride "text" {
 											text = "UNIT_NAME_TT"
-										}
-									}
-									TooltipFunctionalBlock = {
-										using = tooltip_left_click_template
-
-										blockoverride "action_left_text" {
-											text = "RENAME_UNIT"
 										}
 									}
 								}
@@ -741,6 +764,13 @@ lateralview = {
 										text = "[artillery_barrage|e]"
 									}
 									blockoverride "tooltip_content" {
+										TooltipScrolledStringPairList = {
+											blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
+											blockoverride "block_title" {
+												text = "ARTILLERY_BONUS_BY_FORT_LEVEL"
+											}
+											textcontext = "[SingleUnitWindow.GetSelectedUnit.GetArtilleryBonusFortFortsTooltip]"
+										}
 										TooltipScrolledStringPairList = {
 											blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
 											blockoverride "block_title" {

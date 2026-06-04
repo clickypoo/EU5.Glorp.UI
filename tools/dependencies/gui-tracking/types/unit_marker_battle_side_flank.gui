@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 	type unit_marker_battle_side_flank = widget {
 		size = { 10 10 }
 		using = bg_square_tile_shadow

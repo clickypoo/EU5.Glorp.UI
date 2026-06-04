@@ -1,13 +1,16 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
 OutlinerEntryBase = {
 	name = "market_category_entry"
 
-	blockoverride "expanded_big_content"  { 
-		using = category_big_template 
+	blockoverride "expanded_big_content"  {
+		using = category_big_template
 		blockoverride "category_icon_texture" {
 			texture = "gfx/interface/icons/map_modes/market.dds"
 		}
 	}
-	blockoverride "expanded_small_content" { 
+	blockoverride "expanded_small_content" {
 		using = category_small_template
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/map_modes/market.dds"

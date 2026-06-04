@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
 OutlinerEntryBase = {
 	name = "assimilate_area_cabinet_entry"
 

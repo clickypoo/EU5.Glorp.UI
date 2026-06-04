@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/battle_lateralview.gui
+# mod: in_game/gui/battle_lateralview.gui
+
 	type combat_flank_status = vbox {
 		layoutpolicy_horizontal = expanding
 		block "combat_flank_status_direction" {}

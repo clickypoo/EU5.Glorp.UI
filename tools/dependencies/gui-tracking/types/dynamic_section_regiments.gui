@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/battle_lateralview.gui
+# mod: in_game/gui/battle_lateralview.gui
+
 	type dynamic_section_regiments = widget {
 		layoutpolicy_horizontal = expanding
 		size = { -1 30}

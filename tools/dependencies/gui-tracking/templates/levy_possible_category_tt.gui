@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/recruit_location_lateralview.gui
+# mod: in_game/gui/recruit_location_lateralview.gui
+
 template levy_possible_category_tt {
 	ContextualTooltipType = {
 		blockoverride "title_text" {

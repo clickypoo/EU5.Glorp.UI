@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/shared/diplomacy_tooltips.gui
+# mod: in_game/gui/shared/diplomacy_tooltips.gui
+
 template CountryTooltip_RelativePower {
 	visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"
 

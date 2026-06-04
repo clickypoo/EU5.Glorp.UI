@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 template unit_marker_item_modifiers {
 	widget = {
 		visible = "[And(UnitMarkerItem.GetUnit.IsNavy, GreaterThan_int32(UnitMarkerItem.GetUnit.GetUsedTransportCapacityValue, '(int32)0'))]"
@@ -597,7 +600,7 @@ template unit_marker_item_modifiers {
 
 						blockoverride "tooltip_content" {
 							TooltipStringPairList = {
-								textcontext = "[TitleDescTooltip.GetDesc]"
+								textcontext = "[TitleDescTooltip.GetDesc.GetStringView]"
 							}
 					
 							vbox = {
@@ -608,7 +611,7 @@ template unit_marker_item_modifiers {
 								ontextcontextchanged = "[SetTitleDescTooltipFromTextContext(PdxGuiWidget.AccessSelf)]"
 					
 								TooltipStringPairList = {
-									textcontext = "[TitleDescTooltip.GetDesc]"
+									textcontext = "[TitleDescTooltip.GetDesc.GetStringView]"
 								}
 							}
 						}

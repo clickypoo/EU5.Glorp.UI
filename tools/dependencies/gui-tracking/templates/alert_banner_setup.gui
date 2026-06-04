@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/alertmanager.gui
+# mod: in_game/gui/glorpUI_alertmanager.gui
+
 template alert_banner_setup {
 	block "alert_banner_priority" {}
 	vbox = {

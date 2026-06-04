@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/foreign_country_lateralview.gui
+# mod: in_game/gui/foreign_country_lateralview.gui
+
 select_menu_left = {
 	datacontext = "[GetQuickVisibleCountries(Player.Self)]"
 	blockoverride "menu_setup" {

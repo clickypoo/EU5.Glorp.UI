@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/shared/geography_definitions_tooltips.gui
+# mod: in_game/gui/shared/glorpUI_geography_definitions_tooltips.gui
+
 template ProvinceDefinition_tooltip {
     ContextualTooltipType = {
         blockoverride "title_text" {

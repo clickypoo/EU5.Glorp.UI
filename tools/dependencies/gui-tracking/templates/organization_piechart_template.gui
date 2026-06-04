@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/panels/organization/common.gui
+# mod: in_game/gui/panels/organization/common.gui
+
 template organization_piechart_template {
 	piechart = {
 		block "organization_piechart_size" { size = { 30 30 } }

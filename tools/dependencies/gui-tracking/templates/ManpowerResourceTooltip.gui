@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/shared/topbar_tooltips.gui
+# mod: in_game/gui/shared/topbar_tooltips.gui
+
 template ManpowerResourceTooltip {
 	ContextualTooltipType = {
 		blockoverride "title_text" {

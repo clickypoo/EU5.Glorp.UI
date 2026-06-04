@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 widget = {
 	name = "blocked_vision_marker"
 	size = { 20 20 }

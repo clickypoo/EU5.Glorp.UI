@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 window = {
 	name = "map_marker_layer" # Referenced from code
 	size = { 100% 100% }

@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 widget = {
 	name = "port_marker"
 	allow_outside = yes
@@ -6,7 +9,7 @@ widget = {
 		widgetanchor = center
 		size = { 30 30 }
 		visible = "[PortMarker.ShouldBeShown]"
-		# frame = "[Select_int32(PortMarker.HasVisibleShips,'(int32)2','(int32)1')]"
+		# down = "[PortMarker.HasVisibleShips]"
 		datacontext = "[PortMarker]"
 
 		icon = {

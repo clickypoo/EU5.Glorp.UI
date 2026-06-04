@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/battle_lateralview.gui
+# mod: in_game/gui/battle_lateralview.gui
+
 template goto_battle_action {
 	block "battle_goto_action" {
 		action_tooltip = {

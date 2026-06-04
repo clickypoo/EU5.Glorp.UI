@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 template marker_bg_circle {
 	background = {
 		texture = "gfx/interface/component_tiles/hud_corners/circle_background.dds"

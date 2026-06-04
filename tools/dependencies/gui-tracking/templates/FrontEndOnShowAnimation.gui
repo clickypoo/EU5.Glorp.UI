@@ -1,5 +1,0 @@
-template FrontEndOnShowAnimation {
-	using = Animation_Curve_Default
-	duration = 0.25
-	alpha = 1
-}

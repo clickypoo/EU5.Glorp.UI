@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/battle_lateralview.gui
+# mod: in_game/gui/battle_lateralview.gui
+
 	type combat_participating_countries_card = hbox {
 		layoutpolicy_horizontal = expanding
 		layoutstretchfactor_horizontal = 1

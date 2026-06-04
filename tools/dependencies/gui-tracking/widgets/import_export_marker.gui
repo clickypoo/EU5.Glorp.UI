@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 widget = {
 	name = "import_export_marker"
 	position = { 0 -56 }

@@ -1,3 +1,6 @@
+# vanilla: main_menu/gui/shared/frontend_templates.gui
+# mod: main_menu/gui/shared/glorpUI_frontend_templates.gui
+
 	type FrontEndBackground = widget {
 		size = { 100% 100% }
 

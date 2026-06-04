@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/ingame_topbar.gui
+# mod: in_game/gui/ingame_topbar.gui
+
 widget = {
 	name = "lateralview_fullscreen_layer"
 	size = { 100% 100% }

@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/panels/left_panel/left_panel.gui
+# mod: in_game/gui/panels/left_panel/left_panel.gui
+
 template text_single_positive_negative {
 	text_single = {
 		block "visible_positive" { visible = no }

@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/hud_bot.gui
+# mod: in_game/gui/glorpUI_hud_bot.gui
+
 	type mapmode_current_button = widget {
 		visible_at_creation = no
 		visible = "[Not(IsDefaultMapModeSet)]"

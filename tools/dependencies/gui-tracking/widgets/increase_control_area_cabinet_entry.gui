@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
 OutlinerEntryBase = {
 	name = "increase_control_area_cabinet_entry"
 

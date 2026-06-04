@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/battle_lateralview.gui
+# mod: in_game/gui/battle_lateralview.gui
+
 	type countries_strength_bar = battle_header_card {
 		allow_outside = yes
 		widget = {

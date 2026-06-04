@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 template bg_unit_marker_item_modifiers {
 	background = {
 		texture = "gfx/interface/component_tiles/map_markers/map_unit_modifiers.dds"

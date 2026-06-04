@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/hud_bot.gui
+# mod: in_game/gui/glorpUI_hud_bot.gui
+
 	type mapmodes_button_color_ledger = widget {
 		size = { 41 32 }
 		

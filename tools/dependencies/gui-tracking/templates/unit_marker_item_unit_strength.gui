@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 template unit_marker_item_unit_strength {
 	layoutpolicy_horizontal = expanding
 

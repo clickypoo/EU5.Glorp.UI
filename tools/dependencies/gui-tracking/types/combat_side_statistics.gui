@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/battle_lateralview.gui
+# mod: in_game/gui/battle_lateralview.gui
+
 	type combat_side_statistics = battle_side_card {
 		blockoverride "battle_side_card_header" {}
 		blockoverride "battle_side_card_frame" {}

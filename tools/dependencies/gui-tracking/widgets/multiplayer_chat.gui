@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/multiplayer_chat.gui
+# mod: in_game/gui/multiplayer_chat.gui
+
 window = {
 	name = "multiplayer_chat"
 	# Modified from code

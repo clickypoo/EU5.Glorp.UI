@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 widget = {
 	name = "building_spy_network_marker"
 	size = { 40 40 }

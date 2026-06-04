@@ -1,6 +1,30 @@
+# vanilla: in_game/gui/production_lateralview.gui
+# mod: in_game/gui/glorpUI_production_lateralview.gui
+
 lateralview = {
 	name = "production_lateralview"
 	widgetid = "production_lateralview"
+
+	blockoverride "lateralview_topbuttons_extra" {
+		widget = {
+			parentanchor = vcenter
+			size = { 40 40 }
+			position = { 30 0 }
+
+			button_automation_shortcut = {
+				parentanchor = vcenter
+				size = { 25 25 }
+
+
+				action_tooltip = {
+					title = "OPEN_AUTOMATION_PANEL_FILTER"
+					on_action = "[OpenLateralViewWithFilter('automation', 'automation_filter_production')]"
+				}
+
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+		}
+	}
 
 	blockoverride "panel_header" {
 		window_header_alt = {
@@ -917,8 +941,6 @@ lateralview = {
 																			size = { 100% 100% }
 																			visible = "[BuildingItem.HasBuildings]"
 																			enabled = "[BuildingItem.HasBuildings]"
-																			onclick = "[BuildingItem.ShowBuildings]"
-
 
 																			datacontext = "[BuildingItem.GetBuilding]"
 																			tooltipwidget = {
@@ -928,6 +950,7 @@ lateralview = {
 																				click_type = left
 																				click_mode = single
 																				title = "OPEN_BUILDING_VIEW"
+																				on_action = "[BuildingItem.ShowBuildings]"
 																			}
 																		}
 
@@ -1020,6 +1043,7 @@ lateralview = {
 																						visible = "[Not(BuildingItem.AreBuildingsUnderConstruction)]"
 																						enabled = "[BuildingItem.CanDestroy]"
 																						description = "[BuildingItem.CanDestroyDesc]"
+																						confirmation = "[BuildingItem.CanDestroyDesc]"
 																						on_action = "[BuildingItem.Destroy]"
 																						on_action = "[PlayAudioEffect('UI_action_building_destroy')]"
 																					}
@@ -1056,6 +1080,7 @@ lateralview = {
 																						visible = "[Not(BuildingItem.AreBuildingsUnderConstruction)]"
 																						enabled = "[BuildingItem.CanDestroy]"
 																						description = "[BuildingItem.CanDestroyDesc]"
+																						confirmation = "[BuildingItem.CanDestroyDesc]"
 																						on_action = "[BuildingItem.Destroy]"
 																						on_action = "[PlayAudioEffect('UI_action_building_destroy')]"
 																					}

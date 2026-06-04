@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/single_unit_window.gui
+# mod: in_game/gui/single_unit_window.gui
+
 select_menu_left = {
 	blockoverride "menu_setup" {
 		name = "single_unit_select_unit"

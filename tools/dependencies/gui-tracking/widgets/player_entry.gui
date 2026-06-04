@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
 OutlinerEntryBase = {
 	name = "player_entry"
 
@@ -12,6 +15,7 @@ OutlinerEntryBase = {
 			hbox = {
 				using = outliner_entry_margin
 				spacing = 8
+				onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('players')]"
 				icon = {
 					visible = "[And(OutlinerPlayerEntry.GetCountry.GetDiplomacy.IsAtWar, IsPlayerAtWarWithOtherPlayer(OutlinerPlayerEntry.GetCountry))]"
 					size = {20 20}
@@ -22,7 +26,16 @@ OutlinerEntryBase = {
 					}
 				}
 				icon = {
-					visible = "[And(OutlinerPlayerEntry.GetCountry.GetDiplomacy.IsAtWar, Not(IsPlayerAtWarWithOtherPlayer(OutlinerPlayerEntry.GetCountry)))]"
+					visible = "[And(OutlinerPlayerEntry.GetCountry.GetDiplomacy.IsAtWar, And(Not(IsPlayerAtWarWithOtherPlayer(OutlinerPlayerEntry.GetCountry)), IsPlayerAlliedWithOtherPlayerInWar(OutlinerPlayerEntry.GetCountry)))]"
+					size = {20 20}
+					texture = "gfx/interface/icons/flat_icons/war_human_friend.dds"
+					tooltip_enabled = "[DataModelHasItems(OutlinerPlayerEntry.GetCountry.GetDiplomacy.GetCurrentWars)]"
+					tooltipwidget = {
+						using = War_list_tooltip
+					}
+				}
+				icon = {
+					visible = "[And(OutlinerPlayerEntry.GetCountry.GetDiplomacy.IsAtWar, And(Not(IsPlayerAtWarWithOtherPlayer(OutlinerPlayerEntry.GetCountry)), Not(IsPlayerAlliedWithOtherPlayerInWar(OutlinerPlayerEntry.GetCountry))))]"
 					size = {20 20}
 					texture = "gfx/interface/icons/diplomatic_status/war.dds"
 					tooltip_enabled = "[DataModelHasItems(OutlinerPlayerEntry.GetCountry.GetDiplomacy.GetCurrentWars)]"
@@ -31,11 +44,61 @@ OutlinerEntryBase = {
 					}
 				}
 				OutlinerTextBase = {
-					using = layoutpolicy_expanding
-					autoresize = no
+					maximumsize = { 140 -1 }
+					autoresize = yes
 					text = "[OutlinerPlayerEntry.GetName]"
 				}
-				
+
+				OutlinerTextBase = {
+					autoresize = yes
+					visible = "[OutlinerPlayerEntry.GetCountry.IsValid]"
+					datacontext = "[OutlinerPlayerEntry.GetCountry.GetScore]"
+					raw_text = "(#L [Score.GetCurrentRank]#!)"
+					tooltipwidget = {
+						ContextualTooltipType = {
+							blockoverride "title_text" {
+								text = "SCORE_TAB"
+							}
+							blockoverride "title_icon" {
+								icon = {
+									texture = "[GetConceptTexture('score')]"
+									using = tooltip_title_icon_size
+								}
+							}
+							blockoverride "concept_link" {
+								text = "[score|e]"
+							}
+							blockoverride "tooltip_content" {
+								TooltipTextBlock = {
+									blockoverride "text" {
+										text = "OUTLINER_PLAYER_CURRENT_SCORE"
+									}
+								}
+								TooltipStringPairList = {
+									textcontext = "[Score.GetScoreInfoForUI]"
+								}
+								TooltipTextBlock = {
+									blockoverride "text" {
+										text = "[Score.GetScoreDescriptionForUI]"
+									}
+								}
+							}
+						}
+					}
+				}
+
+				widget = {
+					using = layoutpolicy_expanding
+					size = { 0 0 }
+				}
+
+				OutlinerTextBase = {
+					autoresize = yes
+					maximumsize = { 120 -1 }
+					visible = "[OutlinerPlayerEntry.GetCountry.IsValid]"
+					text = "[OutlinerPlayerEntry.GetCountry.GetName]"
+				}
+
 				widget = {
 					size = { 32 20 }
 					icon = {

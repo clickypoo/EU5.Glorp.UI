@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/recruit_location_lateralview.gui
+# mod: in_game/gui/recruit_location_lateralview.gui
+
 template recruit_location_entry {
 	hbox = {
 		using = layoutpolicy_expanding
@@ -496,9 +499,8 @@ template recruit_location_entry {
 					button_minus = {
 						size = { 18 18 }
 						visible = "[Not(RecruitInLocationLateralView.IsUnitTemplate)]"
-						onclick = "[LocationToRecruitItem.Cancel]"
 						enabled = "[LocationToRecruitItem.CanCancel]"
-						
+
 						tooltipwidget = {
 							using = unit_cancel_tt
 						}
@@ -506,7 +508,8 @@ template recruit_location_entry {
 						action_tooltip = {
 							title = "UNIT_CANCEL_ACTION_TT"
 							enabled = "[LocationToRecruitItem.CanCancel]"
-							conditions = "[LocationToRecruitItem.CanCancelTT]"			
+							conditions = "[LocationToRecruitItem.CanCancelTT]"
+							on_action = "[LocationToRecruitItem.Cancel]"
 						}
 					}
 	

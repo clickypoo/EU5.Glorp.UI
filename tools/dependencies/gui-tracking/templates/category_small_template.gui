@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
 template category_small_template {
 	OutlinerCategoryButtonBase = {
 		size = { 100% 100% }
@@ -22,15 +25,12 @@ template category_small_template {
 					button_pin = {
 						size = { 100% 100% }
 
-						onclick = "[OutlinerCategoryEntry.TogglePin]"
-						checked = "[OutlinerCategoryEntry.IsPinned]"
-						tooltipwidget = {
-							LeftClickButtonTooltip = {
-								blockoverride "onclick_text" {
-									text = "[SelectLocalization(OutlinerCategoryEntry.IsPinned, 'UNPIN_CATEGORY', 'PIN_CATEGORY')]"
-								}
-							}
+						action_tooltip = {
+							title = "[SelectLocalization(OutlinerCategoryEntry.IsPinned, 'UNPIN_CATEGORY', 'PIN_CATEGORY')]"
+							on_action = "[OutlinerCategoryEntry.TogglePin]"
 						}
+						tooltipwidget = { BasicFunctionalTooltip = {} }
+						down = "[OutlinerCategoryEntry.IsPinned]"
 					}
 				}
 			}

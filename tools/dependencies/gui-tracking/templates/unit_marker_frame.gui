@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 template unit_marker_frame {
 	texture = "gfx/interface/mapitems/unit_frame.dds"
 	texture_density = 2

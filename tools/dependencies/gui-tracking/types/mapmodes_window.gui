@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/hud_bot.gui
+# mod: in_game/gui/glorpUI_hud_bot.gui
+
 	type mapmodes_window = widget {
 		onmousehierarchyenter = "[MapModeSelectorVars.Set('hover', 'yes')]"
 		onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]"
@@ -212,14 +215,11 @@
 								texture = "gfx/interface/icons/flat_icons/tabicons/government.dds"
 							}
 
-							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'government')]"
-							tooltipwidget = {
-								LeftClickButtonTooltip = {
-									blockoverride "onclick_text" {
-										text = "OPEN_GOVERNMENT_MAP_MODES"
-									}
-								}
+							action_tooltip = {
+								title = "OPEN_GOVERNMENT_MAP_MODES"
+								on_action = "[MapModeSelectorVars.SetOrToggle('tab', 'government')]"
 							}
+							tooltipwidget = { BasicFunctionalTooltip = {} }
 						}
 
 						blockoverride "datamodel_item" {
@@ -248,15 +248,12 @@
 								texture = "gfx/interface/icons/flat_icons/tabicons/economy.dds"
 							}
 
-							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'economy')]"
-
-							tooltipwidget = {
-								LeftClickButtonTooltip = {
-									blockoverride "onclick_text" {
-										text = "OPEN_ECONOMY_MAP_MODES"
-									}
-								}
+							action_tooltip = {
+								title = "OPEN_ECONOMY_MAP_MODES"
+								on_action = "[MapModeSelectorVars.SetOrToggle('tab', 'economy')]"
 							}
+							tooltipwidget = { BasicFunctionalTooltip = {} }
+
 						}
 
 						blockoverride "datamodel_item" {
@@ -278,14 +275,11 @@
 								texture = "gfx/interface/icons/flat_icons/tabicons/demography.dds"
 							}
 
-							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'population')]"
-							tooltipwidget = {
-								LeftClickButtonTooltip = {
-									blockoverride "onclick_text" {
-										text = "OPEN_POPULATION_MAP_MODES"
-									}
-								}
+							action_tooltip = {
+								title = "OPEN_POPULATION_MAP_MODES"
+								on_action = "[MapModeSelectorVars.SetOrToggle('tab', 'population')]"
 							}
+							tooltipwidget = { BasicFunctionalTooltip = {} }
 						}
 
 						blockoverride "datamodel_item" {
@@ -307,14 +301,11 @@
 								texture = "gfx/interface/icons/flat_icons/tabicons/demography_2.dds"
 							}
 
-							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'demography')]"
-							tooltipwidget = {
-								LeftClickButtonTooltip = {
-									blockoverride "onclick_text" {
-										text = "OPEN_DEMOGRAPHY_MAP_MODES"
-									}
-								}
+							action_tooltip = {
+								title = "OPEN_DEMOGRAPHY_MAP_MODES"
+								on_action = "[MapModeSelectorVars.SetOrToggle('tab', 'demography')]"
 							}
+							tooltipwidget = { BasicFunctionalTooltip = {} }
 						}
 
 						blockoverride "datamodel_item" {
@@ -343,14 +334,11 @@
 								using = color_bone
 							}
 
-							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'search')]"
-							tooltipwidget = {
-								LeftClickButtonTooltip = {
-									blockoverride "onclick_text" {
-										text = "OPEN_SEARCH_MAP_MODES"
-									}
-								}
+							action_tooltip = {
+								title = "OPEN_SEARCH_MAP_MODES"
+								on_action = "[MapModeSelectorVars.SetOrToggle('tab', 'search')]"
 							}
+							tooltipwidget = { BasicFunctionalTooltip = {} }
 						}
 
 						blockoverride "datamodel" { datamodel = "[GetMapModesFromCategory('diplomacy')]" }
@@ -409,14 +397,11 @@
 								texture = "gfx/interface/icons/flat_icons/tabicons/diplomacy.dds"
 							}
 
-							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'diplomacy')]"
-							tooltipwidget = {
-								LeftClickButtonTooltip = {
-									blockoverride "onclick_text" {
-										text = "OPEN_DIPLOMACY_MAP_MODES"
-									}
-								}
+							action_tooltip = {
+								title = "OPEN_DIPLOMACY_MAP_MODES"
+								on_action = "[MapModeSelectorVars.SetOrToggle('tab', 'diplomacy')]"
 							}
+							tooltipwidget = { BasicFunctionalTooltip = {} }
 						}
 
 						blockoverride "datamodel_item" {
@@ -444,14 +429,11 @@
 								texture = "gfx/interface/icons/flat_icons/tabicons/military.dds"
 							}
 
-							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'military')]"
-							tooltipwidget = {
-								LeftClickButtonTooltip = {
-									blockoverride "onclick_text" {
-										text = "OPEN_MILITARY_MAP_MODES"
-									}
-								}
+							action_tooltip = {
+								title = "OPEN_MILITARY_MAP_MODES"
+								on_action = "[MapModeSelectorVars.SetOrToggle('tab', 'military')]"
 							}
+							tooltipwidget = { BasicFunctionalTooltip = {} }
 						}
 
 						blockoverride "datamodel_item" {
@@ -480,14 +462,11 @@
 								texture = "gfx/interface/icons/flat_icons/tabicons/geography_flat_icon.dds"
 							}
 
-							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'geopolitics')]"
-							tooltipwidget = {
-								LeftClickButtonTooltip = {
-									blockoverride "onclick_text" {
-										text = "OPEN_GEOPOLITICS_MAP_MODES"
-									}
-								}
+							action_tooltip = {
+								title = "OPEN_GEOPOLITICS_MAP_MODES"
+								on_action = "[MapModeSelectorVars.SetOrToggle('tab', 'geopolitics')]"
 							}
+							tooltipwidget = { BasicFunctionalTooltip = {} }
 						}
 
 						blockoverride "datamodel_item" {
@@ -518,14 +497,11 @@
 								texture = "gfx/interface/icons/flat_icons/tabicons/world_flat_icon.dds"
 							}
 
-							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'geography')]"
-							tooltipwidget = {
-								LeftClickButtonTooltip = {
-									blockoverride "onclick_text" {
-										text = "OPEN_GEOGRAPHY_MAP_MODES"
-									}
-								}
+							action_tooltip = {
+								title = "OPEN_GEOGRAPHY_MAP_MODES"
+								on_action = "[MapModeSelectorVars.SetOrToggle('tab', 'geography')]"
 							}
+							tooltipwidget = { BasicFunctionalTooltip = {} }
 						}
 
 						blockoverride "datamodel_item" {
@@ -558,14 +534,11 @@
 								texture = "gfx/interface/icons/flat_icons/tabicons/mapmodes.dds"
 							}
 
-							onclick = "[MapModeSelectorVars.SetOrToggle('tab', 'debug')]"
-							tooltipwidget = {
-								LeftClickButtonTooltip = {
-									blockoverride "onclick_text" {
-										text = "OPEN_DEBUG_MAP_MODES"
-									}
-								}
+							action_tooltip = {
+								title = "OPEN_DEBUG_MAP_MODES"
+								on_action = "[MapModeSelectorVars.SetOrToggle('tab', 'debug')]"
 							}
+							tooltipwidget = { BasicFunctionalTooltip = {} }
 						}
 
 						blockoverride "datamodel_item" {

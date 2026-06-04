@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 widget = {
 	name = "cabinet_action_marker"
 	size = { 40 40 }

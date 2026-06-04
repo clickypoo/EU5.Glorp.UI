@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 widget = {
 	name = "unit_marker"
 	allow_outside = yes
@@ -37,6 +40,7 @@ widget = {
 			name = "unit_items_grid"
 			addcolumn = @unit_marker_item_width
 			addrow = @unit_marker_item_height
+			datamodel_reuse_widgets = yes
 			allow_outside = yes
 
 			parentanchor = center
@@ -124,16 +128,40 @@ widget = {
 									# margin_left = @[unit_marker_morale_progressbar_size * 0.6]
 									margin = {8 0}
 									margin_right = 7
-									country_flag_small = {
-										datacontext = "[Unit.GetCountry]"
-										size = { 40 28 }
+									hbox = {
+										spacing = -2
+										country_flag_small = {
+											datacontext = "[Unit.GetCountry]"
+											size = { 40 28 }
+		
+											blockoverride "click" {
+												onclick = "[UnitMarkerItem.OnFlagClick]"
+											}
 	
-										blockoverride "click" {
-											onclick = "[UnitMarkerItem.OnFlagClick]"
+											blockoverride "double_click" {
+												ondoubleclick = "[UnitMarkerItem.OnRightClick]"
+											}
 										}
-
-										blockoverride "double_click" {
-											ondoubleclick = "[UnitMarkerItem.OnRightClick]"
+	
+										widget = {
+											size = { 8 26 }
+											allow_outside = yes
+	
+											unit_composition_bar = {
+												size = { 6 24 }
+											}
+	
+											icon = {
+												size = { 100% 100% }
+												texture = "gfx/interface/component_tiles/square_outline_alt.dds"
+												texture_density = 2
+												spriteType = corneredstretched
+												spriteBorder = { 20 20 }
+												modify_texture = {
+													using = color_super_dark_brown_texture
+													blend_mode = multiply
+												}
+											}
 										}
 									}
 									
@@ -150,6 +178,7 @@ widget = {
 											align = center|nobaseline
 											text = "[UnitMarkerItem.GetLabel]"
 										}
+										
 										widget = {
 											layoutpolicy_horizontal = expanding
 											size = { -1 5 }
@@ -366,9 +395,10 @@ widget = {
 									# margin_left = @[unit_marker_morale_progressbar_size * 0.6]
 									margin = {4 0}
 									margin_right = 8
+									margin_bottom = 2
 									vbox = {
 										using = layoutpolicy_expanding
-										margin_bottom = 4
+										margin_bottom = 2
 
 										expand = {}
 
@@ -405,19 +435,43 @@ widget = {
 										}
 									}
 
-									country_flag_small = {
-										datacontext = "[Unit.GetCountry]"
-										size = { 42 29 }
+									hbox = {
+										spacing = -2
 	
-										blockoverride "click" {
-											onclick = "[UnitMarkerItem.OnFlagClick]"
+										widget = {
+											size = { 8 26 }
+											allow_outside = yes
+	
+											unit_composition_bar = {
+												size = { 6 26 }
+											}
+	
+											icon = {
+												size = { 100% 100% }
+												texture = "gfx/interface/component_tiles/square_outline_alt.dds"
+												texture_density = 2
+												spriteType = corneredstretched
+												spriteBorder = { 20 20 }
+												modify_texture = {
+													using = color_super_dark_brown_texture
+													blend_mode = multiply
+												}
+											}
 										}
 
-										blockoverride "double_click" {
-											ondoubleclick = "[UnitMarkerItem.OnRightClick]"
+										country_flag_small = {
+											datacontext = "[Unit.GetCountry]"
+											size = { 42 29 }
+		
+											blockoverride "click" {
+												onclick = "[UnitMarkerItem.OnFlagClick]"
+											}
+	
+											blockoverride "double_click" {
+												ondoubleclick = "[UnitMarkerItem.OnRightClick]"
+											}
 										}
 									}
-									
 								}
 							}
 

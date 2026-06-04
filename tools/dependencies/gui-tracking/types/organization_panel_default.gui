@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/panels/organization/common.gui
+# mod: in_game/gui/panels/organization/common.gui
+
 	type organization_panel_default = vbox {
 		using = layoutpolicy_expanding
 		block "panel_content" {
@@ -44,15 +47,12 @@
 							parentanchor = vcenter
 								size = { 23 23 }
 								visible = "[IsPlayerValid]"
-								onclick = "[ToggleIOFav(InternationalOrganization.Self)]"
-								checked = "[IsIOFaved(InternationalOrganization.Self)]"
-								tooltipwidget = { 
-									LeftClickButtonTooltip = {
-										blockoverride "onclick_text" { 
-											text = "[SelectLocalization(IsIOFaved(InternationalOrganization.Self), 'UNPIN_OUTLINER', 'PIN_OUTLINER')]"
-										}
-									}
+								action_tooltip = {
+									title = "[SelectLocalization(IsIOFaved(InternationalOrganization.Self), 'UNPIN_OUTLINER', 'PIN_OUTLINER')]"
+									on_action = "[ToggleIOFav(InternationalOrganization.Self)]"
 								}
+								tooltipwidget = { BasicFunctionalTooltip = {} }
+								down = "[IsIOFaved(InternationalOrganization.Self)]"
 							}
 
 						tooltipwidget = {
@@ -223,7 +223,10 @@
 								using = SubTabIOOverviewTooltip
 							}
 
-							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'overview' )]"
+							action_tooltip = {
+								title = "OPEN_TAB"
+								on_action = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'overview' )]"
+							}
 							down = "[InternationalOrganizationsView.Vars.NotExistOrHasValue( 'organizations', 'overview' )]"
 						}
 
@@ -238,7 +241,10 @@
 							tooltipwidget = {
 								using = SubTabIOTreasuryTooltip
 							}
-							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'treasury' )]"
+							action_tooltip = {
+								title = "OPEN_TAB"
+								on_action = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'treasury' )]"
+							}
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'treasury' )]"
 						}
 
@@ -255,7 +261,10 @@
 									using = SubTabIOCandidatesTooltip
 								}
 							# }
-							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'candidates' )]"
+							action_tooltip = {
+								title = "OPEN_TAB"
+								on_action = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'candidates' )]"
+							}
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'candidates' )]"
 						}
 
@@ -277,7 +286,10 @@
 							tooltipwidget = {
 								using = SubTabIOLawsTooltip
 							}
-							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'laws' )]"
+							action_tooltip = {
+								title = "OPEN_TAB"
+								on_action = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'laws' )]"
+							}
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'laws' )]"
 						}
 
@@ -296,7 +308,10 @@
 									using = SubTabIOResolutionsTooltip
 								}
 							}
-							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'resolutions' )]"
+							action_tooltip = {
+								title = "OPEN_TAB"
+								on_action = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'resolutions' )]"
+							}
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'resolutions' )]"
 						}
 
@@ -313,7 +328,10 @@
 									using = SubTabIOCardinalsTooltip
 								}
 							# }
-							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'cardinals' )]"
+							action_tooltip = {
+								title = "OPEN_TAB"
+								on_action = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'cardinals' )]"
+							}
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'cardinals' )]"
 						}
 
@@ -336,7 +354,10 @@
 									using = SubTabIOFactionsTooltip
 								}
 							# }
-							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'factions' )]"
+							action_tooltip = {
+								title = "OPEN_TAB"
+								on_action = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'factions' )]"
+							}
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'factions' )]"
 						}
 
@@ -355,7 +376,10 @@
 									using = SubTabIOSaintsTooltip
 								}
 							# }
-							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'saints' )]"
+							action_tooltip = {
+								title = "OPEN_TAB"
+								on_action = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'saints' )]"
+							}
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'saints' )]"
 						}
 
@@ -372,7 +396,10 @@
 									using = SubTabIOHolySitesTooltip
 								}
 							# }
-							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'holy_sites' )]"
+							action_tooltip = {
+								title = "OPEN_TAB"
+								on_action = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'holy_sites' )]"
+							}
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'holy_sites' )]"
 						}
 
@@ -392,8 +419,30 @@
 								}
 							}
 							
-							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'parliament' )]"
+							action_tooltip = {
+								title = "OPEN_TAB"
+								on_action = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'parliament' )]"
+							}
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'parliament' )]"
+						}
+						
+						button_secondary_tab_alt = {
+							using = layoutpolicy_expanding
+							block "organization_custom_tab_visible" {
+								visible = no
+							}
+							blockoverride "tab_text"{
+								block "organization_custom_tab_text" {
+									text = ""
+								}
+							}
+							block "organization_custom_tab_tooltip" {
+								tooltip_enabled = no
+							}
+							# block "organization_custom_tab_click" {
+								onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'custom' )]"
+								down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'custom' )]"
+							# }
 						}
 						
 						button_secondary_tab_alt = {
@@ -407,7 +456,10 @@
 							tooltipwidget = {
 								using = SubTabIOAllMembersTooltip
 							}
-							onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'members' )]"
+							action_tooltip = {
+								title = "OPEN_TAB"
+								on_action = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'members' )]"
+							}
 							block "organization_members_tab_down" {
 								down = "[Or(InternationalOrganizationsView.Vars.HasValue( 'organizations', 'members' ),
 									And(And(Not(InternationalOrganizationsView.HasOverview), Not(InternationalOrganizationsView.HasActions)), 
@@ -415,25 +467,6 @@
 							}
 						}
 
-						button_secondary_tab_alt = {
-							using = layoutpolicy_expanding
-							block "organization_custom_tab_visible" {
-								visible = no
-							}
-							blockoverride "tab_text"{
-								block "organization_custom_tab_text" {
-									text = ""
-								}
-							}
-							block "organization_custom_tab_tooltip" {
-								tooltip = ""
-							}
-							# block "organization_custom_tab_click" {
-								onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'custom' )]"
-								down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'custom' )]"
-								tooltip_enabled = no
-							# }
-						}
 
 						# block "organization_custom_tabs" {}
 					}
@@ -560,9 +593,9 @@
                             margin_top = 5
 							spacing = 5
                             layoutpolicy_horizontal = expanding
+                            layoutpolicy_vertical = expanding
                             block "organization_custom_content" {}
                         }
-                        expand = {}
                     }
 					# vbox = {
 					# 	layoutpolicy_horizontal = expanding

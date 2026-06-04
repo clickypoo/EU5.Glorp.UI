@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/battle_lateralview.gui
+# mod: in_game/gui/battle_lateralview.gui
+
 	type battle_side_card = widget {
 		layoutpolicy_horizontal = expanding
 		size = { -1 40 }

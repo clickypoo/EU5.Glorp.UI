@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 template marker_unit_side_color {
 	modify_texture = {
 		using = color_grey_texture

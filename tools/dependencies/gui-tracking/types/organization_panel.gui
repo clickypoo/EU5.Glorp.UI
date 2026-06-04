@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/panels/organization/common.gui
+# mod: in_game/gui/panels/organization/common.gui
+
 	type organization_panel = widget {
 		name = "organization_panel"
 		size = { 100% 100% }

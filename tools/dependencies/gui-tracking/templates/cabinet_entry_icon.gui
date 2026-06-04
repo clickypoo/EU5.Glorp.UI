@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
 template cabinet_entry_icon {
 	OutlinerIconBg = {
 		block "cabinet_entry_icon_piechart" {

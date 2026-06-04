@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 container = {
 	name = "toll_marker"
 	allow_outside = yes

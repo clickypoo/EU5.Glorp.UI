@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/battle_lateralview.gui
+# mod: in_game/gui/battle_lateralview.gui
+
 	type reserves_status = vbox {
 		layoutpolicy_horizontal = expanding
 		margin = { 74 0 }

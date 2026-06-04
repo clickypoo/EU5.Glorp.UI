@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/battle_lateralview.gui
+# mod: in_game/gui/battle_lateralview.gui
+
 	type combat_side_modifier_icon = icon {
 		visible = "[Not(EqualTo_string(CombatModifier.GetKey, 'dice'))]"
 		texture = "[GetConceptTexture(CombatModifier.GetKey)]"

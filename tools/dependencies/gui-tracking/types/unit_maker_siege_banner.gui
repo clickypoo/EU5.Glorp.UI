@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 	type unit_maker_siege_banner = widget {
 		allow_outside = yes
 		size = { 59 85 }

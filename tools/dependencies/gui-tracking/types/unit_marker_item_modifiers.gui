@@ -1,3 +1,6 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
 	type unit_marker_item_modifiers = widget {
 		layoutpolicy_horizontal = expanding
 		size = {-1 26}
