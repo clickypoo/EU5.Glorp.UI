@@ -30,7 +30,7 @@ template category_big_template {
 						size = { 100% 100% }
 
 						onclick = "[OutlinerCategoryEntry.TogglePin]"
-						checked = "[OutlinerCategoryEntry.IsPinned]"
+						down = "[OutlinerCategoryEntry.IsPinned]"
 						tooltipwidget = {
 							LeftClickButtonTooltip = {
 								# block "entry_count" {

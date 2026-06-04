@@ -600,7 +600,7 @@ template unit_marker_item_modifiers {
 
 						blockoverride "tooltip_content" {
 							TooltipStringPairList = {
-								textcontext = "[TitleDescTooltip.GetDesc]"
+								textcontext = "[TitleDescTooltip.GetDesc.GetStringView]"
 							}
 
 							vbox = {
@@ -611,7 +611,7 @@ template unit_marker_item_modifiers {
 								ontextcontextchanged = "[SetTitleDescTooltipFromTextContext(PdxGuiWidget.AccessSelf)]"
 
 								TooltipStringPairList = {
-									textcontext = "[TitleDescTooltip.GetDesc]"
+									textcontext = "[TitleDescTooltip.GetDesc.GetStringView]"
 								}
 							}
 						}

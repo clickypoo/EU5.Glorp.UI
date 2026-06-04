@@ -17,13 +17,10 @@ template io_leader_button {
 			texture_density = 2
 		}
 
-		onclick = "[OpenInternationalOrganizationView(InternationalOrganization.Self)]"
-		tooltipwidget = {
-			LeftClickButtonTooltip = {
-				blockoverride "onclick_text" {
-					text = "OPEN_IO"
-				}
-			}
+		action_tooltip = {
+			title = "OPEN_IO"
+			on_action = "[OpenInternationalOrganizationView(InternationalOrganization.Self)]"
 		}
+		tooltipwidget = { BasicFunctionalTooltip = {} }
 	}
 }

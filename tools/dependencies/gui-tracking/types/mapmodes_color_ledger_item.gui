@@ -16,6 +16,12 @@
 			spacing = 5
 
 			icon = {
+				visible = "[MapColorLedger.HasIcon]"
+				size = { 18 18 }
+				texture = "[MapColorLedger.GetIcon]"
+			}
+
+			icon = {
 				texture = "gfx/interface/pie_charts/piechart_legend.dds"
 				texture_density = 2
 				size = { 18 18 }

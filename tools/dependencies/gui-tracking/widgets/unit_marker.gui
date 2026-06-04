@@ -128,6 +128,8 @@ widget = {
 									# margin_left = @[unit_marker_morale_progressbar_size * 0.6]
 									margin = {8 0}
 									margin_right = 7
+									hbox = {
+										spacing = -2
 									country_flag_small = {
 										datacontext = "[Unit.GetCountry]"
 										size = { 40 28 }
@@ -138,6 +140,28 @@ widget = {
 
 										blockoverride "double_click" {
 											ondoubleclick = "[UnitMarkerItem.OnRightClick]"
+										}
+									}
+
+										widget = {
+											size = { 8 26 }
+											allow_outside = yes
+
+											unit_composition_bar = {
+												size = { 6 24 }
+											}
+
+											icon = {
+												size = { 100% 100% }
+												texture = "gfx/interface/component_tiles/square_outline_alt.dds"
+												texture_density = 2
+												spriteType = corneredstretched
+												spriteBorder = { 20 20 }
+												modify_texture = {
+													using = color_super_dark_brown_texture
+													blend_mode = multiply
+												}
+											}
 										}
 									}
 
@@ -154,6 +178,7 @@ widget = {
 											align = center|nobaseline
 											text = "[UnitMarkerItem.GetLabel]"
 										}
+
 										widget = {
 											layoutpolicy_horizontal = expanding
 											size = { -1 5 }
@@ -370,9 +395,10 @@ widget = {
 									# margin_left = @[unit_marker_morale_progressbar_size * 0.6]
 									margin = {4 0}
 									margin_right = 8
+									margin_bottom = 2
 									vbox = {
 										using = layoutpolicy_expanding
-										margin_bottom = 4
+										margin_bottom = 2
 
 										expand = {}
 
@@ -409,6 +435,30 @@ widget = {
 										}
 									}
 
+									hbox = {
+										spacing = -2
+
+										widget = {
+											size = { 8 26 }
+											allow_outside = yes
+
+											unit_composition_bar = {
+												size = { 6 26 }
+											}
+
+											icon = {
+												size = { 100% 100% }
+												texture = "gfx/interface/component_tiles/square_outline_alt.dds"
+												texture_density = 2
+												spriteType = corneredstretched
+												spriteBorder = { 20 20 }
+												modify_texture = {
+													using = color_super_dark_brown_texture
+													blend_mode = multiply
+												}
+											}
+										}
+
 									country_flag_small = {
 										datacontext = "[Unit.GetCountry]"
 										size = { 42 29 }
@@ -421,7 +471,7 @@ widget = {
 											ondoubleclick = "[UnitMarkerItem.OnRightClick]"
 										}
 									}
-
+									}
 								}
 							}
 

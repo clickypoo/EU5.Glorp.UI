@@ -136,15 +136,6 @@
 							spacing = 8
 
 							country_rank_banner = {
-								visible = "[Not(Country.IsGreatPower)]"
-								blockoverride "country_rank_banner_size" {
-									size = {28 32}
-								}
-								tooltipwidget = {
-									using = non_great_power_info_tooltip
-								}
-							}
-							country_rank_banner = {
 								visible = "[Country.IsGreatPower]"
 								blockoverride "country_rank_banner_size" {
 									size = {28 32}
@@ -152,6 +143,31 @@
 								tooltipwidget = {
 									using = great_power_info_tooltip
 								}
+							}
+							country_rank_banner = {
+								visible = "[Country.IsRegionalPower]"
+								blockoverride "country_rank_banner_size" {
+									size = {28 32}
+								}
+								tooltipwidget = {
+									using = regional_power_info_tooltip
+								}
+							}
+							country_rank_banner = {
+								visible = "[Not(Or(Country.IsGreatPower, Country.IsRegionalPower))]"
+								blockoverride "country_rank_banner_size" {
+									size = {28 32}
+								}
+								tooltipwidget = {
+									using = non_great_power_info_tooltip
+								}
+							}
+
+							icon = {
+								size = { 20 20 }
+								texture = "[GetAiPersonalityIcon(Country.GetAiPersonality)]"
+								datacontext = "[Country.GetAiPersonality]"
+								tooltipwidget = { using = AiPersonality_tooltip }
 							}
 
 							block "country_card_title_extra" {}
@@ -168,15 +184,12 @@
 							button_pin = {
 								size = { 21 21 }
 								visible = "[IsPlayerValid]"
-								onclick = "[ToggleCountryFav(Country.Self)]"
-								checked = "[IsCountryFaved(Country.Self)]"
-								tooltipwidget = {
-									LeftClickButtonTooltip = {
-										blockoverride "onclick_text" {
-											text = "[SelectLocalization(IsCountryFaved(Country.Self), 'UNPIN_OUTLINER', 'PIN_OUTLINER')]"
-										}
-									}
+								action_tooltip = {
+									title = "[SelectLocalization(IsCountryFaved(Country.Self), 'UNPIN_OUTLINER', 'PIN_OUTLINER')]"
+									on_action = "[ToggleCountryFav(Country.Self)]"
 								}
+								tooltipwidget = { BasicFunctionalTooltip = {} }
+								down = "[IsCountryFaved(Country.Self)]"
 							}
 
 							# block "country_card_topcontent_extra" {}
@@ -1077,7 +1090,17 @@
 							}
 
 							country_rank_banner = {
-								visible = "[Not(Country.IsGreatPower)]"
+								visible = "[Country.IsRegionalPower]"
+								blockoverride "country_rank_banner_size" {
+									size = {34 55}
+								}
+								tooltipwidget = {
+									using = regional_power_info_tooltip
+								}
+							}
+
+							country_rank_banner = {
+								visible = "[Not(Or(Country.IsGreatPower, Country.IsRegionalPower))]"
 								blockoverride "country_rank_banner_size" {
 									size = {34 55}
 								}

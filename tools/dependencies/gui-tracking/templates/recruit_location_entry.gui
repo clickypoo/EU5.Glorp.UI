@@ -499,7 +499,6 @@ template recruit_location_entry {
 					button_minus = {
 						size = { 18 18 }
 						visible = "[Not(RecruitInLocationLateralView.IsUnitTemplate)]"
-						onclick = "[LocationToRecruitItem.Cancel]"
 						enabled = "[LocationToRecruitItem.CanCancel]"
 
 						tooltipwidget = {
@@ -510,6 +509,7 @@ template recruit_location_entry {
 							title = "UNIT_CANCEL_ACTION_TT"
 							enabled = "[LocationToRecruitItem.CanCancel]"
 							conditions = "[LocationToRecruitItem.CanCancelTT]"
+							on_action = "[LocationToRecruitItem.Cancel]"
 						}
 					}
 

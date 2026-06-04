@@ -131,23 +131,16 @@ OutlinerEntryBase = {
 
 	blockoverride "button_setup" {
 		datacontext = "[GovReformOutlinerEntry.GetReformItem.GetReform]"
-		datacontext = "[GovReformOutlinerEntry.GetReformItem.GetUIAction]"
+		datacontext = "[GovReformOutlinerEntry.GetReformItem]"
 
-		using = button_action_provider
-		enabled = yes
+		using = reform_item_action_provider
 
 		tooltipwidget = {
 			using = GovernmentReform_tooltip
 			blockoverride "UIActionDescription" {
 				TooltipBlockList = {
 					visible = "[And(Not(GovReformOutlinerEntry.GetReformItem.IsImplemented), GovReformOutlinerEntry.GetReformItem.IsValid)]"
-					textcontext = "[GovReformOutlinerEntry.GetReformItem.GetUIAction.GetDescription]"
-				}
-				TooltipFlavorTextBlock = {
-					visible = "[Not(StringIsEmpty(GovReformOutlinerEntry.GetReformItem.GetUIAction.GetConditions))]"
-					blockoverride "text" {
-						text = "[GovReformOutlinerEntry.GetReformItem.GetUIAction.GetConditions]"
-					}
+					textcontext = "[GovReformOutlinerEntry.GetReformItem.GetDescription]"
 				}
 			}
 		}

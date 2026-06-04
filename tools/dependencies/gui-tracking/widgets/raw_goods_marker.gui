@@ -4,7 +4,7 @@
 widget = {
 	name = "raw_goods_marker"
 	allow_outside = yes
-	size = "[Min_CVector2f(Multiply_CVector2f(GetInverseZoom2, '(CVector2f)7000, 7000'), '(CVector2f)64, 64')]"
+	size = "[Min_CVector2f(Multiply_CVector2f(GetInverseZoom2, '(CVector2f)9333, 9333'), '(CVector2f)85, 85')]"
 
 	datacontext = "[RawGoodsMarker]"
 	datacontext = "[RawGoodsMarker.GetLocation]"
@@ -12,8 +12,8 @@ widget = {
 	datacontext = "[RawGoodsMarker.GetLocation.GetMarket]"
 
 	button = {
-		visible = "[Not(Location.HasSpecificBaseModifier)]"
-		size = { 100% 100% }
+		size = { 75% 75% }
+		parentanchor = center
 		texture = "[GetGoodsIcon(Location.GetRawMaterial.Self)]"
 		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightGoods(Location.GetRawMaterial.Self)]"
 		tooltipwidget = {
@@ -29,7 +29,9 @@ widget = {
 
 	button = {
 		visible = "[Location.HasSpecificBaseModifier]"
-		size = { 150% 150% }
+		parentanchor = bottom|right
+		position = { 0	0 }
+		size = { 50% 50% }
 		icon = {
 			size = { 100% 100% }
 			texture = "[Location.GetSpecificBaseModifier.GetModifier.GetIcon]"

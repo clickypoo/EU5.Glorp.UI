@@ -1,8 +1,8 @@
 ﻿# vanilla: in_game/gui/multiplayer_chat.gui
 # mod: in_game/gui/multiplayer_chat.gui
 
-	type chat_editbox = widget {
-		size = { 350 35 }
+type chat_editbox = widget {
+	size = { 350 35 }
 
 	hbox = {
 		parentanchor = center
@@ -102,8 +102,11 @@
 			size = { 22 22 }
 			texture = "gfx/interface/buttons/flats/clean_text.dds"
 			visible = "[Not(MultiplayerChat.IsTextEmpty)]"
-			onclick = "[MultiplayerChat.ClearText(PdxGuiWidget.AccessParent.AccessParent.FindChild('multiplayer_chat_editbox'))]"
-			tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "MP_CHAT_CLEAR_TEXT" } } }
+				action_tooltip = {
+					title = "MP_CHAT_CLEAR_TEXT"
+					on_action = "[MultiplayerChat.ClearText(PdxGuiWidget.AccessParent.AccessParent.FindChild('multiplayer_chat_editbox'))]"
+				}
+				tooltipwidget = { BasicFunctionalTooltip = {} }
 		}
 	}
 }

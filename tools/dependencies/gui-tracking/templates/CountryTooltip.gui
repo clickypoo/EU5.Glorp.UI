@@ -178,9 +178,16 @@ template CountryTooltip {
 					hbox = {
 						spacing = 5
 						text_single = {
+							visible = "[HasTaxBaseIntelOn(Country.Self)]"
 							autoresize = yes
 							align = right
 							raw_text = "[Country.GetTotalTaxBase]"
+						}
+
+						text_single = {
+							visible = "[Not(HasTaxBaseIntelOn(Country.Self))]"
+							tagtooltip_enabled = yes
+							text = "INTEL_FOG_TAX_BASE_UNKNOWN"
 						}
 
 						widget = {
@@ -222,12 +229,18 @@ template CountryTooltip {
 					expand = {}
 
 					hbox = {
-						tooltipwidget = { using = Army_size_tooltip }
+						tooltipwidget = { using = ArmyOverview_tooltip }
 						spacing = 5
 						text_single = {
+							visible = "[HasArmySizeIntelOn(Country.Self)]"
 							autoresize = yes
 							align = right
-							text = "[Country.GetRaisedAndPotentialLevyStrength] [levies_icon] / [Country.GetRegularArmySize|0L] [regulars_icon]"
+							raw_text = "[Country.GetRaisedAndPotentialLevyStrength] @levy! / [Country.GetRegularArmySize|0L] @regular!"
+						}
+						text_single = {
+							visible = "[Not(HasArmySizeIntelOn(Country.Self))]"
+							tagtooltip_enabled = yes
+							text = "INTEL_FOG_ARMY_SIZE_UNKNOWN"
 						}
 
 						icon = {
@@ -265,12 +278,18 @@ template CountryTooltip {
 					expand = {}
 
 					hbox = {
-						tooltipwidget = { using = Navy_size_tooltip }
+						tooltipwidget = { using = NavyOverview_tooltip }
 						spacing = 5
 						text_single = {
+							visible = "[HasNavyStrengthIntelOn(Country.Self)]"
 							autoresize = yes
 							align = right
 							text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] ([Country.GetNavySizeValue|0L] @naval_regular!)"
+						}
+						text_single = {
+							visible = "[Not(HasNavyStrengthIntelOn(Country.Self))]"
+							tagtooltip_enabled = yes
+							text = "INTEL_FOG_NAVY_STRENGTH_UNKNOWN"
 						}
 
 						icon = {
@@ -341,9 +360,9 @@ template CountryTooltip {
 					expand = {}
 
 					hbox = {
-						visible = "[And(IsPlayerValid, Not(Country.IsPlayer))]"
-						spacing = 5
 						tooltipwidget = { using = AiDisposition_tooltip }
+						visible = "[And(IsPlayerValid, Not(Country.HasHumanController))]"
+						spacing = 5
 
 						text_single = {
 							autoresize = yes
@@ -353,6 +372,21 @@ template CountryTooltip {
 						icon = {
 							size = { 20 20 }
 							texture = "[GetAiDispositionIcon(Country.Self)]"
+						}
+					}
+
+					hbox = {
+						tooltipwidget = { using = HumanPlayerDisposition_tooltip }
+						visible = "[Country.HasHumanController]"
+						spacing = 5
+
+						icon = {
+							size = { 20 20 }
+							texture = "[GetAiDispositionIcon(Country.Self)]"
+						}
+						icon = {
+							size = { 20 20 }
+							texture = "gfx/interface/icons/outliner/human_player.dds"
 						}
 					}
 				}
