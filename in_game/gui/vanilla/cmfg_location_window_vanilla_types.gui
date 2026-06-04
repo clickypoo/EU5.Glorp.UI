@@ -452,6 +452,19 @@ types LocationWindowTypes
 						datacontext = "[LocationBuildingItem.GetBuilding]"
 						using = bg_circle
 					}
+
+					icon = {
+						parentanchor = top|right
+						size = { 10 10 }
+						position = { 1 -1 }
+						visible = "[IsAutoExpand(LocationBuildingItem.GetBuilding.Self)]"
+						datacontext = "[LocationBuildingItem.GetBuilding]"
+						texture = "gfx/interface/icons/flat_icons/mass_upgrade.dds"
+						using = bg_circle
+						tooltipwidget = {
+							using = AutoExpand_Building_Tooltip
+						}
+					}
 					
 					using = bg_circle_tile_shadow
 					background = {
@@ -515,6 +528,7 @@ types LocationWindowTypes
 									visible = "[Not(LocationBuildingItem.IsBuildingUnderConstruction)]"
 									enabled = "[LocationBuildingItem.CanDestroy]"
 									description = "[LocationBuildingItem.CanDestroyDesc]"
+									confirmation = "[LocationBuildingItem.CanDestroyDesc]"
 									on_action = "[LocationBuildingItem.Destroy]"
 									on_action = "[PlayAudioEffect('UI_action_building_destroy')]"
 								}
@@ -1026,14 +1040,11 @@ types LocationWindowTypes
 										size = { 80% 80% }
 									}
 
-									onclick = "[OpenInternationalOrganizationView(InternationalOrganization.Self)]"
-									tooltipwidget = {
-										LeftClickButtonTooltip = {
-											blockoverride "onclick_text" {
-												text = "OPEN_IO"
-											}
-										}
+									action_tooltip = {
+										title = "OPEN_IO"
+										on_action = "[OpenInternationalOrganizationView(InternationalOrganization.Self)]"
 									}
+									tooltipwidget = { BasicFunctionalTooltip = {} }
 									visible = "[InternationalOrganization.IsCountryMember(Player.Self)]"
 								}
 							}
@@ -1466,32 +1477,39 @@ template location_fort_status {
 		}
 	
 		piechart = {
-			visible = "[Location.HasFort]"
+			visible = "[And(Location.HasFort, HasGarrisonIntelOn(Location.Self))]"
 			size = { 21 21 }
 			alwaystransparent = yes
-	
+
 			pieslice_no_highlight = {
 				texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
 				value = "[FixedPointToFloat(Location.GetGarrisonPercentage)]"
 				color = { 1 1 1 1 }
 				alwaystransparent = yes
 			}
-	
+
 			pieslice_no_highlight = {
 				texture = "gfx/interface/pie_charts/pie_chart_alpha_80_red.dds"
 				value = "[Subtract_float('(float)1.0', FixedPointToFloat(Location.GetGarrisonPercentage))]"
 				color = { 1 1 1 1 }
 				alwaystransparent = yes
 			}
-	
+
 			icon = {
 				size = { 62% 62% }
 				parentanchor = center
 				texture = "[GetConceptTexture('fort')]"
 				texture_density = 2
 			}
-	
+
 			using = bg_circle_piechart
+		}
+
+		icon = {
+			visible = "[And(Location.HasFort, Not(HasGarrisonIntelOn(Location.Self)))]"
+			size = { 21 21 }
+			alwaystransparent = yes
+			texture = "[GetConceptTexture('fort')]"
 		}
 	
 		text_single = {
@@ -1505,12 +1523,23 @@ template location_fort_status {
 
 	text_single = {
 		margin_left = 5
-		visible = "[Not(Location.HasSiege)]"
+		visible = "[And(Not(Location.HasSiege), HasFortLevelIntelOn(Location.Self))]"
 		text = "[SelectLocalization(GreaterThan_int32(Location.GetFortLevel, '(int32)0' ), 'FORT_LOCATION_LEVEL', 'NO_FORT_LOCATION_LEVEL')]"
 		layoutpolicy_horizontal = expanding
 		size = { -1 20 }
 		autoresize = no
 		align = left|nobaseline
+	}
+
+	text_single = {
+		margin_left = 5
+		visible = "[And(Not(Location.HasSiege), Not(HasFortLevelIntelOn(Location.Self)))]"
+		layoutpolicy_horizontal = expanding
+		size = { -1 20 }
+		autoresize = no
+		align = left|nobaseline
+		tagtooltip_enabled = yes
+		text = "INTEL_FOG_LOC_FORT_LEVEL_UNKNOWN"
 	}
 
 	expand = {}

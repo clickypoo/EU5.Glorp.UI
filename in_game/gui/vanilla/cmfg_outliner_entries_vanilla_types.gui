@@ -528,7 +528,7 @@ template cabinet_entry_action_progress {
 			text = "[Cabinet.GetNameWithNoTooltip]"
 			align = left
 			default_format = "#L"
-			maximumsize = { 200 -1 }
+			maximumsize = { 190 -1 }
 		}
 	}
 	expand = {}
