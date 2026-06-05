@@ -1,4 +1,4 @@
-template recruit_location_entry {
+﻿template recruit_location_entry {
 	hbox = {
 		using = layoutpolicy_expanding
 		margin = { 5 3 }
@@ -6,7 +6,7 @@ template recruit_location_entry {
 		hbox = {
 			using = layoutpolicy_expanding
 			spacing = 5
-			margin = {3 0}
+			margin = { 3 0 }
 			ignoreinvisible = yes
 
 			using = bg_paper_card
@@ -14,7 +14,7 @@ template recruit_location_entry {
 			hbox = {
 				layoutpolicy_horizontal = expanding
 				datacontext = "[LocationToRecruitItem.GetLocation]"
-				margin = {7 0}
+				margin = { 7 0 }
 
 				text_single = {
 					visible = "[Not(RecruitInLocationLateralView.IsLevy)]"
@@ -58,7 +58,7 @@ template recruit_location_entry {
 
 				text_single = {
 					visible = "[And3(Not(RecruitInLocationLateralView.IsLevy), Not(IsDataModelEmpty(Location.GetArmyConstructions)), Not(RecruitInLocationLateralView.IsNavy))]"
-					size = { 40 15}
+					size = { 40 15 }
 					alwaystransparent = no
 					align = left|nobaseline
 					autoresize = no
@@ -69,7 +69,7 @@ template recruit_location_entry {
 
 				text_single = {
 					visible = "[And3(Not(RecruitInLocationLateralView.IsLevy), Not(IsDataModelEmpty(Location.GetNavyConstructions)), RecruitInLocationLateralView.IsNavy)]"
-					size = { 40 15}
+					size = { 40 15 }
 					alwaystransparent = no
 					align = left|nobaseline
 					autoresize = no
@@ -206,7 +206,7 @@ template recruit_location_entry {
 									blockoverride "text" {
 										text = "UNIT_TEMPLATE_LOCATION_COST_BREAKDOWN_EMPTY_DESC"
 									}
-									blockoverride "textblock_background_tint"  {
+									blockoverride "textblock_background_tint" {
 										modify_texture = {
 											using = color_red_texture
 										}
@@ -487,12 +487,12 @@ template recruit_location_entry {
 				size = { 110 30 }
 				using = bg_number_container_bckg
 				blockoverride "number_container_extra" {
-					margin = {0 0}
+					margin = { 0 0 }
 				}
 
 				hbox = {
 					ignoreinvisible = yes
-					margin = {5 0}
+					margin = { 5 0 }
 					button_minus = {
 						size = { 18 18 }
 						visible = "[Not(RecruitInLocationLateralView.IsUnitTemplate)]"
@@ -710,7 +710,7 @@ template recruit_location_entry {
 				size = { 30 30 }
 				using = bg_number_container_bckg
 				blockoverride "number_container_extra" {
-					margin = {0 0}
+					margin = { 0 0 }
 				}
 
 				button_plus = {
@@ -853,12 +853,13 @@ lateralview = {
 	}
 
 	blockoverride "panel_content" {
-		header_main_tabs = { #TABS
+		header_main_tabs = {
+			#TABS
 			visible = "[RecruitInLocationLateralView.IsLevy]"
 			blockoverride "content" {
 				button_main_tab_alt = {
 					layoutpolicy_horizontal = expanding
-					blockoverride "tab_text"{
+					blockoverride "tab_text" {
 						text = "ARMY_OVERVIEW"
 					}
 					action_tooltip = {
@@ -871,7 +872,7 @@ lateralview = {
 
 				button_main_tab_alt = {
 					layoutpolicy_horizontal = expanding
-					blockoverride "tab_text"{
+					blockoverride "tab_text" {
 						text = "NAVY_OVERVIEW"
 					}
 					action_tooltip = {
@@ -905,12 +906,12 @@ lateralview = {
 			subheader_A = {
 				visible = "[RecruitInLocationLateralView.IsArmy]"
 				# Left Data
-				blockoverride "right_2_liner_widgets_2"{
+				blockoverride "right_2_liner_widgets_2" {
 					header_button_left = {
 						visible = "[RecruitInLocationLateralView.IsLevy]"
-						size = {40% 40}
+						size = { 40% 40 }
 
-						blockoverride "icon_overlay" {}
+						blockoverride "icon_overlay" { }
 
 						blockoverride "icon_texture" {
 							texture = "gfx/interface/icons/unit_category/army_levies.dds"
@@ -940,11 +941,11 @@ lateralview = {
 						enabled = "[RecruitInLocationLateralView.CanDisbandAllLevies]"
 
 						tooltipwidget = {
-							BasicFunctionalTooltip = {}
+							BasicFunctionalTooltip = { }
 						}
 					}
 				}
-				blockoverride "left_2liner_tooltip_for_container"{
+				blockoverride "left_2liner_tooltip_for_container" {
 					tooltipwidget = {
 						SimpleContextualTooltipType = {
 							blockoverride "title_icon" {
@@ -1019,7 +1020,7 @@ lateralview = {
 					glow = {
 						name = "drop_shadow"
 						glow_radius = 3
-						color = {0.0 0.0 0.0 1.0}
+						color = { 0.0 0.0 0.0 1.0 }
 						alpha = 0.5
 					}
 				}
@@ -1032,11 +1033,11 @@ lateralview = {
 					datamodel = "[RecruitInLocationLateralView.GetMethods]"
 					item = {
 						button = {
-							size = {36 36}
+							size = { 36 36 }
 							using = header_button_template
-							blockoverride "header_button_template_push_properties"{using = button_tab_toggle_properties_template}
-							blockoverride "header_button_full_content"{}
-							blockoverride "header_button_template_texture"{using = pressed_button_texture}
+							blockoverride "header_button_template_push_properties" { using = button_tab_toggle_properties_template }
+							blockoverride "header_button_full_content" { }
+							blockoverride "header_button_template_texture" { using = pressed_button_texture }
 
 							onclick = "[RecruitInLocationLateralView.SelectMethod(RecruitmentMethod.Self)]"
 							down = "[RecruitInLocationLateralView.IsMethodChecked(RecruitmentMethod.Self)]"
@@ -1046,7 +1047,7 @@ lateralview = {
 							}
 
 							icon = {
-								size = {70% 70%}
+								size = { 70% 70% }
 								parentanchor = center
 								visible = "[Not(RecruitInLocationLateralView.IsLevy)]"
 								texture = "[GetRecruitMethodIcon(RecruitmentMethod.Self)]"
@@ -1069,19 +1070,19 @@ lateralview = {
 				}
 
 				# Right Data
-				blockoverride "right_widget_visible"{}
+				blockoverride "right_widget_visible" { }
 
-				blockoverride "right_widget_setup"{
-					size = {200 40}
+				blockoverride "right_widget_setup" {
+					size = { 200 40 }
 					parentanchor = vcenter|right
 				}
 
-				blockoverride "right_widget"{
+				blockoverride "right_widget" {
 					header_button_right = {
 						visible = "[RecruitInLocationLateralView.IsLevy]"
-						size = {100% 40}
+						size = { 100% 40 }
 
-						blockoverride "icon_overlay" {}
+						blockoverride "icon_overlay" { }
 
 						blockoverride "icon_texture" {
 							texture = "gfx/interface/icons/unit_actions/land_levies_rally_point.dds"
@@ -1121,7 +1122,7 @@ lateralview = {
 						enabled = "[RecruitInLocationLateralView.CanRaiseAllLevies]"
 
 						tooltipwidget = {
-							BasicFunctionalTooltip = {}
+							BasicFunctionalTooltip = { }
 						}
 					}
 				}
@@ -1152,7 +1153,7 @@ lateralview = {
 					glow = {
 						name = "drop_shadow"
 						glow_radius = 3
-						color = {0.0 0.0 0.0 1.0}
+						color = { 0.0 0.0 0.0 1.0 }
 						alpha = 0.5
 					}
 				}
@@ -1194,12 +1195,12 @@ lateralview = {
 			subheader_A = {
 				visible = "[And(RecruitInLocationLateralView.IsNavy, Not(RecruitInLocationLateralView.IsUnitTemplate))]"
 				# Left Data
-				blockoverride "right_2_liner_widgets_2"{
+				blockoverride "right_2_liner_widgets_2" {
 					header_button_left = {
 						visible = "[RecruitInLocationLateralView.IsLevy]"
-						size = {40% 40}
+						size = { 40% 40 }
 
-						blockoverride "icon_overlay" {}
+						blockoverride "icon_overlay" { }
 
 						blockoverride "icon_texture" {
 							texture = "gfx/interface/icons/unit_category/navy_levies.dds"
@@ -1236,11 +1237,11 @@ lateralview = {
 						enabled = "[RecruitInLocationLateralView.CanDisbandAllLevies]"
 
 						tooltipwidget = {
-							BasicFunctionalTooltip = {}
+							BasicFunctionalTooltip = { }
 						}
 					}
 				}
-				blockoverride "left_2liner_tooltip_for_container"{
+				blockoverride "left_2liner_tooltip_for_container" {
 					tooltipwidget = {
 						SimpleContextualTooltipType = {
 							blockoverride "title_icon" {
@@ -1314,7 +1315,7 @@ lateralview = {
 					glow = {
 						name = "drop_shadow"
 						glow_radius = 3
-						color = {0.0 0.0 0.0 1.0}
+						color = { 0.0 0.0 0.0 1.0 }
 						alpha = 0.5
 					}
 				}
@@ -1457,19 +1458,19 @@ lateralview = {
 				}
 
 				# Right Data
-				blockoverride "right_widget_visible"{}
+				blockoverride "right_widget_visible" { }
 
-				blockoverride "right_widget_setup"{
-					size = {200 40}
+				blockoverride "right_widget_setup" {
+					size = { 200 40 }
 					parentanchor = vcenter|right
 				}
 
-				blockoverride "right_widget"{
+				blockoverride "right_widget" {
 					header_button_right = {
 						visible = "[RecruitInLocationLateralView.IsLevy]"
-						size = {100% 40}
+						size = { 100% 40 }
 
-						blockoverride "icon_overlay" {}
+						blockoverride "icon_overlay" { }
 
 						blockoverride "icon_texture" {
 							texture = "gfx/interface/icons/unit_actions/navy_levies_rally_point.dds"
@@ -1509,7 +1510,7 @@ lateralview = {
 						enabled = "[RecruitInLocationLateralView.CanRaiseAllLevies]"
 
 						tooltipwidget = {
-							BasicFunctionalTooltip = {}
+							BasicFunctionalTooltip = { }
 						}
 					}
 				}
@@ -1540,7 +1541,7 @@ lateralview = {
 					glow = {
 						name = "drop_shadow"
 						glow_radius = 3
-						color = {0.0 0.0 0.0 1.0}
+						color = { 0.0 0.0 0.0 1.0 }
 						alpha = 0.5
 					}
 				}
@@ -1583,13 +1584,13 @@ lateralview = {
 				visible = "[RecruitInLocationLateralView.IsUnitTemplate]"
 				datacontext = "[RecruitInLocationLateralView.GetUnitTemplate]"
 				widget = {
-					size = {26 74}
+					size = { 26 74 }
 					header_button_left = {
 						size = { 100% 100% }
-						blockoverride "button_icon_stretch_sprite" {}
-						blockoverride "header_button_frame_inner" {visible = no}
+						blockoverride "button_icon_stretch_sprite" { }
+						blockoverride "header_button_frame_inner" { visible = no }
 						blockoverride "header_button_icon_size" { size = { 26 30 } }
-						blockoverride "header_button_text_layout" {}
+						blockoverride "header_button_text_layout" { }
 						blockoverride "icon_texture" {
 							texture = "gfx/interface/buttons/flats/button_simple_right.dds"
 							texture_density = 2
@@ -1618,18 +1619,18 @@ lateralview = {
 					size = { -1 85 }
 					UnitTemplateCard = {
 						blockoverride "unit_template_total_cost_visible" { visible = no }
-						blockoverride "unit_template_build_button" {}
+						blockoverride "unit_template_build_button" { }
 					}
 				}
 
 				widget = {
-					size = {26 74}
+					size = { 26 74 }
 					header_button_left = {
 						size = { 100% 100% }
-						blockoverride "button_icon_stretch_sprite" {}
-						blockoverride "header_button_frame_inner" {visible = no}
+						blockoverride "button_icon_stretch_sprite" { }
+						blockoverride "header_button_frame_inner" { visible = no }
 						blockoverride "header_button_icon_size" { size = { 26 30 } }
-						blockoverride "header_button_text_layout" {}
+						blockoverride "header_button_text_layout" { }
 						blockoverride "icon_texture" {
 							texture = "gfx/interface/buttons/flats/button_simple_right.dds"
 							texture_density = 2
@@ -1712,7 +1713,7 @@ lateralview = {
 						text = "LEVY_POSSIBLE_UNIT_TYPES"
 					}
 
-					expand = {}
+					expand = { }
 
 					# Army levy categories
 					flowcontainer = {
@@ -1760,6 +1761,16 @@ lateralview = {
 
 			vbox = {
 				using = layoutpolicy_expanding
+
+				widget = {
+					visible = "[RecruitInLocationLateralView.IsUnitTemplate]"
+					size = { 30 30 }
+					using = bg_number_container_bckg
+					blockoverride "number_container_extra" {
+						margin = { 0 0 }
+					}
+
+				}
 
 				filtered_sorted_list = {
 					datacontext = "[RecruitInLocationLateralView.GetRecruitSortSearch]"
@@ -1855,173 +1866,172 @@ lateralview = {
 					}
 				}
 
-					blockoverride "sort_buttons_filtered_list" {
+				blockoverride "sort_buttons_filtered_list" {
 
-						sort_by_key_button = {
-							name = "name"
-							using = layoutpolicy_expanding
-						}
-
-						sort_by_key_button = {
-							visible = "[Not(RecruitInLocationLateralView.IsUnitTemplate)]"
-							name = "strength"
-							size = { 100 -1 }
-							layoutpolicy_vertical = expanding
-						}
-
-						sort_by_key_button = {
-							visible = "[Not(RecruitInLocationLateralView.IsLevy)]"
-							name = "gold"
-							size = { 70 -1 }
-							layoutpolicy_vertical = expanding
-						}
-
-						sort_by_key_button = {
-							visible = "[And(Not(RecruitInLocationLateralView.IsLevy), Not(RecruitInLocationLateralView.IsUnitTemplate))]"
-							name = "size"
-							size = { 70 -1 }
-							layoutpolicy_vertical = expanding
-						}
-
-						sort_by_key_button = {
-							visible = "[And(RecruitInLocationLateralView.IsArmy, RecruitInLocationLateralView.IsUnitTemplate)]"
-							name = "regiment_training"
-							size = { 70 -1 }
-							layoutpolicy_vertical = expanding
-						}
-
-						sort_by_key_button = {
-							visible = "[Not(RecruitInLocationLateralView.IsArmy)]"
-							name = "ships"
-							size = { 70 -1 }
-							layoutpolicy_vertical = expanding
-						}
-
-						sort_by_key_button = {
-							visible = "[Not(RecruitInLocationLateralView.IsUnitTemplate)]"
-							name = "needs"
-							size = { 130 -1 }
-							layoutpolicy_vertical = expanding
-						}
+					sort_by_key_button = {
+						name = "name"
+						using = layoutpolicy_expanding
 					}
 
-					blockoverride "scroll_list_is_empty" {
-						visible = "[IsDataModelEmpty(RecruitInLocationLateralView.GetItems)]"
+					sort_by_key_button = {
+						visible = "[Not(RecruitInLocationLateralView.IsUnitTemplate)]"
+						name = "strength"
+						size = { 100 -1 }
+						layoutpolicy_vertical = expanding
 					}
 
-					blockoverride "scroll_list_is_empty_text" {
-						text = "[RecruitInLocationLateralView.GetRecruitEmptyInfo]"
+					sort_by_key_button = {
+						visible = "[Not(RecruitInLocationLateralView.IsLevy)]"
+						name = "gold"
+						size = { 70 -1 }
+						layoutpolicy_vertical = expanding
 					}
 
-					blockoverride "empty_scroll_list_layout"{
-						parentanchor = hcenter
-						position = { 0 130 }
-						size = { 530 357 }
+					sort_by_key_button = {
+						visible = "[And(Not(RecruitInLocationLateralView.IsLevy), Not(RecruitInLocationLateralView.IsUnitTemplate))]"
+						name = "size"
+						size = { 70 -1 }
+						layoutpolicy_vertical = expanding
 					}
 
-					blockoverride "list_for_scroll_list_empty_layout" {
-						fixedgridbox = {
-							parentanchor = left
-							size = { 100% 357 }
-							addcolumn = 100%
-							addrow = 45
-							setitemsizefromcell = yes
-							datamodel = "[RecruitInLocationLateralView.GetRecruitEmptyItems]"
+					sort_by_key_button = {
+						visible = "[And(RecruitInLocationLateralView.IsArmy, RecruitInLocationLateralView.IsUnitTemplate)]"
+						name = "regiment_training"
+						size = { 70 -1 }
+						layoutpolicy_vertical = expanding
+					}
 
-							item = {
-								widget = {
-									size = { 470 40 }
+					sort_by_key_button = {
+						visible = "[Not(RecruitInLocationLateralView.IsArmy)]"
+						name = "ships"
+						size = { 70 -1 }
+						layoutpolicy_vertical = expanding
+					}
 
-									hbox = {
-										margin = {2 1}
+					sort_by_key_button = {
+						visible = "[Not(RecruitInLocationLateralView.IsUnitTemplate)]"
+						name = "needs"
+						size = { 130 -1 }
+						layoutpolicy_vertical = expanding
+					}
+				}
+
+				blockoverride "scroll_list_is_empty" {
+					visible = "[IsDataModelEmpty(RecruitInLocationLateralView.GetItems)]"
+				}
+
+				blockoverride "scroll_list_is_empty_text" {
+					text = "[RecruitInLocationLateralView.GetRecruitEmptyInfo]"
+				}
+
+				blockoverride "empty_scroll_list_layout" {
+					parentanchor = hcenter
+					position = { 0 130 }
+					size = { 530 357 }
+				}
+
+				blockoverride "list_for_scroll_list_empty_layout" {
+					fixedgridbox = {
+						parentanchor = left
+						size = { 100% 357 }
+						addcolumn = 100%
+						addrow = 45
+						setitemsizefromcell = yes
+						datamodel = "[RecruitInLocationLateralView.GetRecruitEmptyItems]"
+
+						item = {
+							widget = {
+								size = { 470 40 }
+
+								hbox = {
+									margin = { 2 1 }
+									layoutpolicy_horizontal = expanding
+									layoutpolicy_vertical = expanding
+									using = bg_paper_card
+									using = bg_cabinet_card_frame
+
+									widget = {
+										size = { -1 40 }
 										layoutpolicy_horizontal = expanding
-										layoutpolicy_vertical = expanding
-										using = bg_paper_card
-										using = bg_cabinet_card_frame
 
-										widget = {
-											size = { -1 40 }
-											layoutpolicy_horizontal = expanding
+										card_header_button_04 = {
+											size = { 100% 40 }
+											parentanchor = center
 
-											card_header_button_04 = {
-												size = { 100% 40 }
-												parentanchor = center
+											action_tooltip = {
+												click_type = left
+												click_mode = single
+												title = "BUILD_BUILDING_GENERIC"
+												on_action = "[RecruitInLocationLateralView.SelectLocationToBuild(BuildingType.Self)]"
+											}
 
-												action_tooltip = {
-													click_type = left
-													click_mode = single
-													title = "BUILD_BUILDING_GENERIC"
-													on_action = "[RecruitInLocationLateralView.SelectLocationToBuild(BuildingType.Self)]"
+											tooltipwidget = { BasicFunctionalTooltip = { } }
+
+											background = {
+												using = color_grey_texture
+												margin = { -2 -1 }
+												alpha = 0.7
+												modify_texture = {
+													texture = "gfx/interface/cards/headers/header_pattern_01.dds"
+													texture_density = 2
+													spriteType = corneredtiled
+													blend_mode = overlay
+													alpha = 0.2
 												}
-
-												tooltipwidget = { BasicFunctionalTooltip = {}}
-
-												background = {
-													using = color_grey_texture
-													margin = {-2 -1}
+												modify_texture = {
+													color = "[BuildingType.GetPopType.GetColor]"
+													blend_mode = overlay
 													alpha = 0.7
-													modify_texture = {
-														texture = "gfx/interface/cards/headers/header_pattern_01.dds"
-														texture_density = 2
-														spriteType = corneredtiled
-														blend_mode = overlay
-														alpha = 0.2
-													}
-													modify_texture = {
-														color = "[BuildingType.GetPopType.GetColor]"
-														blend_mode = overlay
-														alpha = 0.7
-													}
-													modify_texture = {
-														texture = "gfx/interface/component_overlay/cloth_texture.dds"
-														texture_density = 2
-														spriteType = Corneredtiled
-														spriteborder = { 0 0 }
-														blend_mode = overlay
-														alpha = 0.2
-													}
+												}
+												modify_texture = {
+													texture = "gfx/interface/component_overlay/cloth_texture.dds"
+													texture_density = 2
+													spriteType = Corneredtiled
+													spriteborder = { 0 0 }
+													blend_mode = overlay
+													alpha = 0.2
+												}
+											}
+
+											hbox = {
+												layoutpolicy_horizontal = expanding
+												ignoreinvisible = yes
+												spacing = 5
+												margin_left = 5
+												margin_right = 5
+
+												icon = {
+													size = { 34 34 }
+													texture = "[GetBuildingIcon(BuildingType.Self)]"
 												}
 
-												hbox = {
+												text_single = {
 													layoutpolicy_horizontal = expanding
-													ignoreinvisible = yes
-													spacing = 5
-													margin_left = 5
-													margin_right = 5
+													autoresize = no
+													size = { 150 18 }
+													align = left|nobaseline
+													text = "[BuildingType.GetName]"
+												}
 
-													icon = {
-														size = { 34 34 }
-														texture = "[GetBuildingIcon(BuildingType.Self)]"
+												ui_direction_button_alt = {
+													size = { 25 25 }
+													texture = "gfx/interface/icons/flat_icons/building_panel/build_button.dds"
+
+													action_tooltip = {
+														click_type = left
+														click_mode = single
+														title = "BUILD_BUILDING_GENERIC"
+														on_action = "[RecruitInLocationLateralView.SelectLocationToBuild(BuildingType.Self)]"
 													}
 
-													text_single = {
-														layoutpolicy_horizontal = expanding
-														autoresize = no
-														size = {150 18}
-														align = left|nobaseline
-														text = "[BuildingType.GetName]"
-													}
+													tooltipwidget = { BasicFunctionalTooltip = { } }
 
-													ui_direction_button_alt = {
-														size = {25 25}
-														texture = "gfx/interface/icons/flat_icons/building_panel/build_button.dds"
-
-														action_tooltip = {
-															click_type = left
-															click_mode = single
-															title = "BUILD_BUILDING_GENERIC"
-															on_action = "[RecruitInLocationLateralView.SelectLocationToBuild(BuildingType.Self)]"
-														}
-
-														tooltipwidget = { BasicFunctionalTooltip = {} }
-
-														# icon = {
-														# 	parentanchor = center
-														# 	texture = "gfx/interface/icons/flat_icons/building_panel/build_button.dds"
-														# 	size = { 85% 85% }
-														# 	using = color_gold
-														# }
-													}
+													# icon = {
+													# 	parentanchor = center
+													# 	texture = "gfx/interface/icons/flat_icons/building_panel/build_button.dds"
+													# 	size = { 85% 85% }
+													# 	using = color_gold
+													# }
 												}
 											}
 										}
@@ -2030,21 +2040,21 @@ lateralview = {
 							}
 						}
 					}
+				}
 
-					blockoverride "scroll_list_content" {
-						addcolumn = 100%
-						addrow = 40
-						datamodel = "[RecruitInLocationLateralView.GetItems]"
-						setitemsizefromcell = yes
-						datamodel_reuse_widgets = yes
+				blockoverride "scroll_list_content" {
+					addcolumn = 100%
+					addrow = 40
+					datamodel = "[RecruitInLocationLateralView.GetItems]"
+					setitemsizefromcell = yes
+					datamodel_reuse_widgets = yes
 
-						item = {
+					item = {
+						widget = {
 							widget = {
-								widget = {
-									parentanchor = center
-									size = { 99% 40 }
-									using = recruit_location_entry
-								}
+								parentanchor = center
+								size = { 99% 40 }
+								using = recruit_location_entry
 							}
 						}
 					}
@@ -2052,4 +2062,5 @@ lateralview = {
 			}
 		}
 	}
+}
 }

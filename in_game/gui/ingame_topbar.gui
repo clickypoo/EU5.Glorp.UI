@@ -1,4 +1,4 @@
-######################################################
+﻿######################################################
 #################### META INFO #######################
 ######################################################
 
@@ -695,8 +695,8 @@ widget = {
 					trigger_on_create = yes
 					on_start = "[PlayAudioEffect('UI_alert_appear_green_diplo')]"
 				}
-				visible_at_creation = no
 				parentanchor = top|right
+				visible_at_creation = no
 				visible = "[And(MPChatNewMessage, Not(MPChatNewWhisper))]"
 				size = { 14 14 }
 				alwaystransparent = yes
@@ -719,8 +719,8 @@ widget = {
 					trigger_on_create = yes
 					on_start = "[PlayAudioEffect('UI_alert_appear_green_diplo')]"
 				}
-				visible_at_creation = no
 				parentanchor = top|right
+				visible_at_creation = no
 				visible = "[MPChatNewWhisper]"
 				size = { 16 16 }
 				alwaystransparent = yes
@@ -987,19 +987,19 @@ widget = {
 					bezier = { 1.0 0.0 1.0 0.0 }
 					alpha = 0
 				}
-			mapmodes_button_color_ledger = {
-				allow_outside = yes
-				blockoverride "button_ledger_position_visible" {
-					position = { 340 0 }
-					parentanchor = hcenter|top
-					widgetanchor = hcenter|bottom
-					visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))]"
-				}
-				mapmodes_color_ledger = {
-					visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger_bottom'), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned)))]"
-					parentanchor = left|top
-					widgetanchor = left|bottom
-					position = { 0 -10 }
+				mapmodes_button_color_ledger = {
+					allow_outside = yes
+					blockoverride "button_ledger_position_visible" {
+						position = { 340 0 }
+						parentanchor = hcenter|top
+						widgetanchor = hcenter|bottom
+						visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))]"
+					}
+					mapmodes_color_ledger = {
+						visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger_bottom'), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned)))]"
+						parentanchor = left|top
+						widgetanchor = left|bottom
+						position = { 0 -10 }
 					}
 				}
 				mapmodes_button_color_ledger_map_marker = {
@@ -1088,9 +1088,9 @@ widget = {
 		}
 	}
 
-	EnterGameCoA = {
-		name = "flag_animation"
-	}
+	# EnterGameCoA = {
+	# 	name = "flag_animation"
+	# }
 }
 
 widget = {

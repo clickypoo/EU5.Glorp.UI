@@ -1,4 +1,4 @@
-types GlorpUIFoodProductionTypes {
+﻿types GlorpUIFoodProductionTypes {
 	type food_production_location = widget {
 		visible = "[FoodProductionListItem.IsLocationItem]"
 		size = { 100% 51 }

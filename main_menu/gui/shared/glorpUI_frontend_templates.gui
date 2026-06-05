@@ -1,4 +1,4 @@
-types GlorpUIFrontEnd {
+﻿types GlorpUIFrontEnd {
 	type FrontEndBackground = widget {
 		size = { 100% 100% }
 

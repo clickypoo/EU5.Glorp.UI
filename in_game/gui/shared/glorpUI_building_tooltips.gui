@@ -47,16 +47,17 @@
 		}
 
 		TooltipListBase = { ### SIDE TABLE
-			TooltipListRowContent = {
-				TooltipManualTableField = {
-					blockoverride "field_content" {
-						text_single = {
-							text = "[employment|e]"
-						}
-						expand = {}
-						text_single = {
-							raw_text = "[Building.GetEmploymentSize|w] / [Building.GetMaxWorkersRequired|w]"
-						}
+                TooltipManualTableField = {
+                    blockoverride "field_content" {
+                        text_single = {
+                            layoutpolicy_horizontal = expanding
+                            autoresize = no
+                            text = "[employment|e]"
+                        }
+                        text_single = {
+                            autoresize = yes
+                            raw_text = "[Building.GetEmploymentSize|w] / [Building.GetMaxWorkersRequired|w]"
+                        }
 						tooltipwidget = {
 							SimpleContextualTooltipType = {
 								blockoverride "title_icon" {
@@ -73,19 +74,21 @@
 								textcontext = "BUILDING_EMPLOYMENT_TT"
 							}
 						}
-					}
-				}
+                    }
+                }
 
-				TooltipManualTableField = {
-					blockoverride "field_content" {
-						text_single = {
-							text = "BUILDING_LEVEL"
+                TooltipManualTableField = {
+                    blockoverride "field_content" {
+                        text_single = {
+                            layoutpolicy_horizontal = expanding
+                            autoresize = no
+                            text = "BUILDING_LEVEL"
 							default_format = "#W"
-						}
-						expand = {}
-						text_single = {
-							raw_text = "[Building.GetLevel]/[Building.GetMaxLevel|0L]"
-						}
+                        }
+                        text_single = {
+                            autoresize = yes
+                            raw_text = "[Building.GetLevel]/[Building.GetMaxLevel|0L]"
+                        }
 						tooltipwidget = {
 							SimpleContextualStringPairTooltipType = {
 								blockoverride "title_icon" {
@@ -109,8 +112,8 @@
 								lowpriotextcontext = "[Building.GetType.GetMaxLevelInformation(Building.GetLocation)]"
 							}
 						}
-					}
-				}
+                    }
+                }
 
 				vbox = {
 					visible = "[Building.IsProducing]"
@@ -120,10 +123,12 @@
 						TooltipManualTableField = {
 							blockoverride "field_content" {
 								text_single = {
+									layoutpolicy_horizontal = expanding
+									autoresize = no
 									text = "[production_efficiency|e]"
 								}
-								expand = {}
 								text_single = {
+									autoresize = yes
 									text = "BUILDING_PROD_EFFICIENCY"
 									default_format = "@bold!"
 								}
@@ -136,37 +141,71 @@
 				}
 
 				TooltipManualTableField = {
-					visible = "[And(Not(Building.IsProducing), Not(Building.GetType.OnlyEstatesCanBuild))]"
+					visible = "[Building.GetHasEstablishmentRamp]"
 					blockoverride "field_content" {
 						text_single = {
-							text = "BUILDING_UPKEEP"
-							default_format = "#W"
-						}
-						expand = {}
-						text_single = {
-							visible = "[Not(Building.GetType.IsFort)]"
-							raw_text = "#R [Building.GetUpkeep|2]#!@expense!"
-							default_format = "#bold"
+							layoutpolicy_horizontal = expanding
+							autoresize = no
+							text = "BUILDING_ESTABLISHMENT_LABEL"
 						}
 						text_single = {
-							visible = "[Building.GetType.IsFort]"
-							raw_text = "#R [Building.GetFortMaintenanceValue|2]#!@expense!"
-							default_format = "#bold"
+							autoresize = yes
+							raw_text = "[Building.GetEstablishmentProgressFraction|0%]"
 						}
 						tooltipwidget = {
-							using = Building_upkeep_tooltip
+							SimpleContextualStringPairTooltipType = {
+								blockoverride "title_icon" {
+									icon = {
+										using = tooltip_title_icon_size
+										texture = "gfx/interface/icons/flat_icons/building_panel/establishment.dds"
+									}
+								}
+								blockoverride "concept_link" {
+									text = "[establishment|e]"
+								}
+								blockoverride "tooltip_textcontext" {
+									textcontext = "[Building.GetEstablishmentTooltip]"
+								}
+							}
 						}
 					}
 				}
 
 				TooltipManualTableField = {
-					visible = "[Building.GetType.OnlyEstatesCanBuild]"
-					blockoverride "field_content" {
-						text_single = {
-							text = "BUILDING_UPKEEP"
+					visible = "[And(Not(Building.IsProducing), Not(Building.GetType.OnlyEstatesCanBuild))]"
+                    blockoverride "field_content" {
+                        text_single = {
+                            layoutpolicy_horizontal = expanding
+                            autoresize = no
+                            text = "BUILDING_UPKEEP"
 							default_format = "#W"
+                        }
+                        text_single = {
+                            autoresize = yes
+							visible = "[Not(Building.GetType.IsFort)]"
+                            raw_text = "#R [Building.GetUpkeep|2]#!@expense!"
+							default_format = "#bold"
+                        }
+						text_single = {
+							autoresize = yes
+							visible = "[Building.GetType.IsFort]"
+                            raw_text = "#R [Building.GetFortMaintenanceValue|2]#!@expense!"
+							default_format = "#bold"
+                        }
+						tooltipwidget = {
+							using = Building_upkeep_tooltip
 						}
-						expand = {}
+                    }
+                }
+
+				TooltipManualTableField = {
+					visible = "[Building.GetType.OnlyEstatesCanBuild]"
+                    blockoverride "field_content" {
+                        text_single = {
+                            text = "BUILDING_UPKEEP"
+							default_format = "#W"
+                        }
+                        expand = {}
 						icon = {
 							size = { 24 24 }
 							texture = "[GetEstateIcon(Building.GetType.GetEligibleEstate)]"
@@ -176,10 +215,9 @@
 						}
 						tooltip = "[estate_building]"
 						tagtooltip_enabled = yes
-					}
-				}
-			}
-		}
+                    }
+                }
+        }
 	}
 
 	# Glorp UI - Added Building Effects to Estate Reduction -> Listed Building Tooltip
@@ -282,11 +320,13 @@
 			TooltipManualTableField = {
 				blockoverride "field_content" {
 					text_single = {
+						layoutpolicy_horizontal = expanding
+						autoresize = no
 						text = "TOTAL_POTENTIAL_PROFIT"
 						default_format = "#color_white"
 					}
-					expand = {}
 					text_single = {
+						autoresize = yes
 						raw_text = "[Building.GetProfit|2+=L]@gold!"
 					}
 				}

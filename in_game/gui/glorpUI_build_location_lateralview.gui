@@ -1,4 +1,4 @@
-template build_location_entry {
+﻿template build_location_entry {
 	# icon
 	hbox = {
 		# Goods Icon
@@ -385,13 +385,10 @@ template build_location_entry {
 								# Glorp UI - Market Access (or Terrain Bonus when constructing a fort), Control
 								vbox = {
 									maximumsize = { 60 46 }
-									margin = { 6 0 }
 									layoutpolicy_horizontal = expanding
 									hbox = {
 										# Market Access
-										layoutpolicy_horizontal = expanding
 										visible = "[Not(GetScriptedGui('glorpui_building_type_is_defense_category').IsShown(GuiScope.SetRoot(BuildInLocationLateralView.GetBuildingType.MakeScope).End))]"
-										expand = {}
 										piechart = {
 											size = { 20 20 }
 											alwaystransparent = yes
@@ -482,8 +479,6 @@ template build_location_entry {
 									}
 									hbox = {
 										# Control
-										layoutpolicy_horizontal = expanding
-										expand = {}
 										piechart = {
 											name = "location_control"
 											using = bg_circle
@@ -910,67 +905,101 @@ template build_location_entry {
 									}
 								}
 							}
-							widget = {
-								#efficiency
+                            widget = { #efficiency
 								size = { 58 36 } # lsq: reduced from 70 to make room for builder
-								hbox = {
-									expand = { }
-									vbox = {
-										#built
-										visible = "[And(LocationToBuildItem.ShowProfit, LocationToBuildItem.HasConstructedBuildingLevels)]"
-										# visible = "[Building.IsProducing]"
-										layoutpolicy_horizontal = expanding
-										datamodel = "[Building.GetProductionMethods]"
-										item = {
-											text_single = {
-												size = { 58 18 } # lsq: reduced from 70
-												autoresize = no
-												#raw_text = "[Building.GetBuildingProductionEfficiency(ActiveProductionMethod.GetMethod)|+=2%]@efficiency!"
-												text = "BUILDING_PROD_EFFICIENCY"
-												align = nobaseline|right
-												default_format = "@bold!"
-												fontsize = 14
-												tooltipwidget = {
-													using = building_production_efficiency_tooltip
+								vbox = {
+									layoutpolicy_horizontal = expanding
+
+									hbox = {
+										expand = { }
+										vbox = {
+											#built
+												visible = "[And(LocationToBuildItem.ShowProfit, LocationToBuildItem.HasConstructedBuildingLevels)]"
+												# visible = "[Building.IsProducing]"
+												layoutpolicy_horizontal = expanding
+												datamodel = "[Building.GetProductionMethods]"
+												item = {
+													text_single = {
+													size = { 58 18 } # lsq: reduced from 70
+														autoresize = no
+														#raw_text = "[Building.GetBuildingProductionEfficiency(ActiveProductionMethod.GetMethod)|+=2%]@efficiency!"
+														text = "BUILDING_PROD_EFFICIENCY"
+														align = nobaseline|right
+														default_format = "@bold!"
+														fontsize = 14
+														tooltipwidget = {
+															using = building_production_efficiency_tooltip
+														}
+														sort_by_highlight = {
+															size = { 105% 200% }
+															name = "production_efficiency"
+														}
+													}
 												}
-												sort_by_highlight = {
-													size = { 105% 200% }
-													name = "production_efficiency"
+											}
+									}
+
+                                	hbox = { #unbuilt
+										datacontext = "[LocationToBuildItem.GetBuildingType]"
+										datacontext = "[LocationToBuildItem.GetLocation]"
+										visible = "[And(LocationToBuildItem.ShowProfit, Not(LocationToBuildItem.HasConstructedBuildingLevels))]"
+										expand = { }
+										text_single = {
+											size = { 58 18 } # lsq: reduced from 70
+											autoresize = no
+											default_format = "@bold!"
+											fontsize = 14
+											align = nobaseline|right
+											text = "BUILDING_TYPE_POSSIBLE_PROD_EFFICIENCY"
+											tooltipwidget = {
+												SimpleContextualStringPairTooltipType = {
+													blockoverride "title_icon" {
+														icon = {
+															using = tooltip_title_icon_size
+															texture = "gfx/interface/icons/flat_icons/building_panel/production_efficiency.dds"
+														}
+													}
+													blockoverride "concept_link" {
+														text = "[production_efficiency|e]"
+													}
+													lowpriotextcontext = "[BuildingType.ProductionEfficiencyInfo(LocationToBuildItem.GetOwner, LocationToBuildItem.GetLocation)]"
 												}
+											}
+											sort_by_highlight = {
+												size = { 105% 200% }
+												name = "production_efficiency"
 											}
 										}
 									}
-								}
-								hbox = {
-									#unbuilt
-									datacontext = "[LocationToBuildItem.GetBuildingType]"
-									datacontext = "[LocationToBuildItem.GetLocation]"
-									visible = "[And(LocationToBuildItem.ShowProfit, Not(LocationToBuildItem.HasConstructedBuildingLevels))]"
-									expand = { }
-									text_single = {
-										size = { 58 18 } # lsq: reduced from 70
-										autoresize = no
-										default_format = "@bold!"
-										fontsize = 14
-										align = nobaseline|right
-										text = "BUILDING_TYPE_POSSIBLE_PROD_EFFICIENCY"
-										tooltipwidget = {
-											SimpleContextualStringPairTooltipType = {
-												blockoverride "title_icon" {
-													icon = {
-														using = tooltip_title_icon_size
-														texture = "gfx/interface/icons/flat_icons/building_panel/production_efficiency.dds"
+
+									hbox = {
+										margin_right = 2
+										margin_left = 12
+										progressbar = {
+											visible = "[Building.GetHasEstablishmentRamp]"
+											# layoutpolicy_horizontal = expanding
+											size = { 56 6 }
+											using = progress_bar_goldish_blue
+											min = 0
+											max = 1
+											value = "[FixedPointToFloat(Building.GetEstablishmentProgressFraction)]"
+											direction = horizontal
+											tooltipwidget = {
+												SimpleContextualStringPairTooltipType = {
+													blockoverride "title_icon" {
+														icon = {
+															using = tooltip_title_icon_size
+															texture = "gfx/interface/icons/flat_icons/building_panel/establishment.dds"
+														}
+													}
+													blockoverride "concept_link" {
+														text = "[establishment|e]"
+													}
+													blockoverride "tooltip_textcontext" {
+														textcontext = "[Building.GetEstablishmentTooltip]"
 													}
 												}
-												blockoverride "concept_link" {
-													text = "[production_efficiency|e]"
-												}
-												lowpriotextcontext = "[BuildingType.ProductionEfficiencyInfo(LocationToBuildItem.GetOwner, LocationToBuildItem.GetLocation)]"
 											}
-										}
-										sort_by_highlight = {
-											size = { 105% 200% }
-											name = "production_efficiency"
 										}
 									}
 								}
@@ -987,6 +1016,11 @@ template build_location_entry {
 							widget = {
 								parentanchor = center
 								size = { 100% 35 }
+
+								sort_by_highlight = {
+									name = "tax_base"
+									using = layoutpolicy_expanding
+								}
 
 								sort_by_highlight = {
 									size = { 100% 100% }
@@ -1011,6 +1045,7 @@ template build_location_entry {
 
 											title = "DESTROY_BUILDING_ACTION"
 											description = "[LocationToBuildItem.CanDestroyDesc]"
+											confirmation = "[LocationToBuildItem.CanDestroyDesc]"
 											# lsq check if auto-expand is on when destroying a building level
 											on_action = "[GetScriptedGui('cm_check_for_auto_expand_when_removing_building').Execute(GuiScope.SetRoot(Building.MakeScope).End)]"
 											on_action = "[LocationToBuildItem.DestroyDefault]"
@@ -1026,6 +1061,7 @@ template build_location_entry {
 
 											title = "DESTROY_BUILDING_ACTION_CTRL"
 											description = "[LocationToBuildItem.CanDestroyDescCtrl]"
+											confirmation = "[LocationToBuildItem.CanDestroyDescCtrl]"
 											on_action = "[LocationToBuildItem.DestroyCtrl]"
 											enabled = "[LocationToBuildItem.CanDestroy]"
 											on_action = "[PlayAudioEffect('UI_action_building_destroy')]"
@@ -1039,6 +1075,7 @@ template build_location_entry {
 
 											title = "DESTROY_BUILDING_ACTION_SHIFT"
 											description = "[LocationToBuildItem.CanDestroyDescShift]"
+											confirmation = "[LocationToBuildItem.CanDestroyDescShift]"
 											on_action = "[LocationToBuildItem.DestroyShift]"
 											enabled = "[LocationToBuildItem.CanDestroy]"
 											on_action = "[PlayAudioEffect('UI_action_building_destroy')]"
@@ -1264,6 +1301,7 @@ template build_location_entry {
 
 										title = "DESTROY_BUILDING_ACTION"
 										description = "[LocationToBuildItem.CanDestroyDesc]"
+										confirmation = "[LocationToBuildItem.CanDestroyDesc]"
 										# lsq check if auto-expand is on when destroying a building level
 										on_action = "[GetScriptedGui('cm_check_for_auto_expand_when_removing_building').Execute(GuiScope.SetRoot(Building.MakeScope).End)]"
 										on_action = "[LocationToBuildItem.DestroyDefault]"
@@ -1279,6 +1317,7 @@ template build_location_entry {
 
 										title = "DESTROY_BUILDING_ACTION_CTRL"
 										description = "[LocationToBuildItem.CanDestroyDescCtrl]"
+										confirmation = "[LocationToBuildItem.CanDestroyDescCtrl]"
 										on_action = "[LocationToBuildItem.DestroyCtrl]"
 										enabled = "[LocationToBuildItem.CanDestroy]"
 										on_action = "[PlayAudioEffect('UI_action_building_destroy')]"
@@ -1292,6 +1331,7 @@ template build_location_entry {
 
 										title = "DESTROY_BUILDING_ACTION_SHIFT"
 										description = "[LocationToBuildItem.CanDestroyDescShift]"
+										confirmation = "[LocationToBuildItem.CanDestroyDescShift]"
 										on_action = "[LocationToBuildItem.DestroyShift]"
 										enabled = "[LocationToBuildItem.CanDestroy]"
 										on_action = "[PlayAudioEffect('UI_action_building_destroy')]"
@@ -1464,6 +1504,7 @@ template build_location_entry {
 					}
 				}
 			}
+			# Glorp UI Deleted Commented-Out Code
 		}
 	}
 }
@@ -1786,7 +1827,7 @@ types GlorpBuildLocationTypes {
 
 									title = "BUILD_IN_BEST_LOCATION_ACTION"
 									cost = "[LocationToBuildItem.GetCost]"
-									description = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
+									conditions = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
 									on_action = "[BuildInLocationLateralView.BuildBestFromRankingItemsDefault]"
 									enabled = "[LocationToBuildItem.CanCreateBuilding]"
 								}
@@ -1798,7 +1839,7 @@ types GlorpBuildLocationTypes {
 
 									title = "BUILD_IN_BEST_LOCATION_ACTION_CTRL"
 									cost = "[LocationToBuildItem.GetCost]"
-									description = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
+									conditions = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
 									on_action = "[BuildInLocationLateralView.BuildBestFromRankingItemsCtrl]"
 									enabled = "[LocationToBuildItem.CanCreateBuilding]"
 								}
@@ -1810,7 +1851,7 @@ types GlorpBuildLocationTypes {
 
 									title = "BUILD_IN_BEST_LOCATION_ACTION_SHIFT"
 									cost = "[LocationToBuildItem.GetCost]"
-									description = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
+									conditions = "[CanBuildOrExpandBuildingInfo(BuildingType.Self, Location.Self)]"
 									on_action = "[BuildInLocationLateralView.BuildBestFromRankingItemsShift]"
 									enabled = "[LocationToBuildItem.CanCreateBuilding]"
 								}
@@ -1867,7 +1908,7 @@ types GlorpBuildLocationTypes {
 
 									title = "UPGRADE_IN_BEST_LOCATION_ACTION"
 									cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
-									description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
+									conditions = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
 									on_action = "[BuildInLocationLateralView.BuildBestFromRankingItemsDefault]"
 									enabled = "[CanUpgradeToBuilding(BuildingType.Self, Location.Self)]"
 								}
@@ -1879,7 +1920,7 @@ types GlorpBuildLocationTypes {
 
 									title = "UPGRADE_IN_BEST_LOCATION_ACTION_CTRL"
 									cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
-									description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
+									conditions = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
 									on_action = "[BuildInLocationLateralView.BuildBestFromRankingItemsCtrl]"
 									enabled = "[CanUpgradeToBuilding(BuildingType.Self, Location.Self)]"
 								}
@@ -1891,7 +1932,7 @@ types GlorpBuildLocationTypes {
 
 									title = "UPGRADE_IN_BEST_LOCATION_ACTION_SHIFT"
 									cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
-									description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
+									conditions = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
 									on_action = "[BuildInLocationLateralView.BuildBestFromRankingItemsShift]"
 									enabled = "[CanUpgradeToBuilding(BuildingType.Self, Location.Self)]"
 								}
@@ -2545,10 +2586,20 @@ types GlorpBuildLocationTypes {
 					sort_by_key_button = {
 						name = "production_efficiency"
 						layoutpolicy_vertical = expanding
-						size = { 70 -1 }
+						size = { 40 -1 }
 						visible = "[BuildInLocationLateralView.GetBuildingType.IsProducing]"
 						blockoverride "sort_by_key_button_texture" {
 							texture = "gfx/interface/icons/sort/efficiency.dds"
+						}
+					}
+
+					sort_by_key_button = {
+						name = "establishment"
+						layoutpolicy_vertical = expanding
+						size = { 40 -1 }
+						visible = "[And(BuildInLocationLateralView.GetBuildingType.IsEstablishmentSystemEnabled, BuildInLocationLateralView.GetBuildingType.IsProducing)]"
+						blockoverride "sort_by_key_button_texture" {
+							texture = "gfx/interface/icons/flat_icons/building_panel/establishment.dds"
 						}
 					}
 

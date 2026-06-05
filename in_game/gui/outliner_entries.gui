@@ -1,4 +1,4 @@
-
+﻿
 template button_outliner_texture {
 	texture = "gfx/interface/buttons/paper_outliner_button.dds"
 	texture_density = 2
@@ -307,6 +307,55 @@ OutlinerEntryBase = {
 				OutlinerTextBase = {
 					autoresize = yes
 					maximumsize = { 120 -1 }
+					visible = "[OutlinerPlayerEntry.GetCountry.IsValid]"
+					text = "[OutlinerPlayerEntry.GetCountry.GetName]"
+				}
+
+				OutlinerTextBase = {
+					autoresize = yes
+					visible = "[OutlinerPlayerEntry.GetCountry.IsValid]"
+					datacontext = "[OutlinerPlayerEntry.GetCountry.GetScore]"
+					raw_text = "(#L [Score.GetCurrentRank]#!)"
+					tooltipwidget = {
+						ContextualTooltipType = {
+							blockoverride "title_text" {
+								text = "SCORE_TAB"
+							}
+							blockoverride "title_icon" {
+								icon = {
+									texture = "[GetConceptTexture('score')]"
+									using = tooltip_title_icon_size
+								}
+							}
+							blockoverride "concept_link" {
+								text = "[score|e]"
+							}
+							blockoverride "tooltip_content" {
+								TooltipTextBlock = {
+									blockoverride "text" {
+										text = "OUTLINER_PLAYER_CURRENT_SCORE"
+									}
+								}
+								TooltipStringPairList = {
+									textcontext = "[Score.GetScoreInfoForUI]"
+								}
+								TooltipTextBlock = {
+									blockoverride "text" {
+										text = "[Score.GetScoreDescriptionForUI]"
+									}
+								}
+							}
+						}
+					}
+				}
+
+				widget = {
+					using = layoutpolicy_expanding
+					size = { 0 0 }
+				}
+
+				OutlinerTextBase = {
+					autoresize = yes
 					visible = "[OutlinerPlayerEntry.GetCountry.IsValid]"
 					text = "[OutlinerPlayerEntry.GetCountry.GetName]"
 				}
@@ -2135,6 +2184,7 @@ OutlinerEntryBase = {
 
 				OutlinerTextBase = {
 					using = layoutpolicy_expanding
+					size = { 65 20 }
 					autoresize = no
 					align = left
 					text = "[Goods.GetNameWithNoTooltip]"
@@ -3313,10 +3363,10 @@ OutlinerEntryBase = {
 
 				OutlinerTextBase = {
 					align = left
-					maximumsize = { 160 20 }
-					minimumsize = { 70 20 }
+					maximumsize = { 160 24 }
+					minimumsize = { 70 24 }
 					raw_text = "[Unit.GetVisualStrength]@army_strength!"
-					fontsize = 14
+                    fontsize = 14
 				}
 
 				widget = {
@@ -3328,9 +3378,9 @@ OutlinerEntryBase = {
 				}
 
 				widget = {
-					size = { 18 18 }
+					size = { 20 20 }
 					icon = {
-						size = { 18 18 }
+						size = { 20 20 }
 						texture = "gfx/interface/icons/unit_view/atrittion_icon.dds"
 						visible = "[GreaterThan_CFixedPoint(Unit.GetAttrition, '(CFixedPoint)0')]"
 						glow = {
@@ -3373,7 +3423,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = right
 					text = "[Unit.GetNameWithNoTooltip]"
-					fontsize = 14
+                    fontsize = 14
 				}
 				portrait_standard_head_button = {
 					datacontext = "[Unit.GetCommander]"
@@ -4071,7 +4121,7 @@ OutlinerEntryBase = {
 				alwaystransparent = yes
 				parentanchor = center
 				allow_outside = yes
-				size = { 80% 80% }
+				size = { 90% 90% }
 
 				using = piechart_angles
 
@@ -4092,7 +4142,7 @@ OutlinerEntryBase = {
 
 			icon = {
 				parentanchor = center
-				size = { 60% 60% }
+				size = { 66% 66% }
 				texture = "gfx/interface/icons/flat_icons/reforms.dds"
 			}
 		}
@@ -4193,7 +4243,7 @@ OutlinerEntryBase = {
 				alwaystransparent = yes
 				parentanchor = center
 				allow_outside = yes
-				size = { 80% 80% }
+				size = { 90% 90% }
 
 				using = piechart_angles
 
@@ -4212,7 +4262,7 @@ OutlinerEntryBase = {
 
 			icon = {
 				parentanchor = center
-				size = { 60% 60% }
+				size = { 66% 66% }
 				texture = "gfx/interface/icons/situations/_default.dds"
 				texture_density = 2
 			}
@@ -4452,7 +4502,7 @@ template cabinet_entry_icon_empty {
 		visible = "[Cabinet.IsActive]"
 		icon = {
 			parentanchor = center
-			size = { 63% 63% }
+			size = { 70% 70% }
 			texture = "[GetCabinetActionIcon(Cabinet.GetAction)]"
 			glow = {
 				name = "drop_shadow"
@@ -4475,7 +4525,7 @@ template cabinet_entry_icon {
 		# }
 		icon = {
 			parentanchor = center
-			size = { 63% 63% }
+			size = { 70% 70% }
 			block "cabinet_entry_icon_texture" {}
 			glow = {
 				name = "drop_shadow"
@@ -4627,8 +4677,8 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/rebels/fist.dds" }
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/rebels/fist.dds" }
+		blockoverride "cabinet_entry_icon_piechart" {
 			widget = {
 				size = { 100% 100% }
 				alwaystransparent = yes
@@ -4710,8 +4760,8 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/develop_province.dds"  }
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/develop_province.dds"  }
+		blockoverride "cabinet_entry_icon_piechart" {
 			widget = {
 				size = { 100% 100% }
 				alwaystransparent = yes
@@ -4787,7 +4837,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/encourage_migration.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/encourage_migration.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -4831,7 +4881,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/form_new_culture.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/form_new_culture.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -4867,7 +4917,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/merge_culture_group.dds" }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/merge_culture_group.dds" }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -4903,11 +4953,11 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/increase_control.dds"  }
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/increase_control.dds"  }
+		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
-				size = { 80% 80% }
+				size = { 90% 90% }
 				using = piechart_angles
 
 				pieslice_no_highlight = {
@@ -4961,8 +5011,8 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/increase_control.dds"  }
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/increase_control.dds"  }
+		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
 				size = { 80% 80% }
@@ -5033,7 +5083,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/reduce_inflation.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/reduce_inflation.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5084,7 +5134,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/alleviate_concerns.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/alleviate_concerns.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5237,7 +5287,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/expel_people.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/expel_people.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5288,7 +5338,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/counter_espionage_action.dds" }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/counter_espionage_action.dds" }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5325,7 +5375,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/cabinet_actions/diplomatic_endeavors.dds" }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/cabinet_actions/diplomatic_endeavors.dds" }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5370,9 +5420,9 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/promote_culture.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/promote_culture.dds"  }
 
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_piechart" {
 			widget = {
 				size = { 100% 100% }
 				alwaystransparent = yes
@@ -5447,7 +5497,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/recovery_effort.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/recovery_effort.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5494,9 +5544,9 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/integrate_province.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/integrate_province.dds"  }
 
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
 				size = { 80% 80% }
@@ -5563,9 +5613,9 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/cabinet_actions/turmoil_in_brandenburg.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/cabinet_actions/turmoil_in_brandenburg.dds"  }
 
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
 				size = { 80% 80% }
@@ -5624,7 +5674,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/pacify_population.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/pacify_population.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5669,9 +5719,9 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/promote_religion.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/promote_religion.dds"  }
 
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_piechart" {
 			widget = {
 				size = { 100% 100% }
 				alwaystransparent = yes
@@ -5760,7 +5810,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/stabilize_country.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/stabilize_country.dds"   }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5810,7 +5860,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/strengthen_government.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/strengthen_government.dds"   }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -5855,9 +5905,9 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/integrate_area.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/integrate_area.dds"   }
 
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
 				size = { 80% 80% }
@@ -5922,9 +5972,9 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/allow_cabinet_assimilate_area.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/allow_cabinet_assimilate_area.dds"   }
 
-		blockoverride "cabinet_entry_icon_piechart"{
+		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
 				size = { 80% 80% }
@@ -5993,7 +6043,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/reduce_war_exhaustion.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/reduce_war_exhaustion.dds"   }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -6043,7 +6093,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/study_institutions.dds"  }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/study_institutions.dds"  }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -6092,7 +6142,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/pop_promote_action.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/modifier_types/pop_promote_action.dds"   }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -6102,7 +6152,7 @@ OutlinerEntryBase = {
 	}
 	blockoverride "category_color" { using = cabinet_entry_color }
 
-	blockoverride "cabinet_entry_icon_piechart"{
+	blockoverride "cabinet_entry_icon_piechart" {
 		piechart = {
 			parentanchor = center
 			size = { 90% 90% }
@@ -6158,7 +6208,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/flat_icons/geopolitics/send_people_to_the_colonies.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/flat_icons/geopolitics/send_people_to_the_colonies.dds"   }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -6195,7 +6245,7 @@ OutlinerEntryBase = {
 	blockoverride "icon_content" {
 		using = cabinet_entry_icon
 
-		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/flat_icons/geopolitics/send_people_to_the_colonies.dds"   }
+		blockoverride "cabinet_entry_icon_texture" { texture = "gfx/interface/icons/flat_icons/geopolitics/send_people_to_the_colonies.dds"   }
 	}
 	blockoverride "button_setup" {
 		using = cabinet_entry_actions
@@ -6728,6 +6778,7 @@ OutlinerEntryBase = {
 					align = left
 					using = OnlyVisibleWhenOneInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip]"
+                    fontsize = 14
 				}
 				OutlinerTextBase = {
 					layoutpolicy_horizontal = expanding
@@ -7555,6 +7606,10 @@ OutlinerEntryBase = {
 
 	blockoverride "icon_content" {
 		using = diplomacy_icon_content
+		# Autonomous Diplomats auto-cancel widget
+		atd_outliner_auto_cancel_widget = {}
+		# Autonomous Diplomats sync widget
+		atd_outliner_sync_widget = {}
 	}
 
 	blockoverride "button_setup" {
@@ -7984,7 +8039,7 @@ OutlinerEntryBase = {
 		OutlinerIconBg = {
 			piechart = {
 				parentanchor = center
-				size = { 80% 80% }
+				size = { 85% 85% }
 
 				using = piechart_angles
 				using = bg_circle_piechart
@@ -8234,7 +8289,7 @@ template category_big_template {
 						tooltipwidget = {
 							LeftClickButtonTooltip = {
 								# block "entry_count" {
-								text = "[SelectLocalization(OutlinerCategoryEntry.IsPinned, 'UNPIN_CATEGORY', 'PIN_CATEGORY')]"
+									text = "[SelectLocalization(OutlinerCategoryEntry.IsPinned, 'UNPIN_CATEGORY', 'PIN_CATEGORY')]"
 								# }
 							}
 						}
@@ -8695,7 +8750,7 @@ OutlinerEntryBase = {
 		blockoverride "small_category_icon_texture" {
 			texture = "gfx/interface/icons/map_modes/market.dds"
 		}
-	}
+	 }
 	blockoverride "icon_content" { using = category_icon_template }
 
 	blockoverride "button_setup" {

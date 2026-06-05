@@ -1,4 +1,4 @@
-template build_rgo_entry {
+﻿template build_rgo_entry {
 	# icon
 	datacontext = "[RawGoodLocationItem.GetLocation]"
 	hbox = {
@@ -107,7 +107,7 @@ template build_rgo_entry {
 							}
 						}
 						card_header_button_04 = {
-							size = {200 46}
+							size = {220 46}
 
 							hbox = {
 								layoutpolicy_horizontal = expanding
@@ -183,7 +183,7 @@ template build_rgo_entry {
 
 										text_single = {
 											visible = "[IsDataModelEmpty(Location.GetCivilConstructions)]"
-											maximumsize = { 110 15}
+											maximumsize = { 105 15}
 											alwaystransparent = no
 											align = left|nobaseline
 											autoresize = yes
@@ -200,7 +200,7 @@ template build_rgo_entry {
 
 										text_single = {
 											visible = "[Not(IsDataModelEmpty(Location.GetCivilConstructions))]"
-											maximumsize = { 75 15}
+											maximumsize = { 65 15}
 											alwaystransparent = no
 											align = left|nobaseline
 											autoresize = yes
@@ -290,10 +290,12 @@ template build_rgo_entry {
 																	}
 																	blockoverride "field_content" {
 																		text_single = {
+																			layoutpolicy_horizontal = expanding
+																			autoresize = no
 																			text = "BUILD_LOCATION_POP_PROMOTE"
 																		}
-																		expand = {}
 																		text_single = {
+																			autoresize = yes
 																			raw_text = "[Location.GetPromote]"
 																		}
 																	}
@@ -695,7 +697,7 @@ template build_rgo_entry {
 									layoutpolicy_horizontal = expanding
 									expand = {}
 									text_single = {
-										maximumsize = { 50 18 }
+										maximumsize = { 40 18 }
 										align = nobaseline|right
 										fontsize = 14
 										raw_text = "[Location.GetMarket.GetPrice(Location.GetRawMaterial)|2]"

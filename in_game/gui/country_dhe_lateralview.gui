@@ -17,6 +17,23 @@
 	# 	}
 	# }
 
+	blockoverride "lateralview_topbuttons_extra" {
+		widget = {
+			parentanchor = vcenter
+			size = { 40 40 }
+			position = { 30 0 }
+			button_automation_shortcut = {
+				parentanchor = vcenter
+				size = { 25 25 }
+				action_tooltip = {
+					title = "OPEN_AUTOMATION_PANEL_FILTER"
+					on_action = "[OpenLateralViewWithFilter('automation', 'automation_filter_government')]"
+				}
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+		}
+	}
+
 	blockoverride "panel_header" {
 		window_header_alt = {
 			blockoverride "header_text" {
@@ -97,6 +114,15 @@
 										using = bg_age_event_frame
 										size = { -1 40 }
 										layoutpolicy_horizontal = expanding
+
+										# Dark shadow strip at bottom of header
+										background = {
+											texture = "gfx/interface/colors/black.dds"
+											margin = { 1 1 }
+											margin_bottom = 2
+											texture_density = 2
+											alpha = 0.4
+										}
 
 										# Color overlay: green=happened, grey=expired, pink=pending
 										background = {
@@ -240,6 +266,7 @@
 								texture = "[GetAgeIcon(DHEEventEntry.GetAge)]"
 								visible = "[DHEEventEntry.HasAge]"
 								datacontext = "[DHEEventEntry.GetAge]"
+								sort_by_highlight = { name = "age" }
 								tooltipwidget = {
 									using = Age_tooltip
 								}

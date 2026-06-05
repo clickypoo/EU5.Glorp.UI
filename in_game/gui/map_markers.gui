@@ -1,4 +1,4 @@
-template marker_unit_side_color {
+﻿template marker_unit_side_color {
 	modify_texture = {
 		using = color_grey_texture
 		alpha = 0.35
@@ -166,6 +166,7 @@ window = {
 	filter_mouse = none
 
 	using = Animation_Show_Hide_UI
+	# max_update_rate = 20000 # Limit auto update - Faster!
 }
 
 window = {
@@ -2608,18 +2609,18 @@ widget = {
 									margin_right = 7
 									hbox = {
 										spacing = -2
-										country_flag_small = {
-											datacontext = "[Unit.GetCountry]"
-											size = { 40 28 }
+									country_flag_small = {
+										datacontext = "[Unit.GetCountry]"
+										size = { 40 28 }
 
-											blockoverride "click" {
-												onclick = "[UnitMarkerItem.OnFlagClick]"
-											}
-
-											blockoverride "double_click" {
-												ondoubleclick = "[UnitMarkerItem.OnRightClick]"
-											}
+										blockoverride "click" {
+											onclick = "[UnitMarkerItem.OnFlagClick]"
 										}
+
+										blockoverride "double_click" {
+											ondoubleclick = "[UnitMarkerItem.OnRightClick]"
+										}
+									}
 
 										widget = {
 											size = { 8 26 }
@@ -2937,18 +2938,18 @@ widget = {
 											}
 										}
 
-										country_flag_small = {
-											datacontext = "[Unit.GetCountry]"
-											size = { 42 29 }
+									country_flag_small = {
+										datacontext = "[Unit.GetCountry]"
+										size = { 42 29 }
 
-											blockoverride "click" {
-												onclick = "[UnitMarkerItem.OnFlagClick]"
-											}
-
-											blockoverride "double_click" {
-												ondoubleclick = "[UnitMarkerItem.OnRightClick]"
-											}
+										blockoverride "click" {
+											onclick = "[UnitMarkerItem.OnFlagClick]"
 										}
+
+										blockoverride "double_click" {
+											ondoubleclick = "[UnitMarkerItem.OnRightClick]"
+										}
+									}
 									}
 								}
 							}

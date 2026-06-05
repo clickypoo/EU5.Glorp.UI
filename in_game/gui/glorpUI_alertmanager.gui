@@ -1,4 +1,4 @@
-@alert_wide = 45
+﻿@alert_wide = 45
 
 template alert_banner_setup {
 	block "alert_banner_priority" {}

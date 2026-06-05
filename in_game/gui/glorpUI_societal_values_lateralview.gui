@@ -1,4 +1,4 @@
-template societal_values {
+﻿template societal_values {
 	widget = {
 		size = { 100% 100% }
 
@@ -388,7 +388,7 @@ template societal_values {
 						text_single = {
 							autoresize = yes
 							# size = { 40 -1 }
-							fontsize = 12
+							fontsize = 13
 							align = center|nobaseline
 							text = "[Abs_float(SocietalValueItem.GetDirection)|2]"
 

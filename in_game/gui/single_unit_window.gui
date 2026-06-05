@@ -1,4 +1,4 @@
-
+﻿
 types SingleUnitWindowTypes
 {
 	# type SubUnitCategorySingleButton = button {
@@ -3415,7 +3415,7 @@ lateralview = {
 	blockoverride "panel_header" {
 		window_header_alt = {
 			using = bg_main_inner_alt
-			blockoverride "window_header_alt_color_texture"{
+			blockoverride "window_header_alt_color_texture" {
 				using = color_default_brown_texture
 			}
 

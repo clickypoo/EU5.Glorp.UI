@@ -1,4 +1,4 @@
-types LocationWindowTypes
+﻿types LocationWindowTypes
 {
 	type demography_chart = widget {
 
@@ -3181,7 +3181,8 @@ lateralview = {
 	blockoverride "panel_header" {
 		window_header_alt = {
 			using = bg_main_inner_alt
-			blockoverride "window_header_alt_color_texture"{
+			blockoverride "window_header_alt_color_texture" {
+
 				using = color_default_brown_texture
 			}
 			blockoverride "bg_top_header_graphical_culture_pattern" {
@@ -3321,6 +3322,11 @@ lateralview = {
 
 					expand = {}
 				}
+                zoom_to_button = {
+                    blockoverride "onclick_action" {
+                        onclick = "[PanToLocation(LocationView.GetLocation)]"
+                    }
+                }
 
 				hbox = {
 					editbox = {
@@ -3479,7 +3485,8 @@ lateralview = {
 								text = "[Province.GetNameWithNoTooltip]"
 								align = nobaseline
 							}
-							blockoverride "subheader_unified_icon_post"{
+							blockoverride "subheader_unified_icon_post" {
+
 								expand = {}
 							}
 						}
@@ -3534,7 +3541,8 @@ lateralview = {
 								text = "[ProvinceDefinition.GetNameWithNoTooltip]"
 								align = nobaseline
 							}
-							blockoverride "subheader_unified_icon_post"{
+							blockoverride "subheader_unified_icon_post" {
+
 								expand = {}
 							}
 						}
@@ -4214,7 +4222,7 @@ lateralview = {
 											}
 
 											blockoverride "concept_link" {
-												text = [coastal|e]
+												text = "[coastal|e]"
 											}
 
 											blockoverride "tooltip_content" {
@@ -4291,7 +4299,7 @@ lateralview = {
 											}
 
 											blockoverride "concept_link" {
-												text = [blockade|E]
+												text = "[blockade|E]"
 											}
 
 											blockoverride "tooltip_content" {
@@ -4649,10 +4657,10 @@ lateralview = {
 														}
 													}
 													blockoverride "title_text" {
-														text = "game_concept_location_modifier"
+															text = "game_concept_location_modifier"
 													}
 													blockoverride "concept_link" {
-														text = [location_modifier|e]
+														text = "[location_modifier|e]"
 													}
 
 													blockoverride "tooltip_content" {
@@ -4752,10 +4760,10 @@ lateralview = {
 														}
 													}
 													blockoverride "title_text" {
-														text = "game_concept_location_modifier"
+															text = "game_concept_location_modifier"
 													}
 													blockoverride "concept_link" {
-														text = [province_modifier|e]
+														text = "[province_modifier|e]"
 													}
 
 													blockoverride "tooltip_content" {
@@ -4847,7 +4855,8 @@ lateralview = {
 				blockoverride "content" {
 					button_secondary_tab_alt = {
 						using = layoutpolicy_expanding
-						blockoverride "tab_text"{
+						blockoverride "tab_text" {
+
 							text = "LOC_VIEW_INFRASTRUCTURE_TAB"
 						}
 						tooltipwidget = { using = TabInfrastructureTooltip }
@@ -4873,7 +4882,8 @@ lateralview = {
 
 					button_secondary_tab_alt = {
 						using = layoutpolicy_expanding
-						blockoverride "tab_text"{
+						blockoverride "tab_text" {
+
 							text = "LOC_VIEW_MILITARY_TAB"
 						}
 						tooltipwidget = { using = SubTabMilitaryTooltip }
@@ -4886,7 +4896,8 @@ lateralview = {
 
 					button_secondary_tab_alt = {
 						using = layoutpolicy_expanding
-						blockoverride "tab_text"{
+						blockoverride "tab_text" {
+
 							text = "LOC_VIEW_DEMOGRAPHICS_TAB"
 						}
 						tooltipwidget = { using = TabDemographicsTooltip }
@@ -4956,7 +4967,7 @@ lateralview = {
 												click_mode = confirm
 												conditions = "LOC_CANNOT_BUILD_ROAD_TO_CAPITAL"
 												title = "LOC_BUILD_ROAD_TO_CAPITAL"
-												enabled = [LocationView.IsBuildRoadToCapitalEnabled]
+												enabled = "[LocationView.IsBuildRoadToCapitalEnabled]"
 												on_action = "[LocationView.BuildRoadToCapital]"
 											}
 
@@ -5361,6 +5372,13 @@ lateralview = {
 											enabled = "[Or(LocationView.CanUpgradeRGO, LocationView.CanReduceRGO)]"
 
 											datacontext = "[LocationView.GetLocation]"
+
+											# LSQ Auto Food button (only on food-RGO locations)
+											cm_auto_food_widget_location_window = {}
+
+											# LSQ Auto Expand RGO button
+											cm_auto_expand_rgo_widget_location_window = {}
+
 											tooltipwidget = {
 												using = location_rgo_button_tooltip
 											}
@@ -5622,7 +5640,8 @@ lateralview = {
 											widget = {
 												size = { 80 35 }
 												sneaky_button = {
-													visible = "[HasProsperityIntelOn(Location.Self)]"
+                                                    # When we can do recovery_effort
+                                                    visible = "[And3(IsCabinetActionAllowed('recovery_effort'), Location.GetOwner.IsPlayer, HasProsperityIntelOn(Location.Self))]"
 													size = { 100% 100% }
 													action_tooltip = {
 														click_type = left
@@ -5632,12 +5651,41 @@ lateralview = {
 														enabled = "[And(IsCabinetActionAllowed('develop_province'), Location.GetOwner.IsPlayer)]"
 														conditions = "[GetCabinetActionTooltip('recovery_effort')]"
 													}
-													enabled = "[And(IsCabinetActionAllowed('recovery_effort'), Location.GetOwner.IsPlayer)]"
+                                                    datacontext = "[GetMapMode('development')]"
+                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('development')]"
+                                                    action_tooltip = {
+                                                        click_type = right
+                                                        click_mode = single
+                                                        title = "MAPMODE_SELECT"
+                                                        on_action = "[MapMode.SetMapMode]"
+                                                    }
+
+													# enabled = "[And(IsCabinetActionAllowed('recovery_effort'), Location.GetOwner.IsPlayer)]"
 
 													tooltipwidget = {
 														using = location_prosperity_tooltip
 													}
 												}
+                                                # When we can't do recovery_effort
+                                                sneaky_button = {
+                                                    visible = "[Or(Not(IsCabinetActionAllowed('recovery_effort')), Not(Location.GetOwner.IsPlayer))]"
+                                                    size = { 100% 100% }
+                                                    datacontext = "[GetMapMode('prosperity')]"
+                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('prosperity')]"
+                                                    action_tooltip = {
+                                                        click_type = right
+                                                        click_mode = single
+                                                        title = "MAPMODE_SELECT"
+                                                        on_action = "[MapMode.SetMapMode]"
+                                                    }
+                                                    tooltipwidget = {
+                                                        using = location_prosperity_tooltip
+                                                    }
+                                                    texture = "gfx/interface/buttons/sneaky_button_black.dds"
+                                                    spriteType = corneredstretched
+                                                    spriteborder = { 25 0 }
+                                                    texture_density = 2
+                                                }
 												hbox = {
 													spacing = 7
 													margin_left = 5
@@ -5650,7 +5698,7 @@ lateralview = {
 															visible = "[Not(LessThan_CFixedPoint(Location.GetProsperity, '(CFixedPoint)0.0'))]"
 															size = { 80% 80% }
 															parentanchor = center
-															texture = "gfx/interface/icons/location_icons/new/prosperity.dds"
+																texture = "gfx/interface/icons/location_icons/new/prosperity.dds"
 															glow = {
 																name = "drop_shadow"
 																glow_radius = 3
@@ -5663,7 +5711,7 @@ lateralview = {
 															visible = "[LessThan_CFixedPoint(Location.GetProsperity, '(CFixedPoint)0.0')]"
 															size = { 80% 80% }
 															parentanchor = center
-															texture = "gfx/interface/icons/location_icons/prosperity_low.dds"
+																texture = "gfx/interface/icons/location_icons/prosperity_low.dds"
 															glow = {
 																name = "drop_shadow"
 																glow_radius = 3
@@ -6035,13 +6083,13 @@ lateralview = {
 													vbox = {
 														datacontext = "[LocationView.GetColonialCharter]"
 														tooltipwidget = {
-															ContextualTooltipType = {
+																ContextualTooltipType = {
 																blockoverride "title_text" {
 																	text = "COLONIAL_PROGRESS_POT_HEADER"
 																}
 
 																blockoverride "title_icon_texture" {
-																	texture = "gfx/interface/icons/flat_icons/geopolitics/available_colonies.dds"
+																texture = "gfx/interface/icons/flat_icons/geopolitics/available_colonies.dds"
 																	glow = {
 																		name = "drop_shadow"
 																		glow_radius = 3
@@ -6051,7 +6099,7 @@ lateralview = {
 																}
 
 																blockoverride "concept_link" {
-																	text = [colonial_charters|e]
+																	text = "[colonial_charters|e]"
 																}
 
 																blockoverride "tooltip_content" {
@@ -6093,7 +6141,8 @@ lateralview = {
 													size = { -1 60 }
 													datacontext = "[LocationView.GetColonialCharter]"
 													possible_colony_item = {
-														blockoverride "colony_item_size"{
+														blockoverride "colony_item_size" {
+
 															size = { 100% 100% }
 														}
 													}
@@ -6105,7 +6154,8 @@ lateralview = {
 													size = { -1 60 }
 													datacontext = "[LocationView.GetColonialCharter]"
 													colonial_charter_item = {
-														blockoverride "colony_item_size"{
+														blockoverride "colony_item_size" {
+
 															size = {100% 100%}
 														}
 														blockoverride "highlight_cost" {}
@@ -6124,7 +6174,8 @@ lateralview = {
 															layoutpolicy_horizontal = expanding
 															size = {-1 60}
 															colonial_charter_item = {
-																blockoverride "colony_item_size"{
+																blockoverride "colony_item_size" {
+
 																	size = {100% 100%}
 																}
 																blockoverride "highlight_cost" {}
@@ -6215,7 +6266,8 @@ lateralview = {
 													visible = "[ShowBuildingCardForLocation(LocationView.GetLocation, PopType.Self)]"
 												}
 
-												# blockoverride "location_conditions_header_color"{
+												# blockoverride "location_conditions_header_color" {
+
 												# 	color = "[PopType.GetColor]"
 												# 	alpha = 0.7
 												# }
@@ -6782,7 +6834,8 @@ lateralview = {
 									# 									datamodel = "[LocationView.GetColonialCharters]"
 									# 									item = {
 									# 										colonial_charter_item = {
-									# 											blockoverride "colony_item_size"{
+									# 											blockoverride "colony_item_size" {
+
 									# 												size = {480 50}
 									# 											}
 									# 											blockoverride "highlight_cost" {
@@ -6824,7 +6877,7 @@ lateralview = {
 									# 		tooltip = "[disease|e]"
 									# 	}
 									# 	blockoverride "location_conditions_card_header_texture" {
-									# 		texture = "gfx/interface/icons/map_modes/disease.dds"
+                					# 		texture = "gfx/interface/icons/map_modes/disease.dds"
 									# 	}
 
 									# 	blockoverride "location_conditions_card_main_content" {
@@ -7433,10 +7486,10 @@ lateralview = {
 											margin = { 2 2 }
 
 											# block "bg_color_circle" {
-											modify_texture = {
-												using = color_mid_blue_texture
-												alpha = 0.8
-											}
+												modify_texture = {
+													using = color_mid_blue_texture
+													alpha = 0.8
+												}
 
 											# }
 
@@ -7878,13 +7931,16 @@ lateralview = {
 												}
 												flags_with_limit = {
 													visible = "[And(Not(LocationView.HasBuildingBasedOwners), Not(LocationView.HasPopBasedOwners))]"
-													blockoverride "flags_with_limit_datamodel"{
+													blockoverride "flags_with_limit_datamodel" {
+
 														datamodel = "[DataModelFirst(Location.GetCores,'(int32)8')]"
 													}
-													blockoverride "flags_with_limit_text"{
+													blockoverride "flags_with_limit_text" {
+
 														raw_text = "+[Subtract_int32(GetDataModelSize(Location.GetCores), '(int32)8')]"
 													}
-													blockoverride "flags_with_limit_visible_extra"{
+													blockoverride "flags_with_limit_visible_extra" {
+
 														visible = "[GreaterThan_int32(GetDataModelSize(Location.GetCores), '(int32)8')]"
 													}
 												}
@@ -7927,16 +7983,20 @@ lateralview = {
 												}
 												flags_with_limit = {
 													visible = "[And(IsDataModelEmpty(Location.GetCores), Not(LocationView.HasPopBasedOwners))]"
-													blockoverride "flags_with_limit_datamodel"{
+													blockoverride "flags_with_limit_datamodel" {
+
 														datamodel = "[DataModelFirst(LocationView.GetBuildingBasedOwners,'(int32)8')]"
 													}
-													blockoverride "flags_with_limit_text"{
+													blockoverride "flags_with_limit_text" {
+
 														raw_text = "+[Subtract_int32(GetDataModelSize(LocationView.GetBuildingBasedOwners), '(int32)8')]"
 													}
-													blockoverride "flags_with_limit_visible_extra"{
+													blockoverride "flags_with_limit_visible_extra" {
+
 														visible = "[GreaterThan_int32(GetDataModelSize(LocationView.GetBuildingBasedOwners), '(int32)8')]"
 													}
-													blockoverride "flags_with_limit_tooltip_extra"{
+													blockoverride "flags_with_limit_tooltip_extra" {
+
 														tooltipwidget = {
 															using = ForeignBuildingsFlags_tooltip
 														}
@@ -7944,16 +8004,20 @@ lateralview = {
 												}
 												flags_with_limit = {
 													visible = "[Or(Not(IsDataModelEmpty(Location.GetCores)), LocationView.HasPopBasedOwners)]"
-													blockoverride "flags_with_limit_datamodel"{
+													blockoverride "flags_with_limit_datamodel" {
+
 														datamodel = "[DataModelFirst(LocationView.GetBuildingBasedOwners,'(int32)2')]"
 													}
-													blockoverride "flags_with_limit_text"{
+													blockoverride "flags_with_limit_text" {
+
 														raw_text = "+[Subtract_int32(GetDataModelSize(LocationView.GetBuildingBasedOwners), '(int32)2')]"
 													}
-													blockoverride "flags_with_limit_visible_extra"{
+													blockoverride "flags_with_limit_visible_extra" {
+
 														visible = "[GreaterThan_int32(GetDataModelSize(LocationView.GetBuildingBasedOwners), '(int32)2')]"
 													}
-													blockoverride "flags_with_limit_tooltip_extra"{
+													blockoverride "flags_with_limit_tooltip_extra" {
+
 														tooltipwidget = {
 															using = ForeignBuildingsFlags_tooltip
 														}
@@ -7997,16 +8061,20 @@ lateralview = {
 												}
 												flags_with_limit = {
 													visible = "[And(IsDataModelEmpty(Location.GetCores), Not(LocationView.HasBuildingBasedOwners))]"
-													blockoverride "flags_with_limit_datamodel"{
+													blockoverride "flags_with_limit_datamodel" {
+
 														datamodel = "[DataModelFirst(LocationView.GetPopBasedOwners,'(int32)8')]"
 													}
-													blockoverride "flags_with_limit_text"{
+													blockoverride "flags_with_limit_text" {
+
 														raw_text = "+[Subtract_int32(GetDataModelSize(LocationView.GetPopBasedOwners), '(int32)8')]"
 													}
-													blockoverride "flags_with_limit_visible_extra"{
+													blockoverride "flags_with_limit_visible_extra" {
+
 														visible = "[GreaterThan_int32(GetDataModelSize(LocationView.GetPopBasedOwners), '(int32)8')]"
 													}
-													blockoverride "flags_with_limit_tooltip_extra"{
+													blockoverride "flags_with_limit_tooltip_extra" {
+
 														tooltipwidget = {
 															using = CultureCountriesFlags_tooltip
 														}
@@ -8014,16 +8082,20 @@ lateralview = {
 												}
 												flags_with_limit = {
 													visible = "[Or(Not(IsDataModelEmpty(Location.GetCores)), LocationView.HasBuildingBasedOwners)]"
-													blockoverride "flags_with_limit_datamodel"{
+													blockoverride "flags_with_limit_datamodel" {
+
 														datamodel = "[DataModelFirst(LocationView.GetPopBasedOwners,'(int32)2')]"
 													}
-													blockoverride "flags_with_limit_text"{
+													blockoverride "flags_with_limit_text" {
+
 														raw_text = "+[Subtract_int32(GetDataModelSize(LocationView.GetPopBasedOwners), '(int32)2')]"
 													}
-													blockoverride "flags_with_limit_visible_extra"{
+													blockoverride "flags_with_limit_visible_extra" {
+
 														visible = "[GreaterThan_int32(GetDataModelSize(LocationView.GetPopBasedOwners), '(int32)2')]"
 													}
-													blockoverride "flags_with_limit_tooltip_extra"{
+													blockoverride "flags_with_limit_tooltip_extra" {
+
 														tooltipwidget = {
 															using = CultureCountriesFlags_tooltip
 														}
@@ -8107,15 +8179,18 @@ lateralview = {
 								# Armies in progress
 								location_conditions_item = {
 									visible = "[Location.HasOwner]"
-									blockoverride "location_conditions_item_size"{
+									blockoverride "location_conditions_item_size" {
+
 										size = { -1 80}
 									}
 
-									# blockoverride "location_conditions_header_color"{
+									# blockoverride "location_conditions_header_color" {
+
 									# 	using = color_military_texture
 									# }
 
-									blockoverride "bg_card_header_01_bg"{
+									blockoverride "bg_card_header_01_bg" {
+
 										using = bg_card_header_01_military
 									}
 
@@ -8292,7 +8367,7 @@ lateralview = {
 																		}
 																	}
 																	blockoverride "concept_link" {
-																		text = [levy|E]
+																		text = "[levy|E]"
 																	}
 																	blockoverride "title_button" {
 																		hint_button = {
@@ -8569,15 +8644,18 @@ lateralview = {
 								# Navies in progress
 								location_conditions_item = {
 									visible = "[And(Location.IsCoastal, Location.HasOwner)]"
-									blockoverride "location_conditions_item_size"{
+									blockoverride "location_conditions_item_size" {
+
 										size = { -1 80}
 									}
 
-									# blockoverride "location_conditions_header_color"{
+									# blockoverride "location_conditions_header_color" {
+
 									# 	using = color_military_texture
 									# }
 
-									blockoverride "bg_card_header_01_bg"{
+									blockoverride "bg_card_header_01_bg" {
+
 										using = bg_card_header_01_military
 									}
 
@@ -8759,7 +8837,7 @@ lateralview = {
 																	}
 
 																	blockoverride "concept_link" {
-																		text = [levy|E]
+																		text = "[levy|E]"
 																	}
 
 																	blockoverride "title_button" {
@@ -8873,7 +8951,8 @@ lateralview = {
 															blockoverride "army_small_item_visible" {
 																visible = "[GreaterThan_int32(ConstructionItem.GetPos, LocationView.GetNumTotalNavyStaticButtons)]"
 															}
-															# blockoverride "army_small_item_bg"{
+															# blockoverride "army_small_item_bg" {
+
 															# 	background = {
 															# 		using = bg_card_header_01_default
 															# 		blockoverride "header_color" {
@@ -8883,7 +8962,8 @@ lateralview = {
 
 															# 	}
 															# }
-															blockoverride "army_small_item_value"{
+															blockoverride "army_small_item_value" {
+
 																text = "CONSTRUCTION_DURATION_DAYS"
 															}
 														}
@@ -9849,7 +9929,7 @@ lateralview = {
 													text = "POP_CULTURE_OF_ITEM"
 												}
 												blockoverride "concept_link" {
-													text = [culture|E]
+													text = "[culture|E]"
 												}
 
 												blockoverride "tooltip_content" {
@@ -10177,7 +10257,7 @@ lateralview = {
 													text = "POP_RELIGION_OF_ITEM"
 												}
 												blockoverride "concept_link" {
-													text = [religion|E]
+													text = "[religion|E]"
 												}
 
 												blockoverride "tooltip_content" {
