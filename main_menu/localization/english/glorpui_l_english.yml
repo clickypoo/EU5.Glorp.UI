@@ -14,3 +14,8 @@ l_english:
  GLORP_UI_AVG_PROXIMITY_DESC: "Your average [proximity|E] across all owned [locations|E]."
  OPEN_MAPMODE_SETTINGS: "Open Mapmode Bar Settings"
  CLOSE_MAPMODE_SETTINGS: "Close Mapmode Bar Settings"
+ GLORP_UI_BUILDING_ROI_TT_TITLE: "Payback Time"
+ GLORP_UI_BUILDING_ROI_TT_DESC: "Months of profit needed to recoup this building's construction cost."
+ GLORP_UI_BUILDING_ROI_TT_COST: "Build cost"
+ GLORP_UI_BUILDING_ROI_TT_PROFIT: "Monthly profit"
+ GLORP_UI_BUILDING_ROI_TT_MONTHS: "Payback"

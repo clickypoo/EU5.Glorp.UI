@@ -87,10 +87,10 @@
 		layoutpolicy_horizontal = expanding
 		widget = {
 			layoutpolicy_horizontal = expanding
-			size = { -1 46 }
+			size = { -1 67 }
 
 			widget = {
-				size = { 100% 46 }
+				size = { 100% 67 }
 				using = bg_paper_card
 				parentanchor = center
 
@@ -774,7 +774,7 @@
 							layoutpolicy_horizontal = expanding
 							widget = {
 								#profit
-								size = { 48 39 } # lsq: reduced from 60 to make room for builder
+								size = { 48 60 } # GlorpUI: ROI line
 								hbox = {
 									#built
 									visible = "[And(LocationToBuildItem.ShowProfit, LocationToBuildItem.HasConstructedBuildingLevels)]"
@@ -807,6 +807,17 @@
 											sort_by_highlight = {
 												size = { 105% 100% }
 												name = "income"
+											}
+										}
+										text_single = {
+											size = { 48 18 }
+											align = nobaseline|left
+											autoresize = no
+											fontsize = 14
+											visible = "[GreaterThan_CFixedPoint(GetBuildOrExpandBuildingCost(BuildingType.Self, Location.Self), '(CFixedPoint)0')]"
+											raw_text = "[Divide_CFixedPoint(GetBuildOrExpandBuildingCost(BuildingType.Self, Location.Self), Building.GetProfitPerLevel)|0]@construction!"
+											tooltipwidget = {
+												using = glorpUI_building_roi_tooltip
 											}
 										}
 									}
@@ -899,6 +910,17 @@
 											sort_by_highlight = {
 												size = { 105% 100% }
 												name = "income"
+											}
+										}
+										text_single = {
+											size = { 48 18 }
+											align = nobaseline|left
+											autoresize = no
+											fontsize = 14
+											visible = "[And(GreaterThan_CFixedPoint(GetBuildingTypeProfitInLocation(BuildingType.Self, Location.Self), '(CFixedPoint)0'), GreaterThan_CFixedPoint(GetBuildOrExpandBuildingCost(BuildingType.Self, Location.Self), '(CFixedPoint)0'))]"
+											raw_text = "[Divide_CFixedPoint(GetBuildOrExpandBuildingCost(BuildingType.Self, Location.Self), GetBuildingTypeProfitInLocation(BuildingType.Self, Location.Self))|0]@construction!"
+											tooltipwidget = {
+												using = glorpUI_building_type_roi_tooltip
 											}
 										}
 
@@ -2618,13 +2640,13 @@ types GlorpBuildLocationTypes {
 				}
 				blockoverride "scroll_list_content" {
 					addcolumn = 100%
-					addrow = 56
+					addrow = 76
 					datamodel = "[BuildInLocationLateralView.GetItems]"
 					item = {
 						widget = {
-							size = { 100% 56 }
+							size = { 100% 76 }
 							widget = {
-								size = { 99% 54 }
+								size = { 99% 74 }
 								parentanchor = center
 								hbox = {
 									using = layoutpolicy_expanding
