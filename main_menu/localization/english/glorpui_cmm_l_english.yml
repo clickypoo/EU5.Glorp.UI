@@ -51,6 +51,15 @@ l_english:
  glorpui__vanillaMapmodeHeight_name: "Vanilla Mapmodes Bar Height"
  glorpui__vanillaMapmodeHeight_desc: ""
 
+ # Build Panel (build_panel) Tab
+ glorpui__build_panel_name: "Build Panel"
+ ## General (general) Group
+ glorpui__build_panel__general_name: "General"
+ glorpui__roi_metric_name: "ROI metric"
+ glorpui__roi_metric_desc: "Which return-on-investment figure the build panel shows by default. Both always appear in the tooltip."
+ glorpui__roi_metric_option_1_name: "Tax income"
+ glorpui__roi_metric_option_2_name: "Total profit"
+
  # Optional: self-referencing flag keys to suppress IDE warnings (safe to remove if you want)
  glorpui: "glorpui"
  glorpui__toggles: "glorpui__toggles"
@@ -59,6 +68,9 @@ l_english:
  glorpui__toggles__general: "glorpui__toggles__general"
  glorpui__top_bar__general: "glorpui__top_bar__general"
  glorpui__mapmodes_bar__general: "glorpui__mapmodes_bar__general"
+ glorpui__build_panel: "glorpui__build_panel"
+ glorpui__build_panel__general: "glorpui__build_panel__general"
+ glorpui__roi_metric: "glorpui__roi_metric"
  glorpui__useVanillaPortrait: "glorpui__useVanillaPortrait"
  glorpui__useStaticFlag: "glorpui__useStaticFlag"
  glorpui__useFramedStaticFlag: "glorpui__useFramedStaticFlag"

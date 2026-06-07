@@ -1,4 +1,4 @@
-window = {
+﻿window = {
     name = "glorpUI_window"
     parentanchor = center
     size = { 500 400 }
@@ -62,6 +62,15 @@ window = {
                             default_format = "#medium"
                             tooltip_enabled = no
                             onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'mapmodes' )]"
+                        }
+
+                        button_secondary_tab_alt = {
+                            using = layoutpolicy_expanding
+                            default_format = "#medium"
+                            text = "glorpui__build_panel_name"
+                            down = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'build_panel' )]"
+                            tooltip_enabled = no
+                            onclick = "[GetVariableSystem.Set( 'glorpUI_tab', 'build_panel' )]"
                         }
 
                         button_secondary_tab_alt = {
@@ -306,6 +315,22 @@ window = {
 							}
 						}
 					}
+
+                    # Build Panel
+                    vbox = {
+                        visible = "[GetVariableSystem.HasValue( 'glorpUI_tab', 'build_panel' )]"
+                        hbox = {
+                            spacing = 10
+                            text_single = {
+                                text = "GLORP_UI_ROI_USE_PROFIT_LABEL"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetRoiUseProfit').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                down =  "[Player.MakeScope.GetVariable('roiUseProfit').IsSet]"
+                                tooltip_enabled = no
+                            }
+                        }
+                    }
 
                     # Other
                     vbox = {

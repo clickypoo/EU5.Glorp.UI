@@ -289,3 +289,16 @@ RefreshAvgStats = {
 		glorpui_sync_avg_stats = yes
 	}
 }
+
+### BUILD PANEL ###
+SetRoiUseProfit = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = roiUseProfit } }
+            set_variable = { name = roiUseProfit value = 1 }
+        }
+        else = {
+            remove_variable = roiUseProfit
+        }
+    }
+}

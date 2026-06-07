@@ -202,6 +202,23 @@ glorpui_register_cmf_mod = {
 		setting = glorpui__vanillaMapmodeHeight
 		alias = vanillaMapmodeHeight
 	}
+
+	# Build Panel (build_panel) Tab
+	## General (general) Group
+	cmm_register_dropdown_setting = {
+		mod_id = glorpui
+		setting_id = roi_metric
+		tab_id = build_panel
+		group_id = general
+		default_index = 1
+		option_count = 2
+	}
+	cmm_set_dropdown_multiselector = { setting = glorpui__roi_metric }
+	cmm_sync_dropdown_option_alias = {
+		setting = glorpui__roi_metric
+		index = 2
+		alias = roiUseProfit
+	}
 }
 
 # Callback handler for cmf_on_callback.
@@ -310,6 +327,13 @@ glorpui_handle_cmf_callback = {
 			cmm_sync_bool_alias = {
 				setting = glorpui__vanillaMapmodeHeight
 				alias = vanillaMapmodeHeight
+			}
+		}
+		flag:glorpui__roi_metric = {
+			cmm_sync_dropdown_option_alias = {
+				setting = glorpui__roi_metric
+				index = 2
+				alias = roiUseProfit
 			}
 		}
 	}
