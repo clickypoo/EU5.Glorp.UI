@@ -2248,10 +2248,10 @@
 
 											datacontext = "[LocationView.GetLocation]"
 
-											# LSQ Auto Food button (only on food-RGO locations)
+											# CM: Auto Food button (only on food-RGO locations)
 											cm_auto_food_widget_location_window = {}
 
-											# LSQ Auto Expand RGO button
+											# CM: Auto Expand RGO button
 											cm_auto_expand_rgo_widget_location_window = {}
 
 											tooltipwidget = {

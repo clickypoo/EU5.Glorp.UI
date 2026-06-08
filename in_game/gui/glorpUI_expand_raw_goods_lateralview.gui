@@ -586,7 +586,7 @@
 								hbox = {
 									expand = {}
 
-									# LSQ Auto Expand RGO button
+									# CM: Auto Expand RGO button
 									cm_auto_expand_rgo_widget_expand_raw_goods_lateralview = {}
 
 									vbox = {

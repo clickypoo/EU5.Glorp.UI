@@ -195,7 +195,7 @@
 					}
 				}
 
-				# LSQ Auto Food button (only on food-RGO locations)
+				# CM: Auto Food button (only on food-RGO locations)
 				cm_auto_food_widget_food_production_lateralview = {}
 
 				widget = {
