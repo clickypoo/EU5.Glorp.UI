@@ -820,7 +820,7 @@
 									text_single = {
 										#unprofitable and not subsidized
 										visible = "[And(LessThanOrEqualTo_CFixedPoint(Building.GetProfit, '(CFixedPoint)0'), Not(Building.IsSubsidized))]"
-										maximumsize = { 48 18 } # CM: reduced from 60 # CM: reduced from 60
+										maximumsize = { 48 18 } # CM: reduced from 60
 										fontsize = 14
 										raw_text = "[Building.GetProfitPerLevel|+=2]@wealth!"
 										sort_by_highlight = {
@@ -834,7 +834,7 @@
 									text_single = {
 										# subsidized
 										visible = "[And(LessThanOrEqualTo_CFixedPoint(Building.GetProfit, '(CFixedPoint)0'), Building.IsSubsidized)]"
-										maximumsize = { 48 18 } # CM: reduced from 60 # CM: reduced from 60
+										maximumsize = { 48 18 } # CM: reduced from 60
 										fontsize = 14
 										raw_text = "#L [Building.GetProfitPerLevel|2]#!@wealth!"
 										sort_by_highlight = {
