@@ -330,6 +330,17 @@
                                 tooltip_enabled = no
                             }
                         }
+                        hbox = {
+                        	spacing = 10
+                        	text_single = {
+                        		text = "GLORP_UI_ROI_USE_MONTHS_LABEL"
+                        	}
+                        	checkbox_square_alt = {
+                        		onclick = "[GetScriptedGui('SetRoiUseMonths').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                        		down =  "[Player.MakeScope.GetVariable('roiUseMonths').IsSet]"
+                        		tooltip_enabled = no
+                        	}
+                        }
                     }
 
                     # Other

@@ -219,6 +219,21 @@ glorpui_register_cmf_mod = {
 		index = 2
 		alias = roiUseProfit
 	}
+
+	cmm_register_dropdown_setting = {
+		mod_id = glorpui
+		setting_id = roi_unit
+		tab_id = build_panel
+		group_id = general
+		default_index = 1
+		option_count = 2
+	}
+	cmm_set_dropdown_multiselector = { setting = glorpui__roi_unit }
+	cmm_sync_dropdown_option_alias = {
+		setting = glorpui__roi_unit
+		index = 2
+		alias = roiUseMonths
+	}
 }
 
 # Callback handler for cmf_on_callback.
@@ -334,6 +349,14 @@ glorpui_handle_cmf_callback = {
 				setting = glorpui__roi_metric
 				index = 2
 				alias = roiUseProfit
+			}
+		}
+
+		flag:glorpui__roi_unit = {
+			cmm_sync_dropdown_option_alias = {
+				setting = glorpui__roi_unit
+				index = 2
+				alias = roiUseMonths
 			}
 		}
 	}

@@ -302,3 +302,15 @@ SetRoiUseProfit = {
         }
     }
 }
+
+SetRoiUseMonths = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = roiUseMonths } }
+            set_variable = { name = roiUseMonths value = 1 }
+        }
+        else = {
+            remove_variable = roiUseMonths
+        }
+    }
+}

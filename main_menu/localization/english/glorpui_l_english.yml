@@ -22,3 +22,4 @@ l_english:
  GLORP_UI_BUILDING_ROI_TT_PROFIT: "Profit / month"
  GLORP_UI_BUILDING_ROI_TT_PROFIT_ROI: "ROI (total profit)"
  GLORP_UI_ROI_USE_PROFIT_LABEL: "Use total profit for ROI"
+ GLORP_UI_ROI_USE_MONTHS_LABEL: "Use months for ROI"

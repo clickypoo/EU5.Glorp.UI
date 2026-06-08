@@ -59,6 +59,10 @@ l_english:
  glorpui__roi_metric_desc: "Which return-on-investment figure the build panel shows by default. Both always appear in the tooltip."
  glorpui__roi_metric_option_1_name: "Tax income"
  glorpui__roi_metric_option_2_name: "Total profit"
+ glorpui__roi_unit_name: "ROI time unit"
+ glorpui__roi_unit_desc: "Show building ROI in years or months."
+ glorpui__roi_unit_option_1_name: "Years"
+ glorpui__roi_unit_option_2_name: "Months"
 
  # Optional: self-referencing flag keys to suppress IDE warnings (safe to remove if you want)
  glorpui: "glorpui"
@@ -71,6 +75,7 @@ l_english:
  glorpui__build_panel: "glorpui__build_panel"
  glorpui__build_panel__general: "glorpui__build_panel__general"
  glorpui__roi_metric: "glorpui__roi_metric"
+ glorpui__roi_unit: "glorpui__roi_unit"
  glorpui__useVanillaPortrait: "glorpui__useVanillaPortrait"
  glorpui__useStaticFlag: "glorpui__useStaticFlag"
  glorpui__useFramedStaticFlag: "glorpui__useFramedStaticFlag"
