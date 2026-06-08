@@ -87,10 +87,10 @@
 		layoutpolicy_horizontal = expanding
 		widget = {
 			layoutpolicy_horizontal = expanding
-			size = { -1 67 }
+			size = { -1 46 }
 
 			widget = {
-				size = { 100% 67 }
+				size = { 100% 46 }
 				using = bg_paper_card
 				parentanchor = center
 
@@ -777,9 +777,10 @@
 							margin_right = 2
 							spacing = 0
 							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
 							widget = {
 								#profit
-								size = { 48 60 } # GlorpUI: ROI line
+								size = { 48 39 } # lsq: reduced from 60 to make room for builder
 								hbox = {
 									#built
 									visible = "[And(LocationToBuildItem.ShowProfit, LocationToBuildItem.HasConstructedBuildingLevels)]"
@@ -812,17 +813,6 @@
 											sort_by_highlight = {
 												size = { 105% 100% }
 												name = "income"
-											}
-										}
-										text_single = {
-											size = { 48 18 }
-											align = nobaseline|left
-											autoresize = no
-											fontsize = 14
-											visible = "[And(GreaterThan_CFixedPoint(GetBuildOrExpandBuildingCost(BuildingType.Self, Location.Self), '(CFixedPoint)0'), GreaterThan_CFixedPoint(Select_CFixedPoint(Player.MakeScope.GetVariable('roiUseProfit').IsSet, Building.GetProfitPerLevel, Building.GetIncomeToOwnerPerLevel), '(CFixedPoint)0'))]"
-											raw_text = "[Divide_CFixedPoint(GetBuildOrExpandBuildingCost(BuildingType.Self, Location.Self), Select_CFixedPoint(Player.MakeScope.GetVariable('roiUseProfit').IsSet, Building.GetProfitPerLevel, Building.GetIncomeToOwnerPerLevel))|0]@construction!"
-											tooltipwidget = {
-												using = glorpUI_building_roi_tooltip
 											}
 										}
 									}
@@ -917,65 +907,71 @@
 												name = "income"
 											}
 										}
-										text_single = {
-											size = { 48 18 }
-											align = nobaseline|left
-											autoresize = no
-											fontsize = 14
-											visible = "[And(GreaterThan_CFixedPoint(GetBuildOrExpandBuildingCost(BuildingType.Self, Location.Self), '(CFixedPoint)0'), GreaterThan_CFixedPoint(Select_CFixedPoint(Player.MakeScope.GetVariable('roiUseProfit').IsSet, GetBuildingTypeProfitInLocation(BuildingType.Self, Location.Self), GetBuildingTypeIncomeToOwnerInLocation(BuildingType.Self, Location.Self)), '(CFixedPoint)0'))]"
-											raw_text = "[Divide_CFixedPoint(GetBuildOrExpandBuildingCost(BuildingType.Self, Location.Self), Select_CFixedPoint(Player.MakeScope.GetVariable('roiUseProfit').IsSet, GetBuildingTypeProfitInLocation(BuildingType.Self, Location.Self), GetBuildingTypeIncomeToOwnerInLocation(BuildingType.Self, Location.Self)))|0]@construction!"
-											tooltipwidget = {
-												using = glorpUI_building_type_roi_tooltip
-											}
-										}
 
 									}
 								}
 							}
-                            widget = { #efficiency
-								size = { 58 36 } # lsq: reduced from 70 to make room for builder
+							widget = { #efficiency
+								size = { 58 46 } # lsq: reduced from 70 to make room for builder
 								vbox = {
 									layoutpolicy_horizontal = expanding
 
 									hbox = {
+										#built efficiency
 										expand = { }
 										vbox = {
-											#built
-												visible = "[And(LocationToBuildItem.ShowProfit, LocationToBuildItem.HasConstructedBuildingLevels)]"
-												# visible = "[Building.IsProducing]"
-												layoutpolicy_horizontal = expanding
-												datamodel = "[Building.GetProductionMethods]"
-												item = {
-													text_single = {
-													size = { 58 18 } # lsq: reduced from 70
-														autoresize = no
-														#raw_text = "[Building.GetBuildingProductionEfficiency(ActiveProductionMethod.GetMethod)|+=2%]@efficiency!"
-														text = "BUILDING_PROD_EFFICIENCY"
-														align = nobaseline|right
-														default_format = "@bold!"
-														fontsize = 14
-														tooltipwidget = {
-															using = building_production_efficiency_tooltip
-														}
-														sort_by_highlight = {
-															size = { 105% 200% }
-															name = "production_efficiency"
-														}
+											visible = "[And(LocationToBuildItem.ShowProfit, LocationToBuildItem.HasConstructedBuildingLevels)]"
+											layoutpolicy_horizontal = expanding
+											datamodel = "[Building.GetProductionMethods]"
+											item = {
+												text_single = {
+													size = { 58 15 }
+													autoresize = no
+													text = "BUILDING_PROD_EFFICIENCY"
+													align = nobaseline|right
+													default_format = "@bold!"
+													fontsize = 13
+													tooltipwidget = {
+														using = building_production_efficiency_tooltip
+													}
+													sort_by_highlight = {
+														size = { 105% 200% }
+														name = "production_efficiency"
 													}
 												}
 											}
+										}
 									}
 
-                                	hbox = { #unbuilt
+									hbox = {
+										#built ROI
+										expand = { }
+										datacontext = "[LocationToBuildItem.GetBuildingType]"
+										visible = "[And(LocationToBuildItem.ShowProfit, LocationToBuildItem.HasConstructedBuildingLevels)]"
+										text_single = {
+											size = { 58 15 }
+											autoresize = no
+											align = nobaseline|right
+											fontsize = 13
+											visible = "[And(GreaterThan_CFixedPoint(GetBuildOrExpandBuildingCost(BuildingType.Self, Location.Self), '(CFixedPoint)0'), GreaterThan_CFixedPoint(Select_CFixedPoint(Player.MakeScope.GetVariable('roiUseProfit').IsSet, Building.GetProfitPerLevel, Building.GetIncomeToOwnerPerLevel), '(CFixedPoint)0'))]"
+											raw_text = "[Divide_CFixedPoint(GetBuildOrExpandBuildingCost(BuildingType.Self, Location.Self), Select_CFixedPoint(Player.MakeScope.GetVariable('roiUseProfit').IsSet, Building.GetProfitPerLevel, Building.GetIncomeToOwnerPerLevel))|0]m @efficiency!"
+											tooltipwidget = {
+												using = glorpUI_building_roi_tooltip
+											}
+										}
+									}
+
+									hbox = {
+										#unbuilt efficiency
 										datacontext = "[LocationToBuildItem.GetBuildingType]"
 										datacontext = "[LocationToBuildItem.GetLocation]"
 										visible = "[And(LocationToBuildItem.ShowProfit, Not(LocationToBuildItem.HasConstructedBuildingLevels))]"
 										expand = { }
 										text_single = {
-											size = { 58 18 } # lsq: reduced from 70
+											size = { 58 15 }
 											autoresize = no
 											default_format = "@bold!"
-											fontsize = 14
+											fontsize = 13
 											align = nobaseline|right
 											text = "BUILDING_TYPE_POSSIBLE_PROD_EFFICIENCY"
 											tooltipwidget = {
@@ -1000,11 +996,30 @@
 									}
 
 									hbox = {
+										#unbuilt ROI
+										datacontext = "[LocationToBuildItem.GetBuildingType]"
+										datacontext = "[LocationToBuildItem.GetLocation]"
+										visible = "[And(LocationToBuildItem.ShowProfit, Not(LocationToBuildItem.HasConstructedBuildingLevels))]"
+										expand = { }
+										text_single = {
+											size = { 58 15 }
+											autoresize = no
+											align = nobaseline|right
+											fontsize = 13
+											visible = "[And(GreaterThan_CFixedPoint(GetBuildOrExpandBuildingCost(BuildingType.Self, Location.Self), '(CFixedPoint)0'), GreaterThan_CFixedPoint(Select_CFixedPoint(Player.MakeScope.GetVariable('roiUseProfit').IsSet, GetBuildingTypeProfitInLocation(BuildingType.Self, Location.Self), GetBuildingTypeIncomeToOwnerInLocation(BuildingType.Self, Location.Self)), '(CFixedPoint)0'))]"
+											raw_text = "[Divide_CFixedPoint(GetBuildOrExpandBuildingCost(BuildingType.Self, Location.Self), Select_CFixedPoint(Player.MakeScope.GetVariable('roiUseProfit').IsSet, GetBuildingTypeProfitInLocation(BuildingType.Self, Location.Self), GetBuildingTypeIncomeToOwnerInLocation(BuildingType.Self, Location.Self)))|0]m @efficiency!"
+											tooltipwidget = {
+												using = glorpUI_building_type_roi_tooltip
+											}
+										}
+									}
+
+									hbox = {
+										#establishment ramp
 										margin_right = 2
 										margin_left = 12
 										progressbar = {
 											visible = "[Building.GetHasEstablishmentRamp]"
-											# layoutpolicy_horizontal = expanding
 											size = { 56 6 }
 											using = progress_bar_goldish_blue
 											min = 0
@@ -2661,13 +2676,13 @@ types GlorpBuildLocationTypes {
 				}
 				blockoverride "scroll_list_content" {
 					addcolumn = 100%
-					addrow = 76
+					addrow = 56
 					datamodel = "[BuildInLocationLateralView.GetItems]"
 					item = {
 						widget = {
-							size = { 100% 76 }
+							size = { 100% 56 }
 							widget = {
-								size = { 99% 74 }
+								size = { 99% 54 }
 								parentanchor = center
 								hbox = {
 									using = layoutpolicy_expanding
