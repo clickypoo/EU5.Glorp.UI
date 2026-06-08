@@ -494,9 +494,13 @@
 					widget = {
 						size = { 20 44 }
 						datacontext = "[RawGoodLocationItem.GetLocation]"
-						# Suppressed in favor of Construction Manager's RGO auto-expand widget.
-						visible = "[Not(GetScriptedGui('glorpui_is_cm_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+
+						# CM: Auto Expand RGO button
+						cm_auto_expand_rgo_widget_expand_raw_goods_lateralview = {}
+
 						button_square_checkbox = {
+							# Suppressed in favor of Construction Manager's RGO auto-expand widget.
+							visible = "[Not(GetScriptedGui('glorpui_is_cm_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 							size = { 20 20 }
 							parentanchor = center
 							widgetanchor = center
@@ -585,9 +589,6 @@
 								size = { 50 36 }
 								hbox = {
 									expand = {}
-
-									# CM: Auto Expand RGO button
-									cm_auto_expand_rgo_widget_expand_raw_goods_lateralview = {}
 
 									vbox = {
 										tooltipwidget = {
