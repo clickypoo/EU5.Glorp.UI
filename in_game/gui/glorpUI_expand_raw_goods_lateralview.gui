@@ -494,6 +494,8 @@
 					widget = {
 						size = { 20 44 }
 						datacontext = "[RawGoodLocationItem.GetLocation]"
+						# Suppressed in favor of Construction Manager's RGO auto-expand widget.
+						visible = "[Not(GetScriptedGui('glorpui_is_cm_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 						button_square_checkbox = {
 							size = { 20 20 }
 							parentanchor = center

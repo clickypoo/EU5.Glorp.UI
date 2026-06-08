@@ -723,9 +723,14 @@
 
 					widget = {
 						size = { 20 44 }
-						visible = "[And(ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self), LocationToBuildItem.GetBuilding.GetType.IsMultipleLevels)]"
 						datacontext = "[LocationToBuildItem.GetBuilding]"
+
+						# Construction Manager auto-expand button.
+						cm_auto_expand_building_button_bll = {}
+
 						button_square_checkbox = {
+							# Suppressed in favor of Construction Manager's auto-expand button.
+							visible = "[And(ObjectsEqual(LocationToBuildItem.GetBuilding.GetOwner, Player.Self), LocationToBuildItem.GetBuilding.GetType.IsMultipleLevels, Not(GetScriptedGui('glorpui_is_cm_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)))]"
 							size = { 20 20 }
 							parentanchor = center
 							widgetanchor = center
@@ -1477,6 +1482,7 @@
 										cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
 										description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
 										on_action = "[UpgradeBuildingShift(BuildingType.Self, Location.Self)]"
+										on_action = "[GetScriptedGui('cm_check_for_auto_expand_when_upgrading_building').Execute(GuiScope.SetRoot(LocationToBuildItem.GetBuilding.MakeScope).End)]"
 										enabled = "[CanUpgradeToBuilding(BuildingType.Self, Location.Self)]"
 									}
 
@@ -1994,6 +2000,12 @@ types GlorpBuildLocationTypes {
 											texture = "gfx/interface/icons/flat_icons/mass_construct.dds"
 										}
 
+										# Invisible spacer for the overlay twin.
+										cm_mass_auto_expand_button_bll = {
+											alpha = 0
+											enabled = no
+										}
+
 										text_single = {
 											fontsize = 13
 											layoutpolicy_horizontal = expanding
@@ -2019,6 +2031,8 @@ types GlorpBuildLocationTypes {
 								}
 							}
 
+							cm_mass_auto_expand_overlay_no_upgrade = {}
+
 							header_button_right = {
 								size = { 100% 100%}
 								visible = "[Player.CanUpgradeBuildingType(BuildInLocationLateralView.GetBuildingType)]"
@@ -2041,6 +2055,11 @@ types GlorpBuildLocationTypes {
 										icon = {
 											size = { 25 25 }
 											texture = "gfx/interface/icons/flat_icons/mass_upgrade.dds"
+										}
+
+										cm_mass_auto_expand_button_bll = {
+											alpha = 0
+											enabled = no
 										}
 
 										text_single = {
@@ -2067,6 +2086,8 @@ types GlorpBuildLocationTypes {
 									BasicFunctionalTooltip = {}
 								}
 							}
+
+							cm_mass_auto_expand_overlay_upgrade = {}
 						}
 					}
 				}
