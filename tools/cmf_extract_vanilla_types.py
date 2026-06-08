@@ -32,7 +32,7 @@ except ModuleNotFoundError:
     except ModuleNotFoundError:
         tomllib = None
 
-PREFIX = "cmf_"
+PREFIX = "cmfg_"
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
