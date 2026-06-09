@@ -3525,10 +3525,7 @@ select_menu_left = {
 		name = "foreign_country_select_country"
 	}
 
-	blockoverride "close_button" {
-		onclick = "[ForeignCountrySelectCountry.OnClose]"
-	}
-
+	blockoverride "close_on_action" { on_action = "[ForeignCountrySelectCountry.OnClose]" }
 	blockoverride "select_content" {
 		select_menu_header = {
 			blockoverride "select_menu_header_extra" {

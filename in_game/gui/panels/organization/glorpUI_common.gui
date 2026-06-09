@@ -1,4 +1,4 @@
-types GlorpUIOrganizationPanel
+﻿types GlorpUIOrganizationPanel
 {
 	type organization_panel_default = vbox {
 	using = layoutpolicy_expanding

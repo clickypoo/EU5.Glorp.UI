@@ -1,4 +1,4 @@
-template CountryTooltip_DiplomacyStatBars {
+﻿template CountryTooltip_DiplomacyStatBars {
 	visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"
 
 	TooltipStatsBar = {
