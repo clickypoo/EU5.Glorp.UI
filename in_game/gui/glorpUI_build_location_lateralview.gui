@@ -571,9 +571,6 @@
 						}
 					}
 
-					# CM: auto-expand button
-					cm_auto_expand_widget_global_construction = { }
-
 					widget = {
 						#subsidize/close
 						size = { 23 46 }
