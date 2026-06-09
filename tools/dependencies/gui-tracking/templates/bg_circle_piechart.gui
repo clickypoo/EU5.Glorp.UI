@@ -1,8 +1,0 @@
-﻿# vanilla: main_menu/gui/shared/backgrounds.gui
-# mod: in_game/gui/shared/glorpUI_backgrounds.gui
-
-template bg_circle_piechart {
-	background = {
-		texture = "gfx/interface/buttons/construction_marker_background.dds"
-	}
-}
