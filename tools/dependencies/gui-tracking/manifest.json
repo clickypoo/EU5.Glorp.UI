@@ -1,0 +1,1251 @@
+{
+  "definitions": {
+    "constant:in_game/gui/foreign_country_lateralview.gui:in_game/gui/foreign_country_lateralview.gui:countryinfo_block_height": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/foreign_country_lateralview.gui",
+      "name": "countryinfo_block_height",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__foreign_country_lateralview/in_game__gui__foreign_country_lateralview/countryinfo_block_height.gui",
+      "vanilla_file": "in_game/gui/foreign_country_lateralview.gui"
+    },
+    "constant:in_game/gui/glorpUI_alertmanager.gui:in_game/gui/alertmanager.gui:alert_wide": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/glorpUI_alertmanager.gui",
+      "name": "alert_wide",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__glorpUI_alertmanager/in_game__gui__alertmanager/alert_wide.gui",
+      "vanilla_file": "in_game/gui/alertmanager.gui"
+    },
+    "constant:in_game/gui/glorpUI_hud_bot.gui:in_game/gui/hud_bot.gui:mapselector_height": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/glorpUI_hud_bot.gui",
+      "name": "mapselector_height",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__glorpUI_hud_bot/in_game__gui__hud_bot/mapselector_height.gui",
+      "vanilla_file": "in_game/gui/hud_bot.gui"
+    },
+    "constant:in_game/gui/glorpUI_hud_bot.gui:in_game/gui/hud_bot.gui:mapselector_width": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/glorpUI_hud_bot.gui",
+      "name": "mapselector_width",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__glorpUI_hud_bot/in_game__gui__hud_bot/mapselector_width.gui",
+      "vanilla_file": "in_game/gui/hud_bot.gui"
+    },
+    "constant:in_game/gui/ingame_topbar.gui:in_game/gui/ingame_topbar.gui:alerts_height": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/ingame_topbar.gui",
+      "name": "alerts_height",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__ingame_topbar/in_game__gui__ingame_topbar/alerts_height.gui",
+      "vanilla_file": "in_game/gui/ingame_topbar.gui"
+    },
+    "constant:in_game/gui/ingame_topbar.gui:in_game/gui/ingame_topbar.gui:left_panel_width": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/ingame_topbar.gui",
+      "name": "left_panel_width",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__ingame_topbar/in_game__gui__ingame_topbar/left_panel_width.gui",
+      "vanilla_file": "in_game/gui/ingame_topbar.gui"
+    },
+    "constant:in_game/gui/ingame_topbar.gui:in_game/gui/ingame_topbar.gui:panel_x": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/ingame_topbar.gui",
+      "name": "panel_x",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__ingame_topbar/in_game__gui__ingame_topbar/panel_x.gui",
+      "vanilla_file": "in_game/gui/ingame_topbar.gui"
+    },
+    "constant:in_game/gui/ingame_topbar.gui:in_game/gui/ingame_topbar.gui:right_panel_width": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/ingame_topbar.gui",
+      "name": "right_panel_width",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__ingame_topbar/in_game__gui__ingame_topbar/right_panel_width.gui",
+      "vanilla_file": "in_game/gui/ingame_topbar.gui"
+    },
+    "constant:in_game/gui/ingame_topbar.gui:in_game/gui/ingame_topbar.gui:topbar_height": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/ingame_topbar.gui",
+      "name": "topbar_height",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__ingame_topbar/in_game__gui__ingame_topbar/topbar_height.gui",
+      "vanilla_file": "in_game/gui/ingame_topbar.gui"
+    },
+    "constant:in_game/gui/map_markers.gui:in_game/gui/map_markers.gui:unit_marker_frame_height": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/map_markers.gui",
+      "name": "unit_marker_frame_height",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__map_markers/in_game__gui__map_markers/unit_marker_frame_height.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "constant:in_game/gui/map_markers.gui:in_game/gui/map_markers.gui:unit_marker_frame_text_margin": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/map_markers.gui",
+      "name": "unit_marker_frame_text_margin",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__map_markers/in_game__gui__map_markers/unit_marker_frame_text_margin.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "constant:in_game/gui/map_markers.gui:in_game/gui/map_markers.gui:unit_marker_item_height": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/map_markers.gui",
+      "name": "unit_marker_item_height",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__map_markers/in_game__gui__map_markers/unit_marker_item_height.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "constant:in_game/gui/map_markers.gui:in_game/gui/map_markers.gui:unit_marker_item_width": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/map_markers.gui",
+      "name": "unit_marker_item_width",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__map_markers/in_game__gui__map_markers/unit_marker_item_width.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "constant:in_game/gui/map_markers.gui:in_game/gui/map_markers.gui:unit_marker_morale_progressbar_size": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/map_markers.gui",
+      "name": "unit_marker_morale_progressbar_size",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__map_markers/in_game__gui__map_markers/unit_marker_morale_progressbar_size.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "template:CountryMapModeDiplomacyTooltip": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/shared/glorpUI_diplomacy_tooltips.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/CountryMapModeDiplomacyTooltip.gui",
+      "vanilla_file": "in_game/gui/shared/diplomacy_tooltips.gui"
+    },
+    "template:CountryTooltip": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/shared/glorpUI_country_tooltips.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/CountryTooltip.gui",
+      "vanilla_file": "in_game/gui/shared/country_tooltips.gui"
+    },
+    "template:CountryTooltip_DiplomacyStatBars": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/shared/glorpUI_diplomacy_tooltips.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/CountryTooltip_DiplomacyStatBars.gui",
+      "vanilla_file": "in_game/gui/shared/diplomacy_tooltips.gui"
+    },
+    "template:DHEEvent_tooltip": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/shared/glorpUI_event_tooltips.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/DHEEvent_tooltip.gui",
+      "vanilla_file": "in_game/gui/shared/event_tooltips.gui"
+    },
+    "template:ProvinceDefinition_tooltip": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/shared/glorpUI_geography_definitions_tooltips.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/ProvinceDefinition_tooltip.gui",
+      "vanilla_file": "in_game/gui/shared/geography_definitions_tooltips.gui"
+    },
+    "template:alert_banner_setup": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/glorpUI_alertmanager.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/alert_banner_setup.gui",
+      "vanilla_file": "in_game/gui/alertmanager.gui"
+    },
+    "template:bg_circle_piechart": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/shared/glorpUI_backgrounds.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/bg_circle_piechart.gui",
+      "vanilla_file": "main_menu/gui/shared/backgrounds.gui"
+    },
+    "template:bg_mapmode_menu": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/glorpUI_hud_bot.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/bg_mapmode_menu.gui",
+      "vanilla_file": "in_game/gui/hud_bot.gui"
+    },
+    "template:build_location_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/glorpUI_build_location_lateralview.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/build_location_entry.gui",
+      "vanilla_file": "in_game/gui/build_location_lateralview.gui"
+    },
+    "template:build_rgo_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/glorpUI_expand_raw_goods_lateralview.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/build_rgo_entry.gui",
+      "vanilla_file": "in_game/gui/expand_raw_goods_lateralview.gui"
+    },
+    "template:building_tooltip_detail": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/shared/glorpUI_building_tooltips.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/building_tooltip_detail.gui",
+      "vanilla_file": "main_menu/gui/shared/building_tooltips.gui"
+    },
+    "template:cabinet_entry_icon": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/cabinet_entry_icon.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "template:cabinet_entry_icon_empty": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/cabinet_entry_icon_empty.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "template:category_big_template": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/category_big_template.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "template:category_small_template": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/category_small_template.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "template:frontend_menu_middle_template": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/glorpUI_ingame_menu.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/frontend_menu_middle_template.gui",
+      "vanilla_file": "in_game/gui/ingame_menu.gui"
+    },
+    "template:production_view_poptypes": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/glorpUI_production_lateralview.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/production_view_poptypes.gui",
+      "vanilla_file": "in_game/gui/production_lateralview.gui"
+    },
+    "template:societal_values": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/glorpUI_societal_values_lateralview.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/societal_values.gui",
+      "vanilla_file": "in_game/gui/societal_values_lateralview.gui"
+    },
+    "type:CharacterNameDefault": {
+      "base_widget": "hbox",
+      "mod_file": "in_game/gui/glorpUI_people_lateral_view.gui",
+      "namespace": "SocietyView",
+      "tracking_path": "tools/dependencies/gui-tracking/types/CharacterNameDefault.gui",
+      "vanilla_file": "in_game/gui/people_lateral_view.gui"
+    },
+    "type:FrontEndBackground": {
+      "base_widget": "widget",
+      "mod_file": "main_menu/gui/shared/glorpUI_frontend_templates.gui",
+      "namespace": "GlorpUIFrontEnd",
+      "tracking_path": "tools/dependencies/gui-tracking/types/FrontEndBackground.gui",
+      "vanilla_file": "main_menu/gui/shared/frontend_templates.gui"
+    },
+    "type:build_location_lateralview_panel_content": {
+      "base_widget": "vbox",
+      "mod_file": "in_game/gui/glorpUI_build_location_lateralview.gui",
+      "namespace": "GlorpBuildLocationTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/build_location_lateralview_panel_content.gui",
+      "vanilla_file": "in_game/gui/build_location_lateralview.gui"
+    },
+    "type:building_type_header": {
+      "base_widget": "hbox",
+      "mod_file": "in_game/gui/glorpUI_production_lateralview.gui",
+      "namespace": "GlorpUIBuildings",
+      "tracking_path": "tools/dependencies/gui-tracking/types/building_type_header.gui",
+      "vanilla_file": "in_game/gui/production_lateralview.gui"
+    },
+    "type:button_mapmode": {
+      "base_widget": "button",
+      "mod_file": "in_game/gui/glorpUI_hud_bot.gui",
+      "namespace": "GlorpUIBottomTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/button_mapmode.gui",
+      "vanilla_file": "in_game/gui/hud_bot.gui"
+    },
+    "type:button_mapmode_category": {
+      "base_widget": "hbox",
+      "mod_file": "in_game/gui/glorpUI_hud_bot.gui",
+      "namespace": "GlorpUIBottomTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/button_mapmode_category.gui",
+      "vanilla_file": "in_game/gui/hud_bot.gui"
+    },
+    "type:chat_editbox": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/multiplayer_chat.gui",
+      "namespace": "MultiplayerChatTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/chat_editbox.gui",
+      "vanilla_file": "in_game/gui/multiplayer_chat.gui"
+    },
+    "type:food_production_location": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/glorpUI_food_production_lateralview.gui",
+      "namespace": "GlorpUIFoodProductionTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/food_production_location.gui",
+      "vanilla_file": "in_game/gui/food_production_lateralview.gui"
+    },
+    "type:mapmarkers_settings_window": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/glorpUI_hud_bot.gui",
+      "namespace": "GlorpUIBottomTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/mapmarkers_settings_window.gui",
+      "vanilla_file": "in_game/gui/hud_bot.gui"
+    },
+    "type:mapmode_category_block": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/glorpUI_hud_bot.gui",
+      "namespace": "GlorpUIBottomTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/mapmode_category_block.gui",
+      "vanilla_file": "in_game/gui/hud_bot.gui"
+    },
+    "type:mapmode_category_menu": {
+      "base_widget": "scrollarea",
+      "mod_file": "in_game/gui/glorpUI_hud_bot.gui",
+      "namespace": "GlorpUIBottomTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/mapmode_category_menu.gui",
+      "vanilla_file": "in_game/gui/hud_bot.gui"
+    },
+    "type:mapmode_current_button": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/glorpUI_hud_bot.gui",
+      "namespace": "GlorpUIBottomTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/mapmode_current_button.gui",
+      "vanilla_file": "in_game/gui/hud_bot.gui"
+    },
+    "type:mapmodes_color_ledger": {
+      "base_widget": "vbox",
+      "mod_file": "in_game/gui/glorpUI_hud_bot.gui",
+      "namespace": "GlorpUIBottomTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/mapmodes_color_ledger.gui",
+      "vanilla_file": "in_game/gui/hud_bot.gui"
+    },
+    "type:mapmodes_window": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/glorpUI_hud_bot.gui",
+      "namespace": "GlorpUIBottomTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/mapmodes_window.gui",
+      "vanilla_file": "in_game/gui/hud_bot.gui"
+    },
+    "type:organization_panel_default": {
+      "base_widget": "vbox",
+      "mod_file": "in_game/gui/panels/organization/glorpUI_common.gui",
+      "namespace": "GlorpUIOrganizationPanel",
+      "tracking_path": "tools/dependencies/gui-tracking/types/organization_panel_default.gui",
+      "vanilla_file": "in_game/gui/panels/organization/common.gui"
+    },
+    "type:row_building_card": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/location_window.gui",
+      "namespace": "LocationWindowTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/row_building_card.gui",
+      "vanilla_file": "in_game/gui/location_window.gui"
+    },
+    "widget:agenda_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/agenda_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:agenda_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/agenda_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:alleviate_concerns_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/alleviate_concerns_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:annexation_diplomatic_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/annexation_diplomatic_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:annexation_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/annexation_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:army_combat_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/army_combat_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:army_construction_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/army_construction_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:army_construction_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/army_construction_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:army_unit_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/army_unit_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:assimilate_area_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/assimilate_area_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:battle_lateralview": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/battle_lateralview.gui",
+      "namespace": "lateralview",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/battle_lateralview.gui",
+      "vanilla_file": "in_game/gui/battle_lateralview.gui"
+    },
+    "widget:blocked_vision_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/blocked_vision_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:building_spy_network_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/building_spy_network_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:cabinet_action_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/cabinet_action_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:casus_belli_creation_diplomatic_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/casus_belli_creation_diplomatic_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:change_societal_values_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/change_societal_values_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:character_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/character_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:charter_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/charter_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:charter_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/charter_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:colony_charter_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/colony_charter_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:combat_imminent_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/combat_imminent_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:combat_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/combat_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:conquistador_construction_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/conquistador_construction_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:conquistador_construction_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/conquistador_construction_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:counter_espionage_action_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/counter_espionage_action_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:country_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/country_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:country_dhe_lateralview": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/country_dhe_lateralview.gui",
+      "namespace": "lateralview",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/country_dhe_lateralview.gui",
+      "vanilla_file": "in_game/gui/country_dhe_lateralview.gui"
+    },
+    "widget:create_casus_belli_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/create_casus_belli_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:curry_favors_diplomatic_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/curry_favors_diplomatic_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:currying_favors_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/currying_favors_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:desert_connection_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/desert_connection_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:develop_province_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/develop_province_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:diplomacy_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/diplomacy_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:diplomatic_endeavors_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/diplomatic_endeavors_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:diplomatic_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/diplomatic_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:dynasty_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/dynasty_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:empty_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/empty_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:encourage_migration_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/encourage_migration_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:estate_construction_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/estate_construction_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:estate_construction_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/estate_construction_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:expel_people_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/expel_people_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:exploration_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/exploration_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:exploration_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/exploration_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:fav_character_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/fav_character_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:fav_country_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/fav_country_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:fav_goods_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/fav_goods_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:fav_io_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/fav_io_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:fav_location_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/fav_location_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:fav_market_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/fav_market_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:fav_seazone_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/fav_seazone_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:flip_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/flip_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:foreign_country_lateralview": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/foreign_country_lateralview.gui",
+      "namespace": "lateralview",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/foreign_country_lateralview.gui",
+      "vanilla_file": "in_game/gui/foreign_country_lateralview.gui"
+    },
+    "widget:foreign_country_select_country": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/foreign_country_lateralview.gui",
+      "namespace": "select_menu_left",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/foreign_country_select_country.gui",
+      "vanilla_file": "in_game/gui/foreign_country_lateralview.gui"
+    },
+    "widget:form_new_culture_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/form_new_culture_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:fort_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "container",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/fort_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:goods_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/goods_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:gov_reform_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/gov_reform_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:government_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/government_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:holy_site_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/holy_site_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:import_export_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/import_export_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:improve_opinion_diplomatic_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/improve_opinion_diplomatic_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:improve_opinion_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/improve_opinion_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:inactive_widgets_storage": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "window",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/inactive_widgets_storage.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:increase_control_area_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/increase_control_area_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:increase_control_province_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/increase_control_province_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:ingame_topbar": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/ingame_topbar.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/ingame_topbar.gui",
+      "vanilla_file": "in_game/gui/ingame_topbar.gui"
+    },
+    "widget:integrate_area_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/integrate_area_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:integrate_province_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/integrate_province_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:io_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/io_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:io_law_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/io_law_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:lateralview_fullscreen_layer": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/ingame_topbar.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/lateralview_fullscreen_layer.gui",
+      "vanilla_file": "in_game/gui/ingame_topbar.gui"
+    },
+    "widget:lateralview_left_layer": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/ingame_topbar.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/lateralview_left_layer.gui",
+      "vanilla_file": "in_game/gui/ingame_topbar.gui"
+    },
+    "widget:lateralview_right_layer": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/ingame_topbar.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/lateralview_right_layer.gui",
+      "vanilla_file": "in_game/gui/ingame_topbar.gui"
+    },
+    "widget:law_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/law_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:location_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/location_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:location_view_select_province": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/location_window.gui",
+      "namespace": "select_menu_left",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/location_view_select_province.gui",
+      "vanilla_file": "in_game/gui/location_window.gui"
+    },
+    "widget:location_window": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/location_window.gui",
+      "namespace": "lateralview",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/location_window.gui",
+      "vanilla_file": "in_game/gui/location_window.gui"
+    },
+    "widget:map_marker_layer": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "window",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/map_marker_layer.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:market_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/market_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:market_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/market_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:market_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/market_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:merge_culture_group_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/merge_culture_group_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:multiplayer_chat": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/multiplayer_chat.gui",
+      "namespace": "window",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/multiplayer_chat.gui",
+      "vanilla_file": "in_game/gui/multiplayer_chat.gui"
+    },
+    "widget:navy_combat_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/navy_combat_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:navy_construction_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/navy_construction_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:navy_construction_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/navy_construction_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:navy_unit_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/navy_unit_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:pacify_population_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/pacify_population_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:parliament_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/parliament_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:parliament_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/parliament_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:player_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/player_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:player_construction_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/player_construction_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:player_construction_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/player_construction_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:player_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/player_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:pop_promote_action_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/pop_promote_action_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:port_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/port_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:privateer_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/privateer_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:privateer_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/privateer_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:production_lateralview": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/glorpUI_production_lateralview.gui",
+      "namespace": "lateralview",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/production_lateralview.gui",
+      "vanilla_file": "in_game/gui/production_lateralview.gui"
+    },
+    "widget:promote_culture_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/promote_culture_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:promote_religion_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/promote_religion_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:pru_deal_with_robber_barons_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/pru_deal_with_robber_barons_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:raw_goods_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/raw_goods_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:rebel_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/rebel_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:rebel_crackdown_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/rebel_crackdown_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:rebel_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/rebel_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:recovery_effort_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/recovery_effort_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:recruit_location_lateralview": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/recruit_location_lateralview.gui",
+      "namespace": "lateralview",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/recruit_location_lateralview.gui",
+      "vanilla_file": "in_game/gui/recruit_location_lateralview.gui"
+    },
+    "widget:reduce_inflation_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/reduce_inflation_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:reduce_war_exhaustion_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/reduce_war_exhaustion_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:seazone_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/seazone_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:send_people_to_colonial_charter_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/send_people_to_colonial_charter_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:send_people_to_the_colonies_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/send_people_to_the_colonies_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:siege_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/siege_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:siege_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/siege_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:single_unit_select_unit": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/single_unit_window.gui",
+      "namespace": "select_menu_left",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/single_unit_select_unit.gui",
+      "vanilla_file": "in_game/gui/single_unit_window.gui"
+    },
+    "widget:single_unit_window": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/single_unit_window.gui",
+      "namespace": "lateralview",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/single_unit_window.gui",
+      "vanilla_file": "in_game/gui/single_unit_window.gui"
+    },
+    "widget:spy_network_diplomatic_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/spy_network_diplomatic_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:stabilize_country_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/stabilize_country_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:strengthen_government_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/strengthen_government_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:study_institutions_cabinet_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/study_institutions_cabinet_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:supply_depot_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/supply_depot_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:toll_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "container",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/toll_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:unit_army_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/unit_army_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:unit_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/unit_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "widget:unit_navy_category_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/unit_navy_category_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:war_entry": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": "OutlinerEntryBase",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/war_entry.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:winter_blocked_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/winter_blocked_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    }
+  },
+  "version": 1
+}

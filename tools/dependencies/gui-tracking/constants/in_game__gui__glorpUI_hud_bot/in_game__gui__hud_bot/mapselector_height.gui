@@ -1,0 +1,4 @@
+﻿# vanilla: in_game/gui/hud_bot.gui
+# mod: in_game/gui/glorpUI_hud_bot.gui
+
+@mapselector_height = 85
