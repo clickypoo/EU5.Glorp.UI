@@ -15,6 +15,7 @@ widget = {
 
 		tooltipwidget = {
 			container = {
+				alwaystransparent = no
 				datacontext = "[HolySiteMarker.GetLocation]"
 				using = HolySitesLocation_Tooltip
 			}
