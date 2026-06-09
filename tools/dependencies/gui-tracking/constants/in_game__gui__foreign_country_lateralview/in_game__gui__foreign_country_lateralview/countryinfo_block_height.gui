@@ -1,0 +1,4 @@
+# vanilla: in_game/gui/foreign_country_lateralview.gui
+# mod: in_game/gui/foreign_country_lateralview.gui
+
+@countryinfo_block_height = 47

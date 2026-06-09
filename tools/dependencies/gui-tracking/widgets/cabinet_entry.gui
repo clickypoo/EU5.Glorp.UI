@@ -1,0 +1,90 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "cabinet_entry"
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				visible = "[Not(Cabinet.IsActive)]"
+				using = outliner_entry_margin
+				spacing = 5
+
+				portrait_standard_head_button = {
+					datacontext = "[Cabinet.GetCharacter]"
+					size = { 28 28 }
+			
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+			
+						title = "SELECT_CABINET_CHARACTER"
+						cost = "[Cabinet.GetPriceForAssigningCabinetMemberToSlot]"
+						enabled = "[Cabinet.ArePossibleCabinetCharactersAvailable]"
+						description = "[Cabinet.GetDescriptionForReplacingCabinetMemberToSlot]"
+						on_action_with_params = "[Cabinet.AssigningCabinetMemberToSlot]"
+					}
+			
+					blockoverride "character_tooltip" { 
+						tooltipwidget = {
+							BasicFunctionalTooltip = {}
+						}
+					}
+					blockoverride "character_contextmenu" {}
+					blockoverride "button_setup" {
+					}
+					blockoverride "rightclick" {}
+					# blockoverride "hover" {}
+				}
+
+				OutlinerTextBase = {
+					align = left
+					using = layoutpolicy_expanding
+					autoresize = no
+					text = "EMPTY_CABINET_SLOT"
+					default_format = "#S"
+				}
+			}
+
+			hbox = {
+				visible = "[Cabinet.IsActive]"
+				datacontext = "[Cabinet.GetCharacter]"
+				using = outliner_entry_margin
+				spacing = 5
+
+				using = cabinet_entry_action_progress
+				
+				blockoverride "cabinet_entry_progress_text" {
+					OutlinerTextBase = {
+						visible = "[Not(StringIsEmpty(Cabinet.GetEffectiveSkillOnlyEffect))]"
+						autoresize = yes
+						raw_text = "[Cabinet.GetActionProgress] ([Cabinet.GetEffectiveSkillOnlyEffect])"
+						maximumsize = { 80 -1 }
+					}
+					OutlinerTextBase = {
+						visible = "[StringIsEmpty(Cabinet.GetEffectiveSkillOnlyEffect)]"
+						autoresize = yes
+						raw_text = "[Cabinet.GetActionProgress]"
+						maximumsize = { 80 -1 }
+					}
+				}
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		using = cabinet_entry_small_action_progress
+	}
+
+	blockoverride "icon_content" { using = cabinet_entry_icon_empty }
+	blockoverride "button_setup" {
+		using = cabinet_entry_actions
+		tooltipwidget = {
+			using = action_progress_tooltip
+		}
+	}
+	blockoverride "category_color" { using = cabinet_entry_color }
+}

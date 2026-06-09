@@ -1,0 +1,36 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "pacify_population_cabinet_entry"
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				visible = "[Cabinet.IsActive]"
+				datacontext = "[Cabinet.GetCharacter]"
+				using = outliner_entry_margin
+				spacing = 5
+
+				using = cabinet_entry_action_progress
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" { using = cabinet_entry_small_action_progress }
+
+	blockoverride "icon_content" {
+		using = cabinet_entry_icon
+
+		blockoverride "cabinet_entry_icon_texture"{ texture = "gfx/interface/icons/modifier_types/pacify_population.dds"  }
+	}
+	blockoverride "button_setup" {
+		using = cabinet_entry_actions
+		tooltipwidget = {
+			using = action_progress_tooltip
+		}
+	}
+	blockoverride "category_color" { using = cabinet_entry_color }
+}

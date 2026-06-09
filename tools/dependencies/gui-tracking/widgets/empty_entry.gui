@@ -1,0 +1,44 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "empty_entry"
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			OutlinerTextBase = {
+				size = { 100% 100% }
+				using = outliner_entry_margin
+				autoresize = no
+				align = right
+				raw_text = "-"
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			OutlinerTextBase = {
+				size = { 100% 100% }
+				using = outliner_entry_margin
+				autoresize = no
+				align = right
+				raw_text = "-"
+			}
+		}
+	}
+
+	blockoverride "icon_content" {
+		OutlinerIconBg = {}
+	}
+
+	blockoverride "button_setup" { tooltip_enabled = no }
+
+	blockoverride "category_color" {
+		using = color_government_texture
+	}
+}

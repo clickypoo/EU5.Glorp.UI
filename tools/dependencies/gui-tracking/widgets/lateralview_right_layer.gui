@@ -1,0 +1,7 @@
+# vanilla: in_game/gui/ingame_topbar.gui
+# mod: in_game/gui/ingame_topbar.gui
+
+widget = {
+	name = "lateralview_right_layer"
+	using = lateralview_right_setup
+}

@@ -1,0 +1,115 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "change_societal_values_cabinet_entry"
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				visible = "[Cabinet.IsActive]"
+				datacontext = "[Cabinet.GetCharacter]"
+				using = outliner_entry_margin
+				spacing = 5
+
+				using = cabinet_entry_action_progress
+
+				blockoverride "cabinet_entry_title_text" {
+					OutlinerTextBase = {
+						align = left
+						autoresize = no
+						using = layoutpolicy_expanding
+						datacontext = "[Cabinet.GetSocietalValue]"
+						text = "change_societal_values_action_title"
+						default_format = "#yellow_titles"
+					}
+				}
+
+				blockoverride "cabinet_entry_progress_text" {
+					widget = {
+						visible = "[Not(Cabinet.HasCabinetProgress)]"
+						size = {15 15}
+
+						using = bg_circle_piechart
+						icon = {
+							using = tooltip_title_icon_size
+							using = warning_icon_texture
+							size = {15 15}
+						}
+						tooltipwidget = { 
+							SimpleContextualTooltipType = {
+								blockoverride "title_text" {
+									text = "MAX_TOWARDS_DUE_TO_INERTIA_TITLE"
+								}
+								blockoverride "concept_link" {
+									raw_text = "[societal_value|e]"
+								}							
+								blockoverride "title_icon" {
+									widget = {
+										using = tooltip_title_icon_size
+										using = bg_circle_piechart
+										icon = {
+											using = tooltip_title_icon_size
+											using = warning_icon_texture
+										}
+									}
+								}
+								
+								lowpriotextcontext = "MAX_TOWARDS_DUE_TO_INERTIA_TOOLTIP"
+							}							
+						}
+					}
+					OutlinerTextBase = {
+						autoresize = yes
+						datacontext = "[Cabinet.GetSocietalValue]"
+						raw_text = "[Cabinet.GetSocietalValueTotal|+=2] ([OutlinerCabinetEntry.GetSocietalValueMonthlyProgress|G+=2])"
+					}
+				}
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		using = cabinet_entry_small_action_progress
+		# blockoverride "cabinet_entry_small_text" {
+		# 	raw_text = "[OutlinerCabinetEntry.GetSocietalValueMonthlyProgress|G+=2] ([Cabinet.GetSocietalValueTotal|+=0])"
+		# }
+	}
+
+	blockoverride "icon_content" {
+		using = cabinet_entry_icon
+
+		blockoverride "cabinet_entry_icon_texture"{ texture = "[Cabinet.GetSocietalValue.GetRightIcon]"  }
+
+		blockoverride "cabinet_entry_icon_piechart"{
+			piechart = {
+				parentanchor = center
+				size = { 80% 80% }
+				using = piechart_angles
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Cabinet.GetSocietalValueCurrentNumber]"
+					color = { 0.01 0.6 0.9 1 }
+					alwaystransparent = yes
+				}
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Subtract_float('(float)100.0', Cabinet.GetSocietalValueCurrentNumber)]"
+					color = { 0.0 0.1 0.1 1 }
+					alwaystransparent = yes
+				}
+			}
+		}
+	}
+	blockoverride "button_setup" {
+		using = cabinet_entry_actions
+		tooltipwidget = {
+			using = action_progress_tooltip
+		}
+	}
+	blockoverride "category_color" { using = cabinet_entry_color }
+}

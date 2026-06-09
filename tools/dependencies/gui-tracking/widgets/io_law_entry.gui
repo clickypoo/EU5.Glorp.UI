@@ -1,0 +1,110 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "io_law_entry"
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				using = outliner_entry_margin
+				margin_right = 35
+				spacing = 5
+
+				icon = {
+					size = { 20 20 }
+					texture = "[IOLawOutlinerEntry.GetIcon]"
+				}
+				OutlinerTextBase = {
+					using = layoutpolicy_expanding
+					autoresize = no
+					align = left
+					datacontext = "[IOLawOutlinerEntry]"
+					text = "OUTLINER_IO_LAW_DEBATE"
+				}
+
+				OutlinerTextBase = {
+					visible = "[GreaterThan_CFixedPoint(IOLawOutlinerEntry.GetDaysLeft, '(CFixedPoint)0')]"
+					autoresize = yes
+					text = "OUTLINER_IO_LAW_DEBATE_SHORT"
+				}
+
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+			hbox = {
+				using = outliner_entry_margin
+				margin_right = 35
+				spacing = 5
+
+				icon = {
+					size = { 20 20 }
+					texture = "[IOLawOutlinerEntry.GetIcon]"
+				}
+				OutlinerTextBase = {
+					using = layoutpolicy_expanding
+					autoresize = no
+					align = right
+					datacontext = "[IOLawOutlinerEntry]"
+					visible = "[GreaterThan_CFixedPoint(IOLawOutlinerEntry.GetDaysLeft, '(CFixedPoint)0')]"
+					text = "OUTLINER_IO_LAW_DEBATE_SHORT"
+				}
+			}
+		}
+	}
+
+	blockoverride "icon_content" {
+		OutlinerIconBg = {
+			piechart = {
+				size = { 100% 100% }
+				using = piechart_angles
+				parentanchor = center
+
+				icon = {
+					parentanchor = center
+					size = { 70% 70% }
+					texture = "gfx/interface/icons/laws/resolutions/law_voting.dds"
+					texture_density = 2
+				}
+
+				pieslice = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[FixedPointToFloat(IOLawOutlinerEntry.GetProgressToDeadline)]"
+					using = color_value_progress_blue
+				}
+
+				pieslice = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Subtract_float('(float)100.0', FixedPointToFloat(IOLawOutlinerEntry.GetProgressToDeadline))]"
+					using = color_value_progress_gray
+				}
+
+				tooltipwidget = {
+					using = international_organization_resolution_voting_outliner_tooltip
+				}										
+			}
+		}
+	}
+
+	blockoverride "button_setup" {
+		tooltipwidget = {
+			using = international_organization_resolution_voting_outliner_tooltip
+		}
+		action_tooltip = {
+			click_type = left
+			click_mode = single
+			title = "AUTOMATED_SYSTEM_PARLIAMENT_CLICK"
+			on_action = "[IOLawOutlinerEntry.OnClick]"
+		}
+	}
+
+	blockoverride "category_color" {
+		using = color_government_texture
+	}
+}

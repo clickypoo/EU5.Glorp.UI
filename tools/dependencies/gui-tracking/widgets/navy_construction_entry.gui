@@ -1,0 +1,176 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "navy_construction_entry"
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+			
+			hbox = {
+				using = outliner_entry_margin
+				spacing = 5
+				icon = {
+					size = { 20 20 }
+					texture = "[GetConstructionIcon(Construction.Self)]"
+					texture_density = 2
+				}
+				OutlinerTextBase = {
+					layoutpolicy_horizontal = expanding
+					autoresize = no
+					align = left
+					fontsize = 14
+					using = OnlyVisibleWhenOneInLocation
+					raw_text = "[Construction.GetNameWithNoTooltip]"
+				}
+
+				OutlinerTextBase = {
+					layoutpolicy_horizontal = expanding
+					autoresize = no
+					align = left
+					fontsize = 14
+					using = OnlyVisibleWhenMultipleInLocation
+					raw_text = "[Construction.GetNameWithNoTooltip] #L (+[Subtract_int32(Construction.CountAllInLocation, '(int32)1')]) #!"
+				}
+
+				OutlinerTextBase = {
+					visible = "[Not(Construction.IsStalled)]"
+					autoresize = yes
+					text = "CONSTRUCTION_DURATION_DAYS"
+				}
+				
+				OutlinerTextBase = {
+					visible = "[Construction.IsStalled]"
+					autoresize = yes
+					text = "CONSTRUCTION_INFO_STALLED"
+				}
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			OutlinerTextBase = {
+				size = { 95% 100% }
+				using = outliner_entry_margin
+				using = OnlyVisibleWhenOneInLocation
+				autoresize = no
+				align = right
+				text = "CONSTRUCTION_DURATION_DAYS"
+			}
+
+			OutlinerTextBase = {
+				size = { 95% 100% }
+				using = outliner_entry_margin
+				using = OnlyVisibleWhenMultipleInLocation
+				autoresize = no
+				align = right
+				text = "CONSTRUCTION_DURATION_DAYS_PLUS_QUEUE"
+			}
+		}
+	}
+
+	blockoverride "icon_content" {
+		OutlinerIconBg = {
+			widget = {
+				size = { 100% 100% }
+				alwaystransparent = yes
+				ignore_layout = yes
+				background = {
+					texture = "gfx/interface/buttons/checkbox_bg_round.dds"
+					texture_density = 2
+					using = button_outliner_effect
+				}
+
+				widget = {
+					size = {100% 100%}
+					ignore_layout = yes
+					alwaystransparent = yes
+					using = circular_wood_frame
+				}
+			}
+			piechart = {
+				visible = "[Not(Construction.IsStalled)]"
+				parentanchor = center
+				size = { 80% 80% }
+				using = piechart_angles
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Construction.GetProgress]"
+					color = { 0.01 0.6 0.9 1 }
+					alwaystransparent = yes
+				}
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Construction.GetInverseProgress]"
+					color = { 0.0 0.1 0.1 1 }
+					alwaystransparent = yes
+				}
+			}
+
+			piechart = {
+				visible = "[Construction.IsStalled]"
+				parentanchor = center
+				size = { 80% 80% }
+				using = piechart_angles
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Construction.GetProgress]"
+					color = { 0.5 0.5 0.5 1 }
+					alwaystransparent = yes
+				}
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Construction.GetInverseProgress]"
+					color = { 0.0 0.1 0.1 1 }
+					alwaystransparent = yes
+				}
+			}
+
+			icon = {
+				parentanchor = center
+				size = { 50% 50% }
+				texture = "[GetConstructionIcon(Construction.Self)]"
+				texture_density = 2
+			}
+		}
+	}
+
+	blockoverride "button_setup" {
+		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightLocation(Construction.GetLocation)]"
+
+		tooltipwidget = {
+			using = Construction_tooltip
+		}
+		action_tooltip = {
+			click_type = left
+			click_mode = single
+			title = "GO_TO_LOCATION"
+			on_action = "[ShowLocation(Construction.GetLocation)]"
+		}
+		action_tooltip = {
+			click_type = right
+			click_mode = single
+			title = "CANCEL_CONSTRUCTION"
+			on_action = "[ShowConstructionCancellationDialog(Construction.Self, '(bool)no')]"
+		}
+		action_tooltip = {
+			click_type = right
+			click_mode = single
+			click_modifier = shift
+			title = "CANCEL_CONSTRUCTION_FORCED"
+			on_action = "[ShowConstructionCancellationDialog(Construction.Self, '(bool)yes')]"
+		}
+	}
+
+	blockoverride "category_color" {
+		using = color_military_texture
+	}
+}

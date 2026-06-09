@@ -1,0 +1,151 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "exploration_entry"
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				using = outliner_entry_margin
+				spacing = 4
+
+				portrait_standard_head_button = {
+					datacontext = "[Exploration.GetCharacter]"
+					size = { 28 28 }
+
+					action_tooltip = {
+						click_type = left
+						click_mode = single
+						title = "change_explorer"
+					}
+
+					action_button = {
+						parentanchor = center
+						size = { 100% 90% }
+						actor = "[Player]"
+						enabled = yes
+						parameter = {
+							parameter_name = "target"
+							parameter_value = "[Exploration.GetArea]"
+						}
+						left_action = { action_name = "change_explorer" }
+						tooltip_enabled = no
+					}
+
+					blockoverride "character_tooltip" { 
+						tooltipwidget = {
+							BasicFunctionalTooltip = {}
+						}
+					}
+
+					blockoverride "character_contextmenu" {}
+					blockoverride "button_setup" {}
+					blockoverride "rightclick" {}
+				}
+
+				icon = {		
+					size = { 20 20 }
+					visible = "[Exploration.GetArea.IsNaval]"					
+					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_sea.dds"
+				}
+
+				icon = {
+					size = { 20 20 }
+					visible = "[Not(Exploration.GetArea.IsNaval)]"					
+					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_land.dds"
+				}
+				
+				OutlinerTextBase = {
+					using = layoutpolicy_expanding
+					autoresize = no
+					align = left
+					raw_text = "[Exploration.GetArea.GetNameWithNoTooltip] ([Exploration.GetArea.GetRegion.GetNameWithNoTooltip])"
+					default_format = "#L"
+				}
+
+				OutlinerTextBase = {
+					layoutpolicy_vertical = expanding
+					autoresize = yes
+					text = "[Exploration.GetEstimatedTimeLeft]"
+				}
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			OutlinerTextBase = {
+				size = { 100% 100% }
+				using = outliner_entry_margin
+				autoresize = no
+				align = right
+				# text = "[Exploration.GetCurrentProgress|+=2]"
+				text = "[Exploration.GetEstimatedTimeLeft]"
+			}
+		}
+	}
+
+	blockoverride "icon_content" {
+		OutlinerIconBg = {
+			piechart = {
+				parentanchor = center
+				size = { 80% 80% }
+
+				using = piechart_angles
+				using = bg_circle_piechart
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[FixedPointToFloat(Exploration.GetCurrentProgress)]"
+					using = color_value_progress_blue
+					alpha = 0.9
+				}
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Subtract_float(FixedPointToFloat(Exploration.GetExplorationTime), FixedPointToFloat(Exploration.GetCurrentProgress))]"
+					using = color_value_progress_gray
+					alpha = 0.9
+				}
+
+				icon = {
+					parentanchor = center
+					size = { 76% 76% }
+					visible = "[Exploration.GetArea.IsNaval]"
+					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_sea.dds"
+
+				}
+
+				icon = {
+					parentanchor = center
+					size = { 75% 75% }
+					visible = "[Not(Exploration.GetArea.IsNaval)]"
+					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_land.dds"
+				}
+			}
+		}
+	}
+
+	blockoverride "button_setup" {
+		tooltipwidget = {
+			using = exploration_total_progress_tt
+		}
+		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightArea(Exploration.GetArea)]"
+		action_tooltip = {
+			click_type = left
+			click_mode = single
+			title = "GO_TO_AREA"
+			on_action = "[PanToLocation(Exploration.GetArea.GetCapital)]"
+			on_action = "[OpenLateralViewWithParams('expansion', 'low_tab = exploration')]"
+		}
+	}
+
+	blockoverride "category_color" {
+		using = color_geopolitics_texture
+	}
+}

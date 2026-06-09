@@ -1,0 +1,169 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "rebel_entry"
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				using = outliner_entry_margin
+				spacing = 5
+
+				widget = {
+					size = { 16 16 }
+					using = bg_circle_piechart
+					blockoverride "inside_color" {
+						modify_texture = {
+							using = color_red_texture
+							blend_mode = multiply
+						}
+					}
+		
+					icon = {
+						texture_density = 2
+						size = { 20 20 }
+						parentanchor = center
+						texture = "[GetRebelsIcon(Rebel.Self)]"
+	
+						glow = {
+							name = "drop_shadow"
+							glow_radius = 3
+							color = {0.0 0.0 0.0 1.0}
+							alpha = 0.5
+						}
+					}
+				}
+
+				OutlinerTextBase = {
+					using = layoutpolicy_expanding
+					autoresize = no
+					align = left
+					text = "[Rebel.GetNameWithNoTooltip]"
+					default_format = "#L"
+				}
+
+				icon = {
+					visible = "[And(Not(Rebel.IsTiny('(bool)no')), Not(Rebel.WantsCivilWar))]"
+					size = { 16 16 }
+					texture = "[GetConceptTexture('war')]"
+				}
+				icon = {
+					visible = "[And(Not(Rebel.IsTiny('(bool)no')), Rebel.WantsCivilWar)]"
+					size = { 16 16 }
+					texture = "[GetConceptTexture('war')]"
+				}
+
+				OutlinerTextBase = {
+					autoresize = yes
+					raw_text = "[Rebel.GetProgress|-V%2] ([Rebel.GetLastMonthsProgress|-=%2])"
+				}
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			OutlinerTextBase = {
+				size = { 100% 100% }
+				using = outliner_entry_margin
+				autoresize = no
+				align = right
+				text = "[Rebel.GetProgress|-V%2] ([Rebel.GetLastMonthsProgress|-=%2])"
+			}
+		}
+	}
+
+	blockoverride "icon_content" {
+		OutlinerIconBg = {
+			widget = {
+				size = { 100% 100% }
+				alwaystransparent = yes
+				ignore_layout = yes
+				background = {
+					texture = "gfx/interface/buttons/checkbox_bg_round.dds"
+					texture_density = 2
+					using = button_outliner_effect
+				}
+
+				widget = {
+					size = {100% 100%}
+					ignore_layout = yes
+					alwaystransparent = yes
+					using = circular_wood_frame
+				}
+			}
+			piechart = {
+				parentanchor = center
+				size = { 80% 80% }
+				using = piechart_angles
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[FixedPointToFloat(Rebel.GetProgress)]"
+					color = { 0.9 0.02 0.01 1 }
+					alwaystransparent = yes
+				}
+
+				pieslice_no_highlight = {
+					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+					value = "[Subtract_float('(float)1.0', FixedPointToFloat(Rebel.GetProgress))]"
+					color = { 0.0 0.1 0.1 1 }
+					alwaystransparent = yes
+				}
+			}
+			widget = {
+				parentanchor = center
+				size = { 16 16 }
+				using = bg_circle_piechart
+				blockoverride "inside_color" {
+					modify_texture = {
+						using = color_red_texture
+						blend_mode = multiply
+					}
+				}
+	
+				icon = {
+					texture_density = 2
+					size = { 17 17 }
+					parentanchor = center
+					texture = "[GetRebelsIcon(Rebel.Self)]"
+
+					glow = {
+						name = "drop_shadow"
+						glow_radius = 3
+						color = {0.0 0.0 0.0 1.0}
+						alpha = 0.5
+					}
+				}
+			}
+		}
+	}
+
+	blockoverride "button_setup" {
+		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightRebel(Rebel.Self)]"
+		tooltipwidget = {
+			using = Rebel_tooltip
+		}
+		action_tooltip = {
+			click_type = left
+			click_mode = single
+			title = "OUTLINER_ITEM_SOCIETY_REBELS_TOOLTIP"
+			on_action = "[ShowRebel(Rebel.Self)]"
+		}
+		action_tooltip = {
+			click_type = right
+			click_mode = single
+			title = "OUTLINER_ITEM_SOCIETY_REBELS_LIST_TOOLTIP"
+			on_action = "[OpenLateralViewWithParams('country_people', 'subtab = rebels')]"
+		}
+	}
+
+	blockoverride "category_color" {
+		using = color_military_texture
+	}
+}

@@ -1,0 +1,4 @@
+# vanilla: in_game/gui/ingame_topbar.gui
+# mod: in_game/gui/ingame_topbar.gui
+
+@alerts_height = 90

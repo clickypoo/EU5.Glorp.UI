@@ -1,0 +1,35 @@
+# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "country_category_entry"
+
+	blockoverride "expanded_big_content"  { 
+		using = category_big_template 
+		blockoverride "category_icon_texture" {
+			texture = "[GetConceptTexture('country')]"
+			texture_density = 2
+
+		} 
+	}
+	blockoverride "expanded_small_content" { 
+		using = category_small_template 
+		blockoverride "small_category_icon_texture" {
+			texture = "[GetConceptTexture('country')]"
+			texture_density = 2
+		} 
+	}
+	blockoverride "icon_content" { using = category_icon_template }
+
+	blockoverride "button_setup" {
+		tooltipwidget = { BasicFunctionalTooltip = {} }
+		action_tooltip = {
+			title = "[SelectLocalization(OutlinerCategoryEntry.IsOpened, 'CLOSE_CATEGORY', 'EXPAND_CATEGORY')]"
+			on_action = "[OutlinerCategoryEntry.Toggle]"
+		}
+	}
+
+	blockoverride "category_color" {
+		using = color_government_texture
+	}
+}
