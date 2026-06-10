@@ -65,6 +65,7 @@ VANILLA_FILES = [
 	"map_markers.gui",
 	"multiplayer_chat.gui",
 	"outliner_entries.gui",
+	"production_lateralview.gui",
 	"recruit_location_lateralview.gui",
 	"single_unit_window.gui"
 ]
