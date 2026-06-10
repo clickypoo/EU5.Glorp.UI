@@ -1977,9 +1977,7 @@ types GlorpUIBuildings {
 								size = {80 25}
 								hbox = {
 									# GlorpUI: Construction Manager mass auto-expand button
-									cm_mass_auto_expand_button_pl = {
-										visible = "[And(BuildingItem.HasBuildings, BuildingItem.GetBuildingType.IsMultipleLevels)]"
-									}
+									cm_mass_auto_expand_button_pl = {}
 
 									button_square_checkbox = {
 										# GlorpUI: hidden when Construction Manager is active
