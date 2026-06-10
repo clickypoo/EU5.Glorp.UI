@@ -1,4 +1,4 @@
-﻿template DHEEvent_tooltip {
+﻿template DHEEvent_tooltip { # GlorpUI: rebuilt on the DHETooltip types
 
 	DHETooltip = {
 		using = bg_age_event_frame

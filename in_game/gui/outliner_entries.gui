@@ -1722,7 +1722,7 @@ OutlinerEntryBase = {
 				spacing = 5
 
 				icon = {
-					size = { 24 24 }
+					size = { 24 24 } # GlorpUI: 20->24
 					texture = "[GetGoodsIcon(Goods.Self)]"
 				}
 
@@ -1742,7 +1742,7 @@ OutlinerEntryBase = {
 
 				OutlinerTextBase = {
 					using = layoutpolicy_expanding
-					size = { 65 20 }
+					size = { 65 20 } # GlorpUI: added
 					autoresize = no
 					align = left
 					text = "[Goods.GetNameWithNoTooltip]"
@@ -2921,24 +2921,24 @@ OutlinerEntryBase = {
 
 				OutlinerTextBase = {
 					align = left
-					maximumsize = { 160 24 }
-					minimumsize = { 70 24 }
+					maximumsize = { 160 24 } # GlorpUI: 20->24
+					minimumsize = { 70 24 } # GlorpUI: 20->24
 					raw_text = "[Unit.GetVisualStrength]@army_strength!"
                     fontsize = 14
 				}
 
 				widget = {
-					size = { 20 20 }
+					size = { 20 20 } # GlorpUI: 18->20
 					icon = {
-						size = { 20 20 }
+						size = { 20 20 } # GlorpUI: 18->20
 						texture = "[Unit.GetStatusTexture]"
 					}
 				}
 
 				widget = {
-					size = { 20 20 }
+					size = { 20 20 } # GlorpUI: 18->20
 					icon = {
-						size = { 20 20 }
+						size = { 20 20 } # GlorpUI: 18->20
 						texture = "gfx/interface/icons/unit_view/atrittion_icon.dds"
 						visible = "[GreaterThan_CFixedPoint(Unit.GetAttrition, '(CFixedPoint)0')]"
 						glow = {
@@ -2967,10 +2967,10 @@ OutlinerEntryBase = {
 				}
 
 				widget = {
-					size = { 20 20 }
+					size = { 20 20 } # GlorpUI: 18->20
 					icon = {
 						visible = "[Unit.IsAutomated]"
-						size = { 20 20 }
+						size = { 20 20 } # GlorpUI: 18->20
 						texture = "[GetMilitaryObjectiveIcon(Unit.GetObjectiveGroup.GetObjective.GetType)]"
 						texture_density = 2
 					}
@@ -3679,7 +3679,7 @@ OutlinerEntryBase = {
 				alwaystransparent = yes
 				parentanchor = center
 				allow_outside = yes
-				size = { 90% 90% }
+				size = { 90% 90% } # GlorpUI: 80%->90%
 
 				using = piechart_angles
 
@@ -3700,7 +3700,7 @@ OutlinerEntryBase = {
 
 			icon = {
 				parentanchor = center
-				size = { 66% 66% }
+				size = { 66% 66% } # GlorpUI: 60%->66%
 				texture = "gfx/interface/icons/flat_icons/reforms.dds"
 			}
 		}
@@ -3801,7 +3801,7 @@ OutlinerEntryBase = {
 				alwaystransparent = yes
 				parentanchor = center
 				allow_outside = yes
-				size = { 90% 90% }
+				size = { 90% 90% } # GlorpUI: 80%->90%
 
 				using = piechart_angles
 
@@ -3820,7 +3820,7 @@ OutlinerEntryBase = {
 
 			icon = {
 				parentanchor = center
-				size = { 66% 66% }
+				size = { 66% 66% } # GlorpUI: 60%->66%
 				texture = "gfx/interface/icons/situations/_default.dds"
 				texture_density = 2
 			}
@@ -3869,7 +3869,7 @@ template cabinet_entry_icon_empty {
 		visible = "[Cabinet.IsActive]"
 		icon = {
 			parentanchor = center
-			size = { 70% 70% }
+			size = { 70% 70% } # GlorpUI: 63%->70%
 			texture = "[GetCabinetActionIcon(Cabinet.GetAction)]"
 			glow = {
 				name = "drop_shadow"
@@ -3892,7 +3892,7 @@ template cabinet_entry_icon {
 		# }
 		icon = {
 			parentanchor = center
-			size = { 70% 70% }
+			size = { 70% 70% } # GlorpUI: 63%->70%
 			block "cabinet_entry_icon_texture" {}
 			glow = {
 				name = "drop_shadow"
@@ -4300,7 +4300,7 @@ OutlinerEntryBase = {
 		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
-				size = { 90% 90% }
+				size = { 90% 90% } # GlorpUI: 80%->90%
 				using = piechart_angles
 
 				pieslice_no_highlight = {
@@ -5639,7 +5639,7 @@ OutlinerEntryBase = {
 				icon = {
 					visible = "[And(Not(GreaterThan_CFixedPoint(Market.GetCountryPopulation(Player.Self),'(CFixedPoint)0')),
 						GreaterThan_CFixedPoint(Market.GetTotalMerchantCapacity(Player.Self),'(CFixedPoint)0'))]"
-					size = { 22 22 }
+					size = { 22 22 } # GlorpUI: 18->22
 					texture = "[GetConceptTexture('trading_market')]"
 					glow = {
 						name = "drop_shadow"
@@ -5911,7 +5911,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 				icon = {
-					size = { 22 22 }
+					size = { 22 22 } # GlorpUI: 20->22
 					texture = "[GetConstructionIcon(Construction.Self)]"
 					texture_density = 2
 				}
@@ -6102,7 +6102,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 				icon = {
-					size = { 30 30 }
+					size = { 30 30 } # GlorpUI: 20->30
 					texture = "[GetEstateIcon(Construction.GetEstateType)]"
 					texture_density = 2
 				}
@@ -6113,7 +6113,7 @@ OutlinerEntryBase = {
 					align = left
 					using = OnlyVisibleWhenOneInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip]"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 				OutlinerTextBase = {
 					layoutpolicy_horizontal = expanding
@@ -6121,13 +6121,13 @@ OutlinerEntryBase = {
 					align = left
 					using = OnlyVisibleWhenMultipleInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip] #L (+[Subtract_int32(Construction.CountAllInLocation, '(int32)1')]) #!"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 
 				OutlinerTextBase = {
 					autoresize = yes
 					text = "CONSTRUCTION_DURATION_DAYS"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 			}
 		}
@@ -6272,7 +6272,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 				icon = {
-					size = { 30 30 }
+					size = { 30 30 } # GlorpUI: 20->30
 					texture = "[GetConstructionIcon(Construction.Self)]"
 					texture_density = 2
 					glow = {
@@ -6303,13 +6303,13 @@ OutlinerEntryBase = {
 					visible = "[Not(Construction.IsStalled)]"
 					autoresize = yes
 					text = "CONSTRUCTION_DURATION_DAYS"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 				OutlinerTextBase = {
 					visible = "[Construction.IsStalled]"
 					autoresize = yes
 					text = "CONSTRUCTION_INFO_STALLED"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 			}
 		}
@@ -6456,7 +6456,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 				icon = {
-					size = { 30 30 }
+					size = { 30 30 } # GlorpUI: 20->30
 					texture = "[GetConstructionIcon(Construction.Self)]"
 					texture_density = 2
 				}
@@ -6482,14 +6482,14 @@ OutlinerEntryBase = {
 					visible = "[Not(Construction.IsStalled)]"
 					autoresize = yes
 					text = "CONSTRUCTION_DURATION_DAYS"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 
 				OutlinerTextBase = {
 					visible = "[Construction.IsStalled]"
 					autoresize = yes
 					text = "CONSTRUCTION_INFO_STALLED"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 			}
 		}
@@ -6636,7 +6636,7 @@ OutlinerEntryBase = {
 				spacing = 5
 
 				widget = {
-					size = { 20 20 }
+					size = { 20 20 } # GlorpUI: 16->20
 					using = bg_circle_piechart
 					blockoverride "inside_color" {
 						modify_texture = {
@@ -6665,7 +6665,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					text = "[Rebel.GetNameWithNoTooltip]"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: default_format #L -> fontsize 14
 				}
 
 				icon = {
@@ -6682,7 +6682,7 @@ OutlinerEntryBase = {
 				OutlinerTextBase = {
 					autoresize = yes
 					raw_text = "[Rebel.GetProgress|-V%2] ([Rebel.GetLastMonthsProgress|-=%2])"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 			}
 		}
@@ -6753,7 +6753,7 @@ OutlinerEntryBase = {
 
 				icon = {
 					texture_density = 2
-					size = { 20 20 }
+					size = { 20 20 } # GlorpUI: 17->20
 					parentanchor = center
 					texture = "[GetRebelsIcon(Rebel.Self)]"
 
@@ -6846,9 +6846,9 @@ OutlinerEntryBase = {
 
 	blockoverride "icon_content" {
 		using = diplomacy_icon_content
-		# Autonomous Diplomats auto-cancel widget
+		# GlorpUI: Autonomous Diplomats auto-cancel widget
 		atd_outliner_auto_cancel_widget = {}
-		# Autonomous Diplomats sync widget
+		# GlorpUI: Autonomous Diplomats sync widget
 		atd_outliner_sync_widget = {}
 	}
 
@@ -7090,7 +7090,7 @@ OutlinerEntryBase = {
 					align = left
 					raw_text = "@province! [ColonialCharter.GetProvinceDefinition.GetNameWithNoTooltip]"
 					default_format = "#yellow_titles"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 
 				hbox = {
@@ -7101,14 +7101,14 @@ OutlinerEntryBase = {
 						maximumsize = { 65 -1 }
 						autoresize = yes
 						raw_text = "[ColonialCharter.GetMonthlyMigration]@population!"
-                        fontsize = 14
+                        fontsize = 14 # GlorpUI: added
 					}
 					OutlinerTextBase = {
 						minimumsize = { 65 -1 }
 						maximumsize = { 65 -1 }
 						autoresize = yes
 						raw_text = "[ColonialCharter.GetProgress|2]%"
-                        fontsize = 14
+                        fontsize = 14 # GlorpUI: added
 					}
 				}
 
@@ -7232,13 +7232,13 @@ OutlinerEntryBase = {
 				}
 
 				icon = {
-					size = { 28 28 }
+					size = { 28 28 } # GlorpUI: 20->28
 					visible = "[Exploration.GetArea.IsNaval]"
 					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_sea.dds"
 				}
 
 				icon = {
-					size = { 28 28 }
+					size = { 28 28 } # GlorpUI: 20->28
 					visible = "[Not(Exploration.GetArea.IsNaval)]"
 					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_land.dds"
 				}
@@ -7248,7 +7248,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					raw_text = "[Exploration.GetArea.GetNameWithNoTooltip] ([Exploration.GetArea.GetRegion.GetNameWithNoTooltip])"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: default_format #L -> fontsize 14
 				}
 
 				OutlinerTextBase = {
@@ -7279,7 +7279,7 @@ OutlinerEntryBase = {
 		OutlinerIconBg = {
 			piechart = {
 				parentanchor = center
-				size = { 85% 85% }
+				size = { 85% 85% } # GlorpUI: 80%->85%
 
 				using = piechart_angles
 				using = bg_circle_piechart
@@ -7352,13 +7352,13 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					text = "[Privateer.GetArea.GetNameWithNoTooltip]"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 
 				OutlinerTextBase = {
 					autoresize = yes
 					raw_text = "[Privateer.GetPowerChange|+=%]"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 			}
 		}
@@ -7456,7 +7456,7 @@ OutlinerEntryBase = {
 				autoresize = no
 				align = right
 				raw_text = "-"
-                fontsize = 14
+                fontsize = 14 # GlorpUI: added
 			}
 		}
 	}
@@ -7538,7 +7538,7 @@ template category_big_template {
 			}
 
 			icon = {
-				size = { 30 30 }
+				size = { 30 30 } # GlorpUI: 20->30
 				block "category_icon_texture" { visible = no }
 				glow = {
 					name = "drop_shadow"
@@ -7688,7 +7688,7 @@ template category_small_template {
 			}
 
 			icon = {
-				size = { 28 28 }
+				size = { 28 28 } # GlorpUI: 20->28
 				glow = {
 					name = "drop_shadow"
 					glow_radius = 3

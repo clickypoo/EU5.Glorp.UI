@@ -59,7 +59,7 @@
 					}
 				}
 
-				# Glorp UI - Zoom To
+				# GlorpUI: Zoom To
 				zoom_to_button = {
 					blockoverride "onclick_action" {
 						onclick = "[PanToLocation(InternationalOrganizationsView.GetInternationalOrganization.GetLeaderCountry.GetCapital.GetLocation)]"

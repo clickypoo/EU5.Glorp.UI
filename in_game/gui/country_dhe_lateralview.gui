@@ -86,17 +86,17 @@
 					}
 				}
 
-				blockoverride "scroll_list_vbox" {
+				blockoverride "scroll_list_vbox" { # GlorpUI: added
 					# margin = { 10 0 }
 					using = layoutpolicy_expanding
 					using = bg_secondary_inner_notabs_alt
 				}
 
 				blockoverride "scroll_list_content" {
-					using = layoutpolicy_expanding
+					using = layoutpolicy_expanding # GlorpUI: added
 
 					addcolumn = 100%
-					addrow = 55
+					addrow = 55 # GlorpUI: 82->55
 					setitemsizefromcell = yes
 
 					datamodel = "[CountryDHEView.GetEntries]"
@@ -109,10 +109,11 @@
 
 								vbox = {
 									using = layoutpolicy_expanding
+									# GlorpUI: removed bg_paper_card
 
 									widget = {
-										using = bg_age_event_frame
-										size = { -1 40 }
+										using = bg_age_event_frame # GlorpUI: added
+										size = { -1 40 } # GlorpUI: 36->40
 										layoutpolicy_horizontal = expanding
 
 										# Dark shadow strip at bottom of header
@@ -126,8 +127,8 @@
 
 										# Color overlay: green=happened, grey=expired, pink=pending
 										background = {
-											texture = "gfx/interface/colors/mid_green.dds"
-											# alpha = 0.45
+											texture = "gfx/interface/colors/mid_green.dds" # GlorpUI: mid_yellow->mid_green
+											# alpha = 0.45 # GlorpUI: disabled
 											visible = "[DHEEventEntry.IsStatusHasHappened]"
 											modify_texture = {
 												texture = "[GetGraphicalCultureTexture('header_pattern')]"
@@ -148,7 +149,7 @@
 
 										background = {
 											texture = "gfx/interface/colors/greyish.dds"
-											# alpha = 0.45
+											# alpha = 0.45 # GlorpUI: disabled
 											visible = "[DHEEventEntry.IsStatusTimeHasPassed]"
 											modify_texture = {
 												texture = "[GetGraphicalCultureTexture('header_pattern')]"
@@ -167,7 +168,7 @@
 											}
 										}
 
-										background = {
+										background = { # GlorpUI: added
 											visible = "[DHEEventEntry.IsStatusNotYet]"
 											texture = "gfx/interface/colors/black.dds"
 											margin = { 1 1 }
@@ -176,14 +177,14 @@
 											alpha = 0.4
 										}
 										background = {
-											using = color_geopolitics_texture
-											alpha = 0.6
+											using = color_geopolitics_texture # GlorpUI: light_red->geopolitics color
+											alpha = 0.6 # GlorpUI: 0.45->0.6
 											visible = "[DHEEventEntry.IsStatusNotYet]"
 											modify_texture = {
 												texture = "[GetGraphicalCultureTexture('header_pattern')]"
 												texture_density = 2
 												spriteType = corneredtiled
-												blend_mode = overlay
+												blend_mode = overlay # GlorpUI: removed alpha 0.35
 											}
 											modify_texture = {
 												texture = "gfx/interface/component_overlay/cloth_texture.dds"
@@ -202,7 +203,7 @@
 											spacing = 5
 
 											# Title text
-											vbox = {
+											vbox = { # GlorpUI: date row merged into subtitle
 												layoutpolicy_horizontal = expanding
 												text_single = {
 													layoutpolicy_horizontal = expanding
@@ -222,31 +223,31 @@
 
 											# Status icon
 											icon = {
-												size = { 30 30 }
+												size = { 30 30 } # GlorpUI: 25->30
 												texture = "gfx/interface/icons/text_icons/dhe_status_has_happened.dds"
 												visible = "[DHEEventEntry.IsStatusHasHappened]"
 											}
 											icon = {
-												size = { 30 30 }
+												size = { 30 30 } # GlorpUI: 25->30
 												texture = "gfx/interface/icons/text_icons/dhe_status_has_not_happened_yet.dds"
 												visible = "[DHEEventEntry.IsStatusNotYet]"
 											}
 											icon = {
-												size = { 30 30 }
+												size = { 30 30 } # GlorpUI: 25->30
 												texture = "gfx/interface/icons/text_icons/dhe_status_time_has_passed.dds"
 												visible = "[DHEEventEntry.IsStatusTimeHasPassed]"
 											}
 
 											# Trigger result icon
 											icon = {
-												size = { 30 30 }
+												size = { 30 30 } # GlorpUI: 25->30
 												texture = "gfx/interface/icons/text_icons/trigger_yes.dds"
-												visible = "[And(DHEEventEntry.IsTriggerTrue, Not(Or(DHEEventEntry.IsStatusTimeHasPassed, DHEEventEntry.IsStatusHasHappened)))]"
+												visible = "[And(DHEEventEntry.IsTriggerTrue, Not(Or(DHEEventEntry.IsStatusTimeHasPassed, DHEEventEntry.IsStatusHasHappened)))]" # GlorpUI: only while pending
 											}
 											icon = {
-												size = { 30 30 }
+												size = { 30 30 } # GlorpUI: 25->30
 												texture = "gfx/interface/icons/text_icons/trigger_no.dds"
-												visible = "[And(Not(DHEEventEntry.IsTriggerTrue), Not(Or(DHEEventEntry.IsStatusTimeHasPassed, DHEEventEntry.IsStatusHasHappened)))]"
+												visible = "[And(Not(DHEEventEntry.IsTriggerTrue), Not(Or(DHEEventEntry.IsStatusTimeHasPassed, DHEEventEntry.IsStatusHasHappened)))]" # GlorpUI: only while pending
 											}
 										}
 									}

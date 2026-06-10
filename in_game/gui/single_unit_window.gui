@@ -190,7 +190,7 @@
 					}
 				}
 
-				# Glorp UI - Zoom To
+				# GlorpUI: Zoom To
 				zoom_to_button = {
 					position = { -60 7 }
 					blockoverride "onclick_action" {

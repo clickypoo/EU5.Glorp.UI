@@ -321,7 +321,7 @@ organization_religious_theme = {
 																				}
 																			}
 																		}
-																		# Glorp UI - Add Papal Bull Effect
+																		# GlorpUI: Add Papal Bull Effect
 																		TooltipConditionList = {
 																			blockoverride "block_title" {
 																				text = "[UIAction.GetTitle]"

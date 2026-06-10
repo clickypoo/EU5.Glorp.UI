@@ -963,6 +963,7 @@
 			vbox = {
 				using = layoutpolicy_expanding
 
+				# GlorpUI: Mass Recruiting
 				widget = {
 					visible = "[RecruitInLocationLateralView.IsUnitTemplate]"
 					size = { 30 30 }
@@ -976,7 +977,7 @@
 				filtered_sorted_list = {
 					datacontext = "[RecruitInLocationLateralView.GetRecruitSortSearch]"
 
-					blockoverride "subheader_upper_divider" {
+					blockoverride "subheader_upper_divider" { # GlorpUI: Mass Recruiting button
 						hbox = {
 							visible = "[And(Not(RecruitInLocationLateralView.IsUnitTemplate), Not(RecruitInLocationLateralView.IsLevy))]"
 							layoutpolicy_horizontal = expanding

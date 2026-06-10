@@ -25,7 +25,7 @@
 				}
 			}
 		}
-		icon = {
+		icon = { # GlorpUI: added
 			visible = "[EqualTo_string(Character.GetFirstNameWithNoTooltip, 'Glorp')]"
 			texture = "gfx/interface/icons/text_icons/glorp.dds"
 			size = { 25 25 }

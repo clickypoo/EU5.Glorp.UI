@@ -135,7 +135,7 @@
 		tooltipwidget = { BasicFunctionalTooltip = {} }
 	}
 
-	# CMM: Open Menu Button (shown when CMF is active, singleplayer or host)
+	# GlorpUI: CMM menu button when CMF is active, singleplayer or host
 	button_wax = {
 		blockoverride "button_texture" {
 			texture = "gfx/interface/buttons/button_wax_blue.dds"
@@ -151,7 +151,7 @@
 		tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "CMM_PAUSE_MENU_BUTTON_TOOLTIP" } } }
 	}
 
-	# CMM: Open Menu Button (shown when CMF is active, multiplayer non-host)
+	# GlorpUI: CMM menu button when CMF is active, multiplayer non-host
 	button_wax = {
 		blockoverride "button_texture" {
 			texture = "gfx/interface/buttons/button_wax_blue.dds"
@@ -167,7 +167,7 @@
 		tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "CMM_PAUSE_MENU_BUTTON_TOOLTIP" } } }
 	}
 
-	# Glorp UI: Settings Button (shown when CMF is NOT active)
+	# GlorpUI: Settings Button when CMF is not active
 	button_wax = {
 		blockoverride "button_texture" {
 			texture = "gfx/interface/buttons/button_wax_green.dds"

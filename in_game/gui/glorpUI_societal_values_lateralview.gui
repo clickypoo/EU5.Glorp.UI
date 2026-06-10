@@ -254,7 +254,7 @@
 							alpha = 0
 						}
 						# LEFT PRGORESSBAR
-                        vbox = {
+                        vbox = { # GlorpUI: added equilibrium bars
                             layoutpolicy_horizontal = expanding
                             progressbar = {
                                 layoutpolicy_horizontal = expanding
@@ -289,7 +289,7 @@
 						}
 
 						# RIGHT PROGRESSBAR
-                        vbox = {
+                        vbox = { # GlorpUI: added equilibrium bars
                             layoutpolicy_horizontal = expanding
                             progressbar = {
                                 layoutpolicy_horizontal = expanding
@@ -323,7 +323,7 @@
 
 				widget = {
 					size = { 60 20 }
-					position = { 0 -5 }
+					position = { 0 -5 } # GlorpUI: -7->-5
 					parentanchor = hcenter
 
 					background = {
@@ -388,7 +388,7 @@
 						text_single = {
 							autoresize = yes
 							# size = { 40 -1 }
-							fontsize = 13
+							fontsize = 13 # GlorpUI: 12->13
 							align = center|nobaseline
 							text = "[Abs_float(SocietalValueItem.GetDirection)|2]"
 

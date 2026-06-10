@@ -31,7 +31,7 @@
 
 					expand = {}
 
-					icon = {
+					icon = { # GlorpUI: mod logo
 						texture = "gfx/interface/logos/glorpUI_logo.dds"
 						size = { 100 100 }
 					}

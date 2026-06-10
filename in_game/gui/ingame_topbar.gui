@@ -302,7 +302,7 @@ widget = {
 
 			# Regular chat badge (blue, smaller)
 			icon = {
-				# Glorp UI - Chat Notification Sound
+				# GlorpUI: Chat Notification Sound
 				state = {
 					name = _show
 					trigger_on_create = yes
@@ -326,7 +326,7 @@ widget = {
 
 			# DM badge (orange, slightly larger)
 			icon = {
-				# Glorp UI - Chat Notification Sound
+				# GlorpUI: Chat Notification Sound
 				state = {
 					name = _show
 					trigger_on_create = yes
@@ -494,8 +494,8 @@ widget = {
 					set_parent_size_to_minimum = yes
 					allow_outside = yes
 					spacing = 10
-					#bottomtotop = yes
-                    control_groups = { # Glorp UI
+					#bottomtotop = yes # GlorpUI: disabled
+                    control_groups = { # GlorpUI: hidden while the selector is open
                         visible = "[Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))]"
                     }
 					mapmode_current_button = {
@@ -561,7 +561,7 @@ widget = {
 							set_parent_size_to_minimum = yes
 							allow_outside = yes
 							spacing = 10
-							# bottomtotop = yes
+							# bottomtotop = yes # GlorpUI: disabled
                             # appears when open/pinned
 							control_groups = {}
 							mapmode_current_button = {
@@ -581,7 +581,7 @@ widget = {
 
 		blockoverride "post_panel" {
 
-			# Glorp UI - Vanilla Color Legend/Mapmode Icons Buttons
+			# GlorpUI: Color Legend/Mapmode Icons buttons for vanillaMapmodeWidth
 			widget = {
 				size = { 100% 100% }
 				visible_at_creation = no
@@ -624,7 +624,7 @@ widget = {
 				}
 			}
 
-			# Glorp UI - Move Color Legend/Mapmode Icons Buttons
+			# GlorpUI: Move Color Legend/Mapmode Icons Buttons
 			widget = {
 				size = { 100% 100% }
 				visible_at_creation = no
@@ -701,7 +701,7 @@ widget = {
 		}
 	}
 
-	# EnterGameCoA = {
+	# EnterGameCoA = { # GlorpUI: disabled
 	# 	name = "flag_animation"
 	# }
 }

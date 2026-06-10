@@ -181,11 +181,11 @@
 											}
 
 											expand = {}
-											# Glorp UI - Total Modifiers
+											# GlorpUI: Total Modifiers
 											hbox = {
 												margin = { 4 4 }
 												layoutpolicy_horizontal = expanding
-												# Glorp UI - Attacker Total Modifiers
+												# GlorpUI: Attacker Total Modifiers
 												icon = {
 													texture = "gfx/interface/component_tiles/army_banners.dds"
 													texture_density = 2
@@ -236,7 +236,7 @@
 													}
 												}
 												expand = {}
-												# Glorp UI - Defender's Total Modifiers
+												# GlorpUI: Defender Total Modifiers
 												icon = {
 													texture = "gfx/interface/component_tiles/army_banners.dds"
 													texture_density = 2
