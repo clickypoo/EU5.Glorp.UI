@@ -1066,7 +1066,6 @@
 							}
 						}
 					}
-				}
 
 					blockoverride "sort_buttons_filtered_list" {
 
