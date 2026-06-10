@@ -6,3 +6,5 @@
  GLORP_UI_BUILDING_ROI_TT_TAX_ROI: "Zwrot z inwestycji (dochód podatkowy)"
  GLORP_UI_BUILDING_ROI_TT_PROFIT: "Zysk miesięczny"
  GLORP_UI_BUILDING_ROI_TT_PROFIT_ROI: "ROI (całkowity zysk)"
+ GLORP_UI_RGO_ROI_TT_DESC: "Liczba miesięcy potrzebnych do pokrycia kosztów budowy tej rozbudowy."
+ GLORP_UI_RGO_ROI_TT_COST: "Koszt rozbudowy"

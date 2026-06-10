@@ -38,12 +38,12 @@
       "glorpui__mapmodes_bar__general_name": "c910d474dcd724bff83ddedeb06bf1eceaf9fb3af7c76bb282be057f36e6dffa",
       "glorpui__mapmodes_bar_name": "6dae4d083a441d06e5e86d30f044a7b7655f4c495cb6c156e14ffdbf3562bd43",
       "glorpui__roi_metric": "a4579ea328bec685403f2869e40cc4a6df0f02ab8596291043b4fe707453c9be",
-      "glorpui__roi_metric_desc": "dc758637101c24c985acb91f9a15b6612b74d37126150e9d48c20c5af941433e",
+      "glorpui__roi_metric_desc": "9cca3b8f6d655a563ac0b77241441ae9522034009ad1490c20dde618c97aefa2",
       "glorpui__roi_metric_name": "1b4885a522ada09c63f85a5f8e85b57428ad13e57fe761c59d12ca12efbe2fa7",
       "glorpui__roi_metric_option_1_name": "2d42d79edb6d48a7ad48c97202b8e7ea4291b2ba2899110e5c9ba2e07cebfcdd",
       "glorpui__roi_metric_option_2_name": "a93d2e2ba538f5f85194350fe68b95efdf2380d2c94b505ba3ccb9a0d86d5acb",
       "glorpui__roi_unit": "e07f5212dbdcaf46832ab367d70b60631588cb2becbd42c536f672277b13ee0f",
-      "glorpui__roi_unit_desc": "086fb0ad80bab61daac300609d39f27f1913f5c1f19ebc2aa9b6b838aee65631",
+      "glorpui__roi_unit_desc": "ee1c8ae15ba34c078fc703ed3284736c95f21a85fc33bf920d5874683a736789",
       "glorpui__roi_unit_name": "d0a4fd96bc52dc4f9cac7872ab500f9e4df69e8141374ab50e514d966cb1f69c",
       "glorpui__roi_unit_option_1_name": "b68ca0811f132f73edc68e9d3bebb288ef036c1fef8aabe6d2c63a2b6bfa859c",
       "glorpui__roi_unit_option_2_name": "09ca7551b3e906263974f25ca72053311851786e094889ad85e3edcfbc0c237b",
@@ -112,7 +112,9 @@
       "GLORP_UI_BUILDING_ROI_TT_PROFIT_ROI": "743db8c59ea6b60a84faba8b2d606de06adc6a46f96b16e8a897c6bbb09919e4",
       "GLORP_UI_BUILDING_ROI_TT_TAX_INCOME": "0dd8031cf0ccbf83511da5cac97f9627afa19d7048880ade2972788eeeb82f64",
       "GLORP_UI_BUILDING_ROI_TT_TAX_ROI": "b5d42e071f92e1fb06b96993037fb11c6a96a75f5359acc7b80047a894c4410a",
-      "GLORP_UI_BUILDING_ROI_TT_TITLE": "cef6384ee7340637247179fd205cb5ee04b996e6c7c7d8e12824891851754b66"
+      "GLORP_UI_BUILDING_ROI_TT_TITLE": "cef6384ee7340637247179fd205cb5ee04b996e6c7c7d8e12824891851754b66",
+      "GLORP_UI_RGO_ROI_TT_COST": "371c4bdbe42a0c20438e3702b60edf8c07076bf280462276a4066617dbf86dc2",
+      "GLORP_UI_RGO_ROI_TT_DESC": "bca84f9010c971640e6e69bf204e55972742d408829356287e8dbc1292b8f919"
     }
   },
   "version": 1,

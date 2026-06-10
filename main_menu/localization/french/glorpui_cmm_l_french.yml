@@ -77,7 +77,7 @@
  glorpui__build_panel_name: "Panneau de configuration"
  glorpui__build_panel__general_name: "Généralités"
  glorpui__roi_metric_name: "indicateur de retour sur investissement"
- glorpui__roi_metric_desc: "Quel chiffre de retour sur investissement le panneau de création affiche-t-il par défaut ? Les deux apparaissent toujours dans l'info-bulle."
+ glorpui__roi_metric_desc: "Quel chiffre de retour sur investissement s'affiche par défaut dans les panneaux « Construire » et « Développer » des matières premières ? Les deux apparaissent toujours dans l'info-bulle."
  glorpui__roi_metric_option_1_name: "Recettes fiscales"
  glorpui__roi_metric_option_2_name: "Bénéfice total"
  glorpui__roi_unit_name: "Unité de temps du ROI"

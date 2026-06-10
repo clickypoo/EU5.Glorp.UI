@@ -6,3 +6,5 @@
  GLORP_UI_BUILDING_ROI_TT_TAX_ROI: "Rendement sur investissement (revenu fiscal)"
  GLORP_UI_BUILDING_ROI_TT_PROFIT: "Bénéfice / mois"
  GLORP_UI_BUILDING_ROI_TT_PROFIT_ROI: "ROI (bénéfice total)"
+ GLORP_UI_RGO_ROI_TT_DESC: "Nombre de mois nécessaires pour amortir les coûts de construction de cette extension."
+ GLORP_UI_RGO_ROI_TT_COST: "Coût d'extension"

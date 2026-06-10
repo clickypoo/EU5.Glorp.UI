@@ -6,3 +6,5 @@
  GLORP_UI_BUILDING_ROI_TT_TAX_ROI: "ROI (과세 소득)"
  GLORP_UI_BUILDING_ROI_TT_PROFIT: "월 수익"
  GLORP_UI_BUILDING_ROI_TT_PROFIT_ROI: "ROI (총 이익)"
+ GLORP_UI_RGO_ROI_TT_DESC: "이번 확장 공사의 건설 비용을 회수하는 데 걸린 개월 수."
+ GLORP_UI_RGO_ROI_TT_COST: "확장 비용"

@@ -6,3 +6,5 @@
  GLORP_UI_BUILDING_ROI_TT_TAX_ROI: "ROI (receita tributária)"
  GLORP_UI_BUILDING_ROI_TT_PROFIT: "Lucro / mês"
  GLORP_UI_BUILDING_ROI_TT_PROFIT_ROI: "ROI (lucro total)"
+ GLORP_UI_RGO_ROI_TT_DESC: "Número de meses necessários para recuperar o custo de construção desta ampliação."
+ GLORP_UI_RGO_ROI_TT_COST: "Custo de expansão"

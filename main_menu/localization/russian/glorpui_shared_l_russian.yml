@@ -6,3 +6,5 @@
  GLORP_UI_BUILDING_ROI_TT_TAX_ROI: "Рентабельность инвестиций (налоговая прибыль)"
  GLORP_UI_BUILDING_ROI_TT_PROFIT: "Прибыль в месяц"
  GLORP_UI_BUILDING_ROI_TT_PROFIT_ROI: "Рентабельность инвестиций (общая прибыль)"
+ GLORP_UI_RGO_ROI_TT_DESC: "Количество месяцев, необходимое для окупаемости затрат на строительство в рамках данного расширения."
+ GLORP_UI_RGO_ROI_TT_COST: "Стоимость расширения"

@@ -6,3 +6,5 @@
  GLORP_UI_BUILDING_ROI_TT_TAX_ROI: "ROI (vergi geliri)"
  GLORP_UI_BUILDING_ROI_TT_PROFIT: "Aylık kâr"
  GLORP_UI_BUILDING_ROI_TT_PROFIT_ROI: "ROI (toplam kâr)"
+ GLORP_UI_RGO_ROI_TT_DESC: "Bu genişletmenin inşaat maliyetini karşılamak için gereken süre."
+ GLORP_UI_RGO_ROI_TT_COST: "Genişletme maliyeti"
