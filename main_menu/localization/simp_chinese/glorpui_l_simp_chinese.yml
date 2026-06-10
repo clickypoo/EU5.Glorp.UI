@@ -14,3 +14,5 @@ l_simp_chinese:
  GLORP_UI_AVG_PROXIMITY_DESC: "您在所有自有[proximity|E]中的平均[locations|E]。"
  OPEN_MAPMODE_SETTINGS: "打开地图模式栏设置"
  CLOSE_MAPMODE_SETTINGS: "关闭地图模式栏设置"
+ GLORP_UI_ROI_USE_PROFIT_LABEL: "使用总利润计算投资回报率"
+ GLORP_UI_ROI_USE_MONTHS_LABEL: "以月为单位计算投资回报率"

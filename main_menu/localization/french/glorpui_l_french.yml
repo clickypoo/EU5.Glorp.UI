@@ -14,3 +14,5 @@ l_french:
  GLORP_UI_AVG_PROXIMITY_DESC: "Votre moyenne [proximity|E] sur l'ensemble de vos [locations|E]."
  OPEN_MAPMODE_SETTINGS: "Ouvrir les paramètres de la barre du mode Carte"
  CLOSE_MAPMODE_SETTINGS: "Fermer les paramètres de la barre du mode carte"
+ GLORP_UI_ROI_USE_PROFIT_LABEL: "Utiliser le bénéfice total pour calculer le retour sur investissement"
+ GLORP_UI_ROI_USE_MONTHS_LABEL: "Utilisez les mois pour calculer le retour sur investissement"

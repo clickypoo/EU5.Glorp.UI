@@ -14,3 +14,5 @@ l_japanese:
  GLORP_UI_AVG_PROXIMITY_DESC: "所有するすべての[locations|E]における平均[proximity|E]。"
  OPEN_MAPMODE_SETTINGS: "マップモードバーの設定を開く"
  CLOSE_MAPMODE_SETTINGS: "地図モードバーの設定を閉じる"
+ GLORP_UI_ROI_USE_PROFIT_LABEL: "ROIの計算には総利益を使用する"
+ GLORP_UI_ROI_USE_MONTHS_LABEL: "ROIの計算には月単位を使用する"

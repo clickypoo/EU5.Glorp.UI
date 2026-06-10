@@ -1,0 +1,8 @@
+﻿l_braz_por:
+ GLORP_UI_BUILDING_ROI_TT_TITLE: "Retorno sobre o investimento"
+ GLORP_UI_BUILDING_ROI_TT_DESC: "Número de meses necessários para recuperar o custo de construção deste edifício."
+ GLORP_UI_BUILDING_ROI_TT_COST: "Custo de construção"
+ GLORP_UI_BUILDING_ROI_TT_TAX_INCOME: "Receita tributária / mês"
+ GLORP_UI_BUILDING_ROI_TT_TAX_ROI: "ROI (receita tributária)"
+ GLORP_UI_BUILDING_ROI_TT_PROFIT: "Lucro / mês"
+ GLORP_UI_BUILDING_ROI_TT_PROFIT_ROI: "ROI (lucro total)"

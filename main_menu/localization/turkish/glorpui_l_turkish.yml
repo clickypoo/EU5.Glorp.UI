@@ -14,3 +14,5 @@ l_turkish:
  GLORP_UI_AVG_PROXIMITY_DESC: "Sahip olduğunuz tüm [locations|E] için ortalama [proximity|E] değeri."
  OPEN_MAPMODE_SETTINGS: "Harita Modu Çubuğu Ayarlarını Aç"
  CLOSE_MAPMODE_SETTINGS: "Harita Modu Çubuğu Ayarlarını Kapat"
+ GLORP_UI_ROI_USE_PROFIT_LABEL: "ROI hesaplamasında toplam kârı kullanın"
+ GLORP_UI_ROI_USE_MONTHS_LABEL: "ROI hesaplamasında ayları kullanın"

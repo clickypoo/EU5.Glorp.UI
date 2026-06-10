@@ -3,69 +3,72 @@
 ===WORKSHOP_DESCRIPTION===
 [i]You are on the DeepL-Generated Japanese Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
 
-[img]https://i.ibb.co/DfrcCqPG/image.png[/img]
+[img]https://i.ibb.co/3y8BstFj/image.png[/img]
+
+1.3オープンベータに参加すると、ワークショップが自動的に1.3バージョンに更新されます。ベータ版がインストールされているかどうかを確認するには、MODのバージョンを確認してください。[b]1.3.0.*となっているはずです[/b]
+MODの更新に問題がある場合は、一度MODの購読を解除し、その後再度購読してみてください。Steamが正しいバージョンを再ダウンロードするはずです。
 
 [img]https://i.ibb.co/TMrcJMrf/image.png[/img]
 
 [img]https://i.ibb.co/7x1241bq/image.png[/img]
 
-引用
- [b]Glorp UI[/b]は、[b]Europa Universalis V[/b]のユーザーインターフェイスを改善します。これほどシンプルなものはない。
+[quote]
+ [b]Glorp UI[/b]は、[b]Europa Universalis V[/b]のユーザーインターフェースを改善します。それだけのシンプルなものです。
 
- [b]提案がありますか？下に推薦してください！[/b]
+ [b]ご提案はありますか？ ぜひ以下にご記入ください！[/b]
 
- [h3]カスタマイズ可能[/h3]
- [リスト］
-  [*] [b]ゲーム内の[b]Glorp UIカスタマイズメニュー[/b]を使用して、あなたの経験をカスタマイズする[/b]！あなたの設定は [b]セーブゲームごとに保存されます[/b]。
-  [他のMODの実装をご希望ですか？ロード順を[b]Glorp UI[/b]の後にしてください！
-  [*] [b]Glorp UI[/b]は[b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]コミュニティMODフレームワーク[/url][/b]に完全に統合されています！統一された[b]MODメニュー[/b]から全ての設定を管理できます！
- [/リスト]
+ [h3] カスタマイズ可能 [/h3]
+ [list]
+  [*] ゲーム内の [b]Glorp UI カスタマイズメニュー[/b] を使って、[b]プレイ体験をカスタマイズ[/b]しましょう！ 設定内容は [b]セーブデータごとに[/b] 保存されます。
+  [*] 他のMODを優先して適用したいですか？ロード順で [b]Glorp UIの後に[/b] 配置するだけで、当MODの変更を上書きできます！
+  [*] [b]Glorp UI[/b]は、[b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b]に完全に統合されています！ 統一された [b]Modメニュー[/b] から、すべての設定を管理できます！
+ [/list]
 
- [h3]実装された変更点[/h3]
- [リスト］
-  [*] [b]色分けされたアイコン[/b] - 直感的なナビゲーションと視覚的な美しさのために。
-  [*] [b]No More Leader Portrait[/b] - あなたの美しい国旗のためのより多くのスペース！[b]肖像画をなくす[/b] - 美しい国旗を飾るスペースを増やそう！ [*] [b]肖像画をなくす[/b] - 国旗を飾るスペースを増やそう！ [*] [b]肖像画をなくす
-  [*][b]静止旗オプション[/b] - EU4の静止旗が好きですか？それは今オプションです！額縁付きと額縁なしのオプションがあります。
-  [*] [b]カスタマイズ可能マップモードバー[/b] - マップモードバーの高さ/幅をカスタマイズできます。また、[b]Current Mapmode[/b]ボタンも邪魔にならない位置にあります。'Political'マップモードは選択時に表示されなくなりました(Terrainと同じ)。
-  [*][b]カラーマップモード・ボタン[/b] - より使いやすくするために、マップモード・ボタンにカテゴリに応じた色合いを追加しました！
-  [*] [b]マップモードカテゴリーリストのデザイン変更[/b] - バニラのマップモードカテゴリーリストのデザインを変更しました。
-  [*] [b]カントリースタッツパネル[/b] - トグル可能なカントリースタッツパネルです！
-  [*] [b]Visible Societal Values Equilibrium[/b] - それぞれの社会的価値の最大値を示す新しいバーがあります。
-  [*] [b]切り替え可能なトップバー統計[/b] - 個人的な好みに合わせてトップバー統計を有効/無効にできます！動的な戦争統計は自動的にあなたのマンパワー、船員、戦争消耗を非表示/表示します！
-  [*][b]イベントビューアの再設計[/b] - シンプルなイベントビューアを再設計しました！
-  [*][b]改良された建物ビュー[/b] - 建物を建てる際に、その場所の[b]建築限界[/b]、[b]RGO[/b]、[b]コントロール[/b]を見ることができます！砦の[b]Terrain Impact[/b]を含みます！ロケーションのランクアイコンをクリックすることで、入植地をアップグレード/ダウングレードできます！
-  [*][b]改良された外交ツールチップ[/b] - 国の上にカーソルを置くと、[b]現在選択されている国との関係[/b]が表示されます。また、属国の上にカーソルを置くと、より関連性の高い情報が表示されます。戦争中、その国の現在の兵力が表示されます。
-  [*] [b]改善された地方のツールチップ[/b] - RGOと川/沿岸のアイコンを地方のツールチップの位置リストに追加しました。
-  [*] [b]Improved Papal Bull Tooltip[/b] - 投票ボタンのツールチップに教皇の雄牛のエフェクトを追加しました。
-  [*] [b]Zoom To Location[/b] - [b]国の首都[/b]、[b]軍隊の位置[/b]、[b]選択された位置[/b]、または[b]国際機関の首都[/b]の位置にパンします！[b](Zを押すだけ！)[/b]。
-  [*][b]ロケーションビューのマップモード[/b] - ロケーションビューの情報アイコンにカーソルを合わせると、関連するマップモードが表示されます。
-  [*] [b]Build RGO from Raw Goods Viewer[/b] - 原材料マップモードのRGOマップアイコンをクリックするだけで、RGOビルドメニューが開きます。
-  [*] [b]複合地形影響[/b] - 戦闘中に複合地形影響修正を表示するバナーを追加しました。
-  [*] [b]Flashbang Be Gone[/b] - ゲームに入るたびに閃光弾のイントロアニメーションを削除。
-  [*] [b]デバッグモードの有効化[/b] - [b]Glorp UIカスタマイズメニュー[/b]を使用して、[b]デバッグモード[/b]を有効にします！
-  [*] [b]Miscellaneous Improvements[/b] - アラートバナーのアイコンが大きくなりました。アウトライナーのカテゴリーアイコンが大きくなりました。
- [リスト］
+ [h3] 実装された変更点 [/h3]
+ [list]
+  [*] [b]色分けされたアイコン[/b] - 直感的なナビゲーションと洗練されたビジュアルを実現
+  [*] [b]リーダーの肖像画を非表示[/b] - 美しい旗を表示するスペースを拡大！紋章から王朝や統治者にアクセス可能！
+  [*] [b]静的旗オプション[/b] - EU4のような静的な旗がお好みですか？ それがオプションになりました！枠ありと枠なしのオプションが利用可能です。
+  [*] [b]カスタマイズ可能なマップモードバー[/b] - マップモードバーの高さ・幅をカスタマイズできます。[b]現在のマップモード[/b]ボタンも、より目立たない位置に移動しました。「政治」マップモードを選択しても、表示されなくなりました（地形モードと同様）。
+  [*] [b]色分けされたマップモードボタン[/b] - カテゴリに応じてマップモードボタンに色分けを施し、使いやすさを大幅に向上させました！
+  [*] [b]マップモードカテゴリリストの再設計[/b] - 標準のマップモードカテゴリリストを再設計しました。
+  [*] [b]国別統計パネル[/b] - 表示/非表示を切り替え可能な国別統計パネル - 国全体の情報を一目で確認できます！
+  [*] [b]社会価値の均衡表示[/b] - 各社会価値の最大値を示す新しいバーが追加されました
+  [*] [b]トップバー統計の表示/非表示[/b] - 好みに合わせてトップバー統計の表示/非表示を切り替えられます！ 動的な戦争統計により、兵力、水兵、戦争疲労度が自動的に表示・非表示されます！
+  [*] [b]イベントビューアーの再設計[/b] - シンプルなイベントビューアーを再設計しました！
+  [*] [b]建造ビューの改善[/b] - 建設時に、その場所の[b]建造制限[/b]、[b]RGO[/b]、[b]支配度[/b]を確認できます！要塞には[b]地形の影響[/b]も表示されます！場所のランクアイコンをクリックして、集落をアップグレードまたはダウングレードできます！
+  [*] [b]投資回収率[/b] - 建物を建設する際、その建物の建設費用が回収されるまでの期間を示す新しい「投資回収率」ステータスを表示します！
+  [*] [b]州のツールチップの改善[/b] - 州のツールチップの場所リストに、RGOおよび河川/沿岸のアイコンを追加しました
+  [*] [b]教皇勅書のツールチップ改善[/b] - 投票ボタンのツールチップに教皇勅書の効果を追加し、ユーザーが999段階ものツールチップを掘り下げる手間を省きました
+  [*] [b]位置へズーム[/b] - [b]国の首都[/b]、[b]軍隊の配置場所[/b]、[b]選択した場所[/b]、または [b]国際機関の首都[/b]の位置へズーム！ [b](「Z」キーを押すだけ！)[/b]
+  [*] [b]場所ビューのマップモード[/b] - 場所ビューの情報アイコンにカーソルを合わせると、関連するマップモードが表示されます。
+  [*] [b][b]原材料ビューアからRGOを建設[/b] - 原材料マップモードでRGOマップアイコンをクリックするだけで、RGO建設メニューが開きます
+  [*] [b]地形影響の合計[/b] - 戦闘中に地形影響の合計修正値を表示するバナーを追加しました
+  [*] [b]フラッシュバンの排除[/b] - ゲームに参加するたびに表示されていたフラッシュバンのイントロアニメーションを削除しました
+  [*] [b]デバッグモードの有効化[/b] - [b]Glorp UI カスタマイズメニュー[/b]を使用して [b]デバッグモード[/b] を有効にしましょう！
+  [*] [b]その他の改善点[/b] - アラートバナーのアイコンが大きくなりました。アウトライナーのカテゴリアイコンも大きくなりました。
+ [/list]
 
- [h3] おすすめMOD [/h3］
- [リスト］
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] - Glorp UIは完全に[b]Community Mod Framework[/b]のMODメニューに統合されています！
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]ミッドナイトUI[/url][/b] - UIダークモード
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3697317887]Zorange's Mapmode Collection[/url][/b] より多くのマップモードを追加します！
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]自律外交官[/url][/b] EU4から自動外交官システムを復活させます！
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph's Flag Fixes & Additions[/url][/b] - フラグが好きです。
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]アイデアバリエーション2[/url][/b] - EU4スタイルの国家アイデアを追加します！Glorp UI [b]AFTER[/b] このMODをロード順でロードしてください。
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3659626562]コンストラクションマネージャー[/url][/b] - 非常に多くのクリックを節約します（Glorp UIの前/上にロードします）。
- [/リスト］
+ [h3] おすすめのMod [/h3]
+ [list]
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] - Glorp UIは[b]Community Mod Framework[/b]のModメニューに完全に統合されています！
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - UIダークモード
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3697317887]Zorange's Mapmode Collection[/url][/b] マップモードがさらに追加されました！
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Autonomous Diplomats[/url][/b] EU4の自動外交システムを復活させます！
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph's Flag Fixes & Additions[/url][/b] - 私は国旗が好きです...
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - EU4スタイルの国家理念を追加！ ロード順で、このMODの[b]後に[/b]Glorp UIをロードしてください
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3736668860]Construction Manager[/url][/b] - クリック回数を大幅に削減（Glorp UIより前または上にロード）
+ [/list]
 
- [h3]スペシャルサンクス[/h3]。
- [リスト］
-  [*] [b]EU5 Mod Coop[/b] - 彼らなしではこの改造は不可能だった！
-  [*][b]Conner[/b] - 1453年以来、Glorp UIをたった一人で作成し、維持してくれている。
-  [*] [b]Mazutaki[/b] - 国軍のサイズと技術ツリーを手伝ってくれた！
-  [*] [b]Sol_InvictusXLII[/b] - マインスイーパーMODを作ってくれた！
-  [*] [b]ランバート卿[/b] - Glorp UI最大の宣伝マン！
-  [*] [b]あなた[/b] - ダウンロードしてくれた人。
- [リスト］
+ [h3] 特別感謝 [/h3]
+ [list]
+  [*] [b]EU5 Mod Coop[/b] - 彼らなしではこのMODは実現できませんでした！
+  [*] [b]Conner[/b] - 1453年から（冗談ではなく、本当に）独力でGlorp UIを作成・維持してくれている
+  [*] [b]Mazutaki[/b] - 各国の軍隊規模と技術ツリーの作成に協力してくれた！
+  [*] [b]Sol_InvictusXLII[/b] - 開発初期に非常に役立つ学習ツールとなった「マインスイーパ・モッド」を作成してくれたことに感謝！
+  [*] [b]Lord Lambert[/b] - Glorp UIの最高の盛り上げ役として！
+  [*] [b]あなた[/b] - ダウンロードしてくださったこと
+ [/list]
 [/quote]
 
 [img]https://i.ibb.co/SDH11h1C/Glorp.png[/img]

@@ -14,3 +14,5 @@ l_polish:
  GLORP_UI_AVG_PROXIMITY_DESC: "Średnia wartość [proximity|E] dla wszystkich posiadanych [locations|E]."
  OPEN_MAPMODE_SETTINGS: "Otwórz ustawienia paska trybu mapy"
  CLOSE_MAPMODE_SETTINGS: "Zamknij pasek trybu mapy Ustawienia"
+ GLORP_UI_ROI_USE_PROFIT_LABEL: "W obliczeniach zwrotu z inwestycji (ROI) należy uwzględnić całkowity zysk"
+ GLORP_UI_ROI_USE_MONTHS_LABEL: "W przypadku zwrotu z inwestycji (ROI) należy posługiwać się miesiącami"

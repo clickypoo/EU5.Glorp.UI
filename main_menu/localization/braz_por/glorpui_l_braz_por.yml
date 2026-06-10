@@ -14,3 +14,5 @@ l_braz_por:
  GLORP_UI_AVG_PROXIMITY_DESC: "Sua média [proximity|E] em todos os [locations|E] de sua propriedade."
  OPEN_MAPMODE_SETTINGS: "Abrir as configurações da barra do modo mapa"
  CLOSE_MAPMODE_SETTINGS: "Fechar as configurações da barra do modo mapa"
+ GLORP_UI_ROI_USE_PROFIT_LABEL: "Use o lucro total para calcular o ROI"
+ GLORP_UI_ROI_USE_MONTHS_LABEL: "Use meses para calcular o ROI"
