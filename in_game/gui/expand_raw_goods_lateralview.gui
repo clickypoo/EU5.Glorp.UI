@@ -1205,40 +1205,73 @@ template build_rgo_entry {
 
 							}
 							widget = {
-								size = { 50 30 } # GlorpUI: 60->50
+								size = { 50 36 } # GlorpUI: {60 30} -> {50 36}
 								datacontext = "[Location.GetMarket]"
 								datacontext = "[Location.GetMarket.GetMarketEntry(Location.GetRawMaterial)]"
 								tooltipwidget = {
 									using = goods_market_price_tooltip
 								}
-								hbox = {
+								vbox = {
 									layoutpolicy_horizontal = expanding
-									expand = {}
-									text_single = {
-										maximumsize = { 40 18 }
-										align = nobaseline|right
-										fontsize = 14
-										raw_text = "[Location.GetMarket.GetPrice(Location.GetRawMaterial)|2]"
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										expand = {}
+										text_single = {
+											maximumsize = { 40 18 }
+											align = nobaseline|right
+											fontsize = 14
+											raw_text = "[Location.GetMarket.GetPrice(Location.GetRawMaterial)|2]"
 
-										sort_by_highlight = {
-											size = { 105% 100% }
-											name = "market_price"
+											sort_by_highlight = {
+												size = { 105% 100% }
+												name = "market_price"
+											}
 										}
+
+										text_single = {
+
+											maximumsize = { 20 18 }
+											align = nobaseline|center
+											fontsize = 14
+											raw_text = "@[Location.GetRawMaterial.GetPriceDifferenceIconName(Location.GetMarket.GetPrice(Location.GetRawMaterial))]!"
+
+											sort_by_highlight = {
+												size = { 105% 100% }
+												name = "market_price_diff"
+											}
+										}
+
 									}
 
-									text_single = {
-
-										maximumsize = { 20 18 }
-										align = nobaseline|center
-										fontsize = 14
-										raw_text = "@[Location.GetRawMaterial.GetPriceDifferenceIconName(Location.GetMarket.GetPrice(Location.GetRawMaterial))]!"
-
-										sort_by_highlight = {
-											size = { 105% 100% }
-											name = "market_price_diff"
+									hbox = {
+										# GlorpUI: expand RGO ROI
+										layoutpolicy_horizontal = expanding
+										expand = {}
+										text_single = {
+											size = { 50 18 }
+											autoresize = no
+											align = nobaseline|right
+											fontsize = 13
+											default_format = "#color_green"
+											visible = "[And3(GreaterThan_CFixedPoint(GuiScope.AddScope('location', Location.MakeScope).AddScope('country', Player.MakeScope).ScriptValue('glorpui_rgo_expand_cost'), '(CFixedPoint)0'), GreaterThan_CFixedPoint(Select_CFixedPoint(Player.MakeScope.GetVariable('roiUseProfit').IsSet, RawGoodLocationItem.GetProfitPerLevel, RawGoodLocationItem.GetIncomePerLevel), '(CFixedPoint)0'), Player.MakeScope.GetVariable('roiUseMonths').IsSet)]"
+											raw_text = "[Divide_CFixedPoint(GuiScope.AddScope('location', Location.MakeScope).AddScope('country', Player.MakeScope).ScriptValue('glorpui_rgo_expand_cost'), Select_CFixedPoint(Player.MakeScope.GetVariable('roiUseProfit').IsSet, RawGoodLocationItem.GetProfitPerLevel, RawGoodLocationItem.GetIncomePerLevel))|0]m @efficiency!"
+											tooltipwidget = {
+												using = glorpUI_rgo_roi_tooltip
+											}
+										}
+										text_single = {
+											size = { 50 18 }
+											autoresize = no
+											align = nobaseline|right
+											fontsize = 13
+											default_format = "#color_green"
+											visible = "[And3(GreaterThan_CFixedPoint(GuiScope.AddScope('location', Location.MakeScope).AddScope('country', Player.MakeScope).ScriptValue('glorpui_rgo_expand_cost'), '(CFixedPoint)0'), GreaterThan_CFixedPoint(Select_CFixedPoint(Player.MakeScope.GetVariable('roiUseProfit').IsSet, RawGoodLocationItem.GetProfitPerLevel, RawGoodLocationItem.GetIncomePerLevel), '(CFixedPoint)0'), Not(Player.MakeScope.GetVariable('roiUseMonths').IsSet))]"
+											raw_text = "[Divide_CFixedPoint(Divide_CFixedPoint(GuiScope.AddScope('location', Location.MakeScope).AddScope('country', Player.MakeScope).ScriptValue('glorpui_rgo_expand_cost'), Select_CFixedPoint(Player.MakeScope.GetVariable('roiUseProfit').IsSet, RawGoodLocationItem.GetProfitPerLevel, RawGoodLocationItem.GetIncomePerLevel)), '(CFixedPoint)12')|1]y @efficiency!"
+											tooltipwidget = {
+												using = glorpUI_rgo_roi_tooltip
+											}
 										}
 									}
-
 								}
 							}
 						}
