@@ -186,6 +186,7 @@ widget = {
 		parentanchor = bottom|right
 
 		@error_platypus_y = 0
+		@error_platypus_height = 110
 		position = { @[-right_panel_width - panel_x * 2 - 100 ] @error_platypus_y }
 
 		using = Animation_Show_Hide_UI

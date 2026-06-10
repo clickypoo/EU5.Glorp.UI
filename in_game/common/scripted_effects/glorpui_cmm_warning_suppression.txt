@@ -4,10 +4,13 @@ glorpui_cmf_suppress = {
 		limit = { always = no }
 		set_variable = { name = cmf_callback value = flag:glorpui__useVanillaPortrait }
 		set_variable = { name = cmf_callback value = flag:glorpui__useStaticFlag }
+		set_variable = { name = cmf_callback value = flag:glorpui__useFramedStaticFlag }
 		set_variable = { name = cmf_callback value = flag:glorpui__useDefaultIconsBGLeftPanel }
 		set_variable = { name = cmf_callback value = flag:glorpui__useDefaultIconsLeftPanel }
 		set_variable = { name = cmf_callback value = flag:glorpui__disableLeftPanelStatsBar }
 		set_variable = { name = cmf_callback value = flag:glorpui__disableColouredMapmodeButtons }
+		set_variable = { name = cmf_callback value = flag:glorpui__vanillaMapmodeWidth }
+		set_variable = { name = cmf_callback value = flag:glorpui__vanillaMapmodeHeight }
 		set_variable = { name = cmf_callback value = flag:glorpui__disableTopBarIncome }
 		set_variable = { name = cmf_callback value = flag:glorpui__disableTopBarStability }
 		set_variable = { name = cmf_callback value = flag:glorpui__disableTopBarPopulation }

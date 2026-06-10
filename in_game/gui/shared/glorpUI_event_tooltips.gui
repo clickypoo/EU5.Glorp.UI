@@ -241,7 +241,7 @@ types GlorpUIEventTypes {
 
 		blockoverride "block_title" {
 			block "block_title" {
-				visible = "[RowList.HasTitle]"
+				visible = "[RowList.GetTitle.IsStringViewNotEmptyOrNull]"
 				text = "[RowList.GetTitle]"
 			}
 		}
