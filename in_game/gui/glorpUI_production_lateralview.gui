@@ -1983,7 +1983,7 @@ types GlorpUIBuildings {
 
 									button_square_checkbox = {
 										# Suppressed in favor of the Construction Manager mass auto-expand button.
-										visible = "[And(BuildingItem.HasBuildings, BuildingItem.GetBuildingType.IsMultipleLevels, Not(GetScriptedGui('glorpui_is_cm_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)))]"
+										visible = "[And3(BuildingItem.HasBuildings, BuildingItem.GetBuildingType.IsMultipleLevels, Not(GetScriptedGui('glorpui_is_cm_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)))]"
 										size = { 20 20 }
 										tooltipwidget = {
 											using = AutoExpand_Building_Tooltip
