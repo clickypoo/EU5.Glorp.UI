@@ -58,6 +58,7 @@ VANILLA_FILES = [
 	"organization/catholic_church.gui",
 	"battle_lateralview.gui",
 	"country_dhe_lateralview.gui",
+	"expand_raw_goods_lateralview.gui",
 	"foreign_country_lateralview.gui",
 	"ingame_topbar.gui",
 	"location_window.gui",
@@ -367,7 +368,7 @@ def process_file(filename, game_gui_dir, mod_types, mod_templates):
         "",
     ]
 
-    output_content = BOM + "\r\n".join(header + extracted) + "\r\n"
+    output_content = BOM + "\n".join(header + extracted) + "\n"
     output_path.write_bytes(output_content.encode("utf-8"))
 
     parts = []
