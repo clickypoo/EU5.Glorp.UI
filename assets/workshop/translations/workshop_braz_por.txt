@@ -1,73 +1,73 @@
 ===WORKSHOP_TITLE===
-IU da Glorp / Glorp UI
+Interface Glorp / Glorp UI
 ===WORKSHOP_DESCRIPTION===
 [i]You are on the DeepL-Generated Portuguese (Brazil) Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
 
 [img]https://i.ibb.co/3y8BstFj/image.png[/img]
 
-Você pode participar do Beta Aberto 1.3 e o Workshop deve atualizar automaticamente para a versão 1.3. Para verificar se você tem a versão Beta instalada, confira a versão do mod. [b]Deve ser 1.3.0.*[/b]
-Se você estiver com dificuldades para atualizar o mod, tente cancelar a assinatura do mod por um minuto e, em seguida, assine-o novamente. O Steam deve baixar novamente a versão correta.
+Você pode optar pela Beta Aberta 1.3 e o Workshop deve atualizar você automaticamente para a versão 1.3. Para ver se você tem a versão Beta instalada, verifique a versão do mod. [b]Deve ser 1.3.0.*[/b]
+Se estiver tendo problemas para atualizar o mod, tente cancelar a inscrição no mod por um minuto e depois inscreva-se novamente. O Steam deve baixar a versão correta novamente.
 
 [img]https://i.ibb.co/TMrcJMrf/image.png[/img]
 
 [img]https://i.ibb.co/7x1241bq/image.png[/img]
 
 [quote]
- [b]Glorp UI[/b] melhora a interface do usuário do [b]Europa Universalis V[/b]. É simples assim.
+ [b]Glorp UI[/b] melhora a Interface de Usuário de [b]Europa Universalis V[/b]. É simples assim.
 
- [b]Tem alguma sugestão? Recomende-a abaixo![/b]
+ [b]Tem uma sugestão? Recomende-a logo abaixo![/b]
 
- [h3] Personalizável [/h3]
+ [h3] Customizável [/h3]
  [list]
-  [*] [b]Personalize sua experiência[/b] usando o [b]Menu de Personalização do Glorp UI[/b] dentro do jogo! Suas preferências serão salvas [b]por jogo salvo[/b].
-  [*] Prefere a implementação de outro mod? Basta colocá-lo [b]depois do Glorp UI[/b] na ordem de carregamento e ele substituirá nossas alterações!
-  [*] [b]Glorp UI[/b] está totalmente integrado ao [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b]! Gerencie todas as nossas configurações a partir do [b]Menu de Mods[/b] unificado!
+  [*] [b]Customize sua experiência[/b] usando o [b]Menu de Customização da Glorp UI[/b] dentro do jogo! Suas preferências serão salvas [b]Por Jogo Salvo (Per Save Game)[/b].
+  [*] Prefere a implementação de outro mod? Simplesmente coloque-o [b]depois da Glorp UI[/b] na ordem de carregamento e ele substituirá nossas alterações!
+  [*] [b]Glorp UI[/b] está totalmente integrada ao [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b]! Gerencie todas as nossas configurações a partir do [b]Menu de Mods[/b] unificado deles!
  [/list]
 
  [h3] Alterações Implementadas [/h3]
  [list]
-  [*] [b]Ícones Codificados por Cor[/b] - Para uma navegação intuitiva e um visual agradável
-  [*] [b]Fim do retrato do líder[/b] - Mais espaço para sua bela bandeira! Navegue até sua dinastia/governante através do brasão!
-  [*] [b]Opção de bandeira estática[/b] - Prefere as bandeiras estáticas do EU4? Agora isso é uma opção! Estão disponíveis as opções com e sem moldura.
-  [*] [b]Barra do modo de mapa personalizável[/b] - Personalize a altura/largura da barra do modo de mapa. O botão [b]Modo de mapa atual[/b] também está em uma posição menos intrusiva.O modo de mapa “Político” não aparece mais quando selecionado (da mesma forma que o modo “Terreno”).
-  [*] [b]Botões coloridos do modo de mapa[/b] - Adicionamos uma tonalidade colorida aos botões do modo de mapa com base em suas categorias para facilitar muito o uso!
-  [*] [b]Lista de categorias do modo de mapa redesenhada[/b] - Redesenhamos a lista padrão de categorias do modo de mapa.
-  [*] [b]Painel de estatísticas do país[/b] - Painel de estatísticas do país ativável/desativável - informações sobre todo o país em um piscar de olhos!
-  [*] [b]Equilíbrio visível dos valores sociais[/b] - Há uma nova barra mostrando o valor máximo de cada um dos seus valores sociais
-  [*] [b]Estatísticas da barra superior ativáveis[/b] - Ative e desative as estatísticas da barra superior conforme sua preferência! As estatísticas dinâmicas de guerra ocultam/exibem automaticamente sua Mão de Obra, Marinheiros e Esgotamento de Guerra!
-  [*] [b]Visualizador de Eventos Redesenhado[/b] - Redesenhamos o visualizador de eventos simplificado!
-  [*] [b]Visualização de Edifícios Aprimorada[/b] - Veja o [b]Limite de Construção[/b], [b]RGO[/b] e [b]Controle[/b] de um Local ao construir! Inclui [b]Impacto do Terreno[/b] para Fortes! Você pode clicar no ícone de Classificação do Local para melhorar ou rebaixar o assentamento!
-  [*] [b]Retorno sobre o Investimento[/b] - Ao construir um edifício, incluímos uma nova estatística de Retorno sobre o Investimento que permite saber quanto tempo levará para o edifício se pagar!
-  [*] [b]Dica de Ferramenta de Províncias Melhorada[/b] - Adicionados ícones de RGOs e de rio/costa à lista de localizações da dica de ferramenta da província
-  [*] [b]Dica de ferramenta da Bula Papal aprimorada[/b] - Adicionado o efeito da Bula Papal à dica de ferramenta do botão de votação para evitar que o usuário precise percorrer 999 dicas de ferramenta
-  [*] [b]Zoom para localização[/b] - Navegue até a localização da [b]Capital de um país[/b], da [b]Localização de um exército[/b], de uma [b]Localização selecionada[/b] ou da [b]Capital de uma Organização Internacional[/b]! [b](Basta pressionar 'Z'!)[/b]
-  [*] [b]Modos de mapa na visualização de localização[/b] - Passar o mouse sobre os ícones de informação na visualização de localização revela o modo de mapa relevante.
-  [*] [b]Construir RGOs a partir do Visualizador de Matérias-Primas[/b] - Basta clicar no ícone do mapa RGO no Modo de Mapa de Matérias-Primas para abrir o menu de Construção de RGO
-  [*] [b]Impacto Combinado do Terreno[/b] - Adicionado um banner mostrando o modificador de impacto combinado do terreno durante uma batalha
-  [*] [b]Adeus, Flashbang[/b] - Removida a animação de introdução do Flashbang sempre que você entra em um jogo
-  [*] [b]Ativar Modo de Depuração[/b] - Use o [b]Menu de Personalização da IU do Glorp[/b] para ativar o [b]Modo de Depuração[/b]!
-  [*] [b]Melhorias diversas[/b] - Os ícones do banner de alerta estão maiores. Os ícones das categorias do Outliner estão maiores.
+  [*] [b]Ícones Codificados por Cores[/b] - Para uma navegação intuitiva e um belo toque visual.
+  [*] [b]Sem mais Retrato de Líder[/b] - Mais espaço para sua bela bandeira! Navegue até sua dinastia/governante através do Brasão de Armas!
+  [*] [b]Opção de Bandeira Estática[/b] - Prefere as bandeiras estáticas do EU4? Agora isso é uma opção! Opções com e sem moldura estão disponíveis.
+  [*] [b]Barra de Modos de Mapa Customizável[/b] - Customize a altura/largura da barra de modos de mapa. O botão de [b]Modo de Mapa Atual[/b] também está em uma posição menos intrusiva. O modo de mapa 'Político' não aparece mais quando selecionado (o mesmo que Terreno).
+  [*] [b]Botões de Modos de Mapa Coloridos[/b] - Adicionada uma coloração aos botões de modo de mapa baseada em sua categoria para um uso muito mais fácil!
+  [*] [b]Lista de Categorias de Modos de Mapa Redesenhada[/b] - Redesenhamos a lista de categorias de modos de mapa original.
+  [*] [b]Painel de Estatísticas do País[/b] - Painel de estatísticas do país alternável - informações de todo o país num relance!
+  [*] [b]Equilíbrio de Valores Sociais Visível[/b] - Há uma nova barra mostrando o valor máximo de cada um de seus valores sociais.
+  [*] [b]Estatísticas da Barra Superior Alternáveis[/b] - Ative e desative as estatísticas da barra superior ao seu gosto pessoal! As estatísticas de Guerra Dinâmicas ocultam/mostram sua Reserva Militar, Marinheiros e Exaustão de Guerra automaticamente!
+  [*] [b]Visualizador de Eventos Redenhado[/b] - Redesenhamos o simplista visualizador de eventos!
+  [*] [b]Visualização de Construção Melhorada[/b] - Veja o [b]Limite de Construção[/b], [b]RGO[/b] e [b]Controle[/b] de um Local ao construir! Inclui [b]Impacto de Terreno[/b] para Fortes! Você pode clicar no Ícone de Classificação do Local para melhorar/rebaixar o assentamento!
+  [*] [b]Retorno sobre o Investimento[/b] - Ao construir um edifício, incluímos uma nova estatística de Retorno sobre o Investimento que informa quanto tempo um edifício levará para se pagar!
+  [*] [b]Tooltip de Províncias Melhorada[/b] - Adicionados RGOs e ícones de Rio/Costa à lista de locais da Tooltip de Província.
+  [*] [b]Tooltip de Bula Papal Melhorada[/b] - Adicionado o efeito da Bula Papal à tooltip do botão de Voto para evitar que o usuário tenha que navegar por 999 tooltips de profundidade.
+  [*] [b]Zoom para o Local[/b] - Vá para a localização da [b]Capital de um País[/b], a [b]Localização de um Exército[/b], um [b]Local Selecionado[/b] ou a [b]Capital de uma Organização Internacional[/b]! [b](Basta pressionar 'Z'!)[/b]
+  [*] [b]Modos de Mapa na Visualização de Local[/b] - Passar o mouse sobre os ícones de informação na visualização de local revela o modo de mapa relevante.
+  [*] [b]Construa RGOs a partir do Visualizador de Matérias-Primas[/b] - Simplesmente clique no ícone de mapa do RGO no Modo de Mapa de Matérias-Primas para abrir o menu de construção de RGO.
+  [*] [b]Impacto de Terreno Combinado[/b] - Adicionado um banner mostrando o modificador de impacto de terreno combinado durante uma batalha.
+  [*] [b]Fim do Flashbang[/b] - Removida a animação de introdução "Flashbang" toda vez que você entra em um jogo.
+  [*] [b]Ativar Modo de Depuração[/b] - Use o [b]Menu de Customização da Glorp UI[/b] para ativar o [b]Modo de Depuração (Debug Mode)[/b]!
+  [*] [b]Melhorias Diversas[/b] - Os ícones dos Banners de Alerta são maiores. Os ícones das categorias do Organizador (Outliner) são maiores.
  [/list]
 
- [h3] Mods recomendados [/h3]
+ [h3] Mods Recomendados [/h3]
  [list]
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] - A interface Glorp está totalmente integrada ao Menu de Mods do [b]Community Mod Framework[/b]!
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - Modo escuro da interface
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3697317887]Coleção de Modos de Mapa do Zorange[/url][/b] Adiciona mais modos de mapa!
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Diplomatas Autônomos[/url][/b] Traz de volta o sistema de diplomatas automatizado do EU4!
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Correções e adições de bandeiras do Zyrph[/url][/b] - Eu gosto de bandeiras...
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - Adiciona Ideias Nacionais no estilo EU4! Carregue a interface do Glorp [b]DEPOIS[/b] deste mod na ordem de carregamento
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3736668860]Construction Manager[/url][/b] - Economiza muitos cliques (carregue antes/acima da interface do Glorp)
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] - Glorp UI está totalmente integrada ao Menu de Mods do [b]Community Mod Framework[/b]!
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - Modo Escuro para a UI.
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3697317887]Zorange's Mapmode Collection[/url][/b] - Adiciona mais modos de mapa!
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Autonomous Diplomats[/url][/b] - Traz de volta o sistema de diplomatas automatizados do EU4!
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph's Flag Fixes & Additions[/url][/b] - Eu gosto de bandeiras...
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - Adiciona Ideias Nacionais no estilo EU4! Carregue a Glorp UI [b]DEPOIS[/b] deste mod na ordem de carregamento.
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3736668860]Construction Manager[/url][/b] - Economiza muitos cliques (carregue antes/acima da Glorp UI).
  [/list]
 
  [h3] Agradecimentos Especiais [/h3]
  [list]
-  [*] [b]EU5 Mod Coop[/b] - Sem eles, este mod não seria possível!
-  [*] [b]Conner[/b] - Por criar e manter sozinho a interface do Glorp desde 1453 (muito real, não é brincadeira)
-  [*] [b]Mazutaki[/b] - Ajuda com os tamanhos dos exércitos dos países e a árvore tecnológica!
-  [*] [b]Sol_InvictusXLII[/b] - Por criar o Mod Minesweeper, que foi uma ferramenta de aprendizagem muito útil no início do desenvolvimento!
+  [*] [b]EU5 Mod Coop[/b] - Sem eles este mod não seria possível!
+  [*] [b]Conner[/b] - Por criar e manter sozinho a Glorp UI desde 1453 (muito real, nada de falso).
+  [*] [b]Mazutaki[/b] - Ajuda com o Tamanho dos Exércitos dos Países e Árvore Tecnológica!
+  [*] [b]Sol_InvictusXLII[/b] - Por criar o Mod Minesweeper, que foi uma ferramenta de aprendizado muito útil no início do desenvolvimento!
   [*] [b]Lord Lambert[/b] - Por ser o maior incentivador da Glorp UI!
-  [*] [b]Você[/b] - Por baixar
+  [*] [b]Você[/b] - Por baixar.
  [/list]
 [/quote]
 

@@ -1,72 +1,72 @@
 ===WORKSHOP_TITLE===
-Glorp Kullanıcı Arayüzü / Glorp UI
+Glorp Arayüzü / Glorp UI
 ===WORKSHOP_DESCRIPTION===
 [i]You are on the DeepL-Generated Turkish Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
 
 [img]https://i.ibb.co/3y8BstFj/image.png[/img]
 
-1.3 Açık Beta sürümüne katılabilirsiniz ve Workshop sizi otomatik olarak 1.3 sürümüne güncellemelidir. Beta sürümünün yüklü olup olmadığını görmek için mod sürümünü kontrol edin. [b]1.3.0.* olması gerekir[/b]
-Modu güncellemede sorun yaşıyorsanız, modun aboneliğini bir dakikalığına iptal edip ardından yeniden abone olun. Steam doğru sürümü yeniden indirmelidir.
+1.3 Açık Beta'sına katılabilirsiniz; Workshop sizi otomatik olarak 1.3 sürümüne güncelleyecektir. Beta sürümünün yüklü olup olmadığını kontrol etmek için mod sürümüne bakın. [b]1.3.0.* olmalıdır.[/b]
+Modu güncellemekte sorun yaşıyorsanız, modu abonelikten çıkarıp bir dakika bekledikten sonra tekrar abone olmayı deneyin. Steam doğru sürümü yeniden indirecektir.
 
 [img]https://i.ibb.co/TMrcJMrf/image.png[/img]
 
 [img]https://i.ibb.co/7x1241bq/image.png[/img]
 
 [quote]
- [b]Glorp UI[/b], [b]Europa Universalis V[/b]'nin kullanıcı arayüzünü iyileştirir. Bu kadar basit.
+ [b]Glorp UI[/b], [b]Europa Universalis V[/b]'in Kullanıcı Arayüzünü iyileştirir. Bu kadar basit.
 
- [b]Öneriniz mi var? Aşağıda paylaşın![/b]
+ [b]Bir öneriniz mi var? Aşağıda belirtebilirsiniz![/b]
 
  [h3] Özelleştirilebilir [/h3]
  [list]
-  [*] Oyun içi [b]Glorp UI Özelleştirme Menüsü[/b]'nü kullanarak [b]deneyiminizi özelleştirin[/b]! Tercihleriniz [b]Oyun Kaydı Başına[/b] kaydedilecektir.
-  [*] Başka bir mod uygulamasını mı tercih ediyorsunuz? Yükleme sırasına [b]Glorp UI'nin arkasına[/b] yerleştirin, bu şekilde bizim değişikliklerimizin yerine geçecektir!
-  [*] [b]Glorp UI[/b], [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] ile tamamen entegre edilmiştir! Tüm ayarlarımızı birleştirilmiş [b]Mod Menüsü[/b]'nden yönetin!
+  [*] Oyun içi [b]Glorp UI Özelleştirme Menüsünü[/b] kullanarak [b]deneyiminizi kişiselleştirin[/b]! Tercihleriniz [b]Kayıtlı Oyun Başına[/b] kaydedilecektir.
+  [*] Başka bir modun uygulamasını mı tercih ediyorsunuz? Yükleme sırasında o modu [b]Glorp UI'dan sonraya[/b] yerleştirmeniz yeterlidir; bu, bizim değişikliklerimizin üzerine yazacaktır!
+  [*] [b]Glorp UI[/b], [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] ile tam entegredir! Tüm ayarlarımızı onların birleşik [b]Mod Menüsü[/b] üzerinden yönetin!
  [/list]
 
  [h3] Uygulanan Değişiklikler [/h3]
  [list]
-  [*] [b]Renk Kodlu Simgeler[/b] - Sezgisel gezinme ve hoş bir görsel hava için
-  [*] [b]Artık Lider Portresi Yok[/b] - Güzel bayrağınız için daha fazla alan! Arma üzerinden hanedanınıza/hükümdarınıza gidin!
-  [*] [b]Statik Bayrak Seçeneği[/b] - EU4'ün statik bayraklarını mı tercih ediyorsunuz? Artık bu bir seçenek! Çerçeveli ve Çerçevesiz seçenekleri mevcuttur.
-  [*] [b]Özelleştirilebilir Harita Modu Çubuğu[/b] - Harita modu çubuğunun yüksekliğini/genişliğini özelleştirin. [b]Mevcut Harita Modu[/b] düğmesi de daha az göze çarpan bir konumdadır.'Siyasi' harita modu seçildiğinde artık görünmüyor (Arazi ile aynı).
-  [*] [b]Renkli Harita Modu Düğmeleri[/b] - Kullanımı çok daha kolay hale getirmek için harita modu düğmelerine kategorilerine göre renkli bir ton eklendi!
-  [*] [b]Yeniden Tasarlanmış Harita Modu Kategori Listesi[/b] - Standart harita modu kategori listesi yeniden tasarlandı.
-  [*] [b]Ülke İstatistikleri Paneli[/b] - Açılıp kapatılabilen ülke istatistikleri paneli - ülke çapındaki bilgilere bir bakışta ulaşın!
-  [*] [b]Görünür Toplumsal Değerler Dengesi[/b] - Her bir toplumsal değerinizin maksimum değerini gösteren yeni bir çubuk var
-  [*] [b]Açılıp Kapatılabilir Üst Çubuk İstatistikleri[/b] - Üst Çubuk İstatistiklerini kişisel tercihinize göre etkinleştirin ve devre dışı bırakın! Dinamik Savaş istatistikleri, İnsan Gücünüzü, Denizcilerinizi ve Savaş Yorgunluğunuzu otomatik olarak gizler/gösterir!
-  [*] [b]Yeniden Tasarlanan Etkinlik Görüntüleyicisi[/b] - Basit etkinlik görüntüleyicisi yeniden tasarlandı!
-  [*] [b]Geliştirilmiş Bina Görünümü[/b] - İnşaat sırasında bir Konumun [b]Bina Sınırı[/b], [b]RGO[/b] ve [b]Kontrol[/b] değerlerini görün! Kaleler için [b]Arazi Etkisi[/b] de dahil! Konumun Sıra Simgesine tıklayarak yerleşimi yükseltebilir veya düşürebilirsiniz!
-  [*] [b]Yatırım Getirisi[/b] - Bir bina inşa ederken, binanın kendini amorti etmesi için ne kadar süre gerekeceğini gösteren yeni bir Yatırım Getirisi istatistiği ekledik!
-  [*] [b]Geliştirilmiş Eyaletler Açıklama Balonu[/b] - Eyalet Açıklaması'nın Konum Listesi'ne RGO'lar ve Nehir/Kıyı simgeleri eklendi
-  [*] [b]Geliştirilmiş Papalık Fermanı Açıklaması[/b] - Kullanıcının 999 açıklama derinliğine inmek zorunda kalmaması için Oy Ver Düğmesi'nin açıklamasına Papalık Fermanı etkisi eklendi
-  [*] [b]Konuma Yakınlaştır[/b] - [b]Ülkenin Başkenti[/b], [b]Ordunun Konumu[/b], [b]Seçilen Konum[/b] veya [b]Uluslararası Bir Kuruluşun Başkenti[/b]'ne yakınlaştırın! [b](Sadece 'Z' tuşuna basın!)[/b]
-  [*] [b]Konum Görünümü Harita Modları[/b] - Konum görünümündeki bilgi simgelerinin üzerine fareyi getirdiğinizde ilgili harita modu görüntülenir.
-  [*] [b]Hammadde Görüntüleyiciden RGO Oluştur[/b] - Hammadde Harita Modunda RGO harita simgesine tıklayarak RGO Oluştur menüsünü açabilirsiniz
-  [*] [b]Birleşik Arazi Etkisi[/b] - Savaş sırasında birleşik arazi etkisi değiştiricisini gösteren bir başlık eklendi
-  [*] [b]Flashbang Be Gone[/b] - Oyuna her girdiğinizde Flashbang Intro animasyonu kaldırıldı.
-  [*] [b]Hata Ayıklama Modunu Etkinleştir[/b] - [b]Glorp UI Özelleştirme Menüsü[/b]'nü kullanarak [b]Hata Ayıklama Modu[/b]'nu etkinleştirin!
-  [*] [b]Çeşitli İyileştirmeler[/b] - Uyarı Afişi simgeleri büyütüldü. Outliner Kategori simgeleri büyütüldü.
+  [*] [b]Renk Kodlu Simgeler[/b] - Sezgisel navigasyon ve hoş bir görsel hava için
+  [*] [b]Lider Portresi Artık Yok[/b] - Güzel bayrağınız için daha fazla alan! Hanedanınıza/hükümdarınıza Armalar (Coat of Arms) aracılığıyla ulaşın!
+  [*] [b]Statik Bayrak Seçeneği[/b] - EU4'teki statik bayrakları mı tercih ediyorsunuz? Artık bu bir seçenek! Çerçeveli ve Çerçevesiz seçenekler mevcuttur.
+  [*] [b]Özelleştirilebilir Harita Modu Çubuğu[/b] - Harita modu çubuğunun yüksekliğini/genişliğini özelleştirin. [b]Mevcut Harita Modu[/b] butonu da daha az rahatsız edici bir konuma getirildi. 'Siyasi' harita modu seçildiğinde artık görünmez (Arazi modu gibi).
+  [*] [b]Renkli Harita Modu Butonları[/b] - Çok daha kolay kullanım için harita modu butonlarına kategorilerine göre renkli bir ton eklendi!
+  [*] [b]Yeniden Tasarlanmış Harita Modu Kategori Listesi[/b] - Orijinal (vanilla) harita modu kategori listesi yeniden tasarlandı.
+  [*] [b]Ülke İstatistikleri Paneli[/b] - Açılıp kapanabilir ülke istatistikleri paneli - ülke genelindeki bilgilere bir bakışta ulaşın!
+  [*] [b]Görünür Toplumsal Değerler Dengesi[/b] - Toplumsal değerlerinizin her birinin maksimum değerini gösteren yeni bir çubuk eklendi
+  [*] [b]Açılıp Kapanabilir Üst Çubuk İstatistikleri[/b] - Üst Çubuk İstatistiklerini kişisel isteğinize göre etkinleştirin veya devre dışı bırakın! Dinamik Savaş istatistikleri; İnsan Gücü, Denizciler ve Savaş Yorgunluğunu otomatik olarak gizler/gösterir!
+  [*] [b]Yeniden Tasarlanmış Etkinlik Görüntüleyici[/b] - Basit etkinlik görüntüleyici yeniden tasarlandı!
+  [*] [b]Geliştirilmiş Bina Görünümü[/b] - İnşaat yaparken bir Konumun [b]Bina Sınırını[/b], [b]RGO[/b]'sunu ve [b]Kontrolünü[/b] görün! Kaleler için [b]Arazi Etkisi[/b] dahildir! Yerleşimi yükseltmek/düşürmek için Konumun Kademe Simgesine tıklayabilirsiniz!
+  [*] [b]Yatırım Getirisi[/b] - Bir bina inşa ederken, binanın kendi maliyetini ne kadar sürede çıkaracağını bildiren yeni bir Yatırım Getirisi (Return on Investment) istatistiği ekledik!
+  [*] [b]Geliştirilmiş Eyalet Bilgi Notu[/b] - Eyalet Bilgi Notu'ndaki (Tooltip) Konum Listesine RGO'lar ve Nehir/Kıyı simgeleri eklendi
+  [*] [b]Geliştirilmiş Papalık Kararnamesi Bilgi Notu[/b] - Kullanıcının onlarca bilgi notu derinliğine girmesini önlemek için Oy Verme Butonu'nun bilgi notuna Papalık Kararnamesi etkisi eklendi
+  [*] [b]Konuma Yakınlaştır[/b] - Bir [b]Ülke Başkentine[/b], bir [b]Ordunun Konumuna[/b], [b]Seçili Bir Konuma[/b] veya bir [b]Uluslararası Organizasyonun Başkentine[/b] gidin! [b](Sadece 'Z'ye basın!)[/b]
+  [*] [b]Konum Görünümü Harita Modları[/b] - Konum görünümündeki bilgi simgelerinin üzerine gelindiğinde ilgili harita modu açılır.
+  [*] [b]Hammadde Görüntüleyiciden RGO İnşa Et[/b] - RGO İnşa menüsünü açmak için Hammadde Harita Modu'ndaki RGO harita simgesine tıklamanız yeterlidir
+  [*] [b]Birleşik Arazi Etkisi[/b] - Bir savaş sırasında birleşik arazi etkisi çarpanını gösteren bir pankart eklendi
+  [*] [b]Flaş Patlamasına Son[/b] - Oyuna her girdiğinizdeki "Flashbang" giriş animasyonu kaldırıldı
+  [*] [b]Hata Ayıklama Modunu Etkinleştir[/b] - [b]Debug Mode[/b]'u etkinleştirmek için [b]Glorp UI Özelleştirme Menüsünü[/b] kullanın!
+  [*] [b]Çeşitli İyileştirmeler[/b] - Uyarı Pankartı simgeleri büyütüldü. Özet Paneli (Outliner) Kategori simgeleri büyütüldü.
  [/list]
 
  [h3] Önerilen Modlar [/h3]
  [list]
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Topluluk Mod Çerçevesi[/url][/b] - Glorp UI, [b]Topluluk Mod Çerçevesi[/b]'nin Mod Menüsüne tamamen entegre edilmiştir!
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - UI Karanlık Modu
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] - Glorp UI, [b]Community Mod Framework[/b]'ün Mod Menüsüne tam entegredir!
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - Arayüz Karanlık Modu
   [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3697317887]Zorange's Mapmode Collection[/url][/b] Daha fazla harita modu ekler!
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Otonom Diplomatlar[/url][/b] EU4'teki otomatik diplomat sistemini geri getirir!
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph'in Bayrak Düzeltmeleri ve Eklemeleri[/url][/b] - Bayrakları severim...
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]Fikir Varyasyonu 2[/url][/b] - EU4 tarzı ulusal fikirler ekler! Yükleme Sırasında bu moddan [b]SONRA[/b] Glorp UI'yi yükleyin
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3736668860]İnşaat Yöneticisi[/url][/b] - Çok fazla tıklamadan kurtarır (Glorp UI'dan önce/üstünde yükleyin)
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Autonomous Diplomats[/url][/b] EU4'teki otomatik diplomat sistemini geri getirir!
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph's Flag Fixes & Additions[/url][/b] - Bayrakları severim...
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - EU4 Tarzı Ulusal Fikirler ekler! Yükleme Sırasında Glorp UI'ı bu moddan [b]SONRAYA[/b] koyun
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3736668860]Construction Manager[/url][/b] - Çok fazla tıklama tasarrufu sağlar (Glorp UI'dan önce/üstüne yükleyin)
  [/list]
 
  [h3] Özel Teşekkürler [/h3]
  [list]
   [*] [b]EU5 Mod Coop[/b] - Onlar olmasaydı bu mod mümkün olmazdı!
-  [*] [b]Conner[/b] - 1453'ten beri (gerçek, sahte değil) Glorp UI'yi tek başına oluşturup sürdürdüğü için
-  [*] [b]Mazutaki[/b] - Ülke Ordu Büyüklükleri ve Teknoloji Ağacı konusunda yardımları için!
-  [*] [b]Sol_InvictusXLII[/b] - Geliştirme sürecinin başlarında çok yararlı bir öğrenme aracı olan Mayın Tarlası Modunu oluşturduğu için!
-  [*] [b]Lord Lambert[/b] - Glorp UI'nin en büyük destekçisi olduğu için!
+  [*] [b]Conner[/b] - Glorp UI'ı 1453'ten beri (tamamen gerçek, sahte değil) tek başına oluşturduğu ve sürdürdüğü için
+  [*] [b]Mazutaki[/b] - Ülke Ordu Boyutları ve Teknoloji Ağacı konusundaki yardımları için!
+  [*] [b]Sol_InvictusXLII[/b] - Geliştirme sürecinin başlarında çok yararlı bir öğrenme aracı olan Mayın Tarlası (Minesweeper) Modunu oluşturduğu için!
+  [*] [b]Lord Lambert[/b] - Glorp UI'ın en büyük destekçisi olduğu için!
   [*] [b]Siz[/b] - İndirdiğiniz için
  [/list]
 [/quote]

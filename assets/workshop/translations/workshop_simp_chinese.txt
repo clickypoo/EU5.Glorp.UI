@@ -1,73 +1,73 @@
 ===WORKSHOP_TITLE===
-Glorp UI / Glorp UI
+Glorp 界面 / Glorp UI
 ===WORKSHOP_DESCRIPTION===
 [i]You are on the DeepL-Generated Simplified Chinese Page. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=$item-id$&l=english]Click here for the Native English Page.[/url][/i]
 
 [img]https://i.ibb.co/3y8BstFj/image.png[/img]
 
-您可以选择加入 1.3 公开测试版，创意工坊会自动将您更新至 1.3 版本。要查看是否已安装测试版，请检查模组版本号。[b]版本号应为 1.3.0.*[/b]
-若更新模组时遇到问题，请尝试暂时取消订阅该模组，片刻后再重新订阅。Steam 应会重新下载正确版本。
+你可以加入 1.3 开放测试版（Open Beta），创意工坊应会自动更新至 1.3 版本。要确认你是否已安装测试版，请检查模组版本。[b]应为 1.3.0.*[/b]
+如果你在更新模组时遇到困难，请尝试取消订阅一分钟后重新订阅。Steam 应会重新下载正确的版本。
 
 [img]https://i.ibb.co/TMrcJMrf/image.png[/img]
 
 [img]https://i.ibb.co/7x1241bq/image.png[/img]
 
 [quote]
- [b]Glorp UI[/b] 优化了 [b]《欧陆风云V》[/b] 的用户界面。就是这么简单。
+ [b]Glorp UI[/b] 改善了 [b]欧陆风云 5 (Europa Universalis V)[/b] 的用户界面。就这么简单。
 
- [b]有建议吗？请在下方留言！[/b]
+ [b]有建议吗？请在下方留言推荐！[/b]
 
  [h3] 可自定义 [/h3]
  [list]
-  [*] 通过游戏内的 [b]Glorp UI 自定义菜单[/b] [b]定制您的游戏体验[/b]！ 您的偏好设置将 [b]按存档保存[/b]。
-  [*] 更喜欢其他模组的实现方式？只需在加载顺序中将其置于 [b]Glorp UI 之后[/b]，它就会覆盖我们的修改！
-  [*] [b]Glorp UI[/b] 已完全集成于 [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]社区模组框架[/url][/b]！ 通过统一的 [b]模组菜单[/b] 管理所有设置！
+  [*] 使用游戏内的 [b]Glorp UI 自定义菜单[/b]来[b]定制你的体验[/b]！你的偏好设置将[b]随存档保存[/b]。
+  [*] 更喜欢其他模组的实现方式？只需在加载顺序中将其放在 [b]Glorp UI 之后[/b]，它就会覆盖我们的更改！
+  [*] [b]Glorp UI[/b] 已完全集成至 [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]社区模组框架 (Community Mod Framework)[/url][/b]！可通过其统一的[b]模组菜单[/b]管理我们的所有设置！
  [/list]
 
- [h3] 已实现的改动 [/h3]
+ [h3] 已实现的更改 [/h3]
  [list]
-  [*] [b]颜色编码图标[/b] - 实现直观导航并增添视觉美感
-  [*] [b]移除领袖肖像[/b] - 为您精美的旗帜腾出更多空间！通过纹章导航至您的王朝/统治者！
-  [*] [b]静态旗帜选项[/b] - 更喜欢《欧陆风云4》的静态旗帜？ 现在可以选了！提供带边框和无边框两种选项。
-  [*] [b]可自定义地图模式栏[/b] - 自定义地图模式栏的高度/宽度。[b]当前地图模式[/b]按钮的位置也更不显眼了。选择“政治”地图模式时，该选项将不再显示（与“地形”模式相同）。
-  [*] [b]彩色地图模式按钮[/b] - 根据类别为地图模式按钮添加了彩色阴影，使用更便捷！
-  [*] [b]重新设计的地图模式分类列表[/b] - 重新设计了原版地图模式分类列表。
-  [*] [b]国家统计面板[/b] - 可切换的国家统计面板 - 一目了然地查看全国范围的信息！
-  [*] [b]社会价值观平衡值显示[/b] - 新增一条显示您各项社会价值观最大值的进度条
-  [*] [b]可切换顶部栏统计[/b] - 根据个人喜好启用或禁用顶部栏统计！ 动态战争统计会自动隐藏/显示您的兵力、水手和战争疲劳值！
-  [*] [b]重新设计的事件查看器[/b] - 重新设计了简约的事件查看器！
-  [*] [b]改进的建筑视图[/b] - 建造时可查看地点的 [b]建筑上限[/b]、[b]RGO[/b] 及 [b]控制权[/b]！要塞还包含 [b]地形影响[/b]！点击地点的等级图标即可升级/降级该据点！
-  [*] [b]投资回报率[/b] - 建造建筑时，新增投资回报率数据，让您知晓建筑需要多长时间才能收回成本！
-  [*] [b]改进的省份工具提示[/b] - 在省份工具提示的地点列表中添加了RGO及河流/海岸图标
-  [*] [b]改进的教皇诏书工具提示[/b] - 在“投票”按钮的工具提示中添加了教皇诏书效果，省去用户深入查看999层工具提示的麻烦
-  [*] [b]缩放至位置[/b] - 平移至 [b]国家首都[/b]、[b]军队驻地[/b]、[b]选定位置[/b] 或 [b]国际组织总部[/b]的位置！[b](只需按 'Z' 键！)[/b]
-  [*] [b]位置视图地图模式[/b] - 将鼠标悬停在位置视图的信息图标上，即可显示相应的地图模式。
-  [*] [b][b]从原材料查看器构建RGO[/b] - 只需点击原材料地图模式中的RGO地图图标，即可打开RGO构建菜单
-  [*] [b]综合地形影响[/b] - 添加了一个横幅，用于显示战斗中的综合地形影响修正值
-  [*] [b]闪光弹消失[/b] - 移除了每次进入游戏时闪光弹的开场动画
-  [*] [b]启用调试模式[/b] - 使用 [b]Glorp UI 自定义菜单[/b] 启用 [b]调试模式[/b]！
-  [*] [b]其他改进[/b] - 警报横幅图标变大了。大纲分类图标变大了。
+  [*] [b]颜色代码图标[/b] - 实现直观的导航和精美的视觉效果。
+  [*] [b]移除领袖肖像[/b] - 为你美丽的旗帜腾出更多空间！通过纹章导航至你的王朝/统治者！
+  [*] [b]静态旗帜选项[/b] - 喜欢 EU4 的静态旗帜？现在有了这个选项！提供带框和不带框的选项。
+  [*] [b]可自定义地图模式栏[/b] - 自定义地图模式栏的高度/宽度。[b]当前地图模式[/b]按钮的位置也变得更不显眼。“政治”地图模式在选中时不再出现（与地形模式相同）。
+  [*] [b]彩色地图模式按钮[/b] - 根据类别为地图模式按钮添加了色调，使用起来更方便！
+  [*] [b]重新设计的地图模式类别列表[/b] - 重新设计了原版的地图模式类别列表。
+  [*] [b]国家统计面板[/b] - 可切换的国家统计面板 —— 全国信息一目了然！
+  [*] [b]可见的社会价值观均衡点[/b] - 新增了一个显示各项社会价值观最大值的进度条。
+  [*] [b]可切换的顶栏统计数据[/b] - 根据个人喜好开启或关闭顶栏统计数据！动态战争统计数据会自动隐藏/显示你的人力、水手和战争疲劳度！
+  [*] [b]重新设计的事件查看器[/b] - 重新设计了过于简化的事件查看器！
+  [*] [b]改进的建筑视图[/b] - 建造时可查看该地点的[b]建筑上限[/b]、[b]RGO（原材料产出）[/b]和[b]控制力[/b]！包括要塞的[b]地形影响[/b]！你可以点击地点的等级图标来升级/降级定居点！
+  [*] [b]投资回报率[/b] - 建造建筑时，我们加入了一项新的投资回报统计，让你知道建筑需要多长时间才能回本！
+  [*] [b]改进的省份工具提示[/b] - 在省份工具提示的地点列表中添加了 RGO 和河流/沿海图标。
+  [*] [b]改进的教宗诏书工具提示[/b] - 在投票按钮的工具提示中添加了教宗诏书的效果，免去用户层层查看工具提示的烦恼。
+  [*] [b]缩放至地点[/b] - 平移至[b]国家首都[/b]、[b]军队位置[/b]、[b]选定地点[/b]或[b]国际组织总部[/b]所在的位置！[b]（只需按下“Z”键！）[/b]
+  [*] [b]地点视图地图模式[/b] - 将鼠标悬停在地点视图的信息图标上可显示相关的地图模式。
+  [*] [b]从原材料查看器建造 RGO[/b] - 只需在原材料地图模式下点击 RGO 地图图标即可打开 RGO 建造菜单。
+  [*] [b]综合地形影响[/b] - 添加了一个横幅，显示战斗期间的综合地形影响修正。
+  [*] [b]告别闪光弹[/b] - 移除了每次进入游戏时的开场闪光动画。
+  [*] [b]激活调试模式[/b] - 使用 [b]Glorp UI 自定义菜单[/b]开启[b]调试模式[/b]！
+  [*] [b]杂项改进[/b] - 警报横幅图标变大。大纲栏类别图标变大。
  [/list]
 
  [h3] 推荐模组 [/h3]
  [list]
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]社区模组框架[/url][/b] - Glorp UI 已完全集成到 [b]社区模组框架[/b] 的模组菜单中！
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - 界面深色模式
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3697317887]Zorange 的地图模式合集[/url][/b] 增加了更多地图模式！
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]自动外交官[/url][/b] 恢复了《欧陆风云4》中的自动外交官系统！
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph的国旗修复与新增[/url][/b] - 我喜欢国旗……
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]理念变体 2[/url][/b] - 添加《欧陆风云4》风格的国家理念！ 在加载顺序中，请将 Glorp UI 加载在 [b]本模组之后[/b]
-  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3736668860]Construction Manager[/url][/b] - 节省大量点击操作（请在 Glorp UI 之前或上方加载）
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692202776]Community Mod Framework[/url][/b] - Glorp UI 已完全集成在社区模组框架的模组菜单中！
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3603329466]Midnight UI[/url][/b] - UI 深色模式。
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3697317887]Zorange's Mapmode Collection[/url][/b] - 添加更多地图模式！
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696243603]Autonomous Diplomats[/url][/b] - 带回 EU4 的自动外交官系统！
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3655298668]Zyrph's Flag Fixes & Additions[/url][/b] - 我喜欢旗帜...
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3599735023]The Idea Variation 2[/url][/b] - 添加 EU4 风格的国家理念！请在加载顺序中将 Glorp UI 放在此模组[b]之后[/b]。
+  [*] [b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3736668860]Construction Manager[/url][/b] - 节省大量点击（加载于 Glorp UI 之前/之上）。
  [/list]
 
- [h3] 特别鸣谢 [/h3]
+ [h3] 特别感谢 [/h3]
  [list]
-  [*] [b]EU5 Mod Coop[/b] - 没有他们，本模组便无法诞生！
-  [*] [b]Conner[/b] - 自1453年起（千真万确，绝非虚构）独自创建并维护Glorp UI
-  [*] [b]Mazutaki[/b] - 协助完善国家军队规模与科技树！
-  [*] [b]Sol_InvictusXLII[/b] - 感谢他制作了《扫雷》模组，这是开发初期非常有用的学习工具！
-  [*] [b]Lord Lambert[/b] - 作为 Glorp UI 最棒的助威者！
-  [*] [b]您[/b] - 感谢您的下载
+  [*] [b]EU5 Mod Coop[/b] - 没有他们就没有这个模组！
+  [*] [b]Conner[/b] - 感谢他自 1453 年以来凭一己之力创建并维护 Glorp UI（真实不虚）。
+  [*] [b]Mazutaki[/b] - 感谢在国家军队规模和科技树方面的帮助！
+  [*] [b]Sol_InvictusXLII[/b] - 感谢他创作了扫雷模组，这在开发早期是一个非常有用的学习工具！
+  [*] [b]Lord Lambert[/b] - 感谢他担任 Glorp UI 最强宣传员！
+  [*] [b]你[/b] - 感谢下载。
  [/list]
 [/quote]
 
