@@ -344,6 +344,8 @@ glorpui_handle_cmf_callback = {
 				alias = vanillaMapmodeHeight
 			}
 		}
+		# Build Panel (build_panel) Tab
+		## General (general) Group
 		flag:glorpui__roi_metric = {
 			cmm_sync_dropdown_option_alias = {
 				setting = glorpui__roi_metric
@@ -351,7 +353,6 @@ glorpui_handle_cmf_callback = {
 				alias = roiUseProfit
 			}
 		}
-
 		flag:glorpui__roi_unit = {
 			cmm_sync_dropdown_option_alias = {
 				setting = glorpui__roi_unit

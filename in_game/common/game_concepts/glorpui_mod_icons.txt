@@ -1,0 +1,6 @@
+﻿glorpui = {
+	texture = "mods/glorpui"
+}
+glorpui_background = {
+	texture = "mods/glorpui_background"
+}
