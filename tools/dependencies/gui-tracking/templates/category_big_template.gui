@@ -43,7 +43,7 @@ template category_big_template {
 			}
 
 			icon = {
-				size = { 30 30 }
+				size = { 30 30 } # GlorpUI: 20->30
 				block "category_icon_texture" { visible = no }
 				glow = {
 					name = "drop_shadow"

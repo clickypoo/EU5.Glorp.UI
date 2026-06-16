@@ -3,7 +3,7 @@
 
 	type mapmode_current_button = widget {
 		visible_at_creation = no
-		visible = "[And( Not(IsDefaultMapModeSet), Not(GetMapMode('political').IsActive) )]" # Glorp UI - Hide Political
+		visible = "[And( Not(IsDefaultMapModeSet), Not(GetMapMode('political').IsActive) )]" # GlorpUI: Hide Political
 		datacontext = "[GetActiveMapMode]"
 
 		button = {
@@ -75,7 +75,7 @@
 		hbox = {
 			margin_right = 5
 			spacing = 10
-			visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), And( Not(IsDefaultMapModeSet), Not(GetMapMode('political').IsActive) ) )]" # Glorp UI - Hide Poltiical
+			visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), And( Not(IsDefaultMapModeSet), Not(GetMapMode('political').IsActive) ) )]" # GlorpUI: Hide Political
 			datacontext = "[GetActiveMapMode]"
 			set_parent_size_to_minimum = yes
 

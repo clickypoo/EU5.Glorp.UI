@@ -12,7 +12,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 				icon = {
-					size = { 30 30 }
+					size = { 30 30 } # GlorpUI: 20->30
 					texture = "[GetEstateIcon(Construction.GetEstateType)]"
 					texture_density = 2
 				}
@@ -23,7 +23,7 @@ OutlinerEntryBase = {
 					align = left
 					using = OnlyVisibleWhenOneInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip]"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 				OutlinerTextBase = {
 					layoutpolicy_horizontal = expanding
@@ -31,13 +31,13 @@ OutlinerEntryBase = {
 					align = left
 					using = OnlyVisibleWhenMultipleInLocation
 					raw_text = "[Construction.GetNameWithNoTooltip] #L (+[Subtract_int32(Construction.CountAllInLocation, '(int32)1')]) #!"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 
 				OutlinerTextBase = {
 					autoresize = yes
 					text = "CONSTRUCTION_DURATION_DAYS"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 			}
 		}

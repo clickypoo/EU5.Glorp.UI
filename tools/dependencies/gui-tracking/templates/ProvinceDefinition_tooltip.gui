@@ -26,7 +26,7 @@ template ProvinceDefinition_tooltip {
 				textcontext = "[ProvinceDefinition.GetUITooltip]"
 			}
 
-			TooltipListBase = {
+			TooltipListBase = { # GlorpUI: members list with population
 
 				blockoverride "block_title" {
 					text = "GLORP_UI_PROV_DEF_MEMBERS_HEADER"

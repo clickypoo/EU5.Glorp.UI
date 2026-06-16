@@ -3,10 +3,10 @@
 
 	type mapmode_category_menu = scrollarea {
 		name = "mapmode_category_menu"
-		onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]"
+		onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]" # GlorpUI: added
 
 		visible_at_creation = no
-		using = bg_small_menu
+		using = bg_small_menu # GlorpUI: bg_mapmode_category -> bg_small_menu
 		allow_outside = yes
 
 		autoresizescrollarea = yes

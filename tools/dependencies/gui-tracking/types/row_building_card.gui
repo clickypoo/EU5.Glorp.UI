@@ -331,7 +331,7 @@
 						parentanchor = top|right
 						size = { 10 10 }
 						position = { 1 -1 }
-						# Suppressed in favor of the Construction Manager auto-expand status icon.
+						# GlorpUI: hidden when Construction Manager is active
 						visible = "[And(IsAutoExpand(LocationBuildingItem.GetBuilding.Self), Not(GetScriptedGui('glorpui_is_cm_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)))]"
 						datacontext = "[LocationBuildingItem.GetBuilding]"
 						texture = "gfx/interface/icons/flat_icons/mass_upgrade.dds"
@@ -341,7 +341,7 @@
 						}
 					}
 
-					# Construction Manager auto-expand status icon.
+					# GlorpUI: Construction Manager auto-expand status icon
 					cm_is_auto_expand_on_icon = {}
 					
 					using = bg_circle_tile_shadow
@@ -516,7 +516,7 @@
 							description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
 							cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
 							on_action = "[UpgradeBuildingDefault(BuildingType.Self, Location.Self)]"
-							on_action = "[GetScriptedGui('cm_check_for_auto_expand_when_upgrading_building').Execute(GuiScope.SetRoot(LocationBuildingItem.GetBuilding.MakeScope).End)]"
+							on_action = "[GetScriptedGui('cm_check_for_auto_expand_when_upgrading_building').Execute(GuiScope.SetRoot(LocationBuildingItem.GetBuilding.MakeScope).AddScope('cm_new_building_type', LocationBuildingItem.GetBuilding.GetType.GetNextReplacementBuilding(Player.Self).MakeScope).End)]" # GlorpUI: Construction Manager auto-expand check
 						}
 
 						action_tooltip = {
@@ -528,7 +528,7 @@
 							cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
 							description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
 							on_action = "[UpgradeBuildingCtrl(BuildingType.Self, Location.Self)]"
-							on_action = "[GetScriptedGui('cm_check_for_auto_expand_when_upgrading_building').Execute(GuiScope.SetRoot(LocationBuildingItem.GetBuilding.MakeScope).End)]"
+							on_action = "[GetScriptedGui('cm_check_for_auto_expand_when_upgrading_building').Execute(GuiScope.SetRoot(LocationBuildingItem.GetBuilding.MakeScope).AddScope('cm_new_building_type', LocationBuildingItem.GetBuilding.GetType.GetNextReplacementBuilding(Player.Self).MakeScope).End)]" # GlorpUI: Construction Manager auto-expand check
 							enabled = "[CanUpgradeToBuilding(BuildingType.Self, Location.Self)]"
 						}
 
@@ -541,7 +541,7 @@
 							cost = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
 							description = "[CanUpgradeToBuildingInfo(BuildingType.Self, Location.Self)]"
 							on_action = "[UpgradeBuildingShift(BuildingType.Self, Location.Self)]"
-							on_action = "[GetScriptedGui('cm_check_for_auto_expand_when_upgrading_building').Execute(GuiScope.SetRoot(LocationBuildingItem.GetBuilding.MakeScope).End)]"
+							on_action = "[GetScriptedGui('cm_check_for_auto_expand_when_upgrading_building').Execute(GuiScope.SetRoot(LocationBuildingItem.GetBuilding.MakeScope).AddScope('cm_new_building_type', LocationBuildingItem.GetBuilding.GetType.GetNextReplacementBuilding(Player.Self).MakeScope).End)]" # GlorpUI: Construction Manager auto-expand check
 							enabled = "[CanUpgradeToBuilding(BuildingType.Self, Location.Self)]"
 						}
 

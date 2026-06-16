@@ -28,7 +28,7 @@ OutlinerEntryBase = {
 		blockoverride "cabinet_entry_icon_piechart" {
 			piechart = {
 				parentanchor = center
-				size = { 90% 90% }
+				size = { 90% 90% } # GlorpUI: 80%->90%
 				using = piechart_angles
 
 				pieslice_no_highlight = {

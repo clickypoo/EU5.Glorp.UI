@@ -21,7 +21,7 @@ template cabinet_entry_icon_empty {
 		visible = "[Cabinet.IsActive]"
 		icon = {
 			parentanchor = center
-			size = { 70% 70% }
+			size = { 70% 70% } # GlorpUI: 63%->70%
 			texture = "[GetCabinetActionIcon(Cabinet.GetAction)]"
 			glow = {
 				name = "drop_shadow"

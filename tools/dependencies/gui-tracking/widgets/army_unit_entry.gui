@@ -64,24 +64,24 @@ OutlinerEntryBase = {
 
 				OutlinerTextBase = {
 					align = left
-					maximumsize = { 160 24 }
-					minimumsize = { 70 24 }
+					maximumsize = { 160 24 } # GlorpUI: 20->24
+					minimumsize = { 70 24 } # GlorpUI: 20->24
 					raw_text = "[Unit.GetVisualStrength]@army_strength!"
                     fontsize = 14
 				}
 
 				widget = {
-					size = { 20 20 }
+					size = { 20 20 } # GlorpUI: 18->20
 					icon = {
-						size = { 20 20 }
+						size = { 20 20 } # GlorpUI: 18->20
 						texture = "[Unit.GetStatusTexture]"
 					}
 				}
 
 				widget = {
-					size = { 20 20 }
+					size = { 20 20 } # GlorpUI: 18->20
 					icon = {
-						size = { 20 20 }
+						size = { 20 20 } # GlorpUI: 18->20
 						texture = "gfx/interface/icons/unit_view/atrittion_icon.dds"
 						visible = "[GreaterThan_CFixedPoint(Unit.GetAttrition, '(CFixedPoint)0')]"
 						glow = {
@@ -110,10 +110,10 @@ OutlinerEntryBase = {
 				}
 
 				widget = {
-					size = { 20 20 }
+					size = { 20 20 } # GlorpUI: 18->20
 					icon = {
 						visible = "[Unit.IsAutomated]"
-						size = { 20 20 }
+						size = { 20 20 } # GlorpUI: 18->20
 						texture = "[GetMilitaryObjectiveIcon(Unit.GetObjectiveGroup.GetObjective.GetType)]"
 						texture_density = 2
 					}

@@ -7,7 +7,7 @@ template CountryTooltip_DiplomacyStatBars {
 	TooltipStatsBar = {
 		blockoverride "items" {
 			TooltipStatBarIconTextItem = { # THEIR OPINION
-				blockoverride "item_icon_coa" {
+				blockoverride "item_icon_coa" { # GlorpUI: added
 					datacontext = "[Country]"
 				}
 				blockoverride "item_icon" {

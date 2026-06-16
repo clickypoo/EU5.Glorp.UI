@@ -163,7 +163,7 @@
     },
     "template:build_rgo_entry": {
       "base_widget": null,
-      "mod_file": "in_game/gui/glorpUI_expand_raw_goods_lateralview.gui",
+      "mod_file": "in_game/gui/expand_raw_goods_lateralview.gui",
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/build_rgo_entry.gui",
       "vanilla_file": "in_game/gui/expand_raw_goods_lateralview.gui"
@@ -212,7 +212,7 @@
     },
     "template:production_view_poptypes": {
       "base_widget": null,
-      "mod_file": "in_game/gui/glorpUI_production_lateralview.gui",
+      "mod_file": "in_game/gui/production_lateralview.gui",
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/production_view_poptypes.gui",
       "vanilla_file": "in_game/gui/production_lateralview.gui"
@@ -247,7 +247,7 @@
     },
     "type:building_type_header": {
       "base_widget": "hbox",
-      "mod_file": "in_game/gui/glorpUI_production_lateralview.gui",
+      "mod_file": "in_game/gui/production_lateralview.gui",
       "namespace": "GlorpUIBuildings",
       "tracking_path": "tools/dependencies/gui-tracking/types/building_type_header.gui",
       "vanilla_file": "in_game/gui/production_lateralview.gui"
@@ -279,6 +279,20 @@
       "namespace": "GlorpUIFoodProductionTypes",
       "tracking_path": "tools/dependencies/gui-tracking/types/food_production_location.gui",
       "vanilla_file": "in_game/gui/food_production_lateralview.gui"
+    },
+    "type:location_filtered_header_no_candidate": {
+      "base_widget": "hbox",
+      "mod_file": "in_game/gui/production_lateralview.gui",
+      "namespace": "GlorpUIBuildings",
+      "tracking_path": "tools/dependencies/gui-tracking/types/location_filtered_header_no_candidate.gui",
+      "vanilla_file": "in_game/gui/production_lateralview.gui"
+    },
+    "type:location_filtered_header_with_candidate": {
+      "base_widget": "hbox",
+      "mod_file": "in_game/gui/production_lateralview.gui",
+      "namespace": "GlorpUIBuildings",
+      "tracking_path": "tools/dependencies/gui-tracking/types/location_filtered_header_with_candidate.gui",
+      "vanilla_file": "in_game/gui/production_lateralview.gui"
     },
     "type:mapmarkers_settings_window": {
       "base_widget": "widget",
@@ -629,6 +643,20 @@
       "namespace": "OutlinerEntryBase",
       "tracking_path": "tools/dependencies/gui-tracking/widgets/estate_construction_entry.gui",
       "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:expand_raw_goods_lateralview": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/expand_raw_goods_lateralview.gui",
+      "namespace": "lateralview",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/expand_raw_goods_lateralview.gui",
+      "vanilla_file": "in_game/gui/expand_raw_goods_lateralview.gui"
+    },
+    "widget:expand_raw_goods_select_market": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/expand_raw_goods_lateralview.gui",
+      "namespace": "select_menu_left",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/expand_raw_goods_select_market.gui",
+      "vanilla_file": "in_game/gui/expand_raw_goods_lateralview.gui"
     },
     "widget:expel_people_cabinet_entry": {
       "base_widget": null,
@@ -1038,9 +1066,16 @@
     },
     "widget:production_lateralview": {
       "base_widget": null,
-      "mod_file": "in_game/gui/glorpUI_production_lateralview.gui",
+      "mod_file": "in_game/gui/production_lateralview.gui",
       "namespace": "lateralview",
       "tracking_path": "tools/dependencies/gui-tracking/widgets/production_lateralview.gui",
+      "vanilla_file": "in_game/gui/production_lateralview.gui"
+    },
+    "widget:production_select_market": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/production_lateralview.gui",
+      "namespace": "select_menu_left",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/production_select_market.gui",
       "vanilla_file": "in_game/gui/production_lateralview.gui"
     },
     "widget:promote_culture_cabinet_entry": {

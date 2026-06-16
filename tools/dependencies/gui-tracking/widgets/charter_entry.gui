@@ -17,7 +17,7 @@ OutlinerEntryBase = {
 					align = left
 					raw_text = "@province! [ColonialCharter.GetProvinceDefinition.GetNameWithNoTooltip]"
 					default_format = "#yellow_titles"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 
 				hbox = {
@@ -28,14 +28,14 @@ OutlinerEntryBase = {
 						maximumsize = { 65 -1 }
 						autoresize = yes
 						raw_text = "[ColonialCharter.GetMonthlyMigration]@population!"
-                        fontsize = 14
+                        fontsize = 14 # GlorpUI: added
 					}
 					OutlinerTextBase = {
 						minimumsize = { 65 -1 }
 						maximumsize = { 65 -1 }
 						autoresize = yes
 						raw_text = "[ColonialCharter.GetProgress|2]%"
-                        fontsize = 14
+                        fontsize = 14 # GlorpUI: added
 					}
 				}
 

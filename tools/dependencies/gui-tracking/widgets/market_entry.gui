@@ -38,7 +38,7 @@ OutlinerEntryBase = {
 				icon = {
 					visible = "[And(Not(GreaterThan_CFixedPoint(Market.GetCountryPopulation(Player.Self),'(CFixedPoint)0')),
 						GreaterThan_CFixedPoint(Market.GetTotalMerchantCapacity(Player.Self),'(CFixedPoint)0'))]"
-					size = { 22 22 }
+					size = { 22 22 } # GlorpUI: 18->22
 					texture = "[GetConceptTexture('trading_market')]"
 					glow = {
 						name = "drop_shadow"

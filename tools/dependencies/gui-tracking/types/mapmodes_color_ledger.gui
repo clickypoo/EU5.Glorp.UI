@@ -8,7 +8,8 @@
 		using = bg_paper_card
 		datacontext = "[GetMapColorLedgerSearchBar]"
 
-		onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]"
+		onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]" # GlorpUI: added
+		# GlorpUI: show/hide animation
 		state = {
 			name = _show
 			duration = 0.1

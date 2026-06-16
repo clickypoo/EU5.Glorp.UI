@@ -30,7 +30,7 @@ lateralview = {
 				tooltipwidget = { BasicFunctionalTooltip = {} }
 				using = snd_UI_backward
 
-                # Glorp UI - Zoom-to Shortcut
+                # GlorpUI: Zoom-to Shortcut
                 input_action = "macro_builder"
                 use_global_input_instance = yes
                 onclick = "[PanToLocation(ForeignCountryView.GetCountry.GetCapital)]"
@@ -41,7 +41,7 @@ lateralview = {
 	blockoverride "panel_header" {
 		window_header_alt = {
 			using = bg_main_inner_alt
-			blockoverride "window_header_alt_color" { # Glorp UI - Coloured Country Name Bar
+			blockoverride "window_header_alt_color" { # GlorpUI: Coloured Country Name Bar
 				background = {
 					using = color_greyish_texture
 					modify_texture = {
@@ -596,7 +596,7 @@ lateralview = {
 									}
 
 									blockoverride "concept_link" {
-										text = "[population|E]"
+										text = "[population|E]" # GlorpUI: quoted
 									}
 
 									blockoverride "tooltip_content" {
@@ -747,7 +747,7 @@ lateralview = {
 
 
 						expand = {}
-                        vbox = { # Glorp UI - Real Army/Navy Strength
+                        vbox = { # GlorpUI: Real Army/Navy Strength
                             layoutpolicy_horizontal = expanding
                             text_single = {
                             	visible = "[HasNavyStrengthIntelOn(Country.Self)]"
@@ -1037,7 +1037,7 @@ lateralview = {
 														text = "game_concept_country_modifier"
 													}
 													blockoverride "concept_link" {
-														text = "[country_modifier|e]"
+														text = "[country_modifier|e]" # GlorpUI: quoted
 													}
 
 													blockoverride "tooltip_content" {
@@ -2964,7 +2964,7 @@ lateralview = {
 														}
 
 														blockoverride "concept_link" {
-															text = "[institutions|E]"
+															text = "[institutions|E]" # GlorpUI: quoted
 														}
 
 														blockoverride "tooltip_content" {
@@ -3004,7 +3004,7 @@ lateralview = {
 														}
 
 														blockoverride "concept_link" {
-															text = "[institutions|E]"
+															text = "[institutions|E]" # GlorpUI: quoted
 														}
 
 														blockoverride "tooltip_content" {
@@ -3057,7 +3057,7 @@ lateralview = {
 														}
 
 														blockoverride "concept_link" {
-															text = "[advances|E]"
+															text = "[advances|E]" # GlorpUI: quoted
 														}
 
 

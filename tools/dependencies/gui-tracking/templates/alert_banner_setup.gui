@@ -14,7 +14,7 @@ template alert_banner_setup {
 
 				block "icon_texture_obj" {
 					icon = {
-						size = { 35 35 } # GlorpUI: Change from 30->35
+						size = { 35 35 } # GlorpUI: 30->35
 						block "icon_texture" {
 							texture = "[AlertEntry.GetDescription.GetIcon]"
 						}

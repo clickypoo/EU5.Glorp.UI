@@ -14,9 +14,9 @@ OutlinerEntryBase = {
 
 	blockoverride "icon_content" {
 		using = diplomacy_icon_content
-		# Autonomous Diplomats auto-cancel widget
+		# GlorpUI: Autonomous Diplomats auto-cancel widget
 		atd_outliner_auto_cancel_widget = {}
-		# Autonomous Diplomats sync widget
+		# GlorpUI: Autonomous Diplomats sync widget
 		atd_outliner_sync_widget = {}
 	}
 

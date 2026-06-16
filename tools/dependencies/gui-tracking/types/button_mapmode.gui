@@ -3,7 +3,7 @@
 
 	type button_mapmode = button {
 		block "button_size" {
-			size = { 40 40 } # Glorp UI - Smaller Mapmode Buttons
+			size = { 40 40 } # GlorpUI: Smaller Mapmode Buttons
 		}
 
 		block "button_mapmode_actions"
@@ -21,7 +21,7 @@
 			alpha = 0.3
 		}
 
-        # Glorp UI - Coloured Mapmode Buttons
+        # GlorpUI: Coloured Mapmode Buttons
         modify_texture = {
             visible = "[And(EqualTo_string(MapMode.GetMapModeCategory, 'Government'), Not(Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet))]"
             using = color_purple_texture
@@ -109,7 +109,7 @@
 			alpha = 0.2
 		}
 
-		modify_texture = { visible = "[Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet]" using = color_paper_texture }
+		modify_texture = { visible = "[Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet]" using = color_paper_texture } # GlorpUI: added visible
 		modify_texture = { using = overlay_paper_03 }
 
 		glow = {
@@ -119,15 +119,15 @@
 			alpha = 1
 		}
 
-		button_icon_map_square = { visible = "[Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet]" }
-		icon = { # Glorp UI - Recolour Dashed Padding
+		button_icon_map_square = { visible = "[Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet]" } # GlorpUI: added visible
+		icon = { # GlorpUI: Recolour Dashed Padding
 			visible = "[Not(Player.MakeScope.GetVariable('disableColouredMapmodeButtons').IsSet)]"
 			size = { 100% 100% }
 			texture = "gfx/interface/buttons/map_modes/map_texture_square.dds"
 		}
 
 		icon = {
-			size = { 28 28 } # Glorp UI - Smaller Mapmode Button Icons
+			size = { 28 28 } # GlorpUI: 34->28
 			parentanchor = center
 			texture = "[MapMode.GetIcon]"
 			glow = {

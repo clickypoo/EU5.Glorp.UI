@@ -13,7 +13,7 @@ OutlinerEntryBase = {
 				spacing = 5
 
 				widget = {
-					size = { 20 20 }
+					size = { 20 20 } # GlorpUI: 16->20
 					using = bg_circle_piechart
 					blockoverride "inside_color" {
 						modify_texture = {
@@ -42,7 +42,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					text = "[Rebel.GetNameWithNoTooltip]"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: default_format #L -> fontsize 14
 				}
 
 				icon = {
@@ -59,7 +59,7 @@ OutlinerEntryBase = {
 				OutlinerTextBase = {
 					autoresize = yes
 					raw_text = "[Rebel.GetProgress|-V%2] ([Rebel.GetLastMonthsProgress|-=%2])"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 			}
 		}
@@ -130,7 +130,7 @@ OutlinerEntryBase = {
 
 				icon = {
 					texture_density = 2
-					size = { 20 20 }
+					size = { 20 20 } # GlorpUI: 17->20
 					parentanchor = center
 					texture = "[GetRebelsIcon(Rebel.Self)]"
 

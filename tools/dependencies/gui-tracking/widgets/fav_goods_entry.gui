@@ -19,7 +19,7 @@ OutlinerEntryBase = {
 				spacing = 5
 
 				icon = {
-					size = { 24 24 }
+					size = { 24 24 } # GlorpUI: 20->24
 					texture = "[GetGoodsIcon(Goods.Self)]"
 				}
 
@@ -39,7 +39,7 @@ OutlinerEntryBase = {
 
 				OutlinerTextBase = {
 					using = layoutpolicy_expanding
-					size = { 65 20 }
+					size = { 65 20 } # GlorpUI: added
 					autoresize = no
 					align = left
 					text = "[Goods.GetNameWithNoTooltip]"

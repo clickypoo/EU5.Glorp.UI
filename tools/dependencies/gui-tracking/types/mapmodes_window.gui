@@ -3,7 +3,7 @@
 
 	type mapmodes_window = widget {
 		onmousehierarchyenter = "[MapModeSelectorVars.Set('hover', 'yes')]"
-		# onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]"
+		# onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]" # GlorpUI: disabled
 		alwaystransparent = no
 
 		visible_at_creation = no
@@ -27,7 +27,7 @@
 			size = { @mapselector_width 40 }
 		}
 
-		hbox = {
+		hbox = { # GlorpUI: reworked selector layout
 			size = { @mapselector_width @mapselector_height }
 			maximumsize = { @mapselector_width @mapselector_height }
 			allow_outside = yes
@@ -51,9 +51,9 @@
 						layoutstretchfactor_vertical = 60
 
 						using = bg_mapmode_menu
-						# Glorp UI - Remove Vanilla Pin Button
+						# GlorpUI: pin button moved to the category bar
 
-						# Glorp UI - Vanilla Buttons
+						# GlorpUI: full-size mapmode buttons
 						widget = {
 							visible = "[Player.MakeScope.GetVariable('vanillaMapmodeHeight').IsSet]"
 							layoutpolicy_horizontal = expanding
@@ -90,7 +90,7 @@
 							}
 						}
 
-						# Glorp UI - Smaller Buttons
+						# GlorpUI: smaller mapmode buttons
 						widget = {
 							visible = "[Not(Player.MakeScope.GetVariable('vanillaMapmodeHeight').IsSet)]"
 							layoutpolicy_horizontal = expanding
@@ -131,10 +131,10 @@
 						}
 					}
 
-					hbox = {
+					hbox = { # GlorpUI: widget + hbox -> single hbox
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
-						layoutstretchfactor_vertical = 40
+						layoutstretchfactor_vertical = 40 # GlorpUI: added
 						allow_outside = yes
 						using = bg_mapmenu_tab
 
@@ -142,7 +142,7 @@
 
 						hbox = {
 							using = layoutpolicy_expanding
-							margin = { 10 0 } # Glorp UI - Move Decorations up
+							margin = { 10 0 } # GlorpUI: Move Decorations up
 							spacing = 4
 							allow_outside = yes
 
@@ -154,7 +154,7 @@
 
 								blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab','government')]" }
 								blockoverride "button" {
-									parentanchor = center
+									parentanchor = center # GlorpUI: added
 									icon = {
 										size = { 20 20 }
 										parentanchor = center
@@ -188,7 +188,7 @@
 
 								blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab','economy')]" }
 								blockoverride "button" {
-									parentanchor = center
+									parentanchor = center # GlorpUI: added
 									icon = {
 										size = { 20 20 }
 										parentanchor = center
@@ -218,7 +218,7 @@
 							mapmode_category_block = {
 								blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab', 'population')]" }
 								blockoverride "button" {
-									parentanchor = center
+									parentanchor = center # GlorpUI: added
 									icon = {
 										size = { 20 20 }
 										parentanchor = center
@@ -245,7 +245,7 @@
 							mapmode_category_block = {
 								blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab', 'demography')]" }
 								blockoverride "button" {
-									parentanchor = center
+									parentanchor = center # GlorpUI: added
 									icon = {
 										size = { 20 20 }
 										parentanchor = center
@@ -278,7 +278,7 @@
 
 								blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab', 'search')]" }
 								blockoverride "button" {
-									parentanchor = center
+									parentanchor = center # GlorpUI: added
 									icon = {
 										size = { 20 20 }
 										parentanchor = center
@@ -339,14 +339,14 @@
 								}
 							}
 
-							# Glorp UI - Settings
+							# GlorpUI: Settings
 							mapmode_category_block = {
 								size = { 28 28 }
 								layoutpolicy_horizontal = fixed
 
 								blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab','settings')]" }
 								blockoverride "button" {
-									parentanchor = center
+									parentanchor = center # GlorpUI: added
 									icon = {
 										size = { 17 17 }
 										parentanchor = center
@@ -414,7 +414,7 @@
 									blend_mode = overlay
 								}
 							}
-							# Glorp UI - Pin Button
+							# GlorpUI: Pin Button
 							mapmode_category_block = {
 								size = { 28 28 }
 								layoutpolicy_horizontal = fixed
@@ -453,7 +453,7 @@
 
 								blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab', 'diplomacy')]" }
 								blockoverride "button" {
-									parentanchor = center
+									parentanchor = center # GlorpUI: added
 									icon = {
 										size = { 20 20 }
 										parentanchor = center
@@ -479,14 +479,14 @@
 							}
 
 							mapmode_category_block = {
-								# blockoverride "menu_anchor" {
+								# blockoverride "menu_anchor" { # GlorpUI: disabled
 								# 	parentanchor = right|top
 								# 	widgetanchor = right|bottom
 								# }
 
 								blockoverride "menu" { visible = "[MapModeSelectorVars.HasValue('tab', 'military')]" }
 								blockoverride "button" {
-									parentanchor = center
+									parentanchor = center # GlorpUI: added
 									icon = {
 										size = { 20 20 }
 										parentanchor = center
@@ -520,7 +520,7 @@
 								}
 
 								blockoverride "button" {
-									parentanchor = center
+									parentanchor = center # GlorpUI: added
 									icon = {
 										size = { 20 20 }
 										parentanchor = center
@@ -556,7 +556,7 @@
 								}
 
 								blockoverride "button" {
-									parentanchor = center
+									parentanchor = center # GlorpUI: added
 									icon = {
 										size = { 20 20 }
 										parentanchor = center
@@ -583,7 +583,7 @@
 							}
 
 							mapmode_category_block = {
-								visible = "[IsBuildDebug]"
+								visible = "[IsBuildDebug]" # GlorpUI: quoted
 								blockoverride "menu_anchor" {
 									parentanchor = right|top
 									widgetanchor = right|bottom
@@ -594,7 +594,7 @@
 								}
 
 								blockoverride "button" {
-									parentanchor = center
+									parentanchor = center # GlorpUI: added
 									icon = {
 										size = { 20 20 }
 										parentanchor = center
@@ -624,6 +624,6 @@
 					}
 				}
 			}
-			mapmodes_spacer = { }
+			mapmodes_spacer = { } # GlorpUI: added
 		}
 	}

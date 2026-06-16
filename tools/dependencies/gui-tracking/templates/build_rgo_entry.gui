@@ -1,5 +1,5 @@
 ﻿# vanilla: in_game/gui/expand_raw_goods_lateralview.gui
-# mod: in_game/gui/glorpUI_expand_raw_goods_lateralview.gui
+# mod: in_game/gui/expand_raw_goods_lateralview.gui
 
 template build_rgo_entry {
 	# icon
@@ -8,7 +8,7 @@ template build_rgo_entry {
 		layoutpolicy_vertical = expanding
 		card_header_button_04 = {
 			layoutpolicy_vertical = expanding
-			size = { 45 -1 }
+			size = { 45 -1 } # GlorpUI: 50->45
 
 			tooltip_enabled = no
 
@@ -89,8 +89,8 @@ template build_rgo_entry {
 
 				hbox = {
 					layoutpolicy_horizontal = expanding
-					margin = {0 0}
-                    margin_right = 5
+					margin = {0 0} # GlorpUI: {5 0} -> {0 0}, removed spacing 4
+                    margin_right = 5 # GlorpUI: added
 
 					hbox = { #Location Card
 						background = {
@@ -110,11 +110,11 @@ template build_rgo_entry {
 							}
 						}
 						card_header_button_04 = {
-							size = {220 46}
+							size = {220 46} # GlorpUI: {140 43} -> {220 46}
 
 							hbox = {
 								layoutpolicy_horizontal = expanding
-								margin_right = 0
+								margin_right = 0 # GlorpUI: 4->0
 								vbox = {
 									layoutpolicy_horizontal = expanding
 									margin = {5 3}
@@ -125,7 +125,7 @@ template build_rgo_entry {
 										layoutpolicy_horizontal = expanding
 										spacing = 3
 
-										widget = { # Glorp UI - Replace Location Icon w/ Clickable Upgrade Button
+										widget = { # GlorpUI: Replace Location Icon w/ Clickable Upgrade Button
 											size = { 15 15 }
 
 											button = {
@@ -281,7 +281,7 @@ template build_rgo_entry {
 														}
 													}
 													blockoverride "concept_link" {
-														text = "[available_population|E]"
+														text = "[available_population|E]" # GlorpUI: quoted
 													}
 
 													blockoverride "tooltip_extra_content" {
@@ -343,7 +343,7 @@ template build_rgo_entry {
 
 									}
 								}
-                                # Glorp UI - Market Access, Control
+                                # GlorpUI: Market Access, Control
                                 vbox = {
                                     maximumsize = {60 46}
                                     layoutpolicy_horizontal = expanding
@@ -498,11 +498,11 @@ template build_rgo_entry {
 						size = { 20 44 }
 						datacontext = "[RawGoodLocationItem.GetLocation]"
 
-						# CM: Auto Expand RGO button
+						# GlorpUI: Construction Manager RGO auto-expand widget
 						cm_auto_expand_rgo_widget_expand_raw_goods_lateralview = {}
 
 						button_square_checkbox = {
-							# Suppressed in favor of Construction Manager's RGO auto-expand widget.
+							# GlorpUI: hidden when Construction Manager is active
 							visible = "[Not(GetScriptedGui('glorpui_is_cm_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 							size = { 20 20 }
 							parentanchor = center
@@ -589,7 +589,7 @@ template build_rgo_entry {
 							spacing = 5
 							layoutpolicy_horizontal = expanding
 							widget = { # taxbase
-								size = { 50 36 }
+								size = { 50 36 } # GlorpUI: 60->50
 								hbox = {
 									expand = {}
 
@@ -608,7 +608,7 @@ template build_rgo_entry {
 												}
 
 												blockoverride "concept_link" {
-													text = "[profit|E]"
+													text = "[profit|E]" # GlorpUI: quoted
 												}
 
 												blockoverride "tooltip_content" {
@@ -661,7 +661,7 @@ template build_rgo_entry {
 										}
 										# profit
 										text_single = {
-											size = { 50 18 }
+											size = { 50 18 } # GlorpUI: 60->50
 											autoresize = no
 											fontsize = 14
 											align = nobaseline|right
@@ -677,7 +677,7 @@ template build_rgo_entry {
 
 										# income
 										text_single = {
-											size = { 50 18 }
+											size = { 50 18 } # GlorpUI: 60->50
 											autoresize = no
 											fontsize = 14
 											align = nobaseline|right
@@ -693,40 +693,73 @@ template build_rgo_entry {
 
 							}
 							widget = {
-								size = { 50 30 }
+								size = { 50 36 } # GlorpUI: {60 30} -> {50 36}
 								datacontext = "[Location.GetMarket]"
 								datacontext = "[Location.GetMarket.GetMarketEntry(Location.GetRawMaterial)]"
 								tooltipwidget = {
 									using = goods_market_price_tooltip
 								}
-								hbox = {
+								vbox = {
 									layoutpolicy_horizontal = expanding
-									expand = {}
-									text_single = {
-										maximumsize = { 40 18 }
-										align = nobaseline|right
-										fontsize = 14
-										raw_text = "[Location.GetMarket.GetPrice(Location.GetRawMaterial)|2]"
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										expand = {}
+										text_single = {
+											maximumsize = { 40 18 }
+											align = nobaseline|right
+											fontsize = 14
+											raw_text = "[Location.GetMarket.GetPrice(Location.GetRawMaterial)|2]"
 
-										sort_by_highlight = {
-											size = { 105% 100% }
-											name = "market_price"
+											sort_by_highlight = {
+												size = { 105% 100% }
+												name = "market_price"
+											}
 										}
+
+										text_single = {
+
+											maximumsize = { 20 18 }
+											align = nobaseline|center
+											fontsize = 14
+											raw_text = "@[Location.GetRawMaterial.GetPriceDifferenceIconName(Location.GetMarket.GetPrice(Location.GetRawMaterial))]!"
+
+											sort_by_highlight = {
+												size = { 105% 100% }
+												name = "market_price_diff"
+											}
+										}
+
 									}
 
-									text_single = {
-
-										maximumsize = { 20 18 }
-										align = nobaseline|center
-										fontsize = 14
-										raw_text = "@[Location.GetRawMaterial.GetPriceDifferenceIconName(Location.GetMarket.GetPrice(Location.GetRawMaterial))]!"
-
-										sort_by_highlight = {
-											size = { 105% 100% }
-											name = "market_price_diff"
+									hbox = {
+										# GlorpUI: expand RGO ROI
+										layoutpolicy_horizontal = expanding
+										expand = {}
+										text_single = {
+											size = { 50 18 }
+											autoresize = no
+											align = nobaseline|right
+											fontsize = 13
+											default_format = "#color_green"
+											visible = "[And3(GreaterThan_CFixedPoint(GuiScope.AddScope('cm_location', Location.MakeScope).AddScope('cm_country', Player.MakeScope).ScriptValue('glorpui_rgo_expand_cost'), '(CFixedPoint)0'), GreaterThan_CFixedPoint(Select_CFixedPoint(Player.MakeScope.GetVariable('roiUseProfit').IsSet, RawGoodLocationItem.GetProfitPerLevel, RawGoodLocationItem.GetIncomePerLevel), '(CFixedPoint)0'), Player.MakeScope.GetVariable('roiUseMonths').IsSet)]"
+											text = "GLORP_UI_ERG_ROI_MONTHS_VALUE"
+											tooltipwidget = {
+												using = glorpUI_rgo_roi_tooltip
+											}
+										}
+										text_single = {
+											size = { 50 18 }
+											autoresize = no
+											align = nobaseline|right
+											fontsize = 13
+											default_format = "#color_green"
+											visible = "[And3(GreaterThan_CFixedPoint(GuiScope.AddScope('cm_location', Location.MakeScope).AddScope('cm_country', Player.MakeScope).ScriptValue('glorpui_rgo_expand_cost'), '(CFixedPoint)0'), GreaterThan_CFixedPoint(Select_CFixedPoint(Player.MakeScope.GetVariable('roiUseProfit').IsSet, RawGoodLocationItem.GetProfitPerLevel, RawGoodLocationItem.GetIncomePerLevel), '(CFixedPoint)0'), Not(Player.MakeScope.GetVariable('roiUseMonths').IsSet))]"
+											text = "GLORP_UI_ERG_ROI_YEARS_VALUE"
+											tooltipwidget = {
+												using = glorpUI_rgo_roi_tooltip
+											}
 										}
 									}
-
 								}
 							}
 						}
@@ -735,7 +768,7 @@ template build_rgo_entry {
 
 						widget = { #builder
 							layoutpolicy_vertical = expanding
-							size = { 90 -1 }
+							size = { 90 -1 } # GlorpUI: 120->90
 							alwaystransparent = no
 							filter_mouse = left|right
 							widget = {
@@ -749,12 +782,12 @@ template build_rgo_entry {
 								}
 
 								hbox = {
-									spacing = 0
+									spacing = 0 # GlorpUI: 5->0
 									using = bg_text_mask_container_brown
 									margin = {5 5}
 
 									button_square_minus = {
-										size = { 15 15 }
+										size = { 15 15 } # GlorpUI: 21->15
 										enabled = "[RawGoodLocationItem.CanReduceRGO]"
 
 										action_tooltip = {
@@ -819,10 +852,10 @@ template build_rgo_entry {
 
 									widget = {
 										layoutpolicy_vertical = expanding
-										size = {50 -1}
+										size = {50 -1} # GlorpUI: 40->50
 										text_single = {
 											parentanchor = center
-											maximumsize = {50 -1}
+											maximumsize = {50 -1} # GlorpUI: 40->50
 											visible = "[Not(Location.IsMaxRGOWorkersUnderConstruction)]"
 											default_format = "#important_number"
 											align = nobaseline
@@ -832,7 +865,7 @@ template build_rgo_entry {
 
 										text_single = {
 											parentanchor = center
-											maximumsize = {50 -1}
+											maximumsize = {50 -1} # GlorpUI: 40->50
 											visible = "[Location.IsMaxRGOWorkersUnderConstruction]"
 											default_format = "#important_number"
 											align = nobaseline
@@ -845,7 +878,7 @@ template build_rgo_entry {
 									}
 
 									button_square_plus = {
-										size = { 15 15 }
+										size = { 15 15 } # GlorpUI: 21->15
 										enabled = "[RawGoodLocationItem.CanUpgradeRGO]"
 
 										action_tooltip = {

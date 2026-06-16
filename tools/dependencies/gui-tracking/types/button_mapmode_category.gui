@@ -14,8 +14,8 @@
 			ignore_layout = yes
 
 			button = {
-				size = { 90% 90% }
-				parentanchor = left|vcenter
+				size = { 90% 90% } # GlorpUI: {100% 80%} -> {90% 90%}
+				parentanchor = left|vcenter # GlorpUI: center -> left|vcenter
 
 				using = button_mapmode_actions
 				block "button_mapmode_actions_extra" {
@@ -30,7 +30,7 @@
 					}
 				}
 
-				using = button_outliner_category_texture
+				using = button_outliner_category_texture # GlorpUI: banner -> outliner goldframe
 				using = mapmode_color
 
 				icon = {
@@ -44,7 +44,7 @@
 		}
 
 		icon = {
-			size = { 35 35 }
+			size = { 35 35 } # GlorpUI: 40->35
 			using = paper_card_texture
 			modify_texture = { using = color_brown_leather_texture alpha = 0.3 }
 			modify_texture = { using = color_raw_paper_texture alpha = 0.2 }
@@ -82,6 +82,7 @@
 		expand = {}
 
 		block "button_mapmode_right" {
+			# GlorpUI: slot pick button
 			button_pin_alt = {
 				size = { 27 27 }
 				# TODO: Check if the mapmode has been pinned in any of the slots.

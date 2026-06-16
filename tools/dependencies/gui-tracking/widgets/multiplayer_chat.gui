@@ -11,7 +11,7 @@ window = {
 	filter_mouse = wheel
 	min_dist_from_screen_edge = 200
 
-	@multiplayer_chat_width = 600
+	@multiplayer_chat_width = 600 # GlorpUI: 800->600
 	@multiplayer_chat_height = 300
 	size = { @multiplayer_chat_width @multiplayer_chat_height }
 
@@ -28,18 +28,18 @@ window = {
 	layer = top
 	position = "[MultiplayerChat.GetChatPosition]"
 	widget = {
-		# using = bg_expandable_alt
+		# using = bg_expandable_alt # GlorpUI: disabled
 		parentanchor = bottom|left
 		widgetanchor = bottom|left
-		size = { 400 100% }
-		# using = bg_paper_card
-		# using = bg_cabinet_card_frame
+		size = { 400 100% } # GlorpUI: 500->400
+		# using = bg_paper_card # GlorpUI: disabled
+		# using = bg_cabinet_card_frame # GlorpUI: disabled
 
 		widget = {
-			size = { 25 40 }
+			size = { 25 40 } # GlorpUI: {40 40} -> {25 40}
 			parentanchor = top|right
 
-			ui_direction_button_holder_left = {}
+			ui_direction_button_holder_left = {} # GlorpUI: right->left
 			button_close_alt = {
 				blockoverride "close_on_action" { on_action = "[ToggleMultiplayerChat]" }
 				blockoverride "close_inputaction" {
@@ -71,24 +71,24 @@ window = {
 					item = {
 						flowcontainer = {
 							using = layoutpolicy_expanding
-							minimumsize = { 360 34 }
-							maximumsize = { 360 104 }
+							minimumsize = { 360 34 } # GlorpUI: 460->360
+							maximumsize = { 360 104 } # GlorpUI: 460->360
 							text_multi = {
 								margin = {10 3}
 								# margin_left = 5
 								# margin_right = 10
 
-								using = bg_text_mask_container_dark_blue
-								minimumsize = { 360 30 }
-								maximumsize = { 360 100 }
+								using = bg_text_mask_container_dark_blue # GlorpUI: brown->dark_blue
+								minimumsize = { 360 30 } # GlorpUI: 460->360
+								maximumsize = { 360 100 } # GlorpUI: 460->360
 								alwaystransparent = yes
 
 								multiline = yes
 								autoresize = yes
 								align = left|nobaseline
 
-								# color = {1 0 0 1 }
-								# fontcolor = { 1 1 1 1 }
+								# color = {1 0 0 1 } # GlorpUI: disabled
+								# fontcolor = { 1 1 1 1 } # GlorpUI: disabled
 								fontsize = 14
 								using = Font_Size_Small
 
@@ -124,7 +124,7 @@ window = {
 			parentanchor = bottom|hcenter
 			widgetanchor = bottom|hcenter
 			position = {0 -7}
-			size = { 385 35 }
+			size = { 385 35 } # GlorpUI: 485->385
 			hbox = {
 				spacing = 2
 				expand = {}
@@ -173,11 +173,11 @@ window = {
 
 	widget = {
 		visible = "[MultiplayerChat.IsShowingPlayerList]"
-		position = { 400 0 }
-		# using = bg_expandable_alt
-		size = { 200 100% }
-		# using = bg_square_wood_tile
-		# using = bg_cabinet_card_frame
+		position = { 400 0 } # GlorpUI: 500->400
+		# using = bg_expandable_alt # GlorpUI: disabled
+		size = { 200 100% } # GlorpUI: 300->200
+		# using = bg_square_wood_tile # GlorpUI: disabled
+		# using = bg_cabinet_card_frame # GlorpUI: disabled
 
 		widget = {
 			size = { 100% 35 }
@@ -192,7 +192,7 @@ window = {
 		}
 
 		scrollarea = {
-			size = { 173 82% }
+			size = { 173 82% } # GlorpUI: 273->173
 			position = { 0 45 }
 			parentanchor = top|hcenter
 			widgetanchor = top|hcenter
@@ -213,7 +213,7 @@ window = {
 
 						card_list_button = {
 							layoutpolicy_horizontal = expanding
-							size = { 173 35 }
+							size = { 173 35 } # GlorpUI: 273->173
 							layoutstretchfactor_horizontal = 2
 
 							tooltipwidget = {BasicFunctionalTooltip = {}}

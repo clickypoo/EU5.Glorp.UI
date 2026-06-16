@@ -1,5 +1,5 @@
 ﻿# vanilla: in_game/gui/production_lateralview.gui
-# mod: in_game/gui/glorpUI_production_lateralview.gui
+# mod: in_game/gui/production_lateralview.gui
 
 lateralview = {
 	name = "production_lateralview"
@@ -31,7 +31,7 @@ lateralview = {
 			blockoverride "header_text" {
 				text = "THE_PRODUCTION_OVERVIEW_TITLE"
 			}
-			blockoverride "window_header_alt_color_texture" {
+			blockoverride "window_header_alt_color_texture"{
 				using = color_production_texture
 			}
 		}
@@ -63,7 +63,7 @@ lateralview = {
 					datacontext = "[ProductionView.GetBuildingsSortSearch.WithFilterTags('building')]"
 					name = "production_filtered_list"
 
-					blockoverride "subheader_upper_divider" {
+					blockoverride "subheader_upper_divider"{
 						# MARKET FILTERED
 						widget = {
 							visible = "[ProductionView.IsMarketFilterEnabled]"
@@ -207,11 +207,11 @@ lateralview = {
 						}
 					}
 
-					blockoverride "searchbar_extra_pre_content" {
+					blockoverride "searchbar_extra_pre_content"{
 						using = production_view_subtabs
 					}
 
-					blockoverride "custom_search_filter" {
+					blockoverride "custom_search_filter"{
 						using = production_view_poptypes
 					}
 
@@ -228,7 +228,7 @@ lateralview = {
 							name = "name"
 							using = layoutpolicy_expanding
 						}
-
+		
 						# sort_by_key_button = {
 						# 	name = "profit"
 						# 	layoutpolicy_vertical = expanding
@@ -278,7 +278,7 @@ lateralview = {
 					datacontext = "[ProductionView.GetBuildingsSortSearch.WithFilterTags('building')]"
 					name = "building_categories_filtered_list"
 
-					blockoverride "subheader_upper_divider" {
+					blockoverride "subheader_upper_divider"{
 						# MARKET FILTERED
 						widget = {
 							visible = "[ProductionView.IsMarketFilterEnabled]"
@@ -422,11 +422,11 @@ lateralview = {
 						}
 					}
 
-					blockoverride "searchbar_extra_pre_content" {
+					blockoverride "searchbar_extra_pre_content"{
 						using = production_view_subtabs
 					}
 
-					blockoverride "custom_search_filter" {
+					blockoverride "custom_search_filter"{
 						using = production_view_poptypes
 					}
 
@@ -479,7 +479,7 @@ lateralview = {
 															enabled = "[GreaterThan_int32(CategoryBuildingTypesItem.GetBuildingTypesAmount, '(int32)0')]"
 															on_action = "[CategoryBuildingTypesItem.Toggle]"
 														}
-
+								
 														action_tooltip = {
 															click_type = right
 															click_mode = single
@@ -518,7 +518,7 @@ lateralview = {
 														text_single = {
 															# visible = "[CategoryBuildingTypesItem.HasProducingBuildingsBuilt]"
 															visible = "[And(
-																Not(CategoryBuildingTypesItem.HasUpkeepBuildingsBuilt),
+																Not(CategoryBuildingTypesItem.HasUpkeepBuildingsBuilt), 
 																CategoryBuildingTypesItem.HasProducingBuildingsBuilt
 															)]"
                                                             raw_text = "[CategoryBuildingTypesItem.GetTotalNetProfit|+=2]@tax_base!"
@@ -537,7 +537,7 @@ lateralview = {
 
 														text_single = {
 															visible = "[And(
-																Not(CategoryBuildingTypesItem.HasUpkeepBuildingsBuilt),
+																Not(CategoryBuildingTypesItem.HasUpkeepBuildingsBuilt), 
 																CategoryBuildingTypesItem.HasProducingBuildingsBuilt
 															)]"
 															# visible = "[CategoryBuildingTypesItem.HasProducingBuildingsBuilt]"
@@ -554,7 +554,7 @@ lateralview = {
 																using = BuildingCategory_income_tooltip
 															}
                                                         }
-
+														
                                                         text_single = {
 															visible = "[CategoryBuildingTypesItem.HasUpkeepBuildingsBuilt]"
                                                             raw_text = "#R -[CategoryBuildingTypesItem.GetTotalMaintenanceCost|2]#!@expense!"
@@ -568,7 +568,7 @@ lateralview = {
 															}
 															tooltipwidget = {
 																using = BuildingCategory_upkeep_tooltip
-															}
+															}	
                                                         }
 
                                                         text_single = {
@@ -652,7 +652,7 @@ lateralview = {
 																			datacontext = "[BuildingItem.GetBuildingType]"
 																			tooltipwidget = {
 																				using = BuildingType_tooltip
-																				blockoverride "building_type_tooltip_extra" {
+																				blockoverride "building_type_tooltip_extra"{
 																					TooltipContentSection = {
 																						visible = "[BuildingItem.HasBuildingsLackingInput]"
 
@@ -709,7 +709,7 @@ lateralview = {
 																						game_concept = "[building|E]"
 																						title = "BUILDING_TYPE_INCOME_TT_TITLE"
 																					}
-																					tooltipwidget = {
+																					tooltipwidget = { 
 																						using = BuildingType_income_tooltip
 																					}
 																				}
@@ -722,7 +722,7 @@ lateralview = {
 																						game_concept = "[building_maintenance|E]"
 																						title = "BUILDING_TYPE_UPKEEP_TT_TITLE"
 																					}
-																					tooltipwidget = {
+																					tooltipwidget = { 
 																						using = BuildingType_upkeep_tooltip
 																					}
 																				}
@@ -769,7 +769,7 @@ lateralview = {
 																			}
 																			background = {
 																				texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
-
+																				
 																				modify_texture = {
 																					using = color_new_gold_texture
 																				}
@@ -808,7 +808,7 @@ lateralview = {
 																					visible = "[BuildingItem.HasBuildingsLackingInput]"
 																					using = bg_circle
 																				}
-
+																				
 																			}
 																		}
 																	}
@@ -919,7 +919,7 @@ lateralview = {
 																			datacontext = "[BuildingItem.GetBuildingType]"
 																			tooltipwidget = {
 																				using = BuildingType_tooltip
-																				blockoverride "building_type_tooltip_extra" {
+																				blockoverride "building_type_tooltip_extra"{
 																					TooltipContentSection = {
 																						visible = "[BuildingItem.HasBuildingsLackingInput]"
 
@@ -975,7 +975,7 @@ lateralview = {
 																			}
 																			background = {
 																				texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
-
+																				
 																				modify_texture = {
 																					using = color_new_gold_texture
 																				}
@@ -1014,7 +1014,7 @@ lateralview = {
 																					visible = "[BuildingItem.HasBuildingsLackingInput]"
 																					using = bg_circle
 																				}
-
+																				
 																			}
 																		}
 																	}
@@ -1220,7 +1220,7 @@ lateralview = {
 					datacontext = "[ProductionView.GetForeignBuildingsSortSearch]"
 					name = "foreign_filtered_list"
 
-					blockoverride "subheader_upper_divider" {
+					blockoverride "subheader_upper_divider"{
 						# MARKET FILTERED
 						widget = {
 							visible = "[ProductionView.IsMarketFilterEnabled]"
@@ -1363,11 +1363,11 @@ lateralview = {
 						}
 					}
 
-					blockoverride "searchbar_extra_pre_content" {
+					blockoverride "searchbar_extra_pre_content"{
 						using = production_view_subtabs
 					}
 
-					blockoverride "custom_search_filter" {
+					blockoverride "custom_search_filter"{
 						using = production_view_poptypes
 					}
 
@@ -1401,7 +1401,7 @@ lateralview = {
 					datacontext = "[ProductionView.GetEstateBuildingsSortSearch]"
 					name = "estate_filtered_list"
 
-					blockoverride "subheader_upper_divider" {
+					blockoverride "subheader_upper_divider"{
 						# MARKET FILTERED
 						widget = {
 							visible = "[ProductionView.IsMarketFilterEnabled]"
@@ -1546,11 +1546,11 @@ lateralview = {
 						}
 					}
 
-					blockoverride "searchbar_extra_pre_content" {
+					blockoverride "searchbar_extra_pre_content"{
 						using = production_view_subtabs
 					}
 
-					blockoverride "custom_search_filter" {
+					blockoverride "custom_search_filter"{
 						using = production_view_poptypes
 					}
 

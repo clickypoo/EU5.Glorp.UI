@@ -1,5 +1,5 @@
 ﻿# vanilla: in_game/gui/production_lateralview.gui
-# mod: in_game/gui/glorpUI_production_lateralview.gui
+# mod: in_game/gui/production_lateralview.gui
 
 template production_view_poptypes {
 	hbox = {
@@ -13,7 +13,7 @@ template production_view_poptypes {
 		datamodel = "[GetPopTypes]"
 		datacontext = "[ProductionView.GetSelectedLocation]"
 
-        hbox = { # Glorp UI - Extra Piecharts
+        hbox = { # GlorpUI: Extra Piecharts
             piechart = {
                 using = bg_circle
                 visible = "[Not(Location.HasTooManyBuildingLevel)]"

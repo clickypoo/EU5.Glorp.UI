@@ -89,7 +89,7 @@ template bg_mapmode_menu {
 		using = overlay_window
 		using = overlay_leather
 
-		margin = { -12 0 } # Glorp UI - buttons bg
+		margin = { -12 0 } # GlorpUI: {-15 -15} -> {-12 0}
 
 		modify_texture = {
 			texture = "gfx/interface/component_overlay/scrollwork_c.dds"

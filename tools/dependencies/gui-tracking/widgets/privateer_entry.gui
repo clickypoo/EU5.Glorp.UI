@@ -15,13 +15,13 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					text = "[Privateer.GetArea.GetNameWithNoTooltip]"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 
 				OutlinerTextBase = {
 					autoresize = yes
 					raw_text = "[Privateer.GetPowerChange|+=%]"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: added
 				}
 			}
 		}

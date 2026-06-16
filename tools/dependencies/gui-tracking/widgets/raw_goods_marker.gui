@@ -19,7 +19,7 @@ widget = {
 		tooltipwidget = {
 			using = SpecificGoodsMarket_tooltip
 		}
-		action_tooltip = { # Glorp UI - Clickable RGO -> RGO Mapmode
+		action_tooltip = { # GlorpUI: Clickable RGO -> RGO Mapmode
 			click_type = left
 			click_mode = single
 			title = "OPEN_GOOD_PANEL"

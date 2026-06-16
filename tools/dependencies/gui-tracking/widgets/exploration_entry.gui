@@ -47,13 +47,13 @@ OutlinerEntryBase = {
 				}
 
 				icon = {
-					size = { 28 28 }
+					size = { 28 28 } # GlorpUI: 20->28
 					visible = "[Exploration.GetArea.IsNaval]"
 					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_sea.dds"
 				}
 
 				icon = {
-					size = { 28 28 }
+					size = { 28 28 } # GlorpUI: 20->28
 					visible = "[Not(Exploration.GetArea.IsNaval)]"
 					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_land.dds"
 				}
@@ -63,7 +63,7 @@ OutlinerEntryBase = {
 					autoresize = no
 					align = left
 					raw_text = "[Exploration.GetArea.GetNameWithNoTooltip] ([Exploration.GetArea.GetRegion.GetNameWithNoTooltip])"
-                    fontsize = 14
+                    fontsize = 14 # GlorpUI: default_format #L -> fontsize 14
 				}
 
 				OutlinerTextBase = {
@@ -94,7 +94,7 @@ OutlinerEntryBase = {
 		OutlinerIconBg = {
 			piechart = {
 				parentanchor = center
-				size = { 85% 85% }
+				size = { 85% 85% } # GlorpUI: 80%->85%
 
 				using = piechart_angles
 				using = bg_circle_piechart

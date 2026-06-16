@@ -205,7 +205,7 @@ lateralview = {
 
 					expand = {}
 				}
-                zoom_to_button = {
+                zoom_to_button = { # GlorpUI: Zoom To
                     blockoverride "onclick_action" {
                         onclick = "[PanToLocation(LocationView.GetLocation)]"
                     }
@@ -1968,7 +1968,7 @@ lateralview = {
 													}
 													using = bg_control_romboid
 
-                                                    button = { # Glorp UI - Mapmode Hover
+                                                    button = { # GlorpUI: Mapmode Hover
                                                         size = { 100% 100% }
                                                         datacontext = "[GetMapMode('control')]"
                                                         onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('control')]"
@@ -2096,7 +2096,7 @@ lateralview = {
 														}
 													}
 
-                                                    button = { # Glorp UI - Mapmode Hover
+                                                    button = { # GlorpUI: Mapmode Hover
                                                         size = { 100% 100% }
                                                         datacontext = "[GetMapMode('proximity')]"
                                                         onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('proximity')]"
@@ -2224,7 +2224,7 @@ lateralview = {
 														}
 													}
 
-                                                    button = { # Glorp UI - Mapmode Hover
+                                                    button = { # GlorpUI: Mapmode Hover
                                                         size = { 100% 100% }
                                                         datacontext = "[GetMapMode('tax_base')]"
                                                         onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('tax_base')]"
@@ -2251,10 +2251,10 @@ lateralview = {
 
 											datacontext = "[LocationView.GetLocation]"
 
-											# CM: Auto Food button (only on food-RGO locations)
+											# GlorpUI: Construction Manager auto-food widget, food RGO locations only
 											cm_auto_food_widget_location_window = {}
 
-											# CM: Auto Expand RGO button
+											# GlorpUI: Construction Manager RGO auto-expand widget
 											cm_auto_expand_rgo_widget_location_window = {}
 
 											tooltipwidget = {
@@ -2440,7 +2440,7 @@ lateralview = {
 														enabled = "[And(IsCabinetActionAllowed('develop_province'), Location.GetOwner.IsPlayer)]"
 														conditions = "[GetCabinetActionTooltip('develop_province')]"
 													}
-                                                    datacontext = "[GetMapMode('development')]" # Glorp UI - Mapmode Hover
+                                                    datacontext = "[GetMapMode('development')]" # GlorpUI: Mapmode Hover
                                                     onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('development')]"
                                                     action_tooltip = {
                                                         click_type = right
@@ -2518,7 +2518,7 @@ lateralview = {
 											widget = {
 												size = { 80 35 }
 												sneaky_button = {
-                                                    # When we can do recovery_effort
+                                                    # GlorpUI: recovery_effort available
                                                     visible = "[And3(IsCabinetActionAllowed('recovery_effort'), Location.GetOwner.IsPlayer, HasProsperityIntelOn(Location.Self))]"
 													size = { 100% 100% }
 													action_tooltip = {
@@ -2538,13 +2538,13 @@ lateralview = {
                                                         on_action = "[MapMode.SetMapMode]"
                                                     }
 
-													# enabled = "[And(IsCabinetActionAllowed('recovery_effort'), Location.GetOwner.IsPlayer)]"
+													# enabled = "[And(IsCabinetActionAllowed('recovery_effort'), Location.GetOwner.IsPlayer)]" # GlorpUI: disabled, folded into visible
 
 													tooltipwidget = {
 														using = location_prosperity_tooltip
 													}
 												}
-                                                # When we can't do recovery_effort
+                                                # GlorpUI: recovery_effort unavailable
                                                 sneaky_button = {
                                                     visible = "[Or(Not(IsCabinetActionAllowed('recovery_effort')), Not(Location.GetOwner.IsPlayer))]"
                                                     size = { 100% 100% }
@@ -2732,7 +2732,7 @@ lateralview = {
 											widget = {
 												size = { 80 35 }
 												sneaky_button = {
-                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('institution')]" # Glorp UI - Mapmode Hover
+                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('institution')]" # GlorpUI: Mapmode Hover
 													size = { 100% 100% }
 													action_tooltip = {
 														click_type = left
@@ -2803,7 +2803,7 @@ lateralview = {
 													}
 													enabled = "[Location.GetOwner.IsPlayer]"
 
-                                                    datacontext = "[GetMapMode('food_productivity')]" # Glorp UI - Mapmode Hover
+                                                    datacontext = "[GetMapMode('food_productivity')]" # GlorpUI: Mapmode Hover
                                                     onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('food_productivity')]"
                                                     action_tooltip = {
                                                         click_type = right
@@ -2871,7 +2871,7 @@ lateralview = {
 													}
 													enabled = "[Location.GetOwner.IsPlayer]"
 
-                                                    datacontext = "[GetMapMode('food')]" # Glorp UI - Mapmode Hover
+                                                    datacontext = "[GetMapMode('food')]" # GlorpUI: Mapmode Hover
                                                     onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('food')]"
                                                     action_tooltip = {
                                                         click_type = right

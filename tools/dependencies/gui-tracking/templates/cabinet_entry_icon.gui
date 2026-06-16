@@ -11,7 +11,7 @@ template cabinet_entry_icon {
 		# }
 		icon = {
 			parentanchor = center
-			size = { 70% 70% }
+			size = { 70% 70% } # GlorpUI: 63%->70%
 			block "cabinet_entry_icon_texture" {}
 			glow = {
 				name = "drop_shadow"

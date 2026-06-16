@@ -2,7 +2,7 @@
 # mod: in_game/gui/multiplayer_chat.gui
 
 type chat_editbox = widget {
-	size = { 350 35 }
+	size = { 350 35 } # GlorpUI: 450->350
 
 	hbox = {
 		parentanchor = center

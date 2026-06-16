@@ -14,7 +14,7 @@ OutlinerEntryBase = {
 				autoresize = no
 				align = right
 				raw_text = "-"
-                fontsize = 14
+                fontsize = 14 # GlorpUI: added
 			}
 		}
 	}

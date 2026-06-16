@@ -15,7 +15,7 @@
 		}
 
 		mapmode_category_button = {
-			size = { 100% 80% } # Glorp UI - Smaller Mapmode Category Buttons
+			size = { 100% 80% } # GlorpUI: Smaller Mapmode Category Buttons
 			allow_outside = yes
 			tooltip_enabled = yes
 

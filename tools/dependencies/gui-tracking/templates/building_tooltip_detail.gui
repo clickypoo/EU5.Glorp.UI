@@ -223,7 +223,7 @@ template building_tooltip_detail {
         }
 	}
 
-	# Glorp UI - Added Building Effects to Estate Reduction -> Listed Building Tooltip
+	# GlorpUI: Added Building Effects to Estate Reduction -> Listed Building Tooltip
 	TooltipStringPairList = {
 		visible = "[And(Building.GetType.OnlyEstatesCanBuild, Not(StringIsEmpty(Building.GetType.GetModifierInfo)))]"
 		textcontext = "[Building.GetType.GetModifierInfo]"

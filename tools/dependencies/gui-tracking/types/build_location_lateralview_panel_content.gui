@@ -296,7 +296,7 @@
 											texture = "gfx/interface/icons/flat_icons/mass_construct.dds"
 										}
 
-										# CM: mass auto-expand button
+										# GlorpUI: Construction Manager mass auto-expand button
 										cm_mass_auto_expand_button_bll = {}
 
 										text_single = {
@@ -377,7 +377,7 @@
 											texture = "gfx/interface/icons/flat_icons/mass_upgrade.dds"
 										}
 
-										# CM: mass auto-expand button
+										# GlorpUI: Construction Manager mass auto-expand button
 										cm_mass_auto_expand_button_bll = {}
 
 										text_single = {
@@ -462,7 +462,7 @@
 											texture = "gfx/interface/icons/flat_icons/mass_construct.dds"
 										}
 
-										# Invisible spacer for the overlay twin.
+										# GlorpUI: invisible spacer for the overlay twin
 										cm_mass_auto_expand_button_bll = {
 											alpha = 0
 											enabled = no
@@ -493,6 +493,7 @@
 								}
 							}
 
+							# GlorpUI: Construction Manager mass auto-expand overlay
 							cm_mass_auto_expand_overlay_no_upgrade = {}
 
 							header_button_right = {
@@ -519,6 +520,7 @@
 											texture = "gfx/interface/icons/flat_icons/mass_upgrade.dds"
 										}
 
+										# GlorpUI: invisible spacer for the overlay twin
 										cm_mass_auto_expand_button_bll = {
 											alpha = 0
 											enabled = no
@@ -549,6 +551,7 @@
 								}
 							}
 
+							# GlorpUI: Construction Manager mass auto-expand overlay
 							cm_mass_auto_expand_overlay_upgrade = {}
 						}
 					}

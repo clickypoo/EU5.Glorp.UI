@@ -284,7 +284,7 @@ template CountryTooltip {
 							visible = "[HasNavyStrengthIntelOn(Country.Self)]"
 							autoresize = yes
 							align = right
-							text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] ([Country.GetNavySizeValue|0L] @naval_regular!)"
+							text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] ([Country.GetNavySizeValue|0L] @naval_regular!)" # GlorpUI: levy/regular breakdown
 						}
 						text_single = {
 							visible = "[Not(HasNavyStrengthIntelOn(Country.Self))]"
@@ -397,6 +397,7 @@ template CountryTooltip {
 				blockoverride "text" {
 					text = "COUNTRY_TOOLTIP_IS_AT_WAR"
 				}
+				# GlorpUI: army overview
 				TooltipStringPairList = {
 					visible = "[Country.HasArmy]"
 					blockoverride "block_title" {

@@ -1,5 +1,5 @@
 ﻿# vanilla: in_game/gui/production_lateralview.gui
-# mod: in_game/gui/glorpUI_production_lateralview.gui
+# mod: in_game/gui/production_lateralview.gui
 
 	type building_type_header = hbox {
 		layoutpolicy_horizontal = expanding
@@ -153,7 +153,7 @@
 
 							parentanchor = left|vcenter
 							icon = {
-								size = {40 40} # GlorpUI: 40->31
+								size = {40 40} # GlorpUI: 31->40
 								parentanchor = center
 								texture = "[GetBuildingIcon(BuildingItem.GetBuildingType.Self)]"
 
@@ -231,14 +231,12 @@
 							widget = {
 								size = {80 25}
 								hbox = {
-									# Construction Manager mass auto-expand button.
-									cm_mass_auto_expand_button_pl = {
-										visible = "[And(BuildingItem.HasBuildings, BuildingItem.GetBuildingType.IsMultipleLevels)]"
-									}
+									# GlorpUI: Construction Manager mass auto-expand button
+									cm_mass_auto_expand_button_pl = {}
 
 									button_square_checkbox = {
-										# Suppressed in favor of the Construction Manager mass auto-expand button.
-										visible = "[And(BuildingItem.HasBuildings, BuildingItem.GetBuildingType.IsMultipleLevels, Not(GetScriptedGui('glorpui_is_cm_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)))]"
+										# GlorpUI: hidden when Construction Manager is active
+										visible = "[And3(BuildingItem.HasBuildings, BuildingItem.GetBuildingType.IsMultipleLevels, Not(GetScriptedGui('glorpui_is_cm_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)))]"
 										size = { 20 20 }
 										tooltipwidget = {
 											using = AutoExpand_Building_Tooltip
