@@ -1,4 +1,4 @@
-﻿# vanilla: in_game/gui/build_location_lateralview.gui
+# vanilla: in_game/gui/build_location_lateralview.gui
 # mod: in_game/gui/glorpUI_build_location_lateralview.gui
 
 template build_location_entry {
