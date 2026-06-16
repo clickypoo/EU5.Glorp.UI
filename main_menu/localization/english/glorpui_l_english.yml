@@ -16,3 +16,6 @@ l_english:
  CLOSE_MAPMODE_SETTINGS: "Close Mapmode Bar Settings"
  GLORP_UI_ROI_USE_PROFIT_LABEL: "Use total profit for ROI"
  GLORP_UI_ROI_USE_MONTHS_LABEL: "Use months for ROI"
+ SWAP_TO_AVG_CONTROL:"Swap to Average Control"
+ SWAP_TO_MAX_CONTROL:"Swap to Max Control"
+ REFRESH_AVG_PROX:"Refresh Average Proximity"

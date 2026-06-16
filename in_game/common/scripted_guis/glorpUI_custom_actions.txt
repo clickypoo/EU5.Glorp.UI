@@ -290,6 +290,18 @@ RefreshAvgStats = {
 	}
 }
 
+SetControlStatToggle = {
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = controlStatToggle } }
+			set_variable = { name = controlStatToggle value = 1 }
+		}
+		else = {
+			remove_variable = controlStatToggle
+		}
+	}
+}
+
 ### BUILD PANEL ###
 SetRoiUseProfit = {
     effect = {

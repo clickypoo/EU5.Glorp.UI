@@ -159,7 +159,11 @@ types glorp {
                                 minimumsize = { 80 30 }
                                 maximumsize = { 80 30 }
 								onmousehierarchyenter = "[GetScriptedGui('RefreshAvgStats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-                                onclick = "[GetScriptedGui('RefreshAvgStats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								action_tooltip = {
+									click_type = left
+									on_action = "[GetScriptedGui('RefreshAvgStats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									title = "REFRESH_AVG_PROX"
+								}
                                 tooltipwidget = {
                                     SimpleContextualTooltipType = {
                                         blockoverride "title_icon" {
@@ -186,15 +190,21 @@ types glorp {
                                     blockoverride "stat_icon" { texture = "gfx/interface/icons/map_modes/proximity.dds" }
                                 }
                             }
-							stat_item = {
-								blockoverride "stat_text" { text = "[Player.MakeScope.GetVariable('glorpui_avg_max_control').GetValue|2%]" }
-								blockoverride "stat_icon" { texture = "gfx/interface/icons/location_icons/control.dds" }
+							button = {
+								visible = "[Not(Player.MakeScope.GetVariable('controlStatToggle').IsSet)]"
+								minimumsize = { 80 30 }
+								maximumsize = { 80 30 }
+								action_tooltip = {
+									click_type = left
+									on_action = "[GetScriptedGui('SetControlStatToggle').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									title = "SWAP_TO_AVG_CONTROL"
+								}
 								tooltipwidget = {
 									SimpleContextualTooltipType = {
 										blockoverride "title_icon" {
 											icon = {
 												using = tooltip_title_icon_size
-												texture = "gfx/interface/icons/location_icons/control.dds"
+												texture = "gfx/interface/icons/map_modes/max_control.dds"
 											}
 										}
 										blockoverride "title_text" {
@@ -208,6 +218,25 @@ types glorp {
 											}
 										}
 									}
+								}
+								stat_item = {
+									blockoverride "stat_text" { text = "[Player.MakeScope.GetVariable('glorpui_avg_max_control').GetValue|2%]" }
+									blockoverride "stat_icon" { texture = "gfx/interface/icons/map_modes/max_control.dds" }
+								}
+							}
+							button = {
+								visible = "[Player.MakeScope.GetVariable('controlStatToggle').IsSet]"
+								minimumsize = { 80 30 }
+								maximumsize = { 80 30 }
+								action_tooltip = {
+									click_type = left
+									on_action = "[GetScriptedGui('SetControlStatToggle').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									title = "SWAP_TO_MAX_CONTROL"
+								}								datacontext = "[Player]"
+								tooltipwidget = { using = AverageControlTooltip }
+								stat_item = {
+									blockoverride "stat_text" { text = "[Player.GetAverageControl|2%]" }
+									blockoverride "stat_icon" { texture = "gfx/interface/icons/location_icons/control.dds" }
 								}
 							}
                         }
