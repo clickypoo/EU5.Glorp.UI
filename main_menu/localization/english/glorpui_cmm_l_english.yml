@@ -3,10 +3,10 @@ l_english:
  # Mod
  glorpui_name: "Glorp UI"
  glorpui_desc: "and by it, lets just say.. my bingus"
- game_concept_glorpui: ""
- game_concept_glorpui_desc: ""
- game_concept_glorpui_background: ""
- game_concept_glorpui_background_desc: ""
+ game_concept_glorpui_banner_icon: ""
+ game_concept_glorpui_banner_icon_desc: ""
+ game_concept_glorpui_banner_background: ""
+ game_concept_glorpui_banner_background_desc: ""
 
  # Toggles (toggles) Tab
  glorpui__toggles_name: "Toggles"
