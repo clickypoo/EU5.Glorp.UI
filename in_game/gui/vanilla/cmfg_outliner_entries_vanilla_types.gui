@@ -142,7 +142,7 @@ types OutlinerEntriesTypes
 	type OutlinerCategoryButtonBase = button {
 		parentanchor = right
 		using = button_outliner_category_texture
-		
+
 		using = button_common_template
 		using = button_outliner_effect
 
@@ -288,7 +288,7 @@ types AgendaTypes
 		# }
 
 		button = {
-			block "remove_for_short" { 
+			block "remove_for_short" {
 				visible = "[Not(And(OutlinerAgendaEntry.HasMissionActive, Player.GetMissionProgress.GetActiveMission.IsFromPlayStyle(PlayStyleItem.Self)))]"
 			}
 
@@ -301,7 +301,7 @@ types AgendaTypes
 			layoutpolicy_horizontal = expanding
 			using = playstyle_button_actions
 
-			hbox = {	
+			hbox = {
 				block "count_button_minsize" { minimumsize = { 70 30 } }
 				block "remove_for_short" {
 					margin_left = 2
@@ -320,7 +320,7 @@ types AgendaTypes
 						blockoverride "check_yes" { visible = "[GetQuickMissionList.ArePlaystyleMissionsCompletedWithItem(PlayStyleItem.Self)]" }
 					}
 				}
-				
+
 				icon = {
 					block "icon_visible" { visible = yes }
 					block "icon_texture" { using = icon_colored_mil_texture }
@@ -412,7 +412,7 @@ types AgendaTypes
 				blockoverride "mission_color_texture_frames" {
 					using = button_common_properties_template
 				}
-				
+
 				layoutpolicy_horizontal = expanding
 				size = { -1 30 }
 
@@ -448,7 +448,7 @@ types AgendaTypes
 				tooltipwidget = { using = Mission_tooltip }
 			}
 		}
-		
+
 		expand = {}
 	}
 }
@@ -460,88 +460,6 @@ types AgendaTypes
 # "CabinetItem"
 # "Outliner"
 ###############################################################################
-
-template cabinet_entry_action_progress {
-	hbox = {
-		spacing = 4
-		portrait_standard_head_button = {
-			datacontext = "[Cabinet.GetCharacter]"
-			visible = "[Cabinet.IsCharacterSet]"
-			size = { 28 28 }
-	
-			action_tooltip = {
-				click_type = right
-				click_mode = single
-	
-				title = "CHANGE_CABINET"
-				cost = "[Cabinet.GetPriceForAssigningCabinetMemberToSlot]"
-				enabled = "[Cabinet.ArePossibleCabinetCharactersAvailable]"
-				description = "[Cabinet.GetDescriptionForAssigningCabinetMemberToSlot]"
-				on_action_with_params = "[Cabinet.AssigningCabinetMemberToSlot]"
-			}
-	
-			# blockoverride "character_tooltip" { 
-			# }
-			blockoverride "character_contextmenu" {}
-			blockoverride "button_setup" {
-			}
-			blockoverride "rightclick" {}
-			# blockoverride "hover" {}
-		}
-		portrait_standard_head_button = {
-			datacontext = "[Cabinet.GetCharacter]"
-			visible = "[Not(Cabinet.IsCharacterSet)]"
-			size = { 28 28 }
-	
-			action_tooltip = {
-				click_type = left
-				click_mode = single
-	
-				title = "SELECT_CABINET_CHARACTER"
-				cost = "[Cabinet.GetPriceForAssigningCabinetMemberToSlot]"
-				enabled = "[Cabinet.ArePossibleCabinetCharactersAvailable]"
-				description = "[Cabinet.GetDescriptionForReplacingCabinetMemberToSlot]"
-				on_action_with_params = "[Cabinet.AssigningCabinetMemberToSlot]"
-			}
-	
-			blockoverride "character_tooltip" { 
-				tooltipwidget = {
-					BasicFunctionalTooltip = {}
-				}
-			}
-			blockoverride "character_contextmenu" {}
-			blockoverride "button_setup" {
-			}
-			blockoverride "rightclick" {}
-			# blockoverride "hover" {}
-		}
-		cabinet_efficiency_icon = {
-			blockoverride "icon_size" { size = { 20 20 } }
-			tooltipwidget = {
-				using = effective_skill_tooltip
-			}
-		}
-	}
-	block "cabinet_entry_title_text" {
-		OutlinerTextBase = {
-			using = layoutpolicy_expanding
-			text = "[Cabinet.GetNameWithNoTooltip]"
-			align = left
-			default_format = "#L"
-			maximumsize = { 190 -1 }
-		}
-	}
-	expand = {}
-
-	block "cabinet_entry_progress_text" {
-		OutlinerTextBase = {
-			maximumsize = { 100 -1 }
-			autoresize = yes
-			text = "[Cabinet.GetActionProgress]"
-		}
-	}
-}
-
 
 template cabinet_entry_small_action_progress {
 	OutlinerButtonBase = {
@@ -555,19 +473,19 @@ template cabinet_entry_small_action_progress {
 			portrait_standard_head_button = {
 				datacontext = "[Cabinet.GetCharacter]"
 				size = { 28 28 }
-		
+
 				action_tooltip = {
 					click_type = left
 					click_mode = single
-		
+
 					title = "SELECT_CABINET_CHARACTER"
 					cost = "[Cabinet.GetPriceForAssigningCabinetMemberToSlot]"
 					enabled = "[Cabinet.ArePossibleCabinetCharactersAvailable]"
 					description = "[Cabinet.GetDescriptionForReplacingCabinetMemberToSlot]"
 					on_action_with_params = "[Cabinet.AssigningCabinetMemberToSlot]"
 				}
-		
-				blockoverride "character_tooltip" { 
+
+				blockoverride "character_tooltip" {
 					tooltipwidget = {
 						BasicFunctionalTooltip = {}
 					}
@@ -595,19 +513,19 @@ template cabinet_entry_small_action_progress {
 				datacontext = "[Cabinet.GetCharacter]"
 				visible = "[Cabinet.IsCharacterSet]"
 				size = { 28 28 }
-		
+
 				action_tooltip = {
 					click_type = right
 					click_mode = single
-		
+
 					title = "CHANGE_CABINET"
 					cost = "[Cabinet.GetPriceForAssigningCabinetMemberToSlot]"
 					enabled = "[Cabinet.ArePossibleCabinetCharactersAvailable]"
 					description = "[Cabinet.GetDescriptionForAssigningCabinetMemberToSlot]"
 					on_action_with_params = "[Cabinet.AssigningCabinetMemberToSlot]"
 				}
-		
-				# blockoverride "character_tooltip" { 
+
+				# blockoverride "character_tooltip" {
 				# }
 				blockoverride "character_contextmenu" {}
 				blockoverride "button_setup" {
@@ -619,19 +537,19 @@ template cabinet_entry_small_action_progress {
 				datacontext = "[Cabinet.GetCharacter]"
 				visible = "[Not(Cabinet.IsCharacterSet)]"
 				size = { 28 28 }
-		
+
 				action_tooltip = {
 					click_type = left
 					click_mode = single
-		
+
 					title = "SELECT_CABINET_CHARACTER"
 					cost = "[Cabinet.GetPriceForAssigningCabinetMemberToSlot]"
 					enabled = "[Cabinet.ArePossibleCabinetCharactersAvailable]"
 					description = "[Cabinet.GetDescriptionForReplacingCabinetMemberToSlot]"
 					on_action_with_params = "[Cabinet.AssigningCabinetMemberToSlot]"
 				}
-		
-				blockoverride "character_tooltip" { 
+
+				blockoverride "character_tooltip" {
 					tooltipwidget = {
 						BasicFunctionalTooltip = {}
 					}
