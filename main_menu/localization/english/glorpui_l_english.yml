@@ -19,3 +19,5 @@ l_english:
  SWAP_TO_AVG_CONTROL:"Swap to Average Control"
  SWAP_TO_MAX_CONTROL:"Swap to Max Control"
  REFRESH_AVG_PROX:"Refresh Average Proximity"
+ MAPMODE_BUILDING_LEVELS: "Colors the [locations|e] based on the percentage of used [supported_building_levels|e]."
+ mapmode_building_levels_name: "Building Levels"
