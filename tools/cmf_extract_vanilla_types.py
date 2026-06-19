@@ -59,6 +59,7 @@ VANILLA_FILES = [
 	"battle_lateralview.gui",
 	"country_dhe_lateralview.gui",
 	"expand_raw_goods_lateralview.gui",
+	"goods_production_lateralview.gui",
 	"foreign_country_lateralview.gui",
 	"ingame_topbar.gui",
 	"location_window.gui",
@@ -67,7 +68,11 @@ VANILLA_FILES = [
 	"outliner_entries.gui",
 	"production_lateralview.gui",
 	"recruit_location_lateralview.gui",
-	"single_unit_window.gui"
+	"single_unit_window.gui",
+	"cabinet_cards.gui",
+	"economy_lateralview.gui",
+	"goods_production_lateralview.gui",
+	"government_lateralview.gui",
 ]
 
 BOM = "\ufeff"
