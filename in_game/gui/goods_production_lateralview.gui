@@ -411,7 +411,7 @@ lateralview = {
 													}
 
 													widget = {
-														size = {15 90%}
+														size = {15 @[(goods_entry_height - 5) * 0.9]}
 														visible = "[GoodsProductionLateralView.IsMarketFilterEnabled]"
 														datacontext = "[GoodsProductionLateralView.GetSelectedMarket]"
 														datacontext = "[GoodItem.GetGoods]"
