@@ -69,7 +69,6 @@ VANILLA_FILES = [
 	"production_lateralview.gui",
 	"recruit_location_lateralview.gui",
 	"single_unit_window.gui",
-	"cabinet_cards.gui",
 	"economy_lateralview.gui",
 	"goods_production_lateralview.gui",
 	"government_lateralview.gui",
