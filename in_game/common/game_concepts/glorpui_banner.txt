@@ -1,5 +1,5 @@
-﻿glorpui_banner_icon = {
-	texture = "mods/glorpui_banner_icon"
+﻿glorpui_banner_logo = {
+	texture = "mods/glorpui_banner_logo"
 }
 glorpui_banner_background = {
 	texture = "mods/glorpui_banner_background"
