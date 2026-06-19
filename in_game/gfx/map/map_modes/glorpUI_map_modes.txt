@@ -121,6 +121,8 @@ building_levels = {
 			}
 		}
 	}
+	tooltip_key = {
+	}
 	# small_map_names = country
 
 	# medium_map_names = country
