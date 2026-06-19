@@ -1136,9 +1136,9 @@ Types GlorpUILeftPanelTypes
 
 			flag_3d_animated = {
 				visible = "[And3(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Not(Player.MakeScope.GetVariable('useStaticFlag').IsSet))]"
-				size = { 180 120 }
+				size = { 185 123 }
 				parentanchor = center
-				position = { 78 0 }
+				position = { 70 -1 }
 				datacontext = "[InGameTopbar.GetPlayer]"
 
 				blockoverride "click_properties" {
