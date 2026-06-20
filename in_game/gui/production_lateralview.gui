@@ -2736,8 +2736,11 @@ types GlorpUIBuildings {
 											spacing = 2
 											widget = { # AutoExpand slot
 												size = { 20 44 }
+												# GlorpUI: Construction Manager auto-expand button
+												cm_auto_expand_existing_building_button_pl = {}
 												button_square_checkbox = {
-													visible = "[And(ObjectsEqual(Building.GetOwner, Player.Self), BuildingType.IsMultipleLevels)]"
+													# GlorpUI: hidden when Construction Manager is active
+													visible = "[And3(Not(GetScriptedGui('glorpui_is_cm_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)), ObjectsEqual(Building.GetOwner, Player.Self), BuildingType.IsMultipleLevels)]"
 													size = { 20 20 }
 													parentanchor = center
 													widgetanchor = center
@@ -3355,7 +3358,6 @@ types GlorpUIBuildings {
 							hbox = {
 								margin_right = 3
 								spacing = 5
-								layoutpolicy_horizontal = expanding
 
 								widget = { #profit / income
 									size = { 60 36 }
@@ -3419,7 +3421,9 @@ types GlorpUIBuildings {
 											visible = "[BuildingItem.GetBuildingType.IsProducing]"
 											expand = {}
 											text_single = {
-												maximumsize = { 70 18 }
+												size = { 70 18 }
+												autoresize = no
+												align = nobaseline|right
 												default_format = "@bold!"
 												fontsize = 14
 												text = "BUILDING_TYPE_POSSIBLE_PROD_EFFICIENCY"
@@ -3503,6 +3507,13 @@ types GlorpUIBuildings {
 
 
 						}
+					}
+					# GlorpUI: Construction Manager auto-expand button (unbuilt) - overlaid outside the card build button so it can render
+					cm_auto_expand_new_building_button_pl = {
+						ignore_layout = yes
+						parentanchor = right|vcenter
+						position = { -133 0 }
+						datacontext = "[BuildingItem.GetBuildingType]"
 					}
 				}
 			}
