@@ -32,6 +32,13 @@
             "display_name": "Autonomous Diplomats",
             "resource_type": "mod",
             "version": "*"
+        },
+        {
+            "rel_type": "dependency",
+            "id": "romaimperator.smart_taxes",
+            "display_name": "SmartTaxes",
+            "resource_type": "mod",
+            "version": "*"
         }
     ],
     "game_custom_data": {}

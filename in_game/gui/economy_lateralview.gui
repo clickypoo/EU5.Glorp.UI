@@ -1032,6 +1032,8 @@ lateralview = {
 																	enabled = "[Not(IsPlayerAIEnabled('finances'))]"
 																	down = "[TaxRateSetting.IsUsingAutoTaxRate]"
 																	onclick = "[TaxRateSetting.ToggleAutoTaxRate]"
+																	# GlorpUI: hidden when SmartTaxes is active
+																	visible = "[Not(GetScriptedGui('glorpui_is_smart_taxes_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 
 																	widget = {
 																		size = { 100% 100% }
@@ -1054,6 +1056,8 @@ lateralview = {
 																		}
 																	}
 																}
+																# GlorpUI: SmartTaxes per-estate enable checkbox
+																smart_taxes_replacement_enable_checkbox = {}
 															}
 
 															tooltipwidget = {
@@ -1194,7 +1198,8 @@ lateralview = {
 																# Satisfaction equilibrium target for automation (default 50%). Normal: 1%, Ctrl: 5%, Alt: 10%, Shift: 0% or 100%.
 																widget = {
 																	size = { 55 24 }
-																	visible = "[And(Not(TaxRateSetting.IsTaxRateSliderEnabled), Or(Not(TaxRateSetting.IsTaxRateSettingIncEnabled), Not(TaxRateSetting.IsTaxRateSettingDecEnabled)))]"
+																	# GlorpUI: hidden when SmartTaxes is active
+																	visible = "[And3(Not(GetScriptedGui('glorpui_is_smart_taxes_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)), Not(TaxRateSetting.IsTaxRateSliderEnabled), Or(Not(TaxRateSetting.IsTaxRateSettingIncEnabled), Not(TaxRateSetting.IsTaxRateSettingDecEnabled)))]"
 																	hbox = {
 																		datacontext = "[TaxRateSetting.GetEstate]"
 																		datacontext = "[TaxRateSetting.GetEstate.GetCountry]"
@@ -1303,6 +1308,8 @@ lateralview = {
 																		}
 																	}
 																}
+																# GlorpUI: SmartTaxes satisfaction-target setter
+																smart_taxes_satisfaction_target_setter = {}
 															}
 														}
 													}
@@ -2177,6 +2184,9 @@ lateralview = {
 													}
 												}
 											}
+
+											# GlorpUI: SmartTaxes Research Spending Mechanic compat card
+											smart_taxes_research_spending_mechanic_type = {}
 
 											#unused maintenence settings
 											vbox = {
