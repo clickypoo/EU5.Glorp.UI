@@ -16,3 +16,8 @@ l_korean:
  CLOSE_MAPMODE_SETTINGS: "지도 모드 막대 설정 닫기"
  GLORP_UI_ROI_USE_PROFIT_LABEL: "ROI 계산 시 총 이익을 사용하십시오"
  GLORP_UI_ROI_USE_MONTHS_LABEL: "ROI 계산 시 월 단위를 사용하세요"
+ SWAP_TO_AVG_CONTROL: "평균 제어 모드로 전환"
+ SWAP_TO_MAX_CONTROL: "'최대 제어' 모드로 전환"
+ REFRESH_AVG_PROX: "평균 근접도 새로 고침"
+ MAPMODE_BUILDING_LEVELS: "사용된 [supported_building_levels|e]의 비율에 따라 [locations|e]에 색상을 입힙니다."
+ mapmode_building_levels_name: "건물 층수"

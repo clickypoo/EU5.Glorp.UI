@@ -16,3 +16,8 @@ l_french:
  CLOSE_MAPMODE_SETTINGS: "Fermer les paramètres de la barre du mode carte"
  GLORP_UI_ROI_USE_PROFIT_LABEL: "Utiliser le bénéfice total pour calculer le retour sur investissement"
  GLORP_UI_ROI_USE_MONTHS_LABEL: "Utilisez les mois pour calculer le retour sur investissement"
+ SWAP_TO_AVG_CONTROL: "Passer au contrôle « Moyenne »"
+ SWAP_TO_MAX_CONTROL: "Passer en mode « Max Control »"
+ REFRESH_AVG_PROX: "Actualiser la proximité moyenne"
+ MAPMODE_BUILDING_LEVELS: "Colore les [locations|e] en fonction du pourcentage de [supported_building_levels|e] utilisés."
+ mapmode_building_levels_name: "Niveaux du bâtiment"

@@ -16,3 +16,8 @@ l_russian:
  CLOSE_MAPMODE_SETTINGS: "Закрыть настройки панели режима карты"
  GLORP_UI_ROI_USE_PROFIT_LABEL: "Используйте общую прибыль для расчета рентабельности инвестиций"
  GLORP_UI_ROI_USE_MONTHS_LABEL: "Используйте показатель окупаемости инвестиций (ROI) за месяцы"
+ SWAP_TO_AVG_CONTROL: "Переключиться на режим «Среднее»"
+ SWAP_TO_MAX_CONTROL: "Переключиться на режим «Максимальный контроль»"
+ REFRESH_AVG_PROX: "Обновить среднее расстояние"
+ MAPMODE_BUILDING_LEVELS: "Окрашивает [locations|e] в зависимости от процента использованных [supported_building_levels|e]."
+ mapmode_building_levels_name: "Уровни здания"

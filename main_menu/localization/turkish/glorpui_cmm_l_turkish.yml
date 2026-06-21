@@ -88,3 +88,7 @@
  glorpui__build_panel__general: "glorpui__build_panel__general"
  glorpui__roi_metric: "glorpui__roi_metric"
  glorpui__roi_unit: "glorpui__roi_unit"
+ game_concept_glorpui_banner_logo: ""
+ game_concept_glorpui_banner_logo_desc: ""
+ game_concept_glorpui_banner_background: ""
+ game_concept_glorpui_banner_background_desc: ""

@@ -16,3 +16,8 @@ l_japanese:
  CLOSE_MAPMODE_SETTINGS: "地図モードバーの設定を閉じる"
  GLORP_UI_ROI_USE_PROFIT_LABEL: "ROIの計算には総利益を使用する"
  GLORP_UI_ROI_USE_MONTHS_LABEL: "ROIの計算には月単位を使用する"
+ SWAP_TO_AVG_CONTROL: "「平均制御」に切り替える"
+ SWAP_TO_MAX_CONTROL: "「Max Control」に切り替える"
+ REFRESH_AVG_PROX: "平均近接度を更新"
+ MAPMODE_BUILDING_LEVELS: "使用済みの [supported_building_levels|e] の割合に基づいて[locations|e] に色を付けます。"
+ mapmode_building_levels_name: "建物の階数"
