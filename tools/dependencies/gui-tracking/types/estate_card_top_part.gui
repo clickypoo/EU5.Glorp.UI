@@ -1,0 +1,507 @@
+﻿# vanilla: in_game/gui/government_lateralview.gui
+# mod: in_game/gui/government_lateralview.gui
+
+	type estate_card_top_part = widget {
+		size = {-1 45}
+		layoutpolicy_horizontal = expanding
+
+		background = {
+			texture = "gfx/interface/component_tiles/square_tile.dds"
+			texture_density = 2
+			margin_bottom = 2
+			alpha = 0.5
+			modify_texture = {
+				using = color_black_texture
+				blend_mode = multiply
+			}
+		}
+
+		background = {
+			using = color_white_texture
+			texture_density = 2
+			color = "[Estate.GetType.GetMapColor]"
+			# modify_texture = {
+			# 	using = color_grey_texture
+			# 	alpha = 1
+			# }
+			modify_texture = {
+				using = overlay_cloth_texture
+				blend_mode = multiply
+				alpha = 0.4
+			}
+			modify_texture = {
+				using = color_dark_brown_texture
+				blend_mode = multiply
+				alpha = 0.2
+			}
+			modify_texture = {
+				texture = "gfx/interface/component_tiles/estates/square_outline.dds"
+				texture_density = 2
+				blend_mode = add
+				spriteType = corneredstretched
+				spriteBorder = {15 15}
+				alpha = 0.2
+			}
+			modify_texture = {
+				texture = "gfx/interface/component_tiles/estates/mask_header_texture.dds"
+				texture_density = 2
+				blend_mode = alphamultiply
+				alpha = 0.5
+			}
+		}
+
+		# card header info
+			hbox = {
+				margin_left = 10
+				margin_right = 15
+
+				blockoverride "bg_estates_frame_margins" {
+					margin = {5 0}
+					margin_top = 2
+				}
+
+				### NAME AND ICON
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+
+					spacing = 5
+					datacontext = "[Estate]"
+					tooltipwidget = {
+
+						using = Estate_tooltip
+					}
+
+					button = {
+						size = { 45 45 }
+						datacontext = "[Estate]"
+						tooltipwidget = {
+							using = Estate_tooltip
+						}
+
+						action_tooltip = {
+							visible = "[Estate.GetType.IsAlwaysLoyal]"
+							click_modifier = shift
+							click_type = left
+							title = "OPEN_HINT"
+							on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_crown_power')]"
+						}
+
+						action_tooltip = {
+							visible = "[Not(Estate.GetType.IsAlwaysLoyal)]"
+							click_modifier = shift
+							click_type = left
+							title = "OPEN_HINT"
+							click_modifier_description = "OPEN_HINT_TEXT"
+							on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_estates')]"
+						}
+						icon = {
+							size = { 100% 100% }
+
+							# block "resource_icon" {
+								texture = "[GetEstateIcon(Estate.GetType)]"
+							# }
+						}
+					}
+
+					vbox = {
+						text_single = {
+							layoutpolicy_horizontal = expanding
+							align = left
+							autoresize = yes
+							default_format = "#yellow_titles"
+							text = "[Estate.GetNameWithNoTooltip]"
+						}
+
+						hbox = {
+							spacing = 5
+							#text_single = {
+							#	visible = "[Estate.GetType.IsAlwaysLoyal]"
+							#	align = left|nobaseline
+							#	minimumsize = { 100 20 }
+							#	maximumsize = { 100 20 }
+							#	autoresize = yes
+							#
+							#	raw_text = "[Estate.GetRelativePower|0%] @power!"
+							#
+							#	datacontext = "[Estate]"
+							#	tooltipwidget = {
+							#		using = estate_relative_power_tooltip
+							#	}
+							#}
+							text_single = {
+								visible = "[Not(And(GreaterThan_CFixedPoint(Estate.GetRelativePower, '(CFixedPoint)0'), LessThan_CFixedPoint(Estate.GetRelativePower, '(CFixedPoint)0.01')))]"
+								align = left|nobaseline
+								maximumsize = { 55 20 }
+								autoresize = yes
+
+								raw_text = "[Estate.GetRelativePower|0%] @power!|"
+
+								datacontext = "[Estate]"
+								tooltipwidget = {
+									using = estate_relative_power_tooltip
+								}
+							}
+							text_single = {
+								visible = "[And(GreaterThan_CFixedPoint(Estate.GetRelativePower, '(CFixedPoint)0'), LessThan_CFixedPoint(Estate.GetRelativePower, '(CFixedPoint)0.01'))]"
+								align = left|nobaseline
+								maximumsize = { 55 20 }
+								autoresize = yes
+
+								raw_text = "<1% @power!|"
+
+								datacontext = "[Estate]"
+								tooltipwidget = {
+									using = estate_relative_power_tooltip
+								}
+							}
+							text_single = {
+								name = "estate_population"
+								visible = "[Not(Estate.GetType.IsAlwaysLoyal)]"
+								align = left|nobaseline
+								autoresize = yes
+								maximumsize = { 70 20 }
+								default_format = "#light"
+								raw_text = "[Estate.GetTotalPopulation]@population!"
+
+								datacontext = "[Estate]"
+								tooltipwidget = {
+									using = estate_population_tooltip
+								}
+							}
+							text_single = {
+								visible = "[Estate.GetType.IsAlwaysLoyal]"
+								align = left|nobaseline
+								autoresize = yes
+								maximumsize = { 70 20 }
+								default_format = "#light"
+								raw_text = " [Player.GetAverageControl|0%] @control!"
+
+								datacontext = "[Player]"
+								tooltipwidget = {
+									using = AverageControlTooltip
+								}
+							}
+
+
+
+							text_single = {
+								name = "estate_enfranchisment"
+								visible = "[Estate.HasEnfranchisment]"
+								align = left|nobaseline
+								autoresize = yes
+								maximumsize = { 70 20 }
+								default_format = "#light"
+								raw_text = "| [Estate.GetAvgEnfranchisment|0%] @peasant_enfranchisment!"
+
+								datacontext = "[Estate]"
+								datacontext = "[Player]"
+								tooltipwidget = {
+									ContextualTooltipType = {
+										blockoverride "title_text" {
+											text = "PEASANT_ENFRANCHISMENT_TT_TITLE"
+										}
+										blockoverride "title_icon" {
+											icon = {
+												using = tooltip_title_icon_size
+												texture = "[GetConceptTexture('peasant_enfranchisement')]"
+											}
+										}
+										blockoverride "concept_link" {
+											text = [peasant_enfranchisement|e]
+										}
+										blockoverride "tooltip_content" {
+											TooltipTextBlock = {
+												blockoverride "text" {
+													text = "PEASANT_ENFRANCHISMENT_TT_TEXT"
+												}
+											}
+											TooltipStringPairList = {
+												blockoverride "block_title" {
+													text = "PEASANT_ENFRANCHISMENT_TT_TABLE"
+												}
+												textcontext = "[Country.GetDescriptionFor('global_peasant_enfranchisment')]"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+
+					expand = {}
+				}
+
+				expand = {}
+
+				block "estate_card_right_header" {
+					# Satisfaction
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+
+						spacing = 10
+
+						visible = "[Not(Estate.GetType.IsAlwaysLoyal)]"
+						datacontext = "[Estate]"
+						tooltipwidget = {
+							using = estate_satisfaction_tooltip
+						}
+
+						expand = {}
+
+						button = {
+							visible = "[Estate.HasRebel]"
+							size = { 32 32 }
+
+
+							texture = "[GetRebelsIcon(Estate.GetRebel)]"
+
+							onclick = "[ShowRebel(Estate.GetRebel)]"
+
+							icon = {
+								size = { 19 19 }
+								texture = "gfx/interface/icons/rebels/fist.dds"
+								parentanchor = right|bottom
+
+
+							}
+
+							datacontext = "[Estate.GetRebel]"
+							tooltipwidget = {
+								using = Rebel_tooltip
+							}
+						}
+
+						vbox = {
+							text_single = {
+								layoutpolicy_horizontal = preferred
+								fontsize = 16
+								align = right|nobaseline
+								autoresize = yes
+								text = "[estate_satisfaction_short|e]"
+							}
+
+							hbox = {
+								text_single = {
+									maximumsize = { 50 -1 }
+									text = "[Estate.GetSatisfaction|2%]"
+									fontsize = 13
+									align = left|nobaseline
+									autoresize = yes
+								}
+
+								icon = {
+									size = {15 15}
+									texture = "gfx/interface/buttons/flats/button_simple.dds"
+									modify_texture = {
+										using = color_new_gold_texture
+									}
+								}
+
+								text_single = {
+									maximumsize = { 50 -1 }
+									text = "[Estate.GetTargetSatisfactionTooltipWrapper]"
+									default_format = "#light"
+									fontsize = 13
+									align = left|nobaseline
+									autoresize = yes
+								}
+							}
+						}
+
+						piechart = {
+							size = { 31 31 }
+							minimumsize = { 30 30 }
+
+
+							using = piechart_angles
+							using = bg_circle_piechart_big
+
+							pieslice_no_highlight = {
+								texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
+								value = "[FixedPointToFloat(Estate.GetSatisfaction)]"
+								color = { 1 1 1 1 }
+							}
+
+							pieslice_no_highlight = {
+								texture = "gfx/interface/pie_charts/pie_chart_alpha_80_red.dds"
+								value = "[Subtract_float('(float)1.0', FixedPointToFloat(Estate.GetSatisfaction))]"
+								color = { 1 1 1 1 }
+							}
+
+							hbox = {
+								icon = {
+									name = "sad face"
+									visible = "[LessThanOrEqualTo_CFixedPoint(Estate.GetSatisfaction,'(CFixedPoint)0.25')]"
+
+									size = { 16 16 }
+									texture = "gfx/interface/icons/flat_icons/sad.dds"
+									texture_density = 2
+
+								}
+
+								icon = {
+									name = "neutral face"
+									visible = "[BetweenInclusiveOfMax_CFixedPoint(Estate.GetSatisfaction,'(CFixedPoint)0.25', '(CFixedPoint)0.5')]"
+
+									size = { 16 16 }
+									texture = "gfx/interface/icons/flat_icons/neutral.dds"
+									texture_density = 2
+								}
+
+								icon = {
+									name = "happy face"
+									visible = "[GreaterThan_CFixedPoint(Estate.GetSatisfaction,'(CFixedPoint)0.5')]"
+
+									size = { 16 16 }
+									texture = "gfx/interface/icons/flat_icons/happy.dds"
+									texture_density = 2
+
+								}
+							}
+
+							widget = {
+								parentanchor = bottom|right
+								position = { -2 -8 }
+								icon = {
+									visible = "[EqualTo_CFixedPoint(Estate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+
+									size = { 10 10 }
+									mirror = vertical
+
+									texture = "gfx/interface/icons/flat_icons/equal.dds"
+
+									modify_texture = {
+										using = color_gold_texture
+									}
+								}
+
+								icon = {
+									visible = "[LessThan_CFixedPoint(Estate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+
+									size = { 10 10 }
+									mirror = vertical
+
+									texture = "gfx/interface/icons/flat_icons/arrow.dds"
+
+									modify_texture = {
+										using = color_red_texture
+									}
+								}
+							}
+							widget = {
+								parentanchor = top|right
+								position = { -2 -2 }
+								icon = {
+									visible = "[GreaterThan_CFixedPoint(Estate.GetMonthlySatisfactionChange, '(CFixedPoint)0')]"
+
+									size = { 10 10 }
+
+									texture = "gfx/interface/icons/flat_icons/arrow.dds"
+
+									modify_texture = {
+										using = color_light_green_texture
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+		estate_decor = {
+			visible = "[ObjectsEqual(Player.GetGovernment.GetEstateFromKey('crown_estate').GetType, Estate.GetType)]"
+		}
+		estate_decor = {
+			visible = "[ObjectsEqual(Player.GetGovernment.GetEstateFromKey('nobles_estate').GetType, Estate.GetType)]"
+			blockoverride "decor_texture_left" {
+				texture = "gfx/interface/component_tiles/estates/estates_frame_decor_nobility.dds"
+			}
+			blockoverride "decor_texture_right" {
+				texture = "gfx/interface/component_tiles/estates/estates_frame_decor_nobility.dds"
+			}
+		}
+		estate_decor = {
+			visible = "[ObjectsEqual(Player.GetGovernment.GetEstateFromKey('clergy_estate').GetType, Estate.GetType)]"
+			blockoverride "decor_texture_left" {
+				texture = "gfx/interface/component_tiles/estates/estates_frame_decor_clergy.dds"
+			}
+			blockoverride "decor_texture_right" {
+				texture = "gfx/interface/component_tiles/estates/estates_frame_decor_clergy.dds"
+			}
+		}
+		estate_decor = {
+			visible = "[ObjectsEqual(Player.GetGovernment.GetEstateFromKey('burghers_estate').GetType, Estate.GetType)]"
+			blockoverride "decor_texture_left" {
+				texture = "gfx/interface/component_tiles/estates/estates_frame_decor_burghers.dds"
+			}
+			blockoverride "decor_texture_right" {
+				texture = "gfx/interface/component_tiles/estates/estates_frame_decor_burghers.dds"
+			}
+		}
+		estate_decor = {
+			visible = "[ObjectsEqual(Player.GetGovernment.GetEstateFromKey('peasants_estate').GetType, Estate.GetType)]"
+			blockoverride "decor_texture_left" {
+				texture = "gfx/interface/component_tiles/estates/estates_frame_decor_commoners.dds"
+			}
+			blockoverride "decor_texture_right" {
+				texture = "gfx/interface/component_tiles/estates/estates_frame_decor_commoners.dds"
+			}
+		}
+
+		# widget = {
+		# 	layoutpolicy_horizontal = expanding
+		# 	size = { 100% 100% }
+		# 	ignore_layout = yes
+
+		# 	icon = {
+		# 		size = { 25 40 }
+		# 		parentanchor = left
+		# 		position = {-15 0}
+		# 		visible = "[ObjectsEqual(Player.GetGovernment.GetEstateFromKey('crown_estate').GetType, Estate.GetType)]"
+		# 		texture = "gfx/interface/component_tiles/estates/estates_frame_decor_crown.dds"
+		# 		texture_density = 2
+
+		# 		modify_texture = {
+		# 			using = color_new_gold_texture
+		# 			blend_mode = multiply
+		# 		}
+		# 		modify_texture = {
+		# 			using = overlay_stone_texture
+		# 			blend_mode = overlay
+		# 			alpha = 0.7
+		# 		}
+		# 		modify_texture = {
+		# 			using = overlay_window_texture
+		# 			blend_mode = overlay
+		# 			alpha = 0.5
+		# 		}
+		# 	}
+
+		# 	icon = {
+		# 		size = { 25 40 }
+		# 		parentanchor = right
+		# 		position = {15 0}
+		# 		visible = "[ObjectsEqual(Player.GetGovernment.GetEstateFromKey('crown_estate').GetType, Estate.GetType)]"
+		# 		texture = "gfx/interface/component_tiles/estates/estates_frame_decor_crown.dds"
+		# 		texture_density = 2
+		# 		mirror = horizontal
+
+		# 		modify_texture = {
+		# 			using = color_new_gold_texture
+		# 			blend_mode = multiply
+		# 		}
+		# 		modify_texture = {
+		# 			using = overlay_stone_texture
+		# 			blend_mode = overlay
+		# 			alpha = 0.7
+		# 		}
+		# 		modify_texture = {
+		# 			using = overlay_window_texture
+		# 			blend_mode = overlay
+		# 			alpha = 0.5
+		# 		}
+		# 	}
+		# }
+	}

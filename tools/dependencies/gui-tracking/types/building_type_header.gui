@@ -20,12 +20,12 @@
 				blockoverride "header_pattern_texture_density" {texture_density = 2.5}
 
 				widget = {
-					size = { -1 43 }
+					size = { -1 @[building_entry_height - 5] }
 					layoutpolicy_horizontal = expanding
 					onmousehierarchyenter = "[ProductionView.RebuildBuildRankingItems(BuildingItem.GetBuildingType)]"
 
 					card_header_button_buildings = {
-						size = { 100% 40 }
+						size = { 100% @[building_entry_height - 5] }
 						parentanchor = center
 
 						datacontext = "[BuildingItem.GetBuildingItemUIAction]"
@@ -73,7 +73,7 @@
 					}
 
 					card_header_button_buildings = {
-						size = { 100% 40 }
+						size = { 100% @[building_entry_height - 5] }
 
 						parentanchor = center
 
@@ -131,12 +131,12 @@
 
 					# BUILDING ICON
 					widget = {
-						position = { 5 0 }
+						position = { 0 0 }
 						size = {42 100%}
 						parentanchor = left|vcenter
 
 						widget = {
-							size = {36 36}
+							size = {@[building_entry_height - 6] @[building_entry_height - 6]}
 							using = bg_circle_outline
 							blockoverride "inside_color" {
 								modify_texture = {
@@ -153,7 +153,13 @@
 
 							parentanchor = left|vcenter
 							icon = {
-								size = {40 40} # GlorpUI: 31->40
+								parentanchor = center
+								size = { 120% 120% }
+								visible = "[BuildingItem.GetBuildingType.IsSpecialBuilding]"
+								texture = "gfx/interface/component_tiles/specialbuildings_frame_gold.dds"
+							}
+							icon = {
+								size = {120% 120%} # GlorpUI: 31->100%
 								parentanchor = center
 								texture = "[GetBuildingIcon(BuildingItem.GetBuildingType.Self)]"
 
@@ -167,11 +173,6 @@
 									color = {0.0 0.0 0.0 1.0}
 									alpha = 0.3
 								}
-							}
-							icon = {
-								size = { 100% 100% }
-								visible = "[BuildingItem.GetBuildingType.IsSpecialBuilding]"
-								texture = "gfx/interface/component_tiles/specialbuildings_frame_gold.dds"
 							}
 						}
 
@@ -191,30 +192,30 @@
 					# CARD INFO
 					widget = {
 						position = { 5 0 }
-						size = { 100% 40 }
+						size = { 100% @[building_entry_height - 8] }
 						parentanchor = top
 						hbox = {
 							spacing = 5
-							margin = { 35 0 }
+							margin = { 40 0 }
 							margin_right = 10
 							datacontext = "[BuildingItem.GetBuildingType]"
 
-							widget = {
-								size = { 16 16}
-								icon = {
-									parentanchor = center
-									position = {0 2}
-									size = { 16 16 }
-									texture = "[GetGraphicalCultureTextureForPopType(BuildingType.GetPopType)]"
-									texture_density = 2
-									glow = {
-										name = "drop_shadow"
-										glow_radius = 3
-										color = {0.0 0.0 0.0 1.0}
-										alpha = 0.3
-									}
-								}
-							}
+							# widget = {
+							# 	size = { 16 16}
+							# 	icon = {
+							# 		parentanchor = center
+							# 		position = {0 2}
+							# 		size = { 16 16 }
+							# 		texture = "[GetGraphicalCultureTextureForPopType(BuildingType.GetPopType)]"
+							# 		texture_density = 2
+							# 		glow = {
+							# 			name = "drop_shadow"
+							# 			glow_radius = 3
+							# 			color = {0.0 0.0 0.0 1.0}
+							# 			alpha = 0.3
+							# 		}
+							# 	}
+							# }
 
 							text_single = {
 								size = {129 30}
@@ -349,7 +350,7 @@
 
 							# PROFIT
 							widget = {
-								size = {120 40}
+								size = {120 30}
 								hbox = {
 									visible = "[And(BuildingItem.GetBuildingType.IsProducing, BuildingItem.HasPossibleBuildings)]"
 									spacing = 3
@@ -423,7 +424,7 @@
 
 							# LEVELS
 							widget = {
-								size = { 75 40 }
+								size = { 75 30 }
 								hbox = {
 									expand = {}
 									spacing = 5

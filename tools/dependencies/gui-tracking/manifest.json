@@ -175,6 +175,20 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/building_tooltip_detail.gui",
       "vanilla_file": "main_menu/gui/shared/building_tooltips.gui"
     },
+    "template:cabinet_card_header_content": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/shared/glorpUI_cabinet_cards.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/cabinet_card_header_content.gui",
+      "vanilla_file": "in_game/gui/shared/cabinet_cards.gui"
+    },
+    "template:cabinet_entry_action_progress": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/outliner_entries.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/cabinet_entry_action_progress.gui",
+      "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
     "template:cabinet_entry_icon": {
       "base_widget": null,
       "mod_file": "in_game/gui/outliner_entries.gui",
@@ -217,6 +231,13 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/production_view_poptypes.gui",
       "vanilla_file": "in_game/gui/production_lateralview.gui"
     },
+    "template:ruler_trait_item": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/ruler_trait_item.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
+    },
     "template:societal_values": {
       "base_widget": null,
       "mod_file": "in_game/gui/glorpUI_societal_values_lateralview.gui",
@@ -237,6 +258,20 @@
       "namespace": "GlorpUIFrontEnd",
       "tracking_path": "tools/dependencies/gui-tracking/types/FrontEndBackground.gui",
       "vanilla_file": "main_menu/gui/shared/frontend_templates.gui"
+    },
+    "type:adjustable_budget_card": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/economy_lateralview.gui",
+      "namespace": "EconomyLateralviewTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/adjustable_budget_card.gui",
+      "vanilla_file": "in_game/gui/economy_lateralview.gui"
+    },
+    "type:budget_card": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/economy_lateralview.gui",
+      "namespace": "EconomyLateralviewTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/budget_card.gui",
+      "vanilla_file": "in_game/gui/economy_lateralview.gui"
     },
     "type:build_location_lateralview_panel_content": {
       "base_widget": "vbox",
@@ -266,6 +301,34 @@
       "tracking_path": "tools/dependencies/gui-tracking/types/button_mapmode_category.gui",
       "vanilla_file": "in_game/gui/hud_bot.gui"
     },
+    "type:cabinet_card": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/shared/glorpUI_cabinet_cards.gui",
+      "namespace": "GlorpUICabinetCards",
+      "tracking_path": "tools/dependencies/gui-tracking/types/cabinet_card.gui",
+      "vanilla_file": "in_game/gui/shared/cabinet_cards.gui"
+    },
+    "type:cabinet_character_button": {
+      "base_widget": "card_header_button_cabinet",
+      "mod_file": "in_game/gui/shared/glorpUI_cabinet_cards.gui",
+      "namespace": "GlorpUICabinetCards",
+      "tracking_path": "tools/dependencies/gui-tracking/types/cabinet_character_button.gui",
+      "vanilla_file": "in_game/gui/shared/cabinet_cards.gui"
+    },
+    "type:cabinet_header_card": {
+      "base_widget": "vbox",
+      "mod_file": "in_game/gui/shared/glorpUI_cabinet_cards.gui",
+      "namespace": "GlorpUICabinetCards",
+      "tracking_path": "tools/dependencies/gui-tracking/types/cabinet_header_card.gui",
+      "vanilla_file": "in_game/gui/shared/cabinet_cards.gui"
+    },
+    "type:card_header_button_cabinet": {
+      "base_widget": "button",
+      "mod_file": "in_game/gui/shared/glorpUI_cabinet_cards.gui",
+      "namespace": "GlorpUICabinetCards",
+      "tracking_path": "tools/dependencies/gui-tracking/types/card_header_button_cabinet.gui",
+      "vanilla_file": "in_game/gui/shared/cabinet_cards.gui"
+    },
     "type:chat_editbox": {
       "base_widget": "widget",
       "mod_file": "in_game/gui/multiplayer_chat.gui",
@@ -273,12 +336,117 @@
       "tracking_path": "tools/dependencies/gui-tracking/types/chat_editbox.gui",
       "vanilla_file": "in_game/gui/multiplayer_chat.gui"
     },
+    "type:economy_plotline": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/shared/glorpUI_plotlines.gui",
+      "namespace": "GlorpUIPlotLine_Types",
+      "tracking_path": "tools/dependencies/gui-tracking/types/economy_plotline.gui",
+      "vanilla_file": "in_game/gui/shared/plotlines.gui"
+    },
+    "type:economy_slider": {
+      "base_widget": "ranged_slider",
+      "mod_file": "in_game/gui/economy_lateralview.gui",
+      "namespace": "EconomyLateralviewTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/economy_slider.gui",
+      "vanilla_file": "in_game/gui/economy_lateralview.gui"
+    },
+    "type:estate_add_reform_button": {
+      "base_widget": "icon",
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/estate_add_reform_button.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
+    },
+    "type:estate_card": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/estate_card.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
+    },
+    "type:estate_card_background": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/estate_card_background.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
+    },
+    "type:estate_card_privilege": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/estate_card_privilege.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
+    },
+    "type:estate_card_privilege_common_widget": {
+      "base_widget": "estate_privilege_action_button_alt",
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/estate_card_privilege_common_widget.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
+    },
+    "type:estate_card_top_part": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/estate_card_top_part.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
+    },
+    "type:estate_decor": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/estate_decor.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
+    },
+    "type:estate_reform_action_button_common_widget": {
+      "base_widget": "estate_reform_action_button_alt",
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/estate_reform_action_button_common_widget.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
+    },
+    "type:estate_reform_implementation_progress": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/estate_reform_implementation_progress.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
+    },
     "type:food_production_location": {
       "base_widget": "widget",
       "mod_file": "in_game/gui/glorpUI_food_production_lateralview.gui",
       "namespace": "GlorpUIFoodProductionTypes",
       "tracking_path": "tools/dependencies/gui-tracking/types/food_production_location.gui",
       "vanilla_file": "in_game/gui/food_production_lateralview.gui"
+    },
+    "type:food_production_province": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/glorpUI_food_production_lateralview.gui",
+      "namespace": "GlorpUIFoodProductionTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/food_production_province.gui",
+      "vanilla_file": "in_game/gui/food_production_lateralview.gui"
+    },
+    "type:io_law_item": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/io_law_item.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
+    },
+    "type:law_item_icon": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/law_item_icon.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
+    },
+    "type:laws_list_item": {
+      "base_widget": "vbox",
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/laws_list_item.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
     },
     "type:location_filtered_header_no_candidate": {
       "base_widget": "hbox",
@@ -342,6 +510,20 @@
       "namespace": "GlorpUIOrganizationPanel",
       "tracking_path": "tools/dependencies/gui-tracking/types/organization_panel_default.gui",
       "vanilla_file": "in_game/gui/panels/organization/common.gui"
+    },
+    "type:privilige_details_dynamic": {
+      "base_widget": "fixedgridbox",
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/privilige_details_dynamic.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
+    },
+    "type:reform_details_dynamic": {
+      "base_widget": "fixedgridbox",
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/reform_details_dynamic.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
     },
     "type:row_building_card": {
       "base_widget": "widget",
@@ -616,6 +798,13 @@
       "tracking_path": "tools/dependencies/gui-tracking/widgets/dynasty_marker.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
     },
+    "widget:economy_lateralview": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/economy_lateralview.gui",
+      "namespace": "lateralview",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/economy_lateralview.gui",
+      "vanilla_file": "in_game/gui/economy_lateralview.gui"
+    },
     "widget:empty_entry": {
       "base_widget": null,
       "mod_file": "in_game/gui/outliner_entries.gui",
@@ -770,6 +959,20 @@
       "tracking_path": "tools/dependencies/gui-tracking/widgets/goods_category_entry.gui",
       "vanilla_file": "in_game/gui/outliner_entries.gui"
     },
+    "widget:goods_production_lateralview": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/goods_production_lateralview.gui",
+      "namespace": "lateralview",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/goods_production_lateralview.gui",
+      "vanilla_file": "in_game/gui/goods_production_lateralview.gui"
+    },
+    "widget:goods_production_select_market": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/goods_production_lateralview.gui",
+      "namespace": "select_menu_left",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/goods_production_select_market.gui",
+      "vanilla_file": "in_game/gui/goods_production_lateralview.gui"
+    },
     "widget:gov_reform_entry": {
       "base_widget": null,
       "mod_file": "in_game/gui/outliner_entries.gui",
@@ -783,6 +986,13 @@
       "namespace": "OutlinerEntryBase",
       "tracking_path": "tools/dependencies/gui-tracking/widgets/government_category_entry.gui",
       "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:government_lateralview": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/government_lateralview.gui",
+      "namespace": "lateralview",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/government_lateralview.gui",
+      "vanilla_file": "in_game/gui/government_lateralview.gui"
     },
     "widget:holy_site_marker": {
       "base_widget": null,

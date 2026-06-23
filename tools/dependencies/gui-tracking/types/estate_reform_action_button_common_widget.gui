@@ -1,0 +1,26 @@
+﻿# vanilla: in_game/gui/government_lateralview.gui
+# mod: in_game/gui/government_lateralview.gui
+
+	type estate_reform_action_button_common_widget = estate_reform_action_button_alt {
+		visible = "[ReformItem.IsValid]"
+		parentanchor = center
+
+		blockoverride "reform_action"{
+			datacontext = "[ReformItem.GetReform]"
+			using = reform_item_action_provider
+
+			tooltipwidget = {
+				using = GovernmentReform_tooltip
+				blockoverride "UIActionDescription" {
+					TooltipBlockList = {
+						visible = "[And(ReformItem.ShowImplementedTooltip, Not(StringIsEmpty(ReformItem.GetImplementedTooltip)))]"
+						textcontext = "[ReformItem.GetImplementedTooltip]"
+					}
+				}
+			}
+		}
+
+		blockoverride "icon_texture" {
+			texture = "[GetGovernmentReformIllustration(ReformItem.GetReform)]"
+		}
+	}

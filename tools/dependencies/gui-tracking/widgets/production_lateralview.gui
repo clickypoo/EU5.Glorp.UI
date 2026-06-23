@@ -228,7 +228,7 @@ lateralview = {
 							name = "name"
 							using = layoutpolicy_expanding
 						}
-		
+
 						# sort_by_key_button = {
 						# 	name = "profit"
 						# 	layoutpolicy_vertical = expanding
@@ -252,17 +252,13 @@ lateralview = {
 						vbox = {
 							fixedgridbox = {
 								visible = "[ProductionView.Vars.NotExistOrHasValue( 'display', 'lists' )]"
-								addrow = 48
+								addrow = @building_entry_height
 								addcolumn = 100%
 								datamodel = "[ProductionView.GetBuildingItems]"
 								item = {
 									widget = {
-										size = { 100% 48 }
-
-										vbox = {
-											margin_top = 5
-											building_type_header = {}
-										}
+										size = { 100% @building_entry_height }
+										building_type_header = {}
 									}
 								}
 							}
@@ -278,7 +274,7 @@ lateralview = {
 					datacontext = "[ProductionView.GetBuildingsSortSearch.WithFilterTags('building')]"
 					name = "building_categories_filtered_list"
 
-					blockoverride "subheader_upper_divider"{
+					blockoverride "subheader_upper_divider" {
 						# MARKET FILTERED
 						widget = {
 							visible = "[ProductionView.IsMarketFilterEnabled]"
@@ -479,7 +475,7 @@ lateralview = {
 															enabled = "[GreaterThan_int32(CategoryBuildingTypesItem.GetBuildingTypesAmount, '(int32)0')]"
 															on_action = "[CategoryBuildingTypesItem.Toggle]"
 														}
-								
+
 														action_tooltip = {
 															click_type = right
 															click_mode = single
@@ -501,7 +497,7 @@ lateralview = {
 														datacontext = "[CategoryBuildingTypesItem.GetCategory]"
 
 														icon = {
-															size = {25 36} # GlorpUI: 36->25
+															size = {36 36} # GlorpUI: 36->25
 															texture = "[GetBuildingCategoryIcon(CategoryBuildingTypesItem.GetCategory)]"
 														}
 
@@ -512,13 +508,12 @@ lateralview = {
 															maximumsize = {200 -1}
 														}
 
-
 														expand = {}
 
 														text_single = {
 															# visible = "[CategoryBuildingTypesItem.HasProducingBuildingsBuilt]"
 															visible = "[And(
-																Not(CategoryBuildingTypesItem.HasUpkeepBuildingsBuilt), 
+																Not(CategoryBuildingTypesItem.HasUpkeepBuildingsBuilt),
 																CategoryBuildingTypesItem.HasProducingBuildingsBuilt
 															)]"
                                                             raw_text = "[CategoryBuildingTypesItem.GetTotalNetProfit|+=2]@tax_base!"
@@ -537,7 +532,7 @@ lateralview = {
 
 														text_single = {
 															visible = "[And(
-																Not(CategoryBuildingTypesItem.HasUpkeepBuildingsBuilt), 
+																Not(CategoryBuildingTypesItem.HasUpkeepBuildingsBuilt),
 																CategoryBuildingTypesItem.HasProducingBuildingsBuilt
 															)]"
 															# visible = "[CategoryBuildingTypesItem.HasProducingBuildingsBuilt]"
@@ -554,7 +549,7 @@ lateralview = {
 																using = BuildingCategory_income_tooltip
 															}
                                                         }
-														
+
                                                         text_single = {
 															visible = "[CategoryBuildingTypesItem.HasUpkeepBuildingsBuilt]"
                                                             raw_text = "#R -[CategoryBuildingTypesItem.GetTotalMaintenanceCost|2]#!@expense!"
@@ -568,7 +563,7 @@ lateralview = {
 															}
 															tooltipwidget = {
 																using = BuildingCategory_upkeep_tooltip
-															}	
+															}
                                                         }
 
                                                         text_single = {
@@ -709,7 +704,7 @@ lateralview = {
 																						game_concept = "[building|E]"
 																						title = "BUILDING_TYPE_INCOME_TT_TITLE"
 																					}
-																					tooltipwidget = { 
+																					tooltipwidget = {
 																						using = BuildingType_income_tooltip
 																					}
 																				}
@@ -722,7 +717,7 @@ lateralview = {
 																						game_concept = "[building_maintenance|E]"
 																						title = "BUILDING_TYPE_UPKEEP_TT_TITLE"
 																					}
-																					tooltipwidget = { 
+																					tooltipwidget = {
 																						using = BuildingType_upkeep_tooltip
 																					}
 																				}
@@ -769,7 +764,7 @@ lateralview = {
 																			}
 																			background = {
 																				texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
-																				
+
 																				modify_texture = {
 																					using = color_new_gold_texture
 																				}
@@ -808,7 +803,7 @@ lateralview = {
 																					visible = "[BuildingItem.HasBuildingsLackingInput]"
 																					using = bg_circle
 																				}
-																				
+
 																			}
 																		}
 																	}
@@ -975,7 +970,7 @@ lateralview = {
 																			}
 																			background = {
 																				texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
-																				
+
 																				modify_texture = {
 																					using = color_new_gold_texture
 																				}
@@ -1014,7 +1009,7 @@ lateralview = {
 																					visible = "[BuildingItem.HasBuildingsLackingInput]"
 																					using = bg_circle
 																				}
-																				
+
 																			}
 																		}
 																	}

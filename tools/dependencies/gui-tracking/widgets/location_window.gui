@@ -2529,8 +2529,8 @@ lateralview = {
 														enabled = "[And(IsCabinetActionAllowed('develop_province'), Location.GetOwner.IsPlayer)]"
 														conditions = "[GetCabinetActionTooltip('recovery_effort')]"
 													}
-                                                    datacontext = "[GetMapMode('development')]"
-                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('development')]"
+                                                    datacontext = "[GetMapMode('prosperity')]"
+                                                    onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('prosperity')]"
                                                     action_tooltip = {
                                                         click_type = right
                                                         click_mode = single
@@ -2635,6 +2635,8 @@ lateralview = {
 													tooltipwidget = {
 														using = location_art_tooltip
 													}
+													datacontext = "[GetMapMode('works_of_art')]"
+													onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('works_of_art')]"
 												}
 												hbox = {
 													spacing = 7

@@ -284,7 +284,7 @@ template CountryTooltip {
 							visible = "[HasNavyStrengthIntelOn(Country.Self)]"
 							autoresize = yes
 							align = right
-							text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] ([Country.GetNavySizeValue|0L] @naval_regular!)" # GlorpUI: levy/regular breakdown
+							raw_text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] ([Country.GetNavySizeValue|0L] @naval_regular!)" # GlorpUI: levy/regular breakdown
 						}
 						text_single = {
 							visible = "[Not(HasNavyStrengthIntelOn(Country.Self))]"

@@ -1,0 +1,56 @@
+﻿# vanilla: in_game/gui/government_lateralview.gui
+# mod: in_game/gui/government_lateralview.gui
+
+	type estate_reform_implementation_progress = widget {
+		size = { 18 18 }
+		visible = "[And(Not(ReformItem.IsImplemented), ReformItem.IsValid)]"
+
+		parentanchor = top|hcenter
+		piechart = {
+			size = { 100% 100% }
+			parentanchor = center
+			using = piechart_angles
+
+			icon = {
+				texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+				size = { 97% 97% }
+				parentanchor = center
+				using = color_value_progress_gray
+			}
+
+			pieslice = {
+				texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+				value = "[FixedPointToFloat(ReformItem.GetPercentageImplemented)]"
+				using = color_value_progress_blue
+			}
+
+			pieslice = {
+				texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+				value = "[Subtract_float('(float)100.0', FixedPointToFloat(ReformItem.GetPercentageImplemented))]"
+				using = color_value_progress_gray
+			}
+		}
+		icon = {
+			parentanchor = center
+			size = { 70% 70% }
+			texture = "gfx/interface/icons/situations/_default.dds"
+			texture_density = 2
+		}
+
+		using = bg_circle_piechart
+
+		datacontext = "[ReformItem.GetReform]"
+		tooltipwidget = {
+			using = GovernmentReform_tooltip
+			blockoverride "UIActionDescription" {
+				TooltipBlockList = {
+					visible = "[And(ReformItem.ShowImplementedTooltip, Not(StringIsEmpty(ReformItem.GetImplementedTooltip)))]"
+					textcontext = "[ReformItem.GetImplementedTooltip]"
+				}
+				TooltipConditionList = {
+					visible = "[Not(StringIsEmpty(ReformItem.CanRemoveReformTooltip))]"
+					textcontext = "[ReformItem.CanRemoveReformTooltip]"
+				}
+			}
+		}
+	}
