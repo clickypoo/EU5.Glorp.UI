@@ -1,0 +1,19 @@
+# vanilla: in_game/gui/government_lateralview.gui
+# mod: in_game/gui/government_lateralview.gui
+
+	type privilige_details_dynamic = fixedgridbox {
+		addcolumn = 37
+		addrow = 45
+		flipdirection = yes
+
+		block "reforms_datamodel" {}
+
+		item = {
+			widget = {
+				size = { 37 45 }
+				estate_card_privilege_common_widget = {
+					parentanchor = center
+				}
+			}		
+		}
+	}

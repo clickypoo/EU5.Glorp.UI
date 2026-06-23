@@ -1,0 +1,54 @@
+# vanilla: in_game/gui/government_lateralview.gui
+# mod: in_game/gui/government_lateralview.gui
+
+	type estate_decor = widget {
+		ignore_layout = yes
+		layoutpolicy_horizontal = expanding
+		size = { 100% 100% }
+		
+		icon = {
+			block "decor_size" { 
+				size = { 25 40 }
+			}
+			parentanchor = left
+			block "decor_position_left" {
+				position = { -15 0 }
+			}
+			
+			block "decor_texture_left" {
+				texture = "gfx/interface/component_tiles/estates/estates_frame_decor_crown.dds"
+			}
+			
+			texture_density = 2
+			glow = {
+				name = "drop_shadow"
+				glow_radius = 4
+				color = {0.0 0.0 0.0 1.0}
+				alpha = 0.3
+			}
+			using = non_clickable_color_gold_texture
+		}
+
+		icon = {
+			block "decor_size" { 
+				size = { 25 40 }
+			}
+			parentanchor = right
+			block "decor_position_right" {
+				position = { 15 0 }
+			}
+			
+			block "decor_texture_right" {
+				texture = "gfx/interface/component_tiles/estates/estates_frame_decor_crown.dds"
+			}
+			texture_density = 2
+			mirror = horizontal
+			glow = {
+				name = "drop_shadow"
+				glow_radius = 4
+				color = {0.0 0.0 0.0 1.0}
+				alpha = 0.3
+			}
+			using = non_clickable_color_gold_texture
+		}
+	}

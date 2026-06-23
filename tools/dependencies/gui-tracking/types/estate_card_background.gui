@@ -1,0 +1,63 @@
+# vanilla: in_game/gui/government_lateralview.gui
+# mod: in_game/gui/government_lateralview.gui
+
+	type estate_card_background = widget {
+		layoutpolicy_horizontal = expanding
+		size = { 100% 100% }
+		ignore_layout = yes
+
+		icon = {
+			size = { 5 75 }
+			parentanchor = left
+			position = {-5 20}
+			texture = "gfx/interface/component_tiles/estates/hanging_cloth_sides.dds"
+			texture_density = 2
+
+			color = "[Estate.GetType.GetMapColor]"
+
+			modify_texture = {
+				using = overlay_cloth_texture
+				blend_mode = overlay
+				alpha = 0.2
+			}
+			modify_texture = {
+				using = color_black_texture
+				blend_mode = multiply
+				alpha = 0.1
+			}
+			glow = {
+				name = "drop_shadow"
+				glow_radius = 4
+				color = {0.0 0.0 0.0 1.0}
+				alpha = 1
+			}
+		}
+
+		icon = {
+			size = { 5 75 }
+			parentanchor = right
+			position = {5 20}
+			texture = "gfx/interface/component_tiles/estates/hanging_cloth_sides.dds"
+			texture_density = 2
+			mirror = horizontal
+
+			color = "[Estate.GetType.GetMapColor]"
+
+			modify_texture = {
+				using = overlay_cloth_texture
+				blend_mode = overlay
+				alpha = 0.2
+			}
+			modify_texture = {
+				using = color_black_texture
+				blend_mode = multiply
+				alpha = 0.1
+			}
+			glow = {
+				name = "drop_shadow"
+				glow_radius = 4
+				color = {0.0 0.0 0.0 1.0}
+				alpha = 1
+			}
+		}
+	}

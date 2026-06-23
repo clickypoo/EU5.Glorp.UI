@@ -1,0 +1,72 @@
+# vanilla: in_game/gui/shared/cabinet_cards.gui
+# mod: in_game/gui/shared/glorpUI_cabinet_cards.gui
+
+template cabinet_card_header_content {
+	hbox = {
+		using = layoutpolicy_expanding
+		spacing = 5
+		margin_left = 10
+		margin_right = 10
+
+		widget = {
+			size = { 50 -1 }
+			allow_outside = yes
+			datacontext = "[Cabinet.GetAction]"
+			cabinet_action_power = {
+				visible = "[Cabinet.IsActive]"
+				parentanchor = left|vcenter
+				blockoverride cabinet_action_power_bg_size {
+					size = { 24 24 }
+				}
+				blockoverride cabinet_action_power_icon_size {
+					size = { 95% 95%}
+				}
+			}
+		}
+
+		vbox = {
+			text_single = {
+				visible = "[Cabinet.IsActive]"
+				text = "[Cabinet.GetNameWithNoTooltip]"
+				default_format = "#yellow_titles"
+				align = left
+			}
+
+            tooltipwidget = {
+                using = action_progress_tooltip
+            }
+
+
+			text_single = {
+				visible = "[Not(Cabinet.IsActive)]"
+				text = "NO_CABINET_ACTION"
+				using = Font_Size_Medium
+				using = Font_Type_Flavor
+				align = nobaseline
+			}
+		}
+
+		expand = {}
+
+		hbox = {
+			datacontext = "[Cabinet]"
+			tooltipwidget = {
+				using = effective_skill_tooltip
+			}
+			widget = {
+				visible = "[Cabinet.IsActive]"
+				size = {70 25}
+				text_single = {
+					text = "[Cabinet.GetEffectiveSkill|2%+=]"
+					align = right|nobaseline
+					widgetanchor = right|vcenter
+					parentanchor = right|vcenter
+					margin = {5 2}
+				}
+			}
+
+			cabinet_efficiency_icon = {}
+		}
+
+	}
+}
