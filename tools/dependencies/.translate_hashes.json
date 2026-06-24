@@ -90,13 +90,14 @@
     "english\\glorpui_filters_l_english.yml": {
       "search_filter_glorpui_character_has_architectural_visionary_desc": "1bae972bd2a168820c986e91e633f1468dbddb6b08860be03e7d5638cf314c7a",
       "search_filter_glorpui_character_has_architectural_visionary_name": "f664cf81eedc56575a07eb9c486e9299cbc2f0ea792de1fb7b1f2282bc4552f8",
-      "search_filter_glorpui_character_has_positive_army_trait_desc": "130a3e0a6dd0b2767359eb3e6873c6db25541d5f552c1196b35015b65fee8251",
-      "search_filter_glorpui_character_has_positive_cabinet_trait_desc": "aee233f27aeffc406335ffffea75fdbdb46c07d2804aee26736ea5b8e5c67c97",
-      "search_filter_glorpui_character_has_positive_cabinet_trait_name": "13be10242b271457a9847fe256269d64c9214cc3850da47105c7f01eea564151",
-      "search_filter_glorpui_character_has_positive_navy_trait_desc": "62e2808e1bf99a0ca882d7394a68da99d08cbd4c06a9d36a2f48108cd960856c",
-      "search_filter_glorpui_character_has_positive_navy_trait_name": "bce145795f74b5eec62be7baee89cbf7be8155492aaf85dd83fa0fe032439743",
-      "search_filter_glorpui_character_has_positive_ruler_trait_desc": "9a7f32a5da3750a7d3cffe62df49024dd032d8674ac8799b4571090085938590",
-      "search_filter_glorpui_character_has_positive_ruler_trait_name": "7b7148da69ee8d7f4083ad5ef4dd926c8bc9b7d9d5ebd2d7266f96d8f1764a19"
+      "search_filter_glorpui_character_has_positive_army_trait_desc": "abaa54d119459441fdfbee791894e49a8be3f4f13cea2dc5205eb9add93767a5",
+      "search_filter_glorpui_character_has_positive_army_trait_name": "df0f59d2fb95fe6cefe5a5897c35252ca563b10a92f10bd531f191effcaf5651",
+      "search_filter_glorpui_character_has_positive_cabinet_trait_desc": "95a784ce5abaa8bcc67c3492e2e786fea5c889b80e12a628c1a9ca08b0261fef",
+      "search_filter_glorpui_character_has_positive_cabinet_trait_name": "2f9f5052f22c4436d59292398ced2edf531f54b3f6e61af8491aa664b9e37626",
+      "search_filter_glorpui_character_has_positive_navy_trait_desc": "d5c3587a454a4604eb8de7fc3b0b8abb8187037985e13d93ff7b4828c7febe66",
+      "search_filter_glorpui_character_has_positive_navy_trait_name": "ab7d60b4cc8d2c3a989497fe067b2bf232a1248030b576928625b7f6a48de455",
+      "search_filter_glorpui_character_has_positive_ruler_trait_desc": "7b1e187e74b058cad40691d4256145d9c7b19a04320899e887092670e7e5ebe2",
+      "search_filter_glorpui_character_has_positive_ruler_trait_name": "9b83210e5cde982abe4381bc2f34160abb95dde621731f9dc2aa99b328106f79"
     },
     "english\\glorpui_l_english.yml": {
       "CLOSE_MAPMODE_SETTINGS": "a0aa6e1903cba0f42b7129716ef85b2a681f60908020ce58ce6b8de7ca998b06",
