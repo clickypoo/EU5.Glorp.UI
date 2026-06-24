@@ -331,11 +331,6 @@ organization_religious_theme = {
 																		}
 																	}
 
-																	blockoverride "tooltip_ui_action_block" {
-																		TooltipUIActionBlockOld = {
-																			visible = "[PdxGuiWidget.HasUIAction]"
-																		}
-																	}
 																}
 															}
 														}
@@ -454,11 +449,6 @@ organization_religious_theme = {
 																			}
 																		}
 
-																		blockoverride "tooltip_ui_action_block" {
-																			TooltipUIActionBlockOld = {
-																				visible = "[PdxGuiWidget.HasUIAction]"
-																			}
-																		}
 																	}
 																}
 															}
@@ -578,11 +568,6 @@ organization_religious_theme = {
 																			}
 																		}
 
-																		blockoverride "tooltip_ui_action_block" {
-																			TooltipUIActionBlockOld = {
-																				visible = "[PdxGuiWidget.HasUIAction]"
-																			}
-																		}
 																	}
 																}
 															}
@@ -657,11 +642,6 @@ organization_religious_theme = {
 																			}
 																		}
 
-																		blockoverride "tooltip_ui_action_block" {
-																			TooltipUIActionBlockOld = {
-																				visible = "[PdxGuiWidget.HasUIAction]"
-																			}
-																		}
 																	}
 																}
 															}
@@ -783,11 +763,6 @@ organization_religious_theme = {
 																			}
 																		}
 
-																		blockoverride "tooltip_ui_action_block" {
-																			TooltipUIActionBlockOld = {
-																				visible = "[PdxGuiWidget.HasUIAction]"
-																			}
-																		}
 																	}
 																}
 															}

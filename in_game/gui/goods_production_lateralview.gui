@@ -1,4 +1,4 @@
-@goods_entry_height = 35 # Vanilla = 40
+﻿@goods_entry_height = 35 # Vanilla = 40
 lateralview = {
 	name = "goods_production_lateralview"
 	widgetid = "goods_production_lateralview"

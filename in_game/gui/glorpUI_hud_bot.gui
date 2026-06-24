@@ -460,7 +460,7 @@ types GlorpUIBottomTypes
 			}
 
 			action_tooltip = {
-				visible = "[Not(MapModeSelectorVars.Exists('color_ledger'))]"
+				visible = "[And(HasMapColorLedger, Not(MapModeSelectorVars.Exists('color_ledger')))]"
 				click_type = left
 				title = "OPEN_MAP_COLOR_LEDGER"
 				on_action = "[MapModeSelectorVars.Toggle('color_ledger')]"
@@ -469,7 +469,7 @@ types GlorpUIBottomTypes
 			}
 
 			action_tooltip = {
-				visible = "[MapModeSelectorVars.Exists('color_ledger')]"
+				visible = "[And(HasMapColorLedger, MapModeSelectorVars.Exists('color_ledger'))]"
 				click_type = left
 				title = "CLOSE_MAP_COLOR_LEDGER"
 				on_action = "[MapModeSelectorVars.Toggle('color_ledger')]"
@@ -569,9 +569,9 @@ types GlorpUIBottomTypes
 				texture = "gfx/interface/icons/map_subdivisons/locked.dds"
 			}
 			icon = {
+				visible = "[And(HasMapColorLedger, Not(MapModeSelectorVars.Exists('action')))]"
 				size = { 24 24 }
 				texture = "gfx/interface/icons/flat_icons/tabicons/color_ledger.dds"
-				# visible = "[And(HasMapColorLedger, Not(MapModeSelectorVars.Exists('action')))]"
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-template cabinet_card_header_content {
+﻿template cabinet_card_header_content {
 	hbox = {
 		using = layoutpolicy_expanding
 		spacing = 5

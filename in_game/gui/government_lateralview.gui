@@ -1,4 +1,4 @@
-types CountryHeaders {
+﻿types CountryHeaders {
 	# type parliament_subheader_A = subheader_A
 	# {
 	# 	# Right Data
@@ -4156,11 +4156,6 @@ lateralview = {
 																		using = action_tooltip_inner_content
 																	}
 
-																	blockoverride "tooltip_ui_action_block" {
-																		TooltipUIActionBlockOld = {
-																			visible = "[PdxGuiWidget.HasUIAction]"
-																		}
-																	}
 																}
 															}
 														}

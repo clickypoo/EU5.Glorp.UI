@@ -60,7 +60,6 @@ glorpui_has_positive_cabinet_trait = {
 		has_trait = theologian
 		has_trait = bureaucrat
 		has_trait = oracle
-		has_trait = influential
 		has_character_modifier = excellent_minister
 		has_character_modifier = BYZ_kantakouzenos_co_emperor
 		has_character_modifier = ccw_ruler_siblings
