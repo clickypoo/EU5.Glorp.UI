@@ -24,7 +24,7 @@ glorpui_character_has_positive_army_trait = {
 	exclusive_group = no
 	tag = ruler
 	trigger = {
-		has_trait_category = general
+		glorpui_has_positive_army_trait = yes
 	}
 }
 
@@ -34,7 +34,7 @@ glorpui_character_has_positive_navy_trait = {
 	exclusive_group = no
 	tag = ruler
 	trigger = {
-		has_trait_category = admiral
+		glorpui_has_positive_navy_trait = yes
 	}
 }
 

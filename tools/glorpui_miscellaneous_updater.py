@@ -6,11 +6,12 @@ Each helper scrapes the live game install and rewrites a generated mod file so t
 mod stays in sync across game patches. Run after updating to a new EU5 version.
 
 Currently included:
-  - Positive-trait filter triggers: regenerates glorpui_has_positive_<category>_trait
-    scripted triggers (an OR of every non-bad trait in the category) for the categories
-    the engine can't filter positively on its own, consumed by the "Has Positive X
-    Trait" character search filters. A trait counts as negative if it has is_bad = yes
-    or a negative custom tag.
+  - Positive-category filter triggers: regenerates the four glorpui_has_positive_<category>_trait
+    scripted triggers (army, navy, cabinet, ruler) consumed by the "Has Positive X Trait" character
+    search filters. Each is an OR of the category's positive traits and the character static
+    modifiers classified into that category. A trait counts as negative if it has is_bad = yes or a
+    negative custom tag; a character modifier is classified by its positive (higher-is-better)
+    effect keys.
 
 The game directory is auto-detected from the known Steam install locations. Set
 'game_directory' (or 'beta_game_directory') in tools/config.toml to override, or
@@ -54,6 +55,7 @@ BETA_STEAM_GAME_PATHS = [
 UTF8_BOM = b"\xef\xbb\xbf"
 
 TRAITS_SUBPATH = Path("in_game") / "common" / "traits"
+CHARACTER_MODIFIERS_SUBPATH = Path("main_menu") / "common" / "static_modifiers"
 TRAIT_TRIGGER_OUTPUT = (
     PROJECT_ROOT
     / "in_game"
@@ -62,15 +64,79 @@ TRAIT_TRIGGER_OUTPUT = (
     / "glorpui_generated_trait_scripted_triggers.txt"
 )
 
-# Categories the engine can't filter positively on its own, so the filter needs a
-# generated OR-list of their non-bad traits. Army (general) and navy (admiral) are
-# absent: they have no flagged-negative traits, so has_trait_category handles them.
-POSITIVE_TRIGGER_CATEGORIES = ["cabinet", "ruler"]
+# army/navy traits carry no negative members, so a has_trait_category leaf covers their trait
+# side; cabinet/ruler need a per-trait OR-list because each has bad traits to exclude.
+CATEGORY_ORDER = ["army", "navy", "cabinet", "ruler"]
+CATEGORY_TRAIT_CATEGORY = {"army": "general", "navy": "admiral"}
+
+# Effect keys that mark a character static modifier as an army/navy/cabinet/ruler bonus. All are
+# higher-is-better, so a positive value means beneficial. The shared keys help both army and navy.
+ARMY_EXCLUSIVE_KEYS = {
+    "siege_ability",
+    "assault_ability",
+    "army_movement_speed",
+    "army_initiative",
+    "discipline",
+    "land_morale_modifier",
+    "land_morale_recovery",
+    "levy_combat_efficiency_modifier",
+    "global_levy_size_modifier",
+    "global_army_levy_size_modifier",
+    "army_maintenance_efficiency",
+    "army_artillery_power",
+    "army_heavy_infantry_power",
+    "army_light_infantry_power",
+    "army_heavy_cavalry_power",
+    "army_light_cavalry_power",
+    "army_tradition_from_battle",
+    "artillery_bonus_vs_fort",
+    "fort_assumed_efficiency_character",
+    "prestige_from_land_battle",
+}
+NAVY_EXCLUSIVE_KEYS = {
+    "blockade_efficiency",
+    "naval_morale_modifier",
+    "naval_damage_done",
+    "navy_movement_speed",
+    "navy_initiative",
+    "navy_maintenance_efficiency",
+    "navy_galley_power",
+    "navy_heavy_ship_power",
+    "navy_light_ship_power",
+    "global_maritime_presence_modifier",
+    "prestige_from_naval_battle",
+    "ship_capture_chance",
+}
+SHARED_MILITARY_KEYS = {
+    "commander_combat_bonus",
+    "combat_speed_modifier",
+    "military_tactics",
+    "possible_frontage_modifier",
+}
+CABINET_KEYS = {
+    "character_cabinet_efficiency",
+    "country_cabinet_efficiency",
+    "cabinet_trait_impact_modifier",
+    "estate_power_from_cabinet",
+}
+RULER_KEYS = {
+    "monthly_legitimacy",
+    "monthly_prestige",
+    "monthly_republican_tradition",
+    "monthly_devotion",
+    "global_crown_estate_power",
+    "diplomatic_reputation",
+}
 
 TRAIT_BLOCK_RE = re.compile(r"^(\w+)\s*=\s*\{")
 CATEGORY_RE = re.compile(r"^category\s*=\s*(\w+)")
 IS_BAD_RE = re.compile(r"^is_bad\s*=\s*yes\b")
 NEGATIVE_TAG_RE = re.compile(r"\bnegative\b")
+EFFECT_RE = re.compile(r"^(\w+)\s*=\s*(\S+)")
+
+# The engine applies these per-skill base modifiers to every ruler/general/admiral/explorer, so
+# they are not notable bonuses worth surfacing in the filters.
+BASE_ATTRIBUTE_MODIFIER_RE = re.compile(r"^(?:ruler|general|admiral|explorer)_(?:adm|dip|mil)$")
 
 
 def parse_braces(line):
@@ -168,19 +234,127 @@ def collect_traits(game_root):
     return traits
 
 
-def write_trait_triggers(traits):
+def _block_effects(lines, start, end):
+    """Return {effect_key: float} for numeric modifier effects that are direct children of the block.
+
+    Lines nested inside a sub-block (game_data, any triggered block) are skipped by depth, and
+    non-numeric values (yes/no flags, named constants) are dropped.
+    """
+    effects = {}
+    depth = 0
+    for i in range(start, end):
+        delta, _ = parse_braces(lines[i])
+        if depth == 1 and delta == 0:
+            match = EFFECT_RE.match(lines[i].strip())
+            if match:
+                try:
+                    effects[match.group(1)] = float(match.group(2))
+                except ValueError:
+                    pass
+        depth += delta
+    return effects
+
+
+def collect_character_modifiers(game_root):
+    """Return (name, {effect_key: float, ...}) for every category=character static modifier."""
+    mods_dir = game_root / CHARACTER_MODIFIERS_SUBPATH
+    if not mods_dir.is_dir():
+        print(f"ERROR: Static modifiers directory not found: {mods_dir}")
+        sys.exit(1)
+
+    modifiers = []
+    for path in sorted(mods_dir.glob("*.txt")):
+        try:
+            lines = path.read_text(encoding="utf-8-sig").split("\n")
+        except (OSError, UnicodeDecodeError):
+            continue
+
+        i = 0
+        while i < len(lines):
+            stripped = lines[i].strip()
+            if not stripped or stripped.startswith("#"):
+                i += 1
+                continue
+
+            match = TRAIT_BLOCK_RE.match(stripped)
+            if match:
+                end = find_block_end(lines, i)
+                name = match.group(1)
+                if (
+                    _block_category(lines, i, end) == "character"
+                    and not BASE_ATTRIBUTE_MODIFIER_RE.match(name)
+                ):
+                    modifiers.append((name, _block_effects(lines, i, end)))
+                i = end
+                continue
+
+            if "{" in stripped:
+                i = find_block_end(lines, i)
+            else:
+                i += 1
+
+    return modifiers
+
+
+def _has_positive(effects, keys):
+    """Return True if the modifier has a value above zero on any key in the set."""
+    return any(effects.get(key, 0.0) > 0.0 for key in keys)
+
+
+def classify_modifier(effects):
+    """Return the set of categories ('army'/'navy'/'cabinet'/'ruler') a modifier is a positive bonus for.
+
+    A shared military key (helps both army and navy) classifies into a branch only when the other
+    branch has no exclusive key, so generic leadership lands in both while army-specific effects pin
+    it to army.
+    """
+    categories = set()
+
+    army = _has_positive(effects, ARMY_EXCLUSIVE_KEYS)
+    navy = _has_positive(effects, NAVY_EXCLUSIVE_KEYS)
+    shared = _has_positive(effects, SHARED_MILITARY_KEYS)
+    if army or (shared and not navy):
+        categories.add("army")
+    if navy or (shared and not army):
+        categories.add("navy")
+
+    if _has_positive(effects, CABINET_KEYS):
+        categories.add("cabinet")
+    if _has_positive(effects, RULER_KEYS):
+        categories.add("ruler")
+
+    return categories
+
+
+def write_category_triggers(traits, modifiers):
     """Write the generated glorpui_has_positive_<category>_trait scripted triggers (BOM + LF)."""
+    classified = [(name, classify_modifier(effects)) for (name, effects) in modifiers]
+
     blocks = []
-    for category in POSITIVE_TRIGGER_CATEGORIES:
-        positive = [n for (n, cat, neg) in traits if cat == category and not neg]
+    for category in CATEGORY_ORDER:
+        trait_category = CATEGORY_TRAIT_CATEGORY.get(category)
+        if trait_category is not None:
+            members = [f"has_trait_category = {trait_category}"]
+        else:
+            members = [
+                f"has_trait = {name}"
+                for (name, cat, neg) in traits
+                if cat == category and not neg
+            ]
+        members += [
+            f"has_character_modifier = {name}"
+            for (name, cats) in classified
+            if category in cats
+        ]
+
         block = [f"glorpui_has_positive_{category}_trait = {{", "\tOR = {"]
-        block += [f"\t\thas_trait = {name}" for name in positive]
+        block += [f"\t\t{member}" for member in members]
         block += ["\t}", "}"]
         blocks.append("\n".join(block))
 
     header = (
-        "# Auto-generated by tools/glorpui_miscellaneous_updater.py - positive (non-bad) "
-        "traits per category from the EU5 game files."
+        "# Auto-generated by tools/glorpui_miscellaneous_updater.py - positive traits and character "
+        "static modifiers per category from the EU5 game files."
     )
     text = header + "\n\n" + "\n\n".join(blocks) + "\n"
 
@@ -256,12 +430,20 @@ def main():
     print(f"Source: {game_root}")
 
     traits = collect_traits(game_root)
-    write_trait_triggers(traits)
+    modifiers = collect_character_modifiers(game_root)
+    write_category_triggers(traits, modifiers)
 
-    for category in POSITIVE_TRIGGER_CATEGORIES:
-        positive = sum(1 for (_, cat, neg) in traits if cat == category and not neg)
-        total = sum(1 for (_, cat, _) in traits if cat == category)
-        print(f"Positive {category} traits: {positive}/{total}")
+    classified = [classify_modifier(effects) for (_, effects) in modifiers]
+    for category in CATEGORY_ORDER:
+        modifier_count = sum(1 for cats in classified if category in cats)
+        trait_category = CATEGORY_TRAIT_CATEGORY.get(category)
+        if trait_category is not None:
+            trait_desc = f"has_trait_category = {trait_category}"
+        else:
+            trait_count = sum(1 for (_, cat, neg) in traits if cat == category and not neg)
+            trait_desc = f"{trait_count} traits"
+        print(f"Positive {category}: {trait_desc} + {modifier_count} character modifiers")
+    print(f"Character modifiers scanned: {len(modifiers)}")
     print(f"-> {TRAIT_TRIGGER_OUTPUT.relative_to(PROJECT_ROOT)}")
 
     return 0
