@@ -55,7 +55,7 @@ BETA_STEAM_GAME_PATHS = [
 ]
 
 VANILLA_FILES = [
-	"organization/catholic_church.gui",
+	"panels/organization/catholic_church.gui",
 	"battle_lateralview.gui",
 	"country_dhe_lateralview.gui",
 	"expand_raw_goods_lateralview.gui",
