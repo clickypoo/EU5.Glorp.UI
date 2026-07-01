@@ -1096,7 +1096,8 @@ lateralview = {
 									blockoverride "portrait_datacontext" {
 										datacontext = "[Country.GetDiplomacy.GetOverlord.GetGovernment.GetRulerOrRegent]"
 									}
-
+									blockoverride "portrait_position" {position = { 0 -1 }}
+									blockoverride "portrait_size" { size = { 85% 90% } }
 
 									allow_outside = yes
 
@@ -1966,93 +1967,90 @@ lateralview = {
 							using = layoutpolicy_expanding
 							spacing = 6
 
-							# Left column: notable stances on top, then the relations content. Hidden in the
-							# actions-only variant so its expanding policy doesn't claim half the row while empty,
-							# which would push the actions list to the right and clip it.
 							vbox = {
 								using = layoutpolicy_expanding
 								spacing = 6
 								visible = "[Or(IsObserving, Not(ForeignCountryView.Vars.HasValue( 'diplomacy', 'actions' )))]"
 
-								notable_stances_block = {} # 4A "Notable Stances": movable within the left column
+								# notable_stances_block = {} # 4A "Notable Stances": movable within the left column
 
-							#Show Relations
-							diplomatic_relations_content = {
-								visible = "[Or(IsObserving, And(ForeignCountryView.Vars.HasValue( 'diplomacy', 'relations' ), Country.Exists))]"
-							}
-
-							#Show Both
-							diplomatic_relations_content = {
-								visible = "[And3(Not(IsObserving), ForeignCountryView.Vars.NotExistOrHasValue( 'diplomacy', 'both' ), Country.Exists)]"
-
-								background = {
-									using = color_black_texture
-									alpha = 0.2
-									margin = { 1 1 }
+								#Show Relations
+								diplomatic_relations_content = {
+									visible = "[Or(IsObserving, And(ForeignCountryView.Vars.HasValue( 'diplomacy', 'relations' ), Country.Exists))]"
 								}
 
-								blockoverride "extra_ios_visible" {
-									visible = "[GreaterThan_int32(GetDataModelSize(ForeignCountryView.GetInternationalOrganizations), '(int32)4')]"
-								}
+								#Show Both
+								diplomatic_relations_content = {
+									visible = "[And3(Not(IsObserving), ForeignCountryView.Vars.NotExistOrHasValue( 'diplomacy', 'both' ), Country.Exists)]"
 
-								blockoverride "extra_ios_text"{
-									raw_text = "+[Subtract_int32(GetDataModelSize(ForeignCountryView.GetInternationalOrganizations), '(int32)4')]"
-								}
+									background = {
+										using = color_black_texture
+										alpha = 0.2
+										margin = { 1 1 }
+									}
 
-								blockoverride "ios_datamodel"{
-									datamodel = "[DataModelFirst(ForeignCountryView.GetInternationalOrganizations, '(int32)4')]"
-								}
+									blockoverride "extra_ios_visible" {
+										visible = "[GreaterThan_int32(GetDataModelSize(ForeignCountryView.GetInternationalOrganizations), '(int32)4')]"
+									}
 
-								blockoverride "ios_datamodel_coalitions"{
-									datamodel = "[DataModelFirst(ForeignCountryView.GetCountry.GetDiplomacy.GetInternationalOrganizationsWeAreTheTargetOf, '(int32)4')]"
-								}
+									blockoverride "extra_ios_text"{
+										raw_text = "+[Subtract_int32(GetDataModelSize(ForeignCountryView.GetInternationalOrganizations), '(int32)4')]"
+									}
 
-								blockoverride "relations_datamodel" {
-									datamodel = "[DataModelFirst(RelationTypeItem.GetRelations,'(int32)3')]"
-								}
+									blockoverride "ios_datamodel"{
+										datamodel = "[DataModelFirst(ForeignCountryView.GetInternationalOrganizations, '(int32)4')]"
+									}
 
-								blockoverride "extra_relations_text" {
-									raw_text = "+[Subtract_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)3')]"
-								}
+									blockoverride "ios_datamodel_coalitions"{
+										datamodel = "[DataModelFirst(ForeignCountryView.GetCountry.GetDiplomacy.GetInternationalOrganizationsWeAreTheTargetOf, '(int32)4')]"
+									}
 
-								blockoverride "extra_relations_visible"{
-									visible = "[GreaterThan_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)3')]"
-								}
+									blockoverride "relations_datamodel" {
+										datamodel = "[DataModelFirst(RelationTypeItem.GetRelations,'(int32)3')]"
+									}
 
-								blockoverride "small_relations_datamodel"{
-									datamodel = "[DataModelFirst(RelationTypeItem.GetRelations, '(int32)4')]"
-								}
+									blockoverride "extra_relations_text" {
+										raw_text = "+[Subtract_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)3')]"
+									}
 
-								blockoverride "extra_small_relations_text" {
-									raw_text = "+[Subtract_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)4')]"
-								}
+									blockoverride "extra_relations_visible"{
+										visible = "[GreaterThan_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)3')]"
+									}
 
-								blockoverride "extra_small_relations_visible"{
-									visible = "[GreaterThan_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)4')]"
-								}
+									blockoverride "small_relations_datamodel"{
+										datamodel = "[DataModelFirst(RelationTypeItem.GetRelations, '(int32)4')]"
+									}
 
-								blockoverride "wars_datamodel" {
-									datamodel = "[DataModelFirst(ForeignCountryView.GetWars, '(int32)3')]"
-								}
+									blockoverride "extra_small_relations_text" {
+										raw_text = "+[Subtract_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)4')]"
+									}
 
-								blockoverride "extra_wars_text" {
-									raw_text = "+[Subtract_int32(GetDataModelSize(ForeignCountryView.GetWars), '(int32)3')]"
-								}
+									blockoverride "extra_small_relations_visible"{
+										visible = "[GreaterThan_int32(GetDataModelSize(RelationTypeItem.GetRelations), '(int32)4')]"
+									}
 
-								blockoverride "extra_wars_visible"{
-									visible = "[GreaterThan_int32(GetDataModelSize(ForeignCountryView.GetWars), '(int32)3')]"
-								}
-								blockoverride "colonial_charters_datamodel" {
-									datamodel = "[DataModelFirst(ForeignCountryView.GetColonialCharters, '(int32)4')]"
-								}
-								blockoverride "extra_colonial_charters_text" {
-									raw_text = "+[Subtract_int32(GetDataModelSize(ForeignCountryView.GetColonialCharters), '(int32)4')]"
-								}
+									blockoverride "wars_datamodel" {
+										datamodel = "[DataModelFirst(ForeignCountryView.GetWars, '(int32)3')]"
+									}
 
-								blockoverride "extra_colonial_charters_visible"{
-									visible = "[GreaterThan_int32(GetDataModelSize(ForeignCountryView.GetColonialCharters), '(int32)4')]"
+									blockoverride "extra_wars_text" {
+										raw_text = "+[Subtract_int32(GetDataModelSize(ForeignCountryView.GetWars), '(int32)3')]"
+									}
+
+									blockoverride "extra_wars_visible"{
+										visible = "[GreaterThan_int32(GetDataModelSize(ForeignCountryView.GetWars), '(int32)3')]"
+									}
+									blockoverride "colonial_charters_datamodel" {
+										datamodel = "[DataModelFirst(ForeignCountryView.GetColonialCharters, '(int32)4')]"
+									}
+									blockoverride "extra_colonial_charters_text" {
+										raw_text = "+[Subtract_int32(GetDataModelSize(ForeignCountryView.GetColonialCharters), '(int32)4')]"
+									}
+
+									blockoverride "extra_colonial_charters_visible"{
+										visible = "[GreaterThan_int32(GetDataModelSize(ForeignCountryView.GetColonialCharters), '(int32)4')]"
+									}
 								}
-							}
 							
 							} # close left-column vbox (notable stances + relations content)
 
