@@ -448,6 +448,13 @@
       "tracking_path": "tools/dependencies/gui-tracking/types/laws_list_item.gui",
       "vanilla_file": "in_game/gui/government_lateralview.gui"
     },
+    "type:location_card": {
+      "base_widget": "hbox",
+      "mod_file": "in_game/gui/location_window.gui",
+      "namespace": "LocationWindowTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/location_card.gui",
+      "vanilla_file": "in_game/gui/location_window.gui"
+    },
     "type:location_filtered_header_no_candidate": {
       "base_widget": "hbox",
       "mod_file": "in_game/gui/production_lateralview.gui",
