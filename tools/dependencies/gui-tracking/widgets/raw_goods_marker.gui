@@ -19,12 +19,12 @@ widget = {
 		tooltipwidget = {
 			using = SpecificGoodsMarket_tooltip
 		}
-		# action_tooltip = {
-		# 	click_type = left
-		# 	click_mode = single
-		# 	title = "OPEN_GOOD_PANEL"
-		# 	on_action = "[ShowGoods(Location.GetRawMaterial.Self)]"
-		# }
+		action_tooltip = {
+			click_type = left
+			click_mode = single
+			title = "OPEN_GOOD_PANEL"
+			on_action = "[ShowGoods(Location.GetRawMaterial.Self)]"
+		}
 	}
 
 	button = {

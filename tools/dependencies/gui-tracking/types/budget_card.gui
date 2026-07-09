@@ -1,0 +1,51 @@
+# vanilla: in_game/gui/economy_lateralview.gui
+# mod: in_game/gui/economy_lateralview.gui
+
+	type budget_card = widget {
+		background = {
+			using = tile_card_bg_texture
+			alpha = 0.5
+
+			# block "background_color" {
+				using = color_dark_blue
+			# }
+
+			modify_texture = {
+				using = overlay_stone_texture
+				blend_mode = overlay
+				alpha = 0.3
+			}
+		}
+
+		hbox = {
+			margin = { 5 0 }
+			spacing = 5
+			using = bg_paper_card
+
+			icon = {
+				size = { 24 24 }
+				block "icon_texture" {
+					texture = "gfx/interface/icons/flat_icons/balance/others.dds"
+				}
+
+				texture_density = 2
+			}
+
+			text_single = {
+				using = layoutpolicy_expanding
+				autoresize = no
+				align = left|nobaseline
+				block "label" {
+					text = ""
+				}
+			}
+			
+			text_single = {
+				autoresize = yes
+				align = right|nobaseline
+				block "income_text" {
+					raw_text = ""
+				}
+			}
+		}
+	}

@@ -1,0 +1,21 @@
+# vanilla: in_game/gui/shared/cabinet_cards.gui
+# mod: in_game/gui/shared/glorpUI_cabinet_cards.gui
+
+	type card_header_button_cabinet = button {
+		gfxtype = framedbuttongfx
+		effectname = "NoHighlight"
+		upframe = 1
+		overframe = 2
+		downframe = 3
+		disableframe = 4
+		texture = "gfx/interface/buttons/card_header_button_01.dds"
+		texture_density = 2
+		frame_grid = {4 1}
+		spriteType = Corneredstretched
+		spriteborder = { 14 14 }
+		# clicksound = "click_ok"
+
+		# block "card_header_button_cabinet_extra" {}
+
+		using = button_common_textobj_template
+	}

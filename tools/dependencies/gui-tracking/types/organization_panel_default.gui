@@ -1,5 +1,5 @@
 # vanilla: in_game/gui/panels/organization/common.gui
-# mod: in_game/gui/panels/organization/common.gui
+# mod: in_game/gui/panels/organization/glorpUI_common.gui
 
 	type organization_panel_default = vbox {
 		using = layoutpolicy_expanding

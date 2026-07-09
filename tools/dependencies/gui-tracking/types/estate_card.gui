@@ -1,0 +1,25 @@
+# vanilla: in_game/gui/government_lateralview.gui
+# mod: in_game/gui/government_lateralview.gui
+
+	type estate_card = widget {
+		# block "estate_card_parent_size" {
+			layoutpolicy_horizontal = expanding
+			size = { -1 108 }
+		# }
+
+		widget = {
+			# block "estate_card_size" {
+				size = { 93% 100 }
+			# }
+			parentanchor = center
+
+			using = bg_paper_card
+
+			estate_card_background = {}
+
+			vbox = {
+				estate_card_top_part = {}
+				estate_card_privilege = {}
+			}
+		}
+	}

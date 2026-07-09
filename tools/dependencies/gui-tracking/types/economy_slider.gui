@@ -1,0 +1,74 @@
+# vanilla: in_game/gui/economy_lateralview.gui
+# mod: in_game/gui/economy_lateralview.gui
+
+	type economy_slider = ranged_slider {
+		direction = horizontal
+		allow_outside = yes
+
+		
+
+		step = 0.01
+		wheelstep = 0.01
+
+		# block "track_type"{
+			track = { using = economy_slider_track }
+		# }
+		track_range = { # Available progress
+			using = economy_slider_track_range
+		}
+
+		track_highlight = { # Active Progress
+			using = economy_slider_track_highlight
+		}
+
+		slider = {
+			using = economy_slider_slider
+		}
+
+		dec_button = {
+			using = economy_slider_dec_button
+
+			# blockoverride "economy_slider_dec_button_config"{
+			#	
+			#	alpha = 0
+			#
+			#	state = {
+			#		name = show_slider_buttons
+			#		alpha = 1
+			#		position_x = 0
+			#		duration = 0.25
+			#		using = Animation_Curve_Default
+			#	}
+			#	state = {
+			#		name = hide_slider_buttons
+			#		alpha = 0
+			#		position_x = -5
+			#		duration = 0.25
+			#		using = Animation_Curve_Default
+			#	}
+			# }
+		}
+
+		inc_button = {
+			using = economy_slider_inc_button
+
+			# blockoverride "economy_slider_inc_button_config"{
+			#	alpha = 0
+			#	
+			#	state = {
+			#		name = show_slider_buttons
+			#		alpha = 1
+			#		position_x = 123
+			#		duration = 0.25
+			#		using = Animation_Curve_Default
+			#	}
+			#	state = {
+			#		name = hide_slider_buttons
+			#		alpha = 0
+			#		position_x = 128
+			#		duration = 0.25
+			#		using = Animation_Curve_Default
+			#	}
+			# }
+		}
+	}

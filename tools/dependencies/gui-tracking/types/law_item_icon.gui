@@ -1,0 +1,36 @@
+# vanilla: in_game/gui/government_lateralview.gui
+# mod: in_game/gui/government_lateralview.gui
+
+	type law_item_icon = widget {
+		size = { 36 36 }
+		background = {
+			texture = "gfx/interface/component_tiles/laws_background_frame.dds"
+			texture_density = 2
+			spriteType = corneredstretched
+			spriteBorder = { 0 0 }
+			
+			modify_texture = {
+				block "law_category_color" {
+					# texture = "[LawCategory.GetBgCategoryColor]"
+				}
+			}
+			modify_texture = {
+				using = overlay_cloth_texture
+				blend_mode = overlay
+				alpha = 0.2
+			}
+			modify_texture = {
+				using = color_black_texture
+				blend_mode = overlay
+				alpha = 0.3
+			}
+		}
+
+		icon = {
+			size = { 90% 90% }
+			parentanchor = center
+			block "law_list_icon" {
+				# texture = "[GetLawIcon(Law.Self)]"
+			}
+		}
+	}

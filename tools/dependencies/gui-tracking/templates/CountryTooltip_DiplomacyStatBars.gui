@@ -1,5 +1,5 @@
 # vanilla: in_game/gui/shared/diplomacy_tooltips.gui
-# mod: in_game/gui/shared/diplomacy_tooltips.gui
+# mod: in_game/gui/shared/glorpUI_diplomacy_tooltips.gui
 
 template CountryTooltip_DiplomacyStatBars {
 	visible = "[And3(Not(IsLobbyOpen), IsPlayerValid, Not(Country.IsPlayer))]"

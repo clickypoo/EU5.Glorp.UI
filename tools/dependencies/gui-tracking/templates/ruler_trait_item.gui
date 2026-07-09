@@ -1,0 +1,88 @@
+# vanilla: in_game/gui/government_lateralview.gui
+# mod: in_game/gui/government_lateralview.gui
+
+template ruler_trait_item {
+	item = {
+		vbox = {
+			widget = {
+				visible = "[Not(RulerTraitEntry.HasTrait)]"
+				# block "ruler_progress_trait_item_size" {
+					size = { 26 26 }
+				# }
+				piechart = {
+					tooltipwidget = {
+						SimpleContextualTooltipType = {
+							blockoverride "title_icon" {
+								icon = {
+									using = tooltip_title_icon_size									
+									texture = "gfx/interface/icons/character_roles/ruler.dds"
+								}								
+							}
+							lowpriotextcontext =  "[RulerTraitEntry.GetProgressInfo]"
+						}
+					}
+					size = { 100% 100% }
+					parentanchor = center
+
+					using = piechart_angles
+
+					icon = {
+						texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+						size = { 97% 97% }
+						parentanchor = center
+						color = { 0 0 0 1 }
+					}
+
+					pieslice = {
+						texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+						value = "[RulerTraitEntry.GetProgressToNextTrait]"
+						using = color_value_progress_blue
+					}
+
+					pieslice = {
+						texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+						value = "[Subtract_float('(float)100.0', RulerTraitEntry.GetProgressToNextTrait)]"
+						using = color_value_progress_gray
+					}
+
+					using = bg_circle_piechart
+				}
+
+				icon = {
+					size = { 70% 70% }
+					parentanchor = center
+					texture = "gfx/interface/icons/ruler_default.dds"
+					texture_density = 2
+
+					background = {
+						texture = "gfx/interface/icons/traits/background/trait_bg.dds"
+						texture_density = 2
+						margin = { -3 -3 }
+						using = color_mid_blue
+
+						modify_texture = {
+							using = overlay_stone_texture
+							blend_mode = overlay
+							alpha = 0.8
+						}
+					}
+				}
+			}
+
+			icon = {
+				visible = "[RulerTraitEntry.HasTrait]"
+				# block "ruler_trait_item_size" {
+					size = { 40 40 }
+				# }
+
+				datacontext = "[RulerTraitEntry.GetTrait]"
+				using = trait_item
+
+				modify_texture = {
+					using = color_white_texture # Colors: light_blue - mid_blue - dark_blue - bone - white - black
+					color = "[Trait.GetFlavor.GetColor]"
+				}
+			}
+		}
+	}
+}
