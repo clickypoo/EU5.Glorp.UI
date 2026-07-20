@@ -1,0 +1,42 @@
+﻿glorpui_svh_centralization_r_judicate_reform = {
+	type = country
+	text = {
+		trigger = {
+			glorpui_svh_reform_takeable = { KEY = judicate_reform }
+		}
+		localization_key = GLORP_UI_SVH_CENTRALIZATION_R_JUDICATE_REFORM
+	}
+	text = {
+		localization_key = empty_text
+	}
+}
+
+glorpui_svh_centralization_p_central_councils = {
+	type = country
+	text = {
+		trigger = {
+			glorpui_svh_policy_core = { KEY = central_councils }
+		}
+		localization_key = GLORP_UI_SVH_CENTRALIZATION_P_CENTRAL_COUNCILS
+	}
+	text = {
+		localization_key = empty_text
+	}
+}
+
+glorpui_svh_centralization_p_curtail_peasants_policy = {
+	type = country
+	text = {
+		trigger = {
+			glorpui_svh_policy_core = { KEY = curtail_peasants_policy }
+			OR = {
+				has_advance = peasants_rights_laws_advance
+				current_age_or_later = { age = age_6_revolutions }
+			}
+		}
+		localization_key = GLORP_UI_SVH_CENTRALIZATION_P_CURTAIL_PEASANTS_POLICY
+	}
+	text = {
+		localization_key = empty_text
+	}
+}
