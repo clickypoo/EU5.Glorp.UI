@@ -1,0 +1,19 @@
+﻿template SocietalValueCountryLeft_tooltip {
+	using = SocietalValueLeft_tooltip
+	blockoverride "societal_value_left_tooltip_extra" {
+		# GlorpUI: C++ GetLeftHint blob replaced with per-axis hint lists filtered to takeable suggestions.
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_centralization'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_CENTRALIZATION')]"
+		}
+	}
+}

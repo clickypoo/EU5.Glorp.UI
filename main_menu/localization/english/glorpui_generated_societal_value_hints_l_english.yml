@@ -1,0 +1,5 @@
+﻿l_english:
+ GLORP_UI_SVH_BODY_CENTRALIZATION: "[Player.Custom('glorpui_svh_centralization_r_judicate_reform')][Player.Custom('glorpui_svh_centralization_p_central_councils')][Player.Custom('glorpui_svh_centralization_p_curtail_peasants_policy')]"
+ GLORP_UI_SVH_CENTRALIZATION_R_JUDICATE_REFORM: "@hint! Add the $judicate_reform$ [government_reform|e]: #color_green +0.10#!\n"
+ GLORP_UI_SVH_CENTRALIZATION_P_CENTRAL_COUNCILS: "@hint! Enact the $central_councils$ [policy]: +0.10\n"
+ GLORP_UI_SVH_CENTRALIZATION_P_CURTAIL_PEASANTS_POLICY: "@hint! Enact the $curtail_peasants_policy$ [policy]: #color_green +0.05#!\n"

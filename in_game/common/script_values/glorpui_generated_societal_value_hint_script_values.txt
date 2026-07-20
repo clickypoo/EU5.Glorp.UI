@@ -1,0 +1,23 @@
+﻿glorpui_svh_visible_centralization = {
+	value = 0
+	if = {
+		limit = {
+			scope:glorpui_sv = societal_value_type:centralization_vs_decentralization
+			scope:glorpui_country = {
+				has_societal_value = societal_value_type:centralization_vs_decentralization
+				OR = {
+					glorpui_svh_reform_takeable = { KEY = judicate_reform }
+					glorpui_svh_policy_core = { KEY = central_councils }
+					AND = {
+						glorpui_svh_policy_core = { KEY = curtail_peasants_policy }
+						OR = {
+							has_advance = peasants_rights_laws_advance
+							current_age_or_later = { age = age_6_revolutions }
+						}
+					}
+				}
+			}
+		}
+		value = 1
+	}
+}

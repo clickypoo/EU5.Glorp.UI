@@ -4098,7 +4098,7 @@ lateralview = {
 
 												widget = {
 													layoutpolicy_horizontal = expanding
-													size = { -1 36 }
+													size = { -1 31 }
 
 													hbox = {
 														### Advisors Data
@@ -4121,7 +4121,7 @@ lateralview = {
 															}
 															left_click_and_hold_action = {action_name = "promote_to_head_of_cabinet"}
 
-															size = {31 36}
+															size = {31 31}
 															icon = {
 																parentanchor = center
 																# using = bg_circle_piechart
@@ -4162,7 +4162,7 @@ lateralview = {
 
 														#cabinet lock/unlock button
 														header_button_left = {
-															size = {31 36}
+															size = {31 31}
 															blockoverride "button_icon_stretch_sprite" {}
 															blockoverride "header_button_frame_inner" {visible = no}
 															blockoverride "header_button_icon_size" { size = { 30 30 } }
