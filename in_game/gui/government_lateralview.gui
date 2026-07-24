@@ -3748,7 +3748,6 @@ lateralview = {
 						# LAW CATEGORIES
 						filtered_sorted_list = {
 							datacontext = "[GovernmentView.GetLawCategoriesSortSearch]"
-							visible = "[]"
 
 							blockoverride "filtered_sorted_list_sorts_visible" {
 								visible = no
