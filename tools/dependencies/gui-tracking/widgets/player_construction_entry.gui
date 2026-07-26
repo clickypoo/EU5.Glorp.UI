@@ -13,7 +13,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 				icon = {
-					size = { 22 22 } # GlorpUI: 20->22
+					size = { 30 30 } # GlorpUI: 20->22
 					texture = "[GetConstructionIcon(Construction.Self)]"
 					texture_density = 2
 				}

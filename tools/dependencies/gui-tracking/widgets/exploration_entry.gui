@@ -14,7 +14,7 @@ OutlinerEntryBase = {
 
 				portrait_standard_head_button = {
 					datacontext = "[Exploration.GetCharacter]"
-					size = { 28 28 }
+					size = { 30 30 }
 
 					action_tooltip = {
 						click_type = left
@@ -47,13 +47,13 @@ OutlinerEntryBase = {
 				}
 
 				icon = {
-					size = { 28 28 } # GlorpUI: 20->28
+					size = { 30 30 } # GlorpUI: 20->28
 					visible = "[Exploration.GetArea.IsNaval]"
 					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_sea.dds"
 				}
 
 				icon = {
-					size = { 28 28 } # GlorpUI: 20->28
+					size = { 30 30 } # GlorpUI: 20->28
 					visible = "[Not(Exploration.GetArea.IsNaval)]"
 					texture = "gfx/interface/icons/flat_icons/geopolitics/exploration_land.dds"
 				}

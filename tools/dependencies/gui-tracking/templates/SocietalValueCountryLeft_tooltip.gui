@@ -1,0 +1,246 @@
+﻿# vanilla: in_game/gui/shared/government_tooltips.gui
+# mod: in_game/gui/glorpUI_generated_societal_value_hints.gui
+
+template SocietalValueCountryLeft_tooltip {
+	using = SocietalValueLeft_tooltip
+	blockoverride "societal_value_left_tooltip_extra" {
+		# GlorpUI: C++ GetLeftHint blob replaced with per-axis hint lists filtered to takeable suggestions.
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_centralization'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_CENTRALIZATION')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_traditionalist'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_TRADITIONALIST')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_spiritualist'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_SPIRITUALIST')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_aristocracy'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_ARISTOCRACY')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_serfdom'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_SERFDOM')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_mercantilism'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_MERCANTILISM')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_belligerent'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_BELLIGERENT')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_quality'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_QUALITY')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_offensive'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_OFFENSIVE')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_land'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_LAND')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_capital_economy'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_CAPITAL_ECONOMY')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_individualism'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_INDIVIDUALISM')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_outward'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_OUTWARD')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_sinicized'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_SINICIZED')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_absolutism'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_ABSOLUTISM')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_mysticism'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_MYSTICISM')]"
+		}
+
+		TooltipScrolledStringPairList = {
+			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_latinization'), '(CFixedPoint)0')]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_LEFT"
+				default_format = "#help"
+			}
+
+			textcontext = "[Localize('GLORP_UI_SVH_BODY_LATINIZATION')]"
+		}
+	}
+}

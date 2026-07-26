@@ -28,6 +28,13 @@
       "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__glorpUI_hud_bot/in_game__gui__hud_bot/mapselector_width.gui",
       "vanilla_file": "in_game/gui/hud_bot.gui"
     },
+    "constant:in_game/gui/glorpUI_hud_bot.gui:in_game/gui/hud_bot.gui:topbar_inner_vertical_margin": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/glorpUI_hud_bot.gui",
+      "name": "topbar_inner_vertical_margin",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__glorpUI_hud_bot/in_game__gui__hud_bot/topbar_inner_vertical_margin.gui",
+      "vanilla_file": "in_game/gui/hud_bot.gui"
+    },
     "constant:in_game/gui/ingame_topbar.gui:in_game/gui/ingame_topbar.gui:alerts_height": {
       "kind": "constant",
       "mod_file": "in_game/gui/ingame_topbar.gui",
@@ -40,6 +47,20 @@
       "mod_file": "in_game/gui/ingame_topbar.gui",
       "name": "left_panel_width",
       "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__ingame_topbar/in_game__gui__ingame_topbar/left_panel_width.gui",
+      "vanilla_file": "in_game/gui/ingame_topbar.gui"
+    },
+    "constant:in_game/gui/ingame_topbar.gui:in_game/gui/ingame_topbar.gui:outliner_collapsed_width": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/ingame_topbar.gui",
+      "name": "outliner_collapsed_width",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__ingame_topbar/in_game__gui__ingame_topbar/outliner_collapsed_width.gui",
+      "vanilla_file": "in_game/gui/ingame_topbar.gui"
+    },
+    "constant:in_game/gui/ingame_topbar.gui:in_game/gui/ingame_topbar.gui:panel_decor_square_size": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/ingame_topbar.gui",
+      "name": "panel_decor_square_size",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__ingame_topbar/in_game__gui__ingame_topbar/panel_decor_square_size.gui",
       "vanilla_file": "in_game/gui/ingame_topbar.gui"
     },
     "constant:in_game/gui/ingame_topbar.gui:in_game/gui/ingame_topbar.gui:panel_x": {
@@ -84,6 +105,20 @@
       "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__map_markers/in_game__gui__map_markers/unit_marker_item_height.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
     },
+    "constant:in_game/gui/map_markers.gui:in_game/gui/map_markers.gui:unit_marker_item_short_factor": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/map_markers.gui",
+      "name": "unit_marker_item_short_factor",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__map_markers/in_game__gui__map_markers/unit_marker_item_short_factor.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "constant:in_game/gui/map_markers.gui:in_game/gui/map_markers.gui:unit_marker_item_short_factor_inv": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/map_markers.gui",
+      "name": "unit_marker_item_short_factor_inv",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__map_markers/in_game__gui__map_markers/unit_marker_item_short_factor_inv.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
     "constant:in_game/gui/map_markers.gui:in_game/gui/map_markers.gui:unit_marker_item_width": {
       "kind": "constant",
       "mod_file": "in_game/gui/map_markers.gui",
@@ -96,6 +131,13 @@
       "mod_file": "in_game/gui/map_markers.gui",
       "name": "unit_marker_morale_progressbar_size",
       "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__map_markers/in_game__gui__map_markers/unit_marker_morale_progressbar_size.gui",
+      "vanilla_file": "in_game/gui/map_markers.gui"
+    },
+    "constant:in_game/gui/map_markers.gui:in_game/gui/map_markers.gui:unit_marker_siege_banner_short_offset": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/map_markers.gui",
+      "name": "unit_marker_siege_banner_short_offset",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__map_markers/in_game__gui__map_markers/unit_marker_siege_banner_short_offset.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
     },
     "template:CountryMapModeDiplomacyTooltip": {
@@ -132,6 +174,20 @@
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/ProvinceDefinition_tooltip.gui",
       "vanilla_file": "in_game/gui/shared/geography_definitions_tooltips.gui"
+    },
+    "template:SocietalValueCountryLeft_tooltip": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/glorpUI_generated_societal_value_hints.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/SocietalValueCountryLeft_tooltip.gui",
+      "vanilla_file": "in_game/gui/shared/government_tooltips.gui"
+    },
+    "template:SocietalValueCountryRight_tooltip": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/glorpUI_generated_societal_value_hints.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/SocietalValueCountryRight_tooltip.gui",
+      "vanilla_file": "in_game/gui/shared/government_tooltips.gui"
     },
     "template:alert_banner_setup": {
       "base_widget": null,
