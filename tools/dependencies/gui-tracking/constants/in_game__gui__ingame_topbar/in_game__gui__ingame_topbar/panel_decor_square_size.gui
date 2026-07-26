@@ -1,0 +1,4 @@
+# vanilla: in_game/gui/ingame_topbar.gui
+# mod: in_game/gui/ingame_topbar.gui
+
+@panel_decor_square_size = 55
