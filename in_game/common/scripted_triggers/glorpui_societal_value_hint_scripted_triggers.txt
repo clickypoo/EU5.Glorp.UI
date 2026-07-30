@@ -7,29 +7,17 @@ glorpui_svh_reform_core = {
 	}
 }
 
-glorpui_svh_reform_takeable = {
-	glorpui_svh_reform_core = { KEY = $KEY$ }
-	government_reform:$KEY$ = {
-		NOT = { is_locked_for = PREV }
-	}
-}
-
+# is_fully_implemented_in on a policy is true whenever its law is in force, so the current-policy
+# exclusion uses has_policy instead.
 glorpui_svh_policy_core = {
 	policy:$KEY$ = {
 		is_implementable_in = PREV
-		NOT = { is_fully_implemented_in = PREV }
-		law = {
-			is_implementable_in = PREV.PREV
-		}
 	}
-}
-
-glorpui_svh_policy_takeable = {
-	glorpui_svh_policy_core = { KEY = $KEY$ }
-	policy:$KEY$ = {
-		NOT = { is_locked_for = PREV }
-		law = {
-			NOT = { is_locked_for = PREV.PREV }
+	NOT = { has_policy = $KEY$ }
+	law:$LAW$ = {
+		OR = {
+			is_fully_implemented_in = PREV
+			is_implementable_in = PREV
 		}
 	}
 }

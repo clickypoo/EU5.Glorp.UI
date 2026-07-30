@@ -36,7 +36,7 @@ template category_small_template {
 			}
 
 			icon = {
-				size = { 28 28 } # GlorpUI: 20->28
+				size = { 30 30 } # GlorpUI: 20->28
 				glow = {
 					name = "drop_shadow"
 					glow_radius = 3

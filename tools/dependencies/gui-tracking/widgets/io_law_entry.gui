@@ -14,7 +14,7 @@ OutlinerEntryBase = {
 				spacing = 5
 
 				icon = {
-					size = { 20 20 }
+					size = { 26 26 }
 					texture = "[IOLawOutlinerEntry.GetIcon]"
 				}
 				OutlinerTextBase = {
