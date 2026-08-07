@@ -234,6 +234,22 @@ glorpui_register_cmf_mod = {
 		index = 2
 		alias = roiUseMonths
 	}
+
+	cmm_register_bool_setting = {
+		mod_id = glorpui
+		setting_id = disableRoiIndirect
+		tab_id = build_panel
+		group_id = general
+		default_value = 1
+	}
+	cmm_sync_bool_alias_inverted = {
+		setting = glorpui__disableRoiIndirect
+		alias = disableRoiIndirect
+	}
+	cmm_add_scripted_gui = {
+		mod_id = glorpui
+		setting_id = disableRoiIndirect
+	}
 }
 
 # Callback handler for cmf_on_callback.
@@ -358,6 +374,12 @@ glorpui_handle_cmf_callback = {
 				setting = glorpui__roi_unit
 				index = 2
 				alias = roiUseMonths
+			}
+		}
+		flag:glorpui__disableRoiIndirect = {
+			cmm_sync_bool_alias_inverted = {
+				setting = glorpui__disableRoiIndirect
+				alias = disableRoiIndirect
 			}
 		}
 	}

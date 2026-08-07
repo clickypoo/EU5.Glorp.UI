@@ -326,3 +326,15 @@ SetRoiUseMonths = {
         }
     }
 }
+
+SetDisableRoiIndirect = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = disableRoiIndirect } }
+            set_variable = { name = disableRoiIndirect value = 1 }
+        }
+        else = {
+            remove_variable = disableRoiIndirect
+        }
+    }
+}

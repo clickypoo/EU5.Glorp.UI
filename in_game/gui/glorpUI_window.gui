@@ -341,6 +341,18 @@
                         		tooltip_enabled = no
                         	}
                         }
+                        hbox = {
+                            spacing = 10
+                            visible = "[GetScriptedGui('glorpui_is_cm_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                            text_single = {
+                                text = "GLORP_UI_ROI_INDIRECT_LABEL"
+                            }
+                            checkbox_square_alt = {
+                                onclick = "[GetScriptedGui('SetDisableRoiIndirect').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+                                down =  "[Not(Player.MakeScope.GetVariable('disableRoiIndirect').IsSet)]"
+                                tooltip_enabled = no
+                            }
+                        }
                     }
 
                     # Other

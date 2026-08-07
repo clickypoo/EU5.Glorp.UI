@@ -9,3 +9,17 @@ glorpui__useFramedStaticFlag_on_changed = {
 	}
 	effect = { }
 }
+
+# Build Panel (build_panel) Tab
+## General (general) Group
+glorpui__disableRoiIndirect_on_changed = {
+	scope = country
+
+	is_shown = {
+		is_target_in_global_variable_list = {
+			name = cmf_active_mod_ids
+			target = flag:cm
+		}
+	}
+	effect = { }
+}

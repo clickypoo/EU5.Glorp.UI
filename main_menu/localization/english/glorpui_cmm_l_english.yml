@@ -67,6 +67,8 @@ l_english:
  glorpui__roi_unit_desc: "Show ROI in years or months."
  glorpui__roi_unit_option_1_name: "Years"
  glorpui__roi_unit_option_2_name: "Months"
+ glorpui__disableRoiIndirect_name: "Indirect Income in ROI"
+ glorpui__disableRoiIndirect_desc: "Building ROI counts the income a level is expected to add through market access and raw material output, on top of the building's own income. Raw goods expansion ROI is unchanged."
 
  # Optional: self-referencing flag keys to suppress IDE warnings (safe to remove if you want)
  glorpui: "glorpui"
@@ -80,6 +82,7 @@ l_english:
  glorpui__build_panel__general: "glorpui__build_panel__general"
  glorpui__roi_metric: "glorpui__roi_metric"
  glorpui__roi_unit: "glorpui__roi_unit"
+ glorpui__disableRoiIndirect: "glorpui__disableRoiIndirect"
  glorpui__useVanillaPortrait: "glorpui__useVanillaPortrait"
  glorpui__useStaticFlag: "glorpui__useStaticFlag"
  glorpui__useFramedStaticFlag: "glorpui__useFramedStaticFlag"
