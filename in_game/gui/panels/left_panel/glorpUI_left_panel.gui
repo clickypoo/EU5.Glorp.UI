@@ -937,17 +937,17 @@ Types GlorpUILeftPanelTypes
 			country_flag_big = {
 				# GlorpUI: Static Flag
 				visible = "[And4(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet, Not(Player.MakeScope.GetVariable('useFramedStaticFlag').IsSet))]"
-				size = { 80 62 }
+				size = { 80 53 }
 				parentanchor = center
-				position = { 79 -4 }
+				position = { 79 -8 }
 				datacontext = "[InGameTopbar.GetPlayer]"
 			}
 			country_flag = {
 				# GlorpUI: Big Static Flag
 				visible = "[And4(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet, Player.MakeScope.GetVariable('useFramedStaticFlag').IsSet)]"
-				size = { 90 70 }
+				size = { 90 60 }
 				parentanchor = center
-				position = { 79 -4 }
+				position = { 79 -8 }
 				datacontext = "[InGameTopbar.GetPlayer]"
 				blockoverride "flag" {
 					datacontext = "[GetCountryCoatOfArms(Country.Self)]"
@@ -1155,17 +1155,17 @@ Types GlorpUILeftPanelTypes
 			country_flag_big = {
 				# GlorpUI: Static Flag
 				visible = "[And4(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet, Not(Player.MakeScope.GetVariable('useFramedStaticFlag').IsSet))]"
-				size = { 125 97 }
+				size = { 146 97 }
 				parentanchor = center
-				position = { 55 -1 }
+				position = { 64 -1 }
 				datacontext = "[InGameTopbar.GetPlayer]"
 			}
 			country_flag = {
 				# GlorpUI: Big Static Flag
 				visible = "[And4(IsPlayerValid, Not(TutorialHasVar('intro_hide_ui_2')), Player.MakeScope.GetVariable('useStaticFlag').IsSet, Player.MakeScope.GetVariable('useFramedStaticFlag').IsSet)]"
-				size = { 147 114 }
+				size = { 171 114 }
 				parentanchor = center
-				position = { 55 -1 }
+				position = { 64 -1 }
 				datacontext = "[InGameTopbar.GetPlayer]"
 				blockoverride "flag" {
 					datacontext = "[GetCountryCoatOfArms(Country.Self)]"
