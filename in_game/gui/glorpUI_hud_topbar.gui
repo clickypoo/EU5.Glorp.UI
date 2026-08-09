@@ -1,3 +1,5 @@
+@stat_icon_size = 28
+
 Types GlorpUI_HUD_TopbarTypes
 {
 	type topbar = widget {
@@ -128,7 +130,7 @@ Types GlorpUI_HUD_TopbarTypes
 
 							vbox = {
 								margin_left = 3
-								margin_right = 6
+								margin_right = 0
 
 								hbox = {
 									using = layoutpolicy_expanding
@@ -250,7 +252,7 @@ Types GlorpUI_HUD_TopbarTypes
                 # GlorpUI: Static Flag uses more Estates Width
                 hbox = {
                     visible = "[And3(Country.Exists, Player.MakeScope.GetVariable('useStaticFlag').IsSet, Not(Player.MakeScope.GetVariable('useVanillaPortrait').IsSet))]"
-                    margin_left = 117
+                    margin_left = 135
                     size = { 433 80 }
                     datamodel = "[DataModelFirst(InGameTopbar.GetEstates, '(int32)7')]"
                     item = {
@@ -324,7 +326,7 @@ Types GlorpUI_HUD_TopbarTypes
 
                             vbox = {
                                 margin_left = 3
-                                margin_right = 6
+                                margin_right = 0
 
                                 hbox = {
                                     using = layoutpolicy_expanding
@@ -593,14 +595,14 @@ Types GlorpUI_HUD_TopbarTypes
 							}
 
 							icon = {
-								size = { 24 24 }
+								size = { @stat_icon_size @stat_icon_size }
 								texture = "gfx/interface/icons/resources/gold.dds"
 								texture_density = 2
 							}
 
 							vbox = {
 								margin_left = 3
-								margin_right = 6
+								margin_right = 0
 
 								hbox = {
 									using = layoutpolicy_expanding
@@ -727,14 +729,14 @@ Types GlorpUI_HUD_TopbarTypes
 							}
 
 							icon = {
-								size = { 24 24 }
+								size = { @stat_icon_size @stat_icon_size }
 								texture = "gfx/interface/icons/resources/stability.dds"
 								texture_density = 2
 							}
 
 							vbox = {
 								margin_left = 3
-								margin_right = 6
+								margin_right = 0
 
 								hbox = {
 									using = layoutpolicy_expanding
@@ -821,14 +823,14 @@ Types GlorpUI_HUD_TopbarTypes
 							}
 
 							icon = {
-								size = { 24 24 }
+								size = { @stat_icon_size @stat_icon_size }
 								texture = "gfx/interface/icons/location_icons/population.dds"
 								texture_density = 2
 							}
 
 							vbox = {
 								margin_left = 3
-								margin_right = 6
+								margin_right = 0
 
 								hbox = {
 									using = layoutpolicy_expanding
@@ -933,7 +935,7 @@ Types GlorpUI_HUD_TopbarTypes
 
 									# ESTATE ICON
 									icon = {
-										size = { 24 24 }
+										size = { @stat_icon_size @stat_icon_size }
 										texture = "[GetLegitimacyIcon(Country.GetGovernment.GetGovernmentType)]"
 									}
 
@@ -1064,10 +1066,10 @@ Types GlorpUI_HUD_TopbarTypes
 
 									# ESTATE ICON
 									widget = {
-										size = { 24 24 }
+										size = { @stat_icon_size @stat_icon_size }
 										icon = {
 											parentanchor = center
-											size = { 75% 75% }
+											size = { 90% 90% }
 											texture = "gfx/interface/icons/resources/prestige.dds"
 										}
 									}
@@ -1214,7 +1216,7 @@ Types GlorpUI_HUD_TopbarTypes
 
 									# ESTATE ICON
 									icon = {
-										size = { 24 24 }
+										size = { @stat_icon_size @stat_icon_size }
 										texture = "gfx/interface/icons/resources/diplo_actions.dds"
 									}
 
@@ -1336,14 +1338,14 @@ Types GlorpUI_HUD_TopbarTypes
 							}
 
 							icon = {
-								size = { 24 24 }
+								size = { @stat_icon_size @stat_icon_size }
 								texture = "gfx/interface/icons/resources/war_exhaustion.dds"
 								texture_density = 2
 							}
 
 							vbox = {
 								margin_left = 3
-								margin_right = 6
+								margin_right = 0
 
 								hbox = {
 									using = layoutpolicy_expanding
@@ -1473,7 +1475,7 @@ Types GlorpUI_HUD_TopbarTypes
 
 									# ESTATE ICON
 									widget = {
-										size = { 24 24 }
+										size = { @stat_icon_size @stat_icon_size }
 										icon = {
 											parentanchor = center
 											size = { 100% 100% }
@@ -1627,7 +1629,7 @@ Types GlorpUI_HUD_TopbarTypes
 
 									# ESTATE ICON
 									icon = {
-										size = { 24 24 }
+										size = { @stat_icon_size @stat_icon_size }
 										texture = "gfx/interface/icons/resources/sailors.dds"
 									}
 
