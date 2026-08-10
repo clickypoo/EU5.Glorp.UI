@@ -1,5 +1,6 @@
 types CountryHeaders {
 	type country_header = widget {
+		allow_outside = yes
 		scissor = yes
 		layoutpolicy_horizontal = expanding
 		block "country_header_size" {
@@ -42,45 +43,49 @@ types CountryHeaders {
 				parentanchor = bottom
 			}
 
-			block "character_widget" {
-
-				widget = {
-					position = { 0 -20 }
-					allow_outside = yes
-					block "portrait_io_widget" {
-						size = { 250 200 }
-					}
-
-					block "character_portrait_anchor" {
-						parentanchor = bottom
-					}
-
-					portrait_standard_full_body_center_button = {
-						block "character_right_visible" {
-							visible = yes
+			hbox = {
+				allow_outside = yes
+				block "stats_left" { }
+				block "character_widget" {
+					widget = {
+						position = { 0 -20 }
+						allow_outside = yes
+						block "portrait_io_widget" {
+							size = { 250 200 }
 						}
-						# block "character_portrait_inner_anchor" {
+
+						block "character_portrait_anchor" {
 							parentanchor = bottom
-						# }
-
-						size = { 250 200 }
-						block "country_header_character_context" {
-							datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
 						}
+
+						portrait_standard_full_body_center_button = {
+							block "character_right_visible" {
+								visible = yes
+							}
+							# block "character_portrait_inner_anchor" {
+							parentanchor = bottom
+							# }
+
+							size = { 250 200 }
+							block "country_header_character_context" {
+								datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
+							}
+						}
+
+						# portrait_standard_full_body_left_button = {
+						# 	block "character_left_visible" {
+						# 		visible = no
+						# 	}
+						# 	block "character_portrait_inner_anchor" {
+						# 		parentanchor = bottom
+						# 	}
+
+						# 	size = { 250 200 }
+						# 	datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
+						# }
 					}
-
-					# portrait_standard_full_body_left_button = {
-					# 	block "character_left_visible" {
-					# 		visible = no
-					# 	}
-					# 	block "character_portrait_inner_anchor" {
-					# 		parentanchor = bottom
-					# 	}
-
-					# 	size = { 250 200 }
-					# 	datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
-					# }
 				}
+				expand = {}
 			}
 		}
 
