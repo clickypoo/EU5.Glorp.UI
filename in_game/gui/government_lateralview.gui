@@ -2670,7 +2670,6 @@ lateralview = {
 								expand = {}
 								# Heir
 								vbox = {
-									datacontext = "[ForeignCountryView.GetHeirSelection]"
 									visible = "[And(Country.GetGovernment.CareAboutProducingHeirs, Country.GetGovernment.HasConsort)]"
 									layoutpolicy_vertical = expanding
 									expand = {}
@@ -3107,7 +3106,7 @@ lateralview = {
 								}
 								#HEGEMONIES
 								HegemoyBanner = {
-									datacontext = "[ForeignCountryView.GetCountry]"
+									datacontext = "[Player]"
 								}
 							}
 							expand = {}
