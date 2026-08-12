@@ -417,3 +417,19 @@ types glorp {
         }
     }
 }
+
+template bg_glorp_badge_banner {
+	background = {
+		texture = "gfx/interface/component_tiles/list_item.dds"
+		spriteType = Corneredstretched
+		texture_density = 2
+		spriteBorder_left = 14
+		spriteBorder_right = 14
+
+
+		modify_texture = {
+			block "colour" { using = color_blue_texture }
+			blend_mode = overlay
+		}
+	}
+}

@@ -34,7 +34,7 @@ glorpui_register_cmf_mod = {
 		group_id = general
 		default_value = 0
 	}
-	cmm_sync_bool_alias = {
+	cmm_sync_bool_alias_inverted = {
 		setting = glorpui__useFramedStaticFlag
 		alias = useFramedStaticFlag
 	}
@@ -213,11 +213,13 @@ glorpui_register_cmf_mod = {
 		default_index = 1
 		option_count = 2
 	}
-	cmm_set_dropdown_multiselector = { setting = glorpui__roi_metric }
 	cmm_sync_dropdown_option_alias = {
 		setting = glorpui__roi_metric
 		index = 2
 		alias = roiUseProfit
+	}
+	cmm_set_dropdown_multiselector = {
+		setting = glorpui__roi_metric
 	}
 
 	cmm_register_dropdown_setting = {
@@ -228,11 +230,13 @@ glorpui_register_cmf_mod = {
 		default_index = 1
 		option_count = 2
 	}
-	cmm_set_dropdown_multiselector = { setting = glorpui__roi_unit }
 	cmm_sync_dropdown_option_alias = {
 		setting = glorpui__roi_unit
 		index = 2
 		alias = roiUseMonths
+	}
+	cmm_set_dropdown_multiselector = {
+		setting = glorpui__roi_unit
 	}
 
 	cmm_register_bool_setting = {
@@ -273,7 +277,7 @@ glorpui_handle_cmf_callback = {
 			}
 		}
 		flag:glorpui__useFramedStaticFlag = {
-			cmm_sync_bool_alias = {
+			cmm_sync_bool_alias_inverted = {
 				setting = glorpui__useFramedStaticFlag
 				alias = useFramedStaticFlag
 			}
