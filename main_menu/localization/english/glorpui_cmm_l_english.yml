@@ -68,7 +68,7 @@ l_english:
  glorpui__roi_unit_option_1_name: "Years"
  glorpui__roi_unit_option_2_name: "Months"
  glorpui__disableRoiIndirect_name: "Indirect Income in ROI"
- glorpui__disableRoiIndirect_desc: "Building ROI counts the income a level is expected to add through market access and raw material output, on top of the building's own income. Raw goods expansion ROI is unchanged."
+ glorpui__disableRoiIndirect_desc: "Building ROI counts the income a level is expected to add through market access, raw material output, and the production efficiency increase from additional levels, on top of the building's own income. Raw goods expansion ROI is unchanged."
 
  # Optional: self-referencing flag keys to suppress IDE warnings (safe to remove if you want)
  glorpui: "glorpui"
