@@ -1675,6 +1675,10 @@ glorpui_svh_visible_quality = {
 					AND = {
 						country_has_estate = estate_type:nobles_estate
 						glorpui_svh_privilege_takeable = { KEY = ghazi_privilege }
+						OR = {
+							has_advance = ghazi
+							AND = { has_embraced_institution = institution:feudalism has_or_had_tag = TUR }
+						}
 					}
 					AND = {
 						glorpui_svh_reform_core = { KEY = lat_restored_rule_of_the_latins }
@@ -2602,6 +2606,10 @@ glorpui_svh_visible_decentralization = {
 					AND = {
 						country_has_estate = estate_type:nobles_estate
 						glorpui_svh_privilege_takeable = { KEY = ayans_privilege }
+						OR = {
+							has_advance = ayans
+							AND = { current_age_or_later = { age = age_6_revolutions } has_or_had_tag = TUR }
+						}
 					}
 					AND = {
 						country_has_estate = estate_type:nobles_estate
@@ -2666,6 +2674,10 @@ glorpui_svh_visible_decentralization = {
 					AND = {
 						country_has_estate = estate_type:nobles_estate
 						glorpui_svh_privilege_takeable = { KEY = ghazi_privilege }
+						OR = {
+							has_advance = ghazi
+							AND = { has_embraced_institution = institution:feudalism has_or_had_tag = TUR }
+						}
 					}
 					AND = {
 						country_has_estate = estate_type:nobles_estate
@@ -3550,6 +3562,10 @@ glorpui_svh_visible_free_subjects = {
 					AND = {
 						country_has_estate = estate_type:peasants_estate
 						glorpui_svh_privilege_takeable = { KEY = peasants_yeomanry }
+						OR = {
+							has_advance = unlock_early_longbowmen_advance
+							OR = { has_or_had_tag = WLS has_or_had_tag = ENG has_or_had_tag = GBR culture = culture:welsh culture = culture:english culture = { merged_culture_group_contains_culture = culture:welsh } culture = { merged_culture_group_contains_culture = culture:english } }
+						}
 					}
 					AND = {
 						country_has_estate = estate_type:peasants_estate
@@ -4057,6 +4073,10 @@ glorpui_svh_visible_quantity = {
 					AND = {
 						country_has_estate = estate_type:tribes_estate
 						glorpui_svh_privilege_takeable = { KEY = jaysh_armies }
+						OR = {
+							has_advance = jaysh_armies_advance
+							AND = { current_age_or_later = { age = age_5_absolutism } has_or_had_tag = MOR }
+						}
 					}
 					AND = {
 						current_age_or_later = { age = age_4_reformation }

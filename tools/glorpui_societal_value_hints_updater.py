@@ -13,8 +13,8 @@ replace the C++ GetLeftHint/GetRightHint blob with per-axis hint lists filtered 
 
 A candidate is anything with a monthly_towards_<side> country modifier. Takeability evaluates live
 through the hand-written chokepoint triggers in glorpui_societal_value_hint_scripted_triggers.txt;
-advance-unlocked reforms and laws additionally get a baked "reachable" clause (advance researched,
-or its age reached and its branch's gateway institution embraced).
+advance-unlocked reforms, laws and estate privileges additionally get a baked "reachable" clause
+(advance researched, or its age reached and its branch's gateway institution embraced).
 Run after updating to a new EU5 version.
 
 The game directory is auto-detected from the known Steam install locations. Set
@@ -454,12 +454,13 @@ def collect_policy_candidates(laws_dir, constants, errors, warnings):
 
 def collect_advances(game_root, errors):
     """advance -> {age, parents, institutions, governments, potential}, plus reform -> [advance],
-    law -> [advance], policy -> [advance] unlock maps."""
+    law -> [advance], policy -> [advance], privilege -> [advance] unlock maps."""
     adv_dir = game_root / "in_game" / "common" / "advances"
     advances = {}
     reform_unlocks = {}
     law_unlocks = {}
     policy_unlocks = {}
+    privilege_unlocks = {}
     for path in content_files(adv_dir):
         lines = read_lines(path)
         for key, start, end in iter_top_level_blocks(lines):
@@ -487,7 +488,9 @@ def collect_advances(game_root, errors):
                 law_unlocks.setdefault(law, []).append(key)
             for policy in depth1_values(lines, start, end, "unlock_policy"):
                 policy_unlocks.setdefault(policy, []).append(key)
-    return advances, reform_unlocks, law_unlocks, policy_unlocks
+            for privilege in depth1_values(lines, start, end, "unlock_estate_privilege"):
+                privilege_unlocks.setdefault(privilege, []).append(key)
+    return advances, reform_unlocks, law_unlocks, policy_unlocks, privilege_unlocks
 
 
 def chain_institutions(advance, advances, cache, visiting=None):
@@ -577,12 +580,14 @@ class Candidate:
 
     def trigger_lines(self, advances, ages, inst_cache, errors):
         """Trigger statements (implicit AND) expressing current takeability. Each unlock dimension
-        (the owning law's advances, the reform's or policy's own) independently emits a reach OR
-        or, without a reach relaxation, its engine-lock line."""
+        (the owning law's advances, the reform's, policy's or privilege's own) independently emits a
+        reach OR or, without a reach relaxation, its engine-lock line. is_locked_for has no
+        estate_privilege scope, so a privilege has no lock line to fall back on."""
         lines = list(self.structural)
         if self.kind == "pv":
-            return lines + [f"glorpui_svh_privilege_takeable = {{ KEY = {self.key} }}"]
-        lines.append(self.core_call())
+            lines.append(f"glorpui_svh_privilege_takeable = {{ KEY = {self.key} }}")
+        else:
+            lines.append(self.core_call())
         if self.kind == "p":
             law_reach = self.reach_map.get("law")
             if law_reach:
@@ -594,7 +599,7 @@ class Candidate:
             lines += self._reach_or(self_reach, advances, ages, inst_cache, errors)
         elif self.kind == "r":
             lines.append(f"government_reform:{self.key} = {{ NOT = {{ is_locked_for = PREV }} }}")
-        else:
+        elif self.kind == "p":
             lines.append(f"policy:{self.key} = {{ NOT = {{ is_locked_for = PREV }} }}")
         return lines
 
@@ -789,7 +794,9 @@ def main():
     ages = collect_ages(game_root, errors)
     axes, side_map = collect_axes(game_root, errors)
     constants = collect_constants(game_root)
-    advances, reform_unlocks, law_unlocks, policy_unlocks = collect_advances(game_root, errors)
+    advances, reform_unlocks, law_unlocks, policy_unlocks, privilege_unlocks = collect_advances(
+        game_root, errors
+    )
     loc_keys = collect_loc_keys(game_root)
 
     reforms, locked_reforms, reform_structural = collect_simple_candidates(
@@ -840,6 +847,7 @@ def main():
             reach_map["self"] = policy_unlocks.get(key)
             structural = law_structural.get(law, [])
         else:
+            reach_map["self"] = privilege_unlocks.get(key)
             structural = privilege_structural.get(key, [])
         candidates.append(Candidate(kind, key, law, token, value, reach_map, structural))
 

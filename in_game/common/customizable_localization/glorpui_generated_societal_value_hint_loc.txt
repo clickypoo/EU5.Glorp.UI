@@ -3945,6 +3945,10 @@ glorpui_svh_quality_pv_ghazi_privilege = {
 		trigger = {
 			country_has_estate = estate_type:nobles_estate
 			glorpui_svh_privilege_takeable = { KEY = ghazi_privilege }
+			OR = {
+				has_advance = ghazi
+				AND = { has_embraced_institution = institution:feudalism has_or_had_tag = TUR }
+			}
 		}
 		localization_key = GLORP_UI_SVH_QUALITY_PV_GHAZI_PRIVILEGE
 	}
@@ -6012,6 +6016,10 @@ glorpui_svh_decentralization_pv_ayans_privilege = {
 		trigger = {
 			country_has_estate = estate_type:nobles_estate
 			glorpui_svh_privilege_takeable = { KEY = ayans_privilege }
+			OR = {
+				has_advance = ayans
+				AND = { current_age_or_later = { age = age_6_revolutions } has_or_had_tag = TUR }
+			}
 		}
 		localization_key = GLORP_UI_SVH_DECENTRALIZATION_PV_AYANS_PRIVILEGE
 	}
@@ -6236,6 +6244,10 @@ glorpui_svh_decentralization_pv_ghazi_privilege = {
 		trigger = {
 			country_has_estate = estate_type:nobles_estate
 			glorpui_svh_privilege_takeable = { KEY = ghazi_privilege }
+			OR = {
+				has_advance = ghazi
+				AND = { has_embraced_institution = institution:feudalism has_or_had_tag = TUR }
+			}
 		}
 		localization_key = GLORP_UI_SVH_DECENTRALIZATION_PV_GHAZI_PRIVILEGE
 	}
@@ -8430,6 +8442,10 @@ glorpui_svh_free_subjects_pv_peasants_yeomanry = {
 		trigger = {
 			country_has_estate = estate_type:peasants_estate
 			glorpui_svh_privilege_takeable = { KEY = peasants_yeomanry }
+			OR = {
+				has_advance = unlock_early_longbowmen_advance
+				OR = { has_or_had_tag = WLS has_or_had_tag = ENG has_or_had_tag = GBR culture = culture:welsh culture = culture:english culture = { merged_culture_group_contains_culture = culture:welsh } culture = { merged_culture_group_contains_culture = culture:english } }
+			}
 		}
 		localization_key = GLORP_UI_SVH_FREE_SUBJECTS_PV_PEASANTS_YEOMANRY
 	}
@@ -9702,6 +9718,10 @@ glorpui_svh_quantity_pv_jaysh_armies = {
 		trigger = {
 			country_has_estate = estate_type:tribes_estate
 			glorpui_svh_privilege_takeable = { KEY = jaysh_armies }
+			OR = {
+				has_advance = jaysh_armies_advance
+				AND = { current_age_or_later = { age = age_5_absolutism } has_or_had_tag = MOR }
+			}
 		}
 		localization_key = GLORP_UI_SVH_QUANTITY_PV_JAYSH_ARMIES
 	}
