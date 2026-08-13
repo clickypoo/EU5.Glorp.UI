@@ -1,0 +1,66 @@
+﻿# Root: building type. Max control one level of the type adds.
+glorpui_control_building_max_control = {
+	value = 0
+	if = { limit = { this = building_type:bailiff }
+		add = 0.2 # Vanilla bailiff local_max_control: in_game/common/building_types/rural_buildings.txt:55
+	}
+	else_if = { limit = { this = building_type:early_council_hall }
+		add = 0.025 # Vanilla early_council_hall local_max_control: in_game/common/building_types/council_hall.txt:33
+	}
+	else_if = { limit = { this = building_type:council_hall }
+		add = 0.05 # Vanilla council_hall local_max_control: in_game/common/building_types/council_hall.txt:74
+	}
+	else_if = { limit = { this = building_type:modern_council_hall }
+		add = 0.10 # Vanilla modern_council_hall local_max_control: in_game/common/building_types/council_hall.txt:113
+	}
+	else_if = { limit = { this = building_type:eng_royal_forest }
+		add = 0.05 # Vanilla eng_royal_forest local_max_control: in_game/common/building_types/unique_buildings.txt:889
+	}
+	else_if = { limit = { this = building_type:ostrog }
+		add = 0.10 # Vanilla ostrog local_max_control: in_game/common/building_types/unique_buildings.txt:1434
+	}
+	else_if = { limit = { this = building_type:tambo }
+		add = 0.05 # Vanilla tambo local_max_control: in_game/common/building_types/unique_buildings.txt:1970
+	}
+	else_if = { limit = { this = building_type:eghabho_nore_mansion }
+		add = 0.05 # Vanilla eghabho_nore_mansion local_max_control: in_game/common/building_types/unique_buildings.txt:4642
+	}
+	else_if = { limit = { this = building_type:zhixian }
+		add = 0.10 # Vanilla zhixian local_max_control: in_game/common/building_types/unique_buildings.txt:4906
+	}
+	else_if = { limit = { this = building_type:tur_kodjabashi_office }
+		add = 0.1 # Vanilla tur_kodjabashi_office local_max_control: in_game/common/building_types/unique_buildings.txt:5038
+	}
+}
+
+# Root: location. Room left under the 100% control ceiling.
+glorpui_control_headroom = {
+	value = 1
+	subtract = max_control
+	min = 0
+}
+
+# Root: location. Expects scopes: glorpui_control_building_type.
+# Control one level of the building type adds here.
+glorpui_control_building_gain = {
+	value = 0
+	add = {
+		scope:glorpui_control_building_type = {
+			value = glorpui_control_building_max_control
+		}
+	}
+	max = glorpui_control_headroom
+}
+
+# Root: location. Expects scopes: glorpui_control_building_type, glorpui_loc_tax_income.
+# Monthly tax income the added control brings in, at the rate the location is taxed at today.
+glorpui_control_building_income = {
+	value = 0
+	if = { limit = { local_control > 0 }
+		add = {
+			value = scope:glorpui_loc_tax_income
+			multiply = glorpui_control_building_gain
+			divide = local_control
+		}
+	}
+}

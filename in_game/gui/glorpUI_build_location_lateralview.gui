@@ -610,13 +610,15 @@
 						# GlorpUI: location wealth when building a bailiff
 						visible = "[GetScriptedGui('glorpui_building_type_show_wealth').IsShown(GuiScope.SetRoot(BuildInLocationLateralView.GetBuildingType.MakeScope).End)]"
 						datacontext = "[LocationToBuildItem.GetLocation]"
+						datacontext = "[LocationToBuildItem.GetBuildingType]"
 						size = { 68 46 }
 						alwaystransparent = no
 
 						text_single = {
 							size = { 40 18 }
 							align = nobaseline|left
-							parentanchor = center
+							parentanchor = top|hcenter
+							position = { 0 6 }
 							autoresize = no
 							fontsize = 14
 							raw_text = "@wealth![Location.GetTotalPossibleTaxBase|1]"
@@ -667,6 +669,37 @@
 										}
 									}
 								}
+							}
+						}
+
+						text_single = {
+							# GlorpUI: ROI on the tax the added control gives access to
+							size = { 58 18 }
+							align = nobaseline|center
+							parentanchor = top|hcenter
+							position = { 0 22 }
+							autoresize = no
+							fontsize = 13
+							default_format = "#color_green"
+							visible = "[And3(GreaterThan_CFixedPoint(GetBuildOrExpandBuildingCost(BuildingType.Self, Location.Self), '(CFixedPoint)0'), GreaterThan_CFixedPoint(GuiScope.SetRoot(Location.MakeScope).AddScope('glorpui_control_building_type', BuildingType.MakeScope).AddScope('glorpui_loc_tax_income', MakeScopeValue(Location.GetTotalIncome)).ScriptValue('glorpui_control_building_income'), '(CFixedPoint)0'), Player.MakeScope.GetVariable('roiUseMonths').IsSet)]"
+							text = "GLORP_UI_CTRL_ROI_MONTHS_VALUE"
+							tooltipwidget = {
+								using = glorpUI_control_roi_tooltip
+							}
+						}
+
+						text_single = {
+							size = { 58 18 }
+							align = nobaseline|center
+							parentanchor = top|hcenter
+							position = { 0 22 }
+							autoresize = no
+							fontsize = 13
+							default_format = "#color_green"
+							visible = "[And3(GreaterThan_CFixedPoint(GetBuildOrExpandBuildingCost(BuildingType.Self, Location.Self), '(CFixedPoint)0'), GreaterThan_CFixedPoint(GuiScope.SetRoot(Location.MakeScope).AddScope('glorpui_control_building_type', BuildingType.MakeScope).AddScope('glorpui_loc_tax_income', MakeScopeValue(Location.GetTotalIncome)).ScriptValue('glorpui_control_building_income'), '(CFixedPoint)0'), Not(Player.MakeScope.GetVariable('roiUseMonths').IsSet))]"
+							text = "GLORP_UI_CTRL_ROI_YEARS_VALUE"
+							tooltipwidget = {
+								using = glorpUI_control_roi_tooltip
 							}
 						}
 					}
@@ -1084,7 +1117,7 @@
 								}
 							}
 							widget = { #efficiency
-								visible = "[Or(Not(GetScriptedGui('glorpui_building_type_show_wealth').IsShown(GuiScope.SetRoot(BuildInLocationLateralView.GetBuildingType.MakeScope).End)), Not(GetScriptedGui('glorpui_building_type_show_wealth').IsShown(GuiScope.SetRoot(BuildInLocationLateralView.GetBuildingType.MakeScope).End)))]" # GlorpUI: hidden when building a bailiff
+								visible = "[Not(GetScriptedGui('glorpui_building_type_show_wealth').IsShown(GuiScope.SetRoot(BuildInLocationLateralView.GetBuildingType.MakeScope).End))]" # GlorpUI: hidden when building a bailiff
 								size = { 58 46 } # GlorpUI: {70 44} -> {58 46} to fit the builder
 								vbox = {
 									layoutpolicy_horizontal = expanding

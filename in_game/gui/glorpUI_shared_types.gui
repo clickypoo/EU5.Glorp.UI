@@ -62,12 +62,15 @@ template glorpUI_roi_tooltip_base {
 						}
 					}
 				}
+				block "roi_pre_rows" {}
 				TooltipManualTableField = {
 					blockoverride "field_content" {
 						text_single = {
 							layoutpolicy_horizontal = expanding
 							autoresize = no
-							text = "GLORP_UI_BUILDING_ROI_TT_TAX_INCOME"
+							block "roi_tax_income_label" {
+								text = "GLORP_UI_BUILDING_ROI_TT_TAX_INCOME"
+							}
 						}
 						text_single = {
 							autoresize = yes
@@ -98,37 +101,39 @@ template glorpUI_roi_tooltip_base {
 						}
 					}
 				}
-				TooltipManualTableField = {
-					blockoverride "field_content" {
-						text_single = {
-							layoutpolicy_horizontal = expanding
-							autoresize = no
-							text = "GLORP_UI_BUILDING_ROI_TT_PROFIT"
-						}
-						text_single = {
-							autoresize = yes
-							block "roi_profit_value" {}
-						}
-					}
-				}
-				TooltipManualTableField = {
-					blockoverride "field_content" {
-						text_single = {
-							layoutpolicy_horizontal = expanding
-							autoresize = no
-							text = "GLORP_UI_BUILDING_ROI_TT_PROFIT_ROI"
-							default_format = "#W"
-						}
-						block "roi_profit_value_widgets" {
+				block "roi_profit_rows" {
+					TooltipManualTableField = {
+						blockoverride "field_content" {
 							text_single = {
-								autoresize = yes
-								visible = "[Player.MakeScope.GetVariable('roiUseMonths').IsSet]"
-								block "roi_profit_months_value" {}
+								layoutpolicy_horizontal = expanding
+								autoresize = no
+								text = "GLORP_UI_BUILDING_ROI_TT_PROFIT"
 							}
 							text_single = {
 								autoresize = yes
-								visible = "[Not(Player.MakeScope.GetVariable('roiUseMonths').IsSet)]"
-								block "roi_profit_years_value" {}
+								block "roi_profit_value" {}
+							}
+						}
+					}
+					TooltipManualTableField = {
+						blockoverride "field_content" {
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								autoresize = no
+								text = "GLORP_UI_BUILDING_ROI_TT_PROFIT_ROI"
+								default_format = "#W"
+							}
+							block "roi_profit_value_widgets" {
+								text_single = {
+									autoresize = yes
+									visible = "[Player.MakeScope.GetVariable('roiUseMonths').IsSet]"
+									block "roi_profit_months_value" {}
+								}
+								text_single = {
+									autoresize = yes
+									visible = "[Not(Player.MakeScope.GetVariable('roiUseMonths').IsSet)]"
+									block "roi_profit_years_value" {}
+								}
 							}
 						}
 					}
@@ -343,4 +348,90 @@ template glorpUI_rgo_roi_tooltip {
 	blockoverride "roi_profit_years_value" {
 		text = "GLORP_UI_RGO_ROI_PROFIT_YEARS_VALUE"
 	}
+}
+
+template glorpUI_control_roi_tooltip {
+	using = glorpUI_roi_tooltip_base
+	blockoverride "title_icon" {
+		icon = {
+			using = tooltip_title_icon_size
+			texture = "[GetBuildingIcon(BuildingType.Self)]"
+		}
+	}
+	blockoverride "concept_link" {
+		text = "[control|e]"
+	}
+	blockoverride "roi_desc_text" {
+		text = "GLORP_UI_CTRL_ROI_TT_DESC"
+	}
+	blockoverride "roi_cost_value" {
+		raw_text = "[GetBuildOrExpandBuildingCostValue(BuildingType.Self, Location.Self)]"
+	}
+	blockoverride "roi_tax_income_label" {
+		text = "GLORP_UI_CTRL_ROI_TT_INCOME"
+	}
+	blockoverride "roi_tax_income_value" {
+		raw_text = "[GuiScope.SetRoot(Location.MakeScope).AddScope('glorpui_control_building_type', BuildingType.MakeScope).AddScope('glorpui_loc_tax_income', MakeScopeValue(Location.GetTotalIncome)).ScriptValue('glorpui_control_building_income')|2]@income!"
+	}
+	blockoverride "roi_pre_rows" {
+		TooltipManualTableField = {
+			blockoverride "field_content" {
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					autoresize = no
+					text = "GLORP_UI_CTRL_ROI_TT_WEALTH"
+				}
+				text_single = {
+					autoresize = yes
+					raw_text = "[Location.GetTotalPossibleTaxBase|W2] [wealth_icon]"
+				}
+			}
+		}
+		TooltipManualTableField = {
+			blockoverride "field_content" {
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					autoresize = no
+					text = "GLORP_UI_CTRL_ROI_TT_CONTROL"
+				}
+				text_single = {
+					autoresize = yes
+					raw_text = "[Location.GetControl|0%]"
+				}
+			}
+		}
+		TooltipManualTableField = {
+			blockoverride "field_content" {
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					autoresize = no
+					text = "GLORP_UI_CTRL_ROI_TT_TAX_RATE"
+				}
+				text_single = {
+					autoresize = yes
+					raw_text = "[Divide_CFixedPoint(Location.GetTotalIncome, Location.GetTotalTaxBase)|0%]"
+				}
+			}
+		}
+		TooltipManualTableField = {
+			blockoverride "field_content" {
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					autoresize = no
+					text = "GLORP_UI_CTRL_ROI_TT_GAIN"
+				}
+				text_single = {
+					autoresize = yes
+					raw_text = "[GuiScope.SetRoot(Location.MakeScope).AddScope('glorpui_control_building_type', BuildingType.MakeScope).ScriptValue('glorpui_control_building_gain')|1%]"
+				}
+			}
+		}
+	}
+	blockoverride "roi_tax_months_value" {
+		text = "GLORP_UI_CTRL_ROI_MONTHS_VALUE"
+	}
+	blockoverride "roi_tax_years_value" {
+		text = "GLORP_UI_CTRL_ROI_YEARS_VALUE"
+	}
+	blockoverride "roi_profit_rows" {}
 }
