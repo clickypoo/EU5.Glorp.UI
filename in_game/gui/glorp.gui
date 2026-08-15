@@ -158,7 +158,6 @@ types glorp {
                             button = {
                                 minimumsize = { 80 30 }
                                 maximumsize = { 80 30 }
-								onmousehierarchyenter = "[GetScriptedGui('RefreshAvgStats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								action_tooltip = {
 									click_type = left
 									on_action = "[GetScriptedGui('RefreshAvgStats').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
