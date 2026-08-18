@@ -7,6 +7,7 @@ glorpui_svh_visible_centralization = {
 			scope:glorpui_sv = societal_value_type:centralization_vs_decentralization
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:centralization_vs_decentralization
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:burghers_estate
@@ -588,6 +589,7 @@ glorpui_svh_visible_traditionalist = {
 			scope:glorpui_sv = societal_value_type:traditionalist_vs_innovative
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:traditionalist_vs_innovative
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:clergy_estate
@@ -724,6 +726,7 @@ glorpui_svh_visible_spiritualist = {
 			scope:glorpui_sv = societal_value_type:spiritualist_vs_humanist
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:spiritualist_vs_humanist
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:clergy_estate
@@ -903,6 +906,7 @@ glorpui_svh_visible_aristocracy = {
 			scope:glorpui_sv = societal_value_type:aristocracy_vs_plutocracy
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:aristocracy_vs_plutocracy
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:nobles_estate
@@ -1277,6 +1281,7 @@ glorpui_svh_visible_serfdom = {
 			scope:glorpui_sv = societal_value_type:serfdom_vs_free_subjects
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:serfdom_vs_free_subjects
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:burghers_estate
@@ -1485,6 +1490,7 @@ glorpui_svh_visible_mercantilism = {
 			scope:glorpui_sv = societal_value_type:mercantilism_vs_free_trade
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:mercantilism_vs_free_trade
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:burghers_estate
@@ -1540,6 +1546,7 @@ glorpui_svh_visible_belligerent = {
 			scope:glorpui_sv = societal_value_type:belligerent_vs_conciliatory
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:belligerent_vs_conciliatory
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:clergy_estate
@@ -1659,6 +1666,7 @@ glorpui_svh_visible_quality = {
 			scope:glorpui_sv = societal_value_type:quality_vs_quantity
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:quality_vs_quantity
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:nobles_estate
@@ -1828,6 +1836,7 @@ glorpui_svh_visible_offensive = {
 			scope:glorpui_sv = societal_value_type:offensive_vs_defensive
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:offensive_vs_defensive
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:nobles_estate
@@ -1892,6 +1901,7 @@ glorpui_svh_visible_land = {
 			scope:glorpui_sv = societal_value_type:land_vs_naval
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:land_vs_naval
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:burghers_estate
@@ -1985,6 +1995,7 @@ glorpui_svh_visible_capital_economy = {
 			scope:glorpui_sv = societal_value_type:capital_economy_vs_traditional_economy
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:capital_economy_vs_traditional_economy
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:burghers_estate
@@ -2103,6 +2114,7 @@ glorpui_svh_visible_individualism = {
 			scope:glorpui_sv = societal_value_type:individualism_vs_communalism
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:individualism_vs_communalism
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:burghers_estate
@@ -2226,6 +2238,7 @@ glorpui_svh_visible_outward = {
 			scope:glorpui_sv = societal_value_type:outward_vs_inward
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:outward_vs_inward
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						glorpui_svh_reform_core = { KEY = ottoman_new_order_army }
@@ -2330,6 +2343,7 @@ glorpui_svh_visible_sinicized = {
 			scope:glorpui_sv = societal_value_type:sinicized_vs_unsinicized
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:sinicized_vs_unsinicized
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						glorpui_svh_reform_core = { KEY = jianzhou_jurchen_reform }
@@ -2379,6 +2393,7 @@ glorpui_svh_visible_absolutism = {
 			scope:glorpui_sv = societal_value_type:absolutism_vs_liberalism
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:absolutism_vs_liberalism
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						government_type = government_type:monarchy
@@ -2544,6 +2559,7 @@ glorpui_svh_visible_mysticism = {
 			scope:glorpui_sv = societal_value_type:mysticism_vs_jurisprudence
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:mysticism_vs_jurisprudence
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:clergy_estate
@@ -2567,6 +2583,7 @@ glorpui_svh_visible_latinization = {
 			scope:glorpui_sv = societal_value_type:latinization_vs_hellenization
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:latinization_vs_hellenization
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						glorpui_svh_reform_core = { KEY = mos_maiorum }
@@ -2586,6 +2603,7 @@ glorpui_svh_visible_decentralization = {
 			scope:glorpui_sv = societal_value_type:centralization_vs_decentralization
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:centralization_vs_decentralization
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:peasants_estate
@@ -3038,6 +3056,7 @@ glorpui_svh_visible_innovative = {
 			scope:glorpui_sv = societal_value_type:traditionalist_vs_innovative
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:traditionalist_vs_innovative
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:nobles_estate
@@ -3197,6 +3216,7 @@ glorpui_svh_visible_humanist = {
 			scope:glorpui_sv = societal_value_type:spiritualist_vs_humanist
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:spiritualist_vs_humanist
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:dhimmi_estate
@@ -3332,6 +3352,7 @@ glorpui_svh_visible_plutocracy = {
 			scope:glorpui_sv = societal_value_type:aristocracy_vs_plutocracy
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:aristocracy_vs_plutocracy
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:burghers_estate
@@ -3502,6 +3523,7 @@ glorpui_svh_visible_free_subjects = {
 			scope:glorpui_sv = societal_value_type:serfdom_vs_free_subjects
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:serfdom_vs_free_subjects
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:peasants_estate
@@ -3835,6 +3857,7 @@ glorpui_svh_visible_free_trade = {
 			scope:glorpui_sv = societal_value_type:mercantilism_vs_free_trade
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:mercantilism_vs_free_trade
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:burghers_estate
@@ -3963,6 +3986,7 @@ glorpui_svh_visible_conciliatory = {
 			scope:glorpui_sv = societal_value_type:belligerent_vs_conciliatory
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:belligerent_vs_conciliatory
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:clergy_estate
@@ -4069,6 +4093,7 @@ glorpui_svh_visible_quantity = {
 			scope:glorpui_sv = societal_value_type:quality_vs_quantity
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:quality_vs_quantity
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:tribes_estate
@@ -4151,6 +4176,7 @@ glorpui_svh_visible_defensive = {
 			scope:glorpui_sv = societal_value_type:offensive_vs_defensive
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:offensive_vs_defensive
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:nobles_estate
@@ -4237,6 +4263,7 @@ glorpui_svh_visible_naval = {
 			scope:glorpui_sv = societal_value_type:land_vs_naval
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:land_vs_naval
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:nobles_estate
@@ -4413,6 +4440,7 @@ glorpui_svh_visible_traditional_economy = {
 			scope:glorpui_sv = societal_value_type:capital_economy_vs_traditional_economy
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:capital_economy_vs_traditional_economy
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:peasants_estate
@@ -4519,6 +4547,7 @@ glorpui_svh_visible_communalism = {
 			scope:glorpui_sv = societal_value_type:individualism_vs_communalism
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:individualism_vs_communalism
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:clergy_estate
@@ -4670,6 +4699,7 @@ glorpui_svh_visible_inward = {
 			scope:glorpui_sv = societal_value_type:outward_vs_inward
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:outward_vs_inward
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						glorpui_svh_reform_core = { KEY = bng_industralized_provinces }
@@ -4750,6 +4780,7 @@ glorpui_svh_visible_unsinicized = {
 			scope:glorpui_sv = societal_value_type:sinicized_vs_unsinicized
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:sinicized_vs_unsinicized
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:nobles_estate
@@ -4794,6 +4825,7 @@ glorpui_svh_visible_liberalism = {
 			scope:glorpui_sv = societal_value_type:absolutism_vs_liberalism
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:absolutism_vs_liberalism
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						glorpui_svh_reform_core = { KEY = constitutional_state }
@@ -4869,6 +4901,7 @@ glorpui_svh_visible_jurisprudence = {
 			scope:glorpui_sv = societal_value_type:mysticism_vs_jurisprudence
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:mysticism_vs_jurisprudence
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						country_has_estate = estate_type:clergy_estate
@@ -4896,6 +4929,7 @@ glorpui_svh_visible_hellenization = {
 			scope:glorpui_sv = societal_value_type:latinization_vs_hellenization
 			scope:glorpui_country = {
 				has_societal_value = societal_value_type:latinization_vs_hellenization
+				NOT = { has_variable = showUnavailableSocietalValueSuggestions }
 				OR = {
 					AND = {
 						glorpui_svh_reform_core = { KEY = theme_system }
