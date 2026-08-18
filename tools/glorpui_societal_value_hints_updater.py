@@ -81,6 +81,9 @@ LOC_OUTPUT = (
     / "glorpui_generated_societal_value_hints_l_english.yml"
 )
 
+# Country variable set by the "Show Unavailable Suggestions for Pushing Societal Values" setting.
+VANILLA_HINT_VARIABLE = "showUnavailableSocietalValueSuggestions"
+
 # Behavior switches, each a one-line flip.
 DISPATCH_MODE = "scope_equality"  # scope_equality | string_equals
 COLOR_WRAP = "green"  # green | plain
@@ -661,7 +664,26 @@ def build_gui(sides_by_axis):
             )
         return "\n\n".join(blocks)
 
-    marker = "\t\t# GlorpUI: C++ {fn} blob replaced with per-axis hint lists filtered to takeable suggestions."
+    def vanilla_block(title_key, fn):
+        return "\n".join(
+            [
+                "\t\tTooltipScrolledStringPairList = {",
+                f"\t\t\tvisible = \"[Player.MakeScope.GetVariable('{VANILLA_HINT_VARIABLE}').IsSet]\"",
+                '\t\t\tblockoverride "block_scrollarea" {',
+                "\t\t\t\tmaximumsize = { -1 160 }",
+                "\t\t\t}",
+                "",
+                '\t\t\tblockoverride "block_title" {',
+                f'\t\t\t\ttext = "{title_key}"',
+                '\t\t\t\tdefault_format = "#help"',
+                "\t\t\t}",
+                "",
+                f'\t\t\ttextcontext = "[SocietalValue.{fn}(Player.Self)]"',
+                "\t\t}",
+            ]
+        )
+
+    marker = "\t\t# GlorpUI: C++ {fn} blob kept behind a setting, per-axis lists filtered to takeable suggestions otherwise."
     parts = [
         HEADER.format(what="tooltip templates"),
         "",
@@ -669,6 +691,8 @@ def build_gui(sides_by_axis):
         "\tusing = SocietalValueLeft_tooltip",
         '\tblockoverride "societal_value_left_tooltip_extra" {',
         marker.format(fn="GetLeftHint"),
+        vanilla_block("TO_MOVE_FURTHER_TO_LEFT", "GetLeftHint"),
+        "",
         side_blocks("left", "TO_MOVE_FURTHER_TO_LEFT"),
         "\t}",
         "}",
@@ -677,6 +701,8 @@ def build_gui(sides_by_axis):
         "\tusing = SocietalValueRight_tooltip",
         '\tblockoverride "societal_value_right_tooltip_extra" {',
         marker.format(fn="GetRightHint"),
+        vanilla_block("TO_MOVE_FURTHER_TO_RIGHT", "GetRightHint"),
+        "",
         side_blocks("right", "TO_MOVE_FURTHER_TO_RIGHT"),
         "\t}",
         "}",
@@ -701,6 +727,7 @@ def build_script_values(sides_by_axis, by_token, token_axis, advances, ages, ins
             lines += [
                 "\t\t\tscope:glorpui_country = {",
                 f"\t\t\t\thas_societal_value = societal_value_type:{axis}",
+                f"\t\t\t\tNOT = {{ has_variable = {VANILLA_HINT_VARIABLE} }}",
                 "\t\t\t\tOR = {",
             ]
             for candidate in sort_side(by_token[token]):

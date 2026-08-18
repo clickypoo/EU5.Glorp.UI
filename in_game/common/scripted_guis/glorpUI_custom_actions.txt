@@ -326,3 +326,15 @@ SetRoiUseMonths = {
         }
     }
 }
+
+SetShowUnavailableSocietalValueSuggestions = {
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = showUnavailableSocietalValueSuggestions } }
+            set_variable = { name = showUnavailableSocietalValueSuggestions value = 1 }
+        }
+        else = {
+            remove_variable = showUnavailableSocietalValueSuggestions
+        }
+    }
+}

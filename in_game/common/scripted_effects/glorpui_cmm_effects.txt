@@ -79,6 +79,18 @@ glorpui_register_cmf_mod = {
 		alias = disableLeftPanelStatsBar
 	}
 
+	cmm_register_bool_setting = {
+		mod_id = glorpui
+		setting_id = showUnavailableSocietalValueSuggestions
+		tab_id = toggles
+		group_id = general
+		default_value = 0
+	}
+	cmm_sync_bool_alias = {
+		setting = glorpui__showUnavailableSocietalValueSuggestions
+		alias = showUnavailableSocietalValueSuggestions
+	}
+
 	# Top Bar (top_bar) Tab
 	## General (general) Group
 	cmm_register_bool_setting = {
@@ -282,6 +294,12 @@ glorpui_handle_cmf_callback = {
 			cmm_sync_bool_alias_inverted = {
 				setting = glorpui__disableLeftPanelStatsBar
 				alias = disableLeftPanelStatsBar
+			}
+		}
+		flag:glorpui__showUnavailableSocietalValueSuggestions = {
+			cmm_sync_bool_alias = {
+				setting = glorpui__showUnavailableSocietalValueSuggestions
+				alias = showUnavailableSocietalValueSuggestions
 			}
 		}
 		# Top Bar (top_bar) Tab

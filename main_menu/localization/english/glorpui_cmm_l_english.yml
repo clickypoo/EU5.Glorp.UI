@@ -24,6 +24,8 @@ l_english:
  glorpui__useDefaultIconsLeftPanel_desc: ""
  glorpui__disableLeftPanelStatsBar_name: "Left Panel Stats Bar"
  glorpui__disableLeftPanelStatsBar_desc: ""
+ glorpui__showUnavailableSocietalValueSuggestions_name: "Show Unavailable Suggestions for Pushing Societal Values (Vanilla)"
+ glorpui__showUnavailableSocietalValueSuggestions_desc: "Societal value tooltips list every government reform, law and estate privilege that pushes the value, including the ones you cannot take yet. Off, they list only what you can take now."
 
  # Top Bar (top_bar) Tab
  glorpui__top_bar_name: "Top Bar"
@@ -84,6 +86,7 @@ l_english:
  glorpui__useDefaultIconsBGLeftPanel: "glorpui__useDefaultIconsBGLeftPanel"
  glorpui__useDefaultIconsLeftPanel: "glorpui__useDefaultIconsLeftPanel"
  glorpui__disableLeftPanelStatsBar: "glorpui__disableLeftPanelStatsBar"
+ glorpui__showUnavailableSocietalValueSuggestions: "glorpui__showUnavailableSocietalValueSuggestions"
  glorpui__disableTopBarIncome: "glorpui__disableTopBarIncome"
  glorpui__disableTopBarStability: "glorpui__disableTopBarStability"
  glorpui__disableTopBarPopulation: "glorpui__disableTopBarPopulation"
