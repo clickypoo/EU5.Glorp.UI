@@ -44,6 +44,7 @@ WORKSHOP_TRANSLATION_TEMPLATE_PATH = os.path.join(WORKSHOP_TRANSLATIONS_DIR, "tr
 WORKSHOP_TITLE_MARKER = "===WORKSHOP_TITLE==="
 WORKSHOP_DESCRIPTION_MARKER = "===WORKSHOP_DESCRIPTION==="
 WORKSHOP_NO_TRANSLATE_BELOW = "--NO-TRANSLATE-BELOW--"
+NO_TRANSLATE_FILE = "# NO-TRANSLATE FILE"
 WORKSHOP_ITEM_ID_TOKEN = "$item-id$"
 CHANGE_NOTES_VERSION_RE = re.compile(r"^#\s*(v(.+?)(:\s*|\s*))$")
 
@@ -638,6 +639,12 @@ def should_auto_skip(masked_text):
 
 	# [^\W\d_] matches any Unicode letter.
 	return re.search(r'[^\W\d_]', stripped) is None
+
+def is_no_translate_file(lines):
+	"""
+	Returns True if the source file opts the whole file out of translation.
+	"""
+	return any(NO_TRANSLATE_FILE in line for line in lines)
 
 def parse_source_entries(lines):
 	"""
@@ -1782,14 +1789,23 @@ def main():
 						with open(source_filepath, 'r', encoding='utf-8-sig') as f:
 							source_lines = f.readlines()
 
+						source_rel_path = os.path.relpath(source_filepath, loc_base_path)
+						processed_files.add(source_rel_path)
+
+						if is_no_translate_file(source_lines):
+							if file_hashes.pop(source_rel_path, None) is not None:
+								hashes_modified = True
+							if file_languages.pop(source_rel_path, None) is not None:
+								hashes_modified = True
+							print(f"{log_prefix}{file} is marked NO-TRANSLATE FILE; leaving its translations alone.")
+							continue
+
 						# Build per-key hashes from the source file.
 						source_entries = parse_source_entries(source_lines)
 						source_hashes = {}
 						for entry in source_entries:
 							source_hashes[entry["key"]] = hash_text(entry["value"])
 
-						source_rel_path = os.path.relpath(source_filepath, loc_base_path)
-						processed_files.add(source_rel_path)
 						source_file_hash = hash_text("".join(source_lines))
 
 						# Determine which keys changed since last run.

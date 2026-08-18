@@ -3,13 +3,15 @@
 Societal value hint generator that rebuilds the takeable-only hover hint files from the EU5 game files.
 
 Scrapes government reforms, laws (policies), estate privileges, advances, societal value axes, ages,
-and script value constants from the live game install, then regenerates the four mod files that
+and script value constants from the live game install, then regenerates the mod files that
 replace the C++ GetLeftHint/GetRightHint blob with per-axis hint lists filtered at render time:
 
   - in_game/gui/glorpUI_generated_societal_value_hints.gui           (tooltip template redefinitions)
   - in_game/common/script_values/glorpui_generated_societal_value_hint_script_values.txt
   - in_game/common/customizable_localization/glorpui_generated_societal_value_hint_loc.txt
-  - main_menu/localization/english/glorpui_generated_societal_value_hints_l_english.yml
+  - main_menu/localization/<language>/glorpui_generated_societal_value_hints_l_<language>.yml
+
+Hint sentences come from each language's own vanilla HINT_SV_* strings, one output file per language.
 
 A candidate is anything with a monthly_towards_<side> country modifier. Takeability evaluates live
 through the hand-written chokepoint triggers in glorpui_societal_value_hint_scripted_triggers.txt;
@@ -73,12 +75,20 @@ CUSTOM_LOC_OUTPUT = (
     / "customizable_localization"
     / "glorpui_generated_societal_value_hint_loc.txt"
 )
-LOC_OUTPUT = (
-    PROJECT_ROOT
-    / "main_menu"
-    / "localization"
-    / "english"
-    / "glorpui_generated_societal_value_hints_l_english.yml"
+LOC_DIR = PROJECT_ROOT / "main_menu" / "localization"
+
+LANGUAGES = (
+    "braz_por",
+    "english",
+    "french",
+    "german",
+    "japanese",
+    "korean",
+    "polish",
+    "russian",
+    "simp_chinese",
+    "spanish",
+    "turkish",
 )
 
 # Country variable set by the "Show Unavailable Suggestions for Pushing Societal Values" setting.
@@ -117,15 +127,21 @@ PUSH_RE = re.compile(r"^monthly_towards_(\w+)\s*=\s*([\w.\-]+)")
 SCALAR_RE = re.compile(r"^([\w.\-]+)\s*=\s*([\w.\-]+)\s*$")
 LOC_KEY_RE = re.compile(r"^\s*([\w.\-']+):\d*\s*\"")
 INSTITUTION_RE = re.compile(r"has_embraced_institution\s*=\s*institution:(\w+)")
+HINT_LINE_RE = re.compile(r'^\s*(HINT_SV_\w+):\d*\s*"(.*)"\s*$')
+VAL_PARAM_RE = re.compile(r"\$VAL[^$]*\$")
 
 KIND_ORDER = {"pv": 0, "r": 1, "p": 2}
-# Names are wrapped in the engine's #TOOLTIP:<TYPE>,<key> structs (tooltip_structs_l_english.yml)
-# so each suggestion hovers with its own object tooltip, like the C++ hint's GetName output.
-KIND_LINE_FORMAT = {
-    "pv": "@hint! Grant #TOOLTIP:ESTATE_PRIVILEGE,{key} #L ${key}$#!#!: {val}",
-    "r": "@hint! Add the #TOOLTIP:GOVERNMENT_REFORM,{key} #L ${key}$#!#! [government_reform|e]: {val}",
-    "p": "@hint! Enact the #TOOLTIP:POLICY,{key} #L ${key}$#!#! [policy]: {val}",
+# Vanilla's own hint sentence per kind, with the object promote swapped for the tooltip-carrying
+# key-literal name accessor.
+KIND_HINT = {
+    "pv": ("HINT_SV_GRANT_PRIVILEGE", "ESTATE_PRIVILEGE.GetName", "ShowEstatePrivilegeName"),
+    "r": ("HINT_SV_ADD_REFORM", "GOVERNMENT_REFORM.GetName", "ShowGovernmentReformName"),
+    "p": ("HINT_SV_POLICY", "POLICY.GetName", "ShowPolicyName"),
 }
+NO_TRANSLATE_FILE = "# NO-TRANSLATE FILE"
+
+NAME_SLOT = "\x01"
+VALUE_SLOT = "\x02"
 
 
 def parse_braces(line):
@@ -524,6 +540,45 @@ def collect_loc_keys(game_root):
     return keys
 
 
+def collect_hint_templates(game_root, errors):
+    """Per-language hint sentence per kind, with NAME_SLOT and VALUE_SLOT standing in for the
+    suggestion's key and its push toward the axis side."""
+    templates = {}
+    for language in LANGUAGES:
+        path = game_root / "main_menu" / "localization" / language / f"interfaces_l_{language}.yml"
+        try:
+            text = path.read_text(encoding="utf-8-sig")
+        except (OSError, UnicodeDecodeError):
+            errors.append(f"could not read {path}")
+            continue
+        raw = {}
+        for line in text.split("\n"):
+            match = HINT_LINE_RE.match(line)
+            if match:
+                raw[match.group(1)] = match.group(2)
+        per_kind = {}
+        for kind, (loc_key, promote, accessor) in KIND_HINT.items():
+            where = f"{loc_key} in {path.name}"
+            value = raw.get(loc_key)
+            if value is None:
+                errors.append(f"{where}: not found")
+                continue
+            if promote not in value:
+                errors.append(f"{where}: no {promote} to swap")
+                continue
+            slotted = value.replace(promote, f"{accessor}('{NAME_SLOT}')", 1)
+            slotted, hits = VAL_PARAM_RE.subn(VALUE_SLOT, slotted, count=1)
+            if hits != 1:
+                errors.append(f"{where}: no value parameter to swap")
+                continue
+            if '"' in slotted:
+                errors.append(f"{where}: contains a quote")
+                continue
+            per_kind[kind] = slotted
+        templates[language] = per_kind
+    return templates
+
+
 def reach_clauses(advance_key, advances, ages, inst_cache, errors):
     """Per-advance reach alternatives for the OR list, or None when reach is unconditional.
     is_locked_for does not reflect advance unlocks (verified in-game), so the researched state
@@ -607,12 +662,12 @@ class Candidate:
     def line_key(self):
         return f"GLORP_UI_SVH_{self.token.upper()}_{self.kind.upper()}_{self.key.upper()}"
 
-    def line_value(self):
+    def line_value(self, template):
         if COLOR_WRAP == "green":
             val = f"#color_green +{self.value:.2f}#!"
         else:
             val = f"+{self.value:.2f}"
-        text = KIND_LINE_FORMAT[self.kind].format(key=self.key, val=val)
+        text = template.replace(NAME_SLOT, self.key).replace(VALUE_SLOT, val)
         return f"\\n{text}" if NEWLINE_MODE == "leading" else f"{text}\\n"
 
 
@@ -774,16 +829,21 @@ def build_custom_loc(sides_by_axis, by_token, advances, ages, inst_cache, errors
     return HEADER.format(what="customizable localization entries") + "\n\n" + "\n\n".join(entries) + "\n"
 
 
-def build_loc(sides_by_axis, by_token):
-    lines = [HEADER.format(what="localization"), "l_english:"]
+def build_loc(sides_by_axis, by_token, language, templates):
+    lines = [HEADER.format(what="localization"), NO_TRANSLATE_FILE, f"l_{language}:"]
     for side in ("left", "right"):
         for token in sides_by_axis[side]:
             ordered = sort_side(by_token[token])
             body = "".join(f"[Player.Custom('{c.entry_name()}')]" for c in ordered)
             lines.append(f' GLORP_UI_SVH_BODY_{token.upper()}: "{body}"')
             for candidate in ordered:
-                lines.append(f' {candidate.line_key()}: "{candidate.line_value()}"')
+                value = candidate.line_value(templates[candidate.kind])
+                lines.append(f' {candidate.line_key()}: "{value}"')
     return "\n".join(lines) + "\n"
+
+
+def loc_output(language):
+    return LOC_DIR / language / f"glorpui_generated_societal_value_hints_l_{language}.yml"
 
 
 def write_output(path, text):
@@ -818,6 +878,7 @@ def main():
     constants = collect_constants(game_root)
     advances, reform_unlocks, law_unlocks, policy_unlocks = collect_advances(game_root, errors)
     loc_keys = collect_loc_keys(game_root)
+    hint_templates = collect_hint_templates(game_root, errors)
 
     reforms, locked_reforms, reform_structural = collect_simple_candidates(
         game_root / "in_game" / "common" / "government_reforms", "r", constants, errors, warnings, ages
@@ -914,7 +975,10 @@ def main():
             build_script_values(sides_by_axis, by_token, token_axis, advances, ages, inst_cache, errors),
         ),
         (CUSTOM_LOC_OUTPUT, build_custom_loc(sides_by_axis, by_token, advances, ages, inst_cache, errors)),
-        (LOC_OUTPUT, build_loc(sides_by_axis, by_token)),
+    ]
+    outputs += [
+        (loc_output(language), build_loc(sides_by_axis, by_token, language, hint_templates[language]))
+        for language in LANGUAGES
     ]
     if errors:
         for error in errors:
