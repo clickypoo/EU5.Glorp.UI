@@ -1,0 +1,7 @@
+﻿# Suppresses the used-but-never-set warning for the GUI-set control income scope.
+glorpui_control_suppress = {
+	if = {
+		limit = { always = no }
+		save_scope_as = glorpui_loc_tax_income
+	}
+}
