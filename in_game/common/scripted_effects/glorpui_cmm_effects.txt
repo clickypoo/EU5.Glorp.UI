@@ -184,7 +184,7 @@ glorpui_register_cmf_mod = {
 		setting_id = vanillaMapmodeWidth
 		tab_id = mapmodes_bar
 		group_id = general
-		default_value = 0
+		default_value = 1
 	}
 	cmm_sync_bool_alias = {
 		setting = glorpui__vanillaMapmodeWidth
