@@ -15,6 +15,7 @@ types GlorpUIContextMenuSpecificTypes
 				}
 
 				blockoverride "contextmenu_entries" {
+					GlorpUIArmyMarkers = { }
 					ContextMenuEntryListSubSection = {
 						datacontext = "[UnitMarkerItem.GetQuickUnitActions]"
 						datacontext = "[Pin('unit_actions')]"
