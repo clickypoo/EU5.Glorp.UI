@@ -72,6 +72,7 @@ VANILLA_FILES = [
 	"economy_lateralview.gui",
 	"goods_production_lateralview.gui",
 	"government_lateralview.gui",
+	"shared/location_tooltips.gui",
 ]
 
 BOM = "\ufeff"
