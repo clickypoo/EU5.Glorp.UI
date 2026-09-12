@@ -470,6 +470,7 @@ lateralview = {
 
 				blockoverride "country_header_character_name" {
 					CharacterNameDefault = {
+						parentanchor = center
 						spacing = 4
 						blockoverride "name_highlight" {}
 						margin_left = 14
