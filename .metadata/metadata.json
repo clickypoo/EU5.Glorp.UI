@@ -1,7 +1,7 @@
 {
     "name": "Glorp UI",
     "id": "glorp.ui",
-    "version": "1.3.10.1",
+    "version": "10.08.26",
     "game_id": "eu5",
     "supported_game_version": "1.3.*",
     "glorpui_last_updated_game_version": "1.3.10",
