@@ -1,0 +1,29 @@
+﻿# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
+widget = {
+	name = "cardinal_marker"
+	allow_outside = yes
+	size = { 32 32 }
+	position = { 0 0 }
+
+	datacontext = "[CardinalMarker.GetDisplayCardinal]"
+
+	icon = {
+		parentanchor = center
+		size = { 32 32 }
+		texture = "gfx/interface/icons/international_organizations/cardinals.dds"
+		texture_density = 2
+
+		tooltipwidget = {
+			container = {
+				alwaystransparent = no
+				text_single = {
+					default_format = "#high"
+					text = "[Character.GetName]"
+					using = Font_Size_Medium
+				}
+			}
+		}
+	}
+}

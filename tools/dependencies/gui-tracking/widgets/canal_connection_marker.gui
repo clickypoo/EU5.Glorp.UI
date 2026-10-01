@@ -1,0 +1,108 @@
+﻿# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
+widget = {
+	name = "canal_connection_marker"
+	max_update_rate = 4
+
+	size = { 25 25}
+	widgetanchor = left
+	position = { 0 2 }
+
+	tooltipwidget = {		
+		ContextualTooltipType = {
+			blockoverride "title_icon" {
+				icon = {
+					texture = "gfx/interface/icons/buildings/pound_lock_canal_infrastructure.dds"
+					using = tooltip_title_icon_size
+				}
+			}
+			blockoverride "title_text" {
+				text = "CANAL_LOCATION"
+			}
+
+			blockoverride "concept_link" {
+				visible = no
+			}
+
+			blockoverride "tooltip_content" {
+				TooltipScrolledRowList = {
+					blockoverride "block_title" {
+						text = "[CanalConnectionMarker.GetTooltip]"
+					}
+
+					textcontext = "[CanalConnectionMarker.GetConnectedLocationNames]"
+				}
+				TooltipTextBlock = {
+					blockoverride "text" {
+						text = "CANAL_LOCATION_RESTRICTED"
+					}
+				}
+				TooltipTextBlock = {
+					visible = "[CanalConnectionMarker.GetRestricted]"
+					blockoverride "text" {
+						text = "CANAL_LOCATION_RESTRICTED_FOR_US"
+					}
+					blockoverride "textblock_background_tint"  {
+						modify_texture = {
+							using = color_dark_red_texture
+						}
+					}
+				}
+				TooltipTextBlock = {
+					visible = "[Not(CanalConnectionMarker.GetRestricted)]"
+					blockoverride "text" {
+						text = "CANAL_LOCATION_NOT_RESTRICTED"
+					}
+					blockoverride "textblock_background_tint"  {
+						modify_texture = {
+							using = color_light_green_texture
+						}
+					}
+				}
+			}
+			
+		}			
+	}
+	
+	tooltip_offset = { 20 20 }
+
+	button = {
+		parentanchor = center
+		allow_outside = yes
+
+		block "button_size" {
+			size = { 100% 100% }
+		}
+
+		tooltip_enabled = no
+		texture = "gfx/interface/icons/buildings/pound_lock_canal_infrastructure.dds"
+
+		glow = {
+			name = "drop_shadow"
+			glow_radius = 3
+			color = {0.0 0.0 0.0 1.0}
+			alpha = 0.5  
+		}
+		texture_density = 2
+
+		onmousehierarchyenter = "[CanalConnectionMarker.HighlightConnections]"	
+		onmousehierarchyleave = "[CanalConnectionMarker.ClearHighlightedConnections]"
+			
+	}
+
+	icon = {
+		size = { 150% 150% }
+		parentanchor = center
+		allow_outside = yes
+
+		tooltip_enabled = no
+		texture = "gfx/interface/mapitems/canal_connector_restricted.dds"
+
+		visible = "[CanalConnectionMarker.GetRestricted]"
+
+		texture_density = 2
+
+			
+	}
+}
