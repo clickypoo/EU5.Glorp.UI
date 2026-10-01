@@ -1,0 +1,6 @@
+﻿# vanilla: loading_screen/gui/textformatting.gui
+# mod: main_menu/gui/textformatting.gui
+
+template text_default_text_template {
+	text = "DEFAULT_TEXT"
+}

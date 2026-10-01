@@ -1,0 +1,10 @@
+﻿# vanilla: loading_screen/gui/textformatting.gui
+# mod: main_menu/gui/textformatting.gui
+
+template mask_fade_horizontal_middle_texture {
+	name = "mask"
+	texture = "gfx/interface/component_masks/mask_fade_horizontal_middle.dds"
+	spriteType = Corneredstretched
+	spriteborder = { 0 0 }
+	blend_mode = alphamultiply
+}

@@ -280,6 +280,27 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/frontend_menu_middle_template.gui",
       "vanilla_file": "in_game/gui/ingame_menu.gui"
     },
+    "template:location_rgo_button_tooltip": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/shared/glorpUI_location_tooltips.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/location_rgo_button_tooltip.gui",
+      "vanilla_file": "in_game/gui/shared/location_tooltips.gui"
+    },
+    "template:mask_fade_horizontal_middle_texture": {
+      "base_widget": null,
+      "mod_file": "main_menu/gui/textformatting.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/mask_fade_horizontal_middle_texture.gui",
+      "vanilla_file": "loading_screen/gui/textformatting.gui"
+    },
+    "template:one_country_header_template": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/glorpUI_country_header.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/one_country_header_template.gui",
+      "vanilla_file": "in_game/gui/country_header.gui"
+    },
     "template:production_view_poptypes": {
       "base_widget": null,
       "mod_file": "in_game/gui/production_lateralview.gui",
@@ -301,6 +322,41 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/societal_values.gui",
       "vanilla_file": "in_game/gui/societal_values_lateralview.gui"
     },
+    "template:text_common_template": {
+      "base_widget": null,
+      "mod_file": "main_menu/gui/textformatting.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/text_common_template.gui",
+      "vanilla_file": "loading_screen/gui/textformatting.gui"
+    },
+    "template:text_default_text_template": {
+      "base_widget": null,
+      "mod_file": "main_menu/gui/textformatting.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/text_default_text_template.gui",
+      "vanilla_file": "loading_screen/gui/textformatting.gui"
+    },
+    "template:text_multi_template": {
+      "base_widget": null,
+      "mod_file": "main_menu/gui/textformatting.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/text_multi_template.gui",
+      "vanilla_file": "loading_screen/gui/textformatting.gui"
+    },
+    "template:text_single_template": {
+      "base_widget": null,
+      "mod_file": "main_menu/gui/textformatting.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/text_single_template.gui",
+      "vanilla_file": "loading_screen/gui/textformatting.gui"
+    },
+    "template:two_countries_header_template": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/glorpUI_country_header.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/two_countries_header_template.gui",
+      "vanilla_file": "in_game/gui/country_header.gui"
+    },
     "type:CharacterNameDefault": {
       "base_widget": "hbox",
       "mod_file": "in_game/gui/glorpUI_people_lateral_view.gui",
@@ -314,6 +370,13 @@
       "namespace": "GlorpUIFrontEnd",
       "tracking_path": "tools/dependencies/gui-tracking/types/FrontEndBackground.gui",
       "vanilla_file": "main_menu/gui/shared/frontend_templates.gui"
+    },
+    "type:UnitMarkerContextMenu": {
+      "base_widget": "ContextMenuBase",
+      "mod_file": "in_game/gui/glorpUI_context_menu.gui",
+      "namespace": "GlorpUIContextMenuSpecificTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/UnitMarkerContextMenu.gui",
+      "vanilla_file": "in_game/gui/context_menu.gui"
     },
     "type:adjustable_budget_card": {
       "base_widget": "widget",
@@ -391,6 +454,13 @@
       "namespace": "MultiplayerChatTypes",
       "tracking_path": "tools/dependencies/gui-tracking/types/chat_editbox.gui",
       "vanilla_file": "in_game/gui/multiplayer_chat.gui"
+    },
+    "type:country_header": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/glorpUI_country_header.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/country_header.gui",
+      "vanilla_file": "in_game/gui/country_header.gui"
     },
     "type:economy_plotline": {
       "base_widget": "widget",
@@ -588,12 +658,33 @@
       "tracking_path": "tools/dependencies/gui-tracking/types/reform_details_dynamic.gui",
       "vanilla_file": "in_game/gui/government_lateralview.gui"
     },
+    "type:right_panel": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/panels/right_panel/glorpUI_right_panel.gui",
+      "namespace": "GlorpUIRightPanelTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/right_panel.gui",
+      "vanilla_file": "in_game/gui/panels/right_panel/right_panel.gui"
+    },
+    "type:right_panel_bar": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/panels/right_panel/glorpUI_right_panel.gui",
+      "namespace": "GlorpUIRightPanelTypes",
+      "tracking_path": "tools/dependencies/gui-tracking/types/right_panel_bar.gui",
+      "vanilla_file": "in_game/gui/panels/right_panel/right_panel.gui"
+    },
     "type:row_building_card": {
       "base_widget": "widget",
       "mod_file": "in_game/gui/location_window.gui",
       "namespace": "LocationWindowTypes",
       "tracking_path": "tools/dependencies/gui-tracking/types/row_building_card.gui",
       "vanilla_file": "in_game/gui/location_window.gui"
+    },
+    "type:two_countries_header": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/glorpUI_country_header.gui",
+      "namespace": "CountryHeaders",
+      "tracking_path": "tools/dependencies/gui-tracking/types/two_countries_header.gui",
+      "vanilla_file": "in_game/gui/country_header.gui"
     },
     "widget:agenda_category_entry": {
       "base_widget": null,

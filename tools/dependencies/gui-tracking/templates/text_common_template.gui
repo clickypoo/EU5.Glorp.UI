@@ -1,0 +1,10 @@
+﻿# vanilla: loading_screen/gui/textformatting.gui
+# mod: main_menu/gui/textformatting.gui
+
+template text_common_template {
+	text_selectable = no
+	using = tooltip_se
+	using = Font_Type_Standard
+	using = Font_Size_Small
+	fontsize_min = 8
+}

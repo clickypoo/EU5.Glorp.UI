@@ -1,0 +1,52 @@
+﻿# vanilla: in_game/gui/panels/right_panel/right_panel.gui
+# mod: in_game/gui/panels/right_panel/glorpUI_right_panel.gui
+
+	type right_panel = widget {
+		visible = "[And(Not(TutorialHasVar('intro_hide_ui_5')), Not(IsLobbyOpen))]"
+		allow_outside = yes
+		layer = bottom
+
+		# Closed panel
+		widget = {
+			allow_outside = yes
+
+			vbox = {
+				visible = "[Not(And(RightView.IsSideAttached, Not(IsLateralViewFullScreen)))]"
+
+				allow_outside = yes
+				using = layoutpolicy_expanding
+				using = right_panel_maxmin_width
+				using = bg_lateralview
+				set_parent_size_to_minimum = yes
+
+				right_panel_bar = {
+					layoutpolicy_horizontal = expanding
+				}
+			}
+		}
+
+		# Opened panel
+		vbox = {
+			visible = "[And(RightView.IsSideAttached, Not(IsLateralViewFullScreen))]"
+
+			allow_outside = yes
+			using = layoutpolicy_expanding
+			using = right_panel_maxmin_width
+			using = panels_margin_bottom
+			using = snd_UI_lateralview
+
+			vbox = {
+				using = layoutpolicy_expanding
+				using = bg_lateralview
+
+				right_panel_bar = {
+					layoutpolicy_horizontal = expanding
+				}
+
+				widget = {
+					using = layoutpolicy_expanding
+					allow_outside = yes
+				}
+			}
+		}
+	}

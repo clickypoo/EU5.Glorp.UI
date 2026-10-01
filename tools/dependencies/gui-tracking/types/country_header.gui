@@ -1,0 +1,106 @@
+﻿# vanilla: in_game/gui/country_header.gui
+# mod: in_game/gui/glorpUI_country_header.gui
+
+	type country_header = widget {
+		allow_outside = yes
+		scissor = yes
+		layoutpolicy_horizontal = expanding
+		block "country_header_size" {
+			size = { -1 220 }
+		}
+
+		hbox = {
+			visible = "[Country.GetGovernment.HasRulerOrRegent]"
+			block "country_header_background" {
+				ecs_scene_viewer_widget =  {
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					name= "event_window_scene_viewer"
+					scene = "[Country.GetGovernment.GetRulerOrRegent.GenerateSceneDesc]"
+				}
+			}
+		}
+
+		hbox = {
+			visible = "[Not(Country.GetGovernment.HasRulerOrRegent)]"
+			icon =  {
+				layoutpolicy_horizontal = expanding
+				size = {-1 220}
+				texture = "gfx/interface/illustrations/government/throne_room_test/empty.dds"
+				mirror = horizontal
+			}
+		}
+
+		block "io_decoration_behind_character" {}
+
+		container = {
+			block "country_header_character_visible" {
+				visible = "[Country.GetGovernment.HasRulerOrRegent]"
+			}
+			allow_outside = yes
+
+			block "character_portait_extra" {}
+
+			block "character_portrait_anchor" {
+				parentanchor = bottom
+			}
+
+			hbox = {
+				allow_outside = yes
+				block "stats_left" { }
+				block "character_widget" {
+					widget = { # GlorpUI: vanilla position removed, not allowed inside this hbox
+						allow_outside = yes
+						block "portrait_io_widget" {
+							size = { 250 200 }
+						}
+
+						# GlorpUI: vanilla parentanchor removed, not allowed inside this hbox
+						block "character_portrait_anchor" { }
+
+						portrait_standard_full_body_center_button = {
+							block "character_right_visible" {
+								visible = yes
+							}
+							# block "character_portrait_inner_anchor" {
+							parentanchor = bottom
+							# }
+
+							size = { 250 200 }
+							block "country_header_character_context" {
+								datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
+							}
+						}
+
+						# portrait_standard_full_body_left_button = {
+						# 	block "character_left_visible" {
+						# 		visible = no
+						# 	}
+						# 	block "character_portrait_inner_anchor" {
+						# 		parentanchor = bottom
+						# 	}
+
+						# 	size = { 250 200 }
+						# 	datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
+						# }
+					}
+				}
+				expand = {}
+			}
+		}
+
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+
+			### RULER TITLE, COAT, SKILLS
+			datacontext = "[Country.GetGovernment]"
+			country_government_character = {}
+			# block "country_header_extra_properties" {}
+		}
+
+		block "country_header_extra" {}
+
+		using = bg_age_event_frame
+	}
