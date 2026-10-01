@@ -1,0 +1,21 @@
+# vanilla: in_game/gui/shared/government_tooltips.gui
+# mod: in_game/gui/glorpUI_generated_societal_value_hints.gui
+
+template SocietalValueCountryRight_tooltip {
+	using = SocietalValueRight_tooltip
+	blockoverride "societal_value_right_tooltip_extra" {
+		TooltipScrolledStringPairList = {
+			# visible = "[SocietalValue.ShowRightHint(Player.Self)]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "TO_MOVE_FURTHER_TO_RIGHT"
+				default_format = "#help"
+			}
+
+			textcontext = "[SocietalValue.GetRightHint(Player.Self)]"
+		}
+	}
+}

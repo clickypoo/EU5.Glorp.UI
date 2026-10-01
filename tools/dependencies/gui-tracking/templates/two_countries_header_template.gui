@@ -1,0 +1,146 @@
+# vanilla: in_game/gui/country_header.gui
+# mod: in_game/gui/glorpUI_country_header.gui
+
+template two_countries_header_template  {
+
+	blockoverride "country_header_names_visible" { visible = no }
+	block "two_countries_header_image" {
+		background = {
+			texture = "[GetSituationIllustration(SituationView.GetActiveSituation.GetSituation)]"
+			texture_density = 2
+			spriteType = stretched
+			spriteborder = { 0 0 }
+		}
+	}
+
+	using = scene_fade_vertical_up
+
+	container = {
+		block "FirstCountryVisible" {}
+		block "first_character_portrait_anchor" {
+			parentanchor = bottom
+		}
+		container = {
+			block "FirstCountryContext" {}
+
+			visible = "[Country.GetGovernment.HasRulerOrRegent]"
+
+			block "first_character_portrait_anchor" {
+				parentanchor = bottom
+			}
+
+			block "first_country_character_frame" {
+				character_frame_medium_with_labels = {
+					block "character_right_visible" {
+						visible = yes
+					}
+					parentanchor = bottom
+					size = { 250 220 }
+					blockoverride "portrait_datacontext" {
+						datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
+					}
+				}
+			}
+
+			# block "two_countries_header_extra_portrait" {}
+		}
+	}
+
+	container = {
+		block "SecondCountryVisible" {}
+		block "second_character_portrait_anchor" {
+			parentanchor = bottom
+		}
+		container = {
+			block "SecondCountryContext" {}
+			
+			visible = "[Country.GetGovernment.HasRulerOrRegent]"
+
+			block "second_character_portrait_anchor" {
+				parentanchor = bottom
+			}
+
+			block "second_country_character_frame" {
+				character_frame_medium_with_labels = {
+					block "character_right_visible" {
+						visible = yes
+					}
+					parentanchor = bottom
+
+					blockoverride "portrait_datacontext" {
+						datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
+					}
+					size = { 250 220 }
+				}
+			}
+		}
+	}
+
+	hbox = {
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = expanding
+
+		
+
+		### RULER TITLE, COAT, SKILLS
+		block "FirstCountryVisible" {}
+		hbox = {
+			using = layoutpolicy_expanding
+			block "FirstCountryContext" {}
+			datacontext = "[Country.GetGovernment]"
+			country_government_character = {
+				block "FirstCountryContext" {}
+				blockoverride "character_name_maximumsize" {
+					maximumsize = { 200 -1 }
+				}
+
+				blockoverride "character_name_text"{
+					raw_text = "[Character.GetShortNameWithNoTooltip]"
+				}
+			}
+
+			blockoverride "bg_name_banner_flip" {}
+			blockoverride "bg_name_banner_margin" {
+				margin_left = 20
+				margin_right = 0
+				margin_top = 2
+				margin_bottom = 7
+			}
+		}
+	}
+
+	hbox = {
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = expanding
+
+		### RULER TITLE, COAT, SKILLS
+		block "SecondCountryVisible" {}
+		hbox = {
+			using = layoutpolicy_expanding
+			block "SecondCountryContext" {}
+			datacontext = "[Country.GetGovernment]"
+			country_government_character = {
+				block "SecondCountryContext" {}
+				blockoverride "country_header_orientation" {
+					righttoleft = yes
+				}
+
+				blockoverride "country_government_character_labels_align" {
+					align = right|nobaseline
+				}
+
+				blockoverride "character_name_maximumsize" {
+					maximumsize = { 200 -1 }
+				}
+
+				blockoverride "character_name_text"{
+					raw_text = "[Character.GetShortNameWithNoTooltip]"
+				}
+			}
+		}
+	}
+	using = bg_age_event_frame
+
+	block "country_header_extra" {}
+	blockoverride "abilities_widget" {}
+}

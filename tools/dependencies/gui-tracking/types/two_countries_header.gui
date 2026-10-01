@@ -1,0 +1,33 @@
+# vanilla: in_game/gui/country_header.gui
+# mod: in_game/gui/glorpUI_country_header.gui
+
+	type two_countries_header = widget {
+		layoutpolicy_horizontal = expanding
+		size = { -1 220 }
+
+		using = two_countries_header_template
+
+		blockoverride "first_country_character_frame" {
+			portrait_standard_full_body_right_button = {
+				block "first_character_portrait_anchor" {
+					parentanchor = bottom
+				}
+
+				position = { 0 0 }
+				size = { 250 220 }
+				datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
+			}
+		}
+
+		blockoverride "second_country_character_frame" {
+			portrait_standard_full_body_left_button = {
+				block "second_character_portrait_anchor" {
+					parentanchor = bottom
+				}
+
+				position = { 0 0 }
+				size = { 250 220 }
+				datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
+			}
+		}
+	}
