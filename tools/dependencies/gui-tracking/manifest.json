@@ -793,27 +793,15 @@
     },
     "widget:canal_connection_marker": {
       "base_widget": null,
-      "insert_after": [
-        "widget",
-        "desert_connection_marker"
-      ],
-      "insert_index": 34,
       "mod_file": "in_game/gui/map_markers.gui",
       "namespace": "widget",
-      "pending_insert": true,
       "tracking_path": "tools/dependencies/gui-tracking/widgets/canal_connection_marker.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
     },
     "widget:cardinal_marker": {
       "base_widget": null,
-      "insert_after": [
-        "widget",
-        "religious_order_marker"
-      ],
-      "insert_index": 5,
       "mod_file": "in_game/gui/map_markers.gui",
       "namespace": "widget",
-      "pending_insert": true,
       "tracking_path": "tools/dependencies/gui-tracking/widgets/cardinal_marker.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
     },
@@ -1029,27 +1017,15 @@
     },
     "widget:expedition_entry": {
       "base_widget": null,
-      "insert_after": [
-        "widget",
-        "privateer_entry"
-      ],
-      "insert_index": 72,
       "mod_file": "in_game/gui/outliner_entries.gui",
       "namespace": "OutlinerEntryBase",
-      "pending_insert": true,
       "tracking_path": "tools/dependencies/gui-tracking/widgets/expedition_entry.gui",
       "vanilla_file": "in_game/gui/outliner_entries.gui"
     },
     "widget:expedition_marker": {
       "base_widget": null,
-      "insert_after": [
-        "widget",
-        "cardinal_marker"
-      ],
-      "insert_index": 6,
       "mod_file": "in_game/gui/map_markers.gui",
       "namespace": "widget",
-      "pending_insert": true,
       "tracking_path": "tools/dependencies/gui-tracking/widgets/expedition_marker.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
     },
@@ -1125,14 +1101,8 @@
     },
     "widget:fav_trade_order_entry": {
       "base_widget": null,
-      "insert_after": [
-        "widget",
-        "goods_category_entry"
-      ],
-      "insert_index": 16,
       "mod_file": "in_game/gui/outliner_entries.gui",
       "namespace": "OutlinerEntryBase",
-      "pending_insert": true,
       "tracking_path": "tools/dependencies/gui-tracking/widgets/fav_trade_order_entry.gui",
       "vanilla_file": "in_game/gui/outliner_entries.gui"
     },
@@ -1327,14 +1297,8 @@
     },
     "widget:location_view_building_queue": {
       "base_widget": null,
-      "insert_after": [
-        "widget",
-        "location_view_select_province"
-      ],
-      "insert_index": 2,
       "mod_file": "in_game/gui/location_window.gui",
       "namespace": "select_menu_left",
-      "pending_insert": true,
       "tracking_path": "tools/dependencies/gui-tracking/widgets/location_view_building_queue.gui",
       "vanilla_file": "in_game/gui/location_window.gui"
     },
@@ -1501,14 +1465,8 @@
     },
     "widget:production_efficiency_marker": {
       "base_widget": null,
-      "insert_after": [
-        "widget",
-        "raw_goods_marker"
-      ],
-      "insert_index": 25,
       "mod_file": "in_game/gui/map_markers.gui",
       "namespace": "widget",
-      "pending_insert": true,
       "tracking_path": "tools/dependencies/gui-tracking/widgets/production_efficiency_marker.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
     },
@@ -1605,14 +1563,8 @@
     },
     "widget:religious_order_marker": {
       "base_widget": null,
-      "insert_after": [
-        "widget",
-        "holy_site_marker"
-      ],
-      "insert_index": 4,
       "mod_file": "in_game/gui/map_markers.gui",
       "namespace": "widget",
-      "pending_insert": true,
       "tracking_path": "tools/dependencies/gui-tracking/widgets/religious_order_marker.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
     },
@@ -1709,14 +1661,8 @@
     },
     "widget:trade_order_category_entry": {
       "base_widget": null,
-      "insert_after": [
-        "widget",
-        "fav_market_category_entry"
-      ],
-      "insert_index": 82,
       "mod_file": "in_game/gui/outliner_entries.gui",
       "namespace": "OutlinerEntryBase",
-      "pending_insert": true,
       "tracking_path": "tools/dependencies/gui-tracking/widgets/trade_order_category_entry.gui",
       "vanilla_file": "in_game/gui/outliner_entries.gui"
     },
