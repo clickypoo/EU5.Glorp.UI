@@ -1,0 +1,75 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
+widget = {
+	name = "production_efficiency_marker"
+	allow_outside = yes
+	size = "[Min_CVector2f(Multiply_CVector2f(GetInverseZoom2, '(CVector2f)7000, 7000'), '(CVector2f)45, 45')]"
+
+	datacontext = "[ProductionEfficiencyMarker]"
+	datacontext = "[ProductionEfficiencyMarker.GetLocation]"
+	datacontext = "[ProductionEfficiencyMarker.GetBuildingType]"
+	datacontext = "[ProductionEfficiencyMarker.GetLocationToBuildItem]"
+
+	icon = {
+		parentanchor = center
+		size = { 100% 100% }
+		texture = "gfx/interface/icons/flat_icons/building_panel/production_efficiency.dds"
+
+		modify_texture = {
+			using = color_black_texture
+			blend_mode = multiply
+		}
+
+		icon = {
+			position = { -1 -1 }
+			parentanchor = center
+			size = { 100% 100% }
+			texture = "gfx/interface/icons/flat_icons/building_panel/production_efficiency.dds"
+		}
+
+		tooltipwidget = {
+			ContextualTooltipType = {
+				blockoverride "title_icon" {
+					icon = {
+						using = tooltip_title_icon_size
+						texture = "gfx/interface/icons/flat_icons/building_panel/production_efficiency.dds"
+					}
+				}
+				blockoverride "title_text" {
+					text = "RGO_BONUS"
+				}
+				blockoverride "concept_link" {
+					text = "[production_efficiency|e]"
+				}
+				blockoverride "tooltip_content" {
+					TooltipTextBlock = {
+						visible = "[LocationToBuildItem.GetBuilding.IsUsingRGOBonus(Location.GetOwnerPtr, Location.Self)]"
+						blockoverride "text" {
+							text = "PROD_METHOD_BONUS_ACTIVE"
+						}
+						blockoverride "textblock_background_tint"  {
+							modify_texture = {
+								using = color_light_green_texture
+							}
+						}
+					}
+					TooltipTextBlock = {
+						visible = "[Not(LocationToBuildItem.GetBuilding.IsUsingRGOBonus(Location.GetOwnerPtr, Location.Self))]"
+						blockoverride "text" {
+							text = "PROD_METHOD_BONUS_POTENTIAL"
+						}
+						blockoverride "textblock_background_tint"  {
+							modify_texture = {
+								using = color_muztard_texture
+							}
+						}
+					}
+					TooltipStringPairlist = {
+						lowpriotextcontext = "[BuildingType.ProductionEfficiencyInfo(Location.GetOwnerPtr, Location.Self)]"
+					}
+				}
+			}
+		}
+	}
+}

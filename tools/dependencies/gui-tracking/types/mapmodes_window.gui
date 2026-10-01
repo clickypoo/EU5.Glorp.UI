@@ -137,7 +137,6 @@
 								{
 									visible = "[CanChangeMapMode]"
 									input_action = "[MapModeSlot.GetInputAction]"
-									use_global_input_instance = yes
 								
 									action_tooltip = {
 										click_type = left

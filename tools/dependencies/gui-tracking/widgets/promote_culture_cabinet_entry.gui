@@ -40,8 +40,7 @@ OutlinerEntryBase = {
 				alwaystransparent = yes
 				ignore_layout = yes
 				background = {
-					texture = "gfx/interface/buttons/checkbox_bg_round.dds"
-					texture_density = 2
+					using = bg_checkbox_round_texture
 					using = button_outliner_effect
 				}
 

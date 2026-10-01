@@ -8,6 +8,12 @@
 		using = bg_paper_card
 		datacontext = "[GetMapColorLedgerSearchBar]"
 
+		state = {
+			name = _show
+			duration = 0
+			on_start = "[SearchBar.ClearTextFilter(PdxGuiWidget.FindChild('searchbar_editbox'))]"
+		}
+
 		vbox = {
 			using = layoutpolicy_expanding
 

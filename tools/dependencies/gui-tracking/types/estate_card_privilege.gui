@@ -54,15 +54,15 @@
 							blockoverride "tooltip_layout_policy" { }
 
 							blockoverride "tooltip_content" {
-								TooltipListScrollArea = {
+								TooltipScrolledContentSection = {
 									blockoverride "block_scrollarea" {
 										maximumsize = { 265 98 }
 										minimumsize = { 265 49 }
 									}
 
-									blockoverride "scrollarea_content" {
+									blockoverride "section_content" {
 										dynamicgridbox = {
-											parentanchor = left
+											parentanchor = center
 											flipdirection = yes
 											datamodel_wrap = 7
 											spacing = 4
@@ -150,14 +150,7 @@
 						background = {
 							using = color_government_texture
 							texture_density = 2
-							modify_texture = {
-								texture = "gfx/interface/component_overlay/overlay_texture.dds"
-								texture_density = 2
-								spriteType = Corneredtiled
-								spriteborder = { 0 0 }
-								blend_mode = overlay
-								alpha = 0.5
-							}
+							using = overlay_texture_overlay
 						}
 
 						icon = {

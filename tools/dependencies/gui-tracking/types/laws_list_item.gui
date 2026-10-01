@@ -3,104 +3,117 @@
 
 	type laws_list_item = vbox {
 		layoutpolicy_horizontal = expanding
-		margin = {5 0}
-		margin_right = 10
-	
-		widget = {
+		margin = {1 0}
+		margin_right = 4
+
+		law_card_header = {
 			layoutpolicy_horizontal = expanding
-			size = {-1 40}
-	
-			using = bg_paper_card
-			
-			using = bg_card_header_01_government
-			blockoverride "header_pattern_texture_density" {texture_density = 1.5}
-	
-			card_header_button_01 = {
-				size = { 100% 100% }
+			size = { -1 60 }
+
+			blockoverride "law_header_button_color" {
+				modify_texture = {
+					block "law_category_color" {
+						using = color_government_texture
+					}
+					alpha = 0.5
+					blend_mode = add
+				}
+				modify_texture = {
+					texture = "gfx/interface/component_overlay/cloth_texture.dds"
+					texture_density = 2
+					spriteType = Corneredtiled
+					spriteborder = { 0 0 }
+					blend_mode = overlay
+					alpha = 0.9
+				}
+			}
+
+			blockoverride "law_header_button_properties" {
 				block "law_type_button" {
 					tooltip_enabled = no
 				}
 			}
-	
-			hbox = {
-				layoutpolicy_horizontal = expanding
-				spacing = 5
-				margin_left = 5
-				margin_right = 5
-	
-				icon = {
-					size = { 32 32 }
-					block "law_icon" {
-						# texture = "[LawCategory.GetCategoryIcon]"
-					}
-	
-					using = bg_circle_piechart
-				}
-	
-				text_single = {
-					maximumsize = {200 18}
-					align = left|nobaseline
-					block "law_type_button_text" {
-						# text = "[LawCategory.GetName]"
-					}
-				}
-	
-				expand = {}
-	
-				text_single = {
-					size = {24 24}
-					autoresize = no
-					align = center|nobaseline
-					block "laws_amount" {
-						# text = "[GetDataModelSize(LawCategory.GetLaws)]"
-					}
-	
-					using = bg_circle_piechart
-					blockoverride "frame_color" {
-						modify_texture = {
-							using = color_new_gold_texture
-							blend_mode = multiply
+			blockoverride "law_header_button_content" {
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					spacing = 5
+					margin_left = 5
+					margin_right = 5
+		
+					icon = {
+						size = { 32 32 }
+						block "law_icon" {
+							# texture = "[LawCategory.GetCategoryIcon]"
 						}
-						modify_texture = {
-							using = color_new_gold_texture
-							blend_mode = add
-							alpha = 0.4
+		
+						using = bg_circle_piechart
+					}
+		
+					text_single = {
+						maximumsize = {200 18}
+						align = left|nobaseline
+						block "law_type_button_text" {
+							# text = "[LawCategory.GetName]"
 						}
 					}
-					blockoverride "inside_color" {
-						modify_texture = {
-							using = color_dark_brown_texture
-							blend_mode = multiply
+		
+					expand = {}
+		
+					text_single = {
+						size = {24 24}
+						autoresize = no
+						align = center|nobaseline
+						block "laws_amount" {
+							# text = "[GetDataModelSize(LawCategory.GetLaws)]"
 						}
-						alpha = 0.9
+		
+						using = bg_circle_piechart
+						blockoverride "frame_color" {
+							modify_texture = {
+								using = color_new_gold_texture
+								blend_mode = multiply
+							}
+							modify_texture = {
+								using = color_new_gold_texture
+								blend_mode = add
+								alpha = 0.4
+							}
+						}
+						blockoverride "inside_color" {
+							modify_texture = {
+								using = color_dark_brown_texture
+								blend_mode = multiply
+							}
+							alpha = 0.9
+						}
 					}
-				}
-	
-				icon = {
-					block "law_arrow_expanded" {
-						# visible = "[LawCategory.IsExpanded]"
+		
+					icon = {
+						block "law_arrow_expanded" {
+							# visible = "[LawCategory.IsExpanded]"
+						}
+						size = { 22 22 }
+						texture = "gfx/interface/buttons/flats/button_simple_down.dds"
+						using = color_gold
+						modify_texture = {
+							using = overlay_window_texture
+							blend_mode = overlay
+							alpha = 1
+						}
 					}
-					size = { 22 22 }
-					texture = "gfx/interface/buttons/flats/button_simple_down.dds"
-					using = color_gold
-					modify_texture = {
-						using = overlay_window_texture
-						blend_mode = overlay
-						alpha = 1
-					}
-				}
-	
-				icon = {
-					block "law_arrow_not_expanded" {
-						visible = "[Not(LawCategory.IsExpanded)]"
-					}
-					size = { 22 22 }
-					texture = "gfx/interface/buttons/flats/button_simple_right.dds"
-					using = color_gold
-					modify_texture = {
-						using = overlay_window_texture
-						blend_mode = overlay
-						alpha = 1
+		
+					icon = {
+						block "law_arrow_not_expanded" {
+							visible = "[Not(LawCategory.IsExpanded)]"
+						}
+						size = { 22 22 }
+						texture = "gfx/interface/buttons/flats/button_simple_right.dds"
+						using = color_gold
+						modify_texture = {
+							using = overlay_window_texture
+							blend_mode = overlay
+							alpha = 1
+						}
 					}
 				}
 			}
@@ -108,8 +121,16 @@
 	
 		vbox = {
 			layoutpolicy_horizontal = expanding
-			margin_top = 5
-			spacing = 6
+			spacing = 3
+			margin = { 8 3 }
+			margin_bottom = 6
+
+			background = {
+				texture = "gfx/interface/cards/laws/header_container_bottom.dds"
+				texture_density = 2
+				spriteType = corneredstretched
+				spriteBorder = { 10 10 }
+			}
 		
 			block "laws_list_datamodel" {
 				# visible = "[LawCategory.IsExpanded]"
@@ -288,7 +309,6 @@
 											}
 
 											blockoverride "tooltip_content" {
-												datacontext = "[Player]"
 												TooltipTextBlock = {
 													blockoverride "text" {
 														text = "UNIQUE_POLICY_DESC"
@@ -342,23 +362,10 @@
 						widget = {
 							block "laws_list_action_button_visible" { visible = no }
 							size = { 100% 100% }
-							card_list_action_button = {
+							law_card_header_button = {
+								visible = "[PdxGuiWidget.IsUberButtonVisible]"
 								size = { 100% 100% }
 
-								blockoverride "texture" {
-									gfxtype = framedbuttongfx
-									effectname = "NoHighlight"
-									upframe = 1
-									overframe = 2
-									downframe = 3
-									disableframe = 4
-									texture = "gfx/interface/buttons/list_card_button.dds"
-									frame_grid = {4 1}
-									spriteType = Corneredstretched
-									spriteborder = { 0 0 }
-									texture_density = 2
-								}
-	
 								icon = {
 									size = {99% 97%}
 									ignore_layout = yes
@@ -377,48 +384,223 @@
 										blend_mode = multiply
 									}
 								}
-		
-								block "law_action_button_setup" {}
-		
-								hbox = {
-									margin = { 4 0 }
-									spacing = 10
-									layoutpolicy_horizontal = expanding
-									law_item_icon = {}
-		
-									vbox = {
+
+								blockoverride "law_header_button_color" {
+									modify_texture = {
+										block "law_category_color" {
+											using = color_government_texture
+										}
+										blend_mode = add
+										alpha = 0.8
+									}
+									modify_texture = {
+										texture = "gfx/interface/component_overlay/cloth_texture.dds"
+										texture_density = 2
+										spriteType = Corneredtiled
+										spriteborder = { 0 0 }
+										blend_mode = overlay
+										alpha = 0.9
+									}
+								}
+
+								blockoverride "law_header_button_properties" {
+									block "law_action_button_setup" {
+										tooltipwidget = { BasicFunctionalTooltip = {} }
+									}
+								}
+
+								blockoverride "law_header_button_content" {
+									hbox = {
+										margin = { 4 0 }
+										spacing = 10
 										layoutpolicy_horizontal = expanding
-										text_single = {
+										law_item_icon = {}
+	
+										vbox = {
 											layoutpolicy_horizontal = expanding
-											using = Font_Size_Small
-											align = nobaseline|left
-											default_format = "#yellow_titles"
-											block "law_title" {
-												# text = "[Law.GetNameWithNoTooltip]"
+											text_single = {
+												layoutpolicy_horizontal = expanding
+												using = Font_Size_Small
+												align = nobaseline|left
+												default_format = "#yellow_titles"
+												block "law_title" {
+													# text = "[Law.GetNameWithNoTooltip]"
+												}
+											}
+	
+											text_single = {
+												layoutpolicy_horizontal = expanding
+												align = nobaseline|left
+												fontsize = 13
+												block "law_policy" {
+													# visible = "[Player.GetGovernment.HasPolicyForLaw(Law.Self)]"
+													# text = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).GetNameWithNoTooltip]"
+												}
+											}
+	
+											text_single = {
+												layoutpolicy_horizontal = expanding
+												align = nobaseline|left
+												fontsize = 13
+												block "law_no_policy" {
+													# visible = "[Not(Player.GetGovernment.HasPolicyForLaw(Law.Self))]"
+													# text = "NO_POLICY_SELECTED"
+												}
 											}
 										}
-		
-										text_single = {
-											layoutpolicy_horizontal = expanding
-											align = nobaseline|left
-											fontsize = 13
-											block "law_policy" {
-												# visible = "[Player.GetGovernment.HasPolicyForLaw(Law.Self)]"
-												# text = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).GetNameWithNoTooltip]"
+	
+										hbox = {
+											text_single = {
+												size = {24 24}
+												autoresize = no
+												align = center|nobaseline
+												block "law_policy_level" {
+													# visible = "[Law.HasLevels]"
+													# text = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).GetPolicyLevel]"
+												}
+												using = bg_circle_piechart
+												blockoverride "frame_color" {
+													modify_texture = {
+														using = color_new_gold_texture
+														blend_mode = multiply
+													}
+													modify_texture = {
+														using = color_new_gold_texture
+														blend_mode = add
+														alpha = 0.4
+													}
+												}
+												blockoverride "inside_color" {
+													modify_texture = {
+														using = color_dark_brown_texture
+														blend_mode = multiply
+													}
+													alpha = 0.9
+												}
 											}
 										}
+	
+										# block "vote_buttons" {}
+	
+										hbox = {
+											block "law_list_item_government_visible" {
+												visible = yes
+											}
+											widget = {
+												size = { 30 30 }
+												using = bg_circle
+												visible = "[Player.GetGovernment.ShouldDisplayProgressForLaw(Law.Self)]"
 		
-										text_single = {
-											layoutpolicy_horizontal = expanding
-											align = nobaseline|left
-											fontsize = 13
-											block "law_no_policy" {
-												# visible = "[Not(Player.GetGovernment.HasPolicyForLaw(Law.Self))]"
-												# text = "NO_POLICY_SELECTED"
+												piechart = {
+													size = { 100% 100% }
+													parentanchor = center
+													using = piechart_angles											
+													icon = {
+														parentanchor = center
+														size = { 70% 70% }
+														texture = "gfx/interface/icons/situations/_default.dds"
+														texture_density = 2
+													}
+		
+													pieslice = {
+														texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+														# value = "50"
+														value = "[FixedPointToFloat(Player.GetGovernment.GetPolicyProgressForLaw(Law.Self))]"
+														using = color_value_progress_blue
+													}
+		
+													pieslice = {
+														texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+														# value = "50"
+														value = "[Subtract_float('(float)100.0', FixedPointToFloat(Player.GetGovernment.GetPolicyProgressForLaw(Law.Self)))]"
+														using = color_value_progress_gray
+													}
+												}
+											}
+										}
+	
+										hbox = {
+											block "law_list_item_io_visible" {
+												visible = no
+											}
+											widget = {
+												size = { 31 31 }
+												using = bg_circle
+												visible = "[ResolutionGlue.GetOwner.ShouldDisplayProgressForLaw(ResolutionGlue.GetTarget('target').GetLaw.Self)]"
+	
+												piechart = {
+													size = { 100% 100% }
+													parentanchor = center
+													using = piechart_angles
+	
+													icon = {
+														parentanchor = center
+														size = { 70% 70% }
+														texture = "gfx/interface/icons/situations/_default.dds"
+														texture_density = 2
+													}
+	
+													pieslice = {
+														texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+														value = "[FixedPointToFloat(ResolutionGlue.GetOwner.GetPolicyProgressForLaw(ResolutionGlue.GetTarget('target').GetLaw.Self))]"
+														using = color_value_progress_blue
+													}
+	
+													pieslice = {
+														texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+														value = "[Subtract_float('(float)100.0', FixedPointToFloat(ResolutionGlue.GetOwner.GetPolicyProgressForLaw(ResolutionGlue.GetTarget('target').GetLaw.Self)))]"
+														using = color_value_progress_gray
+													}
+												}
+											}									
+	
+											widget = {
+												size = { 31 31 }
+												using = bg_circle
+												visible = "[Or(ResolutionGlue.EnactResolutionIsActive, ResolutionGlue.RepealResolutionIsActive)]"
+	
+												piechart = {
+													size = { 100% 100% }
+													using = piechart_angles
+													parentanchor = center
+	
+													icon = {
+														visible = "[Not(ResolutionGlue.HasCountryVotedFromPointer(Player.Self))]"
+														parentanchor = center
+														size = { 70% 70% }
+														texture = "gfx/interface/icons/international_organizations/law_voting.dds"
+														texture_density = 2
+													}
+	
+													icon = {
+														visible = "[ResolutionGlue.HasCountryVotedFromPointer(Player.Self)]"
+														parentanchor = center
+														size = { 70% 70% }
+														texture = "gfx/interface/icons/international_organizations/law_voting_yes.dds"
+														texture_density = 2
+													}
+	
+													pieslice = {
+														texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+														value = "[FixedPointToFloat(ResolutionGlue.GetProgressToDeadline)]"
+														using = color_value_progress_blue
+													}
+	
+													pieslice = {
+														texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+														value = "[Subtract_float('(float)100.0', FixedPointToFloat(ResolutionGlue.GetProgressToDeadline))]"
+														using = color_value_progress_gray
+													}
+	
+													datacontext = "[ResolutionGlue.GetVoteToEnactAction]"
+	
+													tooltipwidget = {
+														using = international_organization_resolution_voting_tooltip
+													}										
+												}
 											}
 										}
 									}
-
 									hbox = {
 										text_single = {
 											size = {24 24}
@@ -449,129 +631,257 @@
 											}
 										}
 									}
-
-									# block "vote_buttons" {}
-
-									hbox = {
-										block "law_list_item_government_visible" {
-											visible = yes
-										}
-										widget = {
-											size = { 30 30 }
-											using = bg_circle
-											visible = "[Player.GetGovernment.ShouldDisplayProgressForLaw(Law.Self)]"
-	
-											piechart = {
-												size = { 100% 100% }
-												parentanchor = center
-												using = piechart_angles											
-												icon = {
-													parentanchor = center
-													size = { 70% 70% }
-													texture = "gfx/interface/icons/situations/_default.dds"
-													texture_density = 2
-												}
-	
-												pieslice = {
-													texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-													# value = "50"
-													value = "[FixedPointToFloat(Player.GetGovernment.GetPolicyProgressForLaw(Law.Self))]"
-													using = color_value_progress_blue
-												}
-	
-												pieslice = {
-													texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-													# value = "50"
-													value = "[Subtract_float('(float)100.0', FixedPointToFloat(Player.GetGovernment.GetPolicyProgressForLaw(Law.Self)))]"
-													using = color_value_progress_gray
-												}
-											}
-										}
-									}
-
-									hbox = {
-										block "law_list_item_io_visible" {
-											visible = no
-										}
-										widget = {
-											size = { 31 31 }
-											using = bg_circle
-											visible = "[ResolutionGlue.GetOwner.ShouldDisplayProgressForLaw(ResolutionGlue.GetTarget('target').GetLaw.Self)]"
-
-											piechart = {
-												size = { 100% 100% }
-												parentanchor = center
-												using = piechart_angles
-
-												icon = {
-													parentanchor = center
-													size = { 70% 70% }
-													texture = "gfx/interface/icons/situations/_default.dds"
-													texture_density = 2
-												}
-
-												pieslice = {
-													texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-													value = "[FixedPointToFloat(ResolutionGlue.GetOwner.GetPolicyProgressForLaw(ResolutionGlue.GetTarget('target').GetLaw.Self))]"
-													using = color_value_progress_blue
-												}
-
-												pieslice = {
-													texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-													value = "[Subtract_float('(float)100.0', FixedPointToFloat(ResolutionGlue.GetOwner.GetPolicyProgressForLaw(ResolutionGlue.GetTarget('target').GetLaw.Self)))]"
-													using = color_value_progress_gray
-												}
-											}
-										}									
-
-										widget = {
-											size = { 31 31 }
-											using = bg_circle
-											visible = "[Or(ResolutionGlue.EnactResolutionIsActive, ResolutionGlue.RepealResolutionIsActive)]"
-
-											piechart = {
-												size = { 100% 100% }
-												using = piechart_angles
-												parentanchor = center
-
-												icon = {
-													visible = "[Not(ResolutionGlue.HasCountryVotedFromPointer(Player.Self))]"
-													parentanchor = center
-													size = { 70% 70% }
-													texture = "gfx/interface/icons/international_organizations/law_voting.dds"
-													texture_density = 2
-												}
-
-												icon = {
-													visible = "[ResolutionGlue.HasCountryVotedFromPointer(Player.Self)]"
-													parentanchor = center
-													size = { 70% 70% }
-													texture = "gfx/interface/icons/international_organizations/law_voting_yes.dds"
-													texture_density = 2
-												}
-
-												pieslice = {
-													texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-													value = "[FixedPointToFloat(ResolutionGlue.GetProgressToDeadline)]"
-													using = color_value_progress_blue
-												}
-
-												pieslice = {
-													texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-													value = "[Subtract_float('(float)100.0', FixedPointToFloat(ResolutionGlue.GetProgressToDeadline))]"
-													using = color_value_progress_gray
-												}
-
-												datacontext = "[ResolutionGlue.GetVoteToEnactAction]"
-
-												tooltipwidget = {
-													using = international_organization_resolution_voting_tooltip
-												}										
-											}
-										}
-									}
 								}
 							}
+							# button_list_paper = {
+							# 	visible = "[PdxGuiWidget.IsUberButtonVisible]"
+							# 	size = { 100% 100% }
+
+							# 	icon = {
+							# 		size = {99% 97%}
+							# 		ignore_layout = yes
+							# 		parentanchor = center
+							# 		block "law_unique_flavor_visible" {
+							# 			# visible = "[Law.IsUnique]"
+							# 		}
+							# 		texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+							# 		texture_density = 2
+							# 		mirror = horizontal
+							# 		alpha = 0.1
+		
+							# 		modify_texture = {
+							# 			texture = "[LawCategory.GetBgCategoryColor]"
+							# 			texture_density = 2
+							# 			blend_mode = multiply
+							# 		}
+							# 	}
+		
+							# 	block "law_action_button_setup" {
+							# 		tooltipwidget = { BasicFunctionalTooltip = {} }
+							# 	}
+
+							# 	hbox = {
+							# 		margin = { 4 0 }
+							# 		spacing = 10
+							# 		layoutpolicy_horizontal = expanding
+							# 		law_item_icon = {}
+
+							# 		vbox = {
+							# 			layoutpolicy_horizontal = expanding
+							# 			text_single = {
+							# 				layoutpolicy_horizontal = expanding
+							# 				using = Font_Size_Small
+							# 				align = nobaseline|left
+							# 				default_format = "#yellow_titles"
+							# 				block "law_title" {
+							# 					# text = "[Law.GetNameWithNoTooltip]"
+							# 				}
+							# 			}
+
+							# 			text_single = {
+							# 				layoutpolicy_horizontal = expanding
+							# 				align = nobaseline|left
+							# 				fontsize = 13
+							# 				block "law_policy" {
+							# 					# visible = "[Player.GetGovernment.HasPolicyForLaw(Law.Self)]"
+							# 					# text = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).GetNameWithNoTooltip]"
+							# 				}
+							# 			}
+
+							# 			text_single = {
+							# 				layoutpolicy_horizontal = expanding
+							# 				align = nobaseline|left
+							# 				fontsize = 13
+							# 				block "law_no_policy" {
+							# 					# visible = "[Not(Player.GetGovernment.HasPolicyForLaw(Law.Self))]"
+							# 					# text = "NO_POLICY_SELECTED"
+							# 				}
+							# 			}
+							# 		}
+
+							# 		hbox = {
+							# 			text_single = {
+							# 				size = {24 24}
+							# 				autoresize = no
+							# 				align = center|nobaseline
+							# 				block "law_policy_level" {
+							# 					# visible = "[Law.HasLevels]"
+							# 					# text = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).GetPolicyLevel]"
+							# 				}
+							# 				using = bg_circle_piechart
+							# 				blockoverride "frame_color" {
+							# 					modify_texture = {
+							# 						using = color_new_gold_texture
+							# 						blend_mode = multiply
+							# 					}
+							# 					modify_texture = {
+							# 						using = color_new_gold_texture
+							# 						blend_mode = add
+							# 						alpha = 0.4
+							# 					}
+							# 				}
+							# 				blockoverride "inside_color" {
+							# 					modify_texture = {
+							# 						using = color_dark_brown_texture
+							# 						blend_mode = multiply
+							# 					}
+							# 					alpha = 0.9
+							# 				}
+							# 			}
+							# 		}
+
+							# 		# block "vote_buttons" {}
+
+							# 		hbox = {
+							# 			block "law_list_item_government_visible" {
+							# 				visible = yes
+							# 			}
+							# 			widget = {
+							# 				size = { 30 30 }
+							# 				using = bg_circle
+							# 				visible = "[Player.GetGovernment.ShouldDisplayProgressForLaw(Law.Self)]"
+	
+							# 				piechart = {
+							# 					size = { 100% 100% }
+							# 					parentanchor = center
+							# 					using = piechart_angles											
+							# 					icon = {
+							# 						parentanchor = center
+							# 						size = { 70% 70% }
+							# 						texture = "gfx/interface/icons/situations/_default.dds"
+							# 						texture_density = 2
+							# 					}
+	
+							# 					pieslice = {
+							# 						texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+							# 						# value = "50"
+							# 						value = "[FixedPointToFloat(Player.GetGovernment.GetPolicyProgressForLaw(Law.Self))]"
+							# 						using = color_value_progress_blue
+							# 					}
+	
+							# 					pieslice = {
+							# 						texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+							# 						# value = "50"
+							# 						value = "[Subtract_float('(float)100.0', FixedPointToFloat(Player.GetGovernment.GetPolicyProgressForLaw(Law.Self)))]"
+							# 						using = color_value_progress_gray
+							# 					}
+							# 				}
+							# 			}
+							# 		}
+
+							# 		hbox = {
+							# 			block "law_list_item_io_visible" {
+							# 				visible = no
+							# 			}
+							# 			widget = {
+							# 				size = { 31 31 }
+							# 				using = bg_circle
+							# 				visible = "[ResolutionGlue.GetOwner.ShouldDisplayProgressForLaw(ResolutionGlue.GetTarget('target').GetLaw.Self)]"
+
+							# 				piechart = {
+							# 					size = { 100% 100% }
+							# 					parentanchor = center
+							# 					using = piechart_angles
+
+							# 					icon = {
+							# 						parentanchor = center
+							# 						size = { 70% 70% }
+							# 						texture = "gfx/interface/icons/situations/_default.dds"
+							# 						texture_density = 2
+							# 					}
+
+							# 					pieslice = {
+							# 						texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+							# 						value = "[FixedPointToFloat(ResolutionGlue.GetOwner.GetPolicyProgressForLaw(ResolutionGlue.GetTarget('target').GetLaw.Self))]"
+							# 						using = color_value_progress_blue
+							# 					}
+
+							# 					pieslice = {
+							# 						texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+							# 						value = "[Subtract_float('(float)100.0', FixedPointToFloat(ResolutionGlue.GetOwner.GetPolicyProgressForLaw(ResolutionGlue.GetTarget('target').GetLaw.Self)))]"
+							# 						using = color_value_progress_gray
+							# 					}
+							# 				}
+							# 			}									
+
+							# 			widget = {
+							# 				size = { 31 31 }
+							# 				using = bg_circle
+							# 				visible = "[Or(ResolutionGlue.EnactResolutionIsActive, ResolutionGlue.RepealResolutionIsActive)]"
+
+							# 				piechart = {
+							# 					size = { 100% 100% }
+							# 					using = piechart_angles
+							# 					parentanchor = center
+
+							# 					icon = {
+							# 						visible = "[Not(ResolutionGlue.HasCountryVotedFromPointer(Player.Self))]"
+							# 						parentanchor = center
+							# 						size = { 70% 70% }
+							# 						texture = "gfx/interface/icons/international_organizations/law_voting.dds"
+							# 						texture_density = 2
+							# 					}
+
+							# 					icon = {
+							# 						visible = "[ResolutionGlue.HasCountryVotedFromPointer(Player.Self)]"
+							# 						parentanchor = center
+							# 						size = { 70% 70% }
+							# 						texture = "gfx/interface/icons/international_organizations/law_voting_yes.dds"
+							# 						texture_density = 2
+							# 					}
+
+							# 					pieslice = {
+							# 						texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+							# 						value = "[FixedPointToFloat(ResolutionGlue.GetProgressToDeadline)]"
+							# 						using = color_value_progress_blue
+							# 					}
+
+							# 					pieslice = {
+							# 						texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+							# 						value = "[Subtract_float('(float)100.0', FixedPointToFloat(ResolutionGlue.GetProgressToDeadline))]"
+							# 						using = color_value_progress_gray
+							# 					}
+
+							# 					datacontext = "[ResolutionGlue.GetVoteToEnactAction]"
+
+							# 					tooltipwidget = {
+							# 						using = international_organization_resolution_voting_tooltip
+							# 					}										
+							# 				}
+							# 			}
+							# 		}
+							# 	}
+							# 	hbox = {
+							# 		text_single = {
+							# 			size = {24 24}
+							# 			autoresize = no
+							# 			align = center|nobaseline
+							# 			block "law_policy_level" {
+							# 				# visible = "[Law.HasLevels]"
+							# 				# text = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).GetPolicyLevel]"
+							# 			}
+							# 			using = bg_circle_piechart
+							# 			blockoverride "frame_color" {
+							# 				modify_texture = {
+							# 					using = color_new_gold_texture
+							# 					blend_mode = multiply
+							# 				}
+							# 				modify_texture = {
+							# 					using = color_new_gold_texture
+							# 					blend_mode = add
+							# 					alpha = 0.4
+							# 				}
+							# 			}
+							# 			blockoverride "inside_color" {
+							# 				modify_texture = {
+							# 					using = color_dark_brown_texture
+							# 					blend_mode = multiply
+							# 				}
+							# 				alpha = 0.9
+							# 			}
+							# 		}
+							# 	}
+							# }
 						}
 					}
 				}		

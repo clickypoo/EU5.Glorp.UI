@@ -11,17 +11,39 @@
 
 		block "background" {
 			hbox = {
-				ecs_scene_viewer_widget =  {
-					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
-					name = "balance_overview_scene"
-					scene = "[Player.GenerateSceneDesc('balance')]"
-					alpha = 0.5
+				# ecs_scene_viewer_widget =  {
+				# 	layoutpolicy_horizontal = expanding
+				# 	layoutpolicy_vertical = expanding
+				# 	name = "balance_overview_scene"
+				# 	scene = "[Player.GenerateSceneDesc('balance')]"
+				# 	alpha = 0.7
 	
-					icon = {
-						size = {100% 100%}
-						using = color_black_texture
-						alpha = 0.5
+				# 	
+
+				# 	
+					
+				# }
+				using = bg_paper_card
+
+				background = {
+					texture = "gfx/interface/illustrations/institutions/banking.dds"
+					fittype = centercrop
+					alpha = 0.3
+				}
+
+				background = {
+					using = color_black_texture
+					alpha = 0.4
+				}
+
+				background = {
+					using = plotchart_grid_texture
+					alpha = 0.2
+
+					modify_texture = {
+						using = color_white_texture
+						blend_mode = add
+						alpha = 1.0
 					}
 				}
 			}
@@ -69,22 +91,26 @@
 			widget = {
 				using = layoutpolicy_expanding
 
-				# block "empty_state" {
-					textbox = {
-						block "empty_state_visibility" {
-							visible = no
-						}
-						block "empty_state_text" {
-							raw_text = "#todo nothing to see here#!"
-						}
-						parentanchor = center
-						align = hcenter|nobaseline
+				textbox = {
+					block "empty_state_visibility" {
+						visible = no
+					}
+					block "empty_state_text" {
+						raw_text = "#todo nothing to see here#!"
+					}
+					parentanchor = center
+					align = hcenter|nobaseline
+				}
+				block "graph_fade_background" {
+					background = {
+						using = color_dark_blue_texture
+						alpha = 0.2
 					}
 					background = {
 						using = color_dark_blue_texture
-						alpha = 1
+						alpha = 0.8
 
-						margin_top = -140
+						margin_top = -50
 
 						modify_texture = {
 							using = bg_fade_vertical_up_mask_texture
@@ -92,7 +118,7 @@
 							alpha = 1
 						}
 					}
-				# }
+				}
 
 				widget = {
 					parentanchor = right|vcenter
@@ -122,7 +148,10 @@
 						plotline = {
 							size = { 100% 100% }
 							using = plot_line
-							width = 5
+
+							block "line_width" {
+								width = 5
+							}
 
 							block "line_color" {
 								color = { 0.24 0.32 0.18 0.7 }
@@ -141,7 +170,6 @@
 					parentanchor = left
 					size = { 15% 100% }
 					position = { 0 0 }
-
 
 					axis = {
 						size = { 100% 80% }
@@ -178,12 +206,12 @@
 							}
 						}
 					}
-					}
+				}
 
 				vbox = {
 					using = layoutpolicy_expanding
 					expand = {}
-					
+
 					hbox = {
 						layoutpolicy_horizontal = expanding
 						margin = {0 5}

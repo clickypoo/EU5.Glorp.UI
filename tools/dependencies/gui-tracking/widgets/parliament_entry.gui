@@ -64,15 +64,7 @@ OutlinerEntryBase = {
 
 				using = piechart_angles
 
-				background = {
-					texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-					texture_density = 2
-					alpha = 0.5
-					modify_texture = {
-						using = color_dark_brown_texture
-						blend_mode = multiply
-					}
-				}
+				using = bg_piechart_dark
 				icon = {
 					texture = "gfx/interface/icons/flat_icons/parliament.dds"
 					parentanchor = center

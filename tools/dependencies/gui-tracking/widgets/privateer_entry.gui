@@ -19,7 +19,7 @@ OutlinerEntryBase = {
 
 				OutlinerTextBase = {
 					autoresize = yes
-					raw_text = "[Privateer.GetPowerChange|+=%]"
+					raw_text = "[Privateer.GetIncome|2+=]@income!"
 				}
 			}
 		}
@@ -34,7 +34,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				autoresize = no
 				align = left
-				raw_text = "[Privateer.GetPowerChange|+=%]"
+				raw_text = "[Privateer.GetIncome|2+=]@gold!"
 			}
 		}
 	}

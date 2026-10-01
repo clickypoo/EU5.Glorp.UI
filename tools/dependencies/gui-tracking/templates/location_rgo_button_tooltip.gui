@@ -187,6 +187,65 @@ template location_rgo_button_tooltip {
                                     }
                                 }
                             }
+
+                            TooltipManualTableField = {
+                                blockoverride "field_content" {
+                                    text_single = {
+                                        layoutpolicy_horizontal = expanding
+                                        autoresize = no
+                                        text = "[market_access_with_icon|e]"
+                                    }
+                                    text_single = {
+
+                                        autoresize = yes
+                                        raw_text = "[Location.GetMarketAccess|0%]"
+                                        default_format = "#R"
+                                        visible = "[LessThan_CFixedPoint(Location.GetMarketAccess, '(CFixedPoint)0.5')]"
+                                    }
+                                    text_single = {
+                                        autoresize = yes
+                                        raw_text = "[Location.GetMarketAccess|0%]"
+                                        default_format = "#O"
+                                        visible = "[And(GreaterThanOrEqualTo_CFixedPoint(Location.GetMarketAccess, '(CFixedPoint)0.5'), LessThan_CFixedPoint(Location.GetMarketAccess, '(CFixedPoint)0.9'))]"
+                                    }
+                                    text_single = {
+                                        autoresize = yes
+                                        raw_text = "[Location.GetMarketAccess|0%]"
+                                        default_format = "#G"
+                                        visible = "[GreaterThanOrEqualTo_CFixedPoint(Location.GetMarketAccess, '(CFixedPoint)0.9')]"
+                                    }
+                                    tooltipwidget = {
+                                    	ContextualTooltipType = {
+                                    		blockoverride "title_icon" {
+                                    			icon = {
+                                    				using = tooltip_title_icon_size
+                                    				texture = "[GetConceptTexture('market_access')]"
+                                    			}
+                                    		}
+                                        
+                                    		blockoverride "title_text" {
+                                    			text = "[market_access]"
+                                    		}
+                                    		blockoverride "concept_link" {
+                                    			text = "[market_access|e]"
+                                    		}
+                                    		blockoverride "tooltip_content" {
+                                    			TooltipTextBlock = {
+                                    				blockoverride "text" {
+                                    					text = "BUILDING_MARKET_ACCESS_HERE_DESC"
+                                    				}
+                                    			}
+                                    			TooltipTextBlock = {
+                                    				blockoverride "text" {
+                                    					text = "RGO_MARKET_ACCESS_MECHANIC_DESC"
+                                    					default_format = "#flavor"
+                                    				}
+                                    			}
+                                    		}
+                                    	}
+                                    }
+                                }
+                            }
                         }
                     }
 

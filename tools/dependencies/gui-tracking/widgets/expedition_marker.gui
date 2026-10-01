@@ -1,0 +1,78 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
+widget = {
+	name = "expedition_marker"
+	allow_outside = yes
+	size = { 56 78 }
+	position = { 0 0 }
+
+	datacontext = "[ExpeditionMarker.GetDisplayExpedition]"
+
+	portrait_standard_head_button = {
+		using = character_portrait_bg
+		datacontext = "[Expedition.GetLeader]"
+		size = { 56 66 }
+		allow_outside = yes
+
+		icon = {
+			block "character_frame_texture" {
+				texture = "gfx/interface/component_decoration/character_frames/character_frame_1.dds"
+			}
+			texture_density = 2
+			size = { 100% 100% }
+		}
+
+		blockoverride "portrait_click" {
+			action_tooltip = {
+				click_type = left
+				click_mode = single
+
+				title = "OUTLINER_OPEN_EXPEDITIONS"
+				on_action = "[ExpeditionMarker.OpenExpeditionsLateralView]"
+			}
+		}
+
+		blockoverride "character_contextmenu" {}
+		blockoverride "rightclick" {}
+
+		blockoverride "character_tooltip" {
+			tooltip_enabled = yes
+			tooltipwidget = {
+				datacontext = "[ExpeditionMarker.GetDisplayExpedition]"
+				using = Expedition_tooltip
+			}
+		}
+		widget = {
+			size = { 40 24 }
+			parentanchor = hcenter|bottom
+			position = {0 12}
+			datacontext = "[Expedition.GetType]"
+			using = bg_paper_card
+			using = expedition_card_header_color
+
+			card_header_button_01 = {
+				size = { 100% 100% }
+	
+				tooltipwidget = {
+					using = Expedition_tooltip
+				}
+	
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+	
+					title = "OUTLINER_OPEN_EXPEDITIONS"
+					on_action = "[ExpeditionMarker.OpenExpeditionsLateralView]"
+				}
+	
+				widget = {
+					parentanchor = center
+					size = { 16 16 }
+					using = expedition_category_icon
+					using = bg_circle_piechart
+				}
+			}
+		}
+	}
+}

@@ -4,7 +4,7 @@
 template cabinet_entry_action_progress {
 	hbox = {
 		spacing = 4
-		portrait_standard_head_button = {
+		portrait_standard_head_cached_button = {
 			datacontext = "[Cabinet.GetCharacter]"
 			visible = "[Cabinet.IsCharacterSet]"
 			size = { 28 28 }
@@ -28,7 +28,7 @@ template cabinet_entry_action_progress {
 			blockoverride "rightclick" {}
 			# blockoverride "hover" {}
 		}
-		portrait_standard_head_button = {
+		portrait_standard_head_cached_button = {
 			datacontext = "[Cabinet.GetCharacter]"
 			visible = "[Not(Cabinet.IsCharacterSet)]"
 			size = { 28 28 }

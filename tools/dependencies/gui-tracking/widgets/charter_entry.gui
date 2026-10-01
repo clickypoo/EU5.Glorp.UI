@@ -29,10 +29,10 @@ OutlinerEntryBase = {
 						raw_text = "[ColonialCharter.GetMonthlyMigration]@population!"
 					}
 					OutlinerTextBase = {
-						minimumsize = { 65 -1 }
-						maximumsize = { 65 -1 }
+						minimumsize = { 90 -1 }
+						maximumsize = { 90 -1 }
 						autoresize = yes
-						raw_text = "[ColonialCharter.GetProgress|2]%"
+						raw_text = "[ColonialCharter.GetCompletionETAShort]"
 					}
 				}
 				

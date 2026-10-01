@@ -38,10 +38,7 @@ widget = {
 			}
 		}
 		background = {
-			texture = "gfx/interface/component_tiles/map_markers/map_marker_shadow.dds"
-			texture_density = 2
-			spriteType = corneredstretched
-			spriteBorder = {35 35}
+			using = bg_map_marker_shadow_texture
 			margin_bottom = 15
 			blend_mode = multiply
 			alpha = 0.5

@@ -3,6 +3,7 @@
 
 container = {
 	name = "toll_marker"
+	max_update_rate = 4
 	allow_outside = yes
 
 	datacontext = "[TollMarker.GetLocation]"

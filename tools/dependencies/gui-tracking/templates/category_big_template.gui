@@ -74,8 +74,7 @@ template category_big_template {
 					size = {30 -1}
 					layoutpolicy_vertical = expanding
 					background = {
-						texture = "gfx/interface/component_tiles/balance_card_bg.dds"
-						texture_density = 2
+						using = bg_balance_card_texture
 						using = button_outliner_effect
 					}
 					widget = {
@@ -99,8 +98,7 @@ template category_big_template {
 				widget = {
 					size = { 23 23 }
 					background = {
-						texture = "gfx/interface/buttons/checkbox_bg_round.dds"
-						texture_density = 2
+						using = bg_checkbox_round_texture
 						using = button_outliner_effect
 					}
 

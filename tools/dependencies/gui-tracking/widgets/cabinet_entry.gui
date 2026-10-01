@@ -13,7 +13,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 5
 
-				portrait_standard_head_button = {
+				portrait_standard_head_cached_button = {
 					datacontext = "[Cabinet.GetCharacter]"
 					size = { 28 28 }
 			

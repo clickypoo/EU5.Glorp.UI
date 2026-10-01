@@ -14,24 +14,27 @@ widget = {
 		# Siege banner
 		widget = {
 			visible = "[UnitMarker.HasSiege]"
-			datacontext = "[UnitMarker.GetLeadingUnit]"
-			datacontext = "[UnitMarker.GetSiege]"
-
-			parentanchor = right|vcenter
-			widgetanchor = left|vcenter
 			allow_outside = yes
 
-			unit_maker_siege_banner = {
-				visible = "[UnitMarker.ShouldBeShownFullWidth]"
-				widgetanchor = vcenter|left
-				parentanchor = center
-			}		
+			widget = {
+				datacontext = "[UnitMarker.GetSiege]"
+				parentanchor = right|vcenter
+				widgetanchor = left|vcenter
+				allow_outside = yes
 
-			unit_maker_siege_banner = {
-				position = { @[20 - unit_marker_siege_banner_short_offset] 0 }
-				visible = "[And(UnitMarker.ShouldBeShownShortWidth, Not(UnitMarker.ShouldBeShownSmallSize))]"
-				widgetanchor = vcenter|left
-				parentanchor = center
+				unit_maker_siege_banner = {
+					visible = "[UnitMarker.ShouldBeShownFullWidth]"
+					widgetanchor = bottom|left
+					parentanchor = left
+					position = { 0 -2 }
+				}		
+
+				unit_maker_siege_banner = {
+					position = { @[20 - unit_marker_siege_banner_short_offset] 0 }
+					visible = "[And(UnitMarker.ShouldBeShownShortWidth, Not(UnitMarker.ShouldBeShownSmallSize))]"
+					widgetanchor = vcenter|left
+					parentanchor = center
+				}
 			}
 		}
 

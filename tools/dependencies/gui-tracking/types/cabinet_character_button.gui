@@ -22,22 +22,6 @@
 
 			icon = {
 				size = { 25 25 }
-				texture = "gfx/interface/buttons/flats/replace.dds"
-				visible = "[Cabinet.IsCharacterSet]"
-				modify_texture = {
-					using = color_new_gold_texture
-					blend_mode = add
-				}
-				glow = {
-					name = "drop_shadow"
-					glow_radius = 3
-					color = {0.0 0.0 0.0 1.0}
-					alpha = 0.8
-				}	
-			}
-	
-			icon = {
-				size = { 25 25 }
 				texture = "gfx/interface/buttons/estate_privileges/ep_plus.dds"
 				visible = "[Not(Cabinet.IsCharacterSet)]"
 				modify_texture = {
@@ -76,18 +60,24 @@
                 }
 				
 				text_single = {
-					maximumsize = {280 -1}
+					layoutpolicy_horizontal = expanding
+					size = { -1 25 }
+					autoresize = no
+					elide = right
 					align = nobaseline
 					using = Font_Type_Flavor
-					text = "[Cabinet.GetCharacter.GetCourtCountry.Custom('GetHeadOfCabinetName')] [Cabinet.GetCharacter.GetNameWithNoTooltip], [Cabinet.GetCharacter.GetAgeInYears]"
+					text = "[Cabinet.GetCharacter.GetCourtCountry.Custom('GetHeadOfCabinetName')] [Cabinet.GetCharacter.GetNameToFitWithNoTooltip(Select_int32(LateralView.Vars.Exists( 'cabinet_compacted' ), '(int32)20', '(int32)-1'), '(bool)no')], [Cabinet.GetCharacter.GetAgeInYears]"
 					visible = "[And(Cabinet.IsCharacterSet, Cabinet.GetCharacter.IsHeadOfCabinet)]"
 				}
 				
 				text_single = {
-					maximumsize = {280 -1}
+					layoutpolicy_horizontal = expanding
+					size = { -1 25 }
+					autoresize = no
+					elide = right
 					align = nobaseline
 					using = Font_Type_Flavor
-					text = "[Localize('game_concept_cabinet_member')] [Cabinet.GetCharacter.GetNameWithNoTooltip], [Cabinet.GetCharacter.GetAgeInYears]"
+					text = "[Cabinet.GetCharacter.GetNameToFitWithNoTooltip(Select_int32(LateralView.Vars.Exists( 'cabinet_compacted' ), '(int32)25', '(int32)-1'), '(bool)no')], [Cabinet.GetCharacter.GetAgeInYears]"
 					visible = "[And(Cabinet.IsCharacterSet, Not(Cabinet.GetCharacter.IsHeadOfCabinet))]"
 				}
 	
@@ -97,8 +87,6 @@
 					text = "ADD_CABINET_CHARACTER"
 					visible = "[Not(Cabinet.IsCharacterSet)]"
 				}
-
-                expand = {}
 
 				hbox = {
 					visible = "[Cabinet.IsCharacterSet]"
@@ -140,102 +128,6 @@
 						}
 					}
 				}
-                hbox = {
-                    tagtooltip_enabled = yes
-                    visible = "[Cabinet.IsCharacterSet]"
-                    datacontext = "[Cabinet.GetCharacter]"
-                    tooltip = "[Character.GetAbilityTooltip]"
-					spacing = 8
-
-                    hbox = {
-                        visible = "[Cabinet.IsCharacterSet]"
-                        spacing = 5
-                        hbox = {
-                            icon = {
-                                name = "adm"
-                                size = { 20 20 }
-                                using = icon_adm_alt
-                            }
-                            text_single = {
-                                visible = "[Or(Cabinet.IsActive, Cabinet.IsCharacterSet)]"
-                                text = "[Cabinet.GetCharacter.GetAbility('adm')]"
-                                align = nobaseline
-                            }
-							background = {
-								visible = "[And(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('adm'))]"
-								texture = "gfx/interface/component_masks/mask_rough_edges.dds"
-								modify_texture = {
-									using = color_paper_texture
-									blend_mode = multiply
-								}
-								margin = { 2 2 }
-							}
-                        }
-                        hbox = {
-                            icon = {
-                                name = "dip"
-                                size = { 20 20 }
-                                using = icon_dip_alt
-                            }
-                            text_single = {
-                                visible = "[Or(Cabinet.IsActive, Cabinet.IsCharacterSet)]"
-                                text = "[Cabinet.GetCharacter.GetAbility('dip')]"
-                                align = nobaseline
-                            }
-							background = {
-								visible = "[And(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('dip'))]"
-								texture = "gfx/interface/component_masks/mask_rough_edges.dds"
-								modify_texture = {
-									using = color_paper_texture
-									blend_mode = multiply
-								}
-								margin = { 2 2 }
-							}
-                        }
-                        hbox = {
-                            icon = {
-                                name = "mil"
-                                size = { 20 20 }
-                                using = icon_mil_alt
-                            }
-                            text_single = {
-                                visible = "[Or(Cabinet.IsActive, Cabinet.IsCharacterSet)]"
-                                text = "[Cabinet.GetCharacter.GetAbility('mil')]"
-                                align = nobaseline
-                            }
-							background = {
-								visible = "[And(Cabinet.IsActive, Cabinet.GetAction.IsAbilityType('mil'))]"
-								texture = "gfx/interface/component_masks/mask_rough_edges.dds"
-								modify_texture = {
-									using = color_paper_texture
-									blend_mode = multiply
-								}
-								margin = { 2 2 }
-							}
-                        }
-                    }
-                }
 			}
-            # HEAD OF CABINET
-            widget = {
-                visible = "[Cabinet.GetCharacter.IsHeadOfCabinet]"
-                tooltip = "[head_of_the_cabinet|e]"
-                tagtooltip_enabled = yes
-                size = { 32 32 }
-                icon = {
-                    using = bg_circle_piechart
-                    using = bg_circle_alt_brown
-                    size = { 91% 91% }
-                    parentanchor = center
-
-                    texture = "gfx/interface/icons/character_roles/head_of_cabinet.dds"
-                    glow = {
-                        name = "drop_shadow"
-                        glow_radius = 3
-                        color = {0.0 0.0 0.0 1.0}
-                        alpha = 0.6
-                    }
-                }
-            }
 		}
 	}

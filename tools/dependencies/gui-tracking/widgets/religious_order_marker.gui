@@ -1,0 +1,36 @@
+# vanilla: in_game/gui/map_markers.gui
+# mod: in_game/gui/map_markers.gui
+
+widget = {
+	name = "religious_order_marker"
+	allow_outside = yes
+	size = "[Select_CVector2f(LessThanOrEqualTo_int32(GetZoomStep, '(int32)4'), '(CVector2f)32, 32', Select_CVector2f(LessThanOrEqualTo_int32(GetZoomStep, '(int32)5'), '(CVector2f)30, 30', Select_CVector2f(LessThanOrEqualTo_int32(GetZoomStep, '(int32)6'), '(CVector2f)28, 28', Select_CVector2f(LessThanOrEqualTo_int32(GetZoomStep, '(int32)7'), '(CVector2f)26, 26', '(CVector2f)24, 24'))))]"
+	position = { 0 0 }
+
+	datacontext = "[ReligiousOrderMarker.GetDisplayOrder]"
+
+	icon = {
+		parentanchor = bottom|hcenter
+		widgetanchor = center
+		size = "[Select_CVector2f(LessThanOrEqualTo_int32(GetZoomStep, '(int32)4'), '(CVector2f)32, 32', Select_CVector2f(LessThanOrEqualTo_int32(GetZoomStep, '(int32)5'), '(CVector2f)30, 30', Select_CVector2f(LessThanOrEqualTo_int32(GetZoomStep, '(int32)6'), '(CVector2f)28, 28', Select_CVector2f(LessThanOrEqualTo_int32(GetZoomStep, '(int32)7'), '(CVector2f)26, 26', '(CVector2f)24, 24'))))]"
+		texture = "[ReligiousOrder.GetIcon]"
+		texture_density = 2
+
+		alwaystransparent = no
+		onmousehierarchyenter = "[ReligiousOrder.HighlightOnMap(PdxGuiWidget.AccessSelf)]"
+
+		tooltipwidget = {
+			using = ReligiousOrder_tooltip
+		}
+
+		icon = {
+			visible = "[And(IsBuildDebug, ReligiousOrder.IsUsingDefaultIcon)]"
+			parentanchor = center
+			size = { 100% 100% }
+			texture = "[ReligiousOrder.GetIcon]"
+			texture_density = 2
+			color = "[ReligiousOrder.GetColorVector]"
+			alpha = 0.65
+		}
+	}
+}

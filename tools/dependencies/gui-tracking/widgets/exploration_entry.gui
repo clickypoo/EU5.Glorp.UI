@@ -12,7 +12,7 @@ OutlinerEntryBase = {
 				using = outliner_entry_margin
 				spacing = 4
 
-				portrait_standard_head_button = {
+				portrait_standard_head_cached_button = {
 					datacontext = "[Exploration.GetCharacter]"
 					size = { 28 28 }
 
@@ -22,16 +22,21 @@ OutlinerEntryBase = {
 						title = "change_explorer"
 					}
 
-					action_button = {
+					button = {
+						visible = "[PdxGuiWidget.IsUberButtonVisible]"
 						parentanchor = center
 						size = { 100% 90% }
-						actor = "[Player]"
 						enabled = yes
-						parameter = {
-							parameter_name = "target"
-							parameter_value = "[Exploration.GetArea]"
+						scripted_action_tooltip = {
+							click_type = left
+							click_mode = single
+							action_name = "change_explorer"
+							actor = "[Player]"
+							parameter = {
+								parameter_name = "target"
+								parameter_value = "[Exploration.GetArea]"
+							}
 						}
-						left_action = { action_name = "change_explorer" }
 						tooltip_enabled = no
 					}
 

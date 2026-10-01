@@ -9,7 +9,7 @@
 		using = overlay_texture_overlay
 
 		icon = {
-			size = { 80% 60% }
+			block "estate_add_reform_button_icon_size" { size = { 80% 60% } }
 			parentanchor = center
 			texture = "gfx/interface/buttons/estate_privileges/ep_plus.dds"
 			texture_density = 2
@@ -39,6 +39,16 @@
 					click_mode = single
 					title = "REFORMS_SIDEMENU"
 					on_action = "[ShowGovernmentReformsLateralView]"
+					enabled = "[GreaterThan_int32(Subtract_int32(GovernmentView.GetPossibleReformsAmount, GovernmentView.GetImplementedReforms), '(int32)0')]"
+					conditions = "[MakeItFailLoc('REFORMS_AT_MAXIMUM_CAPACITY')]"
+				}
+
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+					click_modifier = ctrl
+					title = "REFORMS_SIDEMENU_FULLSCREEN"
+					on_action = "[ShowGovernmentReformsPerAgeLateralView]"
 					enabled = "[GreaterThan_int32(Subtract_int32(GovernmentView.GetPossibleReformsAmount, GovernmentView.GetImplementedReforms), '(int32)0')]"
 					conditions = "[MakeItFailLoc('REFORMS_AT_MAXIMUM_CAPACITY')]"
 				}

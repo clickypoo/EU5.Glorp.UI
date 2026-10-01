@@ -25,8 +25,22 @@
 						}
 
 						icon = {
+							visible = "[Not(InternationalOrganization.MakeScope.GetVariable('iberian_union_active').IsSet)]"
 							size = {30 30}
 							texture = "[InternationalOrganization.GetIcon]"
+							texture_density = 2
+							glow = {
+								name = "drop_shadow"
+								glow_radius = 3
+								color = {0.0 0.0 0.0 1.0}
+								alpha = 0.3
+							}
+						}
+
+						icon = {
+							visible = "[InternationalOrganization.MakeScope.GetVariable('iberian_union_active').IsSet]"
+							size = {30 30}
+							texture = "[InternationalOrganization.GetIberianUnionCenterArt]"
 							texture_density = 2
 							glow = {
 								name = "drop_shadow"
@@ -217,7 +231,9 @@
 							}
 
 							blockoverride "tab_text"{
-								text = "OVERVIEW"
+								block "organization_overview_tab_text" {
+									text = "OVERVIEW"
+								}
 							}
 							tooltipwidget = {
 								using = SubTabIOOverviewTooltip
@@ -241,9 +257,11 @@
 							tooltipwidget = {
 								using = SubTabIOTreasuryTooltip
 							}
-							action_tooltip = {
-								title = "OPEN_TAB"
-								on_action = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'treasury' )]"
+							block "organization_treasury_tab_action_tooltip" {
+								action_tooltip = {
+									title = "OPEN_TAB"
+									on_action = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'treasury' )]"
+								}
 							}
 							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'treasury' )]"
 						}
@@ -439,10 +457,13 @@
 							block "organization_custom_tab_tooltip" {
 								tooltip_enabled = no
 							}
-							# block "organization_custom_tab_click" {
-								onclick = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'custom' )]"
-								down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'custom' )]"
-							# }
+							block "organization_custom_tab_action_tooltip" {
+								action_tooltip = {
+									title = "OPEN_TAB"
+									on_action = "[InternationalOrganizationsView.Vars.Set( 'organizations', 'custom' )]"
+								}
+							}
+							down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'custom' )]"
 						}
 						
 						button_secondary_tab_alt = {

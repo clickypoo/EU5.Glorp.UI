@@ -592,6 +592,7 @@ lateralview = {
 								texture = "gfx/interface/icons/flat_icons/balance/cost_of_army.dds"		
 							}
 							text_single = {
+								maximumsize = { 49 -1 }
 								raw_text = "[SingleUnitWindow.GetMaintenanceCost|2R]@expense!"
 							}
 							
@@ -615,6 +616,7 @@ lateralview = {
 								texture = "gfx/interface/icons/resources/manpower.dds"			
 							}
 							text_single = {
+								maximumsize = { 49 -1 }
 								text = "[Unit.GetMaintenanceCost|+=0]"
 							}
 
@@ -641,6 +643,7 @@ lateralview = {
 								texture = "gfx/interface/icons/resources/sailors.dds"			
 							}
 							text_single = {
+								maximumsize = { 49 -1 }
 								text = "[Unit.GetMaintenanceCost|+=0]"
 							}
 
@@ -703,6 +706,7 @@ lateralview = {
 							}
 
 							text_single = {
+								maximumsize = { 49 -1 }
 								text = "[Unit.GetDailyFoodBalance|+=2]"
 							}
 
@@ -739,6 +743,7 @@ lateralview = {
 								}
 							}
 							text_single = {
+								maximumsize = { 49 -1 }
 								text = "[SingleUnitWindow.GetSelectedUnit.GetArtilleryBonus|G2]"
 							}
 
@@ -769,14 +774,14 @@ lateralview = {
 											blockoverride "block_title" {
 												text = "ARTILLERY_BONUS_BY_FORT_LEVEL"
 											}
-											textcontext = "[SingleUnitWindow.GetSelectedUnit.GetArtilleryBonusFortFortsTooltip]"
+											lowpriotextcontext = "[SingleUnitWindow.GetSelectedUnit.GetArtilleryBonusFortFortsTooltip]"
 										}
 										TooltipScrolledStringPairList = {
 											blockoverride "block_scrollarea" { maximumsize = { -1 300 } minimumsize = { -1 30 } }
 											blockoverride "block_title" {
 												text = "TOTAL_ARTILLERY_BONUS"
 											}
-											textcontext = "[SingleUnitWindow.GetSelectedUnit.GetArtilleryBonusTooltip]"
+											lowpriotextcontext = "[SingleUnitWindow.GetSelectedUnit.GetArtilleryBonusTooltip]"
 										}
 									}
 								}
@@ -804,6 +809,7 @@ lateralview = {
 								texture_density = 2
 							}
 							text_single = {
+								maximumsize = { 49 -1 }
 								text = "[Unit.GetAccumulatedUnitStat('blockade_capacity')]"
 							}
 							expand = {}
@@ -823,6 +829,7 @@ lateralview = {
 								texture = "gfx/interface/icons/location_icons/supply_limit.dds"
 							}
 							text_single = {
+								maximumsize = { 49 -1 }
 								text = "[Unit.GetTotalAttritionWeight|2R]"
 							}
 
@@ -849,6 +856,7 @@ lateralview = {
 								texture_density = 2
 							}
 							text_single = {
+								maximumsize = { 49 -1 }
 								text = "[Unit.GetAccumulatedUnitStat('maritime_presence')]"
 							}
 							expand = {}
@@ -871,6 +879,7 @@ lateralview = {
 								texture = "gfx/interface/icons/military_army/combined_arms.dds"
 							}
 							text_single = {
+								maximumsize = { 49 -1 }
 								text = "[Unit.GetCombinedArmsBonus|+=2%]"
 							}
 
@@ -1116,7 +1125,6 @@ lateralview = {
 																
 																enabled = "[UnitActionItem.IsEnabled]"
 																input_action = "[UnitActionItem.GetShortcut]"
-																use_global_input_instance = yes
 																datacontext = "[SingleUnitWindow.GetBalanceAction]"
 																tooltipwidget = {
 																	using = UnitAction_tooltip
@@ -1312,7 +1320,7 @@ lateralview = {
 																			using = subunit_illustration
 		
 																			card_header_button_04 = {
-																				visible = "[CanUpgradeSubUnit(SubUnit.Self)]"
+																				visible = "[SingleUnitWindow.IsSubUnitUpgradable(SubUnit.Self)]"
 																				parentanchor = bottom|hcenter
 																				size = { 18 18 }
 																				using = bg_circle_alt_brown
@@ -1326,11 +1334,11 @@ lateralview = {
 																					click_mode = confirm
 																					title = "UPGRADE_SUBUNIT"
 																					on_action = "[UpgradeSubUnit(SubUnit.Self)]"
-																					enabled = "[CanUpgradeSubUnit(SubUnit.Self)]"
+																					enabled = "[SingleUnitWindow.IsSubUnitUpgradable(SubUnit.Self)]"
 																					description = "[CanUpgradeSubUnitTooltip(SubUnit.Self)]"
 																				}
 		
-																				enabled = "[CanUpgradeSubUnit(SubUnit.Self)]"
+																				enabled = "[SingleUnitWindow.IsSubUnitUpgradable(SubUnit.Self)]"
 																				tooltipwidget = { BasicFunctionalTooltip = {} }
 																			}
 																			

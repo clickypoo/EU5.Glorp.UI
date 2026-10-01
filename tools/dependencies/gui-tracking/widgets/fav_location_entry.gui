@@ -31,17 +31,27 @@ OutlinerEntryBase = {
 				}
 
 				OutlinerTextBase = {
+					name = "fav_location_entry_tax_base"
 					maximumsize = { 60 -1 }
 					minimumsize = { 60 -1 }
 					autoresize = yes
 					raw_text = "[Location.GetTotalTaxBase|2] @tax_base!"
+
+					tooltipwidget = {
+						using = location_tax_base_tooltip
+					}
 				}
 
 				OutlinerTextBase = {
+					name = "fav_location_entry_population"
 					maximumsize = { 60 -1 }
 					minimumsize = { 60 -1 }
 					autoresize = yes
 					raw_text = "[Location.GetTotalPopulation] @population!"
+
+					tooltipwidget = {
+						using = population_location_tooltip
+					}
 				}
 			}
 

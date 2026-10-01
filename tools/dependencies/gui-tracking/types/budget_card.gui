@@ -32,6 +32,7 @@
 			}
 
 			text_single = {
+				default_format = "#explanation_link"
 				using = layoutpolicy_expanding
 				autoresize = no
 				align = left|nobaseline

@@ -68,7 +68,7 @@ OutlinerEntryBase = {
 
 	blockoverride "icon_content" {
 		OutlinerIconBg = {
-			portrait_standard_head_button = {
+			portrait_standard_head_cached_button = {
 				datacontext = "[Character]"
 				alwaystransparent = yes
 				parentanchor = center

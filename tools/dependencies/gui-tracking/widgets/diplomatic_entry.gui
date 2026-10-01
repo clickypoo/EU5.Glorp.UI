@@ -23,6 +23,21 @@ OutlinerEntryBase = {
 			title = "TAB_TOOLTIP_DIPLOMACY_LEFT_CLICK"
 			on_action = "[OutlinerDiplomacyEntry.OnClick]"
 		}
+
+		action_tooltip = {
+			visible = "[Country.IsValid]"
+			click_type = right
+			click_mode = single
+
+			cursor = "country_menu"
+			title = "CLICK_ACTION_COUNTRY_CONTEXT_MENU"
+			on_action = "[PdxGuiWidget.ToggleContextMenu]"
+		}
+
+		contextmenu_enabled = "[Country.IsValid]"
+		contextmenu_widget = {
+			CountryContextMenu = {}
+		}
 	}
 
 	blockoverride "category_color" {

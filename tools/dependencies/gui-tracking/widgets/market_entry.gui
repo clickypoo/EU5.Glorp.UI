@@ -73,6 +73,47 @@ OutlinerEntryBase = {
 						alpha = 0.3
 					}
 				}
+
+				widget = {
+					size = { 7 20 }
+					allow_outside = yes
+
+					tooltipwidget = {
+						using = Market_food_change_tooltip
+					}
+
+					barchart = {
+						size = { 100% 100% }
+						direction = vertical
+						alwaystransparent = yes
+						barslice_no_highlight = {
+							texture = "gfx/interface/progressbars/progress_bar_red_alt.dds"
+							value = "[Subtract_float(FixedPointToFloat(Market.GetMaxFoodStockpile), FixedPointToFloat(Market.GetFoodStockpile))]"
+							color = { 1 1 1 1 }
+							alwaystransparent = yes
+							
+						}
+						barslice_no_highlight = {
+							texture = "gfx/interface/progressbars/progress_bar_green_alt.dds"
+							value = "[FixedPointToFloat(Market.GetFoodStockpile)]"
+							color = { 1 1 1 1 }
+							alwaystransparent = yes
+						}
+					}
+
+					icon = {
+						size = { 100% 100% }
+						texture = "gfx/interface/component_tiles/square_outline_alt.dds"
+						texture_density = 2
+						spriteType = corneredstretched
+						spriteBorder = { 2 2 }
+						spriteBorder_left = 0
+						modify_texture = {
+							using = color_super_dark_brown_texture
+							blend_mode = multiply
+						}
+					}
+				}
 						
 				OutlinerTextBase = {
 					visible = "[Not(GreaterThan_int32(Market.GetMerchantRanking(Player.Self), '(int32)0'))]"
@@ -128,23 +169,36 @@ OutlinerEntryBase = {
 						icon = {
 							size = {14 14}
 							texture = "gfx/interface/icons/flat_icons/parliament_needs.dds"
-							visible = "[Not(And(Not(MarketCountryNeeds.HasBuildingsMissingGoods), Not(MarketCountryNeeds.HasGovernmentMissingGoods)))]"
+							visible = "[MarketCountryNeeds.HasGovernmentMissingGoods]"
 
 							using = bg_banner_button_vertical
 
 							blockoverride "banner_button_color" {
 								modify_texture = {
-									visible = "[And(MarketCountryNeeds.HasBuildingsMissingGoods, Not(MarketCountryNeeds.HasGovernmentMissingGoods))]"
-									using = color_yellow_texture
-									alpha = 0.6
-								}
-								modify_texture = {
-									visible = "[MarketCountryNeeds.HasGovernmentMissingGoods]"
 									using = color_dark_red_texture
 								}
 							}
 							tooltipwidget = {
 								using = market_hub_gov_needs_tooltip
+							}
+						}
+
+						icon = {
+							shaderfile = "gfx/FX/pdxgui_default.shader"
+							size = {14 14}
+							texture = "gfx/interface/icons/alerts_icons/buildings_missing_input.dds"
+							visible = "[MarketCountryNeeds.HasBuildingsMissingGoods]"
+
+							using = bg_banner_button_vertical
+
+							blockoverride "banner_button_color" {
+								modify_texture = {
+									using = color_yellow_texture
+									alpha = 0.6
+								}
+							}
+							tooltipwidget = {
+								using = market_hub_building_needs_tooltip
 							}
 						}
 
@@ -168,7 +222,7 @@ OutlinerEntryBase = {
 						}
 
 						icon = {
-							visible = "[Or(Market.HasStarvingProvinces, Market.WillRunOutOfFoodStochpile)]"
+							visible = "[Or(Market.HasStarvingProvinces, Market.WillRunOutOfFoodStockpile)]"
 							size = {14 14}
 							texture = "gfx/interface/icons/location_icons/food.dds"
 
@@ -176,7 +230,7 @@ OutlinerEntryBase = {
 
 							blockoverride "banner_button_color" {
 								modify_texture = {
-									visible = "[And(Not(Market.HasStarvingProvinces), Market.WillRunOutOfFoodStochpile)]"
+									visible = "[And(Not(Market.HasStarvingProvinces), Market.WillRunOutOfFoodStockpile)]"
 									using = color_yellow_texture
 									alpha = 0.6
 								}
@@ -203,7 +257,7 @@ OutlinerEntryBase = {
 						OutlinerTextBase = {
 							minimumsize = { 45 -1 }
 							maximumsize = { 45 -1 }
-							raw_text = "[Market.GetTotalMerchantCapacity(Player.Self)|1W]@trade_capacity!"
+							raw_text = "[Market.GetTotalMerchantCapacity(Player.Self)|~W]@trade_capacity!"
 						}
 						icon = {
 							size = {14 14}
@@ -217,7 +271,7 @@ OutlinerEntryBase = {
 						OutlinerTextBase = {
 							minimumsize = { 55 -1 }
 							maximumsize = { 55 -1 }
-							raw_text = "[Multiply_CFixedPoint(Merchant.GetTotalTradeProfit, Country.GetModifier('trade_income'))|2+=]@income!"
+							raw_text = "[Merchant.GetProjectedTradeIncome|~+=]@income!"
 						}
 						tooltipwidget = {
 							using = market_hub_trade_tooltip
@@ -287,6 +341,7 @@ OutlinerEntryBase = {
 		}
 
 		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightMarket(Market.Self)]"
+		onmousehierarchyenter = "[PdxGuiWidget.SetTradeLinesMarket(Market.Self)]"
 		ondoubleclick = "[PanToLocation(Market.GetCenterLocation)]"
 	}
 
