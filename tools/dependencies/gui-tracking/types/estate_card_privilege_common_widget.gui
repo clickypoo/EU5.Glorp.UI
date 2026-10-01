@@ -2,11 +2,10 @@
 # mod: in_game/gui/government_lateralview.gui
 
 	type estate_card_privilege_common_widget = estate_privilege_action_button_alt {
-		datacontext = "[PrivilegeItem.GetUIAction]"
 		datacontext = "[PrivilegeItem.GetPrivilege]"
 
 		blockoverride "icon_texture" {
-			visible = "[Or(UIActionProvider.IsEnabled, PrivilegeItem.HasPrivilege)]"
+			visible = "[Or(PrivilegeItem.IsEnabled, PrivilegeItem.HasPrivilege)]"
 			texture = "[GetEstatePrivilegeIcon(PrivilegeItem.GetPrivilege)]"
 		}
 		blockoverride "estate_privilege_size" {
@@ -14,11 +13,11 @@
 		}
 
 		blockoverride "privilege_action"{
-			using = button_action_provider
+			using = privilege_item_action_provider
 			tooltipwidget = {
 				using = EstatePrivilege_tooltip
 			}
-			enabled = "[Or(UIActionProvider.IsEnabled, PrivilegeItem.HasPrivilege)]"
+			enabled = "[Or(PrivilegeItem.IsEnabled, PrivilegeItem.HasPrivilege)]"
 			widget = {
 				size = { 18 18 }
 				using = bg_circle

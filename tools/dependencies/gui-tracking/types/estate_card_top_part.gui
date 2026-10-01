@@ -5,16 +5,7 @@
 		size = {-1 45}
 		layoutpolicy_horizontal = expanding
 
-		background = {
-			texture = "gfx/interface/component_tiles/square_tile.dds"
-			texture_density = 2
-			margin_bottom = 2
-			alpha = 0.5
-			modify_texture = {
-				using = color_black_texture
-				blend_mode = multiply
-			}
-		}
+		using = bg_square_tile_black_shadow
 
 		background = {
 			using = color_white_texture
@@ -52,7 +43,7 @@
 
 		# card header info
 			hbox = {
-				margin_left = 10
+				margin_left = 5
 				margin_right = 15
 
 				blockoverride "bg_estates_frame_margins" {
@@ -105,16 +96,21 @@
 					}
 
 					vbox = {
-						text_single = {
+						hbox = {
 							layoutpolicy_horizontal = expanding
-							align = left
-							autoresize = yes
-							default_format = "#yellow_titles"
-							text = "[Estate.GetNameWithNoTooltip]"
+							spacing = 3
+
+							text_single = {
+								align = left
+								autoresize = yes
+								default_format = "#yellow_titles"
+								text = "[Estate.GetNameWithNoTooltip]"
+							}
+							expand = {}
 						}
 
 						hbox = {
-							spacing = 5
+							spacing = 3
 							#text_single = {
 							#	visible = "[Estate.GetType.IsAlwaysLoyal]"
 							#	align = left|nobaseline
@@ -170,6 +166,84 @@
 								}
 							}
 							text_single = {
+								name = "estate_culture_separator"
+								visible = "[Not(Estate.GetType.IsAlwaysLoyal)]"
+								align = left|nobaseline
+								autoresize = yes
+								default_format = "#light"
+								raw_text = "|"
+							}
+							icon = {
+								name = "estate_culture_acceptance"
+								visible = "[Not(Estate.GetType.IsAlwaysLoyal)]"
+								size = { 20 20 }
+								texture = "[Estate.GetCultureStatusIcon]"
+
+								datacontext = "[Estate]"
+								tooltipwidget = {
+									ContextualTooltipType = {
+										blockoverride "title_text" {
+											text = "[estate_culture|U]"
+										}
+										blockoverride "title_icon" {
+											icon = {
+												using = tooltip_title_icon_size
+												texture = "[Estate.GetCultureStatusIcon]"
+											}
+										}
+										blockoverride "concept_link" {
+											text = [estate_culture|E]
+										}
+										blockoverride "tooltip_content" {
+											TooltipTextBlock = {
+												blockoverride "text" {
+													text = "[Estate.GetCultureDisplayText]"
+												}
+											}
+										}
+									}
+								}
+							}
+							text_single = {
+								name = "estate_religion_separator"
+								visible = "[Not(Estate.GetType.IsAlwaysLoyal)]"
+								align = left|nobaseline
+								autoresize = yes
+								default_format = "#light"
+								raw_text = "|"
+							}
+							icon = {
+								name = "estate_religion"
+								visible = "[Not(Estate.GetType.IsAlwaysLoyal)]"
+								size = { 20 20 }
+								texture = "[GetReligionIcon(Estate.GetReligion)]"
+
+								datacontext = "[Estate]"
+								tooltipwidget = {
+									ContextualTooltipType = {
+										blockoverride "title_text" {
+											text = "[estate_religion|U]"
+										}
+										blockoverride "title_icon" {
+											icon = {
+												using = tooltip_title_icon_size
+												texture = "[GetReligionIcon(Estate.GetReligion)]"
+											}
+										}
+										blockoverride "concept_link" {
+											text = [estate_religion|E]
+										}
+										blockoverride "tooltip_content" {
+											TooltipTextBlock = {
+												blockoverride "text" {
+													text = "[Estate.GetReligionDisplayText]"
+												}
+											}
+										}
+									}
+								}
+							}
+							text_single = {
 								visible = "[Estate.GetType.IsAlwaysLoyal]"
 								align = left|nobaseline
 								autoresize = yes
@@ -183,7 +257,20 @@
 								}
 							}
 
+							text_single = {
+								name = "estate_private_army"
+								visible = "[And(Not(Estate.GetType.IsAlwaysLoyal), Estate.IsPrivateArmyAllowed)]"
+								align = left|nobaseline
+								autoresize = yes
+								maximumsize = { 80 20 }
+								default_format = "#light"
+								raw_text = "| [Estate.GetTotalPrivateRegimentCount|0] [regulars_icon]"
 
+								datacontext = "[Estate]"
+								tooltipwidget = {
+									using = estate_private_army_tooltip
+								}
+							}
 
 							text_single = {
 								name = "estate_enfranchisment"

@@ -6,9 +6,9 @@ template ruler_trait_item {
 		vbox = {
 			widget = {
 				visible = "[Not(RulerTraitEntry.HasTrait)]"
-				# block "ruler_progress_trait_item_size" {
-					size = { 26 26 }
-				# }
+				block "trait_item_size" {
+					size = { 16 16 }
+				}
 				piechart = {
 					tooltipwidget = {
 						SimpleContextualTooltipType = {
@@ -54,34 +54,18 @@ template ruler_trait_item {
 					texture = "gfx/interface/icons/ruler_default.dds"
 					texture_density = 2
 
-					background = {
-						texture = "gfx/interface/icons/traits/background/trait_bg.dds"
-						texture_density = 2
-						margin = { -3 -3 }
-						using = color_mid_blue
-
-						modify_texture = {
-							using = overlay_stone_texture
-							blend_mode = overlay
-							alpha = 0.8
-						}
-					}
+					using = bg_trait_frame
 				}
 			}
 
 			icon = {
 				visible = "[RulerTraitEntry.HasTrait]"
-				# block "ruler_trait_item_size" {
-					size = { 40 40 }
-				# }
+				block "trait_item_size" {
+					size = { 16 16 }
+				}
 
 				datacontext = "[RulerTraitEntry.GetTrait]"
 				using = trait_item
-
-				modify_texture = {
-					using = color_white_texture # Colors: light_blue - mid_blue - dark_blue - bone - white - black
-					color = "[Trait.GetFlavor.GetColor]"
-				}
 			}
 		}
 	}

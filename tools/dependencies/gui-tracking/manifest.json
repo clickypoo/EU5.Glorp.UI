@@ -1220,13 +1220,6 @@
       "tracking_path": "tools/dependencies/gui-tracking/widgets/holy_site_marker.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
     },
-    "widget:import_export_marker": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/map_markers.gui",
-      "namespace": "widget",
-      "tracking_path": "tools/dependencies/gui-tracking/widgets/import_export_marker.gui",
-      "vanilla_file": "in_game/gui/map_markers.gui"
-    },
     "widget:improve_opinion_diplomatic_entry": {
       "base_widget": null,
       "mod_file": "in_game/gui/outliner_entries.gui",

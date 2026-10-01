@@ -6,6 +6,67 @@ lateralview = {
 	widgetid = "foreign_country_lateralview"
 
 	blockoverride "lateralview_topbuttons_extra" {
+		#HISTORICAL EVENTS (DHE)
+		widget = {
+			parentanchor = vcenter
+			size = { 40 40 }
+			position = { 30 0 }
+			datacontext = "[ForeignCountryView.GetCountry]"
+			visible = "[Country.Exists]"
+
+			button = {
+				parentanchor = vcenter
+				size = { 25 25 }
+
+				visible = "[IsInmersionModeDisabled]"
+				enabled = "[HasDHEEvents(Country.Self)]"
+
+				texture = "gfx/interface/buttons/flats/rulinghistory.dds"
+				texture_density = 2
+
+				background = {
+					using = bg_button_light_round_texture
+					modify_texture = { using = color_dark_blue_texture }
+				}
+				using = ui_direction_button_overlay
+
+				action_tooltip = {
+					enabled = "[HasDHEEvents(Country.Self)]"
+					title = "DHE_HISTORICAL_EVENTS_BUTTON"
+					on_action = "[ShowDHEHistoryForCountry(Country.Self)]"
+				}
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+		}
+
+		#RULING HISTORY
+		widget = {
+			parentanchor = vcenter
+			size = { 40 40 }
+			position = { 60 0 }
+			datacontext = "[ForeignCountryView.GetCountry]"
+
+			button = {
+				size = { 25 25 }
+				parentanchor = vcenter
+
+				texture = "gfx/interface/buttons/flats/historical_events.dds"
+				texture_density = 2
+
+				background = {
+					using = bg_button_light_round_texture
+					modify_texture = { using = color_dark_blue_texture }
+				}
+				using = ui_direction_button_overlay
+
+				action_tooltip = {
+					title = "RULING_HISTORY"
+					on_action = "[ShowRulingHistoryForCountry(Country.Self)]"
+				}
+				tooltipwidget = { BasicFunctionalTooltip = {} }
+			}
+		}
+
 		widget = {
 			parentanchor = right|vcenter
 			size = { 40 40 }
@@ -13,27 +74,22 @@ lateralview = {
 
 			button = {
 				parentanchor = right|vcenter
-
 				size = { 25 25 }
-				texture = "gfx/interface/icons/unit_actions/go_to.dds"
 
-				modify_texture = {
-					using = color_white_texture
-					alpha = 0.1
+				texture = "gfx/interface/buttons/flats/goto.dds"
+				texture_density = 2
+
+				background = {
+					using = bg_button_light_round_texture
+					modify_texture = { using = color_dark_blue_texture }
 				}
+				using = ui_direction_button_overlay
 
 				action_tooltip = {
 					title = "GO_TO_CAPITAL_TEXT"
 					on_action = "[PanToLocation(ForeignCountryView.GetCountry.GetCapital)]"
 				}
-
 				tooltipwidget = { BasicFunctionalTooltip = {} }
-				using = snd_UI_backward
-
-                # GlorpUI: Zoom-to Shortcut
-                input_action = "macro_builder"
-                use_global_input_instance = yes
-                onclick = "[PanToLocation(ForeignCountryView.GetCountry.GetCapital)]"
 			}
 		}
 	}
@@ -41,17 +97,8 @@ lateralview = {
 	blockoverride "panel_header" {
 		window_header_alt = {
 			using = bg_main_inner_alt
-			blockoverride "window_header_alt_color" { # GlorpUI: Coloured Country Name Bar
-				background = {
-					using = color_greyish_texture
-					modify_texture = {
-						using = color_white_texture
-						blend_mode = overlay
-						color = "[ForeignCountryView.GetCountry.GetMapColor]"
-						alpha = 0.7
-					}
-					using = window_header_alt_fade_template
-				}
+			blockoverride "window_header_alt_color_texture"{
+				using = color_default_brown_texture
 			}
 
 			blockoverride "bg_top_header_graphical_culture_pattern" {
@@ -59,7 +106,6 @@ lateralview = {
 					using = bg_header_graphical_culture
 					blockoverride "bg_header_graphical_culture_pattern" {
 						texture = "[GetGraphicalCultureTextureForCountry('top_header_bg', ForeignCountryView.GetCountry.Self)]"
-						color = "[ForeignCountryView.GetCountry.GetMapColor]"
 					}
 				}
 			}
@@ -99,7 +145,6 @@ lateralview = {
 						using = CountryTooltip
 					}
 				}
-
 			}
 		}
 	}
@@ -305,25 +350,13 @@ lateralview = {
 									}
 								}
 
-								background = {
-									texture = "gfx/interface/component_tiles/war/wood_frame_thin.dds"
-									texture_density = 2
-									margin = { 0 0 }
-									margin_bottom = 0
-									spriteType = corneredstretched
-									spriteBorder = { 10 10 }
-									alpha = 0.5
-									modify_texture = {
-										using = color_wood_brown_texture
-										blend_mode = multiply
-									}
-								}
+								using = bg_wood_frame_thin_brown
 
 								expand = {}
 
 								hbox = {
 									tooltipwidget = { using = AiDisposition_tooltip }
-									visible = "[And(IsPlayerValid, Not(Country.HasHumanController))]"
+									visible = "[And3(IsPlayerValid, Not(Country.HasHumanController), Not(Country.IsLocalPlayer))]"
 									spacing = 5
 
 									text_single = {
@@ -388,19 +421,7 @@ lateralview = {
 									}
 								}
 
-								background = {
-									texture = "gfx/interface/component_tiles/war/wood_frame_thin.dds"
-									texture_density = 2
-									margin = { 0 0 }
-									margin_bottom = 0
-									spriteType = corneredstretched
-									spriteBorder = { 10 10 }
-									alpha = 0.5
-									modify_texture = {
-										using = color_wood_brown_texture
-										blend_mode = multiply
-									}
-								}
+								using = bg_wood_frame_thin_brown
 
 								expand = {}
 							}
@@ -463,20 +484,17 @@ lateralview = {
 					align = nobaseline
 				}
 
-				blockoverride "country_header_margin" { margin = { 0 0 } }
-
 				blockoverride "character_religion_visibility" {
 					visible = no
 				}
 
 				blockoverride "country_header_character_name" {
+					margin = {2 0}
 					CharacterNameDefault = {
-						parentanchor = center
-						spacing = 4
 						blockoverride "name_highlight" {}
-						margin_left = 14
-						margin_right = 14
-						using = bg_country_banner
+						margin_left = 0
+						margin_right = 10
+						using = bg_name_banner_left
 						blockoverride "bg_name_banner_margin" {
 							margin_left = 2
 							margin_right = 7
@@ -485,16 +503,17 @@ lateralview = {
 						}
 						blockoverride "charactername_size" {
 							minimumsize = { 200 -1 }
-							maximumsize = { 320 -1 }
+							maximumsize = { 400 -1 }
 						}
 						blockoverride "character_name_default_extra" {
 							widget = {
-								visible = "[Character.HasDynasty]"
-								size = { 27 40 }
+								size = { 27 30 }
+								visible = "[Country.GetGovernment.HasRulerOrRegent]"
 								allow_outside = yes
 								dynasty_shield_mid = {
-									parentanchor = top
+									parentanchor = center
 									datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
+									visible = "[Character.HasDynasty]"
 									datacontext = "[Character.GetDynasty]"
 								}
 							}
@@ -502,320 +521,279 @@ lateralview = {
 					}
 				}
 
-				blockoverride "character_widget" {
-					hbox = {
-						allow_outside = yes
-						minimumsize = { 355 -1 }
-						maximumsize = { 355 -1 }
-						size = { 355 -1 }
-						hbox = {
-							allow_outside = yes
-							righttoleft = yes
-							spacing = -120
-							# Consort
-							vbox = {
-								visible = "[And(Country.GetGovernment.CareAboutProducingHeirs, Country.GetGovernment.HasConsort)]"
-								layoutpolicy_vertical = expanding
-								expand = {}
-								portrait_standard_full_body_center_button = {
-									size = { 210 168 }
-									block "country_header_character_context" { datacontext = "[Country.GetGovernment.GetConsort]" }
-								}
-							}
-							# Ruler
- 							vbox = {
-								layoutpolicy_vertical = expanding
-								expand = { }
-								portrait_standard_full_body_center_button = {
-									size = { 275 220 }
-									block "country_header_character_context" { datacontext = "[Country.GetGovernment.GetRulerOrRegent]" }
-								}
-							}
-						}
-					}
+
+
+				# blockoverride "character_name_extra" {
+				# 	#DYNASTY
+				# 	widget = {
+				# 		size = { 23 25 }
+				# 		allow_outside = yes
+				# 		visible = "[Country.GetGovernment.HasRulerOrRegent]"
+
+				# 		dynasty_shield_mid = {
+				# 			datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
+				# 			position = { 0 -3 }
+				# 			parentanchor = center
+				# 			visible = "[Character.HasDynasty]"
+				# 			datacontext = "[Character.GetDynasty]"
+
+				# 			blockoverride "size" {
+				# 				size = { 23 25 }
+				# 			}
+				# 		}
+				# 	}
+				# }
+
+				blockoverride "abilities_box_size" {
+					size = { -1 48 }
 				}
 
-				blockoverride "stats_left" {
-					vbox = {
-						layoutpolicy_vertical = expanding
-						spacing = -1
-						# Army Sizes
-						hbox = {
-							layoutpolicy_horizontal = expanding
-							hbox = {
-								datacontext = "[ForeignCountryView.GetCountry]"
-								tooltipwidget = { using = ArmyOverview_tooltip }
-								margin = { 4 4 }
-								margin_right = 8
-								using = bg_glorp_badge_banner
-								blockoverride "colour" { using = color_red_texture }
+				blockoverride "abilities_box_bg" {
+					datacontext = "[ForeignCountryView.GetCountry]"
+					using = bg_paper_card
+					using = bg_cabinet_card_frame
+				}
 
-								spacing = 2
-								widget = {
-									visible = "[HasArmySizeIntelOn(Country.Self)]"
+				blockoverride "abilities" {
+					margin = {0 5}
+					hbox = {
+						using = layoutpolicy_expanding
+						using = bg_text_mask_container_brown
 
-									size = { 34 34 }
-									using = bg_circle_piechart
-
-									icon = {
-										size = { 70% 70% }
-										parentanchor = center
-										widgetanchor = center
-										texture = "gfx/interface/icons/flat_icons/declare_war/army_size.dds"
-										texture_density = 2
-									}
-								}
-								vbox = {
-									spacing = -4
-									layoutpolicy_horizontal = expanding
-									text_single = {
-										visible = "[HasLevyStrengthIntelOn(Country.Self)]"
-										using = Font_Size_Small
-										align = right|nobaseline
-										text = "[Country.GetRaisedAndPotentialLevyStrength|2W] [levies_icon]"
-									}
-									text_single = {
-										visible = "[HasArmySizeIntelOn(Country.Self)]"
-										autoresize = yes
-										align = right|nobaseline
-										text = "[Country.GetRegularArmySize|0L] [regulars_icon]"
-									}
-									text_single = {
-										visible = "[Not(HasLevyStrengthIntelOn(Country.Self))]"
-										tagtooltip_enabled = yes
-										text = "INTEL_FOG_LEVY_STRENGTH_UNKNOWN"
-									}
-									text_single = {
-										visible = "[Not(HasArmySizeIntelOn(Country.Self))]"
-										tagtooltip_enabled = yes
-										text = "INTEL_FOG_ARMY_SIZE_UNKNOWN"
-									}
-								}
-								expand = {}
-							}
-							expand = {}
+						tooltipwidget = {
+							using = towns_or_cities_tooltip
 						}
-						# Navy Sizes
-						hbox = {
-							layoutpolicy_horizontal = expanding
-							hbox = {
-								datacontext = "[ForeignCountryView.GetCountry]"
-								tooltipwidget = { using = NavyOverview_tooltip }
-								margin = { 4 4 }
-								margin_right = 8
-								using = bg_glorp_badge_banner
-								blockoverride "colour" { using = color_red_texture }
+						spacing = 5
 
-								spacing = 2
-								widget = {
-									visible = "[HasNavyStrengthIntelOn(Country.Self)]"
-									size = { 34 34 }
-									using = bg_circle_piechart
-									icon = {
-										size = { 70% 70% }
-										parentanchor = center
-										widgetanchor = center
-										texture = "gfx/interface/icons/flat_icons/declare_war/navy_size.dds"
-										texture_density = 2
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right
+							text = "[Country.GetOwnedLocationCount|L]"
+						}
+						icon = {
+							size = { 24 24 }
+							texture = "gfx/interface/icons/map_subdivisons/location.dds"
+						}
+						expand = {}
+					}
 
-									}
-								}
-								vbox = { # GlorpUI: Real Army/Navy Strength
-									spacing = -4
-									layoutpolicy_horizontal = expanding
-									text_single = {
-										visible = "[HasNavyStrengthIntelOn(Country.Self)]"
-										autoresize = yes
-										align = right|nobaseline
-										raw_text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] "
-									}
-									text_single = {
-										visible = "[HasNavyStrengthIntelOn(Country.Self)]"
-										autoresize = yes
-										align = right|nobaseline
-										raw_text = "[Country.GetNavySizeValue|0L] @naval_regular!"
-									}
-									text_single = {
-										visible = "[Not(HasNavyStrengthIntelOn(Country.Self))]"
-										tagtooltip_enabled = yes
-										text = "INTEL_FOG_NAVY_STRENGTH_UNKNOWN"
-									}
-								}
-								expand = {}
-							}
-							expand = {}
-						}
-						# Culture
-						hbox = {
-							layoutpolicy_horizontal = expanding
-							hbox = {
-								margin = { 4 4 }
-								margin_right = 8
-								using = bg_glorp_badge_banner
-								spacing = 2
+					hbox = {
+						using = layoutpolicy_expanding
+						spacing = 5
 
-								widget = {
-									size = { 24 24 }
-									icon = {
-										size = { 110% 110% }
-										texture = "gfx/interface/icons/culture/primary_culture.dds"
-									}
-									tooltip = "[primary_culture|e]"
-									tagtooltip_enabled = yes
-								}
-								text_single = {
-									maximumsize = { 100 -1 }
-									autoresize = yes
-									align = left
-									text = "[Country.GetCulture.GetName]"
-								}
-								expand = {}
-							}
-							expand = {}
+						using = bg_text_mask_container_brown
+						blockoverride "text_mask_extra" {
+							alpha = 0.1
 						}
-						# Religion
-						hbox = {
-							layoutpolicy_horizontal = expanding
-							hbox = {
-								margin = { 4 4 }
-								margin_right = 8
-								using = bg_glorp_badge_banner
-								spacing = 2
-								widget = {
-									size = { 24 24 }
-									icon = {
-										size = { 110% 110% }
-										texture = "[GetReligionIcon(Country.GetReligion.Self)]"
-									}
-									tooltip = "[primary_religion|e]"
-									tagtooltip_enabled = yes
-								}
-								text_single = {
-									maximumsize = { 100 -1 }
-									autoresize = yes
-									align = left
-									text = "[Country.GetReligion.GetName]"
-								}
-								expand = {}
-							}
-							expand = {}
+
+						expand = {}
+						text_single = {
+							visible = "[HasTotalPopulationIntelOn(Country.Self)]"
+							autoresize = yes
+							align = right
+							raw_text = "[Country.GetTotalPopulation]"
 						}
-						# Population
-						hbox = {
-							layoutpolicy_horizontal = expanding
-							hbox = {
-								margin = { 4 4 }
-								margin_right = 8
-								using = bg_glorp_badge_banner
-								spacing = 2
-								widget = {
-									size = { 24 24 }
-									datacontext = "[Country.GetPopulationChart.GetPopsPiechartWidget]"
-									tooltipwidget = {
-										ContextualTooltipType = {
-											blockoverride "title_icon" {
-												icon = {
-													using = tooltip_title_icon_size
-													using = icon_population
-												}
+						text_single = {
+							visible = "[Not(HasTotalPopulationIntelOn(Country.Self))]"
+							tagtooltip_enabled = yes
+							text = "INTEL_FOG_TOTAL_POPULATION_UNKNOWN"
+						}
+
+						widget = {
+							size = { 24 24 }
+							datacontext = "[Country.GetPopulationChart.GetPopsPiechartWidget]"
+							tooltipwidget = {
+								ContextualTooltipType = {
+									blockoverride "title_icon" {
+										icon = {
+											using = tooltip_title_icon_size
+											using = icon_population
+										}
+									}
+
+									blockoverride "title_text" {
+										datacontext = "[Country]"
+										text = "POPULATION_TOOLTIP_HEADER"
+									}
+
+									blockoverride "concept_link" {
+										text = [population|E]
+									}
+
+									blockoverride "tooltip_content" {
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											visible = "[And(HasTotalPopulationIntelOn(Country.Self), Not(Country.HasEnoughHistoricalPopulation))]"
+											spacing = 10
+											vbox = {
+												using = layoutpolicy_expanding
+												spacing = 10
+												using = PopulationTooltipCharts
 											}
+										}
 
-											blockoverride "title_text" {
-												datacontext = "[Country]"
-												text = "POPULATION_TOOLTIP_HEADER"
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											visible = "[And(HasTotalPopulationIntelOn(Country.Self), Country.HasEnoughHistoricalPopulation)]"
+											spacing = 10
+											ignoreinvisible = yes
+
+											vbox = {
+												using = layoutpolicy_expanding
+												spacing = 10
+												using = PopulationTooltipCharts
 											}
+										}
 
-											blockoverride "concept_link" {
-												text = "[population|E]" # GlorpUI: quoted
-											}
-
-											blockoverride "tooltip_content" {
-												hbox = {
-													layoutpolicy_horizontal = expanding
-													visible = "[And(HasTotalPopulationIntelOn(Country.Self), Not(Country.HasEnoughHistoricalPopulation))]"
-													spacing = 10
-													vbox = {
-														using = layoutpolicy_expanding
-														spacing = 10
-														using = PopulationTooltipCharts
-													}
-												}
-
-												hbox = {
-													layoutpolicy_horizontal = expanding
-													visible = "[And(HasTotalPopulationIntelOn(Country.Self), Country.HasEnoughHistoricalPopulation)]"
-													spacing = 10
-													ignoreinvisible = yes
-
-													vbox = {
-														using = layoutpolicy_expanding
-														spacing = 10
-														using = PopulationTooltipCharts
-													}
-												}
-
-												TooltipTextBlock = {
-													visible = "[Not(HasTotalPopulationIntelOn(Country.Self))]"
-													tagtooltip_enabled = yes
-													blockoverride "text" {
-														text = "INTEL_FOG_TOTAL_POPULATION_UNKNOWN"
-													}
-												}
+										TooltipTextBlock = {
+											visible = "[Not(HasTotalPopulationIntelOn(Country.Self))]"
+											tagtooltip_enabled = yes
+											blockoverride "text" {
+												text = "INTEL_FOG_TOTAL_POPULATION_UNKNOWN"
 											}
 										}
 									}
-									icon = {
-										size = { 100% 100% }
-										texture = "gfx/interface/icons/location_icons/population.dds"
-									}
-								}
-								text_single = {
-									visible = "[HasTotalPopulationIntelOn(Country.Self)]"
-									autoresize = yes
-									align = right
-									raw_text = "[Country.GetTotalPopulation]"
-								}
-								text_single = {
-									visible = "[Not(HasTotalPopulationIntelOn(Country.Self))]"
-									tagtooltip_enabled = yes
-									text = "INTEL_FOG_TOTAL_POPULATION_UNKNOWN"
 								}
 							}
-							expand = {}
-						}
-						# Tax Base
-						hbox = {
-							layoutpolicy_horizontal = expanding
-							hbox = {
-								margin = { 4 4 }
-								margin_right = 8
-								using = bg_glorp_badge_banner
 
-								spacing = 2
-								widget = {
-									visible = "[HasTaxBaseIntelOn(Country.Self)]"
-									size = { 24 24 }
-									icon = {
-										size = { 100% 100% }
-										texture = "gfx/interface/icons/location_icons/tax_base.dds"
-									}
-									tooltip = "[tax_base|e]"
-									tagtooltip_enabled = yes
-								}
-								text_single = {
-									visible = "[HasTaxBaseIntelOn(Country.Self)]"
-									autoresize = yes
-									align = right
-									raw_text = "[Country.GetTotalTaxBase]"
-								}
-								text_single = {
-									visible = "[Not(HasTaxBaseIntelOn(Country.Self))]"
-									tagtooltip_enabled = yes
-									text = "INTEL_FOG_TAX_BASE_UNKNOWN"
-								}
-								expand = {}
+							icon = {
+								size = { 100% 100% }
+								texture = "gfx/interface/icons/location_icons/population.dds"
 							}
-							expand = {}
+						}
+						expand = {}
+					}
+
+					hbox = {
+						spacing = 5
+						using = layoutpolicy_expanding
+						using = bg_text_mask_container_brown
+
+
+						expand = {}
+						text_single = {
+							visible = "[HasTaxBaseIntelOn(Country.Self)]"
+							autoresize = yes
+							align = right
+							raw_text = "[Country.GetTotalTaxBase]"
+						}
+
+						widget = {
+							visible = "[HasTaxBaseIntelOn(Country.Self)]"
+							size = { 24 24 }
+							icon = {
+								size = { 100% 100% }
+								texture = "gfx/interface/icons/location_icons/tax_base.dds"
+							}
+							tooltip = "[tax_base|e]"
+							tagtooltip_enabled = yes
+						}
+
+						text_single = {
+							visible = "[Not(HasTaxBaseIntelOn(Country.Self))]"
+							tagtooltip_enabled = yes
+							text = "INTEL_FOG_TAX_BASE_UNKNOWN"
+						}
+						expand = {}
+					}
+					hbox = {
+						using = layoutpolicy_expanding
+						datacontext = "[ForeignCountryView.GetCountry]"
+						tooltipwidget = {
+							using = ArmyOverview_tooltip
+						}
+						spacing = 5
+
+						using = bg_text_mask_container_brown
+						blockoverride "text_mask_extra" {
+							alpha = 0.1
+						}
+
+						expand = {}
+						vbox = {
+                            layoutpolicy_horizontal = expanding
+                            text_single = {
+                                visible = "[HasLevyStrengthIntelOn(Country.Self)]"
+                                autoresize = yes
+                                align = right|nobaseline
+                                text = "[Country.GetRaisedAndPotentialLevyStrength|2W] [levies_icon]"
+                            }
+                            text_single = {
+                                visible = "[Not(HasLevyStrengthIntelOn(Country.Self))]"
+                                tagtooltip_enabled = yes
+                                text = "INTEL_FOG_LEVY_STRENGTH_UNKNOWN"
+                            }
+                            text_single = {
+                                visible = "[HasArmySizeIntelOn(Country.Self)]"
+                                autoresize = yes
+                                align = right|nobaseline
+                                text = "[Country.GetRegularArmySize|0L] [regulars_icon]"
+                            }
+                            text_single = {
+                                visible = "[Not(HasArmySizeIntelOn(Country.Self))]"
+                                tagtooltip_enabled = yes
+                                text = "INTEL_FOG_ARMY_SIZE_UNKNOWN"
+                            }
+                        }
+
+						widget = {
+							visible = "[HasArmySizeIntelOn(Country.Self)]"
+
+							size = { 34 34 }
+							using = bg_circle_piechart
+
+							icon = {
+								size = { 70% 70% }
+								parentanchor = center
+								widgetanchor = center
+								texture = "gfx/interface/icons/flat_icons/declare_war/army_size.dds"
+								texture_density = 2
+
+							}
+						}
+						expand = {}
+					}
+
+					hbox = {
+						using = layoutpolicy_expanding
+
+						datacontext = "[ForeignCountryView.GetCountry]"
+						tooltipwidget = {
+							using = NavyOverview_tooltip
+						}
+
+						spacing = 5
+
+						using = bg_text_mask_container_brown
+
+
+						expand = {}
+						text_single = {
+							visible = "[HasNavyStrengthIntelOn(Country.Self)]"
+							autoresize = yes
+							align = right
+							text = "[Country.GetTotalNavyStrengthAndPotentialLevies|0L]"
+						}
+
+						text_single = {
+							visible = "[Not(HasNavyStrengthIntelOn(Country.Self))]"
+							tagtooltip_enabled = yes
+							text = "INTEL_FOG_NAVY_STRENGTH_UNKNOWN"
+						}
+
+						widget = {
+							visible = "[HasNavyStrengthIntelOn(Country.Self)]"
+							size = { 34 34 }
+							using = bg_circle_piechart
+							icon = {
+								size = { 70% 70% }
+								parentanchor = center
+								widgetanchor = center
+								texture = "gfx/interface/icons/flat_icons/declare_war/navy_size.dds"
+								texture_density = 2
+
+							}
 						}
 						expand = {}
 					}
@@ -823,122 +801,223 @@ lateralview = {
 
 				blockoverride "country_header_extra" {
 					hbox = {
-						margin_right = 5
-						margin_bottom = 5
+						margin = { 5 0 }
+						margin_bottom = 15
 						allow_outside = yes
+
+						#LEFT TOP INFO
 						vbox = {
 							margin_top = 5
-							spacing = 10
+							spacing = 5
 							using = layoutpolicy_expanding
 							layoutstretchfactor_horizontal = 3
 							allow_outside = yes
 							hbox = {
 								layoutpolicy_horizontal = expanding
-								expand = {}
+								spacing = 5
 								allow_outside = yes
-								#Country timed modifiers
-								vbox = {
-									layoutpolicy_vertical = expanding
-									icon = {
-										texture = "gfx/interface/component_tiles/regular_banner.dds"
-										texture_density = 2
-										size = { 44 44 }
-										visible = "[And(HasCountryModifiersIntelOn(Country.Self), GreaterThan_int32(GetDataModelSize(Country.GetTimedModifiers), '(int32)0'))]"
+								margin_top = 2
+								margin_right = 5
 
-										# RIGHT DIVISION
-										flowcontainer = {
+								#REGENCY
+								widget = {
+									visible = "[Country.GetGovernment.HasActiveRegent]"
+									size = { 45 35 }
+									allow_outside = yes
+									datacontext = "[Country.GetGovernment]"
+
+									tooltipwidget = {
+										using = regency_progress_tooltip
+									}
+
+									piechart = {
+										size = { 35 35 }
+										parentanchor = center
+										using = piechart_angles
+
+										icon = {
+											texture = "gfx/interface/pie_charts/pie_chart_white.dds"
+											size = { 100% 100% }
 											parentanchor = center
-											position = { 0 -3 }
-											visible = "[Not(GreaterThan_int32(GetDataModelSize(Country.GetTimedModifiers), '(int32)1'))]"
+											color = { 0.35 0.35 0.35 1 }
+										}
 
-											layoutpolicy_horizontal = expanding
+										pieslice_no_highlight = {
+											texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
+											value = "[Country.GetGovernment.GetRegencyProgress]"
+											color = { 1 1 1 1 }
+										}
 
-											datamodel = "[Country.GetTimedModifiers]"
-											item = {
-												timed_modifier_icon = {
-													datacontext = "[TimedModifier]"
-													tooltipwidget = {
-														using = timed_modifier_tooltip
-														blockoverride "concept_link" {
-															text = "[country_modifier|e]"
-														}
+										pieslice_no_highlight = {
+											texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+											value = "[Subtract_float('(float)100.0', Country.GetGovernment.GetRegencyProgress)]"
+											color = { 1 1 1 0 }
+										}
+
+										background = {
+											texture = "gfx/interface/component_tiles/hud_corners/circle_background.dds"
+											texture_density = 2
+
+											alpha = 1
+
+											modify_texture = {
+												using = color_mid_blue_texture
+											}
+
+											modify_texture = {
+												texture = "gfx/interface/component_overlay/gold_overlay_circle.dds"
+												texture_density = 2
+												spriteType = stretched
+												spriteborder = { 250 250 }
+												blend_mode = overlay
+												alpha = 0.7
+											}
+										}
+
+										background = {
+											texture = "gfx/interface/component_tiles/hud_corners/circle_shadow.dds"
+											texture_density = 2
+											margin = { 2 2 }
+
+											alpha = 0.8
+										}
+
+
+										background = {
+											texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
+											texture_density = 2
+
+											alpha = 1
+
+											modify_texture = {
+												using = color_gold_texture
+											}
+
+											using = overlay_gold
+										}
+
+										icon = {
+											size = { 62% 62% }
+											parentanchor = center
+											texture = "gfx/interface/icons/character_roles/regent.dds"
+										}
+									}
+								}
+
+								expand = {}
+							}
+							expand = {}
+						}
+
+						vbox = {
+							using = layoutpolicy_expanding
+							layoutstretchfactor_horizontal = 2
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								spacing = 5
+
+								expand = {}
+								#Country timed modifiers
+								icon = {
+									texture = "gfx/interface/component_tiles/regular_banner.dds"
+									texture_density = 2
+									size = { 44 48 }
+									visible = "[And(HasCountryModifiersIntelOn(Country.Self), GreaterThan_int32(GetDataModelSize(Country.GetTimedModifiers), '(int32)0'))]"
+
+									# RIGHT DIVISION
+									flowcontainer = {
+										parentanchor = center
+										position = { 0 -3 }
+										visible = "[Not(GreaterThan_int32(GetDataModelSize(Country.GetTimedModifiers), '(int32)1'))]"
+
+										layoutpolicy_horizontal = expanding
+
+										datamodel = "[Country.GetTimedModifiers]"
+										item = {
+											timed_modifier_icon = {
+												datacontext = "[TimedModifier]"
+												tooltipwidget = {
+													using = timed_modifier_tooltip
+													blockoverride "concept_link" {
+														text = "[country_modifier|e]"
 													}
 												}
 											}
-
-											expand = {}
 										}
-										flowcontainer = {
-											parentanchor = center
-											position = { 3 -3}
-											visible = "[GreaterThan_int32(GetDataModelSize(Country.GetTimedModifiers), '(int32)1')]"
 
-											text_single = {
-												using = Font_Type_Headers
-												minimumsize = { -1 26 }
-												align = nobaseline|hcenter
-												text = "[GetDataModelSize(Country.GetTimedModifiers)]"
-											}
-											icon = {
-												size = { 26 26 }
-												texture = "gfx/interface/icons/modifiers/country.dds"
-												texture_density = 2
+										expand = {}
+									}
 
-												tooltipwidget = {
-													ContextualTooltipType = {
-														blockoverride "title_icon" {
-															icon = {
-																texture = "gfx/interface/icons/modifiers/country.dds"
-																using = tooltip_title_icon_size
-															}
-														}
-														blockoverride "title_text" {
-															text = "game_concept_country_modifier"
-														}
-														blockoverride "concept_link" {
-															text = "[country_modifier|e]" # GlorpUI: quoted
-														}
+									flowcontainer = {
+										parentanchor = center
+										position = { 3 -3}
+										visible = "[GreaterThan_int32(GetDataModelSize(Country.GetTimedModifiers), '(int32)1')]"
 
-														blockoverride "tooltip_content" {
-															TooltipScrolledRowList = {
-																blockoverride "block_title" { visible = no }
-																blockoverride "rowlist_datamodel_is_empty" { visible = "[IsDataModelEmpty(Country.GetTimedModifiers)]"}
-																blockoverride "rowlist_datamodel_has_items" { visible = "[DataModelHasItems(Country.GetTimedModifiers)]"}
-																blockoverride "rowlist_datamodel" { datamodel = "[Country.GetTimedModifiers]" }
-																blockoverride "rowlist_content" {
-																	hbox = {
-																		layoutpolicy_horizontal = expanding
-																		spacing = 10
+										text_single = {
+											minimumsize = { -1 26 }
+											align = nobaseline|hcenter
+											text = "[GetDataModelSize(Country.GetTimedModifiers)]"
+										}
+										icon = {
+											size = { 26 26 }
+											texture = "gfx/interface/icons/modifiers/country.dds"
+											texture_density = 2
+
+											tooltipwidget = {
+												ContextualTooltipType = {
+													blockoverride "title_icon" {
+														icon = {
+															texture = "gfx/interface/icons/modifiers/country.dds"
+															using = tooltip_title_icon_size
+														}
+													}
+													blockoverride "title_text" {
+														text = "game_concept_country_modifier"
+													}
+													blockoverride "concept_link" {
+														text = [country_modifier|e]
+													}
+
+													blockoverride "tooltip_content" {
+														TooltipScrolledRowList = {
+															blockoverride "block_title" { visible = no }
+															blockoverride "rowlist_datamodel_is_empty" { visible = "[IsDataModelEmpty(Country.GetTimedModifiers)]"}
+															blockoverride "rowlist_datamodel_has_items" { visible = "[DataModelHasItems(Country.GetTimedModifiers)]"}
+															blockoverride "rowlist_datamodel" { datamodel = "[Country.GetTimedModifiers]" }
+															blockoverride "rowlist_content" {
+																hbox = {
+																	layoutpolicy_horizontal = expanding
+																	spacing = 10
+																	datacontext = "[TimedModifier]"
+																	tooltipwidget = {
+																		using = timed_modifier_tooltip
+																	}
+																	text_single = {
+																		margin_left = 20
+																		text = "[TimedModifier.GetModifier.GetName]"
+																	}
+																	timed_modifier_icon = {
 																		datacontext = "[TimedModifier]"
 																		tooltipwidget = {
 																			using = timed_modifier_tooltip
-																		}
-																		text_single = {
-																			margin_left = 20
-																			text = "[TimedModifier.GetModifier.GetName]"
-																		}
-																		timed_modifier_icon = {
-																			datacontext = "[TimedModifier]"
-																			tooltipwidget = {
-																				using = timed_modifier_tooltip
-																				blockoverride "concept_link" {
-																					text = "[country_modifier|e]"
-																				}
+																			blockoverride "concept_link" {
+																				text = "[country_modifier|e]"
 																			}
 																		}
-
-																		expand = {}
 																	}
-																}
 
-																blockoverride "block_scrollarea" {
-																	maximumsize = { -1 210 }
+																	expand = {}
 																}
+															}
 
-																blockoverride "row_size" {
-																	maximumsize = { -1 40 }
-																	minimumsize = { -1 40 }
-																}
+															blockoverride "block_scrollarea" {
+																maximumsize = { -1 210 }
+															}
+
+															blockoverride "row_size" {
+																maximumsize = { -1 40 }
+																minimumsize = { -1 40 }
 															}
 														}
 													}
@@ -946,11 +1025,41 @@ lateralview = {
 											}
 										}
 									}
-									expand = {}
 								}
+
+								text_single = {
+									visible = "[Not(HasCountryModifiersIntelOn(Country.Self))]"
+									tagtooltip_enabled = yes
+									text = "INTEL_FOG_COUNTRY_MODIFIERS_UNKNOWN"
+								}
+
+								#HEGEMONIES
+								HegemoyBanner = {
+									datacontext = "[ForeignCountryView.GetCountry]"
+								}
+
+								expand = {}
+							}
+
+							expand = {}
+						}
+
+						vbox = {
+							margin_top = 5
+							spacing = 10
+							using = layoutpolicy_expanding
+							layoutstretchfactor_horizontal = 3
+							allow_outside = yes
+
+							hbox = {
+								spacing = 5
+								layoutpolicy_horizontal = expanding
+								allow_outside = yes
+
+								expand = {}
 								#OVERLORD
 								character_frame_medium = {
-									size = {64 75}
+									size = {56 66}
 									visible = "[Country.GetDiplomacy.GetOverlord.IsValid]"
 									blockoverride "portrait_datacontext" {
 										datacontext = "[Country.GetDiplomacy.GetOverlord.GetGovernment.GetRulerOrRegent]"
@@ -984,75 +1093,203 @@ lateralview = {
 										blockoverride "stretchable" {}
 									}
 
-									hbox = {
-										using = layoutpolicy_expanding
-										position = {0 33}
-										spacing = -6
-										widget = {
-											size = {23 23}
-											using = bg_card_header_02
+									widget = {
+										size = {30 23}
+										parentanchor = hcenter|bottom
+										position = {0 8}
+										using = bg_card_header_02
 
-											icon = {
-												size = { 100% 100% }
-												texture = "gfx/interface/icons/flat_icons/overlord.dds"
-												parentanchor = center
-
-												glow = {
-													name = "drop_shadow"
-													glow_radius = 3
-													color = {0.0 0.0 0.0 1.0}
-													alpha = 0.3
-												}
-											}
-
-											using = bg_circle_piechart
+										country_flag_small = {
+											parentanchor = center
+											size = { 80% 80% }
+											datacontext = "[ForeignCountryView.GetCountry.GetDiplomacy.GetOverlord]"
 										}
-										widget = { # GlorpUI: vanilla position removed, not allowed inside this hbox
-											size = {30 23}
+										button_cabinet_card_frame = {
+											size = { 100% 100% }
+											parentanchor = center
 
-											country_flag_small = {
-												parentanchor = center
-												size = { 100% 100% }
-												datacontext = "[ForeignCountryView.GetCountry.GetDiplomacy.GetOverlord]"
+											tooltipwidget = {
+												using = SubjectLoyalty_tooltip
 											}
-											button = {
-												size = { 100% 100% }
 
-												parentanchor = center
+											action_tooltip = {
+												click_type = left
+												click_mode = single
+												title = "COUNTRY_CLICK_TOOLTIP_LEFT_CLICK"
+												on_action = "[OpenDiplomacy(ForeignCountryView.GetCountry.GetDiplomacy.GetOverlord.Self)]"
+											}
 
-												tooltipwidget = {
-													using = SubjectLoyalty_tooltip
+											# block "portrait_icon_datacontext" {}
+
+										}
+									}
+
+									widget = {
+										size = {15 15}
+										parentanchor = hcenter|top
+										position = {0 -2}
+										using = bg_card_header_02
+
+										icon = {
+											size = { 80% 80% }
+											texture = "gfx/interface/icons/flat_icons/overlord.dds"
+											parentanchor = center
+
+											glow = {
+												name = "drop_shadow"
+												glow_radius = 3
+												color = {0.0 0.0 0.0 1.0}
+												alpha = 0.3
+											}
+										}
+
+										using = bg_circle_piechart
+									}
+								}
+
+								#CONSORT
+								character_frame_medium = {
+									size = {56 66}
+									visible = "[Country.GetGovernment.CareAboutProducingHeirs]"
+
+									blockoverride "portrait_datacontext" {
+										datacontext = "[Country.GetGovernment.GetRulerConsort]"
+									}
+									blockoverride "portrait_position" { position = { 0 -1 } }
+									blockoverride "portrait_size" { size = { 85% 90% } }
+
+									blockoverride "character_frame_estate_visible" {
+										visible = no
+									}
+
+									allow_outside = yes
+
+									blockoverride "estate_icon" {
+										visible = no
+									}
+									blockoverride "dynasty_shield" {}
+
+									blockoverride "character_frame_texture" {
+										texture = "gfx/interface/component_decoration/character_frames/character_non_stretchable_frame_2.dds"
+									}
+
+									blockoverride "character_ribbon" {
+										character_ribbon_3 = {
+											visible = "[Character.IsRuler]"
+											blockoverride "stretchable" {}
+										}
+									}
+
+									button = {
+										visible = "[And(Country.IsPlayer, Not(Character.IsValid))]"
+										size = {100% 100%}
+										position = {-2 -2}
+
+										action_tooltip = {
+											title = "CONSORT_SIDEMENU"
+											on_action = "[ShowConsortSelection(Player.GetGovernment.GetRuler)]"
+										}
+										tooltipwidget = { BasicFunctionalTooltip = {} }
+									}
+
+									card_header_button_04 = {
+										visible = "[Country.IsPlayer]"
+										size = { 38 23 }
+
+										parentanchor = hcenter|bottom
+										position = {0 8}
+
+										using = bg_card_header_02
+
+										action_tooltip = {
+											title = "CONSORT_SIDEMENU"
+											on_action = "[ShowConsortSelection(Player.GetGovernment.GetRuler)]"
+										}
+										tooltipwidget = { BasicFunctionalTooltip = {} }
+
+										icon = {
+											size = { 15 15 }
+											texture = "gfx/interface/buttons/flats/consort.dds"
+											using = icon_gold_texture_alt
+											parentanchor = center
+
+											glow = {
+												name = "drop_shadow"
+												glow_radius = 3
+												color = {0.0 0.0 0.0 1.0}
+												alpha = 0.3
+											}
+										}
+									}
+
+									icon = {
+										visible = "[Not(Country.IsPlayer)]"
+										size = { 38 23 }
+										texture = "gfx/interface/buttons/card_header_button_04.dds"
+										texture_density = 2
+										spritetype = corneredstretched
+										spriteborder = { 11 11 }
+										frame_grid = {4 1}
+										frame = 1
+
+										parentanchor = hcenter|bottom
+										position = {0 8}
+
+										using = bg_card_header_02
+
+										#tagtooltip_enabled = yes
+										tooltipwidget = {
+											SimpleContextualTooltipType = {
+												datacontext = "[Country]"
+												lowpriotextcontext = "GOVERNMENT_WINDOW_CONSORT"
+
+												blockoverride "title_text" {
+													text = "COUNTRY_CONSORT_INFO"
 												}
 
-												action_tooltip = {
-													click_type = left
-													click_mode = single
-													title = "COUNTRY_CLICK_TOOLTIP_LEFT_CLICK"
-													on_action = "[OpenDiplomacy(ForeignCountryView.GetCountry.GetDiplomacy.GetOverlord.Self)]"
+												blockoverride "title_icon" {
+													icon = {
+														using = tooltip_title_icon_size
+														texture = "gfx/interface/buttons/flats/consort.dds"
+														using = icon_gold_texture_alt
+														glow = {
+															name = "drop_shadow"
+															glow_radius = 3
+															color = {0.0 0.0 0.0 1.0}
+															alpha = 0.3
+														}
+													}
 												}
+												blockoverride "concept_link" {
+													text = "[consort|e]"
+												}
+											}
+										}
 
-												# block "portrait_icon_datacontext" {}
+										icon = {
+											size = { 15 15 }
+											texture = "gfx/interface/buttons/flats/consort.dds"
+											using = icon_gold_texture_alt
+											parentanchor = center
 
-												modify_texture = {
-													using = color_new_gold_texture
-													blend_mode = multiply
-												}
-												modify_texture = {
-													using = color_new_gold_texture
-													blend_mode = add
-													alpha = 0.5
-												}
-												modify_texture = {
-													using = overlay_stone_texture
-													blend_mode = overlay
-												}
+											glow = {
+												name = "drop_shadow"
+												glow_radius = 3
+												color = {0.0 0.0 0.0 1.0}
+												alpha = 0.3
 											}
 										}
 									}
 								}
+							}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								expand = {}
+								allow_outside = yes
 								#HEIR
 								character_frame_medium = {
-									size = {64 75}
+									size = {56 66}
 									datacontext = "[ForeignCountryView.GetHeirSelection]"
 
 									blockoverride "portrait_datacontext" {
@@ -1084,13 +1321,8 @@ lateralview = {
 										}
 									}
 
-									button = {
+									card_header_button_04 = {
 										size = { 38 23 }
-										texture = "gfx/interface/buttons/card_header_button_04.dds"
-										texture_density = 2
-										spritetype = corneredstretched
-										spriteborder = { 11 11 }
-										frame_grid = {4 1}
 
 										parentanchor = hcenter|bottom
 										position = {0 12}
@@ -1147,173 +1379,9 @@ lateralview = {
 										}
 									}
 								}
-								#HEGEMONIES
-								HegemoyBanner = {
-									datacontext = "[ForeignCountryView.GetCountry]"
-								}
-
 							}
+
 							expand = {}
-							hbox = {
-								layoutpolicy_horizontal = expanding
-								expand = {}
-								vbox = {
-									spacing = 5
-									allow_outside = yes
-									#REGENCY
-									widget = {
-										visible = "[Country.GetGovernment.HasActiveRegent]"
-										size = { 45 35 }
-										allow_outside = yes
-										datacontext = "[Country.GetGovernment]"
-
-										tooltipwidget = {
-											using = regency_progress_tooltip
-										}
-
-										piechart = {
-											size = { 35 35 }
-											parentanchor = center
-											using = piechart_angles
-
-											icon = {
-												texture = "gfx/interface/pie_charts/pie_chart_white.dds"
-												size = { 100% 100% }
-												parentanchor = center
-												color = { 0.35 0.35 0.35 1 }
-											}
-
-											pieslice_no_highlight = {
-												texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
-												value = "[Country.GetGovernment.GetRegencyProgress]"
-												color = { 1 1 1 1 }
-											}
-
-											pieslice_no_highlight = {
-												texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-												value = "[Subtract_float('(float)100.0', Country.GetGovernment.GetRegencyProgress)]"
-												color = { 1 1 1 0 }
-											}
-
-											background = {
-												texture = "gfx/interface/component_tiles/hud_corners/circle_background.dds"
-												texture_density = 2
-
-												alpha = 1
-
-												modify_texture = {
-													using = color_mid_blue_texture
-												}
-
-												modify_texture = {
-													texture = "gfx/interface/component_overlay/gold_overlay_circle.dds"
-													texture_density = 2
-													spriteType = stretched
-													spriteborder = { 250 250 }
-													blend_mode = overlay
-													alpha = 0.7
-												}
-											}
-
-											background = {
-												texture = "gfx/interface/component_tiles/hud_corners/circle_shadow.dds"
-												texture_density = 2
-												margin = { 2 2 }
-
-												alpha = 0.8
-											}
-
-
-											background = {
-												texture = "gfx/interface/component_tiles/hud_corners/circle_frame.dds"
-												texture_density = 2
-
-												alpha = 1
-
-												modify_texture = {
-													using = color_gold_texture
-												}
-
-												using = overlay_gold
-											}
-
-											icon = {
-												size = { 62% 62% }
-												parentanchor = center
-												texture = "gfx/interface/icons/character_roles/regent.dds"
-											}
-										}
-									}
-									#HISTORICAL EVENTS (DHE)
-									widget = {
-										size = {32 32}
-										visible = "[Country.Exists]"
-										header_button_left = {
-											size = { 100% 100% }
-											blockoverride "button_icon_stretch_sprite" {}
-											blockoverride "header_button_frame_inner" {visible = no}
-											blockoverride "header_button_icon_size" { size = { 30 30 } }
-											blockoverride "header_button_text_layout" {}
-
-											blockoverride "icon_texture" {
-												texture = "gfx/interface/icons/events/history.dds"
-												texture_density = 2
-											}
-
-											enabled = "[HasDHEEvents(Country.Self)]"
-											onclick = "[ShowDHEHistoryForCountry(Country.Self)]"
-
-											tooltipwidget = {
-												ContextualTooltipType = {
-													blockoverride "title_text" {
-														text = "DHE_HISTORICAL_EVENTS_BUTTON"
-													}
-													blockoverride "title_icon" {
-														icon = {
-															using = tooltip_title_icon_size
-															texture = "gfx/interface/icons/events/history.dds"
-														}
-													}
-													blockoverride "tooltip_content" {
-														TooltipScrolledRowList = {
-															blockoverride "block_scrollarea" { maximumsize = { -1 420 } }
-															textcontext = "[GetDHETooltip(Country.Self)]"
-														}
-														TooltipTextBlock = {
-															visible = "[Not(HasDHEEvents(Country.Self))]"
-															blockoverride "text" {
-																text = "DHE_TOOLTIP_NONE"
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-									#RULER HISTORY
-									widget = {
-										size = {32 32}
-										header_button_left = {
-											size = { 100% 100% }
-											blockoverride "button_icon_stretch_sprite" {}
-											blockoverride "header_button_frame_inner" {visible = no}
-											blockoverride "header_button_icon_size" { size = { 30 30 } }
-											blockoverride "header_button_text_layout" {}
-
-											blockoverride "icon_texture" {
-												texture = "gfx/interface/buttons/flats/history.dds"
-												texture_density = 2
-											}
-
-											action_tooltip = {
-												title = "RULING_HISTORY_COUNTRY_SIDEMENU"
-												on_action = "[ShowRulingHistoryForCountry(Country.Self)]"
-											}
-											tooltipwidget = { BasicFunctionalTooltip = {} }
-										}
-									}
-								}
-							}
 						}
 					}
 				}
@@ -1321,8 +1389,6 @@ lateralview = {
 				blockoverride "character_dynasty_shield_visible" {
 					visible = no
 				}
-
-				blockoverride "abilities_widget" {}
 			}
 
 			#foreign country stats
@@ -1334,7 +1400,7 @@ lateralview = {
 						button_secondary_tab_alt = {
 							using = layoutpolicy_expanding
 							visible = "[Country.Exists]"
-							blockoverride "tab_text" {
+							blockoverride "tab_text"{
 								text = "DIPLOMACY_TEXT"
 							}
 							tooltipwidget = {
@@ -1351,7 +1417,7 @@ lateralview = {
 						button_secondary_tab_alt = {
 							using = layoutpolicy_expanding
 							visible = "[Country.Exists]"
-							blockoverride "tab_text" {
+							blockoverride "tab_text"{
 								text = "COUNTRY_TEXT"
 							}
 							tooltipwidget = {
@@ -1367,7 +1433,7 @@ lateralview = {
 						button_secondary_tab_alt = {
 							using = layoutpolicy_expanding
 							visible = "[Country.Exists]"
-							blockoverride "tab_text" {
+							blockoverride "tab_text"{
 								text = "CHARACTERS_TEXT"
 							}
 							tooltipwidget = {
@@ -1383,7 +1449,7 @@ lateralview = {
 						button_secondary_tab_alt = {
 							using = layoutpolicy_expanding
 							visible = "[Not(Country.Exists)]"
-							blockoverride "tab_text" {
+							blockoverride "tab_text"{
 								text = "RULING_HISTORY_TEXT"
 							}
 							tooltip_enabled = no
@@ -1593,7 +1659,7 @@ lateralview = {
 													visible = "[ForeignCountryView.HasOngoingRelations]"
 
 													ongoing_diplomatic_actions_card = {
-														blockoverride "ongoing_diplomatic_actions_card_visibility" {
+														blockoverride "ongoing_diplomatic_actions_card_visibility"{
 															visible = "[ForeignCountryView.HasOngoingRelations]"
 														}
 														blockoverride "ongoing_diplomatic_actions_card_empty" {
@@ -1724,9 +1790,9 @@ lateralview = {
 								button = {
 									size = {30 30}
 									using = header_button_template
-									blockoverride "header_button_template_push_properties" {using = button_tab_toggle_properties_template}
-									blockoverride "header_button_full_content" {}
-									blockoverride "header_button_template_texture" {using = pressed_button_texture}
+									blockoverride "header_button_template_push_properties"{using = button_tab_toggle_properties_template}
+									blockoverride "header_button_full_content"{}
+									blockoverride "header_button_template_texture"{using = pressed_button_texture}
 									action_tooltip = {
 										title = "DISPLAY_DIP_ACTIONS_AND_RELATIONS"
 										on_action = "[ForeignCountryView.Vars.Set( 'diplomacy', 'both' )]"
@@ -1745,9 +1811,9 @@ lateralview = {
 								button = {
 									size = {30 30}
 									using = header_button_template
-									blockoverride "header_button_template_push_properties" {using = button_tab_toggle_properties_template}
-									blockoverride "header_button_full_content" {}
-									blockoverride "header_button_template_texture" {using = pressed_button_texture}
+									blockoverride "header_button_template_push_properties"{using = button_tab_toggle_properties_template}
+									blockoverride "header_button_full_content"{}
+									blockoverride "header_button_template_texture"{using = pressed_button_texture}
 									action_tooltip = {
 										title = "DISPLAY_DIP_ACTIONS"
 										on_action = "[ForeignCountryView.Vars.Set( 'diplomacy', 'actions' )]"
@@ -1952,19 +2018,19 @@ lateralview = {
 									size = { 240 100 }
 								}
 
-								blockoverride "diplomatic_actions_content_datacontext" {
+								blockoverride "diplomatic_actions_content_datacontext"{
 									datacontext = "[ForeignCountryView.GetDiploCategoriesSortSearch]"
 								}
 
-								blockoverride "diplomatic_actions_content_empty_visible" {
+								blockoverride "diplomatic_actions_content_empty_visible"{
 									visible = "[IsDataModelEmpty(ForeignCountryView.GetCategoryItems)]"
 								}
 
-								blockoverride "diplomatic_actions_content_empty_datamodel" {
+								blockoverride "diplomatic_actions_content_empty_datamodel"{
 									datamodel = "[ForeignCountryView.GetCategoryItems]"
 								}
 
-								blockoverride "diplomatic_actions_content_items_size" {
+								blockoverride "diplomatic_actions_content_items_size"{
 									size = { 252 40 }
 								}
 
@@ -1982,19 +2048,19 @@ lateralview = {
 									visible = no
 								}
 
-								blockoverride "diplomatic_actions_content_datacontext" {
+								blockoverride "diplomatic_actions_content_datacontext"{
 									datacontext = "[ForeignCountryView.GetDiploCategoriesSortSearch]"
 								}
 
-								blockoverride "diplomatic_actions_content_empty_visible" {
+								blockoverride "diplomatic_actions_content_empty_visible"{
 									visible = "[IsDataModelEmpty(ForeignCountryView.GetCategoryItems)]"
 								}
 
-								blockoverride "diplomatic_actions_content_empty_datamodel" {
+								blockoverride "diplomatic_actions_content_empty_datamodel"{
 									datamodel = "[ForeignCountryView.GetCategoryItems]"
 								}
 
-								blockoverride "diplomatic_actions_content_items_size" {
+								blockoverride "diplomatic_actions_content_items_size"{
 									size = { 512 40 }
 								}
 								blockoverride "extra_diplo_macro_margin" {}
@@ -2820,7 +2886,7 @@ lateralview = {
 														}
 
 														blockoverride "concept_link" {
-															text = "[institutions|E]" # GlorpUI: quoted
+															text = [institutions|E]
 														}
 
 														blockoverride "tooltip_content" {
@@ -2860,7 +2926,7 @@ lateralview = {
 														}
 
 														blockoverride "concept_link" {
-															text = "[institutions|E]" # GlorpUI: quoted
+															text = [institutions|E]
 														}
 
 														blockoverride "tooltip_content" {
@@ -2913,7 +2979,7 @@ lateralview = {
 														}
 
 														blockoverride "concept_link" {
-															text = "[advances|E]" # GlorpUI: quoted
+															text = [advances|E]
 														}
 
 
@@ -2922,8 +2988,7 @@ lateralview = {
 
 															TooltipScrolledStringPairList = {
 																blockoverride "block_scrollarea" { maximumsize = { -1 420 }}
-
-																lowpriotextcontext =  "[Country.GetUniqueAdvancesInfo]"
+																textcontext =  "[Country.GetUniqueAdvancesInfo]"
 															}
 
 															TooltipStringPairList = {
@@ -3097,6 +3162,7 @@ lateralview = {
 																		tooltipwidget = {
 																			using = Policy_tooltip
 																			blockoverride "country_datacontext" {}
+																			blockoverride "policy_tooltip_requirements" {}
 																		}
 
 																		icon = {

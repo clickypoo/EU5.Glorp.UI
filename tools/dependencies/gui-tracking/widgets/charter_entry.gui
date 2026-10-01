@@ -31,10 +31,10 @@ OutlinerEntryBase = {
                         fontsize = 14 # GlorpUI: added
 					}
 					OutlinerTextBase = {
-						minimumsize = { 65 -1 }
-						maximumsize = { 65 -1 }
+						minimumsize = { 90 -1 }
+						maximumsize = { 90 -1 }
 						autoresize = yes
-						raw_text = "[ColonialCharter.GetProgress|2]%"
+						raw_text = "[ColonialCharter.GetCompletionETAShort]"
                         fontsize = 14 # GlorpUI: added
 					}
 				}

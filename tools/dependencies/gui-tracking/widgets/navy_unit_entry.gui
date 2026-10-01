@@ -4,6 +4,9 @@
 OutlinerEntryBase = {
 	name = "navy_unit_entry"
 
+	onmousehierarchyenter = "[PdxGuiWidget.SetHoveredUnit(Unit.Self)]"
+	onmousehierarchyleave = "[PdxGuiWidget.ClearHoveredUnits]"
+
 	blockoverride "expanded_big_content" {
 		OutlinerButtonBase = {
 			size = { 95% 100% }
@@ -41,7 +44,7 @@ OutlinerEntryBase = {
 				}
 
 				widget = {
-					size = { 9 20 }
+					size = { 8 20 }
 					allow_outside = yes
 					# margin = { 1 1 }
 
@@ -54,7 +57,8 @@ OutlinerEntryBase = {
 						texture = "gfx/interface/component_tiles/square_outline_alt.dds"
 						texture_density = 2
 						spriteType = corneredstretched
-						spriteBorder = { 20 20 }
+						spriteBorder = { 2 2 }
+						spriteBorder_left = 0
 						modify_texture = {
 							using = color_super_dark_brown_texture
 							blend_mode = multiply
@@ -114,7 +118,7 @@ OutlinerEntryBase = {
 					text = "[Unit.GetNameWithNoTooltip]"
 					fontsize = 14
 				}
-				portrait_standard_head_button = {
+				portrait_standard_head_cached_button = {
 					datacontext = "[Unit.GetCommander]"
 					alwaystransparent = yes
 					size = { 20 20 }

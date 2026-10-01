@@ -20,6 +20,20 @@ template SocietalValueCountryRight_tooltip {
 		}
 
 		TooltipScrolledStringPairList = {
+			visible = "[SocietalValue.ShowRightLockedHint(Player.Self)]"
+			blockoverride "block_scrollarea" {
+				maximumsize = { -1 160 }
+			}
+
+			blockoverride "block_title" {
+				text = "SV_HINT_NOT_YET_AVAILABLE"
+				default_format = "#help"
+			}
+
+			textcontext = "[SocietalValue.GetRightLockedHint(Player.Self)]"
+		}
+
+		TooltipScrolledStringPairList = {
 			visible = "[GreaterThan_CFixedPoint(GuiScope.AddScope('glorpui_sv', SocietalValue.MakeScope).AddScope('glorpui_country', Player.MakeScope).ScriptValue('glorpui_svh_visible_decentralization'), '(CFixedPoint)0')]"
 			blockoverride "block_scrollarea" {
 				maximumsize = { -1 160 }

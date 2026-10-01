@@ -90,14 +90,14 @@ template CountryTooltip {
 
 			TooltipRowList = {
 				visible = "[And(Country.GetDiplomacy.IsDisloyalSubject, Country.GetDiplomacy.IsSubject)]"
-				textcontext = "SubjectTypeDetail_DESC_NOT"
+				lowpriotextcontext = "SubjectTypeDetail_DESC_NOT"
 				tooltipwidget = {
 					using = SubjectLoyalty_tooltip
 				}
 			}
 			TooltipRowList = {
 				visible = "[And(Not(Country.GetDiplomacy.IsDisloyalSubject), Country.GetDiplomacy.IsSubject)]"
-				textcontext = "SubjectTypeDetail_DESC"
+				lowpriotextcontext = "SubjectTypeDetail_DESC"
 				tooltipwidget = {
 					using = SubjectLoyalty_tooltip
 				}
@@ -361,7 +361,7 @@ template CountryTooltip {
 
 					hbox = {
 						tooltipwidget = { using = AiDisposition_tooltip }
-						visible = "[And(IsPlayerValid, Not(Country.HasHumanController))]"
+						visible = "[And3(IsPlayerValid, Not(Country.HasHumanController), Not(Country.IsLocalPlayer))]"
 						spacing = 5
 
 						text_single = {

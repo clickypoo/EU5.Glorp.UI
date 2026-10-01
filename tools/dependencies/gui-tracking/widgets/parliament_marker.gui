@@ -3,9 +3,10 @@
 
 widget = {
 	name = "parliament_marker"
+	max_update_rate = 4
 	using = bg_circle_piechart
 
-	size = { 50 50 }
+	size = "[Min_CVector2f(Multiply_CVector2f(GetInverseZoom2, '(CVector2f)9333, 9333'), '(CVector2f)50, 50')]"
 	position = { 0 2 }
 
 	visible = "[ParliamentMarker.IsVisible]"

@@ -5,8 +5,6 @@
 		direction = horizontal
 		allow_outside = yes
 
-
-
 		step = 0.01
 		wheelstep = 0.01
 
