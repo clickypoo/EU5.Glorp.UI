@@ -10,7 +10,7 @@
 			align = center
 			margin = { 10 0 }
 			margin_top = 4
-			margin_bottom = 16
+			margin_bottom = 4
 
 			block "charactername_size" {
 				minimumsize = { 200 -1 }

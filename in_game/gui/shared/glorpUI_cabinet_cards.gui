@@ -735,6 +735,7 @@ types GlorpUICabinetCards
 						}
 					}
 				}
+				expand = {}
 			}
 		}
 	}

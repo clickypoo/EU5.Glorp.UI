@@ -438,34 +438,29 @@ lateralview = {
 
 					blockoverride "scroll_list_content" {
 						visible = "[ProductionView.Vars.NotExistOrHasValue( 'display', 'lists' )]"
-								addrow = @building_entry_height
-								addcolumn = 100%
-						datamodel = "[ProductionView.GetBuildingItems]"
+						addrow = @building_entry_height
 						addcolumn = 100%
-						addrow = 48
+						datamodel = "[ProductionView.GetBuildingItems]"
 						datamodel_reuse_widgets = yes
 						item = {
 							widget = {
-										size = { 100% @building_entry_height }
-										building_type_header = {}
-								size = { 100% 48 }
+								size = { 100% @building_entry_height }
 								vbox = {
-									margin_top = 5
+									# margin_top = 5
 									hbox = {
 										layoutpolicy_horizontal = expanding
 										spacing = 3
-
 										building_type_header = { layoutpolicy_horizontal = expanding }
 
 										widget = {
-											size = { 35 40 }
+											size = { 35 @[building_entry_height - 5] }
 											onmousehierarchyenter = "[ProductionView.RebuildBuildRankingItems(BuildingItem.GetBuildingType)]"
 											using = bg_building_card_colors
 											blockoverride "header_pattern_texture_density" { texture_density = 2.5 }
 
 											card_header_button_04 = {
 												parentanchor = center
-												size = { 100% 100% }
+												size = { 100% @[building_entry_height - 5] }
 												datacontext = "[BuildingItem.GetBuildingType]"
 												datacontext = "[ProductionView.GetBuildRankingItems]"
 
@@ -592,7 +587,7 @@ lateralview = {
 													description = "[GetCancelConstructionInfo(ProductionView.GetBuildRankingItems.GetLastConstruction)]"
 													on_action = "[CancelConstruction(ProductionView.GetBuildRankingItems.GetLastConstruction)]"
 							}
-							expand = {}
+												expand = {}
 												action_tooltip = {
 													click_type = right
 													click_mode = single
@@ -2275,7 +2270,6 @@ types GlorpUIBuildings {
 											title = "[SelectLocalization( AreBuildingsClosed(BuildingItem.GetBuildingsFunc), 'TOGGLE_CLOSE_ALL_OFF', 'TOGGLE_CLOSE_ALL_ON' )]"
 										}
 									}
-
 								}
 							}
 

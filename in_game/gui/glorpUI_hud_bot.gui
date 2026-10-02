@@ -414,17 +414,6 @@ types GlorpUIBottomTypes
 			# GlorpUI: slot pick button
 			button_pin_alt = {
 				size = { 27 27 }
-				# TODO: Check if the mapmode has been pinned in any of the slots.
-				# datamodel = "[DataModelRepeatedItem(GetDataModelSize(GetMapModesSlots))]"
-				# item = {
-				# 	datacontext_from_model = {
-				# 		datamodel = "[GetMapModesSlots]"
-				# 		index = "[Subtract_int32(GetDataModelSize(GetMapModesSlots), Subtract_int32(PdxGuiWidget.GetIndexInDataModel, '(int32)-1'))]"
-				# 	}
-				# 	visible = "[MapMode.IsInSlot(MapModeSlot.GetSlotIndex)]"
-				# }
-				# frame = "[Select_int32(Player.MakeScope.GetVariable('MapmodePinned').IsSet, '(int32)2', '(int32)1')]"
-
 				action_tooltip = {
 					click_type = left
 					on_action = "[PdxGuiWidget.ToggleContextMenu]"
@@ -908,66 +897,13 @@ types GlorpUIBottomTypes
 								margin_bottom = 1
 								maximumsize = { 790 -1 }
 								parentanchor = center
-									using = Font_Size_Big
-									text = "[SlotFromIndex(PdxGuiWidget.GetIndexInDataModel)]"
-								}
-
-								tooltip_type = widget
-								tooltip_parentanchor = top|hcenter
-								tooltip_widgetanchor = bottom|hcenter
-
-								tooltipwidget = {
-									using = mapmode_slot_tooltip
-								}
-							}
-
-							button_mapmode = {
-								size = { 100% 100% }
-								visible = "[DataModelHasItems(MapModeSlot.GetMapModes)]"
-
-								blockoverride "button_mapmode_actions"
-								{
-									visible = "[CanChangeMapMode]"
-									input_action = "[MapModeSlot.GetInputAction]"
-
-									action_tooltip = {
-										click_type = left
-										click_mode = single
-										title = "MAPMODE_SLOT_CYCLE"
-										on_action = "[CycleSlot(PdxGuiWidget.GetIndexInDataModel)]"
-										block "button_mapmode_actions_left" {}
-									}
-
-									modify_texture = {
-										visible = "[MapMode.IsSet]"
-										using = color_white_texture
-										alpha = 0.2
-									}
-
-									modify_texture = {
-										visible = "[MapModeSelectorVars.HasValue('slot_highlight', ToString_int32(MapModeSlot.GetSlotIndex))]"
-										using = color_red_texture
-										alpha = 0.7
-									}
-
-									action_tooltip = {
-										click_type = right
-										on_action = "[PdxGuiWidget.ToggleContextMenu]"
-										title = "MAPMODE_SLOT_EDIT_MENU"
-									}
-
-									tooltip_type = widget
-									tooltip_parentanchor = top|hcenter
-									tooltip_widgetanchor = bottom|hcenter
 
 								spacing = 5
 								ignoreinvisible = yes
 
 								datamodel = "[GetMapModesSlots]"
 								item = {
-									glorp_mapmode_button = {
-										blockoverride "size" { size = { 30 30 } }
-									}
+									glorp_mapmode_button = { blockoverride "size" { size = { 30 30 } } }
 								}
 							}
 						}

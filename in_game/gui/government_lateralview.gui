@@ -4108,7 +4108,7 @@ lateralview = {
 
 												widget = {
 													layoutpolicy_horizontal = expanding
-													size = { -1 31 }
+													size = { -1 36 }
 
 													hbox = {
 														### Advisors Data
@@ -4136,7 +4136,7 @@ lateralview = {
 															enabled = "[PdxGuiWidget.IsUberButtonEnabled]"
 
 															spriteborder = { 40 40 }
-															size = {31 31}
+															size = {36 36}
 															icon = {
 																parentanchor = center
 																# using = bg_circle_piechart
@@ -4177,7 +4177,7 @@ lateralview = {
 
 														#cabinet lock/unlock button
 														header_button_left = {
-															size = {31 31}
+															size = {36 36}
 															blockoverride "button_icon_stretch_sprite" {}
 															blockoverride "header_button_frame_inner" {visible = no}
 															blockoverride "header_button_icon_size" { size = { 30 30 } }

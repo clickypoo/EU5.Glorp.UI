@@ -51,7 +51,7 @@ template economy_main_tabs {
 			using = SubTabMarketsTooltip
 		}
 		widget = {
-			visible = "[Not(IsLateralViewOpened('economy'))]"
+			visible = "[Not(And(IsLateralViewOpened('trade'), LateralView.Vars.NotExistOrHasValue( 'subtab', 'markets' )))]"
 			size = { 100% 100% }
 			name = "tab_markets"
 		}
@@ -63,7 +63,32 @@ template economy_main_tabs {
 			on_action = "[OpenLateralViewWithParams('trade', 'subtab = markets')]"
 		}
 	}
+	
+	
 
+	button_main_tab_alt = {
+		using = layoutpolicy_expanding
+		enabled = "[Player.HasOwnedMarket]"
+		datacontext = "[GetAutomatedSystemItem('TradePolicies')]"
+		tooltipwidget = {
+			using = SubTabTariffsTooltip
+		}
+		widget = {
+			visible = "[Not(IsLateralViewOpened('trade_policies'))]"
+			size = { 100% 100% }
+			name = "tab_trade_policies"
+		}
+		down = "[IsLateralViewOpened('trade_policies')]"
+		using = automated_tab
+
+		blockoverride "on_action_left" {
+			click_mode = single
+			enabled = "[Player.HasOwnedMarket]"
+			conditions = "[MakeItFailIfLoc(Not(Player.HasOwnedMarket), 'TRADE_POLICIES_TAB_REQUIRES_MARKET')]"
+			on_action = "[OpenLateralView('trade_policies')]"
+		}
+		blockoverride "text" { text = "lateralview_trade_policies_name" }
+	}
 	button_main_tab_alt = {
 		using = layoutpolicy_expanding
 		tooltipwidget = {
@@ -124,6 +149,52 @@ template EstateIncomeBreakdownTooltip {
 			TooltipStringPairList = {
 				visible = "[And(TaxRateSetting.GetEstate.CanCollectTaxes, Not(StringIsEmpty(TaxRateSetting.GetIncomeBreakdown)))]"
 				textcontext = "[TaxRateSetting.GetIncomeBreakdown]"
+			}
+
+			caesar_plotline = {
+				visible = "[TaxRateSetting.GetEstate.HasTaxHistory]"
+				datacontext = "[TaxRateSetting.GetEstate]"
+				layoutpolicy_horizontal = expanding
+				size = { -1 180 }
+
+				blockoverride "header" {
+					text = "ESTATE_TAX_LAST_YEAR"
+				}
+				blockoverride "line_color" {
+					color = { .9 .9 .9 1.0 }
+				}
+				blockoverride "line_plotpoints" {
+					plotpoints = "[Estate.GetTaxHistoryTrend]"
+				}
+				blockoverride "tooltip" {
+					marker = {
+						text_single = {
+							position = { 0 -20 }
+							autoresize = yes
+
+							margin_right = 4
+							margin_top = 4
+							align = left|nobaseline
+							using = bg_number_container_bckg
+							default_format = "#t"
+
+							text = "[Estate.GetTaxDataPointValue(PlotLine.GetSnappedIndexNearMouse)]"
+						}
+					}
+				}
+				blockoverride "maxvalue" {
+					raw_text = "[Estate.GetMaxTaxForPlot|1]@gold!"
+				}
+				blockoverride "minvalue" {
+					raw_text = "[Estate.GetMinTaxForPlot|1]@gold!"
+				}
+				blockoverride "startdate" {
+					text = "[Estate.GetTaxHistoryStartDate]"
+				}
+				blockoverride "enddate" {
+					text = "[Estate.GetTaxHistoryEndDate]"
+				}
+				blockoverride "multiitem" {}
 			}
 		}
 	}
