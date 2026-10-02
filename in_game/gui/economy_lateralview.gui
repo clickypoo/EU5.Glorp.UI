@@ -508,12 +508,11 @@ lateralview = {
 						frame_grid = {1 2}
 						frame = 2
 						fittype = centercrop
-						alpha = 0.9
 					}
 
 					background = {
 						using = color_default_brown_texture
-						alpha = 0.5
+						alpha = 0.6
 						modify_texture = {
 							using = overlay_paper_03
 						}
@@ -548,7 +547,7 @@ lateralview = {
 
 					background = {
 						using = plotchart_grid_texture
-						alpha = 0.8
+						alpha = 0.9
 
 						modify_texture = {
 							using = color_super_dark_brown_texture
