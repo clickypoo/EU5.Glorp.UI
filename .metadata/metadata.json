@@ -3,8 +3,8 @@
     "id": "glorp.ui",
     "version": "02.10.26",
     "game_id": "eu5",
-    "supported_game_version": "1.4.*",
-    "glorpui_last_updated_game_version": "1.4.0",
+    "supported_game_version": "1.3.*",
+    "glorpui_last_updated_game_version": "1.3.10",
     "short_description": "i'm straight glorping it.. and by it, lets just say.. my bingus",
     "tags": [
         "Fixes",
