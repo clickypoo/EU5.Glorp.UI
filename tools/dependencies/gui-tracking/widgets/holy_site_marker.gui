@@ -3,6 +3,7 @@
 
 widget = {
 	name = "holy_site_marker"
+	max_update_rate = 4
 	allow_outside = yes
 	size = { 40 40 }
 	position = { 0 0 }

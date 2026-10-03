@@ -1,0 +1,204 @@
+﻿# vanilla: in_game/gui/outliner_entries.gui
+# mod: in_game/gui/outliner_entries.gui
+
+OutlinerEntryBase = {
+	name = "fav_trade_order_entry"
+	widgetid = "fav_trade_order_entry"
+
+	blockoverride "category_color" {
+		using = color_economy_texture
+	}
+
+	blockoverride "expanded_big_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			hbox = {
+				datacontext = "[TradeOrder.GetMarket]"
+				using = outliner_entry_margin
+				spacing = 5
+
+				icon = {
+					size = { 20 20 }
+					texture = "[GetConceptTexture('trade_order')]"
+				}
+
+				OutlinerTextBase = {
+					using = layoutpolicy_expanding
+					autoresize = no
+					align = left
+					text = "[Market.GetShortNameWithNoTooltip]"
+					default_format = "#L"
+				}
+
+				widget = {
+					size = { 95 30 }
+					hbox = {
+						visible = "[Not(TradeOrderItem.IsEmpty)]"
+						spacing = 4
+	
+						hbox = {
+							spacing = 2
+							datamodel = "[DataModelFirst(TradeOrderItem.GetGoodsEntries, Select_int32(GreaterThan_int32(GetDataModelSize(TradeOrderItem.GetGoodsEntries), '(int32)3'), '(int32)2', '(int32)3'))]"
+							item = {
+								widget = {
+									size = { 26 26 }
+									icon = {
+										visible = "[Not(TradeOrderGoodsEntryItem.GetIsAny)]"
+										size = { 26 26 }
+										texture = "[GetGoodsIcon(TradeOrderGoodsEntryItem.GetGoods)]"
+									}
+									icon = {
+										visible = "[And(And(TradeOrderGoodsEntryItem.GetIsAny, TradeOrderGoodsEntryItem.GetIsImport), Not(TradeOrderGoodsEntryItem.GetIsNeed))]"
+										size = { 26 26 }
+										texture = "gfx/interface/icons/flat_icons/trade_market/import.dds"
+									}
+									icon = {
+										visible = "[And(And(TradeOrderGoodsEntryItem.GetIsAny, Not(TradeOrderGoodsEntryItem.GetIsImport)), Not(TradeOrderGoodsEntryItem.GetIsNeed))]"
+										size = { 26 26 }
+										texture = "gfx/interface/icons/flat_icons/trade_market/export.dds"
+									}
+									icon = {
+										visible = "[EqualTo_int32(TradeOrderGoodsEntryItem.GetNeedCategory, '(int32)1')]"
+										size = { 26 26 }
+										texture = "gfx/interface/icons/alerts_icons/constructions_missing_input.dds"
+									}
+									icon = {
+										visible = "[EqualTo_int32(TradeOrderGoodsEntryItem.GetNeedCategory, '(int32)2')]"
+										size = { 26 26 }
+										texture = "gfx/interface/icons/alerts_icons/buildings_missing_input.dds"
+									}
+									icon = {
+										visible = "[EqualTo_int32(TradeOrderGoodsEntryItem.GetNeedCategory, '(int32)3')]"
+										size = { 26 26 }
+										texture = "gfx/interface/icons/alerts_icons/pops_wanting_stuff.dds"
+									}
+									icon = {
+										visible = "[EqualTo_int32(TradeOrderGoodsEntryItem.GetNeedCategory, '(int32)4')]"
+										size = { 26 26 }
+										texture = "gfx/interface/icons/flat_icons/trade_market/trade_categories/profitable_food_trades.dds"
+									}
+									icon = {
+										visible = "[And(Not(TradeOrderGoodsEntryItem.GetIsAny), TradeOrderGoodsEntryItem.GetIsImport)]"
+										parentanchor = bottom|right
+										size = { 12 12 }
+										texture = "gfx/interface/icons/flat_icons/trade_market/import.dds"
+									}
+									icon = {
+										visible = "[And(Not(TradeOrderGoodsEntryItem.GetIsAny), Not(TradeOrderGoodsEntryItem.GetIsImport))]"
+										parentanchor = bottom|right
+										size = { 12 12 }
+										texture = "gfx/interface/icons/flat_icons/trade_market/export.dds"
+									}
+								}
+							}
+						}
+	
+						extra_list = {
+							visible = "[GreaterThan_int32(GetDataModelSize(TradeOrderItem.GetGoodsEntries), '(int32)3')]"
+							blockoverride "extra_list_text_content" {
+								raw_text = "+[Subtract_int32(GetDataModelSize(TradeOrderItem.GetGoodsEntries), '(int32)2')]"
+								align = center|nobaseline
+							}
+							blockoverride "extra_list_size" {
+								size = { 30 26}
+							}
+						}
+
+						expand = {}
+					}
+				}
+
+				text_single = {
+					visible = "[GreaterThan_int32(TradeOrderItem.GetTradeCount, '(int32)0')]"
+					size = { 50 15 }
+					autoresize = no
+					align = right|nobaseline
+					using = Font_Size_Small
+					raw_text = "[TradeOrderItem.GetTradeCount]@trade!"
+				}
+
+				text_single = {
+					visible = "[Not(GreaterThan_int32(TradeOrderItem.GetTradeCount, '(int32)0'))]"
+					size = { 50 15 }
+					autoresize = no
+					align = right|nobaseline
+					using = Font_Size_Small
+					raw_text = "[TradeOrderItem.GetTradeCount]@trade!"
+					default_format = "#medium"
+				}
+
+				text_single = {
+					visible = "[GreaterThan_int32(TradeOrderItem.GetTradeCount, '(int32)0')]"
+					size = { 70 15 }
+					autoresize = no
+					align = right|nobaseline
+					using = Font_Size_Small
+					raw_text = "[TradeOrderItem.GetProfitPerCapacity|+=2]@profit_trade!"
+				}
+
+				text_single = {
+					visible = "[Not(GreaterThan_int32(TradeOrderItem.GetTradeCount, '(int32)0'))]"
+					size = { 70 15 }
+					autoresize = no
+					align = right|nobaseline
+					using = Font_Size_Small
+					raw_text = "0.00@profit_trade!"
+					default_format = "#medium"
+				}
+			}
+		}
+	}
+
+	blockoverride "expanded_small_content" {
+		OutlinerButtonBase = {
+			size = { 95% 100% }
+
+			OutlinerTextBase = {
+				datacontext = "[TradeOrder.GetMarket]"
+				size = { 100% 100% }
+				using = outliner_entry_margin
+				autoresize = no
+				align = left
+				text = "[Market.GetShortNameWithNoTooltip]"
+				default_format = "#L"
+			}
+		}
+	}
+
+	blockoverride "icon_content" {
+		OutlinerIconBg = {
+			filter_mouse = none
+			icon = {
+				filter_mouse = none
+				alwaystransparent = yes
+				parentanchor = center
+				size = { 20 20 }
+				texture = "[GetConceptTexture('trade_order')]"
+			}
+		}
+	}
+
+	blockoverride "button_setup" {
+
+		action_tooltip = {
+			click_type = left
+			click_mode = single
+			title = "TRADE_ORDER_EDIT_TT"
+			on_action = "[TradeOrderItem.Edit]"
+		}
+
+		action_tooltip = {
+			click_type = right
+			click_mode = single
+			title = "OPEN_MARKET"
+			on_action = "[OpenLateralViewWithParams('trade', 'subtab = trades')]"
+		}
+
+		onmousehierarchyenter = "[PdxGuiWidget.SetTradeLinesTradeOrder(TradeOrder.Self)]"
+
+		tooltipwidget = {
+			using = trade_order_trades_tooltip
+		}
+	}
+}

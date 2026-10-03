@@ -6,24 +6,7 @@ lateralview = {
 	widgetid = "government_lateralview"
 
 	blockoverride "lateralview_topbuttons_extra" {
-		widget = {
-			parentanchor = vcenter
-			size = { 40 40 }
-			position = { 30 0 }
-
-			button_automation_shortcut = {
-				parentanchor = vcenter
-				size = { 25 25 }
-
-
-				action_tooltip = {
-					title = "OPEN_AUTOMATION_PANEL_FILTER"
-					on_action = "[OpenLateralViewWithFilter('automation', 'automation_filter_government')]"
-				}
-
-				tooltipwidget = { BasicFunctionalTooltip = {} }
-			}
-		}
+		using = government_topbuttons_extra
 	}
 
 	blockoverride "panel_header" {
@@ -124,18 +107,11 @@ lateralview = {
 					}
 
 					blockoverride "text_top" {
-						text = "MOVE_CAPITAL"
-						maximumsize = { 120 -1 }
-						minimumsize = { 120 -1 }
-						fontsize = 15
-					}
-
-					blockoverride "text_bottom" {
 						text = "[Country.GetCapital.GetNameWithNoTooltip]"
 						default_format = "#L"
 						maximumsize = { 120 -1 }
 						minimumsize = { 120 -1 }
-						fontsize = 13
+						fontsize = 15
 					}
 
 					blockoverride "icon_texture" {
@@ -241,7 +217,6 @@ lateralview = {
 				}
 
 				header_button_right = {
-					name = "select_form_new_country"
 					parentanchor = vcenter|right
 
 					blockoverride "adjust_to_content" {
@@ -252,14 +227,11 @@ lateralview = {
 					tooltipwidget = { BasicFunctionalTooltip = {} }
 
 					blockoverride "icon_texture" {
-						texture = "gfx/interface/buttons/flats/country_rank.dds"
+						texture = "gfx/interface/icons/modifiers/_default.dds"
 					}
 
 					blockoverride "text_top" {
-						text = "FORM_NEW_COUNTRY"
-						maximumsize = { 120 -1 }
-						minimumsize = { 120 -1 }
-						fontsize = 13
+						text = "MODIFIERS_TEXT"
 					}
 
 					blockoverride "text_bottom" {
@@ -267,8 +239,8 @@ lateralview = {
 					}
 
 					action_tooltip = {
-						title = "SETTLE_SIDEMENU"
-						on_action = "[OpenLateralView('form_new_country')]"
+						title = "COUNTRY_MODIFIERS_SIDEMENU"
+						on_action = "[LeftView.ToggleSelectPlayerModifiersMenu(PdxGuiWidget.Self)]"
 					}
 					# enabled = "[Or(Or(Or(
 					# 		GetGenericAction('migrate_pop_based_country').IsEnabledForCountry(Player.Self),
@@ -284,7 +256,8 @@ lateralview = {
 				name = "ruler_container"
 
 				blockoverride "country_header_character_name" {
-					margin = {2 0}
+					margin = {-2 0}
+					margin_bottom = 3
 					CharacterNameDefault = {
 						blockoverride "name_highlight" {}
 						margin_left = 0
@@ -302,12 +275,116 @@ lateralview = {
 						}
 						blockoverride "character_name_default_extra" {
 							widget = {
-								size = { 27 30 }
+								size = { 34 34 }
 								visible = "[Character.HasDynasty]"
 								allow_outside = yes
 								dynasty_shield_mid = {
 									parentanchor = center
 									datacontext = "[Character.GetDynasty]"
+								}
+							}
+							widget = {
+								size = { 34 34 }
+								visible = "[Player.GetGovernment.HasActiveRegent]"
+								allow_outside = yes
+								datacontext = "[Player.GetGovernment]"
+
+								header_button_left = {
+									size = { 32 32 }
+									parentanchor = center
+									blockoverride "button_icon_stretch_sprite" {}
+									blockoverride "header_button_frame_inner" {visible = no }
+									blockoverride "header_button_icon_size" { size = { 30 30 } }
+									blockoverride "header_button_text_layout" {}
+									tooltip_enabled = no
+								}
+
+								piechart = {
+									size = { 32 32 }
+									parentanchor = center
+									using = piechart_angles
+
+									icon = {
+										texture = "gfx/interface/pie_charts/pie_chart_white.dds"
+										size = { 100% 100% }
+										parentanchor = center
+										color = { 0.35 0.35 0.35 1 }
+									}
+
+									pieslice_no_highlight = {
+										texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
+										value = "[Player.GetGovernment.GetRegencyProgress]"
+										color = { 1 1 1 1 }
+									}
+
+									pieslice_no_highlight = {
+										texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
+										value = "[Subtract_float('(float)100.0', Player.GetGovernment.GetRegencyProgress)]"
+										color = { 1 1 1 0 }
+									}
+								}
+
+								button = {
+									parentanchor = center
+									size = { 26 26 }
+									texture = "gfx/interface/icons/character_roles/regent.dds"
+									texture_density = 2
+									mirror = horizontal
+									visible = "[Country.GetGovernment.HasActiveRegent]"
+									tooltipwidget = {
+										using = CurrentRegencyTooltip
+									}
+									action_tooltip = {
+										click_type = left
+										click_mode = confirm
+										title = "[Player.GetExtendRegencyInfo]"
+										on_action = "[ExtendRegency(Player.Self)]"
+										enabled = "[Player.CanExtendRegency]"
+									}
+								}
+							}
+
+							hbox = {
+								visible = "[Character.HasUnit]"
+								spacing = 3
+								margin_left = 4
+
+								navigational_button_alt = {
+									visible = "[Not(Character.GetUnitPointer.IsArmy)]"
+									size = { 26 26 }
+									blockoverride "button_icon_stretch_sprite" {}
+									blockoverride "icon_size" { size = { 80% 80% } }
+									blockoverride "icon_texture" {
+										texture = "gfx/interface/icons/character_roles/admiral.dds"
+										texture_density = 2
+									}
+									using = bg_circle_alt_brown
+									enabled = "[Character.HasUnit]"
+									datacontext = "[Character.GetUnitPointer]"
+									action_tooltip = {
+										title = "SELECT_UNIT_TT"
+										on_action = "[SelectUnitAndPan(Character.GetUnitPointer)]"
+									}
+									tooltipwidget = { using = Unit_tooltip }
+								}
+
+								navigational_button_alt = {
+									visible = "[Character.GetUnitPointer.IsArmy]"
+									size = { 26 26 }
+									blockoverride "button_icon_stretch_sprite" {}
+									blockoverride "icon_size" { size = { 80% 80% } }
+									blockoverride "icon_texture" {
+										texture = "gfx/interface/icons/character_roles/general.dds"
+										texture_density = 2
+									}
+									using = bg_circle_alt_brown
+									enabled = "[Character.HasUnit]"
+									datacontext = "[Character.GetUnitPointer]"
+									action_tooltip = {
+										title = "SELECT_UNIT_TT"
+										on_action = "[SelectUnitAndPan(Character.GetUnitPointer)]"
+									}
+									tooltipwidget = { using = Unit_tooltip }
 								}
 							}
 						}
@@ -316,88 +393,16 @@ lateralview = {
 
 				blockoverride "character_dynasty" {}
 
+				blockoverride "character_titles_name_row_top" {}
+				blockoverride "character_titles_name_row_bottom" {
+					character_name_row = {}
+				}
+
 				blockoverride "character_religion_visibility" {
 					visible = no
 				}
 
-				blockoverride "abilities" {
-					widget = {
-						layoutpolicy_horizontal = expanding
-						size = { -1 33 }
-
-						hbox = {
-							margin_left = 6
-
-							character_abilities = {
-								blockoverride "abilities_format" {
-									layoutpolicy_vertical = expanding
-									margin = { 7 0 }
-									spacing = 10
-
-								}
-								blockoverride "abilities_bg_extra" {
-									margin = {0 -3}
-									alpha = 0.2
-								}
-								blockoverride "abilities_bg_frame_extra" {
-									margin = {-1 -3}
-									alpha = 0.5
-								}
-							}
-
-							expand = {}
-						}
-					}
-
-					widget = {
-						layoutpolicy_horizontal = expanding
-						size = { -1 40 }
-						hbox = {
-							layoutpolicy_horizontal = expanding
-							hbox = {
-								spacing = 10
-								datamodel = "[GovernmentView.GetTraits]"
-								using = ruler_trait_item
-							}
-							expand = {}
-						}
-					}
-
-
-					piechart = {
-						size = { 38 38 }
-						minimumsize = { 36 36 }
-
-						using = piechart_angles
-						using = bg_circle_piechart_big
-
-						pieslice_no_highlight = {
-							texture = "gfx/interface/pie_charts/pie_chart_alpha_80_red.dds"
-							value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('complacency'))]"
-							color = { 1 1 1 1 }
-						}
-
-						pieslice_no_highlight = {
-							texture = "gfx/interface/pie_charts/pie_chart_alpha_80_green.dds"
-							value = "[Subtract_float('(float)100.0', FixedPointToFloat(Country.GetFixedPointCurrencyValue('complacency')))]"
-							color = { 1 1 1 0 }
-						}
-
-						icon = {
-							size = { 24 24 }
-							parentanchor = center
-							texture = "gfx/interface/icons/resources/complacency.dds"
-
-						}
-
-						tooltipwidget = {
-							using = ComplacencyResourceTooltip
-							blockoverride "content_datacontext" {
-								datacontext = "[CountriesListViewItem.GetCountry.GetEconomy]"
-							}
-						}
-					}
-				}
+				blockoverride "abilities_widget" {}
 
 				blockoverride "character_name_extra" {
 					# widget = {
@@ -431,105 +436,99 @@ lateralview = {
 				blockoverride "country_header_extra" {
 
 					widget = {
-						parentanchor = left|top
-						position = { 7 7}
-						size = {32 32}
-						header_button_left = {
-							size = { 100% 100% }
-							blockoverride "button_icon_stretch_sprite" {}
-							blockoverride "header_button_frame_inner" {visible = no}
-							blockoverride "header_button_icon_size" { size = { 30 30 } }
-							blockoverride "header_button_text_layout" {}
+						parentanchor = top|left
+						position = { 2 2 }
+						datacontext = "[Player.GetGovernment.GetRulerOrRegent]"
+						visible = "[Player.GetGovernment.HasRulerOrRegent]"
 
-							blockoverride "icon_texture" {
-								texture = "gfx/interface/buttons/flats/history.dds"
-								texture_density = 2
-							}
-
-							action_tooltip = {
-								title = "RULING_HISTORY_COUNTRY_SIDEMENU"
-								on_action = "[ShowRulingHistoryForCountry(Player.Self)]"
-							}
-							tooltipwidget = { BasicFunctionalTooltip = {} }
-						}
-					}
-
-					# Character role info
-					widget = {
-						parentanchor = left|vcenter
-						position = { 7 -28 }
-						visible = "[Player.GetGovernment.GetRulerOrRegent.IsValid]"
-						widget = {
-							size = {115% 85%}
-							ignore_layout = yes
-							using = bg_dark_paper_card
-							parentanchor = vcenter|left
-						}
-						hbox = {
+						vbox = {
 							set_parent_size_to_minimum = yes
-							datacontext = "[Player.GetGovernment.GetRulerOrRegent]"
-							visible = "[Character.HasUnit]"
-							spacing = 5
-							parentanchor = center
+							spacing = 2
 
-							datacontext = "[Character.GetCourtCountry]"
+							vbox = {
+								spacing = 2
+								margin = { 8 5 }
+								minimumsize = { 56 -1 }
 
-							navigational_button_alt = {
-								visible = "[Not(Character.GetUnitPointer.IsArmy)]"
-								size = { 30 30 }
+								tagtooltip_enabled = yes
+								tooltip = "[Character.GetAbilityTooltip]"
 
-								blockoverride "button_icon_stretch_sprite" {}
+								using = bg_dark_paper_card
+								using = bg_cabinet_card_frame
 
-								blockoverride "icon_size" {
-									size = { 70% 70% }
+								flowcontainer = {
+									spacing = 5
+									using = bg_rough_edges_paper
+									widget = {
+										name = "adm"
+										size = { 18 18 }
+										using = icon_adm_alt
+									}
+									text_single = {
+										autoresize = yes
+										text = "[Character.GetAbility('adm')]"
+										align = nobaseline
+									}
 								}
 
-								blockoverride "icon_texture" {
-									texture = "gfx/interface/buttons/flats/ship_button.dds"
-									texture_density = 2
-									using = icon_gold_texture_alt
+								flowcontainer = {
+									spacing = 5
+									widget = {
+										name = "dip"
+										size = { 18 18 }
+										using = icon_dip_alt
+									}
+									text_single = {
+										autoresize = yes
+										text = "[Character.GetAbility('dip')]"
+										align = nobaseline
+									}
 								}
 
-								using = bg_circle_alt_brown
-
-								enabled = "[Character.HasUnit]"
-								action_tooltip = {
-									title = "SELECT_UNIT_TT"
-									on_action = "[SelectUnitAndPan(Character.GetUnitPointer)]"
+								flowcontainer = {
+									spacing = 5
+									using = bg_rough_edges_paper
+									widget = {
+										name = "mil"
+										size = { 18 18 }
+										using = icon_mil_alt
+									}
+									text_single = {
+										autoresize = yes
+										text = "[Character.GetAbility('mil')]"
+										align = nobaseline
+									}
 								}
-								tooltipwidget = { BasicFunctionalTooltip = {} }
-
 							}
 
-							navigational_button_alt = {
-								visible = "[Character.GetUnitPointer.IsArmy]"
-								size = { 30 30 }
+							vbox = {
+								visible = "[Or(Not(Character.IsRegent), Not(Player.GetGovernment.HasRuler))]"
+								margin = { 8 5 }
+								minimumsize = { 56 -1 }
 
-								blockoverride "button_icon_stretch_sprite" {}
+								using = bg_dark_paper_card
+								using = bg_cabinet_card_frame
 
-								blockoverride "icon_size" {
-									size = { 80% 80% }
+								scrollarea = {
+									scrollbarpolicy_horizontal = always_off
+									autoresizeviewport = yes
+									viewportwidget = { widget = { scissor = yes } }
+									scrollbar_vertical = { using = Scrollbar_Vertical }
+									minimumsize = { 40 85 }
+									maximumsize = { 40 85 }
+
+									scrollwidget = {
+										vbox = {
+											ignoreinvisible = yes
+											spacing = 2
+											datamodel = "[GovernmentView.GetTraits]"
+											using = ruler_trait_item
+											blockoverride "trait_item_size" {
+												size = { 25 25 }
+											}
+										}
+									}
 								}
-
-								blockoverride "icon_texture" {
-									texture = "gfx/interface/buttons/flats/regiments.dds"
-									texture_density = 2
-									using = icon_gold_texture_alt
-								}
-
-								using = bg_circle_alt_brown
-
-								enabled = "[Character.HasUnit]"
-								action_tooltip = {
-									title = "SELECT_UNIT_TT"
-									on_action = "[SelectUnitAndPan(Character.GetUnitPointer)]"
-								}
-								tooltipwidget = { BasicFunctionalTooltip = {} }
-							}
-
-							text_single = {
-								size = { 22 20 }
-								text = "[Character.GetUnitPointer.GetVisualStrength]"
 							}
 						}
 					}
@@ -624,12 +623,8 @@ lateralview = {
 										size = { 80% 80% }
 										datacontext = "[Player.GetDiplomacy.GetOverlord]"
 									}
-									button = {
+									button_cabinet_card_frame = {
 										size = { 100% 100% }
-										texture = "gfx/interface/component_tiles/cabinet/cabinet_card_frame.dds"
-										texture_density = 2
-										spritetype = corneredstretched
-										spriteBorder = {20 20}
 										parentanchor = center
 
 										tooltipwidget = {
@@ -638,20 +633,6 @@ lateralview = {
 										onclick = "[OpenDiplomacy(Player.GetDiplomacy.GetOverlord.Self)]"
 
 										# block "portrait_icon_datacontext" {}
-
-										modify_texture = {
-											using = color_new_gold_texture
-											blend_mode = multiply
-										}
-										modify_texture = {
-											using = color_new_gold_texture
-											blend_mode = add
-											alpha = 0.5
-										}
-										modify_texture = {
-											using = overlay_stone_texture
-											blend_mode = overlay
-										}
 									}
 								}
 
@@ -698,7 +679,7 @@ lateralview = {
 								visible = "[Country.GetGovernment.CareAboutProducingHeirs]"
 
 								blockoverride "portrait_datacontext" {
-									datacontext = "[Country.GetGovernment.GetConsort]"
+									datacontext = "[Country.GetGovernment.GetRulerConsort]"
 								}
 								blockoverride "portrait_position" {position = { 0 -1 }}
 								blockoverride "portrait_size" { size = { 85% 90% } }
@@ -754,13 +735,8 @@ lateralview = {
 									tooltipwidget = { BasicFunctionalTooltip = {} }
 								}
 
-								button = {
+								card_header_button_04 = {
 									size = { 38 23 }
-									texture = "gfx/interface/buttons/card_header_button_04.dds"
-									texture_density = 2
-									spriteType = corneredstretched
-									spriteborder = { 11 11 }
-									frame_grid = {4 1}
 									parentanchor = hcenter|bottom
 									position = {0 8}
 									using = bg_card_header_02
@@ -879,14 +855,8 @@ lateralview = {
 									}
 								}
 
-								button = {
+								card_header_button_04 = {
 									size = { 38 23 }
-									texture = "gfx/interface/buttons/card_header_button_04.dds"
-									texture_density = 2
-									spriteType = corneredstretched
-									spriteborder = { 11 11 }
-									frame_grid = {4 1}
-
 									parentanchor = hcenter|bottom
 									position = {0 12}
 
@@ -941,6 +911,42 @@ lateralview = {
 										expand = {}
 									}
 								}
+
+
+								button_regular_icon = {
+									visible = "[PdxGuiWidget.IsUberButtonVisible]"
+									size = { 40 23 }
+									position = {8 77}
+									blockoverride "button_icon" {
+										visible = yes
+										texture = "gfx/interface/icons/character_interactions/favor_heir.dds"
+										size = {15 15}
+									}
+									blockoverride "button_text" {
+										visible = yes
+										text_single = {
+											layoutpolicy_horizontal = expanding
+											size = { -1 20 }
+											autoresize = no
+											align = left
+											text = "favor_heir"
+											using = Font_Type_Flavor
+										}
+									}
+									scripted_action_tooltip = {
+										click_type = left
+										click_mode = confirm
+										action_name = "favor_heir"
+										actor = "[GovernmentView.GetPlayer]"
+									}
+									enabled = "[PdxGuiWidget.IsUberButtonEnabled]"
+									tooltipwidget = {
+										using = favor_heir_tooltip
+										blockoverride "tooltip_content" {
+											using = action_tooltip_inner_content
+										}
+									}
+								}
 							}
 							widget = {
 								size = {7 -1}
@@ -951,74 +957,7 @@ lateralview = {
 					}
 				}
 
-				blockoverride "character_title_left" {
-					margin_widget = {
-						visible = "[Player.GetGovernment.HasActiveRegent]"
-						size = { 32 38 }
-						margin_bottom = -5
-						allow_outside = yes
-						datacontext = "[Player.GetGovernment]"
-
-						header_button_left = {
-							size = { 32 32 }
-							blockoverride "button_icon_stretch_sprite" {}
-							blockoverride "header_button_frame_inner" {visible = no }
-							blockoverride "header_button_icon_size" { size = { 30 30 } }
-							blockoverride "header_button_text_layout" {}
-							tooltip_enabled = no
-						}
-
-						piechart = {
-							size = { 32 32 }
-							parentanchor = hcenter
-							using = piechart_angles
-
-							icon = {
-								texture = "gfx/interface/pie_charts/pie_chart_white.dds"
-								size = { 100% 100% }
-								parentanchor = center
-								color = { 0.35 0.35 0.35 1 }
-							}
-
-							pieslice_no_highlight = {
-								texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
-								value = "[Player.GetGovernment.GetRegencyProgress]"
-								color = { 1 1 1 1 }
-							}
-
-							pieslice_no_highlight = {
-								texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-								value = "[Subtract_float('(float)100.0', Player.GetGovernment.GetRegencyProgress)]"
-								color = { 1 1 1 0 }
-							}
-						}
-
-						button = {
-							parentanchor = center
-
-
-							size = { 26 26 }
-							texture = "gfx/interface/icons/character_roles/regent.dds"
-
-
-							texture_density = 2
-							mirror = horizontal
-
-							visible = "[Country.GetGovernment.HasActiveRegent]"
-							tooltipwidget = {
-								using = CurrentRegencyTooltip
-							}
-
-							action_tooltip = {
-								click_type = left
-								click_mode = confirm
-								title = "[Player.GetExtendRegencyInfo]"
-								on_action = "[ExtendRegency(Player.Self)]"
-								enabled = "[Player.CanExtendRegency]"
-							}
-						}
-					}
-				}
+				blockoverride "character_title_left" {}
 
 				blockoverride "character_dynasty_shield_visible" {
 					visible = no
@@ -1077,21 +1016,6 @@ lateralview = {
 							blockoverride "on_action_right_title" { title = "TOGGLE_CABINET_AUTOMATION" }
 							blockoverride "on_action_left" { on_action = "[GovernmentView.SetLowerTabToCabinet]" }
 							blockoverride "text" { text = "SUBTAB_GOVERNMENT_CABINET" }
-						}
-
-						button_secondary_tab_alt = {
-							name = "laws_tab"
-							using = layoutpolicy_expanding
-							tooltipwidget = {
-								using = SubTabPoliticsTooltip
-							}
-
-							down = "[GovernmentView.IsLowerTabPolitics]"
-							datacontext = "[GetAutomatedSystemItem('laws')]"
-							using = automated_tab
-
-							blockoverride "on_action_left" { on_action = "[GovernmentView.SetLowerTabToPolitics]" }
-							blockoverride "text" { text = "SUBTAB_GOVERNMENT_POLITICS" }
 						}
 					}
 				}
@@ -1239,13 +1163,13 @@ lateralview = {
 																	blockoverride "tooltip_layout_policy" {}
 
 																	blockoverride "tooltip_content" {
-																		TooltipListScrollArea = {
+																		TooltipScrolledContentSection = {
 																			blockoverride "block_scrollarea" {
 																				maximumsize = { 265 98 }
 																				minimumsize = { 265 49 }
 																			}
 
-																			blockoverride "scrollarea_content" {
+																			blockoverride "section_content" {
 																				dynamicgridbox = {
 																					parentanchor = left
 																					flipdirection = yes
@@ -1320,265 +1244,6 @@ lateralview = {
 					}
 				}
 
-
-				### POLITICS AREA
-				widget = {
-					name = "laws_area_intro"
-					widgetid = "laws_area_intro"
-					visible = "[GovernmentView.IsLowerTabPolitics]"
-					using = layoutpolicy_expanding
-
-					vbox = {
-						using = bg_secondary_inner_image_alt
-
-						widget = { ### Court Language and Administrative Efficiency
-							layoutpolicy_horizontal = expanding
-							size = { -1 54 }
-							hbox = {
-								margin = { 10 0 }
-								header_action_button_left = {
-									title = "change_court_language"
-									actor = "[GovernmentView.GetCountry]"
-									left_action = { action_name = "change_court_language" }
-									size = { 170 45 }
-
-									datacontext = "[Player.GetCourtLanguage]"
-									tooltipwidget = {
-										using = CourtLanguage_tooltip
-									}
-
-									blockoverride "header_button_text_layout" {
-										hbox = {
-											set_parent_size_to_minimum = yes
-											minimumsize = { 170 35 }
-											vbox = {
-												using = layoutpolicy_expanding
-
-												text_single = {
-													layoutpolicy_horizontal = expanding
-													maximumsize = {160 18}
-													autoresize = yes
-													fontsize = 13
-													align = nobaseline
-													margin = {2 0}
-
-													text = "game_concept_court_language"
-													default_format = "#explanation_link"
-												}
-
-												text_single = {
-													layoutpolicy_horizontal = expanding
-													maximumsize = {160 18}
-													autoresize = yes
-													fontsize = 13
-													align = nobaseline
-													margin = {2 0}
-
-													text = "CHANGE_COURT_LANGUAGE_BUTTON"
-												}
-
-												expand = {}
-											}
-										}
-									}
-
-									blockoverride "icon_overlay" {}
-
-									blockoverride "icon_texture" {
-										texture = "gfx/interface/icons/map_modes/court_language.dds"
-										size = { 10 10 }
-									}
-
-									blockoverride "adjust_to_content" {
-										set_parent_size_to_minimum = yes
-										minimumsize = { -1 40 }
-									}
-								}
-
-								expand = {}
-
-								subheader_unified_icon = {
-									blockoverride "mirror_layout" { righttoleft = yes }
-									margin = { 0 0 }
-									tooltipwidget = {
-										using = legislative_efficiency_tooltip
-									}
-									blockoverride "subheader_unified_icon_texture" {
-										texture = "gfx/interface/icons/flat_icons/legislative_efficiency.dds"
-										glow = {
-											name = "drop_shadow"
-											glow_radius = 3
-											color = {0.0 0.0 0.0 1.0}
-											alpha = 0.3
-										}
-									}
-									blockoverride "subheader_unified_top_text" {
-										text = "game_concept_legislative_efficiency"
-										align = right|nobaseline
-									}
-									blockoverride "subheader_unified_bottom_text" {
-										text = "[Player.GetModifierValueNoFormat('legislative_efficiency')]"
-										align = right|nobaseline
-									}
-								}
-							}
-						}
-
-						# LAW CATEGORIES
-						filtered_sorted_list = {
-							datacontext = "[GovernmentView.GetLawCategoriesSortSearch]"
-
-							blockoverride "filtered_sorted_list_sorts_visible" {
-								visible = no
-							}
-
-							blockoverride "scroll_list_is_empty" {
-								visible = "[IsDataModelEmpty(GovernmentView.GetLawCategories)]"
-							}
-
-							blockoverride "scroll_list_is_empty_text" {
-								text = "LAWS_SCROLL_LIST_EMPTY"
-							}
-
-							blockoverride "scroll_list_layout" {
-								vbox = {
-									vbox = {
-										spacing = 10
-										layoutpolicy_horizontal = expanding
-										datamodel = "[GovernmentView.GetLawCategories]"
-										item = {
-											# LAWS DATA
-											laws_list_item = {
-												blockoverride "law_type_button" {
-													action_tooltip = {
-														click_type = left
-														click_mode = single
-														title = "TOGGLE_LAW_CATEGORY"
-														on_action = "[LawCategory.Toggle]"
-													}
-
-													action_tooltip = {
-														click_type = right
-														click_mode = single
-														title = "TOGGLE_ALL"
-														on_action = "[LawCategory.ToggleAll]"
-													}
-
-													tooltipwidget = { BasicFunctionalTooltip = {} }
-												}
-
-												blockoverride "law_icon" {
-													texture = "[LawCategory.GetCategoryIcon]"
-												}
-												blockoverride "law_type_button_text" {
-													text = "[LawCategory.GetName]"
-												}
-												blockoverride "laws_amount" {
-													text = "[GetDataModelSize(LawCategory.GetLaws)]"
-												}
-												blockoverride "law_arrow_expanded" {
-													visible = "[LawCategory.IsExpanded]"
-												}
-												blockoverride "law_arrow_not_expanded" {
-													visible = "[Not(LawCategory.IsExpanded)]"
-												}
-												blockoverride "laws_list_datamodel" {
-													visible = "[LawCategory.IsExpanded]"
-													datamodel = "[LawCategory.GetLaws]"
-												}
-												blockoverride "law_unique_flavor_visible" {
-													visible = "[Law.IsUnique]"
-												}
-												blockoverride "law_action" {
-													enabled = "[GovernmentView.IsLawEnabled(Law.Self)]"
-													tooltipwidget = { using = Law_tooltip }
-
-													action_tooltip = {
-														click_type = left
-														click_mode = single
-														title = "[GovernmentView.GetLawEnabledInfo(Law.Self)]"
-														on_action = "[ShowSelectPolicies(Law.Self)]"
-													}
-												}
-												blockoverride "law_category_color" {
-													texture = "[LawCategory.GetBgCategoryColor]"
-													blend_mode = multiply
-												}
-												blockoverride "law_list_icon" {
-													texture = "[GetLawIcon(Law.Self)]"
-												}
-												blockoverride "law_title" {
-													text = "[Law.GetNameWithNoTooltip]"
-												}
-												blockoverride "law_policy_level" {
-													visible = "[Law.HasLevels]"
-													text = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).GetPolicyLevel]"
-												}
-												blockoverride "law_policy" {
-													visible = "[Player.GetGovernment.HasPolicyForLaw(Law.Self)]"
-													text = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).GetNameWithNoTooltip]"
-												}
-												blockoverride "law_no_policy" {
-													visible = "[Not(Player.GetGovernment.HasPolicyForLaw(Law.Self))]"
-													text = "NO_POLICY_SELECTED"
-												}
-												blockoverride "law_unique_icon_visible" {
-													visible = "[Player.GetGovernment.GetPolicyForLaw(Law.Self).IsUnique]"
-												}
-												# blockoverride "law_piechart" {
-												# 	widget = {
-												# 		size = { 30 30 }
-												# 		using = bg_circle
-												# 		visible = "[Player.GetGovernment.ShouldDisplayProgressForLaw(Law.Self)]"
-
-												# 		piechart = {
-												# 			size = { 100% 100% }
-												# 			parentanchor = center
-												# 			using = piechart_angles
-
-												# 			#datacontext = "[ReformItem]"
-
-												# 			icon = {
-												# 				parentanchor = center
-												# 				size = { 70% 70% }
-												# 				texture = "gfx/interface/icons/situations/_default.dds"
-												# 				texture_density = 2
-												# 			}
-
-												# 			pieslice = {
-												# 				texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-												# 				#value = "50"
-												# 				value = "[FixedPointToFloat(Player.GetGovernment.GetPolicyProgressForLaw(Law.Self))]"
-												# 				using = color_value_progress_blue
-												# 			}
-
-												# 			pieslice = {
-												# 				texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-												# 				#value = "50"
-												# 				value = "[Subtract_float('(float)100.0', FixedPointToFloat(Player.GetGovernment.GetPolicyProgressForLaw(Law.Self)))]"
-												# 				using = color_value_progress_gray
-												# 			}
-												# 		}
-												# 	}
-												# }
-											}
-										}
-									}
-									expand = {}
-								}
-							}
-						}
-					}
-
-					AutomatedSection = {
-						datacontext = "[GetAutomatedSystemItem('laws')]"
-
-						blockoverride "glow_anim_automation_visible" {
-							visible = "[AutomatedSystemsItem.IsEnabled]"
-						}
-					}
-				}
-
 				### CABINET AREA
 				widget = {
 					visible = "[GovernmentView.IsLowerTabCabinet]"
@@ -1608,6 +1273,21 @@ lateralview = {
 									blockoverride "subheader_unified_top_text" {
 										text = "MODIFIER_TYPE_NAME_government_size"
 										align = right|nobaseline
+									}
+									blockoverride "unified_icon_bottom_content" {
+										button_check_visibility = {
+											size = { 24 24 }
+											down = "[Not(LateralView.Vars.Exists( 'cabinet_compacted' ))]"
+											onclick = "[LateralView.Vars.Toggle( 'cabinet_compacted' )]"
+											tooltipwidget = {
+												LeftClickButtonTooltip = {
+													blockoverride "onclick_text" {
+														text = "[SelectLocalization( Not(LateralView.Vars.Exists( 'cabinet_compacted' )), 'COMPACT_CABINET_VIEW', 'EXPANDED_CABINET_VIEW' )]"
+													}
+												}
+											}
+										}
+										widget = { size = { 5 0 } }
 									}
 									blockoverride "subheader_unified_bottom_text" {
 										text = "[GovernmentView.GetPlayer.GetModifierCappedValueWithNoTooltip('government_size')|G]"
@@ -1646,21 +1326,36 @@ lateralview = {
 							flowcontainer = {
 								spacing = 10
 								parentanchor = center
-								header_action_button_left = {
-									size = { 40 40 }
+								widgetanchor = center
+								position = { 0 2 }
+								header_action_button_left_uber = {
+									visible = "[PdxGuiWidget.IsUberButtonVisible]"
+									size = { 140 40 }
+									blockoverride "icon_overlay" {}
 									blockoverride "button_icon_stretch_sprite" {}
-									blockoverride "header_button_frame_inner" {visible = no}
-									blockoverride "header_button_icon_size" { size = { 40 40 } }
-									blockoverride "header_button_text_layout" {}
-
+									blockoverride "header_button_frame_inner" { visible = no }
+									blockoverride "header_button_icon_size" { size = { 35 35 } }
+									blockoverride "header_button_text_layout" {
+										text_single = {
+											layoutpolicy_horizontal = expanding
+											size = { -1 20 }
+											autoresize = no
+											align = left
+											text = "hire_advisor"
+											using = Font_Type_Flavor
+										}
+									}
 									blockoverride "icon_texture" {
-										texture =  "gfx/interface/buttons/flats/advisor.dds"
+										texture = "gfx/interface/icons/character_roles/cabinet.dds"
 										texture_density = 2
 									}
-
-									title = "hire_advisor"
-									actor = "[GovernmentView.GetPlayer]"
-									left_click_and_hold_action = { action_name = "hire_advisor" }
+									scripted_action_tooltip = {
+										click_type = left
+										click_mode = confirm
+										action_name = "hire_advisor"
+										actor = "[GovernmentView.GetPlayer]"
+									}
+									enabled = "[PdxGuiWidget.IsUberButtonEnabled]"
 									tooltipwidget = {
 										using = hire_advisor_tooltip
 										blockoverride "tooltip_content" {
@@ -1668,46 +1363,9 @@ lateralview = {
 										}
 									}
 								}
-
-								widget = {
-                                    size = { 40 40 }
-                                    header_button_right = {
-                                        visible = "[Not(LateralView.Vars.Exists( 'cabinet_compacted' ))]"
-                                        size = { 40 40 }
-                                        blockoverride "button_icon_stretch_sprite" {}
-                                        blockoverride "header_button_frame_inner" { visible = no }
-                                        blockoverride "header_button_icon_size" { size = { 40 40 } }
-                                        blockoverride "header_button_text_layout" {}
-                                        blockoverride "icon_texture" {
-                                            texture =  "gfx/interface/icons/flat_icons/menu_icon.dds"
-                                            texture_density = 2
-                                        }
-                                        action_tooltip = {
-                                        	title = "COMPACT_CABINET_VIEW"
-                                        	on_action = "[LateralView.Vars.Toggle( 'cabinet_compacted' )]"
-                                        }
-										tooltipwidget = { BasicFunctionalTooltip = {} }
-                                    }
-                                    header_button_right = {
-                                        visible = "[LateralView.Vars.Exists( 'cabinet_compacted' )]"
-                                        size = { 40 40 }
-                                        blockoverride "button_icon_stretch_sprite" {}
-                                        blockoverride "header_button_frame_inner" { visible = no }
-                                        blockoverride "header_button_icon_size" { size = { 40 40 } }
-                                        blockoverride "header_button_text_layout" {}
-                                        blockoverride "icon_texture" {
-                                            texture =  "gfx/interface/icons/flat_icons/menu_icon_square.dds"
-                                            texture_density = 2
-                                        }
-                                        action_tooltip = {
-                                        	title = "EXPANDED_CABINET_VIEW"
-                                        	on_action = "[LateralView.Vars.Toggle( 'cabinet_compacted' )]"
-                                        }
-										tooltipwidget = { BasicFunctionalTooltip = {} }
-                                    }
-                                }
 							}
 						}
+
 
 						### CABINET CANDIDATES
 						scroll_list = {
@@ -1732,7 +1390,6 @@ lateralview = {
 											vbox = {
 												layoutpolicy_horizontal = expanding
 												margin = {4 4}
-												# margin_bottom = 2
 
 												using = bg_cabinet_card_frame
 
@@ -1754,6 +1411,9 @@ lateralview = {
 													blockoverride "cabinet_card_size" {
 														layoutpolicy_horizontal = expanding
 														size = {-1 120}
+													}
+													blockoverride "char_abilities_visible" {
+														visible = "[Cabinet.IsCharacterSet]"
 													}
 												}
 
@@ -1789,23 +1449,28 @@ lateralview = {
 															using = cabinet_item_advisor_action_provider
 														}
 
-														card_header_action_button_01 = {
+														card_header_button_01 = {
 															visible = "[And(CabinetItem.GetCabinet.IsCharacterSet, Not(CabinetItem.GetCabinet.GetCharacter.IsHeadOfCabinet))]"
 
-															actor = "[Player]"
-															enabled = "[UIAction.IsEnabled]"
-															parameter = {
-																parameter_name = "recipient"
-																parameter_value = "[CabinetItem.GetCabinet.GetCharacter]"
+															scripted_action_tooltip = {
+																click_type = left
+																click_mode = confirm
+																action_name = "promote_to_head_of_cabinet"
+																actor = "[Player]"
+																parameter = {
+																	parameter_name = "recipient"
+																	parameter_value = "[CabinetItem.GetCabinet.GetCharacter]"
+																}
 															}
-															left_click_and_hold_action = {action_name = "promote_to_head_of_cabinet"}
+															enabled = "[PdxGuiWidget.IsUberButtonEnabled]"
 
-															size = {36 36}
+															spriteborder = { 40 40 }
+															size = {31 31}
 															icon = {
 																parentanchor = center
 																# using = bg_circle_piechart
 																# using = bg_circle_alt_brown
-																size = { 28 28 }
+																size = { 91% 91% }
 
 																texture = "gfx/interface/icons/character_roles/head_of_cabinet.dds"
 																glow = {
@@ -1841,7 +1506,7 @@ lateralview = {
 
 														#cabinet lock/unlock button
 														header_button_left = {
-															size = {36 36}
+															size = {31 31}
 															blockoverride "button_icon_stretch_sprite" {}
 															blockoverride "header_button_frame_inner" {visible = no}
 															blockoverride "header_button_icon_size" { size = { 30 30 } }
@@ -1856,7 +1521,7 @@ lateralview = {
 																icon = {
 																	parentanchor = center
 																	widgetanchor = center
-																	size = { 28 28 }
+																	size = { 25 25 }
 																	visible = "[Not(CabinetItem.GetCabinet.IsLocked)]"
 
 																	texture = "gfx/interface/icons/map_subdivisons/unlocked.dds"
@@ -1870,7 +1535,7 @@ lateralview = {
 																icon = {
 																	parentanchor = center
 																	widgetanchor = center
-																	size = { 28 28 }
+																	size = { 25 25 }
 																	visible = "[CabinetItem.GetCabinet.IsLocked]"
 
 																	texture = "gfx/interface/icons/map_subdivisons/locked.dds"
@@ -1964,14 +1629,20 @@ lateralview = {
 									}
 									using = bg_cabinet_card_frame
 									margin = { 4 0 }
-									card_header_action_button_01 = {
+									card_header_button_01 = {
 										size = {42 42}
-										datacontext = "[GovernmentView.GetPlayer]"
-										left_action = { action_name = "change_parliament_type" }
-										actor = "[GovernmentView.GetPlayer]"
-										visible = "[Not(GovernmentView.GetPlayer.GetGovernment.GetParliament.IsParliamentActive)]"
-
+										spriteborder = { 40 40 }
 										datacontext = "[GovernmentView.GetPlayer.GetGovernment.GetParliament.GetParliamentType]"
+										visible = "[Not(GovernmentView.GetPlayer.GetGovernment.GetParliament.IsParliamentActive)]"
+										enabled = "[PdxGuiWidget.IsUberButtonEnabled]"
+
+										scripted_action_tooltip = {
+											click_type = left
+											click_mode = single
+											action_name = "change_parliament_type"
+											actor = "[GovernmentView.GetPlayer]"
+										}
+
 										tooltipwidget = {
 											using = ParliamentType_tooltip
 										}
@@ -1989,18 +1660,26 @@ lateralview = {
 											game_concept = "[parliament|e]"
 										}
 
-										card_header_action_button_01 = {
+										card_header_button_01 = {
 											layoutpolicy_horizontal = expanding
 											size = {-1 42}
-											title = "call_parliament"
+											spriteborder = { 40 40 }
 											datacontext = "[GovernmentView.GetPlayer]"
-											left_action = { action_name = "call_parliament" }
-											actor = "[GovernmentView.GetPlayer]"
 											visible = "[Not(GovernmentView.GetPlayer.GetGovernment.GetParliament.IsParliamentActive)]"
+											enabled = "[PdxGuiWidget.IsUberButtonEnabled]"
 											using = bg_card_header_01_government
 											blockoverride "uiaction_gov" {
-												visible = "[Not(UIAction.IsEnabled)]"
+												visible = "[Not(PdxGuiWidget.IsUberButtonEnabled)]"
 											}
+
+											scripted_action_tooltip = {
+												click_type = left
+												click_mode = single
+												action_name = "call_parliament"
+												actor = "[GovernmentView.GetPlayer]"
+											}
+
+											button_tooltip_override = { title = "CALL_PARLIAMENT" }
 
 											tooltipwidget = {
 												using = action_tooltip_pop_out
@@ -2084,15 +1763,7 @@ lateralview = {
 
 										using = piechart_angles
 
-										background = {
-											texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-											texture_density = 2
-											alpha = 0.5
-											modify_texture = {
-												using = color_dark_brown_texture
-												blend_mode = multiply
-											}
-										}
+										using = bg_piechart_dark
 
 										pieslice = {
 											texture = "gfx/interface/pie_charts/pie_chart_blue_progress.dds"
@@ -2143,15 +1814,7 @@ lateralview = {
 											using = ParliamentInSession_tooltip
 										}
 
-										background = {
-											texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-											texture_density = 2
-											alpha = 0.5
-											modify_texture = {
-												using = color_dark_brown_texture
-												blend_mode = multiply
-											}
-										}
+										using = bg_piechart_dark
 
 										icon = {
 											texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
@@ -2295,15 +1958,7 @@ lateralview = {
 										size = { 50 50 }
 										using = piechart_angles
 
-										background = {
-											texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-											texture_density = 2
-											alpha = 0.5
-											modify_texture = {
-												using = color_dark_brown_texture
-												blend_mode = multiply
-											}
-										}
+										using = bg_piechart_dark
 
 										pieslice = {
 											texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
@@ -2344,15 +1999,7 @@ lateralview = {
 										size = { 50 50 }
 										using = piechart_angles
 
-										background = {
-											texture = "gfx/interface/pie_charts/pie_chart_alpha_80.dds"
-											texture_density = 2
-											alpha = 0.5
-											modify_texture = {
-												using = color_dark_brown_texture
-												blend_mode = multiply
-											}
-										}
+										using = bg_piechart_dark
 
 										pieslice = {
 											texture = "gfx/interface/pie_charts/pie_chart_alpha_80_red.dds"
@@ -2407,23 +2054,56 @@ lateralview = {
 										margin_bottom = 20
 										spacing = 10
 										# parliament requests
-										card_common = {
-											blockoverride "header_decor_templates" {
+										card_expandable = {
+											layoutpolicy_horizontal = expanding
+											blockoverride "bg_expandable_color" {
 												using = bg_card_header_01_government
-												using = bg_generic_side_mask
-												using = bg_cabinet_card_frame
 											}
-											blockoverride "header_pattern_texture_density" {texture_density = 1.5}
-											blockoverride "common_header_extra_left" {
-												expand = {}
+											blockoverride "header_content" {
+												button = {
+													layoutpolicy_horizontal = expanding
+													size = { -1 40 }
+													action_tooltip = {
+														title = "game_concept_parliament_requests"
+														on_action = "[LateralView.Vars.Toggle( 'parliament_requests_collapsed' )]"
+													}
+													tooltipwidget = {
+														BasicFunctionalTooltip = {}
+													}
+													hbox = {
+														layoutpolicy_horizontal = expanding
+														spacing = 4
+														icon = {
+															size = { 30 30 }
+															texture = "gfx/interface/icons/flat_icons/parliament_request.dds"
+															texture_density = 2
+														}
+														text_single = {
+															text = "game_concept_parliament_requests"
+														}
+														expand = {}
+													}
+												}
 											}
-											blockoverride "common_header_text" {
-												text = "[parliament_requests|e]"
+											blockoverride "header_button_onclick" {
+												action_tooltip = {
+													title = "game_concept_parliament_requests"
+													on_action = "[LateralView.Vars.Toggle( 'parliament_requests_collapsed' )]"
+												}
+												tooltipwidget = {
+													BasicFunctionalTooltip = {}
+												}
 											}
-											blockoverride "common_header_icon_texture" {
-												texture = "gfx/interface/icons/flat_icons/parliament_request.dds"
+											blockoverride "bottom_content_onclick" {
+												visible = "[Not(LateralView.Vars.Exists( 'parliament_requests_collapsed' ))]"
 											}
-											blockoverride "common_bottom_content" {
+											blockoverride "icon_replace_visible_yes" {
+												visible = "[Not(LateralView.Vars.Exists( 'parliament_requests_collapsed' ))]"
+											}
+											blockoverride "icon_replace_visible_not" {
+												visible = "[LateralView.Vars.Exists( 'parliament_requests_collapsed' )]"
+											}
+											blockoverride "bottom_content" {
 												vbox = {
 													layoutpolicy_horizontal = expanding
 													spacing = 10
@@ -2438,28 +2118,23 @@ lateralview = {
 
 															tooltipmeta = {
 																texture = "gfx/interface/icons/flat_icons/parliament_support.dds"
+																title = "[GenericAction.GetNameWithNoTooltip]"
 															}
 
-															card_header_action_button_01 = {
+															card_header_button_01 = {
+																visible = "[PdxGuiWidget.IsUberButtonVisible]"
 																size = {100% 100%}
 
-																background = {
-																	texture = "gfx/interface/buttons/card_list_action_button.dds"
-																	frame_grid = {4 1}
-																	frame = 3
-																	spriteType = Corneredstretched
-																	texture_density = 2
-																	spriteborder = {40 40}
-																	modify_texture = {
-																		using = color_super_dark_brown_texture
-																		blend_mode = multiply
-																		alpha = 0.4
-																	}
-																}
+																using = bg_card_list_action_disabled
 
-																title = "[GenericAction.GetNameWithNoTooltip]"
-																actor = "[GovernmentView.GetPlayer]"
-																left_action = { action_name = "[GenericAction.GetKey]" }
+																scripted_action_tooltip = {
+																	click_type = left
+																	click_mode = single
+																	action_name = "[GenericAction.GetKey]"
+																	actor = "[GovernmentView.GetPlayer]"
+																}
+																enabled = "[PdxGuiWidget.IsUberButtonEnabled]"
+																tooltipwidget = { using = action_tooltip_pop_out }
 
 
 																hbox = {
@@ -2478,7 +2153,7 @@ lateralview = {
 																	hbox = {
 																		spacing = 10
 																		text_single = {
-																			visible = "[And( Not(EqualTo_string(GenericAction.GetKey, 'promote_mamluks')),Not(EqualTo_string(GenericAction.GetKey, 'force_parliament_issue')) ) ]"
+																			visible = "[And3( Not(EqualTo_string(GenericAction.GetKey, 'promote_mamluks')),Not(EqualTo_string(GenericAction.GetKey, 'force_parliament_issue')),Not(EqualTo_string(GenericAction.GetKey, 'force_parliament_support')) ) ]"
 																			autoresize = no
 																			align = center
 																			size = {65 25}
@@ -2499,7 +2174,7 @@ lateralview = {
 																		}
 
 																		text_single = {
-																			visible = "[And(EqualTo_string(GenericAction.GetKey, 'promote_mamluks'),Not(EqualTo_string(GenericAction.GetKey, 'force_parliament_issue')))]"
+																			visible = "[And3(EqualTo_string(GenericAction.GetKey, 'promote_mamluks'),Not(EqualTo_string(GenericAction.GetKey, 'force_parliament_issue')),Not(EqualTo_string(GenericAction.GetKey, 'force_parliament_support')))]"
 																			autoresize = no
 																			align = center
 																			size = {65 25}
@@ -2540,24 +2215,57 @@ lateralview = {
 										}
 
 										# parliament agendas
-										card_common = {
+										card_expandable = {
 											visible = "[GovernmentView.GetPlayer.GetGovernment.GetParliament.IsParliamentActive]"
-											blockoverride "header_decor_templates" {
+											layoutpolicy_horizontal = expanding
+											blockoverride "bg_expandable_color" {
 												using = bg_card_header_01_government
-												using = bg_generic_side_mask
-												using = bg_cabinet_card_frame
 											}
-											blockoverride "header_pattern_texture_density" {texture_density = 1.5}
-											blockoverride "common_header_extra_left" {
-												expand = {}
+											blockoverride "header_content" {
+												button = {
+													layoutpolicy_horizontal = expanding
+													size = { -1 40 }
+													action_tooltip = {
+														title = "game_concept_parliament_agendas"
+														on_action = "[LateralView.Vars.Toggle( 'parliament_agendas_collapsed' )]"
+													}
+													tooltipwidget = {
+														BasicFunctionalTooltip = {}
+													}
+													hbox = {
+														layoutpolicy_horizontal = expanding
+														spacing = 4
+														icon = {
+															size = { 30 30 }
+															texture = "gfx/interface/icons/flat_icons/estates_agenda.dds"
+															texture_density = 2
+														}
+														text_single = {
+															text = "game_concept_parliament_agendas"
+														}
+														expand = {}
+													}
+												}
 											}
-											blockoverride "common_header_text" {
-												text = "[parliament_agendas|e]"
+											blockoverride "header_button_onclick" {
+												action_tooltip = {
+													title = "game_concept_parliament_agendas"
+													on_action = "[LateralView.Vars.Toggle( 'parliament_agendas_collapsed' )]"
+												}
+												tooltipwidget = {
+													BasicFunctionalTooltip = {}
+												}
 											}
-											blockoverride "common_header_icon_texture" {
-												texture = "gfx/interface/icons/flat_icons/estates_agenda.dds"
+											blockoverride "bottom_content_onclick" {
+												visible = "[Not(LateralView.Vars.Exists( 'parliament_agendas_collapsed' ))]"
 											}
-											blockoverride "common_bottom_content" {
+											blockoverride "icon_replace_visible_yes" {
+												visible = "[Not(LateralView.Vars.Exists( 'parliament_agendas_collapsed' ))]"
+											}
+											blockoverride "icon_replace_visible_not" {
+												visible = "[LateralView.Vars.Exists( 'parliament_agendas_collapsed' )]"
+											}
+											blockoverride "bottom_content" {
 												vbox = {
 													layoutpolicy_horizontal = expanding
 													spacing = 10
@@ -2571,22 +2279,9 @@ lateralview = {
 															card_header_button_01 = {
 																size = {100% 100%}
 
-																background = {
-																	texture = "gfx/interface/buttons/card_list_action_button.dds"
-																	frame_grid = {4 1}
-																	frame = 3
-																	spriteType = Corneredstretched
-																	texture_density = 2
-																	spriteborder = {40 40}
-																	modify_texture = {
-																		using = color_super_dark_brown_texture
-																		blend_mode = multiply
-																		alpha = 0.4
-																	}
-																}
+																using = bg_card_list_action_disabled
 
-																datacontext = "[ParliamentAgendaItem.GetUIAction]"
-																using = button_action_provider
+																using = parliament_agenda_item_action_provider
 
 																blockoverride "button_extras" {
 																	modify_texture = {

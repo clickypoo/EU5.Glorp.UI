@@ -12,12 +12,13 @@ template alert_banner_setup {
 				block "alert_more_icons_before" {}
 
 				block "icon_texture_obj" {
-					icon = {
-						size = { 35 35 } # GlorpUI: 30->35
+					button = {
+						alwaystransparent = yes
+						tooltip_enabled = no
+						size = { 35 35 }
 						block "icon_texture" {
 							texture = "[AlertEntry.GetDescription.GetIcon]"
 						}
-						alwaystransparent = yes
 						texture_density = 2
 						alpha = 1
 

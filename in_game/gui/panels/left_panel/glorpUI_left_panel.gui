@@ -799,6 +799,41 @@ Types GlorpUILeftPanelTypes
 						}
 					}
 
+					button_panel_tab_alt = { ### decisions tab
+						widget = {
+							visible = "[Not(IsLateralGroupOpened('content_group'))]"
+							size = { 100% 100% }
+							name = content_tab_button
+						}
+						onclick = "[ToggleLateralGroup('content_group')]"
+						down = "[IsLateralGroupOpened('content_group')]"
+						onmousehierarchyenter = "[ResetHighlightedTab]"
+
+						tooltipwidget = {
+							using = TabContentTooltip
+						}
+
+						input_action = "top_left_9"
+
+						using = layoutpolicy_expanding
+
+						panel_tab_highlight = {
+							visible = "[IsLateralGroupHighlighted('content_group')]"
+						}
+
+						button = {
+							alwaystransparent = yes
+							size = { 26 26 }
+							parentanchor = center
+							texture = "gfx/interface/icons/flat_icons/tabicons/content_icon.dds"
+							texture_density = 2
+
+							using = button_panel_tab_icon_effect
+							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('content_group')]" }
+							blockoverride "icon_effect_color"{ color = { 0.80 0.55 0.20 1.0 } }
+						}
+					}
+
 					button_panel_tab_ideas = { } # GlorpUI: Idea Variation 2
 					button_panel_tab_uniqueevents = { } # GlorpUI: Unique Events Tab
 				}

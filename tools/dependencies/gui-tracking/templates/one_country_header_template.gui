@@ -1,0 +1,69 @@
+﻿# vanilla: in_game/gui/country_header.gui
+# mod: in_game/gui/glorpUI_country_header.gui
+
+template one_country_header_template  {
+
+	blockoverride "country_header_names_visible" { visible = no }
+	block "one_country_header_background" {
+		background = {
+			texture = "[GetSituationIllustration(SituationView.GetActiveSituation.GetSituation)]"
+			modify_texture = {
+				texture = "gfx/interface/component_masks/mask_fade_horizontal_middle.dds"
+				texture_density = 2
+				spriteType = stretched
+				spriteborder = { 250 250 }
+				blend_mode = alphamultiply
+				alpha = 0.4
+			}
+		}
+	}
+
+	using = scene_fade_vertical_up
+
+	container = {
+		scissor=yes
+		block "CountryContext" {}
+		block "one_country_character_visible" {
+			visible = "[Country.GetGovernment.HasRulerOrRegent]"
+		}
+		block "character_portrait_anchor" {
+			parentanchor = bottom
+		}
+
+		character_frame_medium_with_labels = {
+			block "character_right_visible" {
+				visible = yes
+			}
+			parentanchor = bottom
+			size = { 250 220 }
+			blockoverride "portrait_datacontext" {
+				block "one_country_header_character" {
+					datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
+				}
+			}
+		}
+	}
+	hbox = {
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = expanding
+		block "one_country_ruler_title_visible" {}
+
+		### RULER TITLE, COAT, SKILLS
+		block "CountryContext" {}
+		block "country_container_visible" {}
+		datacontext = "[Country.GetGovernment]"
+		country_government_character = {
+			blockoverride "character_name_maximumsize" {
+				maximumsize = { 200 -1 }
+			}
+			blockoverride "character_name_text"{
+				raw_text = "[Character.GetShortNameWithNoTooltip]"
+			}
+		}
+	}
+
+	using = bg_age_event_frame
+
+	block "country_header_extra" {}
+	blockoverride "abilities_widget" {}
+}

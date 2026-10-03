@@ -3,6 +3,7 @@
 
 widget = {
 	name = "blocked_vision_marker"
+	max_update_rate = 4
 	size = { 20 20 }
 	widgetanchor = left
 	position = { 0 2 }

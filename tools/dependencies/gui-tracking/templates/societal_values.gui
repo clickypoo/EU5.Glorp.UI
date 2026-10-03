@@ -5,6 +5,10 @@ template societal_values {
 	widget = {
 		size = { 100% 100% }
 
+		onmousehierarchyenter = "[SetSelectedSocietalValue(SocietalValueItem.GetType.Self)]"
+		onmousehierarchyleave = "[ClearSelectedSocietalValue]"
+		onmousehierarchyenter = "[PdxGuiWidget.PushMapModeOverride('societal_value')]"
+
 		tooltipwidget = {
 			using = SocietalValueItem_tooltip
 		}
@@ -256,69 +260,120 @@ template societal_values {
 						blockoverride "cabinet_card_shadow" {
 							alpha = 0
 						}
-						# LEFT PRGORESSBAR
-                        vbox = { # GlorpUI: added equilibrium bars
-                            layoutpolicy_horizontal = expanding
-                            progressbar = {
-                                layoutpolicy_horizontal = expanding
-                                size = { 0 6 }
-                                using = progressbar_bar_small
-                                using = progress_bar_blue_alt_left
-                                value = "[Abs_float(Min_float(SocietalValueItem.GetPosition, '(float)0'))]"
-                                invertprogress = yes
-                            }
-                            progressbar = { # Max Equilibrium
-                                visible = "[LessThan_float(SocietalValueItem.GetDirection, '(float)0')]"
-                                layoutpolicy_horizontal = expanding
-                                size = { 0 4 }
-                                using = progressbar_bar_small
-                                using = progress_bar_goldish
-                                value = "[Abs_float(Multiply_float(SocietalValueItem.GetDirection, '(float)100.0'))]"
-                                invertprogress = yes
-                            }
-                            progressbar = { # Show as Empty (wrong direction)
-                                visible = "[Or(GreaterThan_float(SocietalValueItem.GetDirection, '(float)0'), EqualTo_float(SocietalValueItem.GetDirection, '(float)0') )]"
-                                layoutpolicy_horizontal = expanding
-                                size = { 0 4 }
-                                using = progressbar_bar_small
-                                using = progress_bar_goldish
-                                value = "[Abs_float('(float)0')]"
-                                invertprogress = yes
-                            }
-                        }
-
+						# LEFT HALF
 						widget = {
-							size = {50 1}
+							layoutpolicy_horizontal = expanding
+							size = { 0 6 }
+
+							progressbar_framed = {
+								visible = "[LessThan_float(SocietalValueItem.GetInertiaCap, '(float)0')]"
+								size = { 100% 100% }
+								using = progressbar_bar_small
+								progresstexture = "gfx/interface/progressbars/progress_bar_purple.dds"
+								noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
+								value = "[SocietalValueItem.GetInertiaCapWeight]"
+								invertprogress = yes
+							}
+
+							progressbar_framed = {
+								size = { 100% 100% }
+								using = progressbar_bar_small
+								using = progress_bar_blue_alt_left
+								noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
+								spriteborder = { 12 0 }
+								value = "[Abs_float(Min_float(SocietalValueItem.GetPosition, '(float)0'))]"
+								invertprogress = yes
+							}
+
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								size = { 100% 100% }
+								visible = "[LessThan_float(SocietalValueItem.GetInertiaCap, '(float)0')]"
+
+								widget = {
+									layoutpolicy_horizontal = expanding
+									layoutstretchfactor_horizontal = "[SocietalValueItem.GetInertiaCapRemainderWeight]"
+								}
+								widget = {
+									size = { 0 6 }
+									layoutpolicy_vertical = expanding
+									progressbar_center_divider = {
+										parentanchor = center
+										ignore_layout = yes
+										modify_texture = {
+											visible = "[Not(GreaterThan_float(Abs_float(Min_float(SocietalValueItem.GetPosition, '(float)0')), Abs_float(Min_float(SocietalValueItem.GetInertiaCap, '(float)0'))))]"
+											using = color_white_texture
+											blend_mode = overlay
+											alpha = 0.6
+										}
+									}
+								}
+								widget = {
+									layoutpolicy_horizontal = expanding
+									layoutstretchfactor_horizontal = "[SocietalValueItem.GetInertiaCapWeight]"
+								}
+							}
+
 						}
 
-						# RIGHT PROGRESSBAR
-                        vbox = { # GlorpUI: added equilibrium bars
-                            layoutpolicy_horizontal = expanding
-                            progressbar = {
-                                layoutpolicy_horizontal = expanding
-                                size = { 0 6 }
-                                using = progressbar_bar_small
-                                using = progress_bar_blue_alt
-                                value = "[Abs_float(Max_float(SocietalValueItem.GetPosition, '(float)0'))]"
-                            }
-                            progressbar = { # Max Equilibrium
-                                visible = "[GreaterThan_float(SocietalValueItem.GetDirection, '(float)0')]"
-                                layoutpolicy_horizontal = expanding
-                                size = { 0 4 }
-                                using = progressbar_bar_small
-                                using = progress_bar_goldish
-                                value = "[Abs_float(Multiply_float(SocietalValueItem.GetDirection, '(float)100.0'))]"
-                            }
-                            progressbar = { # Show as Empty (wrong direction)
-                                visible = "[Or(LessThan_float(SocietalValueItem.GetDirection, '(float)0'), EqualTo_float(SocietalValueItem.GetDirection, '(float)0') )]"
-                                layoutpolicy_horizontal = expanding
-                                size = { 0 4 }
-                                using = progressbar_bar_small
-                                using = progress_bar_goldish
-                                value = "[Abs_float('(float)0')]"
-                                invertprogress = yes
-                            }
-                        }
+						widget = {
+							size = {50 6}
+						}
+
+						# RIGHT HALF
+						widget = {
+							layoutpolicy_horizontal = expanding
+							size = { 0 6 }
+
+							progressbar_framed = {
+								visible = "[Not(LessThan_float(SocietalValueItem.GetInertiaCap, '(float)0'))]"
+								size = { 100% 100% }
+								using = progressbar_bar_small
+								progresstexture = "gfx/interface/progressbars/progress_bar_purple.dds"
+								noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
+								value = "[SocietalValueItem.GetInertiaCapWeight]"
+							}
+
+							progressbar_framed = {
+								size = { 100% 100% }
+								using = progressbar_bar_small
+								using = progress_bar_blue_alt
+								noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
+								spriteborder = { 12 0 }
+								value = "[Abs_float(Max_float(SocietalValueItem.GetPosition, '(float)0'))]"
+							}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								size = { 100% 100% }
+								visible = "[Not(LessThan_float(SocietalValueItem.GetInertiaCap, '(float)0'))]"
+
+								widget = {
+									layoutpolicy_horizontal = expanding
+									layoutstretchfactor_horizontal = "[SocietalValueItem.GetInertiaCapWeight]"
+								}
+								widget = {
+									size = { 0 6 }
+									layoutpolicy_vertical = expanding
+									progressbar_center_divider = {
+										parentanchor = center
+										ignore_layout = yes
+										modify_texture = {
+											visible = "[Not(GreaterThan_float(Abs_float(Max_float(SocietalValueItem.GetPosition, '(float)0')), Abs_float(Max_float(SocietalValueItem.GetInertiaCap, '(float)0'))))]"
+											using = color_white_texture
+											blend_mode = overlay
+											alpha = 0.6
+										}
+									}
+								}
+								widget = {
+									layoutpolicy_horizontal = expanding
+									layoutstretchfactor_horizontal = "[SocietalValueItem.GetInertiaCapRemainderWeight]"
+								}
+							}
+
+						}
 					}
 
 					expand = {}
@@ -326,7 +381,7 @@ template societal_values {
 
 				widget = {
 					size = { 60 20 }
-					position = { 0 -5 } # GlorpUI: -7->-5
+					position = {0 -7 }
 					parentanchor = hcenter
 
 					background = {
@@ -366,22 +421,22 @@ template societal_values {
 						}
 
 						progress_arrow_flavor = {
+							visible = "[Not(LessThan_float(SocietalValueItem.GetEncouragedDirection, '(float)0'))]"
 							name = "left"
 							size = { 12 12 }
-							visible = "[Not(LessThan_float(SocietalValueItem.GetEncouragedDirection, '(float)0'))]"
 
-							down = "[LessThan_float(SocietalValueItem.GetDirection, '(float)0')]"
+							down = "[And(LessThan_float(SocietalValueItem.GetInertiaCap, SocietalValueItem.GetPosition), LessThan_float(SocietalValueItem.GetDirection, '(float)0'))]"
 							mirror = horizontal
 
 							modify_texture = {
-								visible = "[And(Not(SocietalValueItem.CanMoveForward),LessThan_float(SocietalValueItem.GetDirection, '(float)0'))]"
+								visible = "[And(LessThan_float(SocietalValueItem.GetPosition, SocietalValueItem.GetInertiaCap), LessThan_float(SocietalValueItem.GetDirection, '(float)0'))]"
 								using = color_black_texture
 								alpha = 1
 								blend_mode = multiply
 							}
 
 							modify_texture = {
-								visible = "[And(Not(SocietalValueItem.CanMoveForward),LessThan_float(SocietalValueItem.GetDirection, '(float)0'))]"
+								visible = "[And(LessThan_float(SocietalValueItem.GetPosition, SocietalValueItem.GetInertiaCap), LessThan_float(SocietalValueItem.GetDirection, '(float)0'))]"
 								using = color_progress_blue_texture
 								alpha = 1
 								blend_mode = add
@@ -391,7 +446,7 @@ template societal_values {
 						text_single = {
 							autoresize = yes
 							# size = { 40 -1 }
-							fontsize = 13 # GlorpUI: 12->13
+							fontsize = 12
 							align = center|nobaseline
 							text = "[Abs_float(SocietalValueItem.GetDirection)|2]"
 
@@ -414,21 +469,21 @@ template societal_values {
 						}
 
 						progress_arrow_flavor = {
+							visible = "[Not(GreaterThan_float(SocietalValueItem.GetEncouragedDirection, '(float)0'))]"
 							name = "right"
 							size = { 12 12 }
-							visible = "[Not(GreaterThan_float(SocietalValueItem.GetEncouragedDirection, '(float)0'))]"
 
-							down = "[GreaterThan_float(SocietalValueItem.GetDirection, '(float)0')]"
+							down = "[And(GreaterThan_float(SocietalValueItem.GetInertiaCap, SocietalValueItem.GetPosition), GreaterThan_float(SocietalValueItem.GetDirection, '(float)0'))]"
 
 							modify_texture = {
-								visible = "[And(Not(SocietalValueItem.CanMoveForward),GreaterThan_float(SocietalValueItem.GetDirection, '(float)0'))]"
+								visible = "[And(GreaterThan_float(SocietalValueItem.GetPosition, SocietalValueItem.GetInertiaCap), GreaterThan_float(SocietalValueItem.GetDirection, '(float)0'))]"
 								using = color_black_texture
 								alpha = 1
 								blend_mode = multiply
 							}
 
 							modify_texture = {
-								visible = "[And(Not(SocietalValueItem.CanMoveForward),GreaterThan_float(SocietalValueItem.GetDirection, '(float)0'))]"
+								visible = "[And(GreaterThan_float(SocietalValueItem.GetPosition, SocietalValueItem.GetInertiaCap), GreaterThan_float(SocietalValueItem.GetDirection, '(float)0'))]"
 								using = color_progress_blue_texture
 								alpha = 1
 								blend_mode = add

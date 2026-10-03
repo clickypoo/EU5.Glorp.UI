@@ -4,7 +4,7 @@
 template cabinet_entry_icon_empty {
 	OutlinerIconBg = {
 		visible = "[Not(Cabinet.IsActive)]"
-		portrait_standard_head_button = {
+		portrait_standard_head_cached_button = {
 			datacontext = "[Cabinet.GetCharacter]"
 			alwaystransparent = yes
 			parentanchor = center

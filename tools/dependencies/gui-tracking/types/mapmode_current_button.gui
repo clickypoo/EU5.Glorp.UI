@@ -47,10 +47,7 @@
 				}
 			}
 
-			texture = "gfx/interface/buttons/map_modes/banner.dds"
-			texture_density = 2
-			spriteType = Corneredstretched
-			spriteborder = { 10 10 }
+			using = bg_map_banner_texture
 
 			using = mapmode_color
 			blockoverride "mapmode_color_modify_texture_setup" {
@@ -65,10 +62,7 @@
 			}
 			icon = {
 				size = { 100% 100% }
-				texture = "gfx/interface/buttons/map_modes/banner_frame.dds"
-				texture_density = 2
-				spriteType = Corneredstretched
-				spriteborder = { 10 10 }
+				using = bg_map_banner_frame_texture
 			}
 		}
 

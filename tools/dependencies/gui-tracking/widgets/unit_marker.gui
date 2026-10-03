@@ -14,24 +14,27 @@ widget = {
 		# Siege banner
 		widget = {
 			visible = "[UnitMarker.HasSiege]"
-			datacontext = "[UnitMarker.GetLeadingUnit]"
-			datacontext = "[UnitMarker.GetSiege]"
-
-			parentanchor = right|vcenter
-			widgetanchor = left|vcenter
 			allow_outside = yes
 
-			unit_maker_siege_banner = {
-				visible = "[UnitMarker.ShouldBeShownFullWidth]"
-				widgetanchor = vcenter|left
-				parentanchor = center
+			widget = {
+				datacontext = "[UnitMarker.GetSiege]"
+				parentanchor = right|vcenter
+				widgetanchor = left|vcenter
+				allow_outside = yes
+
+				unit_maker_siege_banner = {
+					visible = "[UnitMarker.ShouldBeShownFullWidth]"
+					widgetanchor = bottom|left
+					parentanchor = left
+					position = { 0 -2 }
 			}
 
-			unit_maker_siege_banner = {
-				position = { @[20 - unit_marker_siege_banner_short_offset] 0 }
-				visible = "[And(UnitMarker.ShouldBeShownShortWidth, Not(UnitMarker.ShouldBeShownSmallSize))]"
-				widgetanchor = vcenter|left
-				parentanchor = center
+				unit_maker_siege_banner = {
+					position = { @[20 - unit_marker_siege_banner_short_offset] 0 }
+					visible = "[And(UnitMarker.ShouldBeShownShortWidth, Not(UnitMarker.ShouldBeShownSmallSize))]"
+					widgetanchor = vcenter|left
+					parentanchor = center
+				}
 			}
 		}
 
@@ -209,6 +212,19 @@ widget = {
 								}
 							}
 
+							widget = {
+								ignore_layout = yes
+								size = { 30 30 }
+								parentanchor = vcenter|right
+								widgetanchor = vcenter|left
+								position = { -10 5 }
+								allow_outside = yes
+								hbox = {
+									allow_outside = yes
+									GlorpUIArmyMarker = {}
+								}
+							}
+
 							blockoverride "item_unit_transport_text_object" {
 								text_single = {
 									size = { 100% 100% }
@@ -221,10 +237,12 @@ widget = {
 
 						# Short width
 						widget = {
+							allow_outside = yes
 							visible = "[And(UnitMarker.ShouldBeShownShortWidth, Not(UnitMarker.ShouldBeShownVerySmallSize))]"
 							size = { @[unit_marker_item_width * unit_marker_item_short_factor] @unit_marker_item_height }
 
 							vbox = {
+								allow_outside = yes
 								# hbox = {
 								# 	layoutpolicy_horizontal = expanding
 								# 	spacing = 2
@@ -233,6 +251,7 @@ widget = {
 								# }
 
 								unit_marker_item_unit_info = {
+									allow_outside = yes
 									unit_marker_compass = {
 										size = { 18 18 }
 										position = { -8 4 }
@@ -306,6 +325,19 @@ widget = {
 													}
 												}
 											}
+										}
+									}
+
+									widget = {
+										allow_outside = yes
+										ignore_layout = yes
+										size = { 30 30 }
+										parentanchor = vcenter|right
+										widgetanchor = vcenter|left
+										position = { -10 0 }
+										hbox = {
+											allow_outside = yes
+											GlorpUIArmyMarker = {}
 										}
 									}
 
@@ -479,6 +511,19 @@ widget = {
 								}
 							}
 
+							widget = {
+								ignore_layout = yes
+								size = { 30 30 }
+								parentanchor = vcenter|right
+								widgetanchor = vcenter|left
+								position = { -5 5 }
+								allow_outside = yes
+								hbox = {
+									allow_outside = yes
+									GlorpUIArmyMarker = {}
+								}
+							}
+
 							blockoverride "item_unit_transport_text_object" {
 								text_single = {
 									size = { 100% 100% }
@@ -578,6 +623,19 @@ widget = {
 													ondoubleclick = "[UnitMarkerItem.OnRightClick]"
 												}
 											}
+										}
+									}
+
+									widget = {
+										allow_outside = yes
+										ignore_layout = yes
+										size = { 30 30 }
+										parentanchor = vcenter|right
+										widgetanchor = vcenter|left
+										position = { -5 0 }
+										hbox = {
+											allow_outside = yes
+											GlorpUIArmyMarker = {}
 										}
 									}
 

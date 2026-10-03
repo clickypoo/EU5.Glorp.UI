@@ -3,6 +3,7 @@
 
 widget = {
 	name = "annexation_marker"
+	max_update_rate = 4
 	size = { 40 40 }
 	widgetanchor = left
 	position = { 0 2 }
@@ -81,12 +82,30 @@ widget = {
 			size = { 100% 100% }
 		}
 
-		tooltip_enabled = no
 		texture = "gfx/interface/icons/outliner/categories/annexation.dds"
 		texture_density = 2
 
-		onclick = "[AnnexationMarker.OnClick]"
-		onrightclick = "[AnnexationMarker.OnRightClick]"
 		onmousehierarchyenter = "[PdxGuiWidget.SetHighlightCountry(AnnexationMarker.GetCountry)]"
+		tooltip_offset = { 20 20 }
+
+		action_tooltip = {
+			click_type = left
+			click_mode = single
+			title = "TAB_TOOLTIP_DIPLOMACY_LEFT_CLICK"
+			on_action = "[AnnexationMarker.OnClick]"
+		}
+
+		action_tooltip = {
+			click_type = right
+			click_mode = single
+			title = "ABORTANNEXTITLE"
+			on_action = "[AnnexationMarker.OnRightClick]"
+			conditions = "[AnnexationMarker.GetRightClickConditions]"
+			enabled = "[AnnexationMarker.IsRightClickEnabled]"
+		}
+
+		tooltipwidget = {
+			using = Annexation_tooltip
+		}
 	}
 }

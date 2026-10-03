@@ -109,8 +109,8 @@ widget = {
 
 								action_tooltip = {
 									click_type = left
-									title = "TAB_TOOLTIP_ADVANCES_LEFT_CLICK"
-									on_action = "[OpenLateralGroup('advances_group')]"
+									title = "TAB_TOOLTIP_CONTENT_LEFT_CLICK"
+									on_action = "[OpenLateralGroup('content_group')]"
 								}
 
 								tooltipwidget = { BasicFunctionalTooltip = {} }
@@ -302,8 +302,8 @@ widget = {
 
 									action_tooltip = {
 										click_type = left
-										title = "TAB_TOOLTIP_ADVANCES_LEFT_CLICK"
-										on_action = "[OpenLateralGroup('advances_group')]"
+										title = "TAB_TOOLTIP_CONTENT_LEFT_CLICK"
+										on_action = "[OpenLateralGroup('content_group')]"
 									}
 
 									tooltipwidget = { BasicFunctionalTooltip = {} }

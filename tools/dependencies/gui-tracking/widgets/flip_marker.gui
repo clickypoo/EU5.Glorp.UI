@@ -3,6 +3,7 @@
 
 widget = {
 	name = "flip_marker"
+	max_update_rate = 4
 	allow_outside = yes
 	position = { 0 0 }
 

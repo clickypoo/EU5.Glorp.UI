@@ -90,14 +90,14 @@ template CountryTooltip {
 
 			TooltipRowList = {
 				visible = "[And(Country.GetDiplomacy.IsDisloyalSubject, Country.GetDiplomacy.IsSubject)]"
-				textcontext = "SubjectTypeDetail_DESC_NOT"
+				lowpriotextcontext = "SubjectTypeDetail_DESC_NOT"
 				tooltipwidget = {
 					using = SubjectLoyalty_tooltip
 				}
 			}
 			TooltipRowList = {
 				visible = "[And(Not(Country.GetDiplomacy.IsDisloyalSubject), Country.GetDiplomacy.IsSubject)]"
-				textcontext = "SubjectTypeDetail_DESC"
+				lowpriotextcontext = "SubjectTypeDetail_DESC"
 				tooltipwidget = {
 					using = SubjectLoyalty_tooltip
 				}
@@ -235,7 +235,7 @@ template CountryTooltip {
 							visible = "[HasArmySizeIntelOn(Country.Self)]"
 							autoresize = yes
 							align = right
-							raw_text = "[Country.GetRaisedAndPotentialLevyStrength] @levy! / [Country.GetRegularArmySize|0L] @regular!"
+							raw_text = "[Country.GetRaisedAndPotentialLevyStrength] [levies_icon] / [Country.GetRegularArmySize|0L] [regulars_icon] / [Country.GetMercenaryArmySize|0L] [mercenary_icon]"
 						}
 						text_single = {
 							visible = "[Not(HasArmySizeIntelOn(Country.Self))]"
@@ -284,7 +284,7 @@ template CountryTooltip {
 							visible = "[HasNavyStrengthIntelOn(Country.Self)]"
 							autoresize = yes
 							align = right
-							raw_text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] ([Country.GetNavySizeValue|0L] @naval_regular!)" # GlorpUI: levy/regular breakdown
+							raw_text = "[Country.GetNavyLevyPower|0L] [navy_levies_icon] / [Country.GetRegularNavySize|0L] @naval_regular!" # GlorpUI: levy/regular breakdown  / [Country.GetMercenaryNavySize|0L] @naval_mercenary!
 						}
 						text_single = {
 							visible = "[Not(HasNavyStrengthIntelOn(Country.Self))]"
@@ -361,7 +361,7 @@ template CountryTooltip {
 
 					hbox = {
 						tooltipwidget = { using = AiDisposition_tooltip }
-						visible = "[And(IsPlayerValid, Not(Country.HasHumanController))]"
+						visible = "[And3(IsPlayerValid, Not(Country.HasHumanController), Not(Country.IsLocalPlayer))]"
 						spacing = 5
 
 						text_single = {

@@ -183,22 +183,8 @@
 		widget = {
 			block "laws_list_action_button_visible" { visible = no }
 			size = { 100% 100% }
-			card_list_action_button = {
+			button_list_paper = {
 				size = { 100% 100% }
-
-				blockoverride "texture" {
-					gfxtype = framedbuttongfx
-					effectname = "NoHighlight"
-					upframe = 1
-					overframe = 2
-					downframe = 3
-					disableframe = 4
-					texture = "gfx/interface/buttons/list_card_button.dds"
-					frame_grid = {4 1}
-					spriteType = Corneredstretched
-					spriteborder = { 0 0 }
-					texture_density = 2
-				}
 
 				icon = {
 					size = {99% 97%}
@@ -219,7 +205,9 @@
 					}
 				}
 
-				block "law_action_button_setup" {}
+				block "law_action_button_setup" {
+					tooltipwidget = { BasicFunctionalTooltip = {} }
+				}
 
 				hbox = {
 					margin = { 4 0 }

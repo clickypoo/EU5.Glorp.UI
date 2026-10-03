@@ -85,6 +85,17 @@ template build_rgo_entry {
 											on_action = "[ShowGoods(Location.GetRawMaterial)]"
 										}
 
+				action_tooltip = {
+					click_type = right
+					click_mode = single
+					title = "GOODS_MARKET_CTXMENU_OPEN"
+					on_action = "[PdxGuiWidget.ToggleContextMenu]"
+				}
+
+				contextmenu_widget = {
+					GoodsMarketContextMenu = {}
+				}
+
 										datacontext = "[Location.GetRawMaterial]"
 										datacontext = "[Location.GetOwner]"
 										datacontext = "[Location.GetMarket]"
@@ -106,6 +117,7 @@ template build_rgo_entry {
 								}
 
 								vbox = {
+									maximumsize = { 118 46 } # GlorpUI: added
 									layoutpolicy_horizontal = expanding
 									margin = {5 3}
 									margin_right = 0
@@ -176,7 +188,7 @@ template build_rgo_entry {
 
 										text_single = {
 											visible = "[IsDataModelEmpty(Location.GetCivilConstructions)]"
-											maximumsize = { 105 15}
+											maximumsize = { 92 15} # GlorpUI: 105->92
 											alwaystransparent = no
 											align = left|nobaseline
 											autoresize = yes
@@ -193,7 +205,7 @@ template build_rgo_entry {
 
 										text_single = {
 											visible = "[Not(IsDataModelEmpty(Location.GetCivilConstructions))]"
-											maximumsize = { 65 15}
+											maximumsize = { 62 15} # GlorpUI: 65->62
 											alwaystransparent = no
 											align = left|nobaseline
 											autoresize = yes
@@ -210,13 +222,13 @@ template build_rgo_entry {
 
 										text_single = {
 											visible = "[Not(IsDataModelEmpty(Location.GetCivilConstructions))]"
-											size = { 40 15}
+											size = { 30 15} # GlorpUI: 40->30
 											alwaystransparent = no
 											align = left|nobaseline
 											autoresize = no
 											using = Font_Size_Small
 
-											raw_text = " (#L +[GetDataModelSize(Location.GetCivilConstructions)]#! @construction!)"
+											raw_text = "#L +[GetDataModelSize(Location.GetCivilConstructions)]#! @construction!" # GlorpUI: removed wrapping parens
 
 											hbox = {
 												datamodel = "[DataModelFirst(Location.GetCivilConstructions,'(int32)1')]"
@@ -335,11 +347,11 @@ template build_rgo_entry {
 								}
                                 # GlorpUI: Market Access, Control
                                 vbox = {
-                                    maximumsize = {60 46}
+                                    maximumsize = {56 46}
                                     layoutpolicy_horizontal = expanding
                                     hbox = { # Market Access
                                         piechart = {
-                                            size = { 20 20 }
+                                            size = { 18 18 }
                                             alwaystransparent = yes
                                             datacontext = "[GetMapMode('market')]"
                                             datacontext = "[Location.GetMarket]"
@@ -360,7 +372,7 @@ template build_rgo_entry {
                                             }
 
                                             icon = {
-                                                size = { 61% 61% }
+                                                size = { 70% 70% }
                                                 parentanchor = center
                                                 texture = "gfx/interface/icons/location_icons/market.dds"
                                             }
@@ -387,7 +399,7 @@ template build_rgo_entry {
                                             }
                                         }
                                         text_single = {
-                                            size = { 30 18 }
+                                            size = { 30 20 }
                                             align = nobaseline|right
                                             autoresize = no
                                             fontsize = 14
@@ -398,7 +410,7 @@ template build_rgo_entry {
                                         piechart = {
                                             name = "location_control"
                                             using = bg_circle
-                                            size = { 20 20 }
+                                            size = { 18 18 }
                                             datacontext = "[Location]"
                                             tooltipwidget = {
                                                 using = location_control_tooltip
@@ -423,7 +435,7 @@ template build_rgo_entry {
                                             }
 
                                             icon = {
-                                                size = { 60% 60% }
+                                                size = { 75% 75% }
                                                 parentanchor = center
                                                 texture = "gfx/interface/icons/location_icons/control.dds"
                                             }
@@ -449,7 +461,7 @@ template build_rgo_entry {
                                             }
                                         }
                                         text_single = {
-                                            size = { 30 18 }
+                                            size = { 30 20 }
                                             align = nobaseline|right
                                             autoresize = no
                                             fontsize = 14
@@ -511,11 +523,13 @@ template build_rgo_entry {
 								click_type = left
 								title = "[SelectLocalization(IsAutoExpandRGO(Location.Self), 'TOGGLE_AUTO_EXPAND_RGO_ON', 'TOGGLE_AUTO_EXPAND_RGO_OFF')]"
 								on_action = "[ToggleAutoExpandRGO(Location.Self)]"
+								description = "[GetAutoExpandRGOAutomationWarning]"
 							}
 							action_tooltip = {
 								click_type = right
 								title = "TOGGLE_AUTO_EXPAND_ALL_RGO"
 								on_action = "[ExpandRawGoodsLateralView.ToggleAutoExpandAllRGOs]"
+								description = "[GetAutoExpandRGOAutomationWarning]"
 							}
 						}
 					}
@@ -751,6 +765,7 @@ template build_rgo_entry {
 										}
 									}
 								}
+
 							}
 						}
 

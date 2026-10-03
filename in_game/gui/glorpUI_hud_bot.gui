@@ -414,17 +414,6 @@ types GlorpUIBottomTypes
 			# GlorpUI: slot pick button
 			button_pin_alt = {
 				size = { 27 27 }
-				# TODO: Check if the mapmode has been pinned in any of the slots.
-				# datamodel = "[DataModelRepeatedItem(GetDataModelSize(GetMapModesSlots))]"
-				# item = {
-				# 	datacontext_from_model = {
-				# 		datamodel = "[GetMapModesSlots]"
-				# 		index = "[Subtract_int32(GetDataModelSize(GetMapModesSlots), Subtract_int32(PdxGuiWidget.GetIndexInDataModel, '(int32)-1'))]"
-				# 	}
-				# 	visible = "[MapMode.IsInSlot(MapModeSlot.GetSlotIndex)]"
-				# }
-				# frame = "[Select_int32(Player.MakeScope.GetVariable('MapmodePinned').IsSet, '(int32)2', '(int32)1')]"
-
 				action_tooltip = {
 					click_type = left
 					on_action = "[PdxGuiWidget.ToggleContextMenu]"
@@ -489,10 +478,7 @@ types GlorpUIBottomTypes
 				}
 			}
 
-			texture = "gfx/interface/buttons/map_modes/banner.dds"
-			texture_density = 2
-			spriteType = Corneredstretched
-			spriteborder = { 10 10 }
+			using = bg_map_banner_texture
 
 			using = mapmode_color
 			blockoverride "mapmode_color_modify_texture_setup" {
@@ -507,10 +493,7 @@ types GlorpUIBottomTypes
 			}
 			icon = {
 				size = { 100% 100% }
-				texture = "gfx/interface/buttons/map_modes/banner_frame.dds"
-				texture_density = 2
-				spriteType = Corneredstretched
-				spriteborder = { 10 10 }
+				using = bg_map_banner_frame_texture
 			}
 		}
 
@@ -668,6 +651,12 @@ types GlorpUIBottomTypes
 		min_height = "[Min_int32('(int32)300', Add_int32('(int32)84', Multiply_int32(GetDataModelSize(GetMapColorLedger), '(int32)33')))]"
 		using = bg_paper_card
 		datacontext = "[GetMapColorLedgerSearchBar]"
+
+		state = {
+			name = _show
+			duration = 0
+			on_start = "[SearchBar.ClearTextFilter(PdxGuiWidget.FindChild('searchbar_editbox'))]"
+		}
 
 		onmousehierarchyleave = "[ClearMapModeSelectorVarsInSeconds('(float)0.4')]" # GlorpUI: added
 		# GlorpUI: show/hide animation
@@ -914,9 +903,7 @@ types GlorpUIBottomTypes
 
 								datamodel = "[GetMapModesSlots]"
 								item = {
-									glorp_mapmode_button = {
-										blockoverride "size" { size = { 30 30 } }
-									}
+									glorp_mapmode_button = { blockoverride "size" { size = { 30 30 } } }
 								}
 							}
 						}

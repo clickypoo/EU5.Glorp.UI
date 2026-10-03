@@ -1,0 +1,10 @@
+﻿# vanilla: loading_screen/gui/textformatting.gui
+# mod: main_menu/gui/textformatting.gui
+
+template text_multi_template {
+	using = text_common_template
+	multiline = yes
+
+	default_format = "#medium"
+	alwaystransparent = no
+}

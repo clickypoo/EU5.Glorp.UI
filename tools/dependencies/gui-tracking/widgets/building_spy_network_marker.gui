@@ -3,6 +3,7 @@
 
 widget = {
 	name = "building_spy_network_marker"
+	max_update_rate = 4
 	size = { 40 40 }
 	widgetanchor = left
 	position = { 0 2 }

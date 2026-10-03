@@ -24,88 +24,77 @@ widget = {
 	name = "ingame_topbar"
 	layer = topbar
 
-	widget = {
-		visible = "[And5(Not(IsPauseMenuShown), IsGamePaused, LeftView.IsShown, LeftView.IsSideAttached, Not(IsLateralViewFullScreen))]"
-		size = {100% 100%}
-		alwaystransparent = yes
+	background = {
+		visible = "[And(IsLateralViewBlockingMapRendering, IsLateralViewFullScreen)]"
+		using = color_dark_blue_texture
 
-		background = {
-			margin_left = @[-left_panel_width]
-			texture_density = 2
-			texture = "gfx/interface/component_masks/mask_vignette.dds"
-			alpha = 0.7
-			modify_texture = {
-				using = color_black_texture
-				blend_mode = multiply
-			}
+		modify_texture = {
+			using = color_intense_bg_blue_texture
+			alpha = 0.6
 		}
 
-		icon = {
-			size = { @left_panel_width 100% }
-			texture_density = 2
-			using = color_black_texture
-			alpha = 0.4
-		}
-
-		state = {
-			name = _show
-			using = Animation_FadeIn_Quick
-		}
-
-		state = {
-			name = _hide
-			using = Animation_FadeOut_Quick
-		}
-
-		using = Animation_Show_Hide_UI
-		blockoverride "on_hide_ui" {
-			duration = 0.1
-			alpha = 0
-		}
-
-		blockoverride "on_show_ui" {
-			duration = 2
+		modify_texture = {
+			using = overlay_paper_03
+			blend_mode = overlay
 			alpha = 1
+		}
+
+		modify_texture = {
+			using = overlay_cloth_texture
+			blend_mode = overlay
+			alpha = 0.3
 		}
 	}
 
-	widget = {
-		visible = "[Or(IsPauseMenuShown, And3(IsGamePaused, Not(LeftView.IsShown), Not(IsLateralViewFullScreen)))]"
-		size = {100% 100%}
-		alwaystransparent = yes
+	vignette = {
+		visible = "[IsPauseMenuShown]"
+	}
 
-		background = {
-			texture_density = 2
-			texture = "gfx/interface/component_masks/mask_vignette.dds"
-			alpha = 0.7
-			modify_texture = {
-				using = color_black_texture
-				blend_mode = multiply
+	# Vignette + left/right paddings
+	hbox = {
+		using = layoutpolicy_expanding
+
+		widget = {
+			visible = "[And3(LeftView.IsShown, LeftView.IsSideAttached, Not(TutorialHasVar('intro_hide_ui_4')))]"
+			layoutpolicy_vertical = expanding
+			size = { @left_panel_width -1 }
+
+			using = Animation_Show_Hide_UI
+			blockoverride "on_hide_ui" {
+				size = { 1 -1 }
+			}
+
+			blockoverride "on_show_ui" {
+				size = { @left_panel_width -1 }
 			}
 		}
 
-		state = {
-			name = _show
-			using = Animation_FadeIn_Quick
+		widget = {
+			using = layoutpolicy_expanding
+			size = { -1 -1 }
+
+			vignette = {
+				visible = "[ShouldPauseVignetteBeVisible]"
+			}
 		}
 
-		state = {
-			name = _hide
-			using = Animation_FadeOut_Quick
-		}
+		widget = {
+			visible = "[And(RightView.IsShown, RightView.IsSideAttached)]"
+			layoutpolicy_vertical = expanding
+			size = { @right_panel_width -1 }
 
-		using = Animation_Show_Hide_UI
-		blockoverride "on_hide_ui" {
-			duration = 0.1
-			alpha = 0
-		}
+			using = Animation_Show_Hide_UI
+			blockoverride "on_hide_ui" {
+				size = { 1 -1 }
+			}
 
-		blockoverride "on_show_ui" {
-			duration = 2
-			alpha = 1
+			blockoverride "on_show_ui" {
+				size = { @right_panel_width -1 }
+			}
 		}
 	}
 
+	# Padding vbox for alerts
 	vbox = {
 		visible = "[Not(TutorialHasVar('intro_hide_ui_0'))]"
 		margin_left = @[left_panel_width  + panel_x * 2 + panel_decor_square_size + 2]
@@ -191,7 +180,7 @@ widget = {
 
 		using = Animation_Show_Hide_UI
 		blockoverride "on_hide_ui" {
-			position_y = @error_platypus_height
+			using = error_platypus_height_anim
 			alpha = 0
 		}
 
@@ -201,6 +190,7 @@ widget = {
 		}
 	}
 
+	# Toggle MP chat button
 	widget = {
 		visible = "[GameIsMultiplayer]"
 		parentanchor = bottom|left
@@ -221,33 +211,6 @@ widget = {
 			alpha = 1
 		}
 
-		# ui_direction_button = {
-		# 	using = bg_circle
-		# 	parentanchor = left|vcenter
-		# 	visible = "[And(Not(IsMultiplayerChatShown), Not(LeftView.IsShown))]"
-		# 	size = { 20 20 }
-		# 	onclick = "[ToggleMultiplayerChat]"
-		# 	tooltipwidget = {
-		# 		LeftClickButtonTooltip = {
-		# 			blockoverride "onclick_text" { text = "[GetMultiplayerChat.GetTooltip]" }
-		# 		}
-		# 	}
-		# 	texture = "gfx/interface/buttons/flats/up.dds"
-		# }
-
-		# ui_direction_button = {
-		# 	using = bg_circle
-		# 	parentanchor = left|vcenter
-		# 	visible = "[And(IsMultiplayerChatShown, Not(LeftView.IsShown))]"
-		# 	size = { 20 20 }
-		# 	onclick = "[ToggleMultiplayerChat]"
-		# 	tooltipwidget = {
-		# 		LeftClickButtonTooltip = {
-		# 			blockoverride "onclick_text" { text = "[GetMultiplayerChat.GetTooltip]" }
-		# 		}
-		# 	}
-		# 	texture = "gfx/interface/buttons/flats/down.dds"
-		# }
 		button = {
 			visible = "[And(Not(LeftView.IsShown), Not(TutorialHasVar('intro_hide_ui_4')))]"
 			parentanchor = left|vcenter
@@ -411,42 +374,19 @@ widget = {
 		}
 	}
 
-	# control_groups = {
-	# 	name = "control_groups"
-	# 	visible = "[Not(TutorialHasVar('intro_hide_ui_7'))]"
-	# 	@control_groups_y = -110
-	# 	position = { 0 @control_groups_y }
-
-	# 	widget = {
-	# 		# TODO: We need clean up control group 1 when we tutorial gets at this point.
-	# 		widgetid = intro_has_added_control_group
-	# 		datacontext = "[InGameTopbar.AccessControlGroups.AccessGroup('(int32)0')]"
-	# 		visible = "[Or(GroupItem.IsCountry, GroupItem.IsLocation)]"
-	# 	}
-
-	# 	using = Animation_Show_Hide_UI
-	# 	blockoverride "on_hide_ui" {
-	# 		position_y = 0
-	# 		alpha = 0
-	# 	}
-
-	# 	blockoverride "on_show_ui" {
-	# 		position_y = @control_groups_y
-	# 		alpha = 1
-	# 	}
-	# }
-
+	# Tutorial Control Groups Helper
 	widget = {
 		widgetid = intro_has_added_control_group
 		datacontext = "[InGameTopbar.AccessControlGroups.AccessGroup('(int32)0')]"
 		visible = "[Or(GroupItem.IsCountry, GroupItem.IsLocation)]"
 	}
 
+	# Map Modes Menu
 	bottomview = {
 		using = Animation_Show_Hide_UI
 
 		blockoverride "panel_setup" {
-			visible = "[Not(Or(IsLateralViewFullScreen, IsLateralViewMenuFullScreen))]"
+			visible = "[And3(Not(IsLobbyOpen), Not(IsTimeLineMode), Not(Or(IsLateralViewFullScreen, IsLateralViewMenuFullScreen)))]"
 			visible_at_creation = no
 		}
 
@@ -502,7 +442,7 @@ widget = {
 					mapmode_current_button = {
 						allow_outside = yes
 						mapmodes_color_ledger = {
-							visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger'), Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))))]"
+							visible = "[And3(HasMapColorLedger, Not(IsLobbyOpen), And(MapModeSelectorVars.Exists('color_ledger'), Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))))]"
 							parentanchor = right|bottom
 							widgetanchor = left|bottom
 							position = { 10 0 }
@@ -521,7 +461,7 @@ widget = {
 			mapmodes_button_color_ledger = {
 				allow_outside = yes
 				mapmodes_color_ledger = {
-					visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger_bottom'), Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))))]"
+					visible = "[And3(HasMapColorLedger, Not(IsLobbyOpen), And(MapModeSelectorVars.Exists('color_ledger_bottom'), Not(Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))))]"
 					parentanchor = left|top
 					widgetanchor = left|bottom
 					position = { 0 -10 }
@@ -568,7 +508,7 @@ widget = {
 							mapmode_current_button = {
 								allow_outside = yes
 								mapmodes_color_ledger = {
-									visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger'), Not(MapModeSelectorVars.Exists('action'))))]"
+									visible = "[And3(HasMapColorLedger, Not(IsLobbyOpen), And(MapModeSelectorVars.Exists('color_ledger'), Not(MapModeSelectorVars.Exists('action'))))]"
 									parentanchor = right|bottom
 									widgetanchor = left|bottom
 									position = { 10 0 }
@@ -610,7 +550,7 @@ widget = {
 						visible = "[And(Not(TutorialHasVar('intro_hide_ui_1')), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned))]"
 					}
 					mapmodes_color_ledger = {
-						visible = "[And(HasMapColorLedger, And(MapModeSelectorVars.Exists('color_ledger_bottom'), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned)))]"
+					visible = "[And3(HasMapColorLedger, Not(IsLobbyOpen), And(MapModeSelectorVars.Exists('color_ledger_bottom'), Or3(MapModeSelectorVars.Exists('hover'), MapModeSelectorVars.Exists('action'), IsMapModeMenuPinned)))]"
 						parentanchor = left|top
 						widgetanchor = left|bottom
 						position = { 0 -10 }
@@ -669,6 +609,7 @@ widget = {
 		}
 	}
 
+	# Middle screen indicators
 	flowcontainer  = {
 		visible = "[Not(TutorialHasVar('intro_hide_ui_4'))]"
 		position = { 0 160 }
@@ -702,9 +643,10 @@ widget = {
 		}
 	}
 
-	# EnterGameCoA = { # GlorpUI: disabled
-	# 	name = "flag_animation"
-	# }
+	# Picking country intro flag animation
+	EnterGameCoA = {
+		name = "flag_animation"
+	}
 }
 
 widget = {
