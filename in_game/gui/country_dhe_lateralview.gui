@@ -58,15 +58,7 @@
 					}
 				}
 
-				blockoverride "scroll_list_vbox" { # GlorpUI: added
-					# margin = { 10 0 }
-					using = layoutpolicy_expanding
-					using = bg_secondary_inner_notabs_alt
-				}
-
 				blockoverride "scroll_list_content" {
-					using = layoutpolicy_expanding # GlorpUI: added
-
 					addcolumn = 100%
 					addrow = 55 # GlorpUI: 82->55
 					setitemsizefromcell = yes
@@ -97,10 +89,10 @@
 											alpha = 0.4
 										}
 
-										# Color overlay: green=happened, grey=expired, pink=pending
+										# Color overlay: yellow=happened, grey=expired, pink=pending
 										background = {
-											texture = "gfx/interface/colors/mid_green.dds" # GlorpUI: mid_yellow->mid_green
-											# alpha = 0.45 # GlorpUI: disabled
+											texture = "gfx/interface/colors/mid_yellow.dds"
+											alpha = 0.45
 											visible = "[DHEEventEntry.IsStatusHasHappened]"
 											modify_texture = {
 												texture = "[GetGraphicalCultureTexture('header_pattern')]"
@@ -140,17 +132,9 @@
 											}
 										}
 
-										background = { # GlorpUI: added
-											visible = "[DHEEventEntry.IsStatusNotYet]"
-											texture = "gfx/interface/colors/black.dds"
-											margin = { 1 1 }
-											margin_bottom = 2
-											texture_density = 2
-											alpha = 0.4
-										}
 										background = {
-											using = color_geopolitics_texture # GlorpUI: light_red->geopolitics color
-											alpha = 0.6 # GlorpUI: 0.45->0.6
+											texture = "gfx/interface/colors/light_red.dds"
+											alpha = 0.45
 											visible = "[DHEEventEntry.IsStatusNotYet]"
 											modify_texture = {
 												texture = "[GetGraphicalCultureTexture('header_pattern')]"
@@ -158,6 +142,7 @@
 												spriteType = corneredtiled
 												blend_mode = overlay # GlorpUI: removed alpha 0.35
 											}
+
 											modify_texture = {
 												texture = "gfx/interface/component_overlay/cloth_texture.dds"
 												texture_density = 2
@@ -199,9 +184,9 @@
 												# Status icon. Modern fires show the year instead of the
 												# checkmark; legacy fires (no recorded date) fall back to
 												# the icon so they still have a visible "happened" indicator.
-											icon = {
-												size = { 30 30 } # GlorpUI: 25->30
-												texture = "gfx/interface/icons/text_icons/dhe_status_has_happened.dds"
+												icon = {
+													size = { 30 30 } # GlorpUI: 25->30
+													texture = "gfx/interface/icons/text_icons/dhe_status_has_happened.dds"
 													visible = "[And(DHEEventEntry.IsStatusHasHappened, Not(DHEEventEntry.HasFireDate))]"
 												}
 												# Fire year — the canonical "happened" indicator for post-plan
@@ -211,51 +196,51 @@
 													text = "[DHEEventEntry.GetFireYear]"
 													default_format = "#subtle_name"
 													autoresize = yes
-											}
-											icon = {
-												size = { 30 30 } # GlorpUI: 25->30
-												texture = "gfx/interface/icons/text_icons/dhe_status_has_not_happened_yet.dds"
-												visible = "[DHEEventEntry.IsStatusNotYet]"
-											}
-											icon = {
-												size = { 30 30 } # GlorpUI: 25->30
-												texture = "gfx/interface/icons/text_icons/dhe_status_time_has_passed.dds"
-												visible = "[DHEEventEntry.IsStatusTimeHasPassed]"
-											}
+												}
+												icon = {
+													size = { 30 30 } # GlorpUI: 25->30
+													texture = "gfx/interface/icons/text_icons/dhe_status_has_not_happened_yet.dds"
+													visible = "[DHEEventEntry.IsStatusNotYet]"
+												}
+												icon = {
+													size = { 30 30 } # GlorpUI: 25->30
+													texture = "gfx/interface/icons/text_icons/dhe_status_time_has_passed.dds"
+													visible = "[DHEEventEntry.IsStatusTimeHasPassed]"
+												}
 
-											icon = {
-												size = { 30 30 } # GlorpUI: 25->30
-												texture = "gfx/interface/icons/text_icons/trigger_yes.dds"
+												icon = {
+													size = { 30 30 } # GlorpUI: 25->30
+													texture = "gfx/interface/icons/text_icons/trigger_yes.dds"
 													visible = "[And(Not(DHEEventEntry.IsStatusHasHappened), And(DHEEventEntry.IsInDateWindow, DHEEventEntry.IsValidToTrigger))]"
-											}
-											icon = {
-												size = { 30 30 } # GlorpUI: 25->30
-												texture = "gfx/interface/icons/text_icons/trigger_no.dds"
+												}
+												icon = {
+													size = { 30 30 } # GlorpUI: 25->30
+													texture = "gfx/interface/icons/text_icons/trigger_no.dds"
 													visible = "[And(Not(DHEEventEntry.IsStatusHasHappened), And(DHEEventEntry.IsInDateWindow, Not(DHEEventEntry.IsValidToTrigger)))]"
 												}
 											}
 										}
 									}
 
-									widget = {
-										using = layoutpolicy_expanding
-										layoutpolicy_horizontal = expanding
-
-										hbox = {
-											size = { 100% 100% }
-											margin = { 5 2 }
-											margin_left = 64
-
-											text_single = {
-												using = layoutpolicy_expanding
-												align = left|nobaseline
-												text = "[DHEEventEntry.GetDateRange]"
-												autoresize = no
-												default_format = "#subtle_name"
-												sort_by_highlight = { name = "date" }
-											}
-										}
-									}
+									# widget = {
+									# 	using = layoutpolicy_expanding
+									# 	layoutpolicy_horizontal = expanding
+									#
+									# 	hbox = {
+									# 		size = { 100% 100% }
+									# 		margin = { 5 2 }
+									# 		margin_left = 64
+									#
+									# 		text_single = {
+									# 			using = layoutpolicy_expanding
+									# 			align = left|nobaseline
+									# 			text = "[DHEEventEntry.GetDateRange]"
+									# 			autoresize = no
+									# 			default_format = "#subtle_name"
+									# 			sort_by_highlight = { name = "date" }
+									# 		}
+									# 	}
+									# }
 
 									tooltipwidget = {
 										using = DHEEvent_tooltip
