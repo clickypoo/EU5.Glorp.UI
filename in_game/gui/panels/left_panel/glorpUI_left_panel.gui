@@ -804,6 +804,17 @@ Types GlorpUILeftPanelTypes
 							visible = "[Not(IsLateralGroupOpened('content_group'))]"
 							size = { 100% 100% }
 							name = content_tab_button
+							background = {
+								# GlorpUI: coloured tab background
+								block "colourTexture" {
+									visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsBGLeftPanel').IsSet)]"
+									texture = "gfx/interface/buttons/panel_tabs_content.dds"
+								}
+								texture_density = 2
+								spriteType = stretched
+								spriteBorder = { 0 0 }
+								frame_grid = { 4 1 }
+							}
 						}
 						onclick = "[ToggleLateralGroup('content_group')]"
 						down = "[IsLateralGroupOpened('content_group')]"
@@ -814,6 +825,8 @@ Types GlorpUILeftPanelTypes
 						}
 
 						input_action = "top_left_9"
+						onclick = "[ExecuteConsoleCommand('GUI.ClearWidgets ideas_window')]" # GlorpUI: Idea Variation 2
+						onclick = "[GetVariableSystem.Clear('ideas_window_open')]" # GlorpUI: Idea Variation 2
 
 						using = layoutpolicy_expanding
 
@@ -821,8 +834,8 @@ Types GlorpUILeftPanelTypes
 							visible = "[IsLateralGroupHighlighted('content_group')]"
 						}
 
-						button = {
-							alwaystransparent = yes
+						icon = {
+							visible = "[Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet]" # GlorpUI: settings toggle
 							size = { 26 26 }
 							parentanchor = center
 							texture = "gfx/interface/icons/flat_icons/tabicons/content_icon.dds"
@@ -830,7 +843,19 @@ Types GlorpUILeftPanelTypes
 
 							using = button_panel_tab_icon_effect
 							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('content_group')]" }
-							blockoverride "icon_effect_color"{ color = { 0.80 0.55 0.20 1.0 } }
+							blockoverride "icon_effect_color" { color = { 0.9 0.6 0.7 1.0 } }
+						}
+						icon = {
+							# GlorpUI: coloured tab icon
+							visible = "[Not(Player.MakeScope.GetVariable('useDefaultIconsLeftPanel').IsSet)]"
+							size = { 26 26 }
+							parentanchor = center
+							texture = "gfx/interface/icons/flat_icons/tabicons/content_icon_c.dds"
+							texture_density = 2
+
+							using = button_panel_tab_icon_effect
+							blockoverride "icon_effect_visible" { visible = "[IsLateralGroupOpened('content_group')]" }
+							blockoverride "icon_effect_color" { color = { 0.9 0.6 0.7 1.0 } }
 						}
 					}
 
