@@ -602,6 +602,144 @@ types glorp {
 			texture = "gfx/interface/icons/situations/black_death.dds"
 		}
 	}
+
+	type season_button = widget {
+		size = { 40 40 }
+		widget = {
+			size = { 40 100% }
+			icon = {
+				texture = "[GetGraphicalCultureTexture('bg_speed_button')]"
+				size = { 100% 100% }
+			}
+			season_icon = { }
+			tooltipwidget = {
+				season_tooltip = {}
+			}
+		}
+	}
+
+	type season_icon = widget {
+		size = { 100% 100% }
+		icon = {
+			visible = "[EqualTo_string(Localize('GLORP_UI_CURRENT_SEASON_TAG'), 'SPRING')]"
+			size = { 30 30 }
+			parentanchor = center
+			texture = "gfx/interface/icons/seasons/spring.dds"
+			using = pausebutton_texture_overlay
+			state = {
+				name = _show
+				duration = 2.0
+				bezier = { 0.0 1.0 0.0 1.0 }
+				alpha = 1
+			}
+			state = {
+				name = _hide
+				duration = 2.0
+				bezier = { 1.0 0.0 1.0 0.0 }
+				alpha = 0
+			}
+		}
+		icon = {
+			visible = "[EqualTo_string(Localize('GLORP_UI_CURRENT_SEASON_TAG'), 'SUMMER')]"
+			size = { 30 30 }
+			parentanchor = center
+			texture = "gfx/interface/icons/seasons/summer.dds"
+			using = pausebutton_texture_overlay
+			state = {
+				name = _show
+				duration = 2.0
+				bezier = { 0.0 1.0 0.0 1.0 }
+				alpha = 1
+			}
+			state = {
+				name = _hide
+				duration = 2.0
+				bezier = { 1.0 0.0 1.0 0.0 }
+				alpha = 0
+			}
+		}
+		icon = {
+			visible = "[EqualTo_string(Localize('GLORP_UI_CURRENT_SEASON_TAG'), 'AUTUMN')]"
+			size = { 30 30 }
+			parentanchor = center
+			texture = "gfx/interface/icons/seasons/autumn.dds"
+			using = pausebutton_texture_overlay
+			state = {
+				name = _show
+				duration = 2.0
+				bezier = { 0.0 1.0 0.0 1.0 }
+				alpha = 1
+			}
+			state = {
+				name = _hide
+				duration = 2.0
+				bezier = { 1.0 0.0 1.0 0.0 }
+				alpha = 0
+			}
+		}
+		icon = {
+			visible = "[EqualTo_string(Localize('GLORP_UI_CURRENT_SEASON_TAG'), 'WINTER')]"
+			size = { 30 30 }
+			parentanchor = center
+			texture = "gfx/interface/icons/seasons/winter.dds"
+			using = pausebutton_texture_overlay
+			state = {
+				name = _show
+				duration = 2.0
+				bezier = { 0.0 1.0 0.0 1.0 }
+				alpha = 1
+			}
+			state = {
+				name = _hide
+				duration = 2.0
+				bezier = { 1.0 0.0 1.0 0.0 }
+				alpha = 0
+			}
+		}
+	}
+
+	type season_tooltip = ContextualTooltipType {
+		blockoverride "title_icon" {
+			season_icon_tt = { }
+		}
+		blockoverride "title_text" {
+			text = "GLORP_UI_CURRENT_SEASON"
+		}
+		blockoverride "concept_link" {
+			text = "[seasons|e]"
+		}
+		blockoverride "tooltip_content" {
+			TooltipTextBlock = {
+				blockoverride "text" {
+					text = "GLORP_UI_CURRENT_SEASON_DESC"
+				}
+			}
+		}
+	}
+
+	type season_icon_tt = widget {
+		using = tooltip_title_icon_size
+		icon = {
+			visible = "[EqualTo_string(Localize('GLORP_UI_CURRENT_SEASON_TAG'), 'SPRING')]"
+			texture = "gfx/interface/icons/flat_icons/seasons/spring.dds"
+			using = tooltip_title_icon_size
+		}
+		icon = {
+			visible = "[EqualTo_string(Localize('GLORP_UI_CURRENT_SEASON_TAG'), 'SUMMER')]"
+			texture = "gfx/interface/icons/flat_icons/seasons/summer.dds"
+			using = tooltip_title_icon_size
+		}
+		icon = {
+			visible = "[EqualTo_string(Localize('GLORP_UI_CURRENT_SEASON_TAG'), 'AUTUMN')]"
+			texture = "gfx/interface/icons/flat_icons/seasons/autumn.dds"
+			using = tooltip_title_icon_size
+		}
+		icon = {
+			visible = "[EqualTo_string(Localize('GLORP_UI_CURRENT_SEASON_TAG'), 'WINTER')]"
+			texture = "gfx/interface/icons/flat_icons/seasons/winter.dds"
+			using = tooltip_title_icon_size
+		}
+	}
 }
 
 template bg_glorp_badge_banner {
