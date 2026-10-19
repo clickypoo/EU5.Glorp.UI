@@ -105,6 +105,18 @@ glorpui_register_cmf_mod = {
 		alias = showUnavailableSocietalValueSuggestions
 	}
 
+	cmm_register_bool_setting = {
+		mod_id = glorpui
+		setting_id = flagOnMapMarker
+		tab_id = toggles
+		group_id = other
+		default_value = 1
+	}
+	cmm_sync_bool_alias = {
+		setting = glorpui__flagOnMapMarker
+		alias = flagOnMapMarker
+	}
+
 	# Top Bar (top_bar) Tab
 	## General (general) Group
 	cmm_register_bool_setting = {
@@ -322,6 +334,12 @@ glorpui_handle_cmf_callback = {
 			cmm_sync_bool_alias = {
 				setting = glorpui__showUnavailableSocietalValueSuggestions
 				alias = showUnavailableSocietalValueSuggestions
+			}
+		}
+		flag:glorpui__flagOnMapMarker = {
+			cmm_sync_bool_alias = {
+				setting = glorpui__flagOnMapMarker
+				alias = flagOnMapMarker
 			}
 		}
 		# Top Bar (top_bar) Tab

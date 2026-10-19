@@ -32,6 +32,8 @@ l_english:
  glorpui__toggles__other_name: "Other"
  glorpui__showUnavailableSocietalValueSuggestions_name: "Show Unavailable Suggestions for Pushing Societal Values"
  glorpui__showUnavailableSocietalValueSuggestions_desc: "The Societal Value tooltip lists every Government Reform, Law and Estate Privilege to pushes a particular value, including ones you cannot currently do. This setting determines whether to hide unavailable suggestions."
+ glorpui__flagOnMapMarker_name: "Show Flag on City Map Marker"
+ glorpui__flagOnMapMarker_desc: ""
 
  # Top Bar (top_bar) Tab
  glorpui__top_bar_name: "Top Bar"
@@ -96,6 +98,7 @@ l_english:
  glorpui__disableLeftPanelStatsBar: "glorpui__disableLeftPanelStatsBar"
  glorpui__useDefaultIconsBGRightPanel: "glorpui__useDefaultIconsBGRightPanel"
  glorpui__showUnavailableSocietalValueSuggestions: "glorpui__showUnavailableSocietalValueSuggestions"
+ glorpui__flagOnMapMarker: "glorpui__flagOnMapMarker"
  glorpui__disableTopBarIncome: "glorpui__disableTopBarIncome"
  glorpui__disableTopBarStability: "glorpui__disableTopBarStability"
  glorpui__disableTopBarPopulation: "glorpui__disableTopBarPopulation"
