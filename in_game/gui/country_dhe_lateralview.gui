@@ -162,13 +162,24 @@
 											# Title text
 											vbox = { # GlorpUI: date row merged into subtitle
 												layoutpolicy_horizontal = expanding
-												text_single = {
+
+												hbox = {
 													layoutpolicy_horizontal = expanding
-													align = left|nobaseline
-													using = Font_Type_Headers
-													default_format = "#yellow_titles"
-													text = "[DHEEventEntry.GetTitle]"
+													icon = {
+														size = { 25 25 }
+														visible = "[DHEEventEntry.HasRequiredDlc]"
+														datacontext = "[GetGameDLCFromKey(DHEEventEntry.GetRequiredDlcKey)]"
+														texture = "[GameDLC.GetIcon]"
+													}
+													text_single = {
+														layoutpolicy_horizontal = expanding
+														align = left|nobaseline
+														using = Font_Type_Headers
+														default_format = "#yellow_titles"
+														text = "[DHEEventEntry.GetTitle]"
+													}
 												}
+
 												text_single = {
 													layoutpolicy_horizontal = expanding
 													align = left|nobaseline
@@ -185,7 +196,7 @@
 												# checkmark; legacy fires (no recorded date) fall back to
 												# the icon so they still have a visible "happened" indicator.
 												icon = {
-													size = { 30 30 } # GlorpUI: 25->30
+													size = { 25 25 }
 													texture = "gfx/interface/icons/text_icons/dhe_status_has_happened.dds"
 													visible = "[And(DHEEventEntry.IsStatusHasHappened, Not(DHEEventEntry.HasFireDate))]"
 												}
@@ -198,49 +209,29 @@
 													autoresize = yes
 												}
 												icon = {
-													size = { 30 30 } # GlorpUI: 25->30
+													size = { 25 25 }
 													texture = "gfx/interface/icons/text_icons/dhe_status_has_not_happened_yet.dds"
 													visible = "[DHEEventEntry.IsStatusNotYet]"
 												}
 												icon = {
-													size = { 30 30 } # GlorpUI: 25->30
+													size = { 25 25 }
 													texture = "gfx/interface/icons/text_icons/dhe_status_time_has_passed.dds"
 													visible = "[DHEEventEntry.IsStatusTimeHasPassed]"
 												}
 
 												icon = {
-													size = { 30 30 } # GlorpUI: 25->30
+													size = { 25 25 }
 													texture = "gfx/interface/icons/text_icons/trigger_yes.dds"
 													visible = "[And(Not(DHEEventEntry.IsStatusHasHappened), And(DHEEventEntry.IsInDateWindow, DHEEventEntry.IsValidToTrigger))]"
 												}
 												icon = {
-													size = { 30 30 } # GlorpUI: 25->30
+													size = { 25 25 }
 													texture = "gfx/interface/icons/text_icons/trigger_no.dds"
 													visible = "[And(Not(DHEEventEntry.IsStatusHasHappened), And(DHEEventEntry.IsInDateWindow, Not(DHEEventEntry.IsValidToTrigger)))]"
 												}
 											}
 										}
 									}
-
-									# widget = {
-									# 	using = layoutpolicy_expanding
-									# 	layoutpolicy_horizontal = expanding
-									#
-									# 	hbox = {
-									# 		size = { 100% 100% }
-									# 		margin = { 5 2 }
-									# 		margin_left = 64
-									#
-									# 		text_single = {
-									# 			using = layoutpolicy_expanding
-									# 			align = left|nobaseline
-									# 			text = "[DHEEventEntry.GetDateRange]"
-									# 			autoresize = no
-									# 			default_format = "#subtle_name"
-									# 			sort_by_highlight = { name = "date" }
-									# 		}
-									# 	}
-									# }
 
 									tooltipwidget = {
 										using = DHEEvent_tooltip
