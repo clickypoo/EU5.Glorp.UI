@@ -192,6 +192,42 @@ lateralview = {
 								}
 							}
 						}
+						widget = {
+							layoutpolicy_horizontal = expanding
+							size = {-1 43 }
+
+							hbox = {
+								margin_top = 12
+								margin = { 5 12 }
+
+								button_regular = {
+									using = layoutpolicy_expanding
+									tooltipwidget = { BasicFunctionalTooltip = {} }
+									action_tooltip = {
+										click_type = left
+										click_mode = single
+										title = "OPEN_RGO_BUILDER"
+										on_action = "[ShowExpandRawGoodLocationsViewWithMarketAndFilter(GoodsProductionLateralView.GetSelectedMarket.Self, 'produces_food', '(bool)no', GoodsProductionLateralView.GetRawGoodsSortSearch.GetSearchBar.IsFilterEnabledByKey('goods_food_bearing'))]"
+									}
+
+									text = "OPEN_RGO_BUILDER"
+
+									icon = {
+										size = {23 23}
+										parentanchor = left|vcenter
+										position = {10 0}
+										texture = "gfx/interface/icons/map_modes/raw_material.dds"
+										texture_density = 2
+										glow = {
+											name = "drop_shadow"
+											glow_radius = 3
+											color = {0.0 0.0 0.0 1.0}
+											alpha = 0.3
+										}
+									}
+								}
+							}
+						}
 					}
 
 					blockoverride "searchbar_extra_pre_content" {

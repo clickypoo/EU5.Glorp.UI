@@ -360,6 +360,8 @@ set_unit_icon = {
 	}
 }
 
+## OTHER ##
+
 SetShowUnavailableSocietalValueSuggestions = {
     effect = {
         if = {
@@ -370,4 +372,16 @@ SetShowUnavailableSocietalValueSuggestions = {
             remove_variable = showUnavailableSocietalValueSuggestions
         }
     }
+}
+
+SetFlagOnMapMarker = { # Visible country flag on city map marker when at war (occupations)
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = flagOnMapMarker } }
+			set_variable = { name = flagOnMapMarker value = 1 }
+		}
+		else = {
+			remove_variable = flagOnMapMarker
+		}
+	}
 }

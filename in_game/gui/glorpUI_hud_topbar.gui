@@ -1055,12 +1055,42 @@ Types GlorpUI_HUD_TopbarTypes
 							}
 
 							vbox = {
+								bottomtotop = yes
 								using = layoutpolicy_expanding
 								margin = { 4 0 }
 								margin_bottom = 2
 								spacing = -2
 
 								expand = {}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									margin = { 2 0 }
+
+									progressbar_framed = {
+										visible = "[GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('prestige'), '(CFixedPoint)50')]"
+										using = progress_bar_green_alt
+										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+										block "progress_setup" {}
+									}
+
+									progressbar_framed = {
+										visible = "[And(Not(GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('prestige'), '(CFixedPoint)50')), Not(EqualTo_CFixedPoint(Country.GetFixedPointCurrencyValue('prestige'), '(CFixedPoint)0')))]"
+										using = progress_bar_red_alt
+										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+										block "progress_setup" {}
+									}
+
+									blockoverride "progress_setup" {
+										layoutpolicy_horizontal = expanding
+										size = { -1 4 }
+
+										min = 0
+										max = "[FixedPointToFloat(Country.GetCurrencyMaxValue('prestige'))]"
+										value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('prestige'))]"
+										direction = horizontal
+									}
+								}
 
 								hbox = {
 									layoutpolicy_horizontal = expanding
@@ -1114,35 +1144,6 @@ Types GlorpUI_HUD_TopbarTypes
 									}
 								}
 
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									margin = { 2 0 }
-
-									progressbar_framed = {
-										visible = "[GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('prestige'), '(CFixedPoint)50')]"
-										using = progress_bar_green_alt
-										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-										block "progress_setup" {}
-									}
-
-									progressbar_framed = {
-										visible = "[And(Not(GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('prestige'), '(CFixedPoint)50')), Not(EqualTo_CFixedPoint(Country.GetFixedPointCurrencyValue('prestige'), '(CFixedPoint)0')))]"
-										using = progress_bar_red_alt
-										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-										block "progress_setup" {}
-									}
-
-									blockoverride "progress_setup" {
-										layoutpolicy_horizontal = expanding
-										size = { -1 4 }
-
-										min = 0
-										max = "[FixedPointToFloat(Country.GetCurrencyMaxValue('prestige'))]"
-										value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('prestige'))]"
-										direction = horizontal
-									}
-								}
-
 								expand = {}
 							}
 						}
@@ -1177,6 +1178,7 @@ Types GlorpUI_HUD_TopbarTypes
 							}
 
 							vbox = {
+								bottomtotop = yes
 								using = layoutpolicy_expanding
 								margin = { 4 0 }
 								margin_bottom = 2
@@ -1186,10 +1188,39 @@ Types GlorpUI_HUD_TopbarTypes
 
 								hbox = {
 									layoutpolicy_horizontal = expanding
+									margin = { 2 2 }
+
+									progressbar_framed = {
+										visible = "[GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('political_influence'), '(CFixedPoint)50')]"
+										using = progress_bar_green_alt
+										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+										block "progress_setup" {}
+									}
+
+									progressbar_framed = {
+										visible = "[And(Not(GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('political_influence'), '(CFixedPoint)50')), Not(EqualTo_CFixedPoint(Country.GetFixedPointCurrencyValue('political_influence'), '(CFixedPoint)0')))]"
+										using = progress_bar_red_alt
+										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+										block "progress_setup" {}
+									}
+
+									blockoverride "progress_setup" {
+										layoutpolicy_horizontal = expanding
+										size = { -1 4 }
+
+										min = 0
+										max = "[FixedPointToFloat(Country.GetCurrencyMaxValue('political_influence'))]"
+										value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('political_influence'))]"
+										direction = horizontal
+									}
+								}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
 									spacing = 2
 
 									icon = {
-										size = { 24 24 }
+										size = { @stat_icon_size @stat_icon_size }
 										texture = "gfx/interface/icons/resources/political_influence.dds"
 									}
 
@@ -1228,35 +1259,6 @@ Types GlorpUI_HUD_TopbarTypes
 
 											expand = {}
 										}
-									}
-								}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									margin = { 2 2 }
-
-									progressbar_framed = {
-										visible = "[GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('political_influence'), '(CFixedPoint)50')]"
-										using = progress_bar_green_alt
-										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-										block "progress_setup" {}
-									}
-
-									progressbar_framed = {
-										visible = "[And(Not(GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('political_influence'), '(CFixedPoint)50')), Not(EqualTo_CFixedPoint(Country.GetFixedPointCurrencyValue('political_influence'), '(CFixedPoint)0')))]"
-										using = progress_bar_red_alt
-										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-										block "progress_setup" {}
-									}
-
-									blockoverride "progress_setup" {
-										layoutpolicy_horizontal = expanding
-										size = { -1 4 }
-
-										min = 0
-										max = "[FixedPointToFloat(Country.GetCurrencyMaxValue('political_influence'))]"
-										value = "[FixedPointToFloat(Country.GetFixedPointCurrencyValue('political_influence'))]"
-										direction = horizontal
 									}
 								}
 
@@ -1323,12 +1325,48 @@ Types GlorpUI_HUD_TopbarTypes
 							}
 
 							vbox = {
+								bottomtotop = yes
 								using = layoutpolicy_expanding
 								margin = { 4 0 }
 								margin_bottom = 2
 								spacing = -2
 
 								expand = {}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									margin = { 2 0 }
+
+									progressbar_framed = {
+										visible = "[And(GreaterThan_CFixedPoint(Player.GetDiplomacy.GetNumOfDiplomats, '(CFixedPoint)0'), Not(EqualTo_CFixedPoint(Player.GetDiplomacy.GetMaxNumOfDiplomats, '(CFixedPoint)0')))]"
+										using = progress_bar_green_alt
+										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+										block "progress_setup" {
+											layoutpolicy_horizontal = expanding
+											size = { -1 4 }
+
+											min = 0
+											max = "[FixedPointToFloat(Player.GetDiplomacy.GetMaxNumOfDiplomats)]"
+											value = "[FixedPointToFloat(Player.GetDiplomacy.GetNumOfDiplomats)]"
+											direction = horizontal
+										}
+									}
+
+									progressbar_framed = {
+										visible = "[And(GreaterThan_CFixedPoint(Player.GetDiplomacy.GetNumOfDiplomats, '(CFixedPoint)0'), EqualTo_CFixedPoint(Player.GetDiplomacy.GetMaxNumOfDiplomats, '(CFixedPoint)0'))]"
+										using = progress_bar_goldish
+										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
+										block "progress_setup" {
+											size = { -1 4 }
+
+											min = 0
+											max = 100
+											value = 100
+											direction = horizontal
+											layoutpolicy_horizontal = expanding
+										}
+									}
+								}
 
 								hbox = {
 									layoutpolicy_horizontal = expanding
@@ -1372,41 +1410,6 @@ Types GlorpUI_HUD_TopbarTypes
 									}
 								}
 
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									margin = { 2 0 }
-
-									progressbar_framed = {
-										visible = "[And(GreaterThan_CFixedPoint(Player.GetDiplomacy.GetNumOfDiplomats, '(CFixedPoint)0'), Not(EqualTo_CFixedPoint(Player.GetDiplomacy.GetMaxNumOfDiplomats, '(CFixedPoint)0')))]"
-										using = progress_bar_green_alt
-										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-										block "progress_setup" {
-											layoutpolicy_horizontal = expanding
-											size = { -1 4 }
-
-											min = 0
-											max = "[FixedPointToFloat(Player.GetDiplomacy.GetMaxNumOfDiplomats)]"
-											value = "[FixedPointToFloat(Player.GetDiplomacy.GetNumOfDiplomats)]"
-											direction = horizontal
-										}
-									}
-
-									progressbar_framed = {
-										visible = "[And(GreaterThan_CFixedPoint(Player.GetDiplomacy.GetNumOfDiplomats, '(CFixedPoint)0'), EqualTo_CFixedPoint(Player.GetDiplomacy.GetMaxNumOfDiplomats, '(CFixedPoint)0'))]"
-										using = progress_bar_goldish
-										noprogresstexture = "gfx/interface/progressbars/progress_gray_bg.dds"
-										block "progress_setup" {
-											size = { -1 4 }
-
-											min = 0
-											max = 100
-											value = 100
-											direction = horizontal
-											layoutpolicy_horizontal = expanding
-										}
-									}
-								}
-
 								expand = {}
 							}
 						}
@@ -1418,7 +1421,6 @@ Types GlorpUI_HUD_TopbarTypes
                             visible = "[Or(Not(Country.IsCurrencyValueEqualOrLessThanZero('war_exhaustion')), Not(Player.MakeScope.GetVariable('dynamicWarStats').IsSet))]" # GlorpUI: dynamic war stats toggle
 							name = "stat_exhaustion"
 							using = layoutpolicy_expanding
-							margin = { 5 0 }
 
 							blockoverride "decreasing_value_gradient_visible" {
 								visible = "[Not(Country.IsCurrencyValueEqualOrLessThanZero('war_exhaustion'))]"
@@ -1458,51 +1460,14 @@ Types GlorpUI_HUD_TopbarTypes
 								}
 							}
 
-							icon = {
-								size = { @stat_icon_size @stat_icon_size }
-								texture = "gfx/interface/icons/resources/war_exhaustion.dds"
-								texture_density = 2
-							}
-
 							vbox = {
-								margin_left = 3
-								margin_right = 0
+								bottomtotop = yes
+								using = layoutpolicy_expanding
+								margin = { 4 0 }
+								margin_bottom = 2
+								spacing = -2
 
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									spacing = 2
-
-									text_single = {
-										maximumsize = { -1 18 }
-										autoresize = yes
-										align = left|nobaseline
-										using = Font_Size_Small
-										text = "[Country.GetFixedPointCurrencyValue('war_exhaustion')|V]"
-									}
-
-									hbox = {
-										using = layoutpolicy_expanding
-										using = text_single_positive_zero_negative
-
-										blockoverride "text_setup" {
-										maximumsize = { -1 12 }
-											autoresize = yes
-											align = left|nobaseline
-										using = Font_Size_Small # GlorpUI: Very_Small->Small
-											text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('war_exhaustion')]"
-										}
-
-										blockoverride "visible_positive" {
-											visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('war_exhaustion'), '(CFixedPoint)0')]"
-										}
-
-										blockoverride "visible_negative" {
-											visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('war_exhaustion'), '(CFixedPoint)0')]"
-										}
-
-										expand = {}
-									}
-								}
+								expand = {}
 
 								hbox = {
 									layoutpolicy_horizontal = expanding
@@ -1520,9 +1485,53 @@ Types GlorpUI_HUD_TopbarTypes
 										direction = horizontal
 									}
 								}
-							}
 
-							expand = {}
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									spacing = 2
+
+									icon = {
+										size = { @stat_icon_size @stat_icon_size }
+										texture = "gfx/interface/icons/resources/war_exhaustion.dds"
+										texture_density = 2
+									}
+
+									vbox = {
+										text_single = {
+											maximumsize = { -1 12 }
+											autoresize = yes
+											align = left|nobaseline
+											fontsize = 14
+											text = "[Country.GetFixedPointCurrencyValue('war_exhaustion')|V]"
+										}
+										hbox = {
+											using = layoutpolicy_expanding
+											using = text_single_positive_zero_negative
+
+											blockoverride "text_setup" {
+												maximumsize = { -1 10 }
+												autoresize = yes
+												align = left|nobaseline
+												using = Font_Size_Very_Small # GlorpUI: Very_Small->Small
+												text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('war_exhaustion')]"
+											}
+
+											blockoverride "visible_positive" {
+												visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('war_exhaustion'), '(CFixedPoint)0')]"
+											}
+
+											blockoverride "visible_negative" {
+												visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('war_exhaustion'), '(CFixedPoint)0')]"
+											}
+
+											expand = {}
+										}
+									}
+									expand = {}
+								}
+
+								expand = {}
+							}
 						}
 
 						### STAT PLAYER - MANPOWER
@@ -1582,65 +1591,13 @@ Types GlorpUI_HUD_TopbarTypes
 							}
 
 							vbox = {
+								bottomtotop = yes
 								using = layoutpolicy_expanding
 								margin = { 4 0 }
 								margin_bottom = 2
 								spacing = -2
 
 								expand = {}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									spacing = 2
-
-									# ESTATE ICON
-									widget = {
-										size = { @stat_icon_size @stat_icon_size }
-										icon = {
-											parentanchor = center
-											size = { 100% 100% }
-											texture = "gfx/interface/icons/resources/manpower.dds"
-										}
-									}
-
-
-									hbox = {
-										using = layoutpolicy_expanding
-										spacing = 2
-
-										text_single = {
-											maximumsize = { -1 18 }
-											autoresize = yes
-											align = left|nobaseline
-											using = Font_Size_Small
-											text = "[Country.GetCurrencyValue('manpower')]"
-										}
-
-										hbox = {
-											using = layoutpolicy_expanding
-											using = text_single_positive_zero_negative
-
-											blockoverride "text_setup" {
-												maximumsize = { -1 18 }
-												autoresize = yes
-												align = left|nobaseline
-												using = Font_Size_Small # GlorpUI: Very_Small->Small
-											}
-
-											blockoverride "visible_positive" {
-												visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('manpower'), '(CFixedPoint)0')]"
-												raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('manpower')]"
-											}
-
-											blockoverride "visible_negative" {
-												visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('manpower'), '(CFixedPoint)0')]"
-												raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('manpower')]"
-											}
-
-											expand = {}
-										}
-									}
-								}
 
 								hbox = {
 									layoutpolicy_horizontal = expanding
@@ -1673,6 +1630,62 @@ Types GlorpUI_HUD_TopbarTypes
 											value = 100
 											direction = horizontal
 										}
+									}
+								}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									spacing = 2
+
+									# ESTATE ICON
+									widget = {
+										size = { @stat_icon_size @stat_icon_size }
+										icon = {
+											parentanchor = center
+											size = { 100% 100% }
+											texture = "gfx/interface/icons/resources/manpower.dds"
+										}
+									}
+
+
+									hbox = {
+										using = layoutpolicy_expanding
+										spacing = 2
+
+										vbox = {
+											spacing = 0
+											text_single = {
+												maximumsize = { -1 12 }
+												autoresize = yes
+												align = left|nobaseline
+												fontsize = 14
+												text = "[Country.GetCurrencyValue('manpower')]"
+											}
+											hbox = {
+												using = layoutpolicy_expanding
+												using = text_single_positive_zero_negative
+
+												blockoverride "text_setup" {
+													maximumsize = { -1 10 }
+													autoresize = yes
+													align = left|nobaseline
+													using = Font_Size_Very_Small # GlorpUI: Very_Small->Small
+												}
+
+												blockoverride "visible_positive" {
+													visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('manpower'), '(CFixedPoint)0')]"
+													raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('manpower')]"
+												}
+
+												blockoverride "visible_negative" {
+													visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('manpower'), '(CFixedPoint)0')]"
+													raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('manpower')]"
+												}
+
+												expand = {}
+											}
+										}
+
 									}
 								}
 
@@ -1737,60 +1750,13 @@ Types GlorpUI_HUD_TopbarTypes
 							}
 
 							vbox = {
+								bottomtotop = yes
 								using = layoutpolicy_expanding
 								margin = { 4 0 }
 								margin_bottom = 2
 								spacing = -2
 
 								expand = {}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									spacing = 2
-
-									# ESTATE ICON
-									icon = {
-										size = { @stat_icon_size @stat_icon_size }
-										texture = "gfx/interface/icons/resources/sailors.dds"
-									}
-
-									hbox = {
-										using = layoutpolicy_expanding
-										spacing = 2
-
-										text_single = {
-											maximumsize = { -1 18 }
-											autoresize = yes
-											align = left|nobaseline
-											using = Font_Size_Small
-											text = "[Country.GetCurrencyValue('sailors')]"
-										}
-
-										hbox = {
-											using = layoutpolicy_expanding
-											using = text_single_positive_zero_negative
-
-											blockoverride "text_setup" {
-												maximumsize = { -1 18 }
-												autoresize = yes
-												align = left|nobaseline
-												using = Font_Size_Small # GlorpUI: Very_Small->Small
-											}
-
-											blockoverride "visible_positive" {
-												visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('sailors'), '(CFixedPoint)0')]"
-												raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('sailors')]"
-											}
-
-											blockoverride "visible_negative" {
-												visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('sailors'), '(CFixedPoint)0')]"
-												raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('sailors')]"
-											}
-
-											expand = {}
-										}
-									}
-								}
 
 								hbox = {
 									visible = "[GreaterThan_CFixedPoint(Country.GetFixedPointCurrencyValue('sailors'), '(CFixedPoint)0')]"
@@ -1823,6 +1789,54 @@ Types GlorpUI_HUD_TopbarTypes
 											max = 100
 											value = 100
 											direction = horizontal
+										}
+									}
+								}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									spacing = 2
+
+									# ESTATE ICON
+									icon = {
+										size = { @stat_icon_size @stat_icon_size }
+										texture = "gfx/interface/icons/resources/sailors.dds"
+									}
+
+									hbox = {
+										using = layoutpolicy_expanding
+										spacing = 2
+										vbox = {
+											text_single = {
+												maximumsize = { -1 12 }
+												autoresize = yes
+												align = left|nobaseline
+												fontsize = 14
+												text = "[Country.GetCurrencyValue('sailors')]"
+											}
+											hbox = {
+												using = layoutpolicy_expanding
+												using = text_single_positive_zero_negative
+
+												blockoverride "text_setup" {
+													maximumsize = { -1 10 }
+													autoresize = yes
+													align = left|nobaseline
+													using = Font_Size_Very_Small # GlorpUI: Very_Small->Small
+												}
+
+												blockoverride "visible_positive" {
+													visible = "[GreaterThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('sailors'), '(CFixedPoint)0')]"
+													raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('sailors')]"
+												}
+
+												blockoverride "visible_negative" {
+													visible = "[LessThan_CFixedPoint(InGameTopbar.GetPlayerCurrencyChange('sailors'), '(CFixedPoint)0')]"
+													raw_text = "[InGameTopbar.GetPlayerCurrencyChangeFormatted('sailors')]"
+												}
+
+												expand = {}
+											}
 										}
 									}
 								}
@@ -2036,6 +2050,296 @@ Types GlorpUI_HUD_TopbarTypes
 			}
 
 			expand = {}
+		}
+	}
+}
+
+template speed_bar {
+	hbox = {
+		using = layoutpolicy_expanding
+		using = top_bar_bg
+		hbox = {
+			name = "date_section"
+			using = layoutpolicy_expanding
+			righttoleft = yes
+
+			# FAKE PAUSE BUTTON BORDER
+			margin_right = 2
+
+			# SPEED BUTTONS
+			widget = {
+				size = { 105 40 }
+
+				hbox = {
+					# SPEED 1
+					gamespeed_button_disabled = {
+						visible = "[Not(IsGameSpeedEqualOrGreaterThan('(int32)1'))]"
+					}
+					gamespeed_play_button = {
+						visible = "[And(Not(IsGamePaused), IsGameSpeedEqualOrGreaterThan('(int32)1'))]"
+					}
+					gamespeed_paused_button = {
+						visible = "[And(IsGamePaused, IsGameSpeedEqualOrGreaterThan('(int32)1'))]"
+					}
+
+					# SPEED 2
+					gamespeed_button_disabled = {
+						visible = "[Not(IsGameSpeedEqualOrGreaterThan('(int32)2'))]"
+						blockoverride "gamespeed_button_disabled_onclick"{
+							onclick = "[OnSetGameSpeed('(int32)2')]"
+						}
+					}
+					gamespeed_play_button = {
+						visible = "[And(Not(IsGamePaused), IsGameSpeedEqualOrGreaterThan('(int32)2'))]"
+						blockoverride "gamespeed_play_button_onclick"{
+							onclick = "[OnSetGameSpeed('(int32)2')]"
+						}
+					}
+					gamespeed_paused_button = {
+						visible = "[And(IsGamePaused, IsGameSpeedEqualOrGreaterThan('(int32)2'))]"
+						blockoverride "gamespeed_paused_button_onclick"{
+							onclick = "[OnSetGameSpeed('(int32)2')]"
+						}
+					}
+
+					# SPEED 3
+					gamespeed_button_disabled = {
+						visible = "[Not(IsGameSpeedEqualOrGreaterThan('(int32)3'))]"
+						blockoverride "gamespeed_button_disabled_onclick"{
+							onclick = "[OnSetGameSpeed('(int32)3')]"
+						}
+					}
+					gamespeed_play_button = {
+						visible = "[And(Not(IsGamePaused), IsGameSpeedEqualOrGreaterThan('(int32)3'))]"
+						blockoverride "gamespeed_play_button_onclick"{
+							onclick = "[OnSetGameSpeed('(int32)3')]"
+						}
+					}
+					gamespeed_paused_button = {
+						visible = "[And(IsGamePaused, IsGameSpeedEqualOrGreaterThan('(int32)3'))]"
+						blockoverride "gamespeed_paused_button_onclick"{
+							onclick = "[OnSetGameSpeed('(int32)3')]"
+						}
+					}
+
+					# SPEED 4
+					gamespeed_button_disabled = {
+						visible = "[Not(IsGameSpeedEqualOrGreaterThan('(int32)4'))]"
+						blockoverride "gamespeed_button_disabled_onclick"{
+							onclick = "[OnSetGameSpeed('(int32)4')]"
+						}
+					}
+					gamespeed_play_button = {
+						visible = "[And(Not(IsGamePaused), IsGameSpeedEqualOrGreaterThan('(int32)4'))]"
+						blockoverride "gamespeed_play_button_onclick"{
+							onclick = "[OnSetGameSpeed('(int32)4')]"
+						}
+					}
+					gamespeed_paused_button = {
+						visible = "[And(IsGamePaused, IsGameSpeedEqualOrGreaterThan('(int32)4'))]"
+						blockoverride "gamespeed_paused_button_onclick"{
+							onclick = "[OnSetGameSpeed('(int32)4')]"
+						}
+					}
+
+					# SPEED 5
+					gamespeed_button_disabled = {
+						visible = "[Not(IsGameSpeedEqualOrGreaterThan('(int32)5'))]"
+						blockoverride "gamespeed_button_disabled_onclick"{
+							onclick = "[OnSetGameSpeed('(int32)5')]"
+						}
+						# blockoverride "gamespeed_button_texture" {
+						# 	texture = "[GetGraphicalCultureTexture('speed_end_button')]"
+						# }
+					}
+					gamespeed_play_button = {
+						visible = "[And(Not(IsGamePaused), IsGameSpeedEqualOrGreaterThan('(int32)5'))]"
+						blockoverride "gamespeed_play_button_onclick"{
+							onclick = "[OnSetGameSpeed('(int32)5')]"
+						}
+						# blockoverride "gamespeed_button_texture" {
+						# 	texture = "[GetGraphicalCultureTexture('speed_end_button')]"
+						# }
+					}
+					gamespeed_paused_button = {
+						visible = "[And(IsGamePaused, IsGameSpeedEqualOrGreaterThan('(int32)5'))]"
+						blockoverride "gamespeed_paused_button_onclick"{
+							onclick = "[OnSetGameSpeed('(int32)5')]"
+						}
+						# blockoverride "gamespeed_button_texture" {
+						# 	texture = "[GetGraphicalCultureTexture('speed_end_button')]"
+						# }
+					}
+				}
+
+				# FAKE PLAY PAUSE BUTTON
+				widget = {
+					size = { 36 40 }
+					parentanchor = right
+					widgetanchor = left
+
+					widget = {
+						size = { 40 100% }
+						parentanchor = right
+
+						icon = {
+							texture = "[GetGraphicalCultureTexture('bg_speed_button')]"
+							size = { 100% 100% }
+						}
+
+						icon = {
+							size = { 30 30 }
+							parentanchor = center
+
+							texture = "gfx/interface/buttons/flats/square_button_play.dds"
+							using = pausebutton_texture_overlay
+						}
+					}
+				}
+			}
+
+			# PLAY PAUSE BUTTONS
+			widget = {
+				size = { 36 40 }
+				widget = {
+					size = { 40 100% }
+					icon = {
+						texture = "[GetGraphicalCultureTexture('bg_speed_button')]"
+						size = { 100% 100% }
+					}
+
+					button = {
+						size = { 30 30 }
+						parentanchor = center
+						name = "play_game" #name used as identifiyer for widget_churn_benchmark tests
+						action_tooltip = {
+							title = "[GetResumeTooltip]"
+							on_action = "[OnPause]"
+						}
+						visible = "[IsGameUserPaused]"
+						enabled = "[CanUnpause]"
+
+						tooltipwidget = { BasicFunctionalTooltip = {} }
+
+						texture = "gfx/interface/buttons/flats/square_button_play.dds"
+						using = pausebutton_texture_overlay
+					}
+
+					button = {
+						size = { 30 30 }
+						parentanchor = center
+						name = "semipause_game" #name used as identifiyer for widget_churn_benchmark tests
+
+						action_tooltip = {
+							title = "[GetKeepGamePausedTooltip]"
+							on_action = "[OnPause]"
+						}
+						visible = "[And(Not(IsGameUserPaused), IsGameSystemPaused)]"
+						enabled = "[CanPause]"
+
+						tooltipwidget = { BasicFunctionalTooltip = {} }
+
+						texture = "gfx/interface/buttons/flats/square_button_semipause.dds"
+						using = pausebutton_texture_overlay
+					}
+
+					button = {
+						size = { 30 30 }
+						parentanchor = center
+						name = "pause_game" #name used as identifiyer for widget_churn_benchmark tests
+						action_tooltip = {
+							title = "[GetPauseTooltip]"
+							on_action = "[OnPause]"
+						}
+						visible = "[And(Not(IsGameUserPaused), Not(IsGameSystemPaused))]"
+						enabled = "[CanPause]"
+
+						tooltipwidget = { BasicFunctionalTooltip = {} }
+
+						texture = "gfx/interface/buttons/flats/square_button_pause.dds"
+						using = pausebutton_texture_overlay
+					}
+				}
+			}
+
+			# DATE TEXT
+			widget = {
+				layoutpolicy_horizontal = expanding
+				size = { -1 40 }
+				background = {
+					texture = "[GetGraphicalCultureTexture('top_bar_sideflavor')]"
+					texture_density = 2
+					spriteType = Corneredstretched
+					spriteborder = { 17 17 }
+					alpha = 0.7
+
+					modify_texture = {
+						using = color_intense_bg_blue_texture
+						blend_mode = multiply
+						alpha = 0.9
+					}
+					modify_texture = {
+						using = color_progress_blue_texture
+						blend_mode = overlay
+					}
+				}
+
+				text_single = {
+					visible = "[Not(IsObservingWithoutSelectedCountry)]"
+					parentanchor = center
+					size = { 100% 100% }
+					autoresize = no
+					name = "date_text"
+					text = "CURRENT_DATE"
+					using = Font_Type_Flavor
+					using = Font_Size_Medium
+					align = center|nobaseline
+					default_format = "#color_white"
+					tooltipwidget = {
+						ContextualTooltipType = {
+							blockoverride "title_icon" {
+								icon = {
+									using = tooltip_title_icon_size
+									texture = "gfx/interface/icons/players.dds"
+								}
+							}
+
+							blockoverride "title_text" {
+								text = "PLAYERS_SYNC_TT_TITLE"
+							}
+
+							blockoverride "tooltip_content" {
+								TooltipScrolledStringPairList = {
+									blockoverride "block_scrollarea" { maximumsize = { -1 700 }}
+									textcontext = "[GetMultiplayerSyncInfo]"
+								}
+								TooltipTextBlock = {
+									visible = "[IsAnyPlayerLaggingBehind]"
+									blockoverride "text" {
+										text = "MULTIPLAYER_LAGGING_BEHIND"
+									}
+								}
+							}
+						}
+					}
+					tooltip_enabled = "[GameIsMultiplayer]"
+				}
+			}
+
+			# Glorp UI - Season Icons
+			season_button = { }
+		}
+
+		button = {
+			on_input_action_shortcut = "[OnIncreaseGameSpeed]"
+			input_action = "increase_speed"
+			tooltip_enabled = no
+		}
+
+		button = {
+			on_input_action_shortcut = "[OnDecreaseGameSpeed]"
+			input_action = "decrease_speed"
+			tooltip_enabled = no
 		}
 	}
 }
