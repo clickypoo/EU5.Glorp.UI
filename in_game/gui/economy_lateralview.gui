@@ -1019,20 +1019,20 @@ lateralview = {
 
 										text = "INCOME_TITLE"
 										tooltipwidget = {
-												ContextualTooltipType = {
-													name = "BALANCE_INCOME_TOOLTIP"
-													blockoverride "title_icon_texture" {
-														texture = "[GetConceptTexture('income')]"
-													}
-													blockoverride "title_text" { text = "INCOME_TOOLTIP_T" }
-													blockoverride "concept_link" { text = "[income|e]"}
-													blockoverride "tooltip_content" {
-														TooltipScrolledStringPairList = {
-															blockoverride "block_scrollarea" { maximumsize = { -1 300 }}
-															textcontext = "[EconomyView.GetAllIncomeInfo]"
-														}
+											ContextualTooltipType = {
+												name = "BALANCE_INCOME_TOOLTIP"
+												blockoverride "title_icon_texture" {
+													texture = "[GetConceptTexture('income')]"
+												}
+												blockoverride "title_text" { text = "INCOME_TOOLTIP_T" }
+												blockoverride "concept_link" { text = "[income|e]"}
+												blockoverride "tooltip_content" {
+													TooltipScrolledStringPairList = {
+														blockoverride "block_scrollarea" { maximumsize = { -1 300 }}
+														textcontext = "[EconomyView.GetAllIncomeInfo]"
 													}
 												}
+											}
 										}
 									}
 								}
@@ -1393,8 +1393,6 @@ lateralview = {
 																		enabled = "[Not(IsPlayerAIEnabled('finances'))]"
 																		down = "[TaxRateSetting.IsUsingAutoTaxRate]"
 																		onclick = "[TaxRateSetting.ToggleAutoTaxRate]"
-																		# GlorpUI: hidden when SmartTaxes is active
-																		visible = "[Not(GetScriptedGui('glorpui_is_smart_taxes_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 
 																		widget = {
 																			size = { 100% 100% }
@@ -1410,12 +1408,9 @@ lateralview = {
 																			}
 																		}
 																	}
-																	# GlorpUI: SmartTaxes per-estate enable checkbox
-																	smart_taxes_replacement_enable_checkbox = {}
-
 
 																	expand = {}
-																	}
+																}
 
 																hbox = {
 																	using = layoutpolicy_expanding
@@ -1493,8 +1488,6 @@ lateralview = {
 
 																	widget = {
 																		size = { 55 24 }
-																		# GlorpUI: hidden when SmartTaxes is active
-																		visible = "[And3(Not(GetScriptedGui('glorpui_is_smart_taxes_active').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)), Not(TaxRateSetting.IsTaxRateSliderEnabled), Or(Not(TaxRateSetting.IsTaxRateSettingIncEnabled), Not(TaxRateSetting.IsTaxRateSettingDecEnabled)))]"
 																		hbox = {
 																			visible = "[And(Not(TaxRateSetting.IsTaxRateSliderEnabled), Or(Not(TaxRateSetting.IsTaxRateSettingIncEnabled), Not(TaxRateSetting.IsTaxRateSettingDecEnabled)))]"
 																			datacontext = "[TaxRateSetting.GetEstate]"
@@ -1603,8 +1596,6 @@ lateralview = {
 																				}
 																			}
 																		}
-																		# GlorpUI: SmartTaxes satisfaction-target setter
-																		smart_taxes_satisfaction_target_setter = {}
 
 																		hbox = {
 																			visible = "[Or(TaxRateSetting.IsTaxRateSliderEnabled, And(TaxRateSetting.IsTaxRateSettingIncEnabled, TaxRateSetting.IsTaxRateSettingDecEnabled))]"
@@ -2337,7 +2328,7 @@ lateralview = {
 																			on_action = "[ToggleAutoMaintenance('fort')]"
 																		}
 																		tooltipwidget = { BasicFunctionalTooltip = {} }
-																}
+																	}
 
 																	expand = {}
 																}
@@ -2513,40 +2504,20 @@ lateralview = {
 															autoresize = no
 															align = center|nobaseline
 															size = { 60 20 }
-															fontsize = 14
-															datacontext = "[Player.GetEconomy]"
-															text = "[CEconomy.GetStabilityInvestmentValue|2=%V]"
-															tooltipwidget = {
-																ContextualTooltipType = {
-																	blockoverride "title_text" {
-																		text = "MODIFIER_TYPE_NAME_stability_investment"
-																	}
-																	blockoverride "title_icon" {
-																		icon = {
-																			using = tooltip_title_icon_size
-																			using = icon_stability
-																		}
-																	}
+															raw_text = "[EconomyView.GetStabilityChange|2+=]@stability!"
 
+															background = {
+																texture = "gfx/interface/component_tiles/list_item.dds"
+																spriteType = Corneredstretched
+																texture_density = 2
+																spriteBorder_left = 14
+																spriteBorder_right = 14
 
-																	blockoverride "concept_link" {
-																		text = [stability|E]
-																	}
-																	blockoverride "tooltip_content" {
-
-																		TooltipStringPairList = {
-																			textcontext = "[EconomyView.GetStabilityInvestmentTooltip]"
-																		}
-																	}
+																modify_texture = {
+																	using = color_brown_leather_texture
+																	blend_mode = overlay
 																}
 															}
-														}
-
-														text_single = {
-															autoresize = no
-															align = center|nobaseline
-															size = { 60 20 }
-															raw_text = "[EconomyView.GetStabilityChange|2+=]@stability!"
 															tooltipwidget = {
 																ContextualTooltipType = {
 																	blockoverride "title_text" {
@@ -2781,9 +2752,6 @@ lateralview = {
 													}
 												}
 											}
-
-											# GlorpUI: SmartTaxes Research Spending Mechanic compat card
-											smart_taxes_research_spending_mechanic_type = {}
 
 											#unused maintenence settings
 											vbox = {
