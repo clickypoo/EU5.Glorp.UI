@@ -140,6 +140,20 @@
       "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__map_markers/in_game__gui__map_markers/unit_marker_siege_banner_short_offset.gui",
       "vanilla_file": "in_game/gui/map_markers.gui"
     },
+    "constant:in_game/gui/map_markers_city.gui:in_game/gui/map_markers_city.gui:city_marker_fort_icon_size": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/map_markers_city.gui",
+      "name": "city_marker_fort_icon_size",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__map_markers_city/in_game__gui__map_markers_city/city_marker_fort_icon_size.gui",
+      "vanilla_file": "in_game/gui/map_markers_city.gui"
+    },
+    "constant:in_game/gui/map_markers_city.gui:in_game/gui/map_markers_city.gui:city_marker_icon_size": {
+      "kind": "constant",
+      "mod_file": "in_game/gui/map_markers_city.gui",
+      "name": "city_marker_icon_size",
+      "tracking_path": "tools/dependencies/gui-tracking/constants/in_game__gui__map_markers_city/in_game__gui__map_markers_city/city_marker_icon_size.gui",
+      "vanilla_file": "in_game/gui/map_markers_city.gui"
+    },
     "template:CountryMapModeDiplomacyTooltip": {
       "base_widget": null,
       "mod_file": "in_game/gui/shared/glorpUI_diplomacy_tooltips.gui",
@@ -167,6 +181,13 @@
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/DHEEvent_tooltip.gui",
       "vanilla_file": "in_game/gui/shared/event_tooltips.gui"
+    },
+    "template:MapMarkerFlags": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers_city.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/MapMarkerFlags.gui",
+      "vanilla_file": "in_game/gui/map_markers_city.gui"
     },
     "template:ProvinceDefinition_tooltip": {
       "base_widget": null,
@@ -280,6 +301,13 @@
       "tracking_path": "tools/dependencies/gui-tracking/templates/frontend_menu_middle_template.gui",
       "vanilla_file": "in_game/gui/ingame_menu.gui"
     },
+    "template:location_card_town_rights": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/location_window.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/location_card_town_rights.gui",
+      "vanilla_file": "in_game/gui/location_window.gui"
+    },
     "template:location_rgo_button_tooltip": {
       "base_widget": null,
       "mod_file": "in_game/gui/shared/glorpUI_location_tooltips.gui",
@@ -293,13 +321,6 @@
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/mask_fade_horizontal_middle_texture.gui",
       "vanilla_file": "loading_screen/gui/textformatting.gui"
-    },
-    "template:one_country_header_template": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/glorpUI_country_header.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/one_country_header_template.gui",
-      "vanilla_file": "in_game/gui/country_header.gui"
     },
     "template:production_view_poptypes": {
       "base_widget": null,
@@ -321,6 +342,13 @@
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/societal_values.gui",
       "vanilla_file": "in_game/gui/societal_values_lateralview.gui"
+    },
+    "template:speed_bar": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/glorpUI_hud_topbar.gui",
+      "namespace": null,
+      "tracking_path": "tools/dependencies/gui-tracking/templates/speed_bar.gui",
+      "vanilla_file": "in_game/gui/hud_topbar.gui"
     },
     "template:text_common_template": {
       "base_widget": null,
@@ -349,13 +377,6 @@
       "namespace": null,
       "tracking_path": "tools/dependencies/gui-tracking/templates/text_single_template.gui",
       "vanilla_file": "loading_screen/gui/textformatting.gui"
-    },
-    "template:two_countries_header_template": {
-      "base_widget": null,
-      "mod_file": "in_game/gui/glorpUI_country_header.gui",
-      "namespace": null,
-      "tracking_path": "tools/dependencies/gui-tracking/templates/two_countries_header_template.gui",
-      "vanilla_file": "in_game/gui/country_header.gui"
     },
     "type:CharacterNameDefault": {
       "base_widget": "hbox",
@@ -454,20 +475,6 @@
       "namespace": "MultiplayerChatTypes",
       "tracking_path": "tools/dependencies/gui-tracking/types/chat_editbox.gui",
       "vanilla_file": "in_game/gui/multiplayer_chat.gui"
-    },
-    "type:country_header": {
-      "base_widget": "widget",
-      "mod_file": "in_game/gui/glorpUI_country_header.gui",
-      "namespace": "CountryHeaders",
-      "tracking_path": "tools/dependencies/gui-tracking/types/country_header.gui",
-      "vanilla_file": "in_game/gui/country_header.gui"
-    },
-    "type:economy_plotline": {
-      "base_widget": "widget",
-      "mod_file": "in_game/gui/shared/glorpUI_plotlines.gui",
-      "namespace": "GlorpUIPlotLine_Types",
-      "tracking_path": "tools/dependencies/gui-tracking/types/economy_plotline.gui",
-      "vanilla_file": "in_game/gui/shared/plotlines.gui"
     },
     "type:economy_slider": {
       "base_widget": "ranged_slider",
@@ -595,6 +602,13 @@
       "tracking_path": "tools/dependencies/gui-tracking/types/location_filtered_header_with_candidate.gui",
       "vanilla_file": "in_game/gui/production_lateralview.gui"
     },
+    "type:location_rank_icon": {
+      "base_widget": "widget",
+      "mod_file": "in_game/gui/map_markers_city.gui",
+      "namespace": "map_marker_city",
+      "tracking_path": "tools/dependencies/gui-tracking/types/location_rank_icon.gui",
+      "vanilla_file": "in_game/gui/map_markers_city.gui"
+    },
     "type:mapmarkers_settings_window": {
       "base_widget": "widget",
       "mod_file": "in_game/gui/glorpUI_hud_bot.gui",
@@ -637,6 +651,13 @@
       "tracking_path": "tools/dependencies/gui-tracking/types/mapmodes_window.gui",
       "vanilla_file": "in_game/gui/hud_bot.gui"
     },
+    "type:marker_rank_icon": {
+      "base_widget": "icon",
+      "mod_file": "in_game/gui/map_markers_city.gui",
+      "namespace": "map_marker_city",
+      "tracking_path": "tools/dependencies/gui-tracking/types/marker_rank_icon.gui",
+      "vanilla_file": "in_game/gui/map_markers_city.gui"
+    },
     "type:organization_panel_default": {
       "base_widget": "vbox",
       "mod_file": "in_game/gui/panels/organization/glorpUI_common.gui",
@@ -678,13 +699,6 @@
       "namespace": "LocationWindowTypes",
       "tracking_path": "tools/dependencies/gui-tracking/types/row_building_card.gui",
       "vanilla_file": "in_game/gui/location_window.gui"
-    },
-    "type:two_countries_header": {
-      "base_widget": "widget",
-      "mod_file": "in_game/gui/glorpUI_country_header.gui",
-      "namespace": "CountryHeaders",
-      "tracking_path": "tools/dependencies/gui-tracking/types/two_countries_header.gui",
-      "vanilla_file": "in_game/gui/country_header.gui"
     },
     "widget:agenda_category_entry": {
       "base_widget": null,
@@ -846,6 +860,13 @@
       "namespace": "OutlinerEntryBase",
       "tracking_path": "tools/dependencies/gui-tracking/widgets/charter_entry.gui",
       "vanilla_file": "in_game/gui/outliner_entries.gui"
+    },
+    "widget:city_marker": {
+      "base_widget": null,
+      "mod_file": "in_game/gui/map_markers_city.gui",
+      "namespace": "widget",
+      "tracking_path": "tools/dependencies/gui-tracking/widgets/city_marker.gui",
+      "vanilla_file": "in_game/gui/map_markers_city.gui"
     },
     "widget:colony_charter_marker": {
       "base_widget": null,

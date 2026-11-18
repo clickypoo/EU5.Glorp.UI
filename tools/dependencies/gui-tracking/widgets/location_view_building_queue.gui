@@ -38,7 +38,7 @@ select_menu_left = {
 			}
 		}
 	}
-	
+
 	blockoverride "select_content" {
 		hbox = {
 			margin = { 4 6 }
@@ -127,7 +127,7 @@ select_menu_left = {
 						using = bg_map_banner_texture
 
 						margin = { -4 -3 }
-		
+
 						block "queue_card_tint" {
 							modify_texture = {
 								visible = "[Construction.HasConstructionTint]"
@@ -142,7 +142,7 @@ select_menu_left = {
 								alpha = 0.3
 							}
 						}
-		
+
 						glow = {
 							name = "drop_shadow"
 							glow_radius = 7
@@ -156,7 +156,7 @@ select_menu_left = {
 					margin = { 5 0 }
 					spacing = 2
 					datacontext = "[LocationBuildingItem.GetConstruction]"
-					
+
 					text_single = {
 						minimumsize = { 16 -1 }
 						align = center|nobaseline
@@ -203,7 +203,7 @@ select_menu_left = {
 							tooltipwidget = { BasicFunctionalTooltip = {} }
 						}
 					}
-					
+
 					construction_queue_card = {}
 				}
 			}
