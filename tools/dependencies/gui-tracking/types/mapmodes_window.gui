@@ -466,9 +466,10 @@
 						}
 
 								blockoverride "datamodel_item" {
-									mapmode_category_group = { datamodel = "[GetMapModeGroupFromCategory('diplomacy', '(int32)0')]" }
-									mapmode_category_group = { datamodel = "[GetMapModeGroupFromCategory('diplomacy', '(int32)1')]" }
-									mapmode_category_group = { datamodel = "[GetMapModeGroupFromCategory('diplomacy', '(int32)2')]" }
+									mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('diplomacy', '(int32)0')]"}
+									mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('diplomacy', '(int32)1')]"}
+									mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('diplomacy', '(int32)2')]"}
+									mapmode_category_group = {datamodel = "[GetMapModeGroupFromCategory('diplomacy', '(int32)3')]"}
 								}
 								blockoverride "base_color" {
 									using = color_diplomacy_texture

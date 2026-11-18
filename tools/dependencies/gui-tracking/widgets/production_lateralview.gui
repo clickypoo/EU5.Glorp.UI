@@ -276,7 +276,7 @@ lateralview = {
 												datacontext = "[BuildingItem.GetBuildingType]"
 												datacontext = "[ProductionView.GetBuildRankingItems]"
 
-												enabled = "[Or3(And(Not(Player.CanUpgradeBuildingType(BuildingItem.GetBuildingType)), Or(ProductionView.HasBestBuildLocationFor(BuildingItem.GetBuildingType), ProductionView.HasUpgradableFromCurrentTier(BuildingItem.GetBuildingType))), And(Player.CanUpgradeBuildingType(BuildingItem.GetBuildingType), ProductionView.CanMassUpgrade(BuildingItem.GetBuildingType)), ProductionView.HasLastBuildLocationItemFor(BuildingItem.GetBuildingType))]"
+												enabled = "[Or3(And(Not(Player.CanUpgradeBuildingType(BuildingItem.GetBuildingType)), Or(BuildingItem.CanBuildAnyBuilding, ProductionView.HasUpgradableFromCurrentTier(BuildingItem.GetBuildingType))), And(Player.CanUpgradeBuildingType(BuildingItem.GetBuildingType), ProductionView.CanMassUpgrade(BuildingItem.GetBuildingType)), BuildingItem.AreBuildingsUnderConstruction)]"
 
 												icon = {
 													parentanchor = center
@@ -837,9 +837,8 @@ lateralview = {
 																					TooltipContentSection = {
 																						visible = "[BuildingItem.HasBuildingsLackingInput]"
 
-																						TooltipScrolledStringPairList = {
+																						TooltipStringPairList = {
 																							textcontext = "[BuildingItem.GetBuildingsInputGoodsInformation]"
-																							blockoverride "block_scrollarea" { maximumsize = { -1 120 } }
 																							blockoverride "textblock_background_tint"  {
 																								modify_texture = {
 																									using = color_red_texture
@@ -1104,9 +1103,8 @@ lateralview = {
 																					TooltipContentSection = {
 																						visible = "[BuildingItem.HasBuildingsLackingInput]"
 
-																						TooltipScrolledStringPairList = {
+																						TooltipStringPairList = {
 																							textcontext = "[BuildingItem.GetBuildingsInputGoodsInformation]"
-																							blockoverride "block_scrollarea" { maximumsize = { -1 120 } }
 																							blockoverride "textblock_background_tint"  {
 																								modify_texture = {
 																									using = color_red_texture

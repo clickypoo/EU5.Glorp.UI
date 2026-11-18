@@ -134,7 +134,7 @@ lateralview = {
 						layoutpolicy_horizontal = fixed
 						layoutpolicy_vertical = fixed
 						autoresize = yes
-						maximumsize = { 420 -1 }
+						maximumsize = { 330 -1 }
 						text = "[ForeignCountryView.GetCountry.GetLongNameWithNoTooltip]"
 					}
 
@@ -374,11 +374,6 @@ lateralview = {
 									tooltipwidget = { using = HumanPlayerDisposition_tooltip }
 									visible = "[Country.HasHumanController]"
 									spacing = 5
-
-									icon = {
-										size = { 20 20 }
-										texture = "[GetAiDispositionIcon(Country.Self)]"
-									}
 									icon = {
 										size = { 20 20 }
 										texture = "gfx/interface/icons/outliner/human_player.dds"
@@ -1622,7 +1617,7 @@ lateralview = {
 									blockoverride "text_bottom" {
 										margin_left = 100
 										maximumsize = { 180 -1 }
-										text = "[Player.GetPossibleTotalSubjectsAmount]"
+										text = "[Max_int32(Player.GetPossibleTotalSubjectsAmount, '(int32)0')]"
 									}
 								}
 							}

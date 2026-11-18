@@ -450,6 +450,8 @@ lateralview = {
 								margin = { 8 5 }
 								minimumsize = { 56 -1 }
 
+								visible = "[Character.ShowsStats]"
+
 								tagtooltip_enabled = yes
 								tooltip = "[Character.GetAbilityTooltip]"
 
@@ -1448,6 +1450,47 @@ lateralview = {
 															}
 															using = cabinet_item_advisor_action_provider
 														}
+														header_button_left = {
+															size = { 31 31 }
+															visible = "[CabinetItem.IsRemoveMemberVisible]"
+															enabled = "[CabinetItem.IsRemoveMemberEnabled]"
+
+															blockoverride "button_icon_stretch_sprite" {}
+															blockoverride "header_button_frame_inner" { visible = no }
+															blockoverride "header_button_icon_size" { size = { 25 25 } }
+															blockoverride "icon_size" { size = { 100% 100% } }
+															blockoverride "header_button_text_layout" {}
+
+															blockoverride "icon_texture" {
+																texture = "gfx/interface/buttons/flats/clean_text.dds"
+																modify_texture = {
+																	using = color_new_gold_texture
+																}
+																modify_texture = {
+																	using = color_black_texture
+																	blend_mode = overlay
+																	alpha = 0.3
+																}
+																modify_texture = {
+																	using = overlay_stone_texture
+																	blend_mode = overlay
+																	alpha = 0.5
+																}
+																texture_density = 2
+															}
+
+															tooltipwidget = { BasicFunctionalTooltip = {} }
+
+															action_tooltip = {
+																click_type = left
+																click_mode = confirm
+																title = "REMOVE_CABINET_MEMBER"
+																enabled = "[CabinetItem.IsRemoveMemberEnabled]"
+																cost = "[CabinetItem.GetRemoveMemberCost]"
+																description = "[CabinetItem.GetRemoveMemberDescription]"
+																on_action = "[CabinetItem.OnRemoveMember]"
+															}
+														}
 
 														card_header_button_01 = {
 															visible = "[And(CabinetItem.GetCabinet.IsCharacterSet, Not(CabinetItem.GetCabinet.GetCharacter.IsHeadOfCabinet))]"
@@ -2153,7 +2196,7 @@ lateralview = {
 																	hbox = {
 																		spacing = 10
 																		text_single = {
-																			visible = "[And3( Not(EqualTo_string(GenericAction.GetKey, 'promote_mamluks')),Not(EqualTo_string(GenericAction.GetKey, 'force_parliament_issue')),Not(EqualTo_string(GenericAction.GetKey, 'force_parliament_support')) ) ]"
+																			visible = "[And4( Not(EqualTo_string(GenericAction.GetKey, 'promote_mamluks')),Not(EqualTo_string(GenericAction.GetKey, 'force_parliament_issue')),Not(EqualTo_string(GenericAction.GetKey, 'force_parliament_support')),Not(EqualTo_string(GenericAction.GetKey, 'reroll_parliament_agendas')) ) ]"
 																			autoresize = no
 																			align = center
 																			size = {65 25}
@@ -2195,7 +2238,7 @@ lateralview = {
 																		}
 
 																		icon = {
-																			visible = "[Not(EqualTo_string(GenericAction.GetKey, 'force_parliament_issue'))]"
+																			visible = "[And(Not(EqualTo_string(GenericAction.GetKey, 'force_parliament_issue')), Not(EqualTo_string(GenericAction.GetKey, 'reroll_parliament_agendas')))]"
 																			size = {20 20}
 																			texture = "gfx/interface/icons/flat_icons/parliament_support.dds"
 																			glow = {

@@ -619,7 +619,7 @@
 														size = { 55 20 }
 														layoutpolicy_vertical = expanding
 														text_single = {
-															size = { 40 20 }
+															size = { 55 20 }
 															parentanchor = center
 															autoresize = no
 															visible = "[And(Not(BuildingCandidate.GetBuilding.IsUnderConstruction), Not(And(BuildingCandidate.GetBuilding.CanPlayerUpgrade, BuildingCandidate.GetBuilding.IsPlayerUpgrading)))]"
@@ -637,7 +637,7 @@
 														}
 
 														text_single = {
-															size = { 40 20 }
+															size = { 55 20 }
 															parentanchor = center
 															autoresize = no
 															visible = "[And3(Not(BuildingCandidate.GetBuilding.IsUnderConstruction), BuildingCandidate.GetBuilding.CanPlayerUpgrade, BuildingCandidate.GetBuilding.IsPlayerUpgrading)]"
@@ -655,7 +655,7 @@
 														}
 
 														text_single = {
-															size = { 40 20 }
+															size = { 55 20 }
 															parentanchor = center
 															autoresize = no
 															visible = "[BuildingCandidate.GetBuilding.IsUnderConstruction]"
