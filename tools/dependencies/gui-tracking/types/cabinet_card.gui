@@ -197,7 +197,7 @@
 							}
 	
 							text_single = {
-								visible = "[Or(Cabinet.IsActive, Cabinet.IsCharacterSet)]"
+								visible = "[And(Or(Cabinet.IsActive, Cabinet.IsCharacterSet), Cabinet.GetCharacter.ShowsStats)]"
 								text = "[Cabinet.GetCharacter.GetAbility('adm')]"
 								align = nobaseline
 							}
@@ -223,7 +223,7 @@
 							}
 	
 							text_single = {
-								visible = "[Or(Cabinet.IsActive, Cabinet.IsCharacterSet)]"
+								visible = "[And(Or(Cabinet.IsActive, Cabinet.IsCharacterSet), Cabinet.GetCharacter.ShowsStats)]"
 								text = "[Cabinet.GetCharacter.GetAbility('dip')]"
 								align = nobaseline
 							}
@@ -249,7 +249,7 @@
 							}
 	
 							text_single = {
-								visible = "[Or(Cabinet.IsActive, Cabinet.IsCharacterSet)]"
+								visible = "[And(Or(Cabinet.IsActive, Cabinet.IsCharacterSet), Cabinet.GetCharacter.ShowsStats)]"
 								text = "[Cabinet.GetCharacter.GetAbility('mil')]"
 								align = nobaseline
 							}

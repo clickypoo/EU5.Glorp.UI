@@ -1,0 +1,113 @@
+# vanilla: in_game/gui/location_window.gui
+# mod: in_game/gui/location_window.gui
+
+template location_card_town_rights {
+	block "location_card_town_rights_size" {
+		size = { 33 33 }
+	}
+	visible = "[Or(GreaterThan_int32(GetDataModelSize(Location.GetTownRights), '(int32)0'), And(Location.GetOwner.IsPlayer, Not(Location.GetRank.IsDefault)))]"
+	block "location_card_town_rights_enabled" {
+		enabled = "[And(ShowGrantLocationTownRights(Location.Self), Not(Location.GetRank.IsDefault))]"
+	}
+
+	block "location_card_town_rights_empty_button" {
+		button_townrights = {
+			using = location_card_town_rights_empty_body
+		}
+	}
+
+	block "location_card_town_rights_multi_button" {
+		button_regular = {
+			visible = "[GreaterThan_int32(GetDataModelSize(Location.GetTownRights), '(int32)1')]"
+			size = { 100% 100% }
+			position = {0 1}
+
+			action_tooltip = {
+				click_type = left
+				click_mode = single
+				title = "GRANT_NEW_TOWN_RIGHTS"
+				on_action = "[GrantLocationTownRights(Location.Self)]"
+				conditions = "[AddLocalizationIf(Not(Location.GetOwner.IsPlayer), 'TWR_NOT_OTHER_COUNTRY_LOCATIONS')]"
+				conditions = "[AddLocalizationIf(And(Location.GetOwner.IsPlayer, Location.GetRank.IsDefault), 'TWR_ONLY_URBAN_LOCATIONS')]"
+				conditions = "[AddLocalizationIf(And3(Location.GetOwner.IsPlayer, Not(Location.GetRank.IsDefault), Not(ShowGrantLocationTownRights(Location.Self))), 'TWR_NOT_CAPABLE')]"
+				enabled = "[And(ShowGrantLocationTownRights(Location.Self), Not(Location.GetRank.IsDefault))]"
+			}
+
+			tooltipwidget = {
+				using = location_town_rights_tooltip
+			}
+		}
+	}
+
+	# No Town Rights Selected
+	icon = {
+		visible = "[Not(GreaterThan_int32(GetDataModelSize(Location.GetTownRights), '(int32)0'))]"
+		block "location_card_town_rights_empty_icon_layout" {
+			size = { 18 18 }
+			parentanchor = center
+		}
+		texture = "gfx/interface/buttons/estate_privileges/ep_plus.dds"
+		texture_density = 2
+
+		modify_texture = {
+			using = color_new_gold_texture
+			blend_mode = add
+		}
+
+		glow = {
+			name = "drop_shadow"
+			glow_radius = 3
+			color = {0.0 0.0 0.0 1.0}
+			alpha = 0.8
+		}
+	}
+
+	block "location_card_town_rights_empty_extra" {}
+
+	# ONE TOWN RIGHT SELECTED
+	hbox = {
+		block "location_card_town_rights_single_visible" {
+			visible = "[EqualTo_int32(GetDataModelSize(Location.GetTownRights), '(int32)1')]"
+		}
+		datamodel = "[Location.GetTownRights]"
+		item = {
+			widget = {
+				using = layoutpolicy_expanding
+				block "location_card_town_rights_item_visible" {}
+
+				block "location_card_town_rights_item_button" {
+					button_townrights = {
+						size = { 100% 100% }
+						using = location_card_town_rights_item_body
+					}
+				}
+			}
+		}
+	}
+
+	# MORE THAN ONE TOWN RIGHT SELECTED
+	block "location_card_town_rights_multi_display" {
+		hbox = {
+			visible = "[GreaterThan_int32(GetDataModelSize(Location.GetTownRights), '(int32)1')]"
+			margin = { 2 0 }
+			text_single = {
+				using = layoutpolicy_expanding
+				align = center
+				autoresize = no
+				text = "[GetDataModelSize(Location.GetTownRights)]"
+			}
+			hbox = {
+				datamodel = "[Location.GetTownRights]"
+				item = {
+					icon = {
+						visible = "[EqualTo_int32(PdxGuiWidget.GetIndexInParent, '(int32)0')]"
+						size = { 16 16 }
+						texture = "[TownRights.GetIcon]"
+					}
+				}
+			}
+		}
+	}
+
+	block "location_town_rights_sort_highlight" {}
+}

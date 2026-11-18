@@ -156,11 +156,24 @@ lateralview = {
 											}
 										}
 
+										background = {
+											texture = "gfx/interface/colors/purple.dds"
+											alpha = 0.55
+											visible = "[DHEEventEntry.HasRequiredDlc]"
+										}
+
 										hbox = {
 											size = { 100% 100% }
 											margin = { 6 0 }
 											margin_left = 64
 											spacing = 5
+
+											icon = {
+												size = { 28 28 }
+												visible = "[DHEEventEntry.HasRequiredDlc]"
+												datacontext = "[GetGameDLCFromKey(DHEEventEntry.GetRequiredDlcKey)]"
+												texture = "[GameDLC.GetIcon]"
+											}
 
 											# Title text
 											text_single = {
@@ -232,6 +245,17 @@ lateralview = {
 												autoresize = no
 												default_format = "#subtle_name"
 												sort_by_highlight = { name = "date" }
+											}
+
+											icon = {
+												size = { 20 20 }
+												texture = "gfx/interface/icons/text_icons/trigger_yes.dds"
+												visible = "[And(DHEEventEntry.HasRequiredDlc, HasDlc(DHEEventEntry.GetRequiredDlcKey))]"
+											}
+											icon = {
+												size = { 20 20 }
+												texture = "gfx/interface/icons/text_icons/trigger_no.dds"
+												visible = "[And(DHEEventEntry.HasRequiredDlc, Not(HasDlc(DHEEventEntry.GetRequiredDlcKey)))]"
 											}
 										}
 									}
