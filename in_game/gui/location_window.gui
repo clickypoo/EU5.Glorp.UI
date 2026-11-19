@@ -593,69 +593,17 @@
 						using = bg_cabinet_card_frame
 
 						location_card = {
-							blockoverride "location_card_name_prefix" {
-								vbox = {
-									spacing = 1
-
-									button_square_plus = {
-										visible = "[Or(Location.GetOwner.IsPlayer, Location.GetOwner.GetDiplomacy.IsSubjectOf(GetPlayer))]"
-										size = { 14 14 }
-
-										blockoverride "plusminus_icon" {
-											texture = "gfx/interface/icons/unit_actions/upgrade_army.dds"
-										}
-
-										enabled = "[Location.CanUpgradeRank]"
-										tooltipwidget = { BasicFunctionalTooltip = {} }
-
-										action_tooltip = {
-											click_type = left
-											click_mode = confirm
-											enabled = "[Location.CanUpgradeRank]"
-											title = "[Location.GetUpgradeRankName]"
-											cost = "[Location.GetUpgradeRankPrice]"
-											description = "[Location.GetUpgradeRankDescription]"
-											effects = "[Location.GetUpgradeRankEffects]"
-											conditions = "[Location.GetUpgradeRankConditions]"
-											on_action = "[UpgradeLocationRank(Location.Self)]"
-										}
-									}
-
-									button_square_plus = {
-										visible = "[Or(Location.GetOwner.IsPlayer, Location.GetOwner.GetDiplomacy.IsSubjectOf(GetPlayer))]"
-										size = { 14 14 }
-
-										blockoverride "plusminus_icon" {
-											texture = "gfx/interface/icons/unit_actions/downgrade.dds"
-										}
-
-										enabled = "[Location.CanDowngradeRank]"
-										tooltipwidget = { BasicFunctionalTooltip = {} }
-
-										action_tooltip = {
-											click_type = left
-											click_mode = confirm
-											enabled = "[Location.CanDowngradeRank]"
-											title = "location_downgrade"
-											cost = "[Location.GetDowngradeRankPrice]"
-											description = "[Location.GetDowngradeRankDescription]"
-											effects = "[Location.GetDowngradeRankEffects]"
-											conditions = "[Location.GetDowngradeRankConditions]"
-											on_action = "[DowngradeLocationRank(Location.Self)]"
-										}
-									}
-								}
-							}
-
 							blockoverride "location_card_margins" {
 								margin = {0 5}
 							}
 
-							blockoverride "location_card_rank_button" {}
-
 							blockoverride "location_card_town_rights_slot" {}
 
-							blockoverride "location_card_core_slot" {}
+							blockoverride "location_card_town_rights_vertical_slot" {
+								widget = {
+									using = location_card_town_rights_vertical
+								}
+							}
 
 							blockoverride "location_card_core_icon_size" {
 								size = { 28 28 }
@@ -745,71 +693,6 @@
 
 							blockoverride "location_card_town_rights_size" {
 								size = { 30 63 }
-							}
-
-							blockoverride "location_card_rank_slot" {
-								hbox = {
-									margin_left = 3
-									margin_top = 5
-									margin_bottom = 5
-									spacing = 1
-
-									widget = {
-										size = { 61 61 }
-
-										tooltipwidget = {
-											using = location_rank_tooltip
-											blockoverride "location_rank_tooltip_button" {
-												TooltipBlockList = {
-													visible = "[Not(StringIsEmpty(Location.GetUpgradeRankPriceBreakdown))]"
-													textcontext = "[Location.GetUpgradeRankPriceBreakdown]"
-												}
-											}
-										}
-
-										icon = {
-											visible = "[EqualTo_int32(Location.GetRank.GetFrameTier, '(int32)1')]"
-											size = { 42 42 }
-											parentanchor = center
-											texture = "[Location.GetRankIcon]"
-										}
-
-										icon = {
-											visible = "[EqualTo_int32(Location.GetRank.GetFrameTier, '(int32)2')]"
-											size = { 46 46 }
-											parentanchor = center
-											texture = "[Location.GetRankIcon]"
-										}
-
-										icon = {
-											visible = "[EqualTo_int32(Location.GetRank.GetFrameTier, '(int32)3')]"
-											size = { 56 56 }
-											parentanchor = center
-											texture = "[Location.GetRankIcon]"
-										}
-
-										icon = {
-											visible = "[EqualTo_int32(Location.GetRank.GetFrameTier, '(int32)4')]"
-											size = { 56 56 }
-											parentanchor = center
-											texture = "[Location.GetRankIcon]"
-										}
-
-										widget = {
-											parentanchor = bottom|right
-											using = location_card_core
-										}
-									}
-
-									widget = {
-										using = location_card_town_rights
-									}
-								}
-							}
-
-							blockoverride "location_card_name_margins" {
-								margin_left = 7
-								margin_right = 5
 							}
 
 							blockoverride "location_fort_status_label_format" {
@@ -3767,9 +3650,7 @@
 													action_tooltip = {
 														click_type = left
 														click_mode = single
-														on_action = "[OpenLateralViewWithParams('location_production', 'display = lists')]"
-														on_action = "[OpenLateralViewWithFilter('location_production', PopType.GetKey)]"
-														on_action = "[ShowLocationProductionView(LocationView.GetLocation.GetId, '(bool)no')]"
+														on_action = "[ShowLocationProductionViewForPopType(LocationView.GetLocation.GetId, PopType.GetKey)]"
 														title = "MANAGE_BUILDINGS_POP_TYPE"
 													}
 
@@ -6873,10 +6754,10 @@
 
 													text_single = {
 														size = { 100% 100% }
-														autoresize = yes
+														autoresize = no
 														fontsize = 13
 														using = Font_Type_Standard
-														align = center
+														align = center|nobaseline
 														text = "[LocationView.GetLocation.GetCultureStatusShortLabelForLocation(PopCultureItem.GetCulture)]"
 													}
 												}
@@ -8344,7 +8225,7 @@ types LocationWindowTypes {
 							}
 						}
 						blockoverride "flag_estate_building_card_flag_visible" {
-							visible = "[And(LocationBuildingItem.GetBuilding.GetType.IsForeign, Not(And3(LocationBuildingItem.IsPlayerBuilding, LocationBuildingItem.GetBuilding.CanPlayerUpgrade, Not(LocationBuildingItem.GetBuilding.GetType.OnlyEstatesCanBuild))))]"
+							visible = "[And(LocationBuildingItem.GetBuilding.GetType.IsForeign, Not(And3(LocationBuildingItem.IsPlayerBuilding, Or(LocationBuildingItem.GetBuilding.CanPlayerUpgrade, LocationBuildingItem.CanExpandBuilding), Not(LocationBuildingItem.GetBuilding.GetType.OnlyEstatesCanBuild))))]"
 						}
 						blockoverride "flag_estate_building_card_flag_size" {
 							block "tooltip_flag_estate_building_card_flag_size" {
@@ -8371,7 +8252,7 @@ types LocationWindowTypes {
 						blockoverride "square_icon_size" {
 							size = {10 10}
 						}
-						visible = "[And3(Not(LocationBuildingItem.GetBuilding.CanPlayerUpgrade), Not(LocationBuildingItem.GetBuilding.GetType.IsForeign), Not(Building.GetType.OnlyEstatesCanBuild))]"
+						visible = "[And3(Not(LocationBuildingItem.GetBuilding.CanPlayerUpgrade), Or(Not(LocationBuildingItem.GetBuilding.GetType.IsForeign), LocationBuildingItem.IsPlayerBuilding), Not(Building.GetType.OnlyEstatesCanBuild))]"
 						datacontext = "[LocationBuildingItem.GetBuilding]"
 						datacontext = "[LocationBuildingItem.GetBuilding.GetType]"
 						datacontext = "[LocationBuildingItem.GetBuilding.GetLocation]"
@@ -8491,7 +8372,86 @@ types LocationWindowTypes {
 		hbox = {
 			using = layoutpolicy_expanding
 
-			block "location_card_rank_slot" {}
+			hbox = {
+				margin_left = 5
+				spacing = 2
+
+				widget = {
+					size = { 45 73 }
+					# UPGRADE RANK
+					button = {
+						visible = "[Location.GetOwner.IsPlayer]"
+						size = { 100% 100% }
+						position = {0 1}
+
+						action_tooltip = {
+							click_type = left
+							click_mode = confirm
+							enabled = "[Location.CanUpgradeRank]"
+							title = "[Location.GetUpgradeRankName]"
+							cost = "[Location.GetUpgradeRankPrice]"
+							description = "[Location.GetUpgradeRankDescription]"
+							effects = "[Location.GetUpgradeRankEffects]"
+							conditions = "[Location.GetUpgradeRankConditions]"
+							on_action = "[UpgradeLocationRank(Location.Self)]"
+						}
+
+						action_tooltip = {
+							click_type = right
+							click_mode = confirm
+							enabled = "[Location.CanDowngradeRank]"
+							title = "location_downgrade"
+							cost = "[Location.GetDowngradeRankPrice]"
+							description = "[Location.GetDowngradeRankDescription]"
+							effects = "[Location.GetDowngradeRankEffects]"
+							conditions = "[Location.GetDowngradeRankConditions]"
+							on_action = "[DowngradeLocationRank(Location.Self)]"
+						}
+
+						enabled = "[Or(Location.CanUpgradeRank, Location.CanDowngradeRank)]"
+
+						tooltipwidget = {
+							using = location_rank_tooltip
+							blockoverride "location_rank_tooltip_button" {
+								TooltipBlockList = {
+									visible = "[Not(StringIsEmpty(Location.GetUpgradeRankPriceBreakdown))]"
+									textcontext = "[Location.GetUpgradeRankPriceBreakdown]"
+								}
+							}
+						}
+					}
+
+					icon = {
+						texture = "[GetGraphicalCultureTexture('bg_speed_button')]"
+						size = { 100% 100% }
+					}
+
+					icon = {
+						visible = "[Location.GetOwner.IsPlayer]"
+						size = { 35 35 }
+						parentanchor = center
+						texture = "[Location.GetRankIcon]"
+					}
+
+					icon = {
+						visible = "[Not(Location.GetOwner.IsPlayer)]"
+						size = { 35 35 }
+						parentanchor = center
+						texture = "[Location.GetRankIcon]"
+						tooltipwidget = {
+							using = location_rank_tooltip
+							blockoverride "location_rank_tooltip_button" {
+								TooltipBlockList = {
+									visible = "[Not(StringIsEmpty(Location.GetUpgradeRankPriceBreakdown))]"
+									textcontext = "[Location.GetUpgradeRankPriceBreakdown]"
+								}
+							}
+						}
+					}
+				}
+
+				block "location_card_town_rights_vertical_slot" {}
+			}
 
 			vbox = {
 				using = layoutpolicy_expanding
@@ -8509,60 +8469,9 @@ types LocationWindowTypes {
 						spacing = 2
 					}
 
-					block "location_card_rank_button" {
-						# UPGRADE RANK
-						widget = {
-							size = { 33 33 }
-							# visible = "[Or(Location.CanUpgradeRank, Location.CanDowngradeRank)]"
-							button_regular = {
-								size = { 100% 100% }
-								position = {0 1}
-
-								action_tooltip = {
-									click_type = left
-									click_mode = confirm
-									enabled = "[Location.CanUpgradeRank]"
-									title = "[Location.GetUpgradeRankName]"
-									cost = "[Location.GetUpgradeRankPrice]"
-									description = "[Location.GetUpgradeRankDescription]"
-									effects = "[Location.GetUpgradeRankEffects]"
-									conditions = "[Location.GetUpgradeRankConditions]"
-									on_action = "[UpgradeLocationRank(Location.Self)]"
-								}
-
-								action_tooltip = {
-									click_type = right
-									click_mode = confirm
-									enabled = "[Location.CanDowngradeRank]"
-									title = "location_downgrade"
-									cost = "[Location.GetDowngradeRankPrice]"
-									description = "[Location.GetDowngradeRankDescription]"
-									effects = "[Location.GetDowngradeRankEffects]"
-									conditions = "[Location.GetDowngradeRankConditions]"
-									on_action = "[DowngradeLocationRank(Location.Self)]"
-								}
-
-								enabled = "[Or(Location.CanUpgradeRank, Location.CanDowngradeRank)]"
-
-								tooltipwidget = {
-									using = location_rank_tooltip
-									blockoverride "location_rank_tooltip_button" {
-										TooltipBlockList = {
-											visible = "[Not(StringIsEmpty(Location.GetUpgradeRankPriceBreakdown))]"
-											textcontext = "[Location.GetUpgradeRankPriceBreakdown]"
-										}
-									}
-								}
-							}
-
-							icon = {
-								size = { 20 20 }
-								parentanchor = center
-								texture = "[Location.GetRankIcon]"
-							}
-
-							block "location_rank_sort_highlight" {}
-						}
+					# INTEGRATION/CORE
+					widget = {
+						using = location_card_core
 					}
 
 					# Town Rights
@@ -8573,13 +8482,6 @@ types LocationWindowTypes {
 					}
 
 					hbox = {
-						# INTEGRATION/CORE
-						block "location_card_core_slot" {
-							widget = {
-								using = location_card_core
-							}
-						}
-
 						# HELPFUL ACTIONS HINT (M5) — newly-colonized, player-owned
 						button = {
 							visible = "[And(Location.IsColonized, Location.GetOwner.IsPlayer)]"
@@ -8659,13 +8561,17 @@ types LocationWindowTypes {
 							}
 
 							hbox = {
-								block "location_card_name_margins" {
-									margin = {5 0}
-								}
-								spacing = 5
+								margin = { 3 0 }
 								using = bg_black_fade_horizontal
 
+								# INTEGRATED
+								widget = {
+									using = location_card_core_integrated
+								}
+
+
 								text_single = {
+									margin = { 5 0}
 									using = layoutpolicy_expanding
 									autoresize = no
 									align = nobaseline
@@ -8836,7 +8742,7 @@ types LocationWindowTypes {
 							# layoutpolicy_horizontal = expanding
 							# size = { -1 28 }
 
-							size = { 90 28 }
+							size = { 70 28 }
 
 							action_tooltip = {
 								click_type = left

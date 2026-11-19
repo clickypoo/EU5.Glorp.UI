@@ -36,6 +36,20 @@
 				}
 			}
 
+			TooltipTextBlock = {
+				visible = "[And(DHEEventEntry.HasRequiredDlc, HasDlc(DHEEventEntry.GetRequiredDlcKey))]"
+				blockoverride "text" {
+					text = "DHE_REQUIRES_DLC_MET"
+				}
+			}
+
+			TooltipTextBlock = {
+				visible = "[And(DHEEventEntry.HasRequiredDlc, Not(HasDlc(DHEEventEntry.GetRequiredDlcKey)))]"
+				blockoverride "text" {
+					text = "DHE_REQUIRES_DLC_NOT_MET"
+				}
+			}
+
 			# DHEFlavorTextBlock = {
 			# 	visible = "[Not(StringIsEmpty(DHEEventEntry.GetDescription))]"
 			# 	blockoverride "text" {

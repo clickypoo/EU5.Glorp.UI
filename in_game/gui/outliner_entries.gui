@@ -3915,8 +3915,12 @@ OutlinerEntryBase = {
 			using = GovernmentReform_tooltip
 			blockoverride "UIActionDescription" {
 				TooltipBlockList = {
-					visible = "[And(Not(GovReformOutlinerEntry.GetReformItem.IsImplemented), GovReformOutlinerEntry.GetReformItem.IsValid)]"
-					textcontext = "[GovReformOutlinerEntry.GetReformItem.GetDescription]"
+					visible = "[And(ReformItem.ShowImplementedTooltip, Not(StringIsEmpty(ReformItem.GetImplementedTooltip)))]"
+					textcontext = "[ReformItem.GetImplementedTooltip]"
+				}
+				TooltipConditionList = {
+					visible = "[Not(StringIsEmpty(ReformItem.CanRemoveReformTooltip))]"
+					textcontext = "[ReformItem.CanRemoveReformTooltip]"
 				}
 			}
 		}

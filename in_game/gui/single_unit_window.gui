@@ -711,7 +711,7 @@
 							}
 
 							text_single = {
-								maximumsize = { 49 -1 }
+								maximumsize = { 45 -1 }
 								text = "[Unit.GetDailyFoodBalance|+=2]"
 							}
 
@@ -748,7 +748,7 @@
 								}
 							}
 							text_single = {
-								maximumsize = { 49 -1 }
+								maximumsize = { 40 -1 }
 								text = "[SingleUnitWindow.GetSelectedUnit.GetArtilleryBonus|G2]"
 							}
 
@@ -814,7 +814,7 @@
 								texture_density = 2
 							}
 							text_single = {
-								maximumsize = { 49 -1 }
+								maximumsize = { 45 -1 }
 								text = "[Unit.GetAccumulatedUnitStat('blockade_capacity')]"
 							}
 							expand = {}
@@ -834,7 +834,7 @@
 								texture = "gfx/interface/icons/location_icons/supply_limit.dds"
 							}
 							text_single = {
-								maximumsize = { 49 -1 }
+								maximumsize = { 40 -1 }
 								text = "[Unit.GetTotalAttritionWeight|2R]"
 							}
 
@@ -884,7 +884,7 @@
 								texture = "gfx/interface/icons/military_army/combined_arms.dds"
 							}
 							text_single = {
-								maximumsize = { 49 -1 }
+								maximumsize = { 42 -1 }
 								text = "[Unit.GetCombinedArmsBonus|+=2%]"
 							}
 

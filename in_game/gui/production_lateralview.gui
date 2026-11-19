@@ -464,7 +464,7 @@ lateralview = {
 												datacontext = "[BuildingItem.GetBuildingType]"
 												datacontext = "[ProductionView.GetBuildRankingItems]"
 
-												enabled = "[Or3(And(Not(Player.CanUpgradeBuildingType(BuildingItem.GetBuildingType)), Or(ProductionView.HasBestBuildLocationFor(BuildingItem.GetBuildingType), ProductionView.HasUpgradableFromCurrentTier(BuildingItem.GetBuildingType))), And(Player.CanUpgradeBuildingType(BuildingItem.GetBuildingType), ProductionView.CanMassUpgrade(BuildingItem.GetBuildingType)), ProductionView.HasLastBuildLocationItemFor(BuildingItem.GetBuildingType))]"
+												enabled = "[Or3(And(Not(Player.CanUpgradeBuildingType(BuildingItem.GetBuildingType)), Or(BuildingItem.CanBuildAnyBuilding, ProductionView.HasUpgradableFromCurrentTier(BuildingItem.GetBuildingType))), And(Player.CanUpgradeBuildingType(BuildingItem.GetBuildingType), ProductionView.CanMassUpgrade(BuildingItem.GetBuildingType)), BuildingItem.AreBuildingsUnderConstruction)]"
 
 												icon = {
 													parentanchor = center
@@ -1025,9 +1025,8 @@ lateralview = {
 																					TooltipContentSection = {
 																						visible = "[BuildingItem.HasBuildingsLackingInput]"
 
-																						TooltipScrolledStringPairList = {
+																						TooltipStringPairList = {
 																							textcontext = "[BuildingItem.GetBuildingsInputGoodsInformation]"
-																							blockoverride "block_scrollarea" { maximumsize = { -1 120 } }
 																							blockoverride "textblock_background_tint"  {
 																								modify_texture = {
 																									using = color_red_texture
@@ -1292,9 +1291,8 @@ lateralview = {
 																					TooltipContentSection = {
 																						visible = "[BuildingItem.HasBuildingsLackingInput]"
 
-																						TooltipScrolledStringPairList = {
+																						TooltipStringPairList = {
 																							textcontext = "[BuildingItem.GetBuildingsInputGoodsInformation]"
-																							blockoverride "block_scrollarea" { maximumsize = { -1 120 } }
 																							blockoverride "textblock_background_tint"  {
 																								modify_texture = {
 																									using = color_red_texture
@@ -3091,7 +3089,7 @@ types GlorpUIBuildings {
 														size = { 55 20 }
 														layoutpolicy_vertical = expanding
 														text_single = {
-															size = { 40 20 }
+															size = { 55 20 }
 															parentanchor = center
 															autoresize = no
 															visible = "[And(Not(BuildingCandidate.GetBuilding.IsUnderConstruction), Not(And(BuildingCandidate.GetBuilding.CanPlayerUpgrade, BuildingCandidate.GetBuilding.IsPlayerUpgrading)))]"
@@ -3109,7 +3107,7 @@ types GlorpUIBuildings {
 														}
 
 														text_single = {
-															size = { 40 20 }
+															size = { 55 20 }
 															parentanchor = center
 															autoresize = no
 															visible = "[And3(Not(BuildingCandidate.GetBuilding.IsUnderConstruction), BuildingCandidate.GetBuilding.CanPlayerUpgrade, BuildingCandidate.GetBuilding.IsPlayerUpgrading)]"
@@ -3127,7 +3125,7 @@ types GlorpUIBuildings {
 														}
 
 														text_single = {
-															size = { 40 20 }
+															size = { 55 20 }
 															parentanchor = center
 															autoresize = no
 															visible = "[BuildingCandidate.GetBuilding.IsUnderConstruction]"

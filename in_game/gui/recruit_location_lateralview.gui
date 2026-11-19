@@ -172,7 +172,7 @@
 					visible = "[And(Not(RecruitInLocationLateralView.IsLevy), Not(RecruitInLocationLateralView.IsUnitTemplate))]"
 				}
 				blockoverride "left_2liner_text_2" {
-					raw_text = "[Player.GetTotalStrength|Y] / [Player.GetDoubleModifierValueCapped('expected_army_size', 'expected_army_size_modifier')]"
+					raw_text = "[Player.GetTotalStrength|Y] / [Player.GetDoubleModifierValue('expected_army_size', 'expected_army_size_modifier')]"
 					tooltipwidget = {
 						SimpleContextualTooltipType = {
 							blockoverride "title_icon" {
