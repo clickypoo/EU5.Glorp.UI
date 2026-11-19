@@ -203,6 +203,28 @@ SetToggleLeftPanelStatsBar = {
     }
 }
 
+SetUseRedesignedGovernmentView = {
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = useRedesignedGovernmentView } }
+			set_variable = { name = useRedesignedGovernmentView value = 1 }
+			cmf_change_variable_map = {
+				name = cmm
+				key = flag:glorpui__useRedesignedGovernmentView
+				value = 1
+			}
+		}
+		else = {
+			remove_variable = useRedesignedGovernmentView
+			cmf_change_variable_map = {
+				name = cmm
+				key = flag:glorpui__useRedesignedGovernmentView
+				value = 0
+			}
+		}
+	}
+}
+
 EnableMassRecruiting = {
 	effect = {
 		if = { # Set

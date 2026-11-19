@@ -24,6 +24,8 @@ l_english:
  glorpui__useFramedStaticFlag_desc: ""
  glorpui__disableLeftPanelStatsBar_name: "Country Stats Bar"
  glorpui__disableLeftPanelStatsBar_desc: ""
+ glorpui__useRedesignedGovernmentView_name: "Redesigned Government View"
+ glorpui__useRedesignedGovernmentView_desc: ""
  ## Right Panel (rightpanel) Group
  glorpui__toggles__rightpanel_name: "Right Panel"
  glorpui__useDefaultIconsBGRightPanel_name: "Vanilla Tab Icons"
@@ -96,6 +98,7 @@ l_english:
  glorpui__useStaticFlag: "glorpui__useStaticFlag"
  glorpui__useFramedStaticFlag: "glorpui__useFramedStaticFlag"
  glorpui__disableLeftPanelStatsBar: "glorpui__disableLeftPanelStatsBar"
+ glorpui__useRedesignedGovernmentView: "glorpui__useRedesignedGovernmentView"
  glorpui__useDefaultIconsBGRightPanel: "glorpui__useDefaultIconsBGRightPanel"
  glorpui__showUnavailableSocietalValueSuggestions: "glorpui__showUnavailableSocietalValueSuggestions"
  glorpui__flagOnMapMarker: "glorpui__flagOnMapMarker"

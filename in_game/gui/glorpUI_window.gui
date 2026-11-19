@@ -170,6 +170,18 @@
                             }
                         }
 
+						hbox = {
+							spacing = 10
+							text_single = {
+								text = "glorpui__useRedesignedGovernmentView_name"
+							}
+							checkbox_square_alt = {
+								onclick = "[GetScriptedGui('SetUseRedesignedGovernmentView').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								down =  "[Player.MakeScope.GetVariable('useRedesignedGovernmentView').IsSet]"
+								tooltip_enabled = no
+							}
+						}
+
                         # Societal Values - Show Unavailable Suggestions
                         hbox = {
                             spacing = 10

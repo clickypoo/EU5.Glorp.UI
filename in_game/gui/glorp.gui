@@ -740,6 +740,404 @@ types glorp {
 			using = tooltip_title_icon_size
 		}
 	}
+
+	type glorp_country_header = widget {
+		scissor = yes
+		layoutpolicy_horizontal = expanding
+
+		block "country_header_size" {
+			size = { -1 220 }
+		}
+
+		hbox = {
+			visible = "[Country.GetGovernment.HasRulerOrRegent]"
+			block "country_header_background" {
+				ecs_scene_viewer_widget =  {
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					name= "event_window_scene_viewer"
+					scene = "[Country.GetGovernment.GetRulerOrRegent.GenerateSceneDesc]"
+				}
+			}
+		}
+
+		hbox = {
+			visible = "[Not(Country.GetGovernment.HasRulerOrRegent)]"
+			icon =  {
+				layoutpolicy_horizontal = expanding
+				size = {-1 220}
+				texture = "gfx/interface/illustrations/government/throne_room_test/empty.dds"
+				mirror = horizontal
+			}
+		}
+
+		block "io_decoration_behind_character" {}
+
+		container = {
+			block "country_header_character_visible" {
+				visible = "[Country.GetGovernment.HasRulerOrRegent]"
+			}
+			allow_outside = yes
+
+			block "character_portait_extra" {}
+
+			block "character_portrait_anchor" {
+				parentanchor = bottom
+			}
+
+			block "character_widget" {
+				vbox = {
+					allow_outside = yes
+					layoutpolicy_vertical = expanding
+					expand = {}
+					hbox = {
+						allow_outside = yes
+						size = { -1 -1 }
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							allow_outside = yes
+							righttoleft = yes
+							spacing = -50
+
+							# Heir
+							vbox = {
+								datacontext = "[GovernmentView.GetHeirSelection]"
+								visible = "[And(Country.GetGovernment.CareAboutProducingHeirs, Country.GetGovernment.HasHeir)]"
+								layoutpolicy_vertical = expanding
+								expand = {}
+								portrait_standard_full_body_left_button = {
+									mirror = vertical
+									size = { 160 128 }
+									block "country_header_character_context" { datacontext = "[GovernmentView.GetPlayer.GetGovernment.GetHeir]" }
+								}
+							}
+
+							# Ruler and Consort
+							hbox = {
+								righttoleft = yes
+								spacing = -100
+
+								# Consort
+								vbox = {
+									visible = "[And(Country.GetGovernment.CareAboutProducingHeirs, Country.GetGovernment.HasConsort)]"
+									layoutpolicy_vertical = expanding
+									expand = {} # To bottom align multiple elements with different sizes. Its bad, I know
+									portrait_standard_full_body_center_button = {
+										size = { 210 168 }
+										block "country_header_character_context" { datacontext = "[Country.GetGovernment.GetConsort]" }
+									}
+								}
+
+								# Ruler
+								vbox = {
+									layoutpolicy_vertical = expanding
+									expand = {} # To bottom align multiple elements with different sizes. Its bad, I know
+									portrait_standard_full_body_center_button = {
+										size = { 250 200 }
+										block "country_header_character_context" { datacontext = "[Country.GetGovernment.GetRulerOrRegent]" }
+									}
+								}
+							}
+
+							expand = {}
+						}
+					}
+				}
+			}
+		}
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+
+			### RULER TITLE, COAT, SKILLS
+			datacontext = "[Country.GetGovernment]"
+			country_government_character = {
+				blockoverride "character_titles_name_row_top" {}
+				blockoverride "character_titles_name_row_bottom" {
+					character_name_row = {
+						blockoverride "country_header_character_name" {
+							CharacterNameDefault = {
+								datacontext = "[Government.GetRuler]"
+								spacing = 4
+								margin_left = 4
+								margin_right = 18
+								using = bg_glorp_name_banner
+								blockoverride "charactername_size" {
+									minimumsize = { 200 0 }
+									maximumsize = { 340 0 }
+									margin_bottom = 15
+								}
+								blockoverride "character_name_default_extra" {
+									widget = {
+										visible = "[Character.HasDynasty]"
+										size = { 27 40 }
+										allow_outside = yes
+										dynasty_shield_mid = {
+											parentanchor = top
+											datacontext = "[Country.GetGovernment.GetRulerOrRegent]"
+											datacontext = "[Character.GetDynasty]"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				block "country_header_margin" {
+					margin = { 0 0 }
+				}
+				blockoverride "character_religion_visibility" { visible = no }
+				blockoverride "character_name_extra" { }
+				blockoverride "character_title_left" { }
+				blockoverride "character_dynasty_shield_visible" { visible = no }
+				blockoverride "abilities_widget" {}
+			}
+		}
+
+		widget = {
+			parentanchor = top|left
+			position = { 2 2 }
+			datacontext = "[Player.GetGovernment.GetRulerOrRegent]"
+			visible = "[Player.GetGovernment.HasRulerOrRegent]"
+
+			vbox = {
+				set_parent_size_to_minimum = yes
+				spacing = 2
+
+				vbox = {
+					spacing = 2
+					margin = { 8 5 }
+					minimumsize = { 56 -1 }
+
+					visible = "[Character.ShowsStats]"
+
+					tagtooltip_enabled = yes
+					tooltip = "[Character.GetAbilityTooltip]"
+
+					using = bg_dark_paper_card
+					using = bg_cabinet_card_frame
+
+					flowcontainer = {
+						spacing = 5
+						using = bg_rough_edges_paper
+						widget = {
+							name = "adm"
+							size = { 18 18 }
+							using = icon_adm_alt
+						}
+						text_single = {
+							autoresize = yes
+							text = "[Character.GetAbility('adm')]"
+							align = nobaseline
+						}
+					}
+
+					flowcontainer = {
+						spacing = 5
+						widget = {
+							name = "dip"
+							size = { 18 18 }
+							using = icon_dip_alt
+						}
+						text_single = {
+							autoresize = yes
+							text = "[Character.GetAbility('dip')]"
+							align = nobaseline
+						}
+					}
+
+					flowcontainer = {
+						spacing = 5
+						using = bg_rough_edges_paper
+						widget = {
+							name = "mil"
+							size = { 18 18 }
+							using = icon_mil_alt
+						}
+						text_single = {
+							autoresize = yes
+							text = "[Character.GetAbility('mil')]"
+							align = nobaseline
+						}
+					}
+				}
+
+				vbox = {
+					visible = "[Or(Not(Character.IsRegent), Not(Player.GetGovernment.HasRuler))]"
+					margin = { 8 5 }
+					minimumsize = { 56 -1 }
+
+					using = bg_dark_paper_card
+					using = bg_cabinet_card_frame
+
+					scrollarea = {
+						scrollbarpolicy_horizontal = always_off
+						autoresizeviewport = yes
+						viewportwidget = { widget = { scissor = yes } }
+						scrollbar_vertical = { using = Scrollbar_Vertical }
+						minimumsize = { 40 85 }
+						maximumsize = { 40 85 }
+
+						scrollwidget = {
+							vbox = {
+								ignoreinvisible = yes
+								spacing = 2
+								datamodel = "[GovernmentView.GetTraits]"
+								using = ruler_trait_item
+								blockoverride "trait_item_size" {
+									size = { 25 25 }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		widget = {
+			parentanchor = top|hcenter
+			size = { 95 48 }
+			hbox = {
+				spacing = 4
+				# COUNTRY MODIFIERS
+				OneOrSeveralTimedModifiers = {
+					datacontext = "[Player.GetTimedModifierOwner]"
+				}
+
+				# HEGEMONIES
+				HegemoyBanner = {
+					datacontext = "[Player]"
+				}
+			}
+		}
+
+		vbox = {
+			spacing = 10
+			margin_top = 5
+
+			hbox = {
+				spacing = 5
+				layoutpolicy_horizontal = expanding
+				expand = {}
+				allow_outside = yes
+				# OVERLORD
+				character_frame_medium = {
+					size = {56 66}
+					visible = "[Player.GetDiplomacy.GetOverlord.IsValid]"
+
+					blockoverride "portrait_datacontext" {
+						datacontext = "[Player.GetDiplomacy.GetOverlord.GetGovernment.GetRulerOrRegent]"
+					}
+					blockoverride "portrait_position" {position = { 0 -1 }}
+					blockoverride "portrait_size" { size = { 85% 90% } }
+
+					allow_outside = yes
+
+					blockoverride "estate_icon" {
+						visible = no
+					}
+					blockoverride "dynasty_shield" {}
+
+					blockoverride "character_frame_texture" {
+						texture = "gfx/interface/component_decoration/character_frames/character_non_stretchable_frame_2.dds"
+					}
+					blockoverride "character_frame_estate_visible" {
+						visible = no
+					}
+
+					blockoverride "character_ribbon" {
+						character_ribbon_1 = {
+							visible = "[Character.HasRebel]"
+							blockoverride "stretchable" {}
+							blockoverride "ribbon color" {
+								modify_texture = {
+									using = color_black_texture
+									blend_mode = overlay
+								}
+							}
+						}
+						character_ribbon_3 = {
+							visible = "[And(Character.IsCivilWarRuler, Not(Character.HasRebel))]"
+							blockoverride "stretchable" {}
+							blockoverride "ribbon color" {
+								modify_texture = {
+									using = color_black_texture
+									blend_mode = overlay
+								}
+							}
+						}
+						character_ribbon_3 = {
+							visible = "[And3(Character.IsRuler, Not(Character.HasRebel), Not(Character.IsCivilWarRuler))]"
+							blockoverride "stretchable" {}
+						}
+					}
+
+					widget = {
+						size = {30 23}
+						parentanchor = hcenter|bottom
+						position = {0 8}
+
+						using = bg_card_header_02
+
+						country_flag_small = {
+							parentanchor = center
+							size = { 80% 80% }
+							datacontext = "[Player.GetDiplomacy.GetOverlord]"
+						}
+						button_cabinet_card_frame = {
+							size = { 100% 100% }
+							parentanchor = center
+
+							tooltipwidget = {
+								using = SubjectLoyalty_tooltip
+							}
+							onclick = "[OpenDiplomacy(Player.GetDiplomacy.GetOverlord.Self)]"
+
+							# block "portrait_icon_datacontext" {}
+						}
+					}
+
+					widget = {
+						size = {15 15}
+						parentanchor = hcenter|top
+						position = {0 -4}
+						using = bg_circle_piechart
+						blockoverride "frame_color" {
+							modify_texture = {
+								using = color_gold_texture
+								blend_mode = overlay
+							}
+							modify_texture = {
+								texture = "gfx/interface/component_overlay/gold_overlay_circle.dds"
+								texture_density = 2
+								spriteType = stretched
+								spriteborder = { 250 250 }
+								blend_mode = add
+								alpha = 0.1
+							}
+						}
+						icon = {
+							size = { 80% 80% }
+							texture = "gfx/interface/icons/flat_icons/overlord.dds"
+							parentanchor = center
+
+							glow = {
+								name = "drop_shadow"
+								glow_radius = 3
+								color = {0.0 0.0 0.0 1.0}
+								alpha = 0.7
+							}
+						}
+					}
+				}
+			}
+
+			expand = {}
+		}
+
+		using = bg_age_event_frame
+	}
 }
 
 template bg_glorp_badge_banner {
@@ -754,6 +1152,20 @@ template bg_glorp_badge_banner {
 		modify_texture = {
 			block "colour" { using = color_blue_texture }
 			blend_mode = overlay
+		}
+	}
+}
+
+template bg_glorp_name_banner {
+	background = {
+		texture = "gfx/interface/component_tiles/country_banner_texture_left.dds"
+		texture_density = 2
+		alpha = 1
+		spriteType = corneredstretched
+		spriteborder = { 57 37 }
+		using = overlay_texture_overlay
+		blockoverride "overlay_blend_mode" {
+			blend_mode = multiply
 		}
 	}
 }

@@ -79,6 +79,18 @@ glorpui_register_cmf_mod = {
 		alias = disableLeftPanelStatsBar
 	}
 
+	cmm_register_bool_setting = {
+		mod_id = glorpui
+		setting_id = useRedesignedGovernmentView
+		tab_id = toggles
+		group_id = leftpanel
+		default_value = 1
+	}
+	cmm_sync_bool_alias = {
+		setting = glorpui__useRedesignedGovernmentView
+		alias = has_variableuseRedesignedGovernmentView
+	}
+
 	## Right Panel (rightpanel) Group
 	cmm_register_bool_setting = {
 		mod_id = glorpui
@@ -320,6 +332,12 @@ glorpui_handle_cmf_callback = {
 			cmm_sync_bool_alias_inverted = {
 				setting = glorpui__disableLeftPanelStatsBar
 				alias = disableLeftPanelStatsBar
+			}
+		}
+		flag:glorpui__useRedesignedGovernmentView = {
+			cmm_sync_bool_alias = {
+				setting = glorpui__useRedesignedGovernmentView
+				alias = has_variableuseRedesignedGovernmentView
 			}
 		}
 		## Right Panel (rightpanel) Group

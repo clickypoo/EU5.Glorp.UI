@@ -2924,6 +2924,7 @@ lateralview = {
 			### MIDDLE SECTION
 			datacontext = "[Player]"
 			country_header = {
+				visible = "[Not(Player.MakeScope.GetVariable('useRedesignedGovernmentView').IsSet)]"
 				name = "ruler_container"
 
 				blockoverride "country_header_character_name" {
@@ -3637,6 +3638,10 @@ lateralview = {
 				}
 			}
 
+			glorp_country_header = {
+				visible = "[Player.MakeScope.GetVariable('useRedesignedGovernmentView').IsSet]"
+			}
+
 			vbox = {
 				using = layoutpolicy_expanding
 
@@ -4090,27 +4095,27 @@ lateralview = {
 													}
 												}
 
-                                                cabinet_card = {
+												cabinet_card = {
 													datacontext = "[GovernmentView]"
-                                                    visible = "[And3(Not(Cabinet.IsCharacterSet), Not(Cabinet.IsActive), LateralView.Vars.Exists( 'cabinet_compacted' ))]"
-                                                    blockoverride "cabinet_card_size" {
-                                                        layoutpolicy_horizontal = expanding
-                                                        size = {-1 40}
-                                                    }
-                                                }
+													visible = "[And3(Not(Cabinet.IsCharacterSet), Not(Cabinet.IsActive), LateralView.Vars.Exists( 'cabinet_compacted' ))]"
+													blockoverride "cabinet_card_size" {
+														layoutpolicy_horizontal = expanding
+														size = {-1 40}
+													}
+												}
 
-                                                cabinet_card = {
+												cabinet_card = {
 													datacontext = "[GovernmentView]"
-                                                    visible = "[And(Or(Cabinet.IsCharacterSet, Cabinet.IsActive), LateralView.Vars.Exists( 'cabinet_compacted' ))]"
-                                                    blockoverride "cabinet_card_size" {
-                                                        layoutpolicy_horizontal = expanding
-                                                        size = {-1 40}
-                                                    }
-                                                }
+													visible = "[And(Or(Cabinet.IsCharacterSet, Cabinet.IsActive), LateralView.Vars.Exists( 'cabinet_compacted' ))]"
+													blockoverride "cabinet_card_size" {
+														layoutpolicy_horizontal = expanding
+														size = {-1 40}
+													}
+												}
 
 												widget = {
 													layoutpolicy_horizontal = expanding
-													size = { -1 36 }
+													size = { -1 31 }
 
 													hbox = {
 														### Advisors Data
@@ -4122,7 +4127,7 @@ lateralview = {
 															using = cabinet_item_advisor_action_provider
 														}
 														header_button_left = {
-															size = { 36 36 }
+															size = { 31 31 }
 															visible = "[CabinetItem.IsRemoveMemberVisible]"
 															enabled = "[CabinetItem.IsRemoveMemberEnabled]"
 
@@ -4179,7 +4184,7 @@ lateralview = {
 															enabled = "[PdxGuiWidget.IsUberButtonEnabled]"
 
 															spriteborder = { 40 40 }
-															size = {36 36}
+															size = {31 31}
 															icon = {
 																parentanchor = center
 																# using = bg_circle_piechart
@@ -4220,7 +4225,7 @@ lateralview = {
 
 														#cabinet lock/unlock button
 														header_button_left = {
-															size = {36 36}
+															size = {31 31}
 															blockoverride "button_icon_stretch_sprite" {}
 															blockoverride "header_button_frame_inner" {visible = no}
 															blockoverride "header_button_icon_size" { size = { 30 30 } }
@@ -4416,26 +4421,26 @@ lateralview = {
 													}
 												}
 												vbox = {
-                                                    hbox = {
-                                                        margin = { 5 0 }
-                                                        spacing = 5
-                                                        text_single = {
-                                                            text = "CALL_PARLIAMENT"
-                                                            datacontext = "[GovernmentView.GetPlayer]"
-                                                            default_format = "#yellow_titles"
-                                                            maximumsize = {140 35}
-                                                        }
-                                                        text_single = {
-                                                            visible = "[UseDynamicParliamentName]"
-                                                            raw_text = "([Localize('game_concept_parliament')])"
-                                                            maximumsize = {100 35}
-                                                        }
-                                                    }
-                                                    text_single = {
-                                                        fontsize = 11
-                                                        text = "[GovernmentView.GetPlayer.GetGovernment.GetParliament.GetLastParliamentCalledDate|F]"
-                                                    }
-                                                }
+													hbox = {
+														margin = { 5 0 }
+														spacing = 5
+														text_single = {
+															text = "CALL_PARLIAMENT"
+															datacontext = "[GovernmentView.GetPlayer]"
+															default_format = "#yellow_titles"
+															maximumsize = {140 35}
+														}
+														text_single = {
+															visible = "[UseDynamicParliamentName]"
+															raw_text = "([Localize('game_concept_parliament')])"
+															maximumsize = {100 35}
+														}
+													}
+													text_single = {
+														fontsize = 11
+														text = "[GovernmentView.GetPlayer.GetGovernment.GetParliament.GetLastParliamentCalledDate|F]"
+													}
+												}
 												expand = {}
 											}
 										}
@@ -5056,7 +5061,7 @@ lateralview = {
 																		}
 
 																		# block "resource_icon" {
-																			texture = "[GetEstateIcon(ParliamentAgendaItem.GetType)]"
+																		texture = "[GetEstateIcon(ParliamentAgendaItem.GetType)]"
 																		# }
 																	}
 																	text_multi = {
