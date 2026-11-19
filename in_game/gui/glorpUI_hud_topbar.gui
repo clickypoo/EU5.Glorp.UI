@@ -1,4 +1,4 @@
-@stat_icon_size = 28
+﻿@stat_icon_size = 28
 
 Types GlorpUI_HUD_TopbarTypes
 {
