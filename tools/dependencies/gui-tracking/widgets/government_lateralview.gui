@@ -1451,7 +1451,7 @@ lateralview = {
 															using = cabinet_item_advisor_action_provider
 														}
 														header_button_left = {
-															size = { 31 31 }
+															size = { 36 36 }
 															visible = "[CabinetItem.IsRemoveMemberVisible]"
 															enabled = "[CabinetItem.IsRemoveMemberEnabled]"
 

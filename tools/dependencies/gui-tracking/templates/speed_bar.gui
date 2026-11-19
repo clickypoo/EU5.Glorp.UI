@@ -237,7 +237,7 @@ template speed_bar {
 					size = { 100% 100% }
 					autoresize = no
 					name = "date_text"
-					text = "CURRENT_DATE"
+					text = "[GetDateStringWithHour]"
 					using = Font_Type_Flavor
 					using = Font_Size_Medium
 					align = center|nobaseline

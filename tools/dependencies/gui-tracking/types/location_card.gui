@@ -13,9 +13,9 @@
 				spacing = 2
 
 				widget = {
-					size = { 63 63 }
+					size = { 45 73 }
 					# UPGRADE RANK
-					button_regular = {
+					button = {
 						visible = "[Location.GetOwner.IsPlayer]"
 						size = { 100% 100% }
 						position = {0 1}
@@ -58,15 +58,20 @@
 					}
 
 					icon = {
+						texture = "[GetGraphicalCultureTexture('bg_speed_button')]"
+						size = { 100% 100% }
+					}
+
+					icon = {
 						visible = "[Location.GetOwner.IsPlayer]"
-						size = { 40 40 }
+						size = { 35 35 }
 						parentanchor = center
 						texture = "[Location.GetRankIcon]"
 					}
 
 					icon = {
 						visible = "[Not(Location.GetOwner.IsPlayer)]"
-						size = { 40 40 }
+						size = { 35 35 }
 						parentanchor = center
 						texture = "[Location.GetRankIcon]"
 						tooltipwidget = {
