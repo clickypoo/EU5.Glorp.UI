@@ -813,6 +813,7 @@ lateralview = {
 										blockoverride "market_contextmenu_post_entries" {
 											ContextMenuEntry = {
 												visible = "[And(Not(IsLobbyOpen), Not(Location.IsMarketCenter))]"
+												enabled = "[Location.CanCreateMarket]"
 
 												blockoverride "entry_button" {
 													button = {
@@ -5997,7 +5998,7 @@ lateralview = {
 										fontsize = 13
 										align = right|nobaseline
 										visible = "[And(HasMigrationIntelOn(Location.Self), Not(StringIsEmpty(LocationView.GetLocation.GetMigrationInformation)))]"
-										raw_text = "[LocationView.GetLocation.GetMigrationChange]@population!   |"
+										raw_text = "[LocationView.GetLocation.GetMigrationChangeCompact]@population!   |"
 									}
 									text_single = {
 										fontsize = 13
@@ -6031,7 +6032,7 @@ lateralview = {
 										fontsize = 13
 										align = right|nobaseline
 										visible = "[And(HasMigrationIntelOn(Location.Self), Not(StringIsEmpty(LocationView.GetLocation.GetMigrationInformation)))]"
-										raw_text = "[LocationView.GetLocation.GetMigrationChange]@population!   |"
+										raw_text = "[LocationView.GetLocation.GetMigrationChangeCompact]@population!   |"
 									}
 									text_single = {
 										fontsize = 13
@@ -6647,7 +6648,7 @@ lateralview = {
 												widget = {
 													size = { 28 28 }
 													icon = {
-														visible = "[Not(LocationView.GetLocation.CanAssimilate)]"
+														visible = "[And(Not(LocationView.GetLocation.CanAssimilate), Not(LocationView.GetLocation.IsAssimilatingToCulture(PopCultureItem.GetCulture)))]"
 														size = { 28 28 }
 														texture = "gfx/interface/icons/location_icons/new/cannot_assimilate.dds"
 														tooltipwidget = {
@@ -6966,7 +6967,7 @@ lateralview = {
 											widget = {
 												size = { 28 28 }
 												icon = {
-													visible = "[Not(LocationView.GetLocation.CanConvert)]"
+													visible = "[And(Not(LocationView.GetLocation.CanConvert), Not(LocationView.GetLocation.IsConvertingToReligion(PopReligionItem.GetReligion)))]"
 													size = { 28 28 }
 													texture = "gfx/interface/icons/location_icons/new/cannot_convert.dds"
 													tooltipwidget = {

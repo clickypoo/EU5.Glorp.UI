@@ -403,7 +403,7 @@
 										fontsize = 15
 
 										tooltipwidget = {
-											SimpleContextualStringPairTooltipType = {
+											SimpleContextualFastStringPairTooltipType = {
 												blockoverride "title_icon_texture" {
 													texture = "[GetBuildingIcon(BuildingItem.GetBuildingType.Self)]"
 												}
@@ -421,7 +421,7 @@
 										fontsize = 15
 
 										tooltipwidget = {
-											SimpleContextualStringPairTooltipType = {
+											SimpleContextualFastStringPairTooltipType = {
 												blockoverride "title_icon_texture" {
 													texture = "[GetBuildingIcon(BuildingItem.GetBuildingType.Self)]"
 												}
