@@ -16,7 +16,7 @@
 					size = { 45 73 }
 					# UPGRADE RANK
 					button = {
-						visible = "[Location.GetOwner.IsPlayer]"
+						visible = "[Or(Location.GetOwner.IsPlayer, Location.GetOwner.GetDiplomacy.IsSubjectOf(GetPlayer))]"
 						size = { 100% 100% }
 						position = {0 1}
 
@@ -63,14 +63,14 @@
 					}
 
 					icon = {
-						visible = "[Location.GetOwner.IsPlayer]"
+						visible = "[Or(Location.GetOwner.IsPlayer, Location.GetOwner.GetDiplomacy.IsSubjectOf(GetPlayer))]"
 						size = { 35 35 }
 						parentanchor = center
 						texture = "[Location.GetRankIcon]"
 					}
 
 					icon = {
-						visible = "[Not(Location.GetOwner.IsPlayer)]"
+						visible = "[Not(Or(Location.GetOwner.IsPlayer, Location.GetOwner.GetDiplomacy.IsSubjectOf(GetPlayer)))]"
 						size = { 35 35 }
 						parentanchor = center
 						texture = "[Location.GetRankIcon]"
@@ -122,6 +122,7 @@
 						button = {
 							visible = "[And(Location.IsColonized, Location.GetOwner.IsPlayer)]"
 							size = { 22 22 }
+							tooltipwidget = { BasicFunctionalTooltip = {} }
 							action_tooltip = {
 								click_type = left
 								click_mode = single
