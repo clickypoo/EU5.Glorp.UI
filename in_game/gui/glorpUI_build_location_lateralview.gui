@@ -175,18 +175,13 @@
 													}
 												}
 
-												icon = {
-													size = { 100% 100% }
-													parentanchor = center
-													position = { 0 0 }
-													texture = "[Location.GetRankIcon]"
+												texture = "[Location.GetRankIcon]"
 
-													glow = {
-														visible = "[Location.CanUpgradeRank]"
-														glow_radius = 3
-														color = { 0.3 1.0 0.3 1.0 }
-														alpha = 0.6
-													}
+												glow = {
+													visible = "[Location.CanUpgradeRank]"
+													glow_radius = 3
+													color = { 0.3 1.0 0.3 1.0 }
+													alpha = 0.6
 												}
 											}
 										}

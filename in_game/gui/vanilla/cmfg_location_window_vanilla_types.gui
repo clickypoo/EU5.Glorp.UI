@@ -1202,7 +1202,7 @@ types LocationWindowTypes
 
 template location_card_market_button_body {
 	block "location_card_market_size" {
-		size = { 90 28 }
+		size = { 70 28 }
 	}
 
 	datacontext = "[Location.GetMarket]"
@@ -1308,7 +1308,7 @@ template location_card_market_button_body {
 
 template location_card_population_button_body {
 	block "location_card_population_size" {
-		size = { 120 28 }
+		size = { 100 28 }
 	}
 
 	block "location_card_population_click" {
@@ -1467,7 +1467,8 @@ template location_card_core {
 	block "location_card_core_size" {
 		size = { 31 31 }
 	}
-	visible = "[Location.HasOwner]"
+	visible = "[And(Location.HasOwner, Or( And(Not(Location.IsOccupied), And(Location.GetOwner.IsPlayer, Not(Location.IsIntegrated))),
+	And(Not(Location.IsOccupied), And(Location.HasOwner, And(Location.IsCurrentlyBeingIntegrated, HasIntegrationIntelOn(Location.Self))))))]"
 
 	# NOT INTEGRATED
 	header_button_left = {
@@ -1534,14 +1535,16 @@ template location_card_core {
 			alwaystransparent = yes
 		}
 	}
-	
+}
+
+
+template location_card_core_integrated {
+	size = { 22 22 }
+	visible = "[And(Location.HasOwner, Or(Location.IsIntegrated, And(Not(Location.GetOwner.IsPlayer), Not(And(Location.IsCurrentlyBeingIntegrated, HasIntegrationIntelOn(Location.Self))))))]"
 
 	# INTEGRATED
 	icon = {
-		visible = "[Or(Location.IsIntegrated, And(Not(Location.GetOwner.IsPlayer), Not(And(Location.IsCurrentlyBeingIntegrated, HasIntegrationIntelOn(Location.Self)))))]"
-		block "location_card_core_icon_size" {
-			size = { 25 25 }
-		}
+		size = { 22 22 }
 		parentanchor = center
 		texture = "[GetIntegrationLevelIcon(Location.GetIntegrationLevel)]"
 		alwaystransparent = no
@@ -1607,7 +1610,8 @@ template location_card_town_rights_item_body {
 		cost = "[Location.GetRevokeFirstTownRightCost]"
 		on_action = "[Location.RevokeFirstTownRight]"
 		conditions = "[AddLocalizationIf(Not(Location.GetOwner.IsPlayer), 'TWR_NOT_OTHER_COUNTRY_LOCATIONS')]"
-		enabled = "[Location.GetOwner.IsPlayer]"
+		conditions = "[Location.GetRevokeFirstTownRightConditions]"
+		enabled = "[And(Location.GetOwner.IsPlayer, Location.CanRevokeFirstTownRight)]"
 	}
 	tooltipwidget = {
 		using = location_town_rights_tooltip
@@ -1622,6 +1626,48 @@ template location_card_town_rights_item_body {
 	block "location_card_town_rights_item_extra" {}
 	block "location_card_town_rights_item_hover" {}
 }
+
+
+template location_card_town_rights_vertical {
+	block "location_card_town_rights_size" {
+		size = { 33 33 }
+	}
+	visible = "[Or(GreaterThan_int32(GetDataModelSize(Location.GetTownRights), '(int32)0'), And(Location.GetOwner.IsPlayer, Not(Location.GetRank.IsDefault)))]"
+	block "location_card_town_rights_enabled" {
+		enabled = "[And(ShowGrantLocationTownRights(Location.Self), Not(Location.GetRank.IsDefault))]"
+	}
+
+	block "location_card_town_rights_empty_button" {
+		button_townrights = {
+			using = location_card_town_rights_empty_body
+		}
+	}
+
+	block "location_card_town_rights_empty_extra" {}
+
+	# ONE TOWN RIGHT SELECTED
+	hbox = {
+		block "location_card_town_rights_single_visible" {
+			visible = "[EqualTo_int32(GetDataModelSize(Location.GetTownRights), '(int32)1')]"
+		}
+		datamodel = "[Location.GetTownRights]"
+		item = {
+			widget = {
+				using = layoutpolicy_expanding
+				block "location_card_town_rights_item_visible" {}
+
+				block "location_card_town_rights_item_button" {
+					button_townrights = {
+						size = { 100% 100% }
+						using = location_card_town_rights_item_body
+					}
+				}
+			}
+		}
+	}
+	block "location_town_rights_sort_highlight" {}
+}
+
 
 
 template location_fort_status {

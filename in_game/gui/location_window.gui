@@ -8379,12 +8379,18 @@ types LocationWindowTypes {
 
 				widget = {
 					size = { 45 73 }
+
+					icon = {
+						texture = "[GetGraphicalCultureTexture('bg_speed_button')]"
+						size = { 100% 100% }
+					}
+
 					# UPGRADE RANK
 					button = {
 						visible = "[Or(Location.GetOwner.IsPlayer, Location.GetOwner.GetDiplomacy.IsSubjectOf(GetPlayer))]"
-						size = { 100% 100% }
-						position = {0 1}
-
+						size = { 35 35 }
+						parentanchor = center
+						texture = "[Location.GetRankIcon]"
 						action_tooltip = {
 							click_type = left
 							click_mode = confirm
@@ -8409,8 +8415,6 @@ types LocationWindowTypes {
 							on_action = "[DowngradeLocationRank(Location.Self)]"
 						}
 
-						enabled = "[Or(Location.CanUpgradeRank, Location.CanDowngradeRank)]"
-
 						tooltipwidget = {
 							using = location_rank_tooltip
 							blockoverride "location_rank_tooltip_button" {
@@ -8420,18 +8424,6 @@ types LocationWindowTypes {
 								}
 							}
 						}
-					}
-
-					icon = {
-						texture = "[GetGraphicalCultureTexture('bg_speed_button')]"
-						size = { 100% 100% }
-					}
-
-					icon = {
-						visible = "[Or(Location.GetOwner.IsPlayer, Location.GetOwner.GetDiplomacy.IsSubjectOf(GetPlayer))]"
-						size = { 35 35 }
-						parentanchor = center
-						texture = "[Location.GetRankIcon]"
 					}
 
 					icon = {
