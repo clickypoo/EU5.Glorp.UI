@@ -504,7 +504,7 @@ types glorp {
 			icon = {
 				parentanchor = center
 				size = { 90% 90% }
-				texture = "gfx/interface/icons/situations/black_death.dds"
+				texture = "gfx/interface/icons/map_modes/supply.dds"
 			}
 		}
 	}
@@ -599,7 +599,7 @@ types glorp {
 		icon = {
 			visible = "[EqualTo_CFixedPoint(Unit.MakeScope.GetVariable('current_icon_idx').GetValue, '(CFixedPoint)7')]"
 			size = { 28 28 }
-			texture = "gfx/interface/icons/situations/black_death.dds"
+			texture = "gfx/interface/icons/map_modes/supply.dds"
 		}
 	}
 
